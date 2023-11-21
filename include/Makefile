@@ -3,7 +3,9 @@
 
 CPPFLAGS += -MMD -MP
 
-CXXFLAGS += -march=native
+CXXFLAGS = -pipe -Wall -Wextra -Wpedantic -Wfatal-errors
+CXXFLAGS += -std=c++23
+CXXFLAGS += -O3 -flto=auto -march=native -fno-math-errno
 CXXFLAGS += -Werror -Wno-error=cpp -Wno-error=pedantic
 
 #LDFLAGS +=
