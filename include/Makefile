@@ -1,7 +1,7 @@
 # SPDX-FileCopyrightText: Steven Ward
 # SPDX-License-Identifier: OSL-3.0
 
-CPPFLAGS += -MMD -MP
+CPPFLAGS = -MMD -MP
 
 CXXFLAGS = -pipe -Wall -Wextra -Wpedantic -Wfatal-errors
 CXXFLAGS += -std=c++23
