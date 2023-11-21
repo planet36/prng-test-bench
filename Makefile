@@ -7,15 +7,27 @@ export LC_ALL := C
 REQUIRED_BINS := \
 awk \
 bash \
+cat \
+column \
+datamash \
+diff \
 g++ \
 grep \
+join \
 jq \
 mkdir \
+mktemp \
+parallel \
 readelf \
+rm \
+RNG_test \
 sed \
 sort \
 sponge \
+tail \
+time \
 tr
+
 $(foreach bin,$(REQUIRED_BINS),\
     $(if $(shell command -v $(bin) 2> /dev/null),,$(error Please install `$(bin)`)))
 
