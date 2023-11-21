@@ -1,6 +1,9 @@
 # SPDX-FileCopyrightText: Steven Ward
 # SPDX-License-Identifier: OSL-3.0
 
+# clang++ not supported
+CXX = g++
+
 CPPFLAGS = -MMD -MP
 
 CXXFLAGS = -pipe -Wall -Wextra -Wpedantic -Wfatal-errors
