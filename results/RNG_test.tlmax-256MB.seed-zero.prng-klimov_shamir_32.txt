@@ -1,0 +1,26 @@
+RNG_test using PractRand version 0.95
+RNG = RNG_stdin32, seed = unknown
+test set = core, folding = none
+
+rng=RNG_stdin32, seed=unknown
+length= 256 megabytes (2^28 bytes), time= 0.6 seconds
+  Test Name                         Raw       Processed     Evaluation
+  BCFN(2+0,13-2,T)                  R= +2375  p =  2e-1213    FAIL !!!!!!!!  
+  BCFN(2+1,13-2,T)                  R=+368.8  p =  4.2e-188   FAIL !!!!!!    
+  BCFN(2+2,13-3,T)                  R=+160.2  p =  1.3e-75    FAIL !!!!      
+  BCFN(2+3,13-3,T)                  R=+159.5  p =  2.7e-75    FAIL !!!!      
+  BCFN(2+4,13-3,T)                  R=+110.1  p =  6.3e-52    FAIL !!!!      
+  BCFN(2+5,13-4,T)                  R= +30.2  p =  3.7e-13    FAIL           
+  BCFN(2+6,13-5,T)                  R= +20.6  p =  3.0e-8   very suspicious  
+  DC6-9x1Bytes-1                    R= +1967  p =  2e-1031    FAIL !!!!!!!!  
+  Gap-16:A                          R=  -8.2  p =1-2.0e-7   very suspicious  
+  Gap-16:B                          R=  -9.1  p =1-1.0e-7   very suspicious  
+  FPF-14+6/16:all                   R=  +4.3  p =  1.6e-3   unusual          
+  mod3n(5):(2,9-6)                  R= +5165  p =  2e-1764    FAIL !!!!!!!!  
+  mod3n(5):(3,9-6)                  R=+534.8  p =  1.8e-183   FAIL !!!!!!    
+  TMFn(2+0):wl                      R= +2966  p~=  0          FAIL !!!!!!!!  
+  TMFn(2+1):wl                      R= +1461  p~=   1e-872    FAIL !!!!!!!   
+  TMFn(2+2):wl                      R=+723.1  p~=   3e-428    FAIL !!!!!!!   
+  TMFn(2+3):wl                      R=+354.6  p~=   2e-206    FAIL !!!!!!    
+  ...and 50 test result(s) without anomalies
+

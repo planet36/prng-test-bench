@@ -1,0 +1,30 @@
+RNG_test using PractRand version 0.95
+RNG = RNG_stdin64, seed = unknown
+test set = core, folding = none
+
+rng=RNG_stdin64, seed=unknown
+length= 256 megabytes (2^28 bytes), time= 0.6 seconds
+  Test Name                         Raw       Processed     Evaluation
+  BCFN(2+0,13-2,T)                  R= +5645  p =  7e-2885    FAIL !!!!!!!!  
+  BCFN(2+1,13-2,T)                  R=+475.8  p =  9.5e-243   FAIL !!!!!!    
+  BCFN(2+2,13-3,T)                  R=+447.8  p =  9.3e-212   FAIL !!!!!!    
+  BCFN(2+3,13-3,T)                  R=+141.2  p =  1.2e-66    FAIL !!!!      
+  BCFN(2+4,13-3,T)                  R= +88.1  p =  1.6e-41    FAIL !!!       
+  BCFN(2+5,13-4,T)                  R= +82.4  p =  6.3e-36    FAIL !!!       
+  BCFN(2+6,13-5,T)                  R=+123.2  p =  1.9e-48    FAIL !!!!      
+  BCFN(2+7,13-5,T)                  R= +55.3  p =  7.7e-22    FAIL !!        
+  BCFN(2+8,13-6,T)                  R= +48.0  p =  6.9e-17    FAIL !         
+  DC6-9x1Bytes-1                    R= +6057  p =  1e-3176    FAIL !!!!!!!!  
+  Gap-16:A                          R= +26.2  p =  1.3e-20    FAIL !!        
+  Gap-16:B                          R= +27.1  p =  4.7e-22    FAIL !!        
+  BRank(12):128(4)                  R= +64.8  p~=  2.7e-35    FAIL !!!       
+  BRank(12):256(4)                  R=+275.3  p~=  3.3e-147   FAIL !!!!!     
+  BRank(12):384(1)                  R=+131.2  p~=  1.5e-40    FAIL !!!       
+  BRank(12):512(2)                  R=+144.7  p~=  1.3e-44    FAIL !!!       
+  BRank(12):2K(1)                   R=+152.8  p~=  5.1e-47    FAIL !!!       
+  mod3n(5):(3,9-6)                  R=+33371  p = 0           FAIL !!!!!!!!  
+  mod3n(5):(4,9-6)                  R=+386.2  p =  1.0e-132   FAIL !!!!!     
+  mod3n(5):(5,9-6)                  R=+328.0  p =  7.7e-113   FAIL !!!!!     
+  mod3n(5):(6,9-6)                  R= +14.3  p =  9.8e-6   mildly suspicious
+  ...and 46 test result(s) without anomalies
+

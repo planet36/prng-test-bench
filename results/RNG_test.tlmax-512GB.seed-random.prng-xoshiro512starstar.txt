@@ -1,0 +1,56 @@
+RNG_test using PractRand version 0.95
+RNG = RNG_stdin64, seed = unknown
+test set = core, folding = extra
+
+rng=RNG_stdin64, seed=unknown
+length= 256 megabytes (2^28 bytes), time= 0.6 seconds
+  no anomalies in 521 test result(s)
+
+rng=RNG_stdin64, seed=unknown
+length= 512 megabytes (2^29 bytes), time= 3.9 seconds
+  no anomalies in 563 test result(s)
+
+rng=RNG_stdin64, seed=unknown
+length= 1 gigabyte (2^30 bytes), time= 7.7 seconds
+  no anomalies in 609 test result(s)
+
+rng=RNG_stdin64, seed=unknown
+length= 2 gigabytes (2^31 bytes), time= 12.3 seconds
+  no anomalies in 653 test result(s)
+
+rng=RNG_stdin64, seed=unknown
+length= 4 gigabytes (2^32 bytes), time= 18.8 seconds
+  no anomalies in 692 test result(s)
+
+rng=RNG_stdin64, seed=unknown
+length= 8 gigabytes (2^33 bytes), time= 31.2 seconds
+  no anomalies in 732 test result(s)
+
+rng=RNG_stdin64, seed=unknown
+length= 16 gigabytes (2^34 bytes), time= 51.9 seconds
+  Test Name                         Raw       Processed     Evaluation
+  [Low1/32]DC6-9x1Bytes-1           R=  -5.8  p =1-5.8e-4   unusual          
+  ...and 769 test result(s) without anomalies
+
+rng=RNG_stdin64, seed=unknown
+length= 32 gigabytes (2^35 bytes), time= 89.2 seconds
+  no anomalies in 805 test result(s)
+
+rng=RNG_stdin64, seed=unknown
+length= 64 gigabytes (2^36 bytes), time= 168 seconds
+  Test Name                         Raw       Processed     Evaluation
+  [Low1/16]mod3n(5):(1,9-6)         R= +12.5  p =  4.0e-5   unusual          
+  ...and 842 test result(s) without anomalies
+
+rng=RNG_stdin64, seed=unknown
+length= 128 gigabytes (2^37 bytes), time= 317 seconds
+  no anomalies in 880 test result(s)
+
+rng=RNG_stdin64, seed=unknown
+length= 256 gigabytes (2^38 bytes), time= 599 seconds
+  no anomalies in 915 test result(s)
+
+rng=RNG_stdin64, seed=unknown
+length= 512 gigabytes (2^39 bytes), time= 1207 seconds
+  no anomalies in 952 test result(s)
+

@@ -1,0 +1,57 @@
+RNG_test using PractRand version 0.95
+RNG = RNG_stdin64, seed = unknown
+test set = core, folding = none
+
+rng=RNG_stdin64, seed=unknown
+length= 256 megabytes (2^28 bytes), time= 0.6 seconds
+  Test Name                         Raw       Processed     Evaluation
+  BCFN(2+0,13-2,T)                  R>+99999  p = 0           FAIL !!!!!!!!  
+  BCFN(2+1,13-2,T)                  R>+99999  p = 0           FAIL !!!!!!!!  
+  BCFN(2+2,13-3,T)                  R>+99999  p = 0           FAIL !!!!!!!!  
+  BCFN(2+3,13-3,T)                  R>+99999  p = 0           FAIL !!!!!!!!  
+  BCFN(2+4,13-3,T)                  R>+99999  p = 0           FAIL !!!!!!!!  
+  BCFN(2+5,13-4,T)                  R>+99999  p = 0           FAIL !!!!!!!!  
+  BCFN(2+6,13-5,T)                  R>+99999  p = 0           FAIL !!!!!!!!  
+  BCFN(2+7,13-5,T)                  R>+99999  p = 0           FAIL !!!!!!!!  
+  BCFN(2+8,13-6,T)                  R>+99999  p = 0           FAIL !!!!!!!!  
+  BCFN(2+9,13-6,T)                  R>+99999  p = 0           FAIL !!!!!!!!  
+  BCFN(2+10,13-7,T)                 R=+69095  p = 0           FAIL !!!!!!!!  
+  BCFN(2+11,13-8,T)                 R=+40957  p = 0           FAIL !!!!!!!!  
+  BCFN(2+12,13-8,T)                 R=+20441  p =  1e-5188    FAIL !!!!!!!!  
+  BCFN(2+13,13-9,T)                 R=+11734  p =  8e-2638    FAIL !!!!!!!!  
+  BCFN(2+14,13-9,T)                 R= +5853  p =  3e-1316    FAIL !!!!!!!!  
+  DC6-9x1Bytes-1                    R>+99999  p = 0           FAIL !!!!!!!!  
+  Gap-16:A                          R>+99999  p = 0           FAIL !!!!!!!!  
+  Gap-16:B                          R>+99999  p = 0           FAIL !!!!!!!!  
+  FPF-14+6/16:(2,14-0)              R=+11110  p = 0           FAIL !!!!!!!!  
+  FPF-14+6/16:(3,14-0)              R=+14118  p = 0           FAIL !!!!!!!!  
+  FPF-14+6/16:(4,14-1)              R= +9998  p =  3e-8861    FAIL !!!!!!!!  
+  FPF-14+6/16:(5,14-2)              R= +7042  p =  1e-6158    FAIL !!!!!!!!  
+  FPF-14+6/16:(6,14-2)              R= +6526  p =  9e-5708    FAIL !!!!!!!!  
+  FPF-14+6/16:(7,14-3)              R= +4595  p =  1e-4027    FAIL !!!!!!!!  
+  FPF-14+6/16:(8,14-4)              R= +3239  p =  6e-2647    FAIL !!!!!!!!  
+  FPF-14+6/16:(9,14-5)              R= +2309  p =  9e-1914    FAIL !!!!!!!!  
+  FPF-14+6/16:(10,14-5)             R= +1786  p =  2e-1480    FAIL !!!!!!!!  
+  FPF-14+6/16:(11,14-6)             R= +1289  p =  1.1e-986   FAIL !!!!!!!   
+  FPF-14+6/16:(12,14-7)             R=+925.4  p =  2.4e-736   FAIL !!!!!!!   
+  FPF-14+6/16:(13,14-8)             R=+645.9  p =  7.8e-465   FAIL !!!!!!!   
+  FPF-14+6/16:(14,14-8)             R=+469.0  p =  1.5e-337   FAIL !!!!!!!   
+  FPF-14+6/16:(15,14-9)             R=+322.9  p =  1.3e-203   FAIL !!!!!!    
+  FPF-14+6/16:all                   R>+99999  p = 0           FAIL !!!!!!!!  
+  FPF-14+6/16:cross                 R>+99999  p = 0           FAIL !!!!!!!!  
+  BRank(12):128(4)                  R= +1167  p~=  2.8e-621   FAIL !!!!!!!   
+  BRank(12):256(4)                  R= +2544  p~=  4e-1354    FAIL !!!!!!!!  
+  BRank(12):384(1)                  R= +1961  p~=  2.3e-591   FAIL !!!!!!!   
+  BRank(12):512(2)                  R= +3748  p~=  3e-1129    FAIL !!!!!!!!  
+  BRank(12):768(1)                  R= +4028  p~=  1e-1213    FAIL !!!!!!!!  
+  BRank(12):1K(2)                   R= +7644  p~=  3e-2302    FAIL !!!!!!!!  
+  BRank(12):1536(1)                 R= +8161  p~=  1e-2457    FAIL !!!!!!!!  
+  BRank(12):2K(1)                   R=+10916  p~=  3e-3287    FAIL !!!!!!!!  
+  mod3n(5):(0,9-6)                  R>+99999  p = 0           FAIL !!!!!!!!  
+  mod3n(5):(1,9-6)                  R>+99999  p = 0           FAIL !!!!!!!!  
+  TMFn(2+0):wl                      R=+24083  p~=  0          FAIL !!!!!!!!  
+  TMFn(2+1):wl                      R=+12026  p~=  0          FAIL !!!!!!!!  
+  TMFn(2+2):wl                      R= +5997  p~=  0          FAIL !!!!!!!!  
+  TMFn(2+3):wl                      R= +2985  p~=  0          FAIL !!!!!!!!  
+  ...and 19 test result(s) without anomalies
+

@@ -1,0 +1,38 @@
+RNG_test using PractRand version 0.95
+RNG = RNG_stdin64, seed = unknown
+test set = core, folding = none
+
+rng=RNG_stdin64, seed=unknown
+length= 256 megabytes (2^28 bytes), time= 0.5 seconds
+  Test Name                         Raw       Processed     Evaluation
+  BCFN(2+0,13-2,T)                  R= +8816  p =  2e-4505    FAIL !!!!!!!!  
+  BCFN(2+1,13-2,T)                  R= +3339  p =  2e-1706    FAIL !!!!!!!!  
+  BCFN(2+2,13-3,T)                  R= +1276  p =  8.6e-604   FAIL !!!!!!!   
+  BCFN(2+3,13-3,T)                  R=+644.4  p =  8.7e-305   FAIL !!!!!!    
+  BCFN(2+4,13-3,T)                  R=+303.1  p =  3.0e-143   FAIL !!!!!     
+  BCFN(2+5,13-4,T)                  R=+137.4  p =  5.9e-60    FAIL !!!!      
+  BCFN(2+6,13-5,T)                  R= +72.5  p =  1.5e-28    FAIL !!!       
+  BCFN(2+7,13-5,T)                  R= +46.2  p =  2.9e-18    FAIL !         
+  BCFN(2+8,13-6,T)                  R= +29.8  p =  1.1e-10   VERY SUSPICIOUS 
+  BCFN(2+9,13-6,T)                  R= +14.8  p =  1.6e-5   unusual          
+  DC6-9x1Bytes-1                    R=+17850  p =  3e-9361    FAIL !!!!!!!!  
+  Gap-16:A                          R= +3121  p =  4e-2485    FAIL !!!!!!!!  
+  Gap-16:B                          R= +8409  p =  1e-6823    FAIL !!!!!!!!  
+  FPF-14+6/16:(11,14-6)             R= +36.1  p =  1.1e-27    FAIL !!        
+  FPF-14+6/16:(12,14-7)             R= +19.7  p =  1.6e-15    FAIL           
+  FPF-14+6/16:(13,14-8)             R= +32.7  p =  1.3e-23    FAIL !!        
+  FPF-14+6/16:(14,14-8)             R= +61.7  p =  1.9e-44    FAIL !!!       
+  FPF-14+6/16:(15,14-9)             R=+109.6  p =  2.6e-69    FAIL !!!!      
+  FPF-14+6/16:(16,14-10)            R= +86.4  p =  1.5e-46    FAIL !!!       
+  FPF-14+6/16:(17,14-11)            R= +44.4  p =  3.5e-20    FAIL !         
+  FPF-14+6/16:(18,14-11)            R=+131.7  p =  2.9e-58    FAIL !!!!      
+  FPF-14+6/16:all                   R= -1354  p =1-3e-1333    FAIL !!!!!!!!  
+  FPF-14+6/16:cross                 R>+99999  p = 0           FAIL !!!!!!!!  
+  BRank(12):128(4)                  R= +2574  p~=  9e-1370    FAIL !!!!!!!!  
+  BRank(12):256(4)                  R=+495.1  p~=  3.7e-264   FAIL !!!!!!    
+  mod3n(5):(0,9-6)                  R=+219.4  p =  8.8e-76    FAIL !!!!      
+  mod3n(5):(1,9-6)                  R=+121.7  p =  2.0e-42    FAIL !!!       
+  mod3n(5):(2,9-6)                  R= +55.3  p =  1.0e-19    FAIL !         
+  mod3n(5):(3,9-6)                  R= +20.6  p =  7.3e-8   very suspicious  
+  ...and 38 test result(s) without anomalies
+
