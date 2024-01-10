@@ -72,7 +72,8 @@ all: $(BINS)
 # https://www.gnu.org/software/make/manual/html_node/Static-Usage.html
 # Static Pattern Rule
 $(BINS): prng-% : prng-%.cpp
-	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -o $@ $< $(LDLIBS)
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $(LDFLAGS) -o $@ $< $(LDLIBS)
+	@# Extract compile options
 	readelf -p .GCC.command.line $@ | grep -F 'GNU GIMPLE' | sed -E -e 's/^\s*\[\s*[0-9]+\]\s*//' | tr -d '\n' > $@.opts
 
 bench: prng-bench | $(OUTPUT_DIR)
