@@ -30,6 +30,7 @@ int main(int argc, char** argv)
 {
 	// copied from /usr/include/benchmark/benchmark.h
 	benchmark::Initialize(&argc, argv);
+
 	// PRNG names may be given in argv
 	//if (benchmark::ReportUnrecognizedArguments(argc, argv)) return 1;
 
@@ -75,7 +76,7 @@ int main(int argc, char** argv)
 			// verify the given function names are valid
 			if (!prng_name_to_info.contains(prng_name))
 			{
-				fmt::println(stderr, "Error: {} is not a valid function name.", prng_name);
+				fmt::println(stderr, "Error: \"{}\" is not a valid function name.", prng_name);
 
 				fmt::println(stderr, "Valid function names are:");
 				const auto keys = std::views::keys(prng_name_to_info);
