@@ -18,7 +18,8 @@
 #include <immintrin.h>
 
 #if defined(__PCLMUL__)
-void clmul(simd128& a)
+void
+clmul(simd128& a)
 {
 	// https://clang.llvm.org/doxygen/____wmmintrin__pclmul_8h.html
 	// https://github.com/gcc-mirror/gcc/blob/master/gcc/config/i386/wmmintrin.h#L103
@@ -36,7 +37,8 @@ uint64_t clmumx(simd128 a) { clmul(a); return a.u64[1] ^ a.u64[0]; }
 uint64_t clmuma(simd128 a) { clmul(a); return a.u64[1] + a.u64[0]; }
 uint64_t clmums(simd128 a) { clmul(a); return a.u64[1] - a.u64[0]; }
 
-void clmul(uint64_t& hi, uint64_t& lo)
+void
+clmul(uint64_t& hi, uint64_t& lo)
 {
 	simd128 result{.u64{hi, lo}}; // order of hi, lo doesn't matter
 

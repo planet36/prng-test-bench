@@ -23,14 +23,17 @@
 #include <cstring>
 #include <immintrin.h>
 
-#define DECLARE_SIMD_TYPE(T, TNAME, N) \
-using TNAME ## x ## N = [[gnu::vector_size(sizeof(T)*(N)), gnu::warn_if_not_aligned(sizeof(T)*(N))]] T; \
-static_assert(sizeof(TNAME ## x ## N) == sizeof(T)*(N)); \
-static_assert(alignof(TNAME ## x ## N) == sizeof(T)*(N)); \
-auto to_array(const TNAME ## x ## N& v) { \
-	std::array<T, (N)> result{}; \
-	(void)std::memcpy(result.data(), &v, sizeof(T)*(N)); \
-	return result; }
+#define DECLARE_SIMD_TYPE(T, TNAME, N)                                   \
+	using TNAME##x##N = [[gnu::vector_size(sizeof(T) * (N)),             \
+	                      gnu::warn_if_not_aligned(sizeof(T) * (N))]] T; \
+	static_assert(sizeof(TNAME##x##N) == sizeof(T) * (N));               \
+	static_assert(alignof(TNAME##x##N) == sizeof(T) * (N));              \
+	auto to_array(const TNAME##x##N& v)                                  \
+	{                                                                    \
+		std::array<T, (N)> result{};                                     \
+		(void)std::memcpy(result.data(), &v, sizeof(T) * (N));           \
+		return result;                                                   \
+	}
 
 // 128-bit types
 
@@ -85,27 +88,31 @@ union simd128
 	// If ctors are added, then designated initializers can't be used.
 
 	// assignment operators
-	constexpr simd128& operator=(const __m128&  x) {f32 = x; return *this;}
-	constexpr simd128& operator=(const __m128i& x) {i64 = x; return *this;}
-	constexpr simd128& operator=(const __m128d& x) {f64 = x; return *this;}
+	constexpr simd128& operator=(const __m128&  x) { f32 = x; return *this; }
+	constexpr simd128& operator=(const __m128i& x) { i64 = x; return *this; }
+	constexpr simd128& operator=(const __m128d& x) { f64 = x; return *this; }
 
 	// conversion operators
-	explicit constexpr operator __m128  () const {return f32;}
-	explicit constexpr operator __m128i () const {return i64;}
-	explicit constexpr operator __m128d () const {return f64;}
+	explicit constexpr operator __m128  () const { return f32; }
+	explicit constexpr operator __m128i () const { return i64; }
+	explicit constexpr operator __m128d () const { return f64; }
 
 	// named ctors
-	static constexpr simd128 from_xmm(const __m128&  x) {return {.f32 = x};}
-	static constexpr simd128 from_xmm(const __m128i& x) {return {.i64 = x};}
-	static constexpr simd128 from_xmm(const __m128d& x) {return {.f64 = x};}
+	static constexpr simd128 from_xmm(const __m128&  x) { return {.f32 = x}; }
+	static constexpr simd128 from_xmm(const __m128i& x) { return {.i64 = x}; }
+	static constexpr simd128 from_xmm(const __m128d& x) { return {.f64 = x}; }
 
 	constexpr bool operator==(const simd128& that) const
 	{
 		return std::memcmp(this, &that, sizeof(simd128)) == 0;
 	}
 
-	constexpr bool operator!=(const simd128& that) const {return !(*this == that);}
+	constexpr bool operator!=(const simd128& that) const
+	{
+		return !(*this == that);
+	}
 };
+
 static_assert(sizeof(simd128) == 16);
 static_assert(alignof(simd128) == 16);
 
@@ -130,26 +137,30 @@ union simd256
 	// If ctors are added, then designated initializers can't be used.
 
 	// assignment operators
-	constexpr simd256& operator=(const __m256&  x) {f32 = x; return *this;}
-	constexpr simd256& operator=(const __m256i& x) {i64 = x; return *this;}
-	constexpr simd256& operator=(const __m256d& x) {f64 = x; return *this;}
+	constexpr simd256& operator=(const __m256&  x) { f32 = x; return *this; }
+	constexpr simd256& operator=(const __m256i& x) { i64 = x; return *this; }
+	constexpr simd256& operator=(const __m256d& x) { f64 = x; return *this; }
 
 	// conversion operators
-	explicit constexpr operator __m256  () const {return f32;}
-	explicit constexpr operator __m256i () const {return i64;}
-	explicit constexpr operator __m256d () const {return f64;}
+	explicit constexpr operator __m256  () const { return f32; }
+	explicit constexpr operator __m256i () const { return i64; }
+	explicit constexpr operator __m256d () const { return f64; }
 
 	// named ctors
-	static constexpr simd256 from_ymm(const __m256&  x) {return {.f32 = x};}
-	static constexpr simd256 from_ymm(const __m256i& x) {return {.i64 = x};}
-	static constexpr simd256 from_ymm(const __m256d& x) {return {.f64 = x};}
+	static constexpr simd256 from_ymm(const __m256&  x) { return {.f32 = x}; }
+	static constexpr simd256 from_ymm(const __m256i& x) { return {.i64 = x}; }
+	static constexpr simd256 from_ymm(const __m256d& x) { return {.f64 = x}; }
 
 	constexpr bool operator==(const simd256& that) const
 	{
 		return std::memcmp(this, &that, sizeof(simd256)) == 0;
 	}
 
-	constexpr bool operator!=(const simd256& that) const {return !(*this == that);}
+	constexpr bool operator!=(const simd256& that) const
+	{
+		return !(*this == that);
+	}
 };
+
 static_assert(sizeof(simd256) == 32);
 static_assert(alignof(simd256) == 32);

@@ -26,8 +26,10 @@ other default-constructed engines of the same type.
 
 // XXX: state_type and result_type must be declared before invoking this.
 #define DEF_URBG_CLASS_DETAILS(CLASS_NAME)                               \
+                                                                         \
 private:                                                                 \
 	state_type s{};                                                      \
+                                                                         \
 public:                                                                  \
 	using seed_bytes_type = std::array<uint8_t, sizeof(state_type)>;     \
 	/* https://eel.is/c++draft/rand.req.urng */                          \
