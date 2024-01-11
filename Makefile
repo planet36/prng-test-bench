@@ -39,8 +39,9 @@ CPPFLAGS = -MMD -MP
 CPPFLAGS += -Iinclude
 
 CXXFLAGS = -pipe -Wall -Wextra -Wpedantic -Wfatal-errors
+CXXFLAGS += -std=c++23
 # -frecord-gcc-switches is used by readelf
-CXXFLAGS += -std=c++23 -frecord-gcc-switches
+CXXFLAGS += -frecord-gcc-switches
 CXXFLAGS += -O3 -flto=auto -march=native -fno-math-errno
 
 #LDFLAGS +=
