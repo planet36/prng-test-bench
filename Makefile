@@ -49,6 +49,9 @@ CXXFLAGS += -O3 -flto=auto -march=native -fno-math-errno
 LDLIBS += -lbenchmark
 LDLIBS += -lfmt
 
+# Should be an odd number for simpler median
+NUM_SPEED_TESTS := 11
+
 OUTPUT_DIR := results
 
 SRCS = $(wildcard prng-*.cpp)
@@ -80,7 +83,7 @@ $(BINS): prng-% : prng-%.cpp
 bench: prng-bench | $(OUTPUT_DIR)
 	./$< \
 		--benchmark_enable_random_interleaving=true \
-		--benchmark_repetitions=11 \
+		--benchmark_repetitions=$(NUM_SPEED_TESTS) \
 		--benchmark_report_aggregates_only=true \
 		--benchmark_out_format=json \
 		--benchmark_out=$(OUTPUT_DIR)/$<.json
