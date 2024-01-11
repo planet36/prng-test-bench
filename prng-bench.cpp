@@ -20,7 +20,7 @@ const auto BM_do_prng_test = [](benchmark::State& state, std::uniform_random_bit
 
 	for (auto _ : state)
 	{
-		[[maybe_unused]] const volatile auto result = gen();
+		benchmark::DoNotOptimize(gen());
 	}
 
 	state.SetBytesProcessed(state.iterations() * sizeof(result_type));
