@@ -78,6 +78,7 @@ $(BINS): prng-% : prng-%.cpp
 
 bench: prng-bench | $(OUTPUT_DIR)
 	./$< \
+		--benchmark_enable_random_interleaving=true \
 		--benchmark_repetitions=11 \
 		--benchmark_report_aggregates_only=true \
 		--benchmark_out_format=json \
