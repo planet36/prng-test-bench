@@ -49,6 +49,9 @@ CXXFLAGS += -O3 -flto=auto -march=native -fno-math-errno
 LDLIBS += -lbenchmark
 LDLIBS += -lfmt
 
+# Use N-1 threads in the bench test
+export NUM_THREADS := $(shell nproc --ignore 1)
+
 # Should be an odd number for simpler median
 NUM_SPEED_TESTS := 11
 
