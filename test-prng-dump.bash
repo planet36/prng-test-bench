@@ -245,7 +245,7 @@ do
 
     # shellcheck disable=SC2086
     /usr/bin/time --quiet --format='# Took %E\n' \
-        parallel $DRY_RUN $JOBS '{}' < "$PRNG_DUMP_CMDS_FILE" || exit
+        parallel $DRY_RUN $JOBS '{}' < "$PRNG_DUMP_CMDS_FILE" > /dev/null || exit
 
     cd "$OUTPUT_DIR" || exit
 
