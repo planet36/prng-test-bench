@@ -81,7 +81,8 @@ all: $(BINS)
 $(BINS): prng-% : prng-%.cpp
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $(LDFLAGS) -o $@ $< $(LDLIBS)
 	@# Extract compile options
-	readelf -p .GCC.command.line $@ | grep -F 'GNU GIMPLE' | sed -E -e 's/^\s*\[\s*[0-9]+\]\s*//' | tr -d '\n' > $@.opts
+	readelf -p .GCC.command.line $@ | grep -F 'GNU GIMPLE' | \
+		sed -E -e 's/^\s*\[\s*[0-9]+\]\s*//' | tr -d '\n' > $@.opts
 
 bench: prng-bench | $(OUTPUT_DIR)
 	./$< \
@@ -92,10 +93,12 @@ bench: prng-bench | $(OUTPUT_DIR)
 		--benchmark_out=$(OUTPUT_DIR)/$<.json
 
 	@# Preserve the given order because --benchmark_enable_random_interleaving=true shuffles the order of the tests.
-	jq '.benchmarks |= sort_by(.family_index)' < $(OUTPUT_DIR)/$<.json | sponge $(OUTPUT_DIR)/$<.json
+	jq '.benchmarks |= sort_by(.family_index)' \
+		< $(OUTPUT_DIR)/$<.json | sponge $(OUTPUT_DIR)/$<.json
 
 	@# Insert compile options
-	jq --rawfile compile_opts $<.opts '. + {compile_opts: $$compile_opts}' < $(OUTPUT_DIR)/$<.json | sponge $(OUTPUT_DIR)/$<.json
+	jq --rawfile compile_opts $<.opts '. + {compile_opts: $$compile_opts}' \
+		< $(OUTPUT_DIR)/$<.json | sponge $(OUTPUT_DIR)/$<.json
 
 	jq -r '.benchmarks[] | select(.aggregate_name == "median") | "\(.run_name)\t\(.bytes_per_second)"' \
 		$(OUTPUT_DIR)/$<.json | \
@@ -107,13 +110,17 @@ bench: prng-bench | $(OUTPUT_DIR)
 
 # Takes about 12.5 mins
 short-test: prng-dump bench | $(OUTPUT_DIR)
-	bash test-prng-dump.bash -j $(J_SHORT) -f $(TF_SHORT) -m $(TLMAX_SHORT) -s default -s pattern -s random -s zero &> $(OUTPUT_DIR)/prng-results.tlmax-$(TLMAX_SHORT).summary.txt
+	bash test-prng-dump.bash -j $(J_SHORT) -f $(TF_SHORT) -m $(TLMAX_SHORT) \
+		-s default -s pattern -s random -s zero \
+		&> $(OUTPUT_DIR)/prng-results.tlmax-$(TLMAX_SHORT).summary.txt
 
 # Takes about 24.2 hrs (random)
 # Takes about 44.5 hrs (random, zero)
 # Takes about ??.? hrs (zero)
 long-test: prng-dump bench | $(OUTPUT_DIR)
-	bash test-prng-dump.bash -j $(J_LONG) -f $(TF_LONG) -m $(TLMAX_LONG) -s random -s zero &> $(OUTPUT_DIR)/prng-results.tlmax-$(TLMAX_LONG).summary.txt
+	bash test-prng-dump.bash -j $(J_LONG) -f $(TF_LONG) -m $(TLMAX_LONG) \
+		-s random -s zero \
+		&> $(OUTPUT_DIR)/prng-results.tlmax-$(TLMAX_LONG).summary.txt
 
 # These "update" targets are identical to their respective non-update targets,
 # except they pass the dry-run option to the shell script.
@@ -123,10 +130,14 @@ long-test: prng-dump bench | $(OUTPUT_DIR)
 # pre-requisite.
 
 update-short-test: prng-dump | $(OUTPUT_DIR)
-	bash test-prng-dump.bash -d -j $(J_SHORT) -f $(TF_SHORT) -m $(TLMAX_SHORT) -s default -s pattern -s random -s zero &> $(OUTPUT_DIR)/prng-results.tlmax-$(TLMAX_SHORT).dry-run.summary.txt
+	bash test-prng-dump.bash -d -j $(J_SHORT) -f $(TF_SHORT) -m $(TLMAX_SHORT) \
+		-s default -s pattern -s random -s zero \
+		&> $(OUTPUT_DIR)/prng-results.tlmax-$(TLMAX_SHORT).dry-run.summary.txt
 
 update-long-test: prng-dump | $(OUTPUT_DIR)
-	bash test-prng-dump.bash -d -j $(J_LONG) -f $(TF_LONG) -m $(TLMAX_LONG) -s random -s zero &> $(OUTPUT_DIR)/prng-results.tlmax-$(TLMAX_LONG).dry-run.summary.txt
+	bash test-prng-dump.bash -d -j $(J_LONG) -f $(TF_LONG) -m $(TLMAX_LONG) \
+		-s random -s zero \
+		&> $(OUTPUT_DIR)/prng-results.tlmax-$(TLMAX_LONG).dry-run.summary.txt
 
 $(OUTPUT_DIR):
 	mkdir --verbose --parents -- $@
