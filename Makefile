@@ -91,6 +91,9 @@ bench: prng-bench | $(OUTPUT_DIR)
 		--benchmark_out_format=json \
 		--benchmark_out=$(OUTPUT_DIR)/$<.json
 
+	@# Preserve the given order because --benchmark_enable_random_interleaving=true shuffles the order of the tests.
+	jq '.benchmarks |= sort_by(.family_index)' < $(OUTPUT_DIR)/$<.json | sponge $(OUTPUT_DIR)/$<.json
+
 	@# Insert compile options
 	jq --rawfile compile_opts $<.opts '. + {compile_opts: $$compile_opts}' < $(OUTPUT_DIR)/$<.json | sponge $(OUTPUT_DIR)/$<.json
 
