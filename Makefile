@@ -115,6 +115,19 @@ short-test: prng-dump bench | $(OUTPUT_DIR)
 long-test: prng-dump bench | $(OUTPUT_DIR)
 	bash test-prng-dump.bash -j $(J_LONG) -f $(TF_LONG) -m $(TLMAX_LONG) -s random -s zero &> $(OUTPUT_DIR)/prng-results.tlmax-$(TLMAX_LONG).summary.txt
 
+# These "update" targets are identical to their respective non-update targets,
+# except they pass the dry-run option to the shell script.
+# Their purpose is to update the prng-results files with newer benchmark data
+# without running the lengthy tests.
+# The "bench" target should have already been run, but it's not an explicit
+# pre-requisite.
+
+update-short-test: prng-dump | $(OUTPUT_DIR)
+	bash test-prng-dump.bash -d -j $(J_SHORT) -f $(TF_SHORT) -m $(TLMAX_SHORT) -s default -s pattern -s random -s zero &> $(OUTPUT_DIR)/prng-results.tlmax-$(TLMAX_SHORT).dry-run.summary.txt
+
+update-long-test: prng-dump | $(OUTPUT_DIR)
+	bash test-prng-dump.bash -d -j $(J_LONG) -f $(TF_LONG) -m $(TLMAX_LONG) -s random -s zero &> $(OUTPUT_DIR)/prng-results.tlmax-$(TLMAX_LONG).dry-run.summary.txt
+
 $(OUTPUT_DIR):
 	mkdir --verbose --parents -- $@
 
@@ -125,6 +138,6 @@ lint:
 	-clang-tidy --quiet $(SRCS) -- $(CPPFLAGS) $(CXXFLAGS) $(LDLIBS)
 
 # https://www.gnu.org/software/make/manual/make.html#Phony-Targets
-.PHONY: all bench short-test long-test clean lint
+.PHONY: all bench short-test long-test update-short-test update-long-test clean lint
 
 -include $(DEPS)
