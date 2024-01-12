@@ -132,12 +132,12 @@ long-test: prng-dump bench | $(OUTPUT_DIR)
 update-short-test: prng-dump | $(OUTPUT_DIR)
 	bash test-prng-dump.bash -d -j $(J_SHORT) -f $(TF_SHORT) -m $(TLMAX_SHORT) \
 		-s default -s pattern -s random -s zero \
-		&> $(OUTPUT_DIR)/prng-results.tlmax-$(TLMAX_SHORT).dry-run.summary.txt
+		&> $(OUTPUT_DIR)/prng-results.tlmax-$(TLMAX_SHORT).summary.dry-run.txt
 
 update-long-test: prng-dump | $(OUTPUT_DIR)
 	bash test-prng-dump.bash -d -j $(J_LONG) -f $(TF_LONG) -m $(TLMAX_LONG) \
 		-s random -s zero \
-		&> $(OUTPUT_DIR)/prng-results.tlmax-$(TLMAX_LONG).dry-run.summary.txt
+		&> $(OUTPUT_DIR)/prng-results.tlmax-$(TLMAX_LONG).summary.dry-run.txt
 
 $(OUTPUT_DIR):
 	mkdir --verbose --parents -- $@
