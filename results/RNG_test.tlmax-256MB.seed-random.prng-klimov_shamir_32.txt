@@ -3,22 +3,24 @@ RNG = RNG_stdin32, seed = unknown
 test set = core, folding = none
 
 rng=RNG_stdin32, seed=unknown
-length= 256 megabytes (2^28 bytes), time= 0.6 seconds
+length= 256 megabytes (2^28 bytes), time= 0.7 seconds
   Test Name                         Raw       Processed     Evaluation
-  BCFN(2+0,13-2,T)                  R= +2418  p =  2e-1235    FAIL !!!!!!!!  
-  BCFN(2+1,13-2,T)                  R=+381.0  p =  2.4e-194   FAIL !!!!!!    
-  BCFN(2+2,13-3,T)                  R=+166.8  p =  9.1e-79    FAIL !!!!      
-  BCFN(2+3,13-3,T)                  R=+159.8  p =  1.9e-75    FAIL !!!!      
-  BCFN(2+4,13-3,T)                  R=+116.4  p =  7.1e-55    FAIL !!!!      
-  BCFN(2+5,13-4,T)                  R= +51.0  p =  3.1e-22    FAIL !!        
-  BCFN(2+6,13-5,T)                  R= +14.4  p =  8.0e-6   mildly suspicious
-  DC6-9x1Bytes-1                    R= +1973  p =  1e-1034    FAIL !!!!!!!!  
-  Gap-16:B                          R=  -5.5  p =1-1.1e-4   mildly suspicious
-  mod3n(5):(2,9-6)                  R= +5264  p =  2e-1798    FAIL !!!!!!!!  
-  mod3n(5):(3,9-6)                  R=+540.5  p =  2.0e-185   FAIL !!!!!!    
-  TMFn(2+0):wl                      R= +2962  p~=  0          FAIL !!!!!!!!  
-  TMFn(2+1):wl                      R= +1459  p~=   4e-871    FAIL !!!!!!!   
+  BCFN(2+0,13-2,T)                  R= +2488  p =  2e-1271    FAIL !!!!!!!!  
+  BCFN(2+1,13-2,T)                  R=+384.0  p =  7.2e-196   FAIL !!!!!!    
+  BCFN(2+2,13-3,T)                  R=+158.0  p =  1.4e-74    FAIL !!!!      
+  BCFN(2+3,13-3,T)                  R=+136.8  p =  1.5e-64    FAIL !!!!      
+  BCFN(2+4,13-3,T)                  R=+107.4  p =  1.2e-50    FAIL !!!!      
+  BCFN(2+5,13-4,T)                  R= +34.8  p =  3.8e-15    FAIL !         
+  BCFN(2+6,13-5,T)                  R= +22.5  p =  5.3e-9   very suspicious  
+  BCFN(2+8,13-6,T)                  R= +14.0  p =  3.1e-5   unusual          
+  DC6-9x1Bytes-1                    R= +1968  p =  2e-1032    FAIL !!!!!!!!  
+  Gap-16:A                          R=  -9.3  p =1-1.9e-8    VERY SUSPICIOUS 
+  Gap-16:B                          R=  -7.3  p =1-3.1e-6   very suspicious  
+  mod3n(5):(2,9-6)                  R= +5069  p =  6e-1732    FAIL !!!!!!!!  
+  mod3n(5):(3,9-6)                  R=+558.8  p =  1.1e-191   FAIL !!!!!!    
+  TMFn(2+0):wl                      R= +2960  p~=  0          FAIL !!!!!!!!  
+  TMFn(2+1):wl                      R= +1460  p~=   4e-872    FAIL !!!!!!!   
   TMFn(2+2):wl                      R=+724.3  p~=   5e-429    FAIL !!!!!!!   
-  TMFn(2+3):wl                      R=+357.5  p~=   3e-208    FAIL !!!!!!    
-  ...and 52 test result(s) without anomalies
+  TMFn(2+3):wl                      R=+358.6  p~=   8e-209    FAIL !!!!!!    
+  ...and 50 test result(s) without anomalies
 

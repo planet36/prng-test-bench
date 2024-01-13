@@ -23,6 +23,7 @@ mcg128
 mizuchi
 moremur
 mover_64
+mover_counter_64
 mumx_mumx_rrxx_1
 mumx_mumx_x1
 mumx_mumx_x2

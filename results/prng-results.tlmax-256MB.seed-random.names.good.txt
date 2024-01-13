@@ -23,7 +23,6 @@ mcg128
 mizuchi
 moremur
 mover_64
-mover_counter_64
 mumx_mumx_rrxx_1
 mumx_mumx_x1
 mumx_mumx_x2
@@ -60,6 +59,7 @@ squares32
 squares64
 stc64
 std::mt19937_64
+tangle
 thrust_alt
 topping
 wyrand
