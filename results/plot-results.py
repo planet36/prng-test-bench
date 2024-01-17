@@ -22,7 +22,7 @@ for prng_result in prng_results:
     # massage the data
     tmp = {
             'prng_name': prng_result['prng_name'],
-            'test_ended_at_log2_bytes': prng_result['test_ended_at_log2_bytes'],
+            'test_ended_at_exp2_bytes': prng_result['test_ended_at_exp2_bytes'],
             'prng_throughput_mebibytes': prng_result['prng_throughput_mebibytes']
             }
 
@@ -41,7 +41,9 @@ fig.set_facecolor('powderblue')
 ax.margins(x=0.01)
 ax.set_title("PRNG PractRand endurance vs. speed")
 
-ax.set_xlabel('Test ended at log2(bytes)')
+# https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.set_xlabel.html
+ax.set_xlabel('Test ended at $2^x$ (bytes)')
+# https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.set_ylabel.html
 ax.set_ylabel('Throughput (MiB/s)')
 
 x_ticks = set()
@@ -50,7 +52,7 @@ x_ticks = set()
 # https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.annotate.html
 # https://matplotlib.org/stable/gallery/text_labels_and_annotations/annotation_demo.html
 
-x = [prng_result['test_ended_at_log2_bytes'] for prng_result in prng_results_failure]
+x = [prng_result['test_ended_at_exp2_bytes'] for prng_result in prng_results_failure]
 y = [prng_result['prng_throughput_mebibytes'] for prng_result in prng_results_failure]
 plt.scatter(x, y, marker='s', c='red')
 x_ticks |= set(range(min(x), max(x) + 1))
@@ -58,7 +60,7 @@ x_ticks |= set(range(min(x), max(x) + 1))
 for i, label in enumerate(prng_result['prng_name'] for prng_result in prng_results_failure):
     ax.annotate(label, (x[i], y[i]), xycoords='data', xytext=(30, 10), textcoords='offset points', arrowprops=dict(arrowstyle="-"), ha='left')
 
-x = [prng_result['test_ended_at_log2_bytes'] for prng_result in prng_results_nonfailure]
+x = [prng_result['test_ended_at_exp2_bytes'] for prng_result in prng_results_nonfailure]
 y = [prng_result['prng_throughput_mebibytes'] for prng_result in prng_results_nonfailure]
 plt.scatter(x, y, marker='>', c='green')
 x_ticks |= set(range(min(x), max(x) + 1))
