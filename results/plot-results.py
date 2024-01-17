@@ -46,6 +46,9 @@ ax.set_xlabel('Test ended at $2^x$ (bytes)')
 # https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.set_ylabel.html
 ax.set_ylabel('Throughput (MiB/s)')
 
+# https://matplotlib.org/stable/api/_as_gen/matplotlib.axis.Axis.set_major_formatter.html
+ax.yaxis.set_major_formatter(lambda x, pos: '{:,}'.format(int(x)))
+
 x_ticks = set()
 
 # https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.scatter.html
