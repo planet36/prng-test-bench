@@ -15,7 +15,9 @@
 
 #include "def_urbg_class_details.hpp"
 
+#include <array>
 #include <bit>
+#include <cstdint>
 
 #define DEF_JUMP                                                     \
 	void jump()                                                      \

@@ -12,6 +12,8 @@
 
 #include "def_urbg_class.hpp"
 
+#include <cstdint>
+
 DEF_URBG_CLASS(mx3, uint64_t, uint64_t)
 {
 	static constexpr uint64_t M1 = 0xbea225f9eb34556d; // not prime (popcount = 36)

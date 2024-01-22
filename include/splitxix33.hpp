@@ -12,6 +12,8 @@
 
 #include "def_urbg_class.hpp"
 
+#include <cstdint>
+
 DEF_URBG_CLASS(splitxix33, uint64_t, uint64_t)
 {
 	static constexpr uint64_t inc = 1111111111111111111U; // prime (popcount = 35)

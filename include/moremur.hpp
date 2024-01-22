@@ -13,6 +13,8 @@
 #include "def_urbg_class.hpp"
 #include "scaled-const.hpp"
 
+#include <cstdint>
+
 DEF_URBG_CLASS(moremur, uint64_t, uint64_t)
 {
 	static constexpr uint64_t inc = GoldenRatio_64;

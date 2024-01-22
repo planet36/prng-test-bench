@@ -13,6 +13,8 @@
 #include "def_urbg_class.hpp"
 #include "xxhprimes.hpp"
 
+#include <cstdint>
+
 // https://github.com/aappleby/smhasher/blob/master/src/MurmurHash3.cpp#L68
 DEF_URBG_CLASS(murmurhash3_32, uint32_t, uint32_t)
 {

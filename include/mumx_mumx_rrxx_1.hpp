@@ -14,6 +14,7 @@
 #include "mum.hpp"
 
 #include <bit>
+#include <cstdint>
 
 DEF_URBG_CLASS(mumx_mumx_rrxx_1, uint64_t, uint64_t)
 {

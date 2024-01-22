@@ -13,6 +13,8 @@
 #include "def_urbg_class.hpp"
 #include "mum.hpp"
 
+#include <cstdint>
+
 DEF_URBG_CLASS(mumx_mumx_x1, uint64_t, uint64_t)
 {
 	static constexpr uint64_t inc = _mum_primes[0]; // inc=1 yields failures

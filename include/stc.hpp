@@ -11,7 +11,9 @@
 
 #include "def_urbg_class.hpp"
 
+#include <array>
 #include <bit>
+#include <cstdint>
 
 /*
 very similar to SFC

@@ -16,6 +16,8 @@
 #include "mum.hpp"
 #include "wyprimes.hpp"
 
+#include <cstdint>
+
 DEF_URBG_CLASS(wyrand, uint64_t, uint64_t)
 {
 	s += _wyp[0];

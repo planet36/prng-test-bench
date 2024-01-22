@@ -12,6 +12,8 @@
 #include "def_urbg_class.hpp"
 #include "xxhprimes.hpp"
 
+#include <cstdint>
+
 // https://link.springer.com/content/pdf/10.1007/3-540-36400-5_34.pdf
 // https://old.reddit.com/r/cpp/comments/8vhrzh/better_c_pseudo_random_number_generator/e1nlcv9/
 

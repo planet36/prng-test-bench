@@ -14,6 +14,7 @@
 #include "scaled-const.hpp"
 
 #include <bit>
+#include <cstdint>
 
 DEF_URBG_CLASS(rrma2xsm2xs, uint64_t, uint64_t)
 {

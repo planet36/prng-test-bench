@@ -14,6 +14,7 @@
 #include "def_urbg_class.hpp"
 
 #include <bit>
+#include <cstdint>
 
 DEF_URBG_CLASS(nasam, uint64_t, uint64_t)
 {

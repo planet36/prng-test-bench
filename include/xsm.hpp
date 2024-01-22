@@ -13,7 +13,9 @@
 #include "def_urbg_class.hpp"
 #include "xxhprimes.hpp"
 
+#include <array>
 #include <bit>
+#include <cstdint>
 
 // source:
 // PractRand-pre0.95/src/RNGs/xsm.cpp

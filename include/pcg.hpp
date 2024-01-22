@@ -16,7 +16,9 @@
 #include "int_join.hpp"
 #endif
 
+#include <array>
 #include <bit>
+#include <cstdint>
 
 /*
 * Multiplier and increment values taken from here:

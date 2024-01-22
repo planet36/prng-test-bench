@@ -13,6 +13,8 @@
 #include "simd-types.hpp"
 #include "xxhprimes.hpp"
 
+#include <array>
+#include <cstdint>
 #include <immintrin.h>
 
 #if defined(__SHA__)

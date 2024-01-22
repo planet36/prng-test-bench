@@ -13,6 +13,7 @@
 #include "scaled-const.hpp"
 
 #include <bit>
+#include <cstdint>
 
 /*
 adapted from:

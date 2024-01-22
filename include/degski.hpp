@@ -12,6 +12,8 @@
 #include "def_urbg_class.hpp"
 #include "xxhprimes.hpp"
 
+#include <cstdint>
+
 // https://gist.github.com/degski/6e2069d6035ae04d5d6f64981c995ec2#file-invertible_hash_functions-hpp-L29
 DEF_URBG_CLASS(degski32, uint32_t, uint32_t)
 {

@@ -15,6 +15,7 @@
 #include "xxhprimes.hpp"
 
 #include <bit>
+#include <cstdint>
 
 DEF_URBG_CLASS(squares32, uint64_t, uint32_t)
 {

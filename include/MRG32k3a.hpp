@@ -13,6 +13,8 @@
 #include "def_urbg_class.hpp"
 #include "xxhprimes.hpp"
 
+#include <cstdint>
+
 DEF_URBG_CLASS(MRG32k3a, uint64_t, uint64_t)
 {
 	static constexpr uint64_t inc = xxh_prime64[0]; // inc=1 yields failures

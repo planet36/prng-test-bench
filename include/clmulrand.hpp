@@ -16,6 +16,8 @@
 #include "def_urbg_class.hpp"
 #include "simd-types.hpp"
 
+#include <cstdint>
+
 DEF_URBG_CLASS(clmulrand, simd128, uint64_t)
 {
 	static constexpr simd128 inc{.u64{byteprimes[0], byteprimes[1]}};

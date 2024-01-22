@@ -12,7 +12,9 @@
 
 #include "def_urbg_class.hpp"
 
+#include <array>
 #include <bit>
+#include <cstdint>
 
 // 2-rotate version
 DEF_URBG_CLASS(jsf32_2, SINGLE_ARG(std::array<uint32_t, 4>), uint32_t)

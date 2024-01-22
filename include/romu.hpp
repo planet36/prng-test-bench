@@ -12,6 +12,10 @@
 
 #include "def_urbg_class.hpp"
 
+#include <array>
+#include <bit>
+#include <cstdint>
+
 DEF_URBG_CLASS(romu_quad, SINGLE_ARG(std::array<uint64_t, 4>), uint64_t)
 {
 	static constexpr uint64_t M1 = 0xd3833e804f4c574b; // not prime (popcount = 31)

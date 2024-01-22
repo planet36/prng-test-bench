@@ -13,7 +13,9 @@
 
 #include "def_urbg_class.hpp"
 
+#include <array>
 #include <bit>
+#include <cstdint>
 
 // Adapted from:
 // PractRand-pre0.95/src/RNGs/sfc.cpp

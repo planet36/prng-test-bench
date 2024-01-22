@@ -13,7 +13,9 @@
 #include "def_urbg_class.hpp"
 #include "xxhprimes.hpp"
 
+#include <array>
 #include <bit>
+#include <cstdint>
 
 // https://github.com/tommyettinger/sarong/blob/master/src/main/java/sarong/BellRNG.java
 DEF_URBG_CLASS(bell, SINGLE_ARG(std::array<uint64_t, 2>), uint64_t)

@@ -16,6 +16,7 @@
 #include "simd-types.hpp"
 #include "xxhprimes.hpp"
 
+#include <cstdint>
 #include <immintrin.h>
 
 #if defined(__AES__)

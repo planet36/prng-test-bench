@@ -13,6 +13,8 @@
 #include "def_urbg_class.hpp"
 #include "int_join.hpp"
 
+#include <cstdint>
+
 DEF_URBG_CLASS(lcg32, __uint128_t, uint32_t)
 {
 	static constexpr __uint128_t M = int_join(0xc580caddUL, 0x754f7336d2eaa27dUL); // prime (popcount = 52)

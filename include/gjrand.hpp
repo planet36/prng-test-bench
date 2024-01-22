@@ -11,7 +11,9 @@
 
 #include "def_urbg_class.hpp"
 
+#include <array>
 #include <bit>
+#include <cstdint>
 
 /*
 https://gist.github.com/imneme/7a783e20f71259cc13e219829bcea4ac

@@ -13,6 +13,7 @@
 #include "def_urbg_class.hpp"
 
 #include <bit>
+#include <cstdint>
 
 // New mixer, "rrxmrrxmsx_0", failing one subtest of RR-64-40-TF2-0.94.
 // With a unit counter starting at 0, it has passed 128 TB of

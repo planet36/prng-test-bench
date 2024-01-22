@@ -14,6 +14,7 @@
 #include "def_urbg_class.hpp"
 #include "simd-types.hpp"
 
+#include <cstdint>
 #include <immintrin.h>
 
 #if defined(__AES__)

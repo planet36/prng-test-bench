@@ -12,6 +12,8 @@
 
 #include "def_urbg_class.hpp"
 
+#include <cstdint>
+
 DEF_URBG_CLASS(ttwanghash64, uint64_t, uint64_t)
 {
 	auto x = s++; // (SDW)

@@ -13,6 +13,7 @@
 #include "def_urbg_class.hpp"
 
 #include <bit>
+#include <cstdint>
 
 // Old mixer, my rrmxmx
 DEF_URBG_CLASS(rrmxmx, uint64_t, uint64_t)
