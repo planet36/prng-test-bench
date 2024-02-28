@@ -51,22 +51,6 @@ DECLARE_SIMD_TYPE(long long         , i64, 2) // == __m128i
 DECLARE_SIMD_TYPE(unsigned long long, u64, 2)
 DECLARE_SIMD_TYPE(double            , f64, 2) // == __m128d
 
-// 256-bit types
-
-DECLARE_SIMD_TYPE(signed char  , i8, 32)
-DECLARE_SIMD_TYPE(unsigned char, u8, 32)
-
-DECLARE_SIMD_TYPE(short         , i16, 16)
-DECLARE_SIMD_TYPE(unsigned short, u16, 16)
-
-DECLARE_SIMD_TYPE(int         , i32, 8)
-DECLARE_SIMD_TYPE(unsigned int, u32, 8)
-DECLARE_SIMD_TYPE(float       , f32, 8) // == __m256
-
-DECLARE_SIMD_TYPE(long long         , i64, 4) // == __m256i
-DECLARE_SIMD_TYPE(unsigned long long, u64, 4)
-DECLARE_SIMD_TYPE(double            , f64, 4) // == __m256d
-
 union simd128
 {
 	i8x16 i8;
@@ -115,6 +99,22 @@ union simd128
 
 static_assert(sizeof(simd128) == 16);
 static_assert(alignof(simd128) == 16);
+
+// 256-bit types
+
+DECLARE_SIMD_TYPE(signed char  , i8, 32)
+DECLARE_SIMD_TYPE(unsigned char, u8, 32)
+
+DECLARE_SIMD_TYPE(short         , i16, 16)
+DECLARE_SIMD_TYPE(unsigned short, u16, 16)
+
+DECLARE_SIMD_TYPE(int         , i32, 8)
+DECLARE_SIMD_TYPE(unsigned int, u32, 8)
+DECLARE_SIMD_TYPE(float       , f32, 8) // == __m256
+
+DECLARE_SIMD_TYPE(long long         , i64, 4) // == __m256i
+DECLARE_SIMD_TYPE(unsigned long long, u64, 4)
+DECLARE_SIMD_TYPE(double            , f64, 4) // == __m256d
 
 union simd256
 {
