@@ -29,9 +29,9 @@ int_join(const T hi, const T lo)
 	else
 	{
 		if constexpr (std::endian::native == std::endian::little)
-			return int_parts<T>{.parts = {lo, hi}}.whole;
+			return int_parts<T>{.parts{lo, hi}}.whole;
 		else if constexpr (std::endian::native == std::endian::big)
-			return int_parts<T>{.parts = {hi, lo}}.whole;
+			return int_parts<T>{.parts{hi, lo}}.whole;
 		else // mixed endian
 			__builtin_unreachable();
 	}

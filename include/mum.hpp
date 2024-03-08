@@ -42,7 +42,7 @@ static_assert((_mum_tail_prime        & 1) != 0, "must be odd");
 static_assert((_mum_finish_prime1     & 1) != 0, "must be odd");
 static_assert((_mum_finish_prime2     & 1) != 0, "must be odd");
 
-inline constexpr std::array<uint64_t, 16> _mum_primes = {
+inline constexpr std::array<uint64_t, 16> _mum_primes{
 	0x9ebdcae10d981691, // prime (popcount = 31)
 	0x32b9b9b97a27ac7d, // prime (popcount = 37)
 	0x29b5584d83d35bbd, // prime (popcount = 34)
