@@ -15,7 +15,7 @@ These scaled constants are coprime with their integer range.
 
 /// Pi scaled to 32 bits
 /**
-https://www.wolframalpha.com/input?i=BaseForm%5BRound%5B%282%5E64+-+1%29%2FPi%5D%2C+16%5D
+https://www.wolframalpha.com/input?i=IntegerString%5BRound%5B%282%5E64+-+1%29%2FPi%5D%2C+16%5D
 https://www.wolframalpha.com/input?i=PrimeQ%5BRound%5B%282%5E64+-+1%29%2FPi%5D%5D
 https://www.wolframalpha.com/input?i=DigitCount%5BRound%5B%282%5E64+-+1%29%2FPi%5D%2C+2%2C+1%5D
 https://www.wolframalpha.com/input?i=CoprimeQ%5BRound%5B%282%5E64+-+1%29%2FPi%5D%2C+2%5E64%5D
@@ -25,7 +25,7 @@ static_assert((Pi_32 & 1) != 0, "must be odd");
 
 /// Pi scaled to 64 bits
 /**
-https://www.wolframalpha.com/input?i=BaseForm%5BRound%5B%282%5E64+-+1%29%2FPi%5D%2C+16%5D
+https://www.wolframalpha.com/input?i=IntegerString%5BRound%5B%282%5E64+-+1%29%2FPi%5D%2C+16%5D
 https://www.wolframalpha.com/input?i=PrimeQ%5BRound%5B%282%5E64+-+1%29%2FPi%5D%5D
 https://www.wolframalpha.com/input?i=DigitCount%5BRound%5B%282%5E64+-+1%29%2FPi%5D%2C+2%2C+1%5D
 https://www.wolframalpha.com/input?i=CoprimeQ%5BRound%5B%282%5E64+-+1%29%2FPi%5D%2C+2%5E64%5D
@@ -35,7 +35,7 @@ static_assert((Pi_64 & 1) != 0, "must be odd");
 
 /// GoldenRatio scaled to 32 bits
 /**
-https://www.wolframalpha.com/input?i=BaseForm%5BRound%5B%282%5E32+-+1%29%2FGoldenRatio%5D%2C+16%5D
+https://www.wolframalpha.com/input?i=IntegerString%5BRound%5B%282%5E32+-+1%29%2FGoldenRatio%5D%2C+16%5D
 https://www.wolframalpha.com/input?i=PrimeQ%5BRound%5B%282%5E32+-+1%29%2FGoldenRatio%5D%5D
 https://www.wolframalpha.com/input?i=CoprimeQ%5BRound%5B%282%5E32+-+1%29%2FGoldenRatio%5D%2C+2%5E32%5D
 https://www.wolframalpha.com/input?i=DigitCount%5BRound%5B%282%5E32+-+1%29%2FGoldenRatio%5D%2C+2%2C+1%5D
@@ -45,7 +45,7 @@ static_assert((GoldenRatio_32 & 1) != 0, "must be odd");
 
 /// GoldenRatio scaled to 64 bits
 /**
-https://www.wolframalpha.com/input?i=BaseForm%5BRound%5B%282%5E64+-+1%29%2FGoldenRatio%5D%2C+16%5D
+https://www.wolframalpha.com/input?i=IntegerString%5BRound%5B%282%5E64+-+1%29%2FGoldenRatio%5D%2C+16%5D
 https://www.wolframalpha.com/input?i=PrimeQ%5BRound%5B%282%5E64+-+1%29%2FGoldenRatio%5D%5D
 https://www.wolframalpha.com/input?i=DigitCount%5BRound%5B%282%5E64+-+1%29%2FGoldenRatio%5D%2C+2%2C+1%5D
 https://www.wolframalpha.com/input?i=CoprimeQ%5BRound%5B%282%5E64+-+1%29%2FGoldenRatio%5D%2C+2%5E64%5D
@@ -55,7 +55,7 @@ static_assert((GoldenRatio_64 & 1) != 0, "must be odd");
 
 /// Glaisher scaled to 64 bits
 /**
-https://www.wolframalpha.com/input?i=BaseForm%5BRound%5B%282%5E64+-+1%29%2FGlaisher%5D%2C+16%5D
+https://www.wolframalpha.com/input?i=IntegerString%5BRound%5B%282%5E64+-+1%29%2FGlaisher%5D%2C+16%5D
 https://www.wolframalpha.com/input?i=PrimeQ%5BRound%5B%282%5E64+-+1%29%2FGlaisher%5D%5D
 https://www.wolframalpha.com/input?i=DigitCount%5BRound%5B%282%5E64+-+1%29%2FGlaisher%5D%2C+2%2C+1%5D
 https://www.wolframalpha.com/input?i=CoprimeQ%5BRound%5B%282%5E64+-+1%29%2FGlaisher%5D%2C+2%5E64%5D
@@ -65,7 +65,7 @@ static_assert((Glaisher_64 & 1) != 0, "must be odd");
 
 /// Khinchin scaled to 32 bits
 /**
-https://www.wolframalpha.com/input?i=BaseForm%5BRound%5B%282%5E32+-+1%29%2FKhinchin%5D%2C+16%5D
+https://www.wolframalpha.com/input?i=IntegerString%5BRound%5B%282%5E32+-+1%29%2FKhinchin%5D%2C+16%5D
 https://www.wolframalpha.com/input?i=PrimeQ%5BRound%5B%282%5E32+-+1%29%2FKhinchin%5D%5D
 https://www.wolframalpha.com/input?i=DigitCount%5BRound%5B%282%5E32+-+1%29%2FKhinchin%5D%2C+2%2C+1%5D
 https://www.wolframalpha.com/input?i=CoprimeQ%5BRound%5B%282%5E32+-+1%29%2FKhinchin%5D%2C+2%5E32%5D
@@ -75,7 +75,7 @@ static_assert((Khinchin_32 & 1) != 0, "must be odd");
 
 /// Khinchin scaled to 64 bits
 /**
-https://www.wolframalpha.com/input?i=BaseForm%5BRound%5B%282%5E64+-+1%29%2FKhinchin%5D%2C+16%5D
+https://www.wolframalpha.com/input?i=IntegerString%5BRound%5B%282%5E64+-+1%29%2FKhinchin%5D%2C+16%5D
 https://www.wolframalpha.com/input?i=PrimeQ%5BRound%5B%282%5E64+-+1%29%2FKhinchin%5D%5D
 https://www.wolframalpha.com/input?i=DigitCount%5BRound%5B%282%5E64+-+1%29%2FKhinchin%5D%2C+2%2C+1%5D
 https://www.wolframalpha.com/input?i=CoprimeQ%5BRound%5B%282%5E64+-+1%29%2FKhinchin%5D%2C+2%5E64%5D
@@ -85,7 +85,7 @@ static_assert((Khinchin_64 & 1) != 0, "must be odd");
 
 /// Conway's constant scaled to 64 bits
 /**
-https://www.wolframalpha.com/input?i=BaseForm%5BRound%5B%282%5E64+-+1%29%2FConway%27s+constant%5D%2C+16%5D
+https://www.wolframalpha.com/input?i=IntegerString%5BRound%5B%282%5E64+-+1%29%2FConway%27s+constant%5D%2C+16%5D
 https://www.wolframalpha.com/input?i=PrimeQ%5BRound%5B%282%5E64+-+1%29%2FConway%27s+constant%5D%5D
 https://www.wolframalpha.com/input?i=DigitCount%5BRound%5B%282%5E64+-+1%29%2FConway%27s+constant%5D%2C+2%2C+1%5D
 https://www.wolframalpha.com/input?i=CoprimeQ%5BRound%5B%282%5E64+-+1%29%2FConway%27s+constant%5D%2C+2%5E64%5D
