@@ -127,7 +127,7 @@ DEF_URBG_CLASS_DETAILS(xoroshiro64starstar)
 
 	// XXX: must not give zero seed
 
-	result_type next()
+	constexpr result_type next()
 	{
 		const auto s0 = s[0];
 		auto s1 = s[1];
@@ -167,7 +167,7 @@ DEF_URBG_CLASS_DETAILS(xoroshiro128plusplus)
 
 	// XXX: must not give zero seed
 
-	result_type next()
+	constexpr result_type next()
 	{
 		const auto s0 = s[0];
 		auto s1 = s[1];
@@ -220,7 +220,7 @@ DEF_URBG_CLASS_DETAILS(xoroshiro128starstar)
 
 	// XXX: must not give zero seed
 
-	result_type next()
+	constexpr result_type next()
 	{
 		const auto s0 = s[0];
 		auto s1 = s[1];
@@ -285,7 +285,7 @@ DEF_URBG_CLASS_DETAILS(xoroshiro1024plusplus)
 
 	// XXX: must not give zero seed
 
-	result_type next()
+	constexpr result_type next()
 	{
 		const auto q = p;
 		p = (p + 1) % s.size();
@@ -352,7 +352,7 @@ DEF_URBG_CLASS_DETAILS(xoroshiro1024starstar)
 
 	// XXX: must not give zero seed
 
-	result_type next()
+	constexpr result_type next()
 	{
 		const auto q = p;
 		p = (p + 1) % s.size();

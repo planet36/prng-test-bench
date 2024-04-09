@@ -50,7 +50,7 @@ other default-constructed engines of the same type.
 		{                                                                    \
 			return std::numeric_limits<result_type>::max();                  \
 		}                                                                    \
-		result_type operator()()                                             \
+		constexpr result_type operator()()                                   \
 		{                                                                    \
 			return next();                                                   \
 		}                                                                    \
@@ -92,6 +92,6 @@ other default-constructed engines of the same type.
 			return this->s != that.s;                                        \
 		}                                                                    \
 		/* non-static member function declaration */                         \
-		result_type next(); /* XXX: must define this below */                \
+		constexpr result_type next(); /* XXX: must define this below */      \
 	};                                                                       \
-	auto CLASS_NAME::next() -> result_type
+	constexpr auto CLASS_NAME::next() -> result_type

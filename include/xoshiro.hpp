@@ -85,7 +85,7 @@ DEF_URBG_CLASS_DETAILS(xoshiro128plusplus)
 
 	// XXX: must not give zero seed
 
-	result_type next()
+	constexpr result_type next()
 	{
 		const auto result = std::rotl(s[0] + s[3], 7) + s[0];
 		const auto t = s[1] << 9;
@@ -143,7 +143,7 @@ DEF_URBG_CLASS_DETAILS(xoshiro128starstar)
 
 	// XXX: must not give zero seed
 
-	result_type next()
+	constexpr result_type next()
 	{
 		const auto result = std::rotl(s[1] * 5, 7) * 9;
 		const auto t = s[1] << 9;
@@ -201,7 +201,7 @@ DEF_URBG_CLASS_DETAILS(xoshiro256plusplus)
 
 	// XXX: must not give zero seed
 
-	result_type next()
+	constexpr result_type next()
 	{
 		const auto result = std::rotl(s[0] + s[3], 23) + s[0];
 		const auto t = s[1] << 17;
@@ -259,7 +259,7 @@ DEF_URBG_CLASS_DETAILS(xoshiro256starstar)
 
 	// XXX: must not give zero seed
 
-	result_type next()
+	constexpr result_type next()
 	{
 		const auto result = std::rotl(s[1] * 5, 7) * 9;
 		const auto t = s[1] << 17;
@@ -319,7 +319,7 @@ DEF_URBG_CLASS_DETAILS(xoshiro512plusplus)
 
 	// XXX: must not give zero seed
 
-	result_type next()
+	constexpr result_type next()
 	{
 		const auto result = std::rotl(s[0] + s[2], 17) + s[2];
 		const auto t = s[1] << 11;
@@ -384,7 +384,7 @@ DEF_URBG_CLASS_DETAILS(xoshiro512starstar)
 
 	// XXX: must not give zero seed
 
-	result_type next()
+	constexpr result_type next()
 	{
 		const auto result = std::rotl(s[1] * 5, 7) * 9;
 		const auto t = s[1] << 11;

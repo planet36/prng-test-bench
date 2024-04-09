@@ -42,7 +42,7 @@ public:                                                                  \
 	{                                                                    \
 		return std::numeric_limits<result_type>::max();                  \
 	}                                                                    \
-	result_type operator()()                                             \
+	constexpr result_type operator()()                                   \
 	{                                                                    \
 		return next();                                                   \
 	}                                                                    \
