@@ -51,17 +51,7 @@ inline constexpr uint64_t seed_pattern_64{0xAAAAAAAAAAAAAAAA};
 /**
 Python snippet to generate the array
 \code{.py}
-#from itertools import batched
-
-# TODO-COMPILER: remove custom batched function when python is updated to 3.12
-from itertools import islice
-def batched(iterable, n):
-    # batched('ABCDEFG', 3) --> ABC DEF G
-    if n < 1:
-        raise ValueError('n must be at least one')
-    it = iter(iterable)
-    while batch := tuple(islice(it, n)):
-        yield batch
+from itertools import batched
 
 for n in (4, 8, 12, 16, 24, 32, 64, 128):
     w = 256//n
