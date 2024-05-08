@@ -59,7 +59,6 @@ squares32
 squares64
 stc64
 std::mt19937_64
-tangle
 thrust_alt
 topping
 wyrand

@@ -1,21 +1,21 @@
 
 # prng-dump.opts=
-#   GNU GIMPLE 13.2.1 20230801 -march=alderlake -mmmx -mpopcnt -msse -msse2 -msse3 
+#   GNU GIMPLE 14.1.1 20240507 -march=alderlake -mmmx -mpopcnt -msse -msse2 -msse3 
 #   -mssse3 -msse4.1 -msse4.2 -mavx -mavx2 -mno-sse4a -mno-fma4 -mno-xop -mno-fma 
 #   -mno-avx512f -mbmi -mbmi2 -maes -mpclmul -mno-avx512vl -mno-avx512bw 
-#   -mno-avx512dq -mno-avx512cd -mno-avx512er -mno-avx512pf -mno-avx512vbmi 
-#   -mno-avx512ifma -mno-avx5124vnniw -mno-avx5124fmaps -mno-avx512vpopcntdq 
-#   -mno-avx512vbmi2 -mno-gfni -mno-vpclmulqdq -mno-avx512vnni -mno-avx512bitalg 
-#   -mno-avx512bf16 -mno-avx512vp2intersect -mno-3dnow -mno-adx -mabm -mno-cldemote 
-#   -mclflushopt -mno-clwb -mno-clzero -mcx16 -mno-enqcmd -mno-f16c -mfsgsbase 
-#   -mfxsr -mno-hle -msahf -mno-lwp -mlzcnt -mmovbe -mno-movdir64b -mno-movdiri 
-#   -mno-mwaitx -mno-pconfig -mno-pku -mno-prefetchwt1 -mprfchw -mno-ptwrite 
-#   -mno-rdpid -mrdrnd -mrdseed -mno-rtm -mno-serialize -mno-sgx -mno-sha 
-#   -mno-shstk -mno-tbm -mno-tsxldtrk -mno-vaes -mno-waitpkg -mno-wbnoinvd -mxsave 
-#   -mno-xsavec -mno-xsaveopt -mno-xsaves -mno-amx-tile -mno-amx-int8 -mno-amx-bf16 
-#   -mno-uintr -mno-hreset -mno-kl -mno-widekl -mno-avxvnni -mno-avx512fp16 
-#   -mno-avxifma -mno-avxvnniint8 -mno-avxneconvert -mno-cmpccxadd -mno-amx-fp16 
-#   -mno-prefetchi -mno-raoint -mno-amx-complex -mtune=alderlake -O3 -O3 
+#   -mno-avx512dq -mno-avx512cd -mno-avx512vbmi -mno-avx512ifma 
+#   -mno-avx512vpopcntdq -mno-avx512vbmi2 -mno-gfni -mno-vpclmulqdq -mno-avx512vnni 
+#   -mno-avx512bitalg -mno-avx512bf16 -mno-avx512vp2intersect -mno-3dnow -mno-adx 
+#   -mabm -mno-cldemote -mclflushopt -mno-clwb -mno-clzero -mcx16 -mno-enqcmd 
+#   -mno-f16c -mfsgsbase -mfxsr -mno-hle -msahf -mno-lwp -mlzcnt -mmovbe 
+#   -mno-movdir64b -mno-movdiri -mno-mwaitx -mno-pconfig -mno-pku -mprfchw 
+#   -mno-ptwrite -mno-rdpid -mrdrnd -mrdseed -mno-rtm -mno-serialize -mno-sgx 
+#   -mno-sha -mno-shstk -mno-tbm -mno-tsxldtrk -mno-vaes -mno-waitpkg -mno-wbnoinvd 
+#   -mxsave -mno-xsavec -mno-xsaveopt -mno-xsaves -mno-amx-tile -mno-amx-int8 
+#   -mno-amx-bf16 -mno-uintr -mno-hreset -mno-kl -mno-widekl -mno-avxvnni 
+#   -mno-avx512fp16 -mno-avxifma -mno-avxvnniint8 -mno-avxneconvert -mno-cmpccxadd 
+#   -mno-amx-fp16 -mno-prefetchi -mno-raoint -mno-amx-complex -mno-avxvnniint16 
+#   -mno-sm3 -mno-sha512 -mno-sm4 -mno-apxf -mno-usermsr -mtune=alderlake -O3 -O3 
 #   -fno-openmp -fno-openacc -fPIC -fcf-protection=none -fno-math-errno -fltrans
 
 # nproc=8
@@ -37,7 +37,7 @@
 
 # Run each test with: seed=random, tf=2, tlmin=256MB, tlmax=512GB
 
-# Took 0:00.36
+# Took 0:00.30
 
 # Good (seed random):
 aesdeclastrand
@@ -231,7 +231,7 @@ ttwanghash64                length=  256  megabytes  (2^28  bytes),  time=  0.6 
 
 # Run each test with: seed=zero, tf=2, tlmin=256MB, tlmax=512GB
 
-# Took 0:00.28
+# Took 0:00.29
 
 # Good (seed zero):
 MRG32k3a
@@ -425,232 +425,232 @@ xoshiro512starstar          length=  256  megabytes  (2^28  bytes),  time=  0.7 
 
 
 # Performance all:
-aesencrand                  24074
-aesdecrand                  21276
-wyrand                      19039
-mumx_mumx_x1                17691
-clmulrand                   17197
-MRG32k3a                    14472
-murmurhash3                 14373
-thrust_alt                  14305
-splitmix64                  14246
-degski64                    14235
-moremur                     14222
-lea64                       14039
-aesenclastrand              13984
-aesdeclastrand              13930
-romu_duo_jr                 13707
-ettinger_mixer              13443
-tangle                      13408
-dirk                        13063
-splitxix33                  13028
-romu_trio                   12556
-stc64                       12150
-mumx_mumx_x2                11965
-sfc64                       11908
-romu_quad                   11518
-xoshiro256starstar          11427
-mx3                         10841
-orbit                       10695
-bright                      10693
-xoshiro256plusplus          10692
-mizuchi                     10635
-linnorm                     10591
-mumx_mumx_rrxx_1            10553
-jsf64                       10279
-rrmxmx                      9943
-shioi                       9782
-ttwanghash64                9650
-xoroshiro128plusplus        9641
-romu_duo                    9629
-klimov_shamir_32            9574
-xoshiro512starstar          9567
-xoshiro512plusplus          9399
-mover_counter_64            9261
-xoroshiro128starstar        9237
-pulley                      8803
-splitmix32                  8757
-seiran                      8739
-rrxmrrxmsx_0                8628
-topping                     8341
-aesimcrand                  8203
-quixotic                    7935
-nasam                       7755
-pelican                     7395
-lehmer64                    7379
-squares64                   7327
-std::mt19937                7152
-pcg64dxsm                   7142
-murmurhash3_32              7112
-degski32                    7094
-mover_64                    7015
-std::mt19937_64             6946
-gjrand                      6880
-xsm64                       6495
-bell                        6476
-mcg128                      6054
-lcg64                       6045
-sea_slater_64               5991
-pcg64                       5923
-romu_trio32                 5830
-jsf32_2                     5821
-romu_quad32                 5592
-xoshiro128starstar          5575
-sfc32                       5494
-xoshiro128plusplus          5316
-jsf32_3                     5067
-xoroshiro1024starstar       4829
-xoroshiro64starstar         4603
-pcg32_fast                  4560
-squares32                   4558
-pcg32                       4554
-xoroshiro1024plusplus       4538
-xsm32                       3541
-lcg32                       3023
-std::ranlux48_base          3004
-std::minstd_rand0           2652
-std::default_random_engine  2629
-std::minstd_rand            2617
-std::ranlux24_base          2150
-rrma2xsm2xs                 2102
-std::knuth_b                952
-std::ranlux24               196
-std::ranlux48               59
+aesencrand                  22971
+aesdecrand                  22911
+wyrand                      19508
+clmulrand                   16416
+thrust_alt                  14672
+mumx_mumx_x1                14068
+aesdeclastrand              13716
+aesenclastrand              13632
+MRG32k3a                    13408
+splitxix33                  13264
+romu_duo_jr                 13240
+murmurhash3                 13170
+degski64                    12827
+splitmix64                  12719
+moremur                     12371
+tangle                      12317
+lea64                       12213
+romu_trio                   12197
+stc64                       12100
+xoroshiro128starstar        11669
+mumx_mumx_x2                11195
+xoshiro256plusplus          10766
+xoshiro256starstar          10725
+romu_quad                   10664
+sfc64                       10552
+orbit                       10289
+dirk                        10231
+linnorm                     10153
+bright                      10091
+ettinger_mixer              10085
+klimov_shamir_32            10015
+romu_duo                    9928
+mizuchi                     9889
+xoroshiro128plusplus        9827
+shioi                       9552
+jsf64                       9521
+mx3                         9513
+mumx_mumx_rrxx_1            9451
+mover_counter_64            9363
+rrmxmx                      9348
+xoshiro512plusplus          9111
+xoshiro512starstar          8882
+seiran                      8707
+ttwanghash64                8482
+rrxmrrxmsx_0                8364
+pulley                      8325
+topping                     8079
+quixotic                    8007
+nasam                       7436
+aesimcrand                  7421
+lehmer64                    7285
+mover_64                    7115
+pelican                     7016
+gjrand                      7007
+squares64                   6987
+pcg64dxsm                   6973
+splitmix32                  6578
+murmurhash3_32              6515
+degski32                    6409
+bell                        6298
+sea_slater_64               6297
+xsm64                       6205
+mcg128                      6011
+std::mt19937_64             6003
+lcg64                       5968
+romu_trio32                 5704
+pcg64                       5645
+romu_quad32                 5622
+jsf32_2                     5569
+std::mt19937                5447
+xoshiro128plusplus          5409
+xoshiro128starstar          5329
+sfc32                       5122
+xoroshiro64starstar         4824
+jsf32_3                     4824
+xoroshiro1024starstar       4659
+pcg32_fast                  4526
+pcg32                       4473
+xoroshiro1024plusplus       4383
+squares32                   4379
+xsm32                       3370
+lcg32                       2956
+std::minstd_rand0           2728
+std::default_random_engine  2727
+std::minstd_rand            2692
+std::ranlux48_base          2260
+rrma2xsm2xs                 2149
+std::ranlux24_base          1962
+std::knuth_b                975
+std::ranlux24               200
+std::ranlux48               62
 
 q1       mean     median   q3        iqr
-5825.50  8909.53  8739.00  11713.00  5887.50
+5595.50  8461.80  8325.00  10694.50  5099.00
 
 # Performance good (seed random):
-aesencrand             24074
-aesdecrand             21276
-wyrand                 19039
-mumx_mumx_x1           17691
-clmulrand              17197
-murmurhash3            14373
-thrust_alt             14305
-splitmix64             14246
-moremur                14222
-lea64                  14039
-aesenclastrand         13984
-aesdeclastrand         13930
-romu_duo_jr            13707
-ettinger_mixer         13443
-tangle                 13408
-dirk                   13063
-romu_trio              12556
-stc64                  12150
-mumx_mumx_x2           11965
-sfc64                  11908
-romu_quad              11518
-xoshiro256starstar     11427
-mx3                    10841
-orbit                  10695
-bright                 10693
-xoshiro256plusplus     10692
-mizuchi                10635
-linnorm                10591
-mumx_mumx_rrxx_1       10553
-jsf64                  10279
-rrmxmx                 9943
-shioi                  9782
-xoroshiro128plusplus   9641
-romu_duo               9629
-xoshiro512starstar     9567
-xoshiro512plusplus     9399
-mover_counter_64       9261
-xoroshiro128starstar   9237
-pulley                 8803
-splitmix32             8757
-seiran                 8739
-rrxmrrxmsx_0           8628
-topping                8341
-quixotic               7935
-nasam                  7755
-pelican                7395
-squares64              7327
-pcg64dxsm              7142
-mover_64               7015
-gjrand                 6880
-xsm64                  6495
-bell                   6476
-sea_slater_64          5991
-pcg64                  5923
-romu_trio32            5830
-jsf32_2                5821
-romu_quad32            5592
-xoshiro128starstar     5575
-sfc32                  5494
-xoshiro128plusplus     5316
-jsf32_3                5067
-xoroshiro1024starstar  4829
-xoroshiro64starstar    4603
-pcg32_fast             4560
-squares32              4558
-pcg32                  4554
-xoroshiro1024plusplus  4538
-xsm32                  3541
-rrma2xsm2xs            2102
+aesencrand             22971
+aesdecrand             22911
+wyrand                 19508
+clmulrand              16416
+thrust_alt             14672
+mumx_mumx_x1           14068
+aesdeclastrand         13716
+aesenclastrand         13632
+romu_duo_jr            13240
+murmurhash3            13170
+splitmix64             12719
+moremur                12371
+tangle                 12317
+lea64                  12213
+romu_trio              12197
+stc64                  12100
+xoroshiro128starstar   11669
+mumx_mumx_x2           11195
+xoshiro256plusplus     10766
+xoshiro256starstar     10725
+romu_quad              10664
+sfc64                  10552
+orbit                  10289
+dirk                   10231
+linnorm                10153
+bright                 10091
+ettinger_mixer         10085
+romu_duo               9928
+mizuchi                9889
+xoroshiro128plusplus   9827
+shioi                  9552
+jsf64                  9521
+mx3                    9513
+mumx_mumx_rrxx_1       9451
+mover_counter_64       9363
+rrmxmx                 9348
+xoshiro512plusplus     9111
+xoshiro512starstar     8882
+seiran                 8707
+rrxmrrxmsx_0           8364
+pulley                 8325
+topping                8079
+quixotic               8007
+nasam                  7436
+mover_64               7115
+pelican                7016
+gjrand                 7007
+squares64              6987
+pcg64dxsm              6973
+splitmix32             6578
+bell                   6298
+sea_slater_64          6297
+xsm64                  6205
+romu_trio32            5704
+pcg64                  5645
+romu_quad32            5622
+jsf32_2                5569
+xoshiro128plusplus     5409
+xoshiro128starstar     5329
+sfc32                  5122
+xoroshiro64starstar    4824
+jsf32_3                4824
+xoroshiro1024starstar  4659
+pcg32_fast             4526
+pcg32                  4473
+xoroshiro1024plusplus  4383
+squares32              4379
+xsm32                  3370
+rrma2xsm2xs            2149
 
 q1       mean     median   q3        iqr
-6476.00  9804.94  9567.00  12150.00  5674.00
+6297.00  9339.23  9363.00  11195.00  4898.00
 
 # Performance good (seed zero):
-aesencrand        24074
-aesdecrand        21276
-wyrand            19039
-mumx_mumx_x1      17691
-clmulrand         17197
-MRG32k3a          14472
-thrust_alt        14305
-splitmix64        14246
-moremur           14222
-lea64             14039
-aesenclastrand    13984
-aesdeclastrand    13930
-romu_duo_jr       13707
-ettinger_mixer    13443
-dirk              13063
-romu_trio         12556
-stc64             12150
-mumx_mumx_x2      11965
-sfc64             11908
-romu_quad         11518
-mx3               10841
-orbit             10695
-bright            10693
-mizuchi           10635
-linnorm           10591
-mumx_mumx_rrxx_1  10553
-jsf64             10279
-rrmxmx            9943
-shioi             9782
-romu_duo          9629
-pulley            8803
-splitmix32        8757
-seiran            8739
-rrxmrrxmsx_0      8628
-topping           8341
-quixotic          7935
-nasam             7755
-pelican           7395
-squares64         7327
-pcg64dxsm         7142
-mover_64          7015
-gjrand            6880
-xsm64             6495
-sea_slater_64     5991
-pcg64             5923
-romu_trio32       5830
-jsf32_2           5821
-romu_quad32       5592
-sfc32             5494
-jsf32_3           5067
-pcg32_fast        4560
-squares32         4558
-pcg32             4554
-xsm32             3541
-rrma2xsm2xs       2102
+aesencrand        22971
+aesdecrand        22911
+wyrand            19508
+clmulrand         16416
+thrust_alt        14672
+mumx_mumx_x1      14068
+aesdeclastrand    13716
+aesenclastrand    13632
+MRG32k3a          13408
+romu_duo_jr       13240
+splitmix64        12719
+moremur           12371
+lea64             12213
+romu_trio         12197
+stc64             12100
+mumx_mumx_x2      11195
+romu_quad         10664
+sfc64             10552
+orbit             10289
+dirk              10231
+linnorm           10153
+bright            10091
+ettinger_mixer    10085
+romu_duo          9928
+mizuchi           9889
+shioi             9552
+jsf64             9521
+mx3               9513
+mumx_mumx_rrxx_1  9451
+rrmxmx            9348
+seiran            8707
+rrxmrrxmsx_0      8364
+pulley            8325
+topping           8079
+quixotic          8007
+nasam             7436
+mover_64          7115
+pelican           7016
+gjrand            7007
+squares64         6987
+pcg64dxsm         6973
+splitmix32        6578
+sea_slater_64     6297
+xsm64             6205
+romu_trio32       5704
+pcg64             5645
+romu_quad32       5622
+jsf32_2           5569
+sfc32             5122
+jsf32_3           4824
+pcg32_fast        4526
+pcg32             4473
+squares32         4379
+xsm32             3370
+rrma2xsm2xs       2149
 
-q1       mean      median   q3        iqr
-6947.50  10230.38  9943.00  13253.00  6305.50
+q1       mean     median   q3        iqr
+6775.50  9656.05  9513.00  12148.50  5373.00
 
