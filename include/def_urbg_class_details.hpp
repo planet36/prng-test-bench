@@ -66,11 +66,11 @@ public:                                                                  \
 	{                                                                    \
 		fill_rand(s);                                                    \
 	}                                                                    \
-	void seed(const state_type& new_s) noexcept                          \
+	constexpr void seed(const state_type& new_s) noexcept                \
 	{                                                                    \
 		s = new_s;                                                       \
 	}                                                                    \
-	void seed(const seed_bytes_type& bytes) noexcept                     \
+	constexpr void seed(const seed_bytes_type& bytes) noexcept           \
 	{                                                                    \
 		(void)std::memcpy(&s, bytes.data(), sizeof(state_type));         \
 	}                                                                    \

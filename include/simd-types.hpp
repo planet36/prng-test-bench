@@ -53,19 +53,19 @@ DECLARE_SIMD_TYPE(double            , f64, 2) // == __m128d
 
 union simd128
 {
-	i8x16 i8;
-	u8x16 u8;
+	i8x16 i8; std::array<signed char  , 16> i8arr;
+	u8x16 u8; std::array<unsigned char, 16> u8arr;
 
-	i16x8 i16;
-	u16x8 u16;
+	i16x8 i16; std::array<short         , 8> i16arr;
+	u16x8 u16; std::array<unsigned short, 8> u16arr;
 
-	i32x4 i32;
-	u32x4 u32;
-	f32x4 f32;
+	i32x4 i32; std::array<int         , 4> i32arr;
+	u32x4 u32; std::array<unsigned int, 4> u32arr;
+	f32x4 f32; std::array<float       , 4> f32arr;
 
-	i64x2 i64;
-	u64x2 u64;
-	f64x2 f64;
+	i64x2 i64; std::array<long long         , 2> i64arr;
+	u64x2 u64; std::array<unsigned long long, 2> u64arr;
+	f64x2 f64; std::array<double            , 2> f64arr;
 
 	// An aggregate class has no user-declared or inherited constructors.
 	// https://en.cppreference.com/w/cpp/language/aggregate_initialization
@@ -118,19 +118,19 @@ DECLARE_SIMD_TYPE(double            , f64, 4) // == __m256d
 
 union simd256
 {
-	i8x32 i8;
-	u8x32 u8;
+	i8x32 i8; std::array<signed char  , 32> i8arr;
+	u8x32 u8; std::array<unsigned char, 32> u8arr;
 
-	i16x16 i16;
-	u16x16 u16;
+	i16x16 i16; std::array<short         , 16> i16arr;
+	u16x16 u16; std::array<unsigned short, 16> u16arr;
 
-	i32x8 i32;
-	u32x8 u32;
-	f32x8 f32;
+	i32x8 i32; std::array<int         , 8> i32arr;
+	u32x8 u32; std::array<unsigned int, 8> u32arr;
+	f32x8 f32; std::array<float       , 8> f32arr;
 
-	i64x4 i64;
-	u64x4 u64;
-	f64x4 f64;
+	i64x4 i64; std::array<long long         , 4> i64arr;
+	u64x4 u64; std::array<unsigned long long, 4> u64arr;
+	f64x4 f64; std::array<double            , 4> f64arr;
 
 	// An aggregate class has no user-declared or inherited constructors.
 	// https://en.cppreference.com/w/cpp/language/aggregate_initialization
