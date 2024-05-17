@@ -30,22 +30,22 @@ clmul(simd128& a)
 	// imm8: 0x11 => b[1] * a[1]
 
 	// MSB in result is always 0
-	a.i64 = _mm_clmulepi64_si128(a.i64, a.i64, 0x10);
+	a.i64vec = _mm_clmulepi64_si128(a.i64vec, a.i64vec, 0x10);
 }
 
-uint64_t clmumx(simd128 a) { clmul(a); return a.u64[1] ^ a.u64[0]; }
-uint64_t clmuma(simd128 a) { clmul(a); return a.u64[1] + a.u64[0]; }
-uint64_t clmums(simd128 a) { clmul(a); return a.u64[1] - a.u64[0]; }
+uint64_t clmumx(simd128 a) { clmul(a); return a.u64vec[1] ^ a.u64vec[0]; }
+uint64_t clmuma(simd128 a) { clmul(a); return a.u64vec[1] + a.u64vec[0]; }
+uint64_t clmums(simd128 a) { clmul(a); return a.u64vec[1] - a.u64vec[0]; }
 
 void
 clmul(uint64_t& hi, uint64_t& lo)
 {
-	simd128 result{.u64{hi, lo}}; // order of hi, lo doesn't matter
+	simd128 result{.u64vec{hi, lo}}; // order of hi, lo doesn't matter
 
 	clmul(result);
 
-	hi = result.u64[1];
-	lo = result.u64[0];
+	hi = result.u64vec[1];
+	lo = result.u64vec[0];
 }
 
 uint64_t clmumx(uint64_t a, uint64_t b) { clmul(a, b); return a ^ b; }

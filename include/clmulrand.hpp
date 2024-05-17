@@ -20,10 +20,10 @@
 
 DEF_URBG_CLASS(clmulrand, simd128, uint64_t)
 {
-	static constexpr simd128 inc{.u64{byteprimes[0], byteprimes[1]}};
-	static_assert(inc.u64[0] & 1, "must be odd");
-	static_assert(inc.u64[1] & 1, "must be odd");
+	static constexpr simd128 inc{.u64vec{byteprimes[0], byteprimes[1]}};
+	static_assert(inc.u64vec[0] & 1, "must be odd");
+	static_assert(inc.u64vec[1] & 1, "must be odd");
 
-	s.u64 += inc.u64;
+	s.u64vec += inc.u64vec;
 	return clmums(s);
 }

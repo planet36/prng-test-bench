@@ -22,13 +22,13 @@
 #if defined(__AES__)
 DEF_URBG_CLASS(aesimcrand, simd128, uint64_t)
 {
-	static constexpr simd128 inc{.u64{xxh_prime64[0], xxh_prime64[1]}};
-	static constexpr simd128 inc2{.u64{xxh_prime64[2], xxh_prime64[3]}};
-	s.u64 += inc.u64;
-	__m128i result = __builtin_ia32_aesimc128(s.i64);
-	result += inc2.i64;
+	static constexpr simd128 inc{.u64arr{xxh_prime64[0], xxh_prime64[1]}};
+	static constexpr simd128 inc2{.u64arr{xxh_prime64[2], xxh_prime64[3]}};
+	s.u64vec += inc.u64vec;
+	__m128i result = __builtin_ia32_aesimc128(s.i64vec);
+	result += inc2.i64vec;
 	result = __builtin_ia32_aesimc128(result);
-	result += inc.i64;
+	result += inc.i64vec;
 	result = __builtin_ia32_aesimc128(result);
 
 	//return result[0]; // fails at 4 GB

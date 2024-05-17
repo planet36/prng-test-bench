@@ -53,38 +53,38 @@ DECLARE_SIMD_TYPE(double            , f64, 2) // == __m128d
 
 union simd128
 {
-	i8x16 i8; std::array<signed char  , 16> i8arr;
-	u8x16 u8; std::array<unsigned char, 16> u8arr;
+	i8x16 i8vec; std::array<signed char  , 16> i8arr;
+	u8x16 u8vec; std::array<unsigned char, 16> u8arr;
 
-	i16x8 i16; std::array<short         , 8> i16arr;
-	u16x8 u16; std::array<unsigned short, 8> u16arr;
+	i16x8 i16vec; std::array<short         , 8> i16arr;
+	u16x8 u16vec; std::array<unsigned short, 8> u16arr;
 
-	i32x4 i32; std::array<int         , 4> i32arr;
-	u32x4 u32; std::array<unsigned int, 4> u32arr;
-	f32x4 f32; std::array<float       , 4> f32arr;
+	i32x4 i32vec; std::array<int         , 4> i32arr;
+	u32x4 u32vec; std::array<unsigned int, 4> u32arr;
+	f32x4 f32vec; std::array<float       , 4> f32arr;
 
-	i64x2 i64; std::array<long long         , 2> i64arr;
-	u64x2 u64; std::array<unsigned long long, 2> u64arr;
-	f64x2 f64; std::array<double            , 2> f64arr;
+	i64x2 i64vec; std::array<long long         , 2> i64arr;
+	u64x2 u64vec; std::array<unsigned long long, 2> u64arr;
+	f64x2 f64vec; std::array<double            , 2> f64arr;
 
 	// An aggregate class has no user-declared or inherited constructors.
 	// https://en.cppreference.com/w/cpp/language/aggregate_initialization
 	// If ctors are added, then designated initializers can't be used.
 
 	// assignment operators
-	constexpr simd128& operator=(const __m128&  x) { f32 = x; return *this; }
-	constexpr simd128& operator=(const __m128i& x) { i64 = x; return *this; }
-	constexpr simd128& operator=(const __m128d& x) { f64 = x; return *this; }
+	constexpr simd128& operator=(const __m128&  x) { f32vec = x; return *this; }
+	constexpr simd128& operator=(const __m128i& x) { i64vec = x; return *this; }
+	constexpr simd128& operator=(const __m128d& x) { f64vec = x; return *this; }
 
 	// conversion operators
-	explicit constexpr operator __m128  () const { return f32; }
-	explicit constexpr operator __m128i () const { return i64; }
-	explicit constexpr operator __m128d () const { return f64; }
+	explicit constexpr operator __m128  () const { return f32vec; }
+	explicit constexpr operator __m128i () const { return i64vec; }
+	explicit constexpr operator __m128d () const { return f64vec; }
 
 	// named ctors
-	static constexpr simd128 from_xmm(const __m128&  x) { return {.f32 = x}; }
-	static constexpr simd128 from_xmm(const __m128i& x) { return {.i64 = x}; }
-	static constexpr simd128 from_xmm(const __m128d& x) { return {.f64 = x}; }
+	static constexpr simd128 from_xmm(const __m128&  x) { return {.f32vec = x}; }
+	static constexpr simd128 from_xmm(const __m128i& x) { return {.i64vec = x}; }
+	static constexpr simd128 from_xmm(const __m128d& x) { return {.f64vec = x}; }
 
 	constexpr bool operator==(const simd128& that) const
 	{
@@ -118,38 +118,38 @@ DECLARE_SIMD_TYPE(double            , f64, 4) // == __m256d
 
 union simd256
 {
-	i8x32 i8; std::array<signed char  , 32> i8arr;
-	u8x32 u8; std::array<unsigned char, 32> u8arr;
+	i8x32 i8vec; std::array<signed char  , 32> i8arr;
+	u8x32 u8vec; std::array<unsigned char, 32> u8arr;
 
-	i16x16 i16; std::array<short         , 16> i16arr;
-	u16x16 u16; std::array<unsigned short, 16> u16arr;
+	i16x16 i16vec; std::array<short         , 16> i16arr;
+	u16x16 u16vec; std::array<unsigned short, 16> u16arr;
 
-	i32x8 i32; std::array<int         , 8> i32arr;
-	u32x8 u32; std::array<unsigned int, 8> u32arr;
-	f32x8 f32; std::array<float       , 8> f32arr;
+	i32x8 i32vec; std::array<int         , 8> i32arr;
+	u32x8 u32vec; std::array<unsigned int, 8> u32arr;
+	f32x8 f32vec; std::array<float       , 8> f32arr;
 
-	i64x4 i64; std::array<long long         , 4> i64arr;
-	u64x4 u64; std::array<unsigned long long, 4> u64arr;
-	f64x4 f64; std::array<double            , 4> f64arr;
+	i64x4 i64vec; std::array<long long         , 4> i64arr;
+	u64x4 u64vec; std::array<unsigned long long, 4> u64arr;
+	f64x4 f64vec; std::array<double            , 4> f64arr;
 
 	// An aggregate class has no user-declared or inherited constructors.
 	// https://en.cppreference.com/w/cpp/language/aggregate_initialization
 	// If ctors are added, then designated initializers can't be used.
 
 	// assignment operators
-	constexpr simd256& operator=(const __m256&  x) { f32 = x; return *this; }
-	constexpr simd256& operator=(const __m256i& x) { i64 = x; return *this; }
-	constexpr simd256& operator=(const __m256d& x) { f64 = x; return *this; }
+	constexpr simd256& operator=(const __m256&  x) { f32vec = x; return *this; }
+	constexpr simd256& operator=(const __m256i& x) { i64vec = x; return *this; }
+	constexpr simd256& operator=(const __m256d& x) { f64vec = x; return *this; }
 
 	// conversion operators
-	explicit constexpr operator __m256  () const { return f32; }
-	explicit constexpr operator __m256i () const { return i64; }
-	explicit constexpr operator __m256d () const { return f64; }
+	explicit constexpr operator __m256  () const { return f32vec; }
+	explicit constexpr operator __m256i () const { return i64vec; }
+	explicit constexpr operator __m256d () const { return f64vec; }
 
 	// named ctors
-	static constexpr simd256 from_ymm(const __m256&  x) { return {.f32 = x}; }
-	static constexpr simd256 from_ymm(const __m256i& x) { return {.i64 = x}; }
-	static constexpr simd256 from_ymm(const __m256d& x) { return {.f64 = x}; }
+	static constexpr simd256 from_ymm(const __m256&  x) { return {.f32vec = x}; }
+	static constexpr simd256 from_ymm(const __m256i& x) { return {.i64vec = x}; }
+	static constexpr simd256 from_ymm(const __m256d& x) { return {.f64vec = x}; }
 
 	constexpr bool operator==(const simd256& that) const
 	{
