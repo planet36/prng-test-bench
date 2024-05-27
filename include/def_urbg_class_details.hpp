@@ -29,6 +29,10 @@ other default-constructed engines of the same type.
                                                                          \
 private:                                                                 \
 	state_type s{};                                                      \
+	void zeroize()                                                       \
+	{                                                                    \
+		(void)std::memset(&s, 0, sizeof(state_type));                    \
+	}                                                                    \
                                                                          \
 public:                                                                  \
 	using seed_bytes_type = std::array<uint8_t, sizeof(state_type)>;     \
@@ -48,6 +52,8 @@ public:                                                                  \
 	}                                                                    \
 	/* https://eel.is/c++draft/rand.req.eng#3.1 */                       \
 	static_assert(sizeof(state_type) % sizeof(result_type) == 0);        \
+	/* dtor  */                                                          \
+	~CLASS_NAME() { zeroize(); }                                         \
 	/* ctors */                                                          \
 	constexpr CLASS_NAME() noexcept                                      \
 	{                                                                    \
