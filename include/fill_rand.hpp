@@ -9,8 +9,8 @@
 
 #pragma once
 
-#include <array>
-#include <vector>
+#include <ranges>
+#include <span>
 
 #if defined(_GLIBCXX_HAVE_ARC4RANDOM)
 
@@ -20,24 +20,18 @@
 // https://www.gnu.org/software/libc/manual/html_node/High-Quality-Random.html
 
 template <typename T>
+requires (!std::ranges::contiguous_range<T>)
 void
 fill_rand(T& x) noexcept
 {
 	arc4random_buf(&x, sizeof(T));
 }
 
-template <typename T, size_t N>
 void
-fill_rand(std::array<T, N>& arr) noexcept
+fill_rand(std::ranges::contiguous_range auto & container)
 {
-	arc4random_buf(arr.data(), sizeof(T) * arr.size());
-}
-
-template <typename T>
-void
-fill_rand(std::vector<T>& vec) noexcept
-{
-	arc4random_buf(vec.data(), sizeof(T) * vec.size());
+	auto span_bytes = std::as_writable_bytes(std::span{container});
+	arc4random_buf(std::data(span_bytes), span_bytes.size_bytes());
 }
 
 #elif defined(_GLIBCXX_HAVE_GETENTROPY)
@@ -50,7 +44,7 @@ fill_rand(std::vector<T>& vec) noexcept
 // Max num bytes allowed is 256
 
 template <typename T>
-requires (sizeof(T) <= 256)
+requires (!std::ranges::contiguous_range<T> && (sizeof(T) <= 256))
 void
 fill_rand(T& x)
 {
@@ -61,23 +55,12 @@ fill_rand(T& x)
 	}
 }
 
-template <typename T, size_t N>
-requires (sizeof(T) * N <= 256)
 void
-fill_rand(std::array<T, N>& arr)
+fill_rand(std::ranges::contiguous_range auto & container)
 {
-	if (getentropy(arr.data(), sizeof(T) * arr.size()) < 0)
-	{
-		throw std::system_error(std::make_error_code(std::errc{errno}),
-		                        "getentropy");
-	}
-}
+	auto span_bytes = std::as_writable_bytes(std::span{container});
 
-template <typename T>
-void
-fill_rand(std::vector<T>& vec)
-{
-	if (getentropy(vec.data(), sizeof(T) * vec.size()) < 0)
+	if (getentropy(std::data(span_bytes), span_bytes.size_bytes()) < 0)
 	{
 		throw std::system_error(std::make_error_code(std::errc{errno}),
 		                        "getentropy");
@@ -111,11 +94,11 @@ fill_rand(T& x)
 
 template <std::unsigned_integral T, size_t N>
 void
-fill_rand(std::array<T, N>& arr)
+fill_rand(std::array<T, N>& container)
 {
 	static std::random_device rd;
 
-	for (T& x : arr)
+	for (T& x : container)
 	{
 		// std::random_device::result_type is unsigned int
 		// https://en.cppreference.com/w/cpp/numeric/random/random_device
@@ -132,11 +115,11 @@ fill_rand(std::array<T, N>& arr)
 
 template <std::unsigned_integral T>
 void
-fill_rand(std::vector<T>& vec)
+fill_rand(std::vector<T>& container)
 {
 	static std::random_device rd;
 
-	for (T& x : vec)
+	for (T& x : container)
 	{
 		// std::random_device::result_type is unsigned int
 		// https://en.cppreference.com/w/cpp/numeric/random/random_device
