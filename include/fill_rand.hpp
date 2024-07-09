@@ -1,7 +1,7 @@
 // SPDX-FileCopyrightText: Steven Ward
 // SPDX-License-Identifier: OSL-3.0
 
-/// Fill a buffer with random values
+/// Fill a buffer with random bytes
 /**
 \file
 \author Steven Ward
@@ -28,7 +28,7 @@ fill_rand(T& x) noexcept
 }
 
 void
-fill_rand(std::ranges::contiguous_range auto & container)
+fill_rand(std::ranges::contiguous_range auto& container)
 {
 	auto span_bytes = std::as_writable_bytes(std::span{container});
 	arc4random_buf(std::data(span_bytes), span_bytes.size_bytes());
@@ -56,7 +56,7 @@ fill_rand(T& x)
 }
 
 void
-fill_rand(std::ranges::contiguous_range auto & container)
+fill_rand(std::ranges::contiguous_range auto& container)
 {
 	auto span_bytes = std::as_writable_bytes(std::span{container});
 
