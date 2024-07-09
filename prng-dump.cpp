@@ -61,7 +61,8 @@ bool use_pattern_seed = false;
 bool use_random_seed = false;
 bool use_zero_seed = false;
 
-void print_all_prng_info()
+void
+print_all_prng_info()
 {
 	for (const auto& [prng_name, info] : prng_name_to_info)
 	{
@@ -76,7 +77,8 @@ void print_all_prng_info()
 }
 
 template <std::uniform_random_bit_generator Generator>
-void prng_dump(Generator&& rng)
+void
+prng_dump(Generator&& rng)
 {
 	using result_type = typename Generator::result_type;
 
@@ -114,7 +116,8 @@ void prng_dump(Generator&& rng)
 }
 
 /// Print the version information.
-void print_version()
+void
+print_version()
 {
 	fmt::println("{} {}", program_invocation_short_name, program_version);
 	fmt::println("License: {}", program_license);
@@ -122,16 +125,19 @@ void print_version()
 }
 
 /// Print the suggestion message.
-void print_suggestion()
+void
+print_suggestion()
 {
-	fmt::println(stderr, "Try '{} -h' for more information.", program_invocation_short_name);
+	fmt::println(stderr, "Try '{} -h' for more information.",
+	             program_invocation_short_name);
 }
 
 /// Print the message if verbose is enabled.
 /**
 \param s the string to print
 */
-void print_verbose(const std::string& s)
+void
+print_verbose(const std::string& s)
 {
 	if (verbose && !s.empty())
 	{
@@ -144,7 +150,8 @@ void print_verbose(const std::string& s)
 /**
 \param s the string to print
 */
-void print_warning(const std::string& s)
+void
+print_warning(const std::string& s)
 {
 	if (!s.empty())
 	{
@@ -158,7 +165,8 @@ void print_warning(const std::string& s)
 /**
 \param s the string to print
 */
-[[noreturn]] void print_error(const std::string& s)
+[[noreturn]] void
+print_error(const std::string& s)
 {
 	if (!s.empty())
 	{
@@ -173,7 +181,8 @@ void print_warning(const std::string& s)
 }
 
 /// Print the help message.
-void print_usage()
+void
+print_usage()
 {
 	fmt::println("Usage: {} [OPTIONS] PRNG", program_invocation_short_name);
 	fmt::println("Dump random output to stdout.");
@@ -218,7 +227,8 @@ void print_usage()
 \param argc the arg count
 \param argv the arg vector
 */
-void process_options(int argc, char* argv[])
+void
+process_options(int argc, char* argv[])
 {
 	using namespace std::literals::string_literals;
 
@@ -322,7 +332,8 @@ void print_elapsed_time()
 }
 */
 
-int main([[maybe_unused]] int argc, [[maybe_unused]] char* argv[])
+int
+main([[maybe_unused]] int argc, [[maybe_unused]] char* argv[])
 {
 	process_options(argc, argv);
 
