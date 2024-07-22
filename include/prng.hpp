@@ -61,8 +61,13 @@
 struct prng_info_t
 {
 	const size_t result_type_size_bits;
+#if defined(__SIZEOF_INT128__)
+	const __uint128_t result_min;
+	const __uint128_t result_max;
+#else
 	const uintmax_t result_min;
 	const uintmax_t result_max;
+#endif
 	const size_t prng_size_bytes;
 };
 
