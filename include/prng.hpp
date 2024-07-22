@@ -10,6 +10,7 @@
 #pragma once
 
 #include "MRG32k3a.hpp"
+#include "aes128_prng.hpp"
 #include "aesimcrand.hpp"
 #include "aeslastrand.hpp"
 #include "aesrand.hpp"
@@ -99,10 +100,22 @@ const std::map<std::string, prng_info_t> prng_name_to_info{
 
 	// mine
 #if defined(__AES__)
+	CREATE_PRNG_INFO_MAP_ENTRY(aes128_prng_dm_n1    ),
+	CREATE_PRNG_INFO_MAP_ENTRY(aes128_prng_dm_n2    ),
+	CREATE_PRNG_INFO_MAP_ENTRY(aes128_prng_dm_n3    ),
+	CREATE_PRNG_INFO_MAP_ENTRY(aes128_prng_dm_n4    ),
+
+	CREATE_PRNG_INFO_MAP_ENTRY(aes128_prng_mix_n1   ),
+	CREATE_PRNG_INFO_MAP_ENTRY(aes128_prng_mix_n2   ),
+	CREATE_PRNG_INFO_MAP_ENTRY(aes128_prng_mix_n3   ),
+	CREATE_PRNG_INFO_MAP_ENTRY(aes128_prng_mix_n4   ),
+
 	CREATE_PRNG_INFO_MAP_ENTRY(aesdeclastrand       ),
 	CREATE_PRNG_INFO_MAP_ENTRY(aesdecrand           ),
+
 	CREATE_PRNG_INFO_MAP_ENTRY(aesenclastrand       ),
 	CREATE_PRNG_INFO_MAP_ENTRY(aesencrand           ),
+
 	CREATE_PRNG_INFO_MAP_ENTRY(aesimcrand           ),
 #endif
 	CREATE_PRNG_INFO_MAP_ENTRY(bell                 ),
