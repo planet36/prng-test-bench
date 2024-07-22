@@ -238,6 +238,10 @@ do
     OUTFILE_STEM="prng-results.tlmax-$TLMAX.seed-$SEED_TYPE"
 
     while read -r PRNG_NAME PRNG_RESULT_SIZE _; do
+        if ((PRNG_RESULT_SIZE > 64)) # RNG_test takes at most stdin64
+        then
+            PRNG_RESULT_SIZE=64
+        fi
         printf "./prng-dump -s %s %s | RNG_test %s -tf %d -tlmin %s -tlmax %s %s > %q\n" \
             "$SEED_TYPE" "$PRNG_NAME" "stdin$PRNG_RESULT_SIZE" "$TF" \
             "$TLMIN" "$TLMAX" "$MULTITHREADED" "$OUTPUT_DIR/$PRACTRAND_OUTFILE_STEM.prng-$PRNG_NAME.txt"
