@@ -6,6 +6,12 @@
 #include "aes128_prng.h"
 #include "union_128.h"
 
+#include <array>
+#include <concepts>
+#include <cstdint>
+#include <cstring>
+#include <limits>
+#include <random>
 #include <type_traits>
 #include <immintrin.h>
 
