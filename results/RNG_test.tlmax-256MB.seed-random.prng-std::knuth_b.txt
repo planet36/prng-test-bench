@@ -3,7 +3,7 @@ RNG = RNG_stdin64, seed = unknown
 test set = core, folding = none
 
 rng=RNG_stdin64, seed=unknown
-length= 256 megabytes (2^28 bytes), time= 1.1 seconds
+length= 256 megabytes (2^28 bytes), time= 1.0 seconds
   Test Name                         Raw       Processed     Evaluation
   BCFN(2+0,13-2,T)                  R>+99999  p = 0           FAIL !!!!!!!!  
   BCFN(2+1,13-2,T)                  R>+99999  p = 0           FAIL !!!!!!!!  
@@ -23,20 +23,20 @@ length= 256 megabytes (2^28 bytes), time= 1.1 seconds
   DC6-9x1Bytes-1                    R>+99999  p = 0           FAIL !!!!!!!!  
   Gap-16:A                          R>+99999  p = 0           FAIL !!!!!!!!  
   Gap-16:B                          R>+99999  p = 0           FAIL !!!!!!!!  
-  FPF-14+6/16:(1,14-0)              R=+34300  p = 0           FAIL !!!!!!!!  
-  FPF-14+6/16:(2,14-0)              R=+40951  p = 0           FAIL !!!!!!!!  
-  FPF-14+6/16:(3,14-0)              R=+35652  p = 0           FAIL !!!!!!!!  
-  FPF-14+6/16:(4,14-1)              R=+25155  p = 0           FAIL !!!!!!!!  
-  FPF-14+6/16:(5,14-2)              R=+17706  p = 0           FAIL !!!!!!!!  
-  FPF-14+6/16:(6,14-2)              R=+13302  p = 0           FAIL !!!!!!!!  
-  FPF-14+6/16:(7,14-3)              R= +9441  p =  3e-8275    FAIL !!!!!!!!  
-  FPF-14+6/16:(8,14-4)              R= +6634  p =  7e-5421    FAIL !!!!!!!!  
-  FPF-14+6/16:(9,14-5)              R= +4693  p =  3e-3890    FAIL !!!!!!!!  
-  FPF-14+6/16:(10,14-5)             R= +3196  p =  9e-2650    FAIL !!!!!!!!  
-  FPF-14+6/16:(11,14-6)             R= +2276  p =  1e-1741    FAIL !!!!!!!!  
-  FPF-14+6/16:(12,14-7)             R= +1597  p =  1e-1270    FAIL !!!!!!!!  
-  FPF-14+6/16:(13,14-8)             R= +1106  p =  3.8e-796   FAIL !!!!!!!   
-  FPF-14+6/16:(14,14-8)             R=+726.0  p =  1.9e-522   FAIL !!!!!!!   
+  FPF-14+6/16:(1,14-0)              R=+34342  p = 0           FAIL !!!!!!!!  
+  FPF-14+6/16:(2,14-0)              R=+40947  p = 0           FAIL !!!!!!!!  
+  FPF-14+6/16:(3,14-0)              R=+35618  p = 0           FAIL !!!!!!!!  
+  FPF-14+6/16:(4,14-1)              R=+25135  p = 0           FAIL !!!!!!!!  
+  FPF-14+6/16:(5,14-2)              R=+17766  p = 0           FAIL !!!!!!!!  
+  FPF-14+6/16:(6,14-2)              R=+13338  p = 0           FAIL !!!!!!!!  
+  FPF-14+6/16:(7,14-3)              R= +9375  p =  7e-8217    FAIL !!!!!!!!  
+  FPF-14+6/16:(8,14-4)              R= +6606  p =  1e-5397    FAIL !!!!!!!!  
+  FPF-14+6/16:(9,14-5)              R= +4675  p =  2e-3875    FAIL !!!!!!!!  
+  FPF-14+6/16:(10,14-5)             R= +3184  p =  1e-2639    FAIL !!!!!!!!  
+  FPF-14+6/16:(11,14-6)             R= +2325  p =  5e-1779    FAIL !!!!!!!!  
+  FPF-14+6/16:(12,14-7)             R= +1622  p =  4e-1291    FAIL !!!!!!!!  
+  FPF-14+6/16:(13,14-8)             R= +1154  p =  1.6e-830   FAIL !!!!!!!   
+  FPF-14+6/16:(14,14-8)             R=+770.5  p =  1.6e-554   FAIL !!!!!!!   
   FPF-14+6/16:all                   R>+99999  p = 0           FAIL !!!!!!!!  
   FPF-14+6/16:cross                 R>+99999  p = 0           FAIL !!!!!!!!  
   BRank(12):128(4)                  R= +2630  p~=  7e-1400    FAIL !!!!!!!!  
@@ -50,9 +50,9 @@ length= 256 megabytes (2^28 bytes), time= 1.1 seconds
   mod3n(5):(0,9-6)                  R>+99999  p = 0           FAIL !!!!!!!!  
   mod3n(5):(1,9-6)                  R>+99999  p = 0           FAIL !!!!!!!!  
   mod3n(5):(2,9-6)                  R>+99999  p = 0           FAIL !!!!!!!!  
-  TMFn(2+0):wl                      R=+48166  p~=  0          FAIL !!!!!!!!  
-  TMFn(2+1):wl                      R=+24052  p~=  0          FAIL !!!!!!!!  
-  TMFn(2+2):wl                      R=+11996  p~=  0          FAIL !!!!!!!!  
+  TMFn(2+0):wl                      R=+48167  p~=  0          FAIL !!!!!!!!  
+  TMFn(2+1):wl                      R=+24050  p~=  0          FAIL !!!!!!!!  
+  TMFn(2+2):wl                      R=+11993  p~=  0          FAIL !!!!!!!!  
   TMFn(2+3):wl                      R= +5966  p~=  0          FAIL !!!!!!!!  
   ...and 18 test result(s) without anomalies
 

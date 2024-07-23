@@ -1,4 +1,5 @@
-aes128_prng_mix_n1
+aes128_prng_dec_mix_n1
+aes128_prng_enc_mix_n1
 degski32
 klimov_shamir_32
 mover_counter_64
