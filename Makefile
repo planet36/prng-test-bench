@@ -39,6 +39,7 @@ CPPFLAGS = -MMD -MP
 CPPFLAGS += -Iinclude
 
 CXXFLAGS = -pipe -Wall -Wextra -Wpedantic -Wfatal-errors
+CXXFLAGS += -Wno-unused-function
 CXXFLAGS += -std=gnu++26
 # -frecord-gcc-switches is used by readelf
 CXXFLAGS += -frecord-gcc-switches
