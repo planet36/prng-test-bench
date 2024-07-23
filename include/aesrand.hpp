@@ -16,28 +16,29 @@
 #include "byteprimes.hpp"
 #include "def_urbg_class.hpp"
 #include "simd-types.hpp"
+#include "union_128.h"
 
 #include <cstdint>
 #include <immintrin.h>
 
 #if defined(__AES__)
-DEF_URBG_CLASS(aesencrand, simd128, uint64_t)
+DEF_URBG_CLASS(aesencrand, simd128, __uint128_t)
 {
 	static constexpr simd128 roundKey{.u64vec{byteprimes[0], byteprimes[1]}};
 	s.u64vec += roundKey.u64vec;
 	const __m128i penultimate = _mm_aesenc_si128(s.i64vec, roundKey.i64vec);
 	const __m128i result = _mm_aesenc_si128(penultimate, roundKey.i64vec);
-	return static_cast<uint64_t>(result[0]);
+	return union_128{.xmm = result}.u128;
 }
 
-DEF_URBG_CLASS(aesdecrand, simd128, uint64_t)
+DEF_URBG_CLASS(aesdecrand, simd128, __uint128_t)
 {
 	static constexpr simd128 roundKey{.u64vec{byteprimes[0], byteprimes[1]}};
 	s.u64vec += roundKey.u64vec;
 	//const __m128i penultimate = _mm_aesenc_si128(s.i64vec, roundKey.i64vec);
 	const __m128i penultimate = _mm_aesdec_si128(s.i64vec, roundKey.i64vec); // (SDW)
 	const __m128i result = _mm_aesdec_si128(penultimate, roundKey.i64vec);
-	return static_cast<uint64_t>(result[0]);
+	return union_128{.xmm = result}.u128;
 }
 #else
 #warning "__AES__ not defined"

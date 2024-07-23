@@ -14,13 +14,14 @@
 
 #include "def_urbg_class.hpp"
 #include "simd-types.hpp"
+#include "union_128.h"
 #include "xxhprimes.hpp"
 
 #include <cstdint>
 #include <immintrin.h>
 
 #if defined(__AES__)
-DEF_URBG_CLASS(aesimcrand, simd128, uint64_t)
+DEF_URBG_CLASS(aesimcrand, simd128, __uint128_t)
 {
 	static constexpr simd128 inc{.u64arr{xxh_prime64[0], xxh_prime64[1]}};
 	static constexpr simd128 inc2{.u64arr{xxh_prime64[2], xxh_prime64[3]}};
@@ -30,13 +31,14 @@ DEF_URBG_CLASS(aesimcrand, simd128, uint64_t)
 	result = __builtin_ia32_aesimc128(result);
 	result += inc.i64vec;
 	result = __builtin_ia32_aesimc128(result);
+	return union_128{.xmm = result}.u128;
 
 	//return result[0]; // fails at 4 GB
 	//return result[1]; // fails at 4 GB
 	//return result[0] ^ result[1]; // fails at 64 GB
 	//return result[0] + result[1]; // fails at 64 GB
 	//return result[0] - result[1]; // fails at 64 GB
-	return result[1] - result[0]; // fails at 64 GB
+	//return result[1] - result[0]; // fails at 64 GB
 }
 #else
 #warning "__AES__ not defined"

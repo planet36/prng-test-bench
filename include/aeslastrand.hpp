@@ -13,36 +13,39 @@
 #include "byteprimes.hpp"
 #include "def_urbg_class.hpp"
 #include "simd-types.hpp"
+#include "union_128.h"
 
 #include <cstdint>
 #include <immintrin.h>
 
 #if defined(__AES__)
-DEF_URBG_CLASS(aesenclastrand, simd128, uint64_t)
+DEF_URBG_CLASS(aesenclastrand, simd128, __uint128_t)
 {
 	static constexpr simd128 roundKey{.u64arr{byteprimes[0], byteprimes[1]}};
 	s.u64vec += roundKey.u64vec;
 	const __m128i penultimate = _mm_aesenc_si128(s.i64vec, roundKey.i64vec);
 	const __m128i result = _mm_aesenclast_si128(penultimate, roundKey.i64vec);
+	return union_128{.xmm = result}.u128;
 
 	//return result[0]; // failed at 2 GB
 	//return result[1]; // failed at 8 GB
-	return result[0] ^ result[1]; // good thru 1 TB
+	//return result[0] ^ result[1]; // good thru 1 TB
 	//return result[0] + result[1]; // good thru 1 TB
 	//return result[0] - result[1]; // good thru 1 TB
 	//return result[1] - result[0]; // good thru 1 TB
 }
 
-DEF_URBG_CLASS(aesdeclastrand, simd128, uint64_t)
+DEF_URBG_CLASS(aesdeclastrand, simd128, __uint128_t)
 {
 	static constexpr simd128 roundKey{.u64arr{byteprimes[0], byteprimes[1]}};
 	s.u64vec += roundKey.u64vec;
 	const __m128i penultimate = _mm_aesdec_si128(s.i64vec, roundKey.i64vec);
 	const __m128i result = _mm_aesdeclast_si128(penultimate, roundKey.i64vec);
+	return union_128{.xmm = result}.u128;
 
 	//return result[0]; // failed at 256 MB
 	//return result[1]; // failed at 256 MB
-	return result[0] ^ result[1]; // good thru 1 TB
+	//return result[0] ^ result[1]; // good thru 1 TB
 	//return result[0] + result[1]; // good thru 1 TB
 	//return result[0] - result[1]; // good thru 1 TB
 	//return result[1] - result[0]; // good thru 1 TB
