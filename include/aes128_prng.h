@@ -89,6 +89,17 @@ aes128_prng_reseed(aes128_prng* _this)
 }
 
 /// Get the next PRNG output.
+static __m128i
+aes128_prng_next(aes128_prng* _this)
+{
+	constexpr unsigned int N = 2;
+	static_assert(N >= 2);
+
+	const __m128i dst = aes128_mix(_this->x, _this->key, N);
+	_this->x = _mm_add_epi64(_this->x, _this->c);
+
+	return dst;
+}
 
 static __m128i
 aes128_prng_next_mix_n1(aes128_prng* _this)
