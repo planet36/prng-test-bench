@@ -3,11 +3,11 @@ RNG = RNG_stdin64, seed = unknown
 test set = core, folding = none
 
 rng=RNG_stdin64, seed=unknown
-length= 256 megabytes (2^28 bytes), time= 0.6 seconds
+length= 256 megabytes (2^28 bytes), time= 0.7 seconds
   Test Name                         Raw       Processed     Evaluation
-  FPF-14+6/16:all                   R=  +4.8  p =  5.4e-4   unusual          
+  BRank(12):256(4)                  R= +12.6  p~=  1.5e-7   suspicious       
   BRank(12):1K(2)                   R= +2773  p~=  6.9e-836   FAIL !!!!!!!   
-  BRank(12):1536(1)                 R= +2650  p~=  9.8e-799   FAIL !!!!!!!   
-  BRank(12):2K(1)                   R= +5061  p~=  1e-1524    FAIL !!!!!!!!  
+  BRank(12):1536(1)                 R= +2693  p~=  1.0e-811   FAIL !!!!!!!   
+  BRank(12):2K(1)                   R= +5578  p~=  4e-1680    FAIL !!!!!!!!  
   ...and 63 test result(s) without anomalies
 

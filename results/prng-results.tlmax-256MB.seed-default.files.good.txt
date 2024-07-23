@@ -30,6 +30,7 @@ RNG_test.tlmax-256MB.seed-default.prng-mcg128.txt
 RNG_test.tlmax-256MB.seed-default.prng-mizuchi.txt
 RNG_test.tlmax-256MB.seed-default.prng-moremur.txt
 RNG_test.tlmax-256MB.seed-default.prng-mover_64.txt
+RNG_test.tlmax-256MB.seed-default.prng-mover_counter_64.txt
 RNG_test.tlmax-256MB.seed-default.prng-mumx_mumx_rrxx_1.txt
 RNG_test.tlmax-256MB.seed-default.prng-mumx_mumx_x1.txt
 RNG_test.tlmax-256MB.seed-default.prng-mumx_mumx_x2.txt

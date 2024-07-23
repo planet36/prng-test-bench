@@ -1,7 +1,6 @@
 aes128_prng_mix_n1
 degski32
 klimov_shamir_32
-mover_counter_64
 std::default_random_engine
 std::knuth_b
 std::minstd_rand

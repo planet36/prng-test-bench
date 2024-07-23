@@ -3,7 +3,7 @@ RNG = RNG_stdin64, seed = unknown
 test set = core, folding = none
 
 rng=RNG_stdin64, seed=unknown
-length= 256 megabytes (2^28 bytes), time= 0.6 seconds
+length= 256 megabytes (2^28 bytes), time= 0.5 seconds
   Test Name                         Raw       Processed     Evaluation
   BRank(12):1K(2)                   R= +2773  p~=  6.9e-836   FAIL !!!!!!!   
   BRank(12):1536(1)                 R= +2650  p~=  9.8e-799   FAIL !!!!!!!   
