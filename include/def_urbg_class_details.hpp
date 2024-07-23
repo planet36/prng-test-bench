@@ -85,13 +85,4 @@ public:                                                                  \
 	void seed(const seed_bytes_type& bytes) noexcept                     \
 	{                                                                    \
 		(void)std::memcpy(&s, bytes.data(), sizeof(state_type));         \
-	}                                                                    \
-	/* equality operators */                                             \
-	constexpr bool operator==(const CLASS_NAME& that) const noexcept     \
-	{                                                                    \
-		return this->s == that.s;                                        \
-	}                                                                    \
-	constexpr bool operator!=(const CLASS_NAME& that) const noexcept     \
-	{                                                                    \
-		return this->s != that.s;                                        \
 	}

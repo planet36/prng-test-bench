@@ -94,15 +94,6 @@ public:                                                                  \
 	{                                                                    \
 		(void)std::memcpy(&s, bytes.data(), sizeof(state_type));         \
 	}                                                                    \
-	/* equality operators */                                             \
-	constexpr bool operator==(const CLASS_NAME& that) const noexcept     \
-	{                                                                    \
-		return this->s == that.s;                                        \
-	}                                                                    \
-	constexpr bool operator!=(const CLASS_NAME& that) const noexcept     \
-	{                                                                    \
-		return this->s != that.s;                                        \
-	}                                                                    \
 	/* non-static member function declaration */                         \
 	constexpr result_type next(); /* XXX: must define this below */      \
 };                                                                       \
