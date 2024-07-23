@@ -41,7 +41,7 @@ public:
 	static constexpr result_type max() { return std::numeric_limits<result_type>::max(); }
 	constexpr result_type operator()() { return next(); }
 	result_type next() {
-		const __m128i result = aes128_prng_next_dm_n1(&state);
+		const __m128i result = aes128_prng_next_enc_dm_n1(&state);
 		return union_128{.xmm = result}.u128;
 	}
 };
@@ -62,7 +62,7 @@ public:
 	static constexpr result_type max() { return std::numeric_limits<result_type>::max(); }
 	constexpr result_type operator()() { return next(); }
 	result_type next() {
-		const __m128i result = aes128_prng_next_dm_n2(&state);
+		const __m128i result = aes128_prng_next_enc_dm_n2(&state);
 		return union_128{.xmm = result}.u128;
 	}
 };
@@ -83,7 +83,7 @@ public:
 	static constexpr result_type max() { return std::numeric_limits<result_type>::max(); }
 	constexpr result_type operator()() { return next(); }
 	result_type next() {
-		const __m128i result = aes128_prng_next_dm_n3(&state);
+		const __m128i result = aes128_prng_next_enc_dm_n3(&state);
 		return union_128{.xmm = result}.u128;
 	}
 };
@@ -104,7 +104,7 @@ public:
 	static constexpr result_type max() { return std::numeric_limits<result_type>::max(); }
 	constexpr result_type operator()() { return next(); }
 	result_type next() {
-		const __m128i result = aes128_prng_next_dm_n4(&state);
+		const __m128i result = aes128_prng_next_enc_dm_n4(&state);
 		return union_128{.xmm = result}.u128;
 	}
 };
@@ -125,7 +125,7 @@ public:
 	static constexpr result_type max() { return std::numeric_limits<result_type>::max(); }
 	constexpr result_type operator()() { return next(); }
 	result_type next() {
-		const __m128i result = aes128_prng_next_mix_n1(&state);
+		const __m128i result = aes128_prng_next_enc_mix_n1(&state);
 		return union_128{.xmm = result}.u128;
 	}
 };
@@ -146,7 +146,7 @@ public:
 	static constexpr result_type max() { return std::numeric_limits<result_type>::max(); }
 	constexpr result_type operator()() { return next(); }
 	result_type next() {
-		const __m128i result = aes128_prng_next_mix_n2(&state);
+		const __m128i result = aes128_prng_next_enc_mix_n2(&state);
 		return union_128{.xmm = result}.u128;
 	}
 };
@@ -167,7 +167,7 @@ public:
 	static constexpr result_type max() { return std::numeric_limits<result_type>::max(); }
 	constexpr result_type operator()() { return next(); }
 	result_type next() {
-		const __m128i result = aes128_prng_next_mix_n3(&state);
+		const __m128i result = aes128_prng_next_enc_mix_n3(&state);
 		return union_128{.xmm = result}.u128;
 	}
 };
@@ -188,7 +188,7 @@ public:
 	static constexpr result_type max() { return std::numeric_limits<result_type>::max(); }
 	constexpr result_type operator()() { return next(); }
 	result_type next() {
-		const __m128i result = aes128_prng_next_mix_n4(&state);
+		const __m128i result = aes128_prng_next_enc_mix_n4(&state);
 		return union_128{.xmm = result}.u128;
 	}
 };

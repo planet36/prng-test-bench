@@ -25,7 +25,7 @@
 \param N the number of rounds of encryption to perform
 */
 static __m128i
-aes128_mix(__m128i a, const __m128i key, const unsigned int N)
+aes128_enc_mix(__m128i a, const __m128i key, const unsigned int N)
 {
 	for (unsigned int round = 0; round < N; ++round)
 	{
@@ -44,9 +44,9 @@ aes128_mix(__m128i a, const __m128i key, const unsigned int N)
 \return the next hash value
 */
 static inline __m128i
-aes128_davies_meyer(const __m128i H, const __m128i m, const unsigned int N)
+aes128_enc_davies_meyer(const __m128i H, const __m128i m, const unsigned int N)
 {
-	return _mm_xor_si128(H, aes128_mix(H, m, N));
+	return _mm_xor_si128(H, aes128_enc_mix(H, m, N));
 }
 
 /// A PRNG that uses AES instructions
@@ -95,72 +95,72 @@ aes128_prng_next(aes128_prng* _this)
 	constexpr unsigned int N = 2;
 	static_assert(N >= 2);
 
-	const __m128i dst = aes128_mix(_this->x, _this->key, N);
+	const __m128i dst = aes128_enc_mix(_this->x, _this->key, N);
 	_this->x = _mm_add_epi64(_this->x, _this->c);
 
 	return dst;
 }
 
 static __m128i
-aes128_prng_next_mix_n1(aes128_prng* _this)
+aes128_prng_next_enc_mix_n1(aes128_prng* _this)
 {
-	const __m128i dst = aes128_mix(_this->x, _this->key, 1);
+	const __m128i dst = aes128_enc_mix(_this->x, _this->key, 1);
 	_this->x = _mm_add_epi64(_this->x, _this->c);
 	return dst;
 }
 
 static __m128i
-aes128_prng_next_mix_n2(aes128_prng* _this)
+aes128_prng_next_enc_mix_n2(aes128_prng* _this)
 {
-	const __m128i dst = aes128_mix(_this->x, _this->key, 2);
+	const __m128i dst = aes128_enc_mix(_this->x, _this->key, 2);
 	_this->x = _mm_add_epi64(_this->x, _this->c);
 	return dst;
 }
 
 static __m128i
-aes128_prng_next_mix_n3(aes128_prng* _this)
+aes128_prng_next_enc_mix_n3(aes128_prng* _this)
 {
-	const __m128i dst = aes128_mix(_this->x, _this->key, 3);
+	const __m128i dst = aes128_enc_mix(_this->x, _this->key, 3);
 	_this->x = _mm_add_epi64(_this->x, _this->c);
 	return dst;
 }
 
 static __m128i
-aes128_prng_next_mix_n4(aes128_prng* _this)
+aes128_prng_next_enc_mix_n4(aes128_prng* _this)
 {
-	const __m128i dst = aes128_mix(_this->x, _this->key, 4);
+	const __m128i dst = aes128_enc_mix(_this->x, _this->key, 4);
 	_this->x = _mm_add_epi64(_this->x, _this->c);
 	return dst;
 }
 
 static __m128i
-aes128_prng_next_dm_n1(aes128_prng* _this)
+aes128_prng_next_enc_dm_n1(aes128_prng* _this)
 {
-	const __m128i dst = aes128_davies_meyer(_this->x, _this->key, 1);
+	const __m128i dst = aes128_enc_davies_meyer(_this->x, _this->key, 1);
 	_this->x = _mm_add_epi64(_this->x, _this->c);
 	return dst;
 }
 
 static __m128i
-aes128_prng_next_dm_n2(aes128_prng* _this)
+aes128_prng_next_enc_dm_n2(aes128_prng* _this)
 {
-	const __m128i dst = aes128_davies_meyer(_this->x, _this->key, 2);
+	const __m128i dst = aes128_enc_davies_meyer(_this->x, _this->key, 2);
 	_this->x = _mm_add_epi64(_this->x, _this->c);
 	return dst;
 }
 
 static __m128i
-aes128_prng_next_dm_n3(aes128_prng* _this)
+aes128_prng_next_enc_dm_n3(aes128_prng* _this)
 {
-	const __m128i dst = aes128_davies_meyer(_this->x, _this->key, 3);
+	const __m128i dst = aes128_enc_davies_meyer(_this->x, _this->key, 3);
 	_this->x = _mm_add_epi64(_this->x, _this->c);
 	return dst;
 }
 
 static __m128i
-aes128_prng_next_dm_n4(aes128_prng* _this)
+aes128_prng_next_enc_dm_n4(aes128_prng* _this)
 {
-	const __m128i dst = aes128_davies_meyer(_this->x, _this->key, 4);
+	const __m128i dst = aes128_enc_davies_meyer(_this->x, _this->key, 4);
 	_this->x = _mm_add_epi64(_this->x, _this->c);
 	return dst;
 }
