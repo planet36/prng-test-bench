@@ -14,9 +14,6 @@
 #include <stdint.h>
 #include <unistd.h>
 
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wunused-function"
-
 /// Do \c _mm_aesenc_si128 \a N times on data \a a with key \a key
 /**
 \pre \a N must be at least \c 1.
@@ -260,5 +257,3 @@ aes128_prng_next_dec_dm_n4(aes128_prng* _this)
 	_this->x = _mm_add_epi64(_this->x, _this->c);
 	return dst;
 }
-
-#pragma GCC diagnostic pop
