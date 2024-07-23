@@ -6,6 +6,9 @@
 \file
 \author Steven Ward
 \sa https://github.com/dragontamer/AESRand/blob/master/AESRand_Paper/AESRand.hpp
+\sa https://www.intel.com/content/dam/doc/white-paper/advanced-encryption-standard-new-instructions-set-paper.pdf
+\sa https://www.felixcloutier.com/x86/aesenc
+\sa https://www.felixcloutier.com/x86/aesdec
 */
 
 #pragma once
