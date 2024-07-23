@@ -1,4 +1,11 @@
 MRG32k3a
+aes128_prng_dm_n1
+aes128_prng_dm_n2
+aes128_prng_dm_n3
+aes128_prng_dm_n4
+aes128_prng_mix_n2
+aes128_prng_mix_n3
+aes128_prng_mix_n4
 aesdeclastrand
 aesdecrand
 aesenclastrand

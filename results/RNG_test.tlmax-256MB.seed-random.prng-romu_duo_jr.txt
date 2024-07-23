@@ -5,6 +5,6 @@ test set = core, folding = none
 rng=RNG_stdin64, seed=unknown
 length= 256 megabytes (2^28 bytes), time= 0.6 seconds
   Test Name                         Raw       Processed     Evaluation
-  BCFN(2+0,13-2,T)                  R=  -6.4  p =1-2.8e-3   unusual          
+  Gap-16:A                          R=  -4.8  p =1-1.7e-4   mildly suspicious
   ...and 66 test result(s) without anomalies
 

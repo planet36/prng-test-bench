@@ -5,6 +5,6 @@ test set = core, folding = none
 rng=RNG_stdin64, seed=unknown
 length= 256 megabytes (2^28 bytes), time= 0.6 seconds
   Test Name                         Raw       Processed     Evaluation
-  FPF-14+6/16:all                   R=  +4.9  p =  4.2e-4   unusual          
+  DC6-9x1Bytes-1                    R=  +6.6  p =  1.9e-3   unusual          
   ...and 66 test result(s) without anomalies
 

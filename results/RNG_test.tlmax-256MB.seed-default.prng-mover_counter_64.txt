@@ -3,6 +3,54 @@ RNG = RNG_stdin64, seed = unknown
 test set = core, folding = none
 
 rng=RNG_stdin64, seed=unknown
-length= 256 megabytes (2^28 bytes), time= 0.5 seconds
-  no anomalies in 67 test result(s)
+length= 256 megabytes (2^28 bytes), time= 0.6 seconds
+  Test Name                         Raw       Processed     Evaluation
+  BCFN(2+0,13-2,T)                  R>+99999  p = 0           FAIL !!!!!!!!  
+  BCFN(2+1,13-2,T)                  R>+99999  p = 0           FAIL !!!!!!!!  
+  BCFN(2+2,13-3,T)                  R>+99999  p = 0           FAIL !!!!!!!!  
+  BCFN(2+3,13-3,T)                  R>+99999  p = 0           FAIL !!!!!!!!  
+  BCFN(2+4,13-3,T)                  R>+99999  p = 0           FAIL !!!!!!!!  
+  BCFN(2+5,13-4,T)                  R>+99999  p = 0           FAIL !!!!!!!!  
+  BCFN(2+6,13-5,T)                  R>+99999  p = 0           FAIL !!!!!!!!  
+  BCFN(2+7,13-5,T)                  R>+99999  p = 0           FAIL !!!!!!!!  
+  BCFN(2+8,13-6,T)                  R>+99999  p = 0           FAIL !!!!!!!!  
+  BCFN(2+9,13-6,T)                  R>+99999  p = 0           FAIL !!!!!!!!  
+  BCFN(2+10,13-7,T)                 R=+69095  p = 0           FAIL !!!!!!!!  
+  BCFN(2+11,13-8,T)                 R=+40957  p = 0           FAIL !!!!!!!!  
+  BCFN(2+12,13-8,T)                 R=+20441  p =  1e-5188    FAIL !!!!!!!!  
+  BCFN(2+13,13-9,T)                 R=+11734  p =  8e-2638    FAIL !!!!!!!!  
+  BCFN(2+14,13-9,T)                 R= +5853  p =  3e-1316    FAIL !!!!!!!!  
+  DC6-9x1Bytes-1                    R=+46585  p = 0           FAIL !!!!!!!!  
+  Gap-16:A                          R= +6397  p =  4e-5094    FAIL !!!!!!!!  
+  Gap-16:B                          R=+11127  p =  3e-9028    FAIL !!!!!!!!  
+  FPF-14+6/16:(2,14-0)              R= +6599  p =  1e-6106    FAIL !!!!!!!!  
+  FPF-14+6/16:(3,14-0)              R= +3909  p =  4e-3617    FAIL !!!!!!!!  
+  FPF-14+6/16:(4,14-1)              R= +2401  p =  2e-2127    FAIL !!!!!!!!  
+  FPF-14+6/16:(5,14-2)              R= +1484  p =  2e-1297    FAIL !!!!!!!!  
+  FPF-14+6/16:(6,14-2)              R=+754.4  p =  1.4e-659   FAIL !!!!!!!   
+  FPF-14+6/16:(7,14-3)              R=+476.1  p =  4.8e-417   FAIL !!!!!!!   
+  FPF-14+6/16:(8,14-4)              R=+309.6  p =  6.9e-253   FAIL !!!!!!    
+  FPF-14+6/16:(9,14-5)              R=+203.8  p =  7.6e-169   FAIL !!!!!     
+  FPF-14+6/16:(10,14-5)             R= +97.2  p =  1.9e-80    FAIL !!!!      
+  FPF-14+6/16:(11,14-6)             R= +73.3  p =  3.6e-56    FAIL !!!!      
+  FPF-14+6/16:(12,14-7)             R= +37.1  p =  2.6e-29    FAIL !!!       
+  FPF-14+6/16:(13,14-8)             R= +25.4  p =  2.5e-18    FAIL !         
+  FPF-14+6/16:(14,14-8)             R= +14.6  p =  1.6e-10   VERY SUSPICIOUS 
+  FPF-14+6/16:(15,14-9)             R=  +8.4  p =  1.5e-5   unusual          
+  FPF-14+6/16:all                   R=+54685  p = 0           FAIL !!!!!!!!  
+  FPF-14+6/16:cross                 R>+99999  p = 0           FAIL !!!!!!!!  
+  BRank(12):128(4)                  R= +14.0  p~=  2.9e-8   very suspicious  
+  BRank(12):256(4)                  R=+103.9  p~=  4.6e-56    FAIL !!!!      
+  BRank(12):384(1)                  R= +88.2  p~=  1.4e-27    FAIL !!        
+  BRank(12):512(2)                  R=+307.4  p~=  1.4e-93    FAIL !!!!!     
+  BRank(12):768(1)                  R=+346.5  p~=  2.4e-105   FAIL !!!!!     
+  BRank(12):1K(2)                   R=+794.5  p~=  3.4e-240   FAIL !!!!!!    
+  BRank(12):1536(1)                 R=+863.2  p~=  7.2e-261   FAIL !!!!!!    
+  BRank(12):2K(1)                   R= +1251  p~=  1.6e-377   FAIL !!!!!!!   
+  mod3n(5):(0,9-6)                  R=+105.7  p =  6.3e-37    FAIL !!!       
+  TMFn(2+0):wl                      R=+20047  p~=  0          FAIL !!!!!!!!  
+  TMFn(2+1):wl                      R= +9999  p~=  0          FAIL !!!!!!!!  
+  TMFn(2+2):wl                      R= +4973  p~=  0          FAIL !!!!!!!!  
+  TMFn(2+3):wl                      R= +2463  p~=  0          FAIL !!!!!!!!  
+  ...and 20 test result(s) without anomalies
 

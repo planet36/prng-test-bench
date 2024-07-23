@@ -1,3 +1,4 @@
+RNG_test.tlmax-256MB.seed-pattern.prng-aes128_prng_mix_n1.txt
 RNG_test.tlmax-256MB.seed-pattern.prng-degski32.txt
 RNG_test.tlmax-256MB.seed-pattern.prng-klimov_shamir_32.txt
 RNG_test.tlmax-256MB.seed-pattern.prng-mover_counter_64.txt
