@@ -14,16 +14,12 @@
 #include "byteprimes.hpp"
 #include "clmum.hpp"
 #include "def_urbg_class.hpp"
-#include "simd-types.hpp"
 
 #include <cstdint>
 
-DEF_URBG_CLASS(clmulrand, simd128, uint64_t)
+DEF_URBG_CLASS(clmulrand, __m128i, uint64_t)
 {
-	static constexpr simd128 inc{.u64vec{byteprimes[0], byteprimes[1]}};
-	static_assert(inc.u64vec[0] & 1, "must be odd");
-	static_assert(inc.u64vec[1] & 1, "must be odd");
-
-	s.u64vec += inc.u64vec;
+	const __m128i inc = _mm_set_epi64x(byteprimes[1], byteprimes[0]);
+	s = _mm_add_epi64(s, inc);
 	return clmums(s);
 }

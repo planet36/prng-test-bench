@@ -13,7 +13,6 @@
 #pragma once
 
 #include "def_urbg_class.hpp"
-#include "simd-types.hpp"
 #include "union_128.h"
 #include "xxhprimes.hpp"
 
@@ -21,15 +20,15 @@
 #include <immintrin.h>
 
 #if defined(__AES__)
-DEF_URBG_CLASS(aesimcrand, simd128, __uint128_t)
+DEF_URBG_CLASS(aesimcrand, __m128i, __uint128_t)
 {
-	static constexpr simd128 inc{.u64arr{xxh_prime64[0], xxh_prime64[1]}};
-	static constexpr simd128 inc2{.u64arr{xxh_prime64[2], xxh_prime64[3]}};
-	s.u64vec += inc.u64vec;
-	__m128i result = __builtin_ia32_aesimc128(s.i64vec);
-	result += inc2.i64vec;
+	const __m128i inc = _mm_set_epi64x(xxh_prime64[1], xxh_prime64[0]);
+	const __m128i inc2 = _mm_set_epi64x(xxh_prime64[3], xxh_prime64[2]);
+	s = _mm_add_epi64(s, inc);
+	__m128i result = __builtin_ia32_aesimc128(s);
+	result = _mm_add_epi64(result, inc2);
 	result = __builtin_ia32_aesimc128(result);
-	result += inc.i64vec;
+	result = _mm_add_epi64(result, inc);
 	result = __builtin_ia32_aesimc128(result);
 	return union_128{.xmm = result}.u128;
 

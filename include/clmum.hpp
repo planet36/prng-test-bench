@@ -12,14 +12,13 @@
 #pragma once
 
 #include "mum.hpp"
-#include "simd-types.hpp"
 
 #include <cstdint>
 #include <immintrin.h>
 
 #if defined(__PCLMUL__)
-void
-clmul(simd128& a)
+inline void
+clmul(__m128i& a)
 {
 	// https://clang.llvm.org/doxygen/____wmmintrin__pclmul_8h.html
 	// https://github.com/gcc-mirror/gcc/blob/master/gcc/config/i386/wmmintrin.h#L103
@@ -30,27 +29,27 @@ clmul(simd128& a)
 	// imm8: 0x11 => b[1] * a[1]
 
 	// MSB in result is always 0
-	a.i64vec = _mm_clmulepi64_si128(a.i64vec, a.i64vec, 0x10);
+	a = _mm_clmulepi64_si128(a, a, 0x10);
 }
 
-uint64_t clmumx(simd128 a) { clmul(a); return a.u64vec[1] ^ a.u64vec[0]; }
-uint64_t clmuma(simd128 a) { clmul(a); return a.u64vec[1] + a.u64vec[0]; }
-uint64_t clmums(simd128 a) { clmul(a); return a.u64vec[1] - a.u64vec[0]; }
+inline uint64_t clmumx(__m128i a) { clmul(a); return _mm_extract_epi64(a, 1) ^ _mm_extract_epi64(a, 0); }
+inline uint64_t clmuma(__m128i a) { clmul(a); return _mm_extract_epi64(a, 1) + _mm_extract_epi64(a, 0); }
+inline uint64_t clmums(__m128i a) { clmul(a); return _mm_extract_epi64(a, 1) - _mm_extract_epi64(a, 0); }
 
 void
 clmul(uint64_t& hi, uint64_t& lo)
 {
-	simd128 result{.u64vec{hi, lo}}; // order of hi, lo doesn't matter
+	__m128i result = _mm_set_epi64x(hi, lo); // order of hi, lo doesn't matter
 
 	clmul(result);
 
-	hi = result.u64vec[1];
-	lo = result.u64vec[0];
+	hi = _mm_extract_epi64(result, 1);
+	lo = _mm_extract_epi64(result, 0);
 }
 
-uint64_t clmumx(uint64_t a, uint64_t b) { clmul(a, b); return a ^ b; }
-uint64_t clmuma(uint64_t a, uint64_t b) { clmul(a, b); return a + b; }
-uint64_t clmums(uint64_t a, uint64_t b) { clmul(a, b); return a - b; }
+inline uint64_t clmumx(uint64_t a, uint64_t b) { clmul(a, b); return a ^ b; }
+inline uint64_t clmuma(uint64_t a, uint64_t b) { clmul(a, b); return a + b; }
+inline uint64_t clmums(uint64_t a, uint64_t b) { clmul(a, b); return a - b; }
 #else
 #warning "__PCLMUL__ not defined"
 #endif
