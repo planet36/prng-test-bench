@@ -28,13 +28,6 @@ DEF_URBG_CLASS(aesenclastrand, __m128i, __uint128_t)
 	__m128i result = _mm_aesenc_si128(s, roundKey);
 	result = _mm_aesenclast_si128(result, roundKey);
 	return union_128{.xmm = result}.u128;
-
-	//return result[0]; // failed at 2 GB
-	//return result[1]; // failed at 8 GB
-	//return result[0] ^ result[1]; // good thru 1 TB
-	//return result[0] + result[1]; // good thru 1 TB
-	//return result[0] - result[1]; // good thru 1 TB
-	//return result[1] - result[0]; // good thru 1 TB
 }
 
 DEF_URBG_CLASS(aesdeclastrand, __m128i, __uint128_t)
@@ -44,13 +37,6 @@ DEF_URBG_CLASS(aesdeclastrand, __m128i, __uint128_t)
 	__m128i result = _mm_aesdec_si128(s, roundKey);
 	result = _mm_aesdeclast_si128(result, roundKey);
 	return union_128{.xmm = result}.u128;
-
-	//return result[0]; // failed at 256 MB
-	//return result[1]; // failed at 256 MB
-	//return result[0] ^ result[1]; // good thru 1 TB
-	//return result[0] + result[1]; // good thru 1 TB
-	//return result[0] - result[1]; // good thru 1 TB
-	//return result[1] - result[0]; // good thru 1 TB
 }
 #else
 #warning "__AES__ not defined"
