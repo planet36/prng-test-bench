@@ -11,6 +11,7 @@
 
 #include <err.h>
 #include <immintrin.h>
+#include <stdint.h>
 #include <unistd.h>
 
 #pragma GCC diagnostic push
@@ -64,6 +65,14 @@ struct aes128_prng
 };
 
 typedef struct aes128_prng aes128_prng;
+
+/// Get the minimum value that could be generated.
+static inline __m128i
+aes128_prng_min() { return _mm_setzero_si128(); }
+
+/// Get the maximum value that could be generated.
+static inline __m128i
+aes128_prng_max() { return _mm_set1_epi64x(UINT64_MAX); }
 
 // getentropy will fail if more than 256 bytes are requested.
 static_assert(sizeof(aes128_prng) <= 256);
