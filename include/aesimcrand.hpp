@@ -31,13 +31,6 @@ DEF_URBG_CLASS(aesimcrand, __m128i, __uint128_t)
 	result = _mm_add_epi64(result, inc);
 	result = __builtin_ia32_aesimc128(result);
 	return union_128{.xmm = result}.u128;
-
-	//return result[0]; // fails at 4 GB
-	//return result[1]; // fails at 4 GB
-	//return result[0] ^ result[1]; // fails at 64 GB
-	//return result[0] + result[1]; // fails at 64 GB
-	//return result[0] - result[1]; // fails at 64 GB
-	//return result[1] - result[0]; // fails at 64 GB
 }
 #else
 #warning "__AES__ not defined"
