@@ -29,19 +29,19 @@ DEF_URBG_CLASS(squares32, uint64_t, uint32_t)
 	const auto z = y + key;
 
 	// round 1
-	x = x*x + y;
+	x = x * x + y;
 	x = std::rotl(x, 32);
 
 	// round 2
-	x = x*x + z;
+	x = x * x + z;
 	x = std::rotl(x, 32);
 
 	// round 3
-	x = x*x + y;
+	x = x * x + y;
 	x = std::rotl(x, 32);
 
 	// round 4
-	return (x*x + z) >> 32;
+	return (x * x + z) >> 32;
 }
 
 DEF_URBG_CLASS(squares64, uint64_t, uint64_t)
@@ -56,22 +56,22 @@ DEF_URBG_CLASS(squares64, uint64_t, uint64_t)
 	const auto z = y + key;
 
 	// round 1
-	x = x*x + y;
+	x = x * x + y;
 	x = std::rotl(x, 32);
 
 	// round 2
-	x = x*x + z;
+	x = x * x + z;
 	x = std::rotl(x, 32);
 
 	// round 3
-	x = x*x + y;
+	x = x * x + y;
 	x = std::rotl(x, 32);
 
 	// round 4
-	x = x*x + z;
+	x = x * x + z;
 	const auto t = x;
 	x = std::rotl(x, 32);
 
 	// round 5
-	return t ^ ((x*x + y) >> 32);
+	return t ^ ((x * x + y) >> 32);
 }

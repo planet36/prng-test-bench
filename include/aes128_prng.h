@@ -97,11 +97,17 @@ typedef struct aes128_prng aes128_prng;
 
 /// Get the minimum value that could be generated.
 static inline __m128i
-aes128_prng_min() { return _mm_setzero_si128(); }
+aes128_prng_min()
+{
+	return _mm_setzero_si128();
+}
 
 /// Get the maximum value that could be generated.
 static inline __m128i
-aes128_prng_max() { return _mm_set1_epi64x(UINT64_MAX); }
+aes128_prng_max()
+{
+	return _mm_set1_epi64x(UINT64_MAX);
+}
 
 // getentropy will fail if more than 256 bytes are requested.
 static_assert(sizeof(aes128_prng) <= 256);
@@ -111,10 +117,12 @@ static void
 aes128_prng_reseed(aes128_prng* _this)
 {
 	if (getentropy(_this, sizeof(*_this)) < 0)
-	{ err(EXIT_FAILURE, "getentropy"); }
+	{
+		err(EXIT_FAILURE, "getentropy");
+	}
 
 	// Every odd integer is coprime with every power of 2.  Ensure c is odd.
-	_this->c =_mm_or_si128(_this->c, _mm_set_epi64x(1, 1));
+	_this->c = _mm_or_si128(_this->c, _mm_set_epi64x(1, 1));
 }
 
 /// Get the next PRNG output.

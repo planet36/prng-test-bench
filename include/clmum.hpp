@@ -32,9 +32,26 @@ clmul(__m128i& a)
 	a = _mm_clmulepi64_si128(a, a, 0x10);
 }
 
-inline uint64_t clmumx(__m128i a) { clmul(a); return _mm_extract_epi64(a, 1) ^ _mm_extract_epi64(a, 0); }
-inline uint64_t clmuma(__m128i a) { clmul(a); return _mm_extract_epi64(a, 1) + _mm_extract_epi64(a, 0); }
-inline uint64_t clmums(__m128i a) { clmul(a); return _mm_extract_epi64(a, 1) - _mm_extract_epi64(a, 0); }
+inline uint64_t
+clmumx(__m128i a)
+{
+	clmul(a);
+	return _mm_extract_epi64(a, 1) ^ _mm_extract_epi64(a, 0);
+}
+
+inline uint64_t
+clmuma(__m128i a)
+{
+	clmul(a);
+	return _mm_extract_epi64(a, 1) + _mm_extract_epi64(a, 0);
+}
+
+inline uint64_t
+clmums(__m128i a)
+{
+	clmul(a);
+	return _mm_extract_epi64(a, 1) - _mm_extract_epi64(a, 0);
+}
 
 void
 clmul(uint64_t& hi, uint64_t& lo)
@@ -47,9 +64,26 @@ clmul(uint64_t& hi, uint64_t& lo)
 	lo = _mm_extract_epi64(result, 0);
 }
 
-inline uint64_t clmumx(uint64_t a, uint64_t b) { clmul(a, b); return a ^ b; }
-inline uint64_t clmuma(uint64_t a, uint64_t b) { clmul(a, b); return a + b; }
-inline uint64_t clmums(uint64_t a, uint64_t b) { clmul(a, b); return a - b; }
+inline uint64_t
+clmumx(uint64_t a, uint64_t b)
+{
+	clmul(a, b);
+	return a ^ b;
+}
+
+inline uint64_t
+clmuma(uint64_t a, uint64_t b)
+{
+	clmul(a, b);
+	return a + b;
+}
+
+inline uint64_t
+clmums(uint64_t a, uint64_t b)
+{
+	clmul(a, b);
+	return a - b;
+}
 #else
 #warning "__PCLMUL__ not defined"
 #endif
