@@ -48,22 +48,22 @@ public:                                                                         
 };                                                                                         \
 static_assert(std::uniform_random_bit_generator<aes128_prng_ ## METHOD>);
 
-DEF_AES_PRNG_CLASS(enc_dm_n1 )
-DEF_AES_PRNG_CLASS(enc_dm_n2 )
-DEF_AES_PRNG_CLASS(enc_dm_n3 )
-DEF_AES_PRNG_CLASS(enc_dm_n4 )
 DEF_AES_PRNG_CLASS(enc_mix_n1)
 DEF_AES_PRNG_CLASS(enc_mix_n2)
 DEF_AES_PRNG_CLASS(enc_mix_n3)
 DEF_AES_PRNG_CLASS(enc_mix_n4)
-DEF_AES_PRNG_CLASS(dec_dm_n1 )
-DEF_AES_PRNG_CLASS(dec_dm_n2 )
-DEF_AES_PRNG_CLASS(dec_dm_n3 )
-DEF_AES_PRNG_CLASS(dec_dm_n4 )
+DEF_AES_PRNG_CLASS(enc_dm_n1 )
+DEF_AES_PRNG_CLASS(enc_dm_n2 )
+DEF_AES_PRNG_CLASS(enc_dm_n3 )
+DEF_AES_PRNG_CLASS(enc_dm_n4 )
 DEF_AES_PRNG_CLASS(dec_mix_n1)
 DEF_AES_PRNG_CLASS(dec_mix_n2)
 DEF_AES_PRNG_CLASS(dec_mix_n3)
 DEF_AES_PRNG_CLASS(dec_mix_n4)
+DEF_AES_PRNG_CLASS(dec_dm_n1 )
+DEF_AES_PRNG_CLASS(dec_dm_n2 )
+DEF_AES_PRNG_CLASS(dec_dm_n3 )
+DEF_AES_PRNG_CLASS(dec_dm_n4 )
 
 #else
 #warning "__AES__ not defined"
