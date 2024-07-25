@@ -430,6 +430,7 @@ if (prng_name == #NAME) { \
 #endif
 	CONDITIONAL_DUMP_MINE(bell                  )
 	CONDITIONAL_DUMP_MINE(bright                )
+	CONDITIONAL_DUMP_MINE(chacha                )
 #if defined(__PCLMUL__)
 	CONDITIONAL_DUMP_MINE(clmulrand             )
 #endif
@@ -477,6 +478,7 @@ if (prng_name == #NAME) { \
 	CONDITIONAL_DUMP_MINE(rrma2xsm2xs           )
 	CONDITIONAL_DUMP_MINE(rrmxmx                )
 	CONDITIONAL_DUMP_MINE(rrxmrrxmsx_0          )
+	CONDITIONAL_DUMP_MINE(salsa20               )
 	CONDITIONAL_DUMP_MINE(sea_slater_64         )
 	CONDITIONAL_DUMP_MINE(seiran                )
 	CONDITIONAL_DUMP_MINE(sfc32                 )
