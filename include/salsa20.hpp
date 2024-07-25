@@ -14,18 +14,18 @@
 #include "salsa20_qr.hpp"
 #include "def_urbg_class.hpp"
 #include "union_128.h"
+#include "xxhprimes.hpp"
 
 #include <array>
-#include <cstdlib>
 #include <cstdint>
 
 DEF_URBG_CLASS(salsa20, SINGLE_ARG(std::array<uint32_t, 4>), __uint128_t)
 {
-	static const std::array<uint32_t, 4> inc {
-		arc4random() | 1,
-		arc4random() | 1,
-		arc4random() | 1,
-		arc4random() | 1,
+	static constexpr std::array<uint32_t, 4> inc {
+		xxh_prime32[0],
+		xxh_prime32[1],
+		xxh_prime32[2],
+		xxh_prime32[3],
 	};
 
 	union_128 result;
