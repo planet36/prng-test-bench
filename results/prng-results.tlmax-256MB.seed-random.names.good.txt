@@ -20,6 +20,7 @@ aesencrand
 aesimcrand
 bell
 bright
+chacha
 clmulrand
 degski64
 dirk
@@ -37,6 +38,7 @@ mcg128
 mizuchi
 moremur
 mover_64
+mover_counter_64
 mumx_mumx_rrxx_1
 mumx_mumx_x1
 mumx_mumx_x2
@@ -61,6 +63,7 @@ romu_trio32
 rrma2xsm2xs
 rrmxmx
 rrxmrrxmsx_0
+salsa20
 sea_slater_64
 seiran
 sfc32

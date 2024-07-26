@@ -20,6 +20,7 @@ aesencrand
 aesimcrand
 bell
 bright
+chacha
 clmulrand
 degski64
 dirk
@@ -62,6 +63,7 @@ romu_trio32
 rrma2xsm2xs
 rrmxmx
 rrxmrrxmsx_0
+salsa20
 sea_slater_64
 seiran
 sfc32
@@ -74,6 +76,7 @@ squares32
 squares64
 stc64
 std::mt19937_64
+tangle
 thrust_alt
 topping
 wyrand
