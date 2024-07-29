@@ -32,8 +32,11 @@ main(int argc, char** argv)
 	// copied from /usr/include/benchmark/benchmark.h
 	benchmark::Initialize(&argc, argv);
 
+	/*
 	// PRNG names may be given in argv
-	//if (benchmark::ReportUnrecognizedArguments(argc, argv)) return 1;
+	if (benchmark::ReportUnrecognizedArguments(argc, argv))
+		return 1;
+	*/
 
 	// {{{ determine num_threads
 
