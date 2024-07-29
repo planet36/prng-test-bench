@@ -3,17 +3,19 @@
 
 #pragma once
 
-#include "aes128_prng.h"
+#include "aes128-utils.h"
 #include "union_128.h"
 
 #include <array>
 #include <concepts>
 #include <cstdint>
 #include <cstring>
+#include <err.h>
+#include <immintrin.h>
 #include <limits>
 #include <random>
 #include <type_traits>
-#include <immintrin.h>
+#include <unistd.h>
 
 #if defined(__AES__)
 
@@ -26,60 +28,101 @@ static_assert(std::signed_integral<__int128_t>);
 static_assert(std::integral<__uint128_t>);
 static_assert(std::unsigned_integral<__uint128_t>);
 
-#define DEF_AES_PRNG_CLASS(METHOD)                                      \
-	class aes128_prng_##METHOD                                          \
-	{                                                                   \
-	private:                                                            \
-		aes128_prng state;                                              \
-                                                                        \
-	public:                                                             \
-		using result_type = __uint128_t;                                \
-		using seed_bytes_type = std::array<uint8_t, sizeof(__m128i)>;   \
-		aes128_prng_##METHOD()                                          \
-		{                                                               \
-			aes128_prng_reseed(&state);                                 \
-		}                                                               \
-		aes128_prng_##METHOD(const seed_bytes_type& bytes)              \
-		{                                                               \
-			aes128_prng_reseed(&state);                                 \
-			(void)std::memcpy(&state.x, bytes.data(), sizeof(__m128i)); \
-		}                                                               \
-		static constexpr result_type min()                              \
-		{                                                               \
-			return std::numeric_limits<result_type>::min();             \
-		}                                                               \
-		static constexpr result_type max()                              \
-		{                                                               \
-			return std::numeric_limits<result_type>::max();             \
-		}                                                               \
-		constexpr result_type operator()()                              \
-		{                                                               \
-			return next();                                              \
-		}                                                               \
-		result_type next()                                              \
-		{                                                               \
-			const __m128i result = aes128_prng_next_##METHOD(&state);   \
-			return union_128{.xmm = result}.u128;                       \
-		}                                                               \
-	};                                                                  \
-	static_assert(std::uniform_random_bit_generator<aes128_prng_##METHOD>);
+template <bool enc, size_t Nk, size_t Nr>
+requires (Nk * Nr >= 2)
+class aes128_prng
+{
+private:
+	__m128i x;
+	__m128i c; // must be odd
+	__m128i keys[Nk];
 
-DEF_AES_PRNG_CLASS(enc_mix_n1)
-DEF_AES_PRNG_CLASS(enc_mix_n2)
-DEF_AES_PRNG_CLASS(enc_mix_n3)
-DEF_AES_PRNG_CLASS(enc_mix_n4)
-DEF_AES_PRNG_CLASS(enc_dm_n1 )
-DEF_AES_PRNG_CLASS(enc_dm_n2 )
-DEF_AES_PRNG_CLASS(enc_dm_n3 )
-DEF_AES_PRNG_CLASS(enc_dm_n4 )
-DEF_AES_PRNG_CLASS(dec_mix_n1)
-DEF_AES_PRNG_CLASS(dec_mix_n2)
-DEF_AES_PRNG_CLASS(dec_mix_n3)
-DEF_AES_PRNG_CLASS(dec_mix_n4)
-DEF_AES_PRNG_CLASS(dec_dm_n1 )
-DEF_AES_PRNG_CLASS(dec_dm_n2 )
-DEF_AES_PRNG_CLASS(dec_dm_n3 )
-DEF_AES_PRNG_CLASS(dec_dm_n4 )
+public:
+	using result_type = __uint128_t;
+	using seed_bytes_type = std::array<uint8_t, sizeof(x)>;
+
+	aes128_prng()
+	{
+		reseed();
+	}
+
+	aes128_prng(const seed_bytes_type& bytes)
+	{
+		reseed();
+		(void)std::memcpy(&x, bytes.data(), sizeof(x));
+	}
+
+	void reseed()
+	{
+		if (getentropy(this, sizeof(*this)) < 0)
+		{
+			err(EXIT_FAILURE, "getentropy");
+		}
+
+		// Every odd integer is coprime with every power of 2.  Ensure c is odd.
+		this->c = mm_make_odd_epu64(this->c);
+	}
+
+	static constexpr result_type min()
+	{
+		return std::numeric_limits<result_type>::min();
+	}
+
+	static constexpr result_type max()
+	{
+		return std::numeric_limits<result_type>::max();
+	}
+
+	result_type operator()()
+	{
+		return next();
+	}
+
+	result_type next()
+	{
+		__m128i dst;
+		if constexpr (enc)
+		{
+			dst = aes128_enc(this->x, this->keys, Nk, Nr);
+		}
+		else
+		{
+			dst = aes128_dec(this->x, this->keys, Nk, Nr);
+		}
+		this->x = _mm_add_epi64(this->x, this->c);
+		return union_128{.xmm = dst}.u128;
+	}
+};
+
+using aes128_prng_enc_k2_r1 = aes128_prng<true, 2, 1>;
+using aes128_prng_enc_k3_r1 = aes128_prng<true, 3, 1>;
+using aes128_prng_enc_k4_r1 = aes128_prng<true, 4, 1>;
+using aes128_prng_enc_k2_r2 = aes128_prng<true, 2, 2>;
+using aes128_prng_enc_k1_r2 = aes128_prng<true, 1, 2>;
+using aes128_prng_enc_k1_r3 = aes128_prng<true, 1, 3>;
+using aes128_prng_enc_k1_r4 = aes128_prng<true, 1, 4>;
+using aes128_prng_dec_k2_r1 = aes128_prng<false, 2, 1>;
+using aes128_prng_dec_k3_r1 = aes128_prng<false, 3, 1>;
+using aes128_prng_dec_k4_r1 = aes128_prng<false, 4, 1>;
+using aes128_prng_dec_k2_r2 = aes128_prng<false, 2, 2>;
+using aes128_prng_dec_k1_r2 = aes128_prng<false, 1, 2>;
+using aes128_prng_dec_k1_r3 = aes128_prng<false, 1, 3>;
+using aes128_prng_dec_k1_r4 = aes128_prng<false, 1, 4>;
+
+static_assert(std::uniform_random_bit_generator<aes128_prng_enc_k2_r1>);
+static_assert(std::uniform_random_bit_generator<aes128_prng_enc_k3_r1>);
+static_assert(std::uniform_random_bit_generator<aes128_prng_enc_k4_r1>);
+static_assert(std::uniform_random_bit_generator<aes128_prng_enc_k2_r2>);
+static_assert(std::uniform_random_bit_generator<aes128_prng_enc_k1_r2>);
+static_assert(std::uniform_random_bit_generator<aes128_prng_enc_k1_r3>);
+static_assert(std::uniform_random_bit_generator<aes128_prng_enc_k1_r4>);
+static_assert(std::uniform_random_bit_generator<aes128_prng_dec_k2_r1>);
+static_assert(std::uniform_random_bit_generator<aes128_prng_dec_k3_r1>);
+static_assert(std::uniform_random_bit_generator<aes128_prng_dec_k4_r1>);
+static_assert(std::uniform_random_bit_generator<aes128_prng_dec_k2_r2>);
+static_assert(std::uniform_random_bit_generator<aes128_prng_dec_k1_r2>);
+static_assert(std::uniform_random_bit_generator<aes128_prng_dec_k1_r3>);
+static_assert(std::uniform_random_bit_generator<aes128_prng_dec_k1_r4>);
 
 #else
 #warning "__AES__ not defined"
