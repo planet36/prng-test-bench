@@ -7,43 +7,43 @@ length= 256 megabytes (2^28 bytes), time= 0.6 seconds
   no anomalies in 521 test result(s)
 
 rng=RNG_stdin64, seed=unknown
-length= 512 megabytes (2^29 bytes), time= 3.9 seconds
+length= 512 megabytes (2^29 bytes), time= 3.4 seconds
   no anomalies in 563 test result(s)
 
 rng=RNG_stdin64, seed=unknown
-length= 1 gigabyte (2^30 bytes), time= 7.6 seconds
+length= 1 gigabyte (2^30 bytes), time= 6.6 seconds
   Test Name                         Raw       Processed     Evaluation
   [Low1/16]BCFN(2+3,13-4,T)         R=  -7.9  p =1-9.1e-5   unusual          
   ...and 608 test result(s) without anomalies
 
 rng=RNG_stdin64, seed=unknown
-length= 2 gigabytes (2^31 bytes), time= 12.2 seconds
+length= 2 gigabytes (2^31 bytes), time= 10.7 seconds
   no anomalies in 653 test result(s)
 
 rng=RNG_stdin64, seed=unknown
-length= 4 gigabytes (2^32 bytes), time= 18.6 seconds
+length= 4 gigabytes (2^32 bytes), time= 16.6 seconds
   no anomalies in 692 test result(s)
 
 rng=RNG_stdin64, seed=unknown
-length= 8 gigabytes (2^33 bytes), time= 30.3 seconds
+length= 8 gigabytes (2^33 bytes), time= 26.6 seconds
   no anomalies in 732 test result(s)
 
 rng=RNG_stdin64, seed=unknown
-length= 16 gigabytes (2^34 bytes), time= 50.7 seconds
+length= 16 gigabytes (2^34 bytes), time= 43.9 seconds
   Test Name                         Raw       Processed     Evaluation
   FPF-14+6/16:all                   R=  +5.9  p =  4.8e-5   unusual          
   ...and 769 test result(s) without anomalies
 
 rng=RNG_stdin64, seed=unknown
-length= 32 gigabytes (2^35 bytes), time= 86.8 seconds
+length= 32 gigabytes (2^35 bytes), time= 74.4 seconds
   no anomalies in 805 test result(s)
 
 rng=RNG_stdin64, seed=unknown
-length= 64 gigabytes (2^36 bytes), time= 163 seconds
+length= 64 gigabytes (2^36 bytes), time= 137 seconds
   no anomalies in 843 test result(s)
 
 rng=RNG_stdin64, seed=unknown
-length= 128 gigabytes (2^37 bytes), time= 312 seconds
+length= 128 gigabytes (2^37 bytes), time= 259 seconds
   Test Name                         Raw       Processed     Evaluation
   TMFn(2+12):wl                     R=+178.5  p~=   2e-100    FAIL !!!!!     
   [Low4/16]DC6-9x1Bytes-1           R=  +5.5  p =  1.0e-3   unusual          

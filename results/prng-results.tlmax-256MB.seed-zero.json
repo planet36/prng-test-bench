@@ -3,535 +3,535 @@
     "prng_name": "MRG32k3a",
     "test_ended_at_exp2_bytes": 28,
     "test_ended_with_failure": false,
-    "prng_throughput_mebibytes": 12825
+    "prng_throughput_mebibytes": 12990
   },
   {
     "prng_name": "aes128_prng_dec_dm_n1",
     "test_ended_at_exp2_bytes": 28,
     "test_ended_with_failure": false,
-    "prng_throughput_mebibytes": 36472
+    "prng_throughput_mebibytes": 37932
   },
   {
     "prng_name": "aes128_prng_dec_dm_n2",
     "test_ended_at_exp2_bytes": 28,
     "test_ended_with_failure": false,
-    "prng_throughput_mebibytes": 33283
+    "prng_throughput_mebibytes": 35495
   },
   {
     "prng_name": "aes128_prng_dec_dm_n3",
     "test_ended_at_exp2_bytes": 28,
     "test_ended_with_failure": false,
-    "prng_throughput_mebibytes": 29744
+    "prng_throughput_mebibytes": 32035
   },
   {
     "prng_name": "aes128_prng_dec_dm_n4",
     "test_ended_at_exp2_bytes": 28,
     "test_ended_with_failure": false,
-    "prng_throughput_mebibytes": 28943
+    "prng_throughput_mebibytes": 31314
   },
   {
     "prng_name": "aes128_prng_dec_mix_n1",
     "test_ended_at_exp2_bytes": 28,
     "test_ended_with_failure": true,
-    "prng_throughput_mebibytes": 48446
+    "prng_throughput_mebibytes": 51245
   },
   {
     "prng_name": "aes128_prng_dec_mix_n2",
     "test_ended_at_exp2_bytes": 28,
     "test_ended_with_failure": false,
-    "prng_throughput_mebibytes": 52964
+    "prng_throughput_mebibytes": 47169
   },
   {
     "prng_name": "aes128_prng_dec_mix_n3",
     "test_ended_at_exp2_bytes": 28,
     "test_ended_with_failure": false,
-    "prng_throughput_mebibytes": 41300
+    "prng_throughput_mebibytes": 42453
   },
   {
     "prng_name": "aes128_prng_dec_mix_n4",
     "test_ended_at_exp2_bytes": 28,
     "test_ended_with_failure": false,
-    "prng_throughput_mebibytes": 32852
+    "prng_throughput_mebibytes": 34316
   },
   {
     "prng_name": "aes128_prng_enc_dm_n1",
     "test_ended_at_exp2_bytes": 28,
     "test_ended_with_failure": false,
-    "prng_throughput_mebibytes": 38638
+    "prng_throughput_mebibytes": 40312
   },
   {
     "prng_name": "aes128_prng_enc_dm_n2",
     "test_ended_at_exp2_bytes": 28,
     "test_ended_with_failure": false,
-    "prng_throughput_mebibytes": 33579
+    "prng_throughput_mebibytes": 35582
   },
   {
     "prng_name": "aes128_prng_enc_dm_n3",
     "test_ended_at_exp2_bytes": 28,
     "test_ended_with_failure": false,
-    "prng_throughput_mebibytes": 29822
+    "prng_throughput_mebibytes": 30294
   },
   {
     "prng_name": "aes128_prng_enc_dm_n4",
     "test_ended_at_exp2_bytes": 28,
     "test_ended_with_failure": false,
-    "prng_throughput_mebibytes": 28503
+    "prng_throughput_mebibytes": 30819
   },
   {
     "prng_name": "aes128_prng_enc_mix_n1",
     "test_ended_at_exp2_bytes": 28,
     "test_ended_with_failure": true,
-    "prng_throughput_mebibytes": 48526
+    "prng_throughput_mebibytes": 52039
   },
   {
     "prng_name": "aes128_prng_enc_mix_n2",
     "test_ended_at_exp2_bytes": 28,
     "test_ended_with_failure": false,
-    "prng_throughput_mebibytes": 61165
+    "prng_throughput_mebibytes": 65396
   },
   {
     "prng_name": "aes128_prng_enc_mix_n3",
     "test_ended_at_exp2_bytes": 28,
     "test_ended_with_failure": false,
-    "prng_throughput_mebibytes": 43969
+    "prng_throughput_mebibytes": 44044
   },
   {
     "prng_name": "aes128_prng_enc_mix_n4",
     "test_ended_at_exp2_bytes": 28,
     "test_ended_with_failure": false,
-    "prng_throughput_mebibytes": 33594
+    "prng_throughput_mebibytes": 34234
   },
   {
     "prng_name": "aesdeclastrand",
     "test_ended_at_exp2_bytes": 28,
     "test_ended_with_failure": false,
-    "prng_throughput_mebibytes": 52291
+    "prng_throughput_mebibytes": 58791
   },
   {
     "prng_name": "aesdecrand",
     "test_ended_at_exp2_bytes": 28,
     "test_ended_with_failure": false,
-    "prng_throughput_mebibytes": 60736
+    "prng_throughput_mebibytes": 64570
   },
   {
     "prng_name": "aesenclastrand",
     "test_ended_at_exp2_bytes": 28,
     "test_ended_with_failure": false,
-    "prng_throughput_mebibytes": 58723
+    "prng_throughput_mebibytes": 64711
   },
   {
     "prng_name": "aesencrand",
     "test_ended_at_exp2_bytes": 28,
     "test_ended_with_failure": false,
-    "prng_throughput_mebibytes": 59143
+    "prng_throughput_mebibytes": 64427
   },
   {
     "prng_name": "aesimcrand",
     "test_ended_at_exp2_bytes": 28,
     "test_ended_with_failure": false,
-    "prng_throughput_mebibytes": 21459
+    "prng_throughput_mebibytes": 22558
   },
   {
     "prng_name": "bell",
     "test_ended_at_exp2_bytes": 28,
     "test_ended_with_failure": false,
-    "prng_throughput_mebibytes": 6107
+    "prng_throughput_mebibytes": 5808
   },
   {
     "prng_name": "bright",
     "test_ended_at_exp2_bytes": 28,
     "test_ended_with_failure": false,
-    "prng_throughput_mebibytes": 10377
+    "prng_throughput_mebibytes": 11062
   },
   {
     "prng_name": "chacha",
     "test_ended_at_exp2_bytes": 28,
     "test_ended_with_failure": false,
-    "prng_throughput_mebibytes": 3555
+    "prng_throughput_mebibytes": 3553
   },
   {
     "prng_name": "clmulrand",
     "test_ended_at_exp2_bytes": 28,
     "test_ended_with_failure": false,
-    "prng_throughput_mebibytes": 15833
+    "prng_throughput_mebibytes": 15547
   },
   {
     "prng_name": "degski32",
     "test_ended_at_exp2_bytes": 28,
     "test_ended_with_failure": true,
-    "prng_throughput_mebibytes": 6066
+    "prng_throughput_mebibytes": 6046
   },
   {
     "prng_name": "degski64",
     "test_ended_at_exp2_bytes": 28,
     "test_ended_with_failure": false,
-    "prng_throughput_mebibytes": 12517
+    "prng_throughput_mebibytes": 12658
   },
   {
     "prng_name": "dirk",
     "test_ended_at_exp2_bytes": 28,
     "test_ended_with_failure": false,
-    "prng_throughput_mebibytes": 9578
+    "prng_throughput_mebibytes": 9660
   },
   {
     "prng_name": "ettinger_mixer",
     "test_ended_at_exp2_bytes": 28,
     "test_ended_with_failure": false,
-    "prng_throughput_mebibytes": 9541
+    "prng_throughput_mebibytes": 9677
   },
   {
     "prng_name": "gjrand",
     "test_ended_at_exp2_bytes": 28,
     "test_ended_with_failure": false,
-    "prng_throughput_mebibytes": 6597
+    "prng_throughput_mebibytes": 6378
   },
   {
     "prng_name": "jsf32_2",
     "test_ended_at_exp2_bytes": 28,
     "test_ended_with_failure": false,
-    "prng_throughput_mebibytes": 5260
+    "prng_throughput_mebibytes": 5309
   },
   {
     "prng_name": "jsf32_3",
     "test_ended_at_exp2_bytes": 28,
     "test_ended_with_failure": false,
-    "prng_throughput_mebibytes": 4635
+    "prng_throughput_mebibytes": 4675
   },
   {
     "prng_name": "jsf64",
     "test_ended_at_exp2_bytes": 28,
     "test_ended_with_failure": false,
-    "prng_throughput_mebibytes": 9146
+    "prng_throughput_mebibytes": 9041
   },
   {
     "prng_name": "klimov_shamir_32",
     "test_ended_at_exp2_bytes": 28,
     "test_ended_with_failure": true,
-    "prng_throughput_mebibytes": 9118
+    "prng_throughput_mebibytes": 8983
   },
   {
     "prng_name": "lcg32",
     "test_ended_at_exp2_bytes": 28,
     "test_ended_with_failure": false,
-    "prng_throughput_mebibytes": 2898
+    "prng_throughput_mebibytes": 2868
   },
   {
     "prng_name": "lcg64",
     "test_ended_at_exp2_bytes": 28,
     "test_ended_with_failure": false,
-    "prng_throughput_mebibytes": 5952
+    "prng_throughput_mebibytes": 5673
   },
   {
     "prng_name": "lea64",
     "test_ended_at_exp2_bytes": 28,
     "test_ended_with_failure": false,
-    "prng_throughput_mebibytes": 12688
+    "prng_throughput_mebibytes": 12786
   },
   {
     "prng_name": "lehmer64",
     "test_ended_at_exp2_bytes": 28,
     "test_ended_with_failure": false,
-    "prng_throughput_mebibytes": 7142
+    "prng_throughput_mebibytes": 6843
   },
   {
     "prng_name": "linnorm",
     "test_ended_at_exp2_bytes": 28,
     "test_ended_with_failure": false,
-    "prng_throughput_mebibytes": 9810
+    "prng_throughput_mebibytes": 9541
   },
   {
     "prng_name": "mcg128",
     "test_ended_at_exp2_bytes": 28,
     "test_ended_with_failure": false,
-    "prng_throughput_mebibytes": 5845
+    "prng_throughput_mebibytes": 5641
   },
   {
     "prng_name": "mizuchi",
     "test_ended_at_exp2_bytes": 28,
     "test_ended_with_failure": false,
-    "prng_throughput_mebibytes": 9586
+    "prng_throughput_mebibytes": 9688
   },
   {
     "prng_name": "moremur",
     "test_ended_at_exp2_bytes": 28,
     "test_ended_with_failure": false,
-    "prng_throughput_mebibytes": 12447
+    "prng_throughput_mebibytes": 13099
   },
   {
     "prng_name": "mover_64",
     "test_ended_at_exp2_bytes": 28,
     "test_ended_with_failure": false,
-    "prng_throughput_mebibytes": 7036
+    "prng_throughput_mebibytes": 6550
   },
   {
     "prng_name": "mover_counter_64",
     "test_ended_at_exp2_bytes": 28,
     "test_ended_with_failure": true,
-    "prng_throughput_mebibytes": 9293
+    "prng_throughput_mebibytes": 8641
   },
   {
     "prng_name": "mumx_mumx_rrxx_1",
     "test_ended_at_exp2_bytes": 28,
     "test_ended_with_failure": false,
-    "prng_throughput_mebibytes": 9208
+    "prng_throughput_mebibytes": 9359
   },
   {
     "prng_name": "mumx_mumx_x1",
     "test_ended_at_exp2_bytes": 28,
     "test_ended_with_failure": false,
-    "prng_throughput_mebibytes": 13897
+    "prng_throughput_mebibytes": 14053
   },
   {
     "prng_name": "mumx_mumx_x2",
     "test_ended_at_exp2_bytes": 28,
     "test_ended_with_failure": false,
-    "prng_throughput_mebibytes": 11059
+    "prng_throughput_mebibytes": 11539
   },
   {
     "prng_name": "murmurhash3",
     "test_ended_at_exp2_bytes": 28,
     "test_ended_with_failure": false,
-    "prng_throughput_mebibytes": 12331
+    "prng_throughput_mebibytes": 12102
   },
   {
     "prng_name": "murmurhash3_32",
     "test_ended_at_exp2_bytes": 28,
     "test_ended_with_failure": false,
-    "prng_throughput_mebibytes": 6166
+    "prng_throughput_mebibytes": 6534
   },
   {
     "prng_name": "mx3",
     "test_ended_at_exp2_bytes": 28,
     "test_ended_with_failure": false,
-    "prng_throughput_mebibytes": 9281
+    "prng_throughput_mebibytes": 9597
   },
   {
     "prng_name": "nasam",
     "test_ended_at_exp2_bytes": 28,
     "test_ended_with_failure": false,
-    "prng_throughput_mebibytes": 7140
+    "prng_throughput_mebibytes": 7260
   },
   {
     "prng_name": "orbit",
     "test_ended_at_exp2_bytes": 28,
     "test_ended_with_failure": false,
-    "prng_throughput_mebibytes": 9871
+    "prng_throughput_mebibytes": 9859
   },
   {
     "prng_name": "pcg32",
     "test_ended_at_exp2_bytes": 28,
     "test_ended_with_failure": false,
-    "prng_throughput_mebibytes": 4406
+    "prng_throughput_mebibytes": 4286
   },
   {
     "prng_name": "pcg32_fast",
     "test_ended_at_exp2_bytes": 28,
     "test_ended_with_failure": false,
-    "prng_throughput_mebibytes": 4477
+    "prng_throughput_mebibytes": 4276
   },
   {
     "prng_name": "pcg64",
     "test_ended_at_exp2_bytes": 28,
     "test_ended_with_failure": false,
-    "prng_throughput_mebibytes": 5457
+    "prng_throughput_mebibytes": 5499
   },
   {
     "prng_name": "pcg64dxsm",
     "test_ended_at_exp2_bytes": 28,
     "test_ended_with_failure": false,
-    "prng_throughput_mebibytes": 6556
+    "prng_throughput_mebibytes": 6778
   },
   {
     "prng_name": "pelican",
     "test_ended_at_exp2_bytes": 28,
     "test_ended_with_failure": false,
-    "prng_throughput_mebibytes": 6720
+    "prng_throughput_mebibytes": 6805
   },
   {
     "prng_name": "pulley",
     "test_ended_at_exp2_bytes": 28,
     "test_ended_with_failure": false,
-    "prng_throughput_mebibytes": 7958
+    "prng_throughput_mebibytes": 8185
   },
   {
     "prng_name": "quixotic",
     "test_ended_at_exp2_bytes": 28,
     "test_ended_with_failure": false,
-    "prng_throughput_mebibytes": 7911
+    "prng_throughput_mebibytes": 7106
   },
   {
     "prng_name": "romu_duo",
     "test_ended_at_exp2_bytes": 28,
     "test_ended_with_failure": false,
-    "prng_throughput_mebibytes": 9775
+    "prng_throughput_mebibytes": 9582
   },
   {
     "prng_name": "romu_duo_jr",
     "test_ended_at_exp2_bytes": 28,
     "test_ended_with_failure": false,
-    "prng_throughput_mebibytes": 13232
+    "prng_throughput_mebibytes": 12569
   },
   {
     "prng_name": "romu_quad",
     "test_ended_at_exp2_bytes": 28,
     "test_ended_with_failure": false,
-    "prng_throughput_mebibytes": 10578
+    "prng_throughput_mebibytes": 10411
   },
   {
     "prng_name": "romu_quad32",
     "test_ended_at_exp2_bytes": 28,
     "test_ended_with_failure": false,
-    "prng_throughput_mebibytes": 5376
+    "prng_throughput_mebibytes": 5170
   },
   {
     "prng_name": "romu_trio",
     "test_ended_at_exp2_bytes": 28,
     "test_ended_with_failure": false,
-    "prng_throughput_mebibytes": 11871
+    "prng_throughput_mebibytes": 11944
   },
   {
     "prng_name": "romu_trio32",
     "test_ended_at_exp2_bytes": 28,
     "test_ended_with_failure": false,
-    "prng_throughput_mebibytes": 5409
+    "prng_throughput_mebibytes": 5500
   },
   {
     "prng_name": "rrma2xsm2xs",
     "test_ended_at_exp2_bytes": 28,
     "test_ended_with_failure": false,
-    "prng_throughput_mebibytes": 2107
+    "prng_throughput_mebibytes": 1956
   },
   {
     "prng_name": "rrmxmx",
     "test_ended_at_exp2_bytes": 28,
     "test_ended_with_failure": false,
-    "prng_throughput_mebibytes": 9182
+    "prng_throughput_mebibytes": 8962
   },
   {
     "prng_name": "rrxmrrxmsx_0",
     "test_ended_at_exp2_bytes": 28,
     "test_ended_with_failure": false,
-    "prng_throughput_mebibytes": 8234
+    "prng_throughput_mebibytes": 8240
   },
   {
     "prng_name": "salsa20",
     "test_ended_at_exp2_bytes": 28,
     "test_ended_with_failure": false,
-    "prng_throughput_mebibytes": 3463
+    "prng_throughput_mebibytes": 3603
   },
   {
     "prng_name": "sea_slater_64",
     "test_ended_at_exp2_bytes": 28,
     "test_ended_with_failure": false,
-    "prng_throughput_mebibytes": 6036
+    "prng_throughput_mebibytes": 5988
   },
   {
     "prng_name": "seiran",
     "test_ended_at_exp2_bytes": 28,
     "test_ended_with_failure": false,
-    "prng_throughput_mebibytes": 8457
+    "prng_throughput_mebibytes": 8426
   },
   {
     "prng_name": "sfc32",
     "test_ended_at_exp2_bytes": 28,
     "test_ended_with_failure": false,
-    "prng_throughput_mebibytes": 5193
+    "prng_throughput_mebibytes": 4982
   },
   {
     "prng_name": "sfc64",
     "test_ended_at_exp2_bytes": 28,
     "test_ended_with_failure": false,
-    "prng_throughput_mebibytes": 10236
+    "prng_throughput_mebibytes": 10059
   },
   {
     "prng_name": "shioi",
     "test_ended_at_exp2_bytes": 28,
     "test_ended_with_failure": false,
-    "prng_throughput_mebibytes": 9212
+    "prng_throughput_mebibytes": 9309
   },
   {
     "prng_name": "splitmix32",
     "test_ended_at_exp2_bytes": 28,
     "test_ended_with_failure": false,
-    "prng_throughput_mebibytes": 6801
+    "prng_throughput_mebibytes": 6958
   },
   {
     "prng_name": "splitmix64",
     "test_ended_at_exp2_bytes": 28,
     "test_ended_with_failure": false,
-    "prng_throughput_mebibytes": 12623
+    "prng_throughput_mebibytes": 12741
   },
   {
     "prng_name": "splitxix33",
     "test_ended_at_exp2_bytes": 28,
     "test_ended_with_failure": false,
-    "prng_throughput_mebibytes": 12945
+    "prng_throughput_mebibytes": 12923
   },
   {
     "prng_name": "squares32",
     "test_ended_at_exp2_bytes": 28,
     "test_ended_with_failure": false,
-    "prng_throughput_mebibytes": 4317
+    "prng_throughput_mebibytes": 4294
   },
   {
     "prng_name": "squares64",
     "test_ended_at_exp2_bytes": 28,
     "test_ended_with_failure": false,
-    "prng_throughput_mebibytes": 6757
+    "prng_throughput_mebibytes": 6767
   },
   {
     "prng_name": "stc64",
     "test_ended_at_exp2_bytes": 28,
     "test_ended_with_failure": false,
-    "prng_throughput_mebibytes": 11770
+    "prng_throughput_mebibytes": 11675
   },
   {
     "prng_name": "std::default_random_engine",
     "test_ended_at_exp2_bytes": 28,
     "test_ended_with_failure": true,
-    "prng_throughput_mebibytes": 2675
+    "prng_throughput_mebibytes": 2502
   },
   {
     "prng_name": "std::knuth_b",
     "test_ended_at_exp2_bytes": 28,
     "test_ended_with_failure": true,
-    "prng_throughput_mebibytes": 962
+    "prng_throughput_mebibytes": 888
   },
   {
     "prng_name": "std::minstd_rand",
     "test_ended_at_exp2_bytes": 28,
     "test_ended_with_failure": true,
-    "prng_throughput_mebibytes": 2677
+    "prng_throughput_mebibytes": 2423
   },
   {
     "prng_name": "std::minstd_rand0",
     "test_ended_at_exp2_bytes": 28,
     "test_ended_with_failure": true,
-    "prng_throughput_mebibytes": 2687
+    "prng_throughput_mebibytes": 2485
   },
   {
     "prng_name": "std::mt19937",
     "test_ended_at_exp2_bytes": 28,
     "test_ended_with_failure": true,
-    "prng_throughput_mebibytes": 5091
+    "prng_throughput_mebibytes": 5456
   },
   {
     "prng_name": "std::mt19937_64",
     "test_ended_at_exp2_bytes": 28,
     "test_ended_with_failure": true,
-    "prng_throughput_mebibytes": 5667
+    "prng_throughput_mebibytes": 6118
   },
   {
     "prng_name": "std::ranlux24",
     "test_ended_at_exp2_bytes": 28,
     "test_ended_with_failure": true,
-    "prng_throughput_mebibytes": 188
+    "prng_throughput_mebibytes": 192
   },
   {
     "prng_name": "std::ranlux24_base",
     "test_ended_at_exp2_bytes": 28,
     "test_ended_with_failure": true,
-    "prng_throughput_mebibytes": 1855
+    "prng_throughput_mebibytes": 1829
   },
   {
     "prng_name": "std::ranlux48",
@@ -543,114 +543,114 @@
     "prng_name": "std::ranlux48_base",
     "test_ended_at_exp2_bytes": 28,
     "test_ended_with_failure": true,
-    "prng_throughput_mebibytes": 2097
+    "prng_throughput_mebibytes": 2120
   },
   {
     "prng_name": "tangle",
     "test_ended_at_exp2_bytes": 28,
     "test_ended_with_failure": true,
-    "prng_throughput_mebibytes": 11649
+    "prng_throughput_mebibytes": 12025
   },
   {
     "prng_name": "thrust_alt",
     "test_ended_at_exp2_bytes": 28,
     "test_ended_with_failure": false,
-    "prng_throughput_mebibytes": 13262
+    "prng_throughput_mebibytes": 13618
   },
   {
     "prng_name": "topping",
     "test_ended_at_exp2_bytes": 28,
     "test_ended_with_failure": false,
-    "prng_throughput_mebibytes": 7702
+    "prng_throughput_mebibytes": 7867
   },
   {
     "prng_name": "ttwanghash64",
     "test_ended_at_exp2_bytes": 28,
     "test_ended_with_failure": true,
-    "prng_throughput_mebibytes": 7996
+    "prng_throughput_mebibytes": 8151
   },
   {
     "prng_name": "wyrand",
     "test_ended_at_exp2_bytes": 28,
     "test_ended_with_failure": false,
-    "prng_throughput_mebibytes": 17789
+    "prng_throughput_mebibytes": 17612
   },
   {
     "prng_name": "xoroshiro1024plusplus",
     "test_ended_at_exp2_bytes": 28,
     "test_ended_with_failure": true,
-    "prng_throughput_mebibytes": 4299
+    "prng_throughput_mebibytes": 4275
   },
   {
     "prng_name": "xoroshiro1024starstar",
     "test_ended_at_exp2_bytes": 28,
     "test_ended_with_failure": true,
-    "prng_throughput_mebibytes": 4493
+    "prng_throughput_mebibytes": 4508
   },
   {
     "prng_name": "xoroshiro128plusplus",
     "test_ended_at_exp2_bytes": 28,
     "test_ended_with_failure": true,
-    "prng_throughput_mebibytes": 9463
+    "prng_throughput_mebibytes": 9410
   },
   {
     "prng_name": "xoroshiro128starstar",
     "test_ended_at_exp2_bytes": 28,
     "test_ended_with_failure": true,
-    "prng_throughput_mebibytes": 11810
+    "prng_throughput_mebibytes": 11273
   },
   {
     "prng_name": "xoroshiro64starstar",
     "test_ended_at_exp2_bytes": 28,
     "test_ended_with_failure": true,
-    "prng_throughput_mebibytes": 4779
+    "prng_throughput_mebibytes": 4599
   },
   {
     "prng_name": "xoshiro128plusplus",
     "test_ended_at_exp2_bytes": 28,
     "test_ended_with_failure": true,
-    "prng_throughput_mebibytes": 5080
+    "prng_throughput_mebibytes": 5093
   },
   {
     "prng_name": "xoshiro128starstar",
     "test_ended_at_exp2_bytes": 28,
     "test_ended_with_failure": true,
-    "prng_throughput_mebibytes": 4771
+    "prng_throughput_mebibytes": 4779
   },
   {
     "prng_name": "xoshiro256plusplus",
     "test_ended_at_exp2_bytes": 28,
     "test_ended_with_failure": true,
-    "prng_throughput_mebibytes": 10336
+    "prng_throughput_mebibytes": 11051
   },
   {
     "prng_name": "xoshiro256starstar",
     "test_ended_at_exp2_bytes": 28,
     "test_ended_with_failure": true,
-    "prng_throughput_mebibytes": 10487
+    "prng_throughput_mebibytes": 10401
   },
   {
     "prng_name": "xoshiro512plusplus",
     "test_ended_at_exp2_bytes": 28,
     "test_ended_with_failure": true,
-    "prng_throughput_mebibytes": 8750
+    "prng_throughput_mebibytes": 8957
   },
   {
     "prng_name": "xoshiro512starstar",
     "test_ended_at_exp2_bytes": 28,
     "test_ended_with_failure": true,
-    "prng_throughput_mebibytes": 8838
+    "prng_throughput_mebibytes": 9095
   },
   {
     "prng_name": "xsm32",
     "test_ended_at_exp2_bytes": 28,
     "test_ended_with_failure": false,
-    "prng_throughput_mebibytes": 3350
+    "prng_throughput_mebibytes": 3258
   },
   {
     "prng_name": "xsm64",
     "test_ended_at_exp2_bytes": 28,
     "test_ended_with_failure": false,
-    "prng_throughput_mebibytes": 6122
+    "prng_throughput_mebibytes": 6198
   }
 ]

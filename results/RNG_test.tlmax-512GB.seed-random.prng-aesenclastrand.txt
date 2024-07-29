@@ -7,48 +7,64 @@ length= 256 megabytes (2^28 bytes), time= 0.6 seconds
   no anomalies in 521 test result(s)
 
 rng=RNG_stdin64, seed=unknown
-length= 512 megabytes (2^29 bytes), time= 3.9 seconds
-  Test Name                         Raw       Processed     Evaluation
-  [Low1/8]Gap-16:B                  R=  -4.8  p =1-3.9e-4   unusual          
-  ...and 562 test result(s) without anomalies
+length= 512 megabytes (2^29 bytes), time= 3.4 seconds
+  no anomalies in 563 test result(s)
 
 rng=RNG_stdin64, seed=unknown
-length= 1 gigabyte (2^30 bytes), time= 7.7 seconds
+length= 1 gigabyte (2^30 bytes), time= 6.6 seconds
   no anomalies in 609 test result(s)
 
 rng=RNG_stdin64, seed=unknown
-length= 2 gigabytes (2^31 bytes), time= 12.3 seconds
+length= 2 gigabytes (2^31 bytes), time= 10.8 seconds
   no anomalies in 653 test result(s)
 
 rng=RNG_stdin64, seed=unknown
-length= 4 gigabytes (2^32 bytes), time= 18.8 seconds
+length= 4 gigabytes (2^32 bytes), time= 17.0 seconds
   no anomalies in 692 test result(s)
 
 rng=RNG_stdin64, seed=unknown
-length= 8 gigabytes (2^33 bytes), time= 30.2 seconds
+length= 8 gigabytes (2^33 bytes), time= 27.2 seconds
   no anomalies in 732 test result(s)
 
 rng=RNG_stdin64, seed=unknown
-length= 16 gigabytes (2^34 bytes), time= 50.9 seconds
-  no anomalies in 770 test result(s)
+length= 16 gigabytes (2^34 bytes), time= 44.7 seconds
+  Test Name                         Raw       Processed     Evaluation
+  [Low8/64]FPF-14+6/16:all          R=  +5.3  p =  1.8e-4   unusual          
+  ...and 769 test result(s) without anomalies
 
 rng=RNG_stdin64, seed=unknown
-length= 32 gigabytes (2^35 bytes), time= 89.1 seconds
-  no anomalies in 805 test result(s)
+length= 32 gigabytes (2^35 bytes), time= 75.9 seconds
+  Test Name                         Raw       Processed     Evaluation
+  [Low8/64]FPF-14+6/16:all          R=  +6.4  p =  1.6e-5   mildly suspicious
+  ...and 804 test result(s) without anomalies
 
 rng=RNG_stdin64, seed=unknown
-length= 64 gigabytes (2^36 bytes), time= 167 seconds
-  no anomalies in 843 test result(s)
+length= 64 gigabytes (2^36 bytes), time= 140 seconds
+  Test Name                         Raw       Processed     Evaluation
+  [Low8/64]FPF-14+6/16:all          R=  +5.6  p =  1.0e-4   unusual          
+  ...and 842 test result(s) without anomalies
 
 rng=RNG_stdin64, seed=unknown
-length= 128 gigabytes (2^37 bytes), time= 319 seconds
+length= 128 gigabytes (2^37 bytes), time= 265 seconds
   no anomalies in 880 test result(s)
 
 rng=RNG_stdin64, seed=unknown
-length= 256 gigabytes (2^38 bytes), time= 609 seconds
-  no anomalies in 915 test result(s)
+length= 256 gigabytes (2^38 bytes), time= 500 seconds
+  Test Name                         Raw       Processed     Evaluation
+  [Low8/32]Gap-16:B                 R=  +7.9  p =  1.2e-6   suspicious       
+  [Low8/64]Gap-16:A                 R=  +6.9  p =  7.7e-5   unusual          
+  [Low8/64]Gap-16:B                 R=  +7.1  p =  5.3e-6   mildly suspicious
+  ...and 912 test result(s) without anomalies
 
 rng=RNG_stdin64, seed=unknown
-length= 512 gigabytes (2^39 bytes), time= 1226 seconds
-  no anomalies in 952 test result(s)
+length= 512 gigabytes (2^39 bytes), time= 1003 seconds
+  Test Name                         Raw       Processed     Evaluation
+  Gap-16:B                          R=  +7.8  p =  1.3e-6   suspicious       
+  TMFn(2+0):wl                      R= +25.3  p~=   2e-8    suspicious       
+  [Low4/64]FPF-14+6/16:(1,14-0)     R=  +7.2  p =  3.0e-6   unusual          
+  [Low8/32]Gap-16:A                 R=  +9.0  p =  2.8e-6   suspicious       
+  [Low8/32]Gap-16:B                 R= +16.2  p =  9.5e-14    FAIL           
+  [Low8/64]Gap-16:A                 R= +10.1  p =  5.9e-7   suspicious       
+  [Low8/64]Gap-16:B                 R= +13.4  p =  2.2e-11   VERY SUSPICIOUS 
+  ...and 945 test result(s) without anomalies
 

@@ -1,5 +1,12 @@
+RNG_test.tlmax-512GB.seed-zero.prng-aes128_prng_dec_dm_n1.txt
+RNG_test.tlmax-512GB.seed-zero.prng-aes128_prng_dec_mix_n1.txt
+RNG_test.tlmax-512GB.seed-zero.prng-aes128_prng_enc_dm_n1.txt
+RNG_test.tlmax-512GB.seed-zero.prng-aes128_prng_enc_mix_n1.txt
+RNG_test.tlmax-512GB.seed-zero.prng-aesdeclastrand.txt
+RNG_test.tlmax-512GB.seed-zero.prng-aesenclastrand.txt
 RNG_test.tlmax-512GB.seed-zero.prng-aesimcrand.txt
 RNG_test.tlmax-512GB.seed-zero.prng-bell.txt
+RNG_test.tlmax-512GB.seed-zero.prng-chacha.txt
 RNG_test.tlmax-512GB.seed-zero.prng-degski32.txt
 RNG_test.tlmax-512GB.seed-zero.prng-degski64.txt
 RNG_test.tlmax-512GB.seed-zero.prng-klimov_shamir_32.txt
@@ -10,6 +17,7 @@ RNG_test.tlmax-512GB.seed-zero.prng-mcg128.txt
 RNG_test.tlmax-512GB.seed-zero.prng-mover_counter_64.txt
 RNG_test.tlmax-512GB.seed-zero.prng-murmurhash3.txt
 RNG_test.tlmax-512GB.seed-zero.prng-murmurhash3_32.txt
+RNG_test.tlmax-512GB.seed-zero.prng-salsa20.txt
 RNG_test.tlmax-512GB.seed-zero.prng-splitxix33.txt
 RNG_test.tlmax-512GB.seed-zero.prng-std::default_random_engine.txt
 RNG_test.tlmax-512GB.seed-zero.prng-std::knuth_b.txt

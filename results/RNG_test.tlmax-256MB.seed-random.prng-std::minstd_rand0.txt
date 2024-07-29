@@ -3,7 +3,7 @@ RNG = RNG_stdin64, seed = unknown
 test set = core, folding = none
 
 rng=RNG_stdin64, seed=unknown
-length= 256 megabytes (2^28 bytes), time= 0.8 seconds
+length= 256 megabytes (2^28 bytes), time= 0.7 seconds
   Test Name                         Raw       Processed     Evaluation
   BCFN(2+0,13-2,T)                  R>+99999  p = 0           FAIL !!!!!!!!  
   BCFN(2+1,13-2,T)                  R>+99999  p = 0           FAIL !!!!!!!!  
@@ -23,20 +23,20 @@ length= 256 megabytes (2^28 bytes), time= 0.8 seconds
   DC6-9x1Bytes-1                    R>+99999  p = 0           FAIL !!!!!!!!  
   Gap-16:A                          R>+99999  p = 0           FAIL !!!!!!!!  
   Gap-16:B                          R>+99999  p = 0           FAIL !!!!!!!!  
-  FPF-14+6/16:(1,14-0)              R=+34264  p = 0           FAIL !!!!!!!!  
-  FPF-14+6/16:(2,14-0)              R=+41001  p = 0           FAIL !!!!!!!!  
-  FPF-14+6/16:(3,14-0)              R=+35550  p = 0           FAIL !!!!!!!!  
-  FPF-14+6/16:(4,14-1)              R=+25185  p = 0           FAIL !!!!!!!!  
-  FPF-14+6/16:(5,14-2)              R=+17884  p = 0           FAIL !!!!!!!!  
-  FPF-14+6/16:(6,14-2)              R=+13248  p = 0           FAIL !!!!!!!!  
-  FPF-14+6/16:(7,14-3)              R= +9466  p =  5e-8297    FAIL !!!!!!!!  
-  FPF-14+6/16:(8,14-4)              R= +6595  p =  8e-5389    FAIL !!!!!!!!  
-  FPF-14+6/16:(9,14-5)              R= +4758  p =  2e-3944    FAIL !!!!!!!!  
-  FPF-14+6/16:(10,14-5)             R= +3250  p =  2e-2694    FAIL !!!!!!!!  
-  FPF-14+6/16:(11,14-6)             R= +2231  p =  1e-1707    FAIL !!!!!!!!  
-  FPF-14+6/16:(12,14-7)             R= +1611  p =  3e-1282    FAIL !!!!!!!!  
-  FPF-14+6/16:(13,14-8)             R= +1138  p =  9.7e-819   FAIL !!!!!!!   
-  FPF-14+6/16:(14,14-8)             R=+724.3  p =  2.9e-521   FAIL !!!!!!!   
+  FPF-14+6/16:(1,14-0)              R=+34263  p = 0           FAIL !!!!!!!!  
+  FPF-14+6/16:(2,14-0)              R=+40938  p = 0           FAIL !!!!!!!!  
+  FPF-14+6/16:(3,14-0)              R=+35533  p = 0           FAIL !!!!!!!!  
+  FPF-14+6/16:(4,14-1)              R=+25123  p = 0           FAIL !!!!!!!!  
+  FPF-14+6/16:(5,14-2)              R=+17788  p = 0           FAIL !!!!!!!!  
+  FPF-14+6/16:(6,14-2)              R=+13377  p = 0           FAIL !!!!!!!!  
+  FPF-14+6/16:(7,14-3)              R= +9436  p =  3e-8270    FAIL !!!!!!!!  
+  FPF-14+6/16:(8,14-4)              R= +6688  p =  1e-5464    FAIL !!!!!!!!  
+  FPF-14+6/16:(9,14-5)              R= +4717  p =  1e-3910    FAIL !!!!!!!!  
+  FPF-14+6/16:(10,14-5)             R= +3183  p =  5e-2639    FAIL !!!!!!!!  
+  FPF-14+6/16:(11,14-6)             R= +2307  p =  1e-1765    FAIL !!!!!!!!  
+  FPF-14+6/16:(12,14-7)             R= +1594  p =  1e-1268    FAIL !!!!!!!!  
+  FPF-14+6/16:(13,14-8)             R= +1122  p =  1.1e-807   FAIL !!!!!!!   
+  FPF-14+6/16:(14,14-8)             R=+788.3  p =  2.6e-567   FAIL !!!!!!!   
   FPF-14+6/16:all                   R>+99999  p = 0           FAIL !!!!!!!!  
   FPF-14+6/16:cross                 R>+99999  p = 0           FAIL !!!!!!!!  
   BRank(12):128(4)                  R= +2630  p~=  7e-1400    FAIL !!!!!!!!  
@@ -50,9 +50,9 @@ length= 256 megabytes (2^28 bytes), time= 0.8 seconds
   mod3n(5):(0,9-6)                  R>+99999  p = 0           FAIL !!!!!!!!  
   mod3n(5):(1,9-6)                  R>+99999  p = 0           FAIL !!!!!!!!  
   mod3n(5):(2,9-6)                  R>+99999  p = 0           FAIL !!!!!!!!  
-  TMFn(2+0):wl                      R=+48167  p~=  0          FAIL !!!!!!!!  
-  TMFn(2+1):wl                      R=+24051  p~=  0          FAIL !!!!!!!!  
-  TMFn(2+2):wl                      R=+11992  p~=  0          FAIL !!!!!!!!  
-  TMFn(2+3):wl                      R= +5964  p~=  0          FAIL !!!!!!!!  
+  TMFn(2+0):wl                      R=+48166  p~=  0          FAIL !!!!!!!!  
+  TMFn(2+1):wl                      R=+24052  p~=  0          FAIL !!!!!!!!  
+  TMFn(2+2):wl                      R=+11993  p~=  0          FAIL !!!!!!!!  
+  TMFn(2+3):wl                      R= +5966  p~=  0          FAIL !!!!!!!!  
   ...and 18 test result(s) without anomalies
 

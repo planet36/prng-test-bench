@@ -1,5 +1,12 @@
 MRG32k3a
+aes128_prng_dec_dm_n1
+aes128_prng_dec_mix_n1
+aes128_prng_enc_dm_n1
+aes128_prng_enc_mix_n1
+aesdeclastrand
+aesenclastrand
 aesimcrand
+chacha
 degski32
 degski64
 klimov_shamir_32
@@ -7,7 +14,9 @@ lcg32
 lcg64
 lehmer64
 mcg128
+murmurhash3
 murmurhash3_32
+salsa20
 splitxix33
 std::default_random_engine
 std::knuth_b
@@ -19,4 +28,5 @@ std::ranlux24
 std::ranlux24_base
 std::ranlux48
 std::ranlux48_base
+tangle
 ttwanghash64

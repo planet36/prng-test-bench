@@ -3,50 +3,54 @@ RNG = RNG_stdin32, seed = unknown
 test set = core, folding = extra
 
 rng=RNG_stdin32, seed=unknown
-length= 256 megabytes (2^28 bytes), time= 0.7 seconds
+length= 256 megabytes (2^28 bytes), time= 0.6 seconds
   no anomalies in 521 test result(s)
 
 rng=RNG_stdin32, seed=unknown
-length= 512 megabytes (2^29 bytes), time= 3.9 seconds
+length= 512 megabytes (2^29 bytes), time= 3.5 seconds
   no anomalies in 563 test result(s)
 
 rng=RNG_stdin32, seed=unknown
-length= 1 gigabyte (2^30 bytes), time= 7.7 seconds
+length= 1 gigabyte (2^30 bytes), time= 6.8 seconds
   no anomalies in 609 test result(s)
 
 rng=RNG_stdin32, seed=unknown
-length= 2 gigabytes (2^31 bytes), time= 12.5 seconds
+length= 2 gigabytes (2^31 bytes), time= 11.0 seconds
   no anomalies in 653 test result(s)
 
 rng=RNG_stdin32, seed=unknown
-length= 4 gigabytes (2^32 bytes), time= 19.2 seconds
+length= 4 gigabytes (2^32 bytes), time= 17.1 seconds
   no anomalies in 692 test result(s)
 
 rng=RNG_stdin32, seed=unknown
-length= 8 gigabytes (2^33 bytes), time= 31.3 seconds
+length= 8 gigabytes (2^33 bytes), time= 27.4 seconds
   no anomalies in 732 test result(s)
 
 rng=RNG_stdin32, seed=unknown
-length= 16 gigabytes (2^34 bytes), time= 52.9 seconds
-  no anomalies in 770 test result(s)
+length= 16 gigabytes (2^34 bytes), time= 45.5 seconds
+  Test Name                         Raw       Processed     Evaluation
+  [Low4/64]BCFN(2+0,13-1,T)         R=  -8.2  p =1-2.3e-4   unusual          
+  ...and 769 test result(s) without anomalies
 
 rng=RNG_stdin32, seed=unknown
-length= 32 gigabytes (2^35 bytes), time= 93.4 seconds
-  no anomalies in 805 test result(s)
+length= 32 gigabytes (2^35 bytes), time= 78.0 seconds
+  Test Name                         Raw       Processed     Evaluation
+  [Low1/32]DC6-9x1Bytes-1           R=  -5.0  p =1-1.6e-3   unusual          
+  ...and 804 test result(s) without anomalies
 
 rng=RNG_stdin32, seed=unknown
-length= 64 gigabytes (2^36 bytes), time= 174 seconds
+length= 64 gigabytes (2^36 bytes), time= 145 seconds
   no anomalies in 843 test result(s)
 
 rng=RNG_stdin32, seed=unknown
-length= 128 gigabytes (2^37 bytes), time= 333 seconds
+length= 128 gigabytes (2^37 bytes), time= 274 seconds
   no anomalies in 880 test result(s)
 
 rng=RNG_stdin32, seed=unknown
-length= 256 gigabytes (2^38 bytes), time= 631 seconds
+length= 256 gigabytes (2^38 bytes), time= 516 seconds
   no anomalies in 915 test result(s)
 
 rng=RNG_stdin32, seed=unknown
-length= 512 gigabytes (2^39 bytes), time= 1266 seconds
+length= 512 gigabytes (2^39 bytes), time= 1032 seconds
   no anomalies in 952 test result(s)
 

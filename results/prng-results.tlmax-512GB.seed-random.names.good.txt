@@ -1,6 +1,16 @@
-aesdeclastrand
+aes128_prng_dec_dm_n2
+aes128_prng_dec_dm_n3
+aes128_prng_dec_dm_n4
+aes128_prng_dec_mix_n2
+aes128_prng_dec_mix_n3
+aes128_prng_dec_mix_n4
+aes128_prng_enc_dm_n2
+aes128_prng_enc_dm_n3
+aes128_prng_enc_dm_n4
+aes128_prng_enc_mix_n2
+aes128_prng_enc_mix_n3
+aes128_prng_enc_mix_n4
 aesdecrand
-aesenclastrand
 aesencrand
 bell
 bright
@@ -20,7 +30,6 @@ mover_counter_64
 mumx_mumx_rrxx_1
 mumx_mumx_x1
 mumx_mumx_x2
-murmurhash3
 mx3
 nasam
 orbit
@@ -50,7 +59,6 @@ splitmix64
 squares32
 squares64
 stc64
-tangle
 thrust_alt
 topping
 wyrand
