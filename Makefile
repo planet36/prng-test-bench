@@ -109,15 +109,15 @@ bench: prng-bench | $(OUTPUT_DIR)
 	# (column 2 is MiB/s)
 	sort -r -k 2 -g $(OUTPUT_DIR)/$<.txt | column --table
 
-# Takes about 4.2 mins
+# Takes about 4.4 mins
 short-test: prng-dump bench | $(OUTPUT_DIR)
 	bash test-prng-dump.bash -j $(J_SHORT) -f $(TF_SHORT) -m $(TLMAX_SHORT) \
 		-s default -s pattern -s random -s zero \
 		&> $(OUTPUT_DIR)/prng-results.tlmax-$(TLMAX_SHORT).summary.txt
 
-# Takes about 24.8 hrs (random)
-# Takes about 44.5 hrs (random, zero)
-# Takes about 19.7 hrs (zero)
+# Takes about 43 hrs (random, zero)
+# Takes about 23.5 hrs (random)
+# Takes about 19.5 hrs (zero)
 long-test: prng-dump bench | $(OUTPUT_DIR)
 	bash test-prng-dump.bash -j $(J_LONG) -f $(TF_LONG) -m $(TLMAX_LONG) \
 		-s random -s zero \
