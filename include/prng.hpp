@@ -100,25 +100,20 @@ const std::map<std::string, prng_info_t> prng_name_to_info{
 
 	// mine
 #if defined(__AES__)
-	CREATE_PRNG_INFO_MAP_ENTRY(aes128_prng_dec_dm_n1 ),
-	CREATE_PRNG_INFO_MAP_ENTRY(aes128_prng_dec_dm_n2 ),
-	CREATE_PRNG_INFO_MAP_ENTRY(aes128_prng_dec_dm_n3 ),
-	CREATE_PRNG_INFO_MAP_ENTRY(aes128_prng_dec_dm_n4 ),
-
-	CREATE_PRNG_INFO_MAP_ENTRY(aes128_prng_dec_mix_n1),
-	CREATE_PRNG_INFO_MAP_ENTRY(aes128_prng_dec_mix_n2),
-	CREATE_PRNG_INFO_MAP_ENTRY(aes128_prng_dec_mix_n3),
-	CREATE_PRNG_INFO_MAP_ENTRY(aes128_prng_dec_mix_n4),
-
-	CREATE_PRNG_INFO_MAP_ENTRY(aes128_prng_enc_dm_n1 ),
-	CREATE_PRNG_INFO_MAP_ENTRY(aes128_prng_enc_dm_n2 ),
-	CREATE_PRNG_INFO_MAP_ENTRY(aes128_prng_enc_dm_n3 ),
-	CREATE_PRNG_INFO_MAP_ENTRY(aes128_prng_enc_dm_n4 ),
-
-	CREATE_PRNG_INFO_MAP_ENTRY(aes128_prng_enc_mix_n1),
-	CREATE_PRNG_INFO_MAP_ENTRY(aes128_prng_enc_mix_n2),
-	CREATE_PRNG_INFO_MAP_ENTRY(aes128_prng_enc_mix_n3),
-	CREATE_PRNG_INFO_MAP_ENTRY(aes128_prng_enc_mix_n4),
+	CREATE_PRNG_INFO_MAP_ENTRY(aes128_prng_enc_k2_r1),
+	CREATE_PRNG_INFO_MAP_ENTRY(aes128_prng_enc_k3_r1),
+	CREATE_PRNG_INFO_MAP_ENTRY(aes128_prng_enc_k4_r1),
+	CREATE_PRNG_INFO_MAP_ENTRY(aes128_prng_enc_k2_r2),
+	CREATE_PRNG_INFO_MAP_ENTRY(aes128_prng_enc_k1_r2),
+	CREATE_PRNG_INFO_MAP_ENTRY(aes128_prng_enc_k1_r3),
+	CREATE_PRNG_INFO_MAP_ENTRY(aes128_prng_enc_k1_r4),
+	CREATE_PRNG_INFO_MAP_ENTRY(aes128_prng_dec_k2_r1),
+	CREATE_PRNG_INFO_MAP_ENTRY(aes128_prng_dec_k3_r1),
+	CREATE_PRNG_INFO_MAP_ENTRY(aes128_prng_dec_k4_r1),
+	CREATE_PRNG_INFO_MAP_ENTRY(aes128_prng_dec_k2_r2),
+	CREATE_PRNG_INFO_MAP_ENTRY(aes128_prng_dec_k1_r2),
+	CREATE_PRNG_INFO_MAP_ENTRY(aes128_prng_dec_k1_r3),
+	CREATE_PRNG_INFO_MAP_ENTRY(aes128_prng_dec_k1_r4),
 
 	CREATE_PRNG_INFO_MAP_ENTRY(aesdeclastrand        ),
 	CREATE_PRNG_INFO_MAP_ENTRY(aesdecrand            ),
