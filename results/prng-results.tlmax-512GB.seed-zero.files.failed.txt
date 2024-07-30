@@ -1,7 +1,3 @@
-RNG_test.tlmax-512GB.seed-zero.prng-aes128_prng_dec_dm_n1.txt
-RNG_test.tlmax-512GB.seed-zero.prng-aes128_prng_dec_mix_n1.txt
-RNG_test.tlmax-512GB.seed-zero.prng-aes128_prng_enc_dm_n1.txt
-RNG_test.tlmax-512GB.seed-zero.prng-aes128_prng_enc_mix_n1.txt
 RNG_test.tlmax-512GB.seed-zero.prng-aesdeclastrand.txt
 RNG_test.tlmax-512GB.seed-zero.prng-aesenclastrand.txt
 RNG_test.tlmax-512GB.seed-zero.prng-aesimcrand.txt

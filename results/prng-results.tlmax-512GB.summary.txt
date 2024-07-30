@@ -37,18 +37,32 @@
 
 # Run each test with: seed=random, tf=2, tlmin=256MB, tlmax=512GB
 
-# Took 23:28:51
+# Took 3:55:57
 
 # Good (seed random):
 aes128_prng_dec_dm_n2
 aes128_prng_dec_dm_n3
 aes128_prng_dec_dm_n4
+aes128_prng_dec_k1_r2
+aes128_prng_dec_k1_r3
+aes128_prng_dec_k1_r4
+aes128_prng_dec_k2_r1
+aes128_prng_dec_k2_r2
+aes128_prng_dec_k3_r1
+aes128_prng_dec_k4_r1
 aes128_prng_dec_mix_n2
 aes128_prng_dec_mix_n3
 aes128_prng_dec_mix_n4
 aes128_prng_enc_dm_n2
 aes128_prng_enc_dm_n3
 aes128_prng_enc_dm_n4
+aes128_prng_enc_k1_r2
+aes128_prng_enc_k1_r3
+aes128_prng_enc_k1_r4
+aes128_prng_enc_k2_r1
+aes128_prng_enc_k2_r2
+aes128_prng_enc_k3_r1
+aes128_prng_enc_k4_r1
 aes128_prng_enc_mix_n2
 aes128_prng_enc_mix_n3
 aes128_prng_enc_mix_n4
@@ -156,12 +170,26 @@ ttwanghash64
 aes128_prng_dec_dm_n2   length=  512  gigabytes  (2^39  bytes),  time=  1031  seconds
 aes128_prng_dec_dm_n3   length=  512  gigabytes  (2^39  bytes),  time=  1026  seconds
 aes128_prng_dec_dm_n4   length=  512  gigabytes  (2^39  bytes),  time=  1020  seconds
+aes128_prng_dec_k1_r2   length=  512  gigabytes  (2^39  bytes),  time=  1012  seconds
+aes128_prng_dec_k1_r3   length=  512  gigabytes  (2^39  bytes),  time=  1018  seconds
+aes128_prng_dec_k1_r4   length=  512  gigabytes  (2^39  bytes),  time=  1002  seconds
+aes128_prng_dec_k2_r1   length=  512  gigabytes  (2^39  bytes),  time=  1008  seconds
+aes128_prng_dec_k2_r2   length=  512  gigabytes  (2^39  bytes),  time=  1012  seconds
+aes128_prng_dec_k3_r1   length=  512  gigabytes  (2^39  bytes),  time=  1007  seconds
+aes128_prng_dec_k4_r1   length=  512  gigabytes  (2^39  bytes),  time=  1005  seconds
 aes128_prng_dec_mix_n2  length=  512  gigabytes  (2^39  bytes),  time=  1058  seconds
 aes128_prng_dec_mix_n3  length=  512  gigabytes  (2^39  bytes),  time=  1012  seconds
 aes128_prng_dec_mix_n4  length=  512  gigabytes  (2^39  bytes),  time=  1026  seconds
 aes128_prng_enc_dm_n2   length=  512  gigabytes  (2^39  bytes),  time=  1009  seconds
 aes128_prng_enc_dm_n3   length=  512  gigabytes  (2^39  bytes),  time=  1007  seconds
 aes128_prng_enc_dm_n4   length=  512  gigabytes  (2^39  bytes),  time=  1018  seconds
+aes128_prng_enc_k1_r2   length=  512  gigabytes  (2^39  bytes),  time=  1013  seconds
+aes128_prng_enc_k1_r3   length=  512  gigabytes  (2^39  bytes),  time=  1002  seconds
+aes128_prng_enc_k1_r4   length=  512  gigabytes  (2^39  bytes),  time=  1004  seconds
+aes128_prng_enc_k2_r1   length=  512  gigabytes  (2^39  bytes),  time=  1007  seconds
+aes128_prng_enc_k2_r2   length=  512  gigabytes  (2^39  bytes),  time=  1004  seconds
+aes128_prng_enc_k3_r1   length=  512  gigabytes  (2^39  bytes),  time=  1004  seconds
+aes128_prng_enc_k4_r1   length=  512  gigabytes  (2^39  bytes),  time=  1012  seconds
 aes128_prng_enc_mix_n2  length=  512  gigabytes  (2^39  bytes),  time=  1005  seconds
 aes128_prng_enc_mix_n3  length=  512  gigabytes  (2^39  bytes),  time=  1005  seconds
 aes128_prng_enc_mix_n4  length=  512  gigabytes  (2^39  bytes),  time=  1004  seconds
@@ -267,19 +295,33 @@ ttwanghash64                length=  256  megabytes  (2^28  bytes),  time=  0.6 
 
 # Run each test with: seed=zero, tf=2, tlmin=256MB, tlmax=512GB
 
-# Took 19:29:09
+# Took 3:57:27
 
 # Good (seed zero):
 MRG32k3a
 aes128_prng_dec_dm_n2
 aes128_prng_dec_dm_n3
 aes128_prng_dec_dm_n4
+aes128_prng_dec_k1_r2
+aes128_prng_dec_k1_r3
+aes128_prng_dec_k1_r4
+aes128_prng_dec_k2_r1
+aes128_prng_dec_k2_r2
+aes128_prng_dec_k3_r1
+aes128_prng_dec_k4_r1
 aes128_prng_dec_mix_n2
 aes128_prng_dec_mix_n3
 aes128_prng_dec_mix_n4
 aes128_prng_enc_dm_n2
 aes128_prng_enc_dm_n3
 aes128_prng_enc_dm_n4
+aes128_prng_enc_k1_r2
+aes128_prng_enc_k1_r3
+aes128_prng_enc_k1_r4
+aes128_prng_enc_k2_r1
+aes128_prng_enc_k2_r2
+aes128_prng_enc_k3_r1
+aes128_prng_enc_k4_r1
 aes128_prng_enc_mix_n2
 aes128_prng_enc_mix_n3
 aes128_prng_enc_mix_n4
@@ -387,12 +429,26 @@ MRG32k3a                length=  512  gigabytes  (2^39  bytes),  time=  1001  se
 aes128_prng_dec_dm_n2   length=  512  gigabytes  (2^39  bytes),  time=  1005  seconds
 aes128_prng_dec_dm_n3   length=  512  gigabytes  (2^39  bytes),  time=  1000  seconds
 aes128_prng_dec_dm_n4   length=  512  gigabytes  (2^39  bytes),  time=  1004  seconds
+aes128_prng_dec_k1_r2   length=  512  gigabytes  (2^39  bytes),  time=  1007  seconds
+aes128_prng_dec_k1_r3   length=  512  gigabytes  (2^39  bytes),  time=  1020  seconds
+aes128_prng_dec_k1_r4   length=  512  gigabytes  (2^39  bytes),  time=  1041  seconds
+aes128_prng_dec_k2_r1   length=  512  gigabytes  (2^39  bytes),  time=  1029  seconds
+aes128_prng_dec_k2_r2   length=  512  gigabytes  (2^39  bytes),  time=  1002  seconds
+aes128_prng_dec_k3_r1   length=  512  gigabytes  (2^39  bytes),  time=  1011  seconds
+aes128_prng_dec_k4_r1   length=  512  gigabytes  (2^39  bytes),  time=  1006  seconds
 aes128_prng_dec_mix_n2  length=  512  gigabytes  (2^39  bytes),  time=  998   seconds
 aes128_prng_dec_mix_n3  length=  512  gigabytes  (2^39  bytes),  time=  1025  seconds
 aes128_prng_dec_mix_n4  length=  512  gigabytes  (2^39  bytes),  time=  1045  seconds
 aes128_prng_enc_dm_n2   length=  512  gigabytes  (2^39  bytes),  time=  1000  seconds
 aes128_prng_enc_dm_n3   length=  512  gigabytes  (2^39  bytes),  time=  1002  seconds
 aes128_prng_enc_dm_n4   length=  512  gigabytes  (2^39  bytes),  time=  1006  seconds
+aes128_prng_enc_k1_r2   length=  512  gigabytes  (2^39  bytes),  time=  1029  seconds
+aes128_prng_enc_k1_r3   length=  512  gigabytes  (2^39  bytes),  time=  1013  seconds
+aes128_prng_enc_k1_r4   length=  512  gigabytes  (2^39  bytes),  time=  1002  seconds
+aes128_prng_enc_k2_r1   length=  512  gigabytes  (2^39  bytes),  time=  1003  seconds
+aes128_prng_enc_k2_r2   length=  512  gigabytes  (2^39  bytes),  time=  1017  seconds
+aes128_prng_enc_k3_r1   length=  512  gigabytes  (2^39  bytes),  time=  1002  seconds
+aes128_prng_enc_k4_r1   length=  512  gigabytes  (2^39  bytes),  time=  1017  seconds
 aes128_prng_enc_mix_n2  length=  512  gigabytes  (2^39  bytes),  time=  1006  seconds
 aes128_prng_enc_mix_n3  length=  512  gigabytes  (2^39  bytes),  time=  1021  seconds
 aes128_prng_enc_mix_n4  length=  512  gigabytes  (2^39  bytes),  time=  996   seconds
@@ -497,268 +553,270 @@ xoshiro512starstar          length=  256  megabytes  (2^28  bytes),  time=  0.6 
 
 
 # Performance all:
-aes128_prng_enc_mix_n2      65396
-aesenclastrand              64711
-aesdecrand                  64570
-aesencrand                  64427
-aesdeclastrand              58791
-aes128_prng_enc_mix_n1      52039
-aes128_prng_dec_mix_n1      51245
-aes128_prng_dec_mix_n2      47169
-aes128_prng_enc_mix_n3      44044
-aes128_prng_dec_mix_n3      42453
-aes128_prng_enc_dm_n1       40312
-aes128_prng_dec_dm_n1       37932
-aes128_prng_enc_dm_n2       35582
-aes128_prng_dec_dm_n2       35495
-aes128_prng_dec_mix_n4      34316
-aes128_prng_enc_mix_n4      34234
-aes128_prng_dec_dm_n3       32035
-aes128_prng_dec_dm_n4       31314
-aes128_prng_enc_dm_n4       30819
-aes128_prng_enc_dm_n3       30294
-aesimcrand                  22558
-wyrand                      17612
-clmulrand                   15547
-mumx_mumx_x1                14053
-thrust_alt                  13618
-moremur                     13099
-MRG32k3a                    12990
-splitxix33                  12923
-lea64                       12786
-splitmix64                  12741
-degski64                    12658
-romu_duo_jr                 12569
-murmurhash3                 12102
-tangle                      12025
-romu_trio                   11944
-stc64                       11675
-mumx_mumx_x2                11539
-xoroshiro128starstar        11273
-bright                      11062
-xoshiro256plusplus          11051
-romu_quad                   10411
-xoshiro256starstar          10401
-sfc64                       10059
-orbit                       9859
-mizuchi                     9688
-ettinger_mixer              9677
-dirk                        9660
-mx3                         9597
-romu_duo                    9582
-linnorm                     9541
-xoroshiro128plusplus        9410
-mumx_mumx_rrxx_1            9359
-shioi                       9309
-xoshiro512starstar          9095
-jsf64                       9041
-klimov_shamir_32            8983
-rrmxmx                      8962
-xoshiro512plusplus          8957
-mover_counter_64            8641
-seiran                      8426
-rrxmrrxmsx_0                8240
-pulley                      8185
-ttwanghash64                8151
-topping                     7867
-nasam                       7260
-quixotic                    7106
-splitmix32                  6958
-lehmer64                    6843
-pelican                     6805
-pcg64dxsm                   6778
-squares64                   6767
-mover_64                    6550
-murmurhash3_32              6534
-gjrand                      6378
-xsm64                       6198
-std::mt19937_64             6118
-degski32                    6046
-sea_slater_64               5988
-bell                        5808
-lcg64                       5673
-mcg128                      5641
-romu_trio32                 5500
-pcg64                       5499
-std::mt19937                5456
-jsf32_2                     5309
-romu_quad32                 5170
-xoshiro128plusplus          5093
-sfc32                       4982
-xoshiro128starstar          4779
-jsf32_3                     4675
-xoroshiro64starstar         4599
-xoroshiro1024starstar       4508
-squares32                   4294
-pcg32                       4286
-pcg32_fast                  4276
-xoroshiro1024plusplus       4275
-salsa20                     3603
-chacha                      3553
-xsm32                       3258
-lcg32                       2868
-std::default_random_engine  2502
-std::minstd_rand0           2485
-std::minstd_rand            2423
-std::ranlux48_base          2120
-rrma2xsm2xs                 1956
-std::ranlux24_base          1829
-std::knuth_b                888
-std::ranlux24               192
-std::ranlux48               62
+aesencrand                  66502
+aes128_prng_dec_k2_r1       65110
+aesenclastrand              64602
+aes128_prng_enc_k2_r1       64298
+aesdecrand                  62906
+aes128_prng_dec_k1_r2       53718
+aesdeclastrand              52163
+aes128_prng_enc_k1_r2       45388
+aes128_prng_dec_k1_r3       42335
+aes128_prng_enc_k3_r1       41628
+aes128_prng_enc_k1_r3       41436
+aes128_prng_dec_k3_r1       40606
+aes128_prng_dec_k4_r1       34669
+aes128_prng_enc_k1_r4       34549
+aes128_prng_enc_k2_r2       34419
+aes128_prng_enc_k4_r1       34185
+aes128_prng_dec_k2_r2       33727
+aes128_prng_dec_k1_r4       33559
+aesimcrand                  22433
+wyrand                      18651
+clmulrand                   15631
+mumx_mumx_x1                13941
+thrust_alt                  13339
+MRG32k3a                    12986
+splitmix64                  12958
+romu_duo_jr                 12840
+moremur                     12793
+lea64                       12770
+murmurhash3                 12651
+splitxix33                  12647
+degski64                    12314
+stc64                       11724
+tangle                      11643
+romu_trio                   11543
+mumx_mumx_x2                11418
+xoroshiro128starstar        11010
+bright                      10635
+romu_quad                   10345
+xoshiro256starstar          10243
+xoshiro256plusplus          10233
+sfc64                       9866
+ettinger_mixer              9728
+linnorm                     9726
+dirk                        9675
+orbit                       9636
+mizuchi                     9631
+mx3                         9568
+klimov_shamir_32            9522
+romu_duo                    9351
+xoroshiro128plusplus        9346
+jsf64                       9319
+mumx_mumx_rrxx_1            9257
+shioi                       9051
+rrmxmx                      9008
+xoshiro512starstar          8893
+xoshiro512plusplus          8811
+mover_counter_64            8737
+ttwanghash64                8338
+seiran                      8218
+pulley                      8126
+rrxmrrxmsx_0                8090
+topping                     7815
+quixotic                    7317
+nasam                       7193
+lehmer64                    7034
+pelican                     6918
+splitmix32                  6886
+squares64                   6833
+pcg64dxsm                   6729
+mover_64                    6643
+degski32                    6494
+gjrand                      6413
+murmurhash3_32              6382
+xsm64                       6200
+bell                        6007
+std::mt19937_64             5918
+sea_slater_64               5875
+std::mt19937                5681
+mcg128                      5660
+romu_trio32                 5643
+pcg64                       5599
+lcg64                       5548
+jsf32_2                     5384
+romu_quad32                 5244
+xoshiro128starstar          5204
+xoshiro128plusplus          5102
+sfc32                       4978
+xoroshiro64starstar         4689
+jsf32_3                     4611
+xoroshiro1024starstar       4517
+squares32                   4279
+pcg32                       4265
+pcg32_fast                  4242
+xoroshiro1024plusplus       4188
+salsa20                     3575
+chacha                      3531
+xsm32                       3297
+lcg32                       2837
+std::minstd_rand            2473
+std::default_random_engine  2470
+std::minstd_rand0           2418
+std::ranlux48_base          2293
+rrma2xsm2xs                 1948
+std::ranlux24_base          1876
+std::knuth_b                882
+std::ranlux24               197
+std::ranlux48               54
 
 q1       mean      median   q3        iqr
-5500.00  14623.81  9041.00  12923.00  7423.00
+5621.00  14409.22  9008.00  12781.50  7160.50
 
 # Performance good (seed random):
-aes128_prng_enc_mix_n2  65396
-aesdecrand              64570
-aesencrand              64427
-aes128_prng_dec_mix_n2  47169
-aes128_prng_enc_mix_n3  44044
-aes128_prng_dec_mix_n3  42453
-aes128_prng_enc_dm_n2   35582
-aes128_prng_dec_dm_n2   35495
-aes128_prng_dec_mix_n4  34316
-aes128_prng_enc_mix_n4  34234
-aes128_prng_dec_dm_n3   32035
-aes128_prng_dec_dm_n4   31314
-aes128_prng_enc_dm_n4   30819
-aes128_prng_enc_dm_n3   30294
-wyrand                  17612
-clmulrand               15547
-mumx_mumx_x1            14053
-thrust_alt              13618
-moremur                 13099
-lea64                   12786
-splitmix64              12741
-romu_duo_jr             12569
-romu_trio               11944
-stc64                   11675
-mumx_mumx_x2            11539
-xoroshiro128starstar    11273
-bright                  11062
-xoshiro256plusplus      11051
-romu_quad               10411
-xoshiro256starstar      10401
-sfc64                   10059
-orbit                   9859
-mizuchi                 9688
-ettinger_mixer          9677
-dirk                    9660
-mx3                     9597
-romu_duo                9582
-linnorm                 9541
-xoroshiro128plusplus    9410
-mumx_mumx_rrxx_1        9359
-shioi                   9309
-xoshiro512starstar      9095
-jsf64                   9041
-rrmxmx                  8962
-xoshiro512plusplus      8957
-mover_counter_64        8641
-seiran                  8426
-rrxmrrxmsx_0            8240
-pulley                  8185
-topping                 7867
-nasam                   7260
-quixotic                7106
-splitmix32              6958
-pelican                 6805
-pcg64dxsm               6778
-squares64               6767
-mover_64                6550
-gjrand                  6378
-xsm64                   6198
-sea_slater_64           5988
-bell                    5808
-romu_trio32             5500
-pcg64                   5499
-jsf32_2                 5309
-romu_quad32             5170
-xoshiro128plusplus      5093
-sfc32                   4982
-xoshiro128starstar      4779
-jsf32_3                 4675
-xoroshiro64starstar     4599
-xoroshiro1024starstar   4508
-squares32               4294
-pcg32                   4286
-pcg32_fast              4276
-xoroshiro1024plusplus   4275
-xsm32                   3258
-rrma2xsm2xs             1956
+aesencrand             66502
+aes128_prng_dec_k2_r1  65110
+aes128_prng_enc_k2_r1  64298
+aesdecrand             62906
+aes128_prng_dec_k1_r2  53718
+aes128_prng_enc_k1_r2  45388
+aes128_prng_dec_k1_r3  42335
+aes128_prng_enc_k3_r1  41628
+aes128_prng_enc_k1_r3  41436
+aes128_prng_dec_k3_r1  40606
+aes128_prng_dec_k4_r1  34669
+aes128_prng_enc_k1_r4  34549
+aes128_prng_enc_k2_r2  34419
+aes128_prng_enc_k4_r1  34185
+aes128_prng_dec_k2_r2  33727
+aes128_prng_dec_k1_r4  33559
+wyrand                 18651
+clmulrand              15631
+mumx_mumx_x1           13941
+thrust_alt             13339
+splitmix64             12958
+romu_duo_jr            12840
+moremur                12793
+lea64                  12770
+stc64                  11724
+romu_trio              11543
+mumx_mumx_x2           11418
+xoroshiro128starstar   11010
+bright                 10635
+romu_quad              10345
+xoshiro256starstar     10243
+xoshiro256plusplus     10233
+sfc64                  9866
+ettinger_mixer         9728
+linnorm                9726
+dirk                   9675
+orbit                  9636
+mizuchi                9631
+mx3                    9568
+romu_duo               9351
+xoroshiro128plusplus   9346
+jsf64                  9319
+mumx_mumx_rrxx_1       9257
+shioi                  9051
+rrmxmx                 9008
+xoshiro512starstar     8893
+xoshiro512plusplus     8811
+mover_counter_64       8737
+seiran                 8218
+pulley                 8126
+rrxmrrxmsx_0           8090
+topping                7815
+quixotic               7317
+nasam                  7193
+pelican                6918
+splitmix32             6886
+squares64              6833
+pcg64dxsm              6729
+mover_64               6643
+gjrand                 6413
+xsm64                  6200
+bell                   6007
+sea_slater_64          5875
+romu_trio32            5643
+pcg64                  5599
+jsf32_2                5384
+romu_quad32            5244
+xoshiro128starstar     5204
+xoshiro128plusplus     5102
+sfc32                  4978
+xoroshiro64starstar    4689
+jsf32_3                4611
+xoroshiro1024starstar  4517
+squares32              4279
+pcg32                  4265
+pcg32_fast             4242
+xoroshiro1024plusplus  4188
+xsm32                  3297
+rrma2xsm2xs            1948
 
 q1       mean      median   q3        iqr
-6378.00  14568.04  9410.00  12786.00  6408.00
+6528.00  15913.48  9351.00  13148.50  6620.50
 
 # Performance good (seed zero):
-aes128_prng_enc_mix_n2  65396
-aesdecrand              64570
-aesencrand              64427
-aes128_prng_dec_mix_n2  47169
-aes128_prng_enc_mix_n3  44044
-aes128_prng_dec_mix_n3  42453
-aes128_prng_enc_dm_n2   35582
-aes128_prng_dec_dm_n2   35495
-aes128_prng_dec_mix_n4  34316
-aes128_prng_enc_mix_n4  34234
-aes128_prng_dec_dm_n3   32035
-aes128_prng_dec_dm_n4   31314
-aes128_prng_enc_dm_n4   30819
-aes128_prng_enc_dm_n3   30294
-wyrand                  17612
-clmulrand               15547
-mumx_mumx_x1            14053
-thrust_alt              13618
-moremur                 13099
-MRG32k3a                12990
-lea64                   12786
-splitmix64              12741
-romu_duo_jr             12569
-romu_trio               11944
-stc64                   11675
-mumx_mumx_x2            11539
-bright                  11062
-romu_quad               10411
-sfc64                   10059
-orbit                   9859
-mizuchi                 9688
-ettinger_mixer          9677
-dirk                    9660
-mx3                     9597
-romu_duo                9582
-linnorm                 9541
-mumx_mumx_rrxx_1        9359
-shioi                   9309
-jsf64                   9041
-rrmxmx                  8962
-seiran                  8426
-rrxmrrxmsx_0            8240
-pulley                  8185
-topping                 7867
-nasam                   7260
-quixotic                7106
-splitmix32              6958
-pelican                 6805
-pcg64dxsm               6778
-squares64               6767
-mover_64                6550
-gjrand                  6378
-xsm64                   6198
-sea_slater_64           5988
-romu_trio32             5500
-pcg64                   5499
-jsf32_2                 5309
-romu_quad32             5170
-sfc32                   4982
-jsf32_3                 4675
-squares32               4294
-pcg32                   4286
-pcg32_fast              4276
-xsm32                   3258
-rrma2xsm2xs             1956
+aesencrand             66502
+aes128_prng_dec_k2_r1  65110
+aes128_prng_enc_k2_r1  64298
+aesdecrand             62906
+aes128_prng_dec_k1_r2  53718
+aes128_prng_enc_k1_r2  45388
+aes128_prng_dec_k1_r3  42335
+aes128_prng_enc_k3_r1  41628
+aes128_prng_enc_k1_r3  41436
+aes128_prng_dec_k3_r1  40606
+aes128_prng_dec_k4_r1  34669
+aes128_prng_enc_k1_r4  34549
+aes128_prng_enc_k2_r2  34419
+aes128_prng_enc_k4_r1  34185
+aes128_prng_dec_k2_r2  33727
+aes128_prng_dec_k1_r4  33559
+wyrand                 18651
+clmulrand              15631
+mumx_mumx_x1           13941
+thrust_alt             13339
+MRG32k3a               12986
+splitmix64             12958
+romu_duo_jr            12840
+moremur                12793
+lea64                  12770
+stc64                  11724
+romu_trio              11543
+mumx_mumx_x2           11418
+bright                 10635
+romu_quad              10345
+sfc64                  9866
+ettinger_mixer         9728
+linnorm                9726
+dirk                   9675
+orbit                  9636
+mizuchi                9631
+mx3                    9568
+romu_duo               9351
+jsf64                  9319
+mumx_mumx_rrxx_1       9257
+shioi                  9051
+rrmxmx                 9008
+seiran                 8218
+pulley                 8126
+rrxmrrxmsx_0           8090
+topping                7815
+quixotic               7317
+nasam                  7193
+pelican                6918
+splitmix32             6886
+squares64              6833
+pcg64dxsm              6729
+mover_64               6643
+gjrand                 6413
+xsm64                  6200
+sea_slater_64          5875
+romu_trio32            5643
+pcg64                  5599
+jsf32_2                5384
+romu_quad32            5244
+sfc32                  4978
+jsf32_3                4611
+squares32              4279
+pcg32                  4265
+pcg32_fast             4242
+xsm32                  3297
+rrma2xsm2xs            1948
 
 q1       mean      median   q3        iqr
-6778.00  15951.37  9660.00  14053.00  7275.00
+6859.50  17510.01  9675.00  17141.00  10281.50
 

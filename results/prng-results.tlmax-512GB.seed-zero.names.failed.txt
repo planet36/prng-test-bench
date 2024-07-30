@@ -1,7 +1,3 @@
-aes128_prng_dec_dm_n1
-aes128_prng_dec_mix_n1
-aes128_prng_enc_dm_n1
-aes128_prng_enc_mix_n1
 aesdeclastrand
 aesenclastrand
 aesimcrand

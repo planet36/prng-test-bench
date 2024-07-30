@@ -1,8 +1,4 @@
 RNG_test.tlmax-512GB.seed-random.prng-MRG32k3a.txt
-RNG_test.tlmax-512GB.seed-random.prng-aes128_prng_dec_dm_n1.txt
-RNG_test.tlmax-512GB.seed-random.prng-aes128_prng_dec_mix_n1.txt
-RNG_test.tlmax-512GB.seed-random.prng-aes128_prng_enc_dm_n1.txt
-RNG_test.tlmax-512GB.seed-random.prng-aes128_prng_enc_mix_n1.txt
 RNG_test.tlmax-512GB.seed-random.prng-aesdeclastrand.txt
 RNG_test.tlmax-512GB.seed-random.prng-aesenclastrand.txt
 RNG_test.tlmax-512GB.seed-random.prng-aesimcrand.txt

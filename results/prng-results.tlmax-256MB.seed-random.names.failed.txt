@@ -1,8 +1,5 @@
-aes128_prng_dec_mix_n1
-aes128_prng_enc_mix_n1
 degski32
 klimov_shamir_32
-mover_counter_64
 std::default_random_engine
 std::knuth_b
 std::minstd_rand
@@ -12,4 +9,5 @@ std::ranlux24
 std::ranlux24_base
 std::ranlux48
 std::ranlux48_base
+tangle
 ttwanghash64
