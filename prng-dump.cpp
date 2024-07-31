@@ -425,7 +425,6 @@ if (prng_name == #NAME) { \
 #endif
 	CONDITIONAL_DUMP_MINE(bell                  )
 	CONDITIONAL_DUMP_MINE(bright                )
-	CONDITIONAL_DUMP_MINE(chacha                )
 #if defined(__PCLMUL__)
 	CONDITIONAL_DUMP_MINE(clmulrand             )
 #endif
@@ -473,7 +472,6 @@ if (prng_name == #NAME) { \
 	CONDITIONAL_DUMP_MINE(rrma2xsm2xs           )
 	CONDITIONAL_DUMP_MINE(rrmxmx                )
 	CONDITIONAL_DUMP_MINE(rrxmrrxmsx_0          )
-	CONDITIONAL_DUMP_MINE(salsa20               )
 	CONDITIONAL_DUMP_MINE(sea_slater_64         )
 	CONDITIONAL_DUMP_MINE(seiran                )
 	CONDITIONAL_DUMP_MINE(sfc32                 )
@@ -541,7 +539,6 @@ aesencrand                  128  0  340282366920938463463374607431768211455    1
 aesimcrand                  128  0  340282366920938463463374607431768211455    16
 bell                         64  0                     18446744073709551615    16
 bright                       64  0                     18446744073709551615     8
-chacha                      128  0  340282366920938463463374607431768211455    16
 clmulrand                    64  0                     18446744073709551615    16
 degski32                     32  0                               4294967295     4
 degski64                     64  0                     18446744073709551615     8
@@ -586,7 +583,6 @@ romu_trio32                  32  0                               4294967295    1
 rrma2xsm2xs                  64  0                     18446744073709551615     8
 rrmxmx                       64  0                     18446744073709551615     8
 rrxmrrxmsx_0                 64  0                     18446744073709551615     8
-salsa20                     128  0  340282366920938463463374607431768211455    16
 sea_slater_64                64  0                     18446744073709551615    16
 seiran                       64  0                     18446744073709551615    16
 sfc32                        32  0                               4294967295    16
