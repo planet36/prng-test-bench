@@ -94,15 +94,15 @@ public:
 	}
 };
 
-using aes128_prng_enc_k2_r1 = aes128_prng<true, 2, 1>;
-using aes128_prng_enc_k1_r2 = aes128_prng<true, 1, 2>;
-using aes128_prng_dec_k2_r1 = aes128_prng<false, 2, 1>;
 using aes128_prng_dec_k1_r2 = aes128_prng<false, 1, 2>;
+using aes128_prng_dec_k2_r1 = aes128_prng<false, 2, 1>;
+using aes128_prng_enc_k1_r2 = aes128_prng<true, 1, 2>;
+using aes128_prng_enc_k2_r1 = aes128_prng<true, 2, 1>;
 
-static_assert(std::uniform_random_bit_generator<aes128_prng_enc_k2_r1>);
-static_assert(std::uniform_random_bit_generator<aes128_prng_enc_k1_r2>);
-static_assert(std::uniform_random_bit_generator<aes128_prng_dec_k2_r1>);
 static_assert(std::uniform_random_bit_generator<aes128_prng_dec_k1_r2>);
+static_assert(std::uniform_random_bit_generator<aes128_prng_dec_k2_r1>);
+static_assert(std::uniform_random_bit_generator<aes128_prng_enc_k1_r2>);
+static_assert(std::uniform_random_bit_generator<aes128_prng_enc_k2_r1>);
 
 #else
 #warning "__AES__ not defined"
