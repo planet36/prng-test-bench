@@ -95,34 +95,14 @@ public:
 };
 
 using aes128_prng_enc_k2_r1 = aes128_prng<true, 2, 1>;
-using aes128_prng_enc_k3_r1 = aes128_prng<true, 3, 1>;
-using aes128_prng_enc_k4_r1 = aes128_prng<true, 4, 1>;
-using aes128_prng_enc_k2_r2 = aes128_prng<true, 2, 2>;
 using aes128_prng_enc_k1_r2 = aes128_prng<true, 1, 2>;
-using aes128_prng_enc_k1_r3 = aes128_prng<true, 1, 3>;
-using aes128_prng_enc_k1_r4 = aes128_prng<true, 1, 4>;
 using aes128_prng_dec_k2_r1 = aes128_prng<false, 2, 1>;
-using aes128_prng_dec_k3_r1 = aes128_prng<false, 3, 1>;
-using aes128_prng_dec_k4_r1 = aes128_prng<false, 4, 1>;
-using aes128_prng_dec_k2_r2 = aes128_prng<false, 2, 2>;
 using aes128_prng_dec_k1_r2 = aes128_prng<false, 1, 2>;
-using aes128_prng_dec_k1_r3 = aes128_prng<false, 1, 3>;
-using aes128_prng_dec_k1_r4 = aes128_prng<false, 1, 4>;
 
 static_assert(std::uniform_random_bit_generator<aes128_prng_enc_k2_r1>);
-static_assert(std::uniform_random_bit_generator<aes128_prng_enc_k3_r1>);
-static_assert(std::uniform_random_bit_generator<aes128_prng_enc_k4_r1>);
-static_assert(std::uniform_random_bit_generator<aes128_prng_enc_k2_r2>);
 static_assert(std::uniform_random_bit_generator<aes128_prng_enc_k1_r2>);
-static_assert(std::uniform_random_bit_generator<aes128_prng_enc_k1_r3>);
-static_assert(std::uniform_random_bit_generator<aes128_prng_enc_k1_r4>);
 static_assert(std::uniform_random_bit_generator<aes128_prng_dec_k2_r1>);
-static_assert(std::uniform_random_bit_generator<aes128_prng_dec_k3_r1>);
-static_assert(std::uniform_random_bit_generator<aes128_prng_dec_k4_r1>);
-static_assert(std::uniform_random_bit_generator<aes128_prng_dec_k2_r2>);
 static_assert(std::uniform_random_bit_generator<aes128_prng_dec_k1_r2>);
-static_assert(std::uniform_random_bit_generator<aes128_prng_dec_k1_r3>);
-static_assert(std::uniform_random_bit_generator<aes128_prng_dec_k1_r4>);
 
 #else
 #warning "__AES__ not defined"
