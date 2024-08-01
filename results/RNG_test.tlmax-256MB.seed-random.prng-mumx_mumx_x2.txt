@@ -3,8 +3,6 @@ RNG = RNG_stdin64, seed = unknown
 test set = core, folding = none
 
 rng=RNG_stdin64, seed=unknown
-length= 256 megabytes (2^28 bytes), time= 0.6 seconds
-  Test Name                         Raw       Processed     Evaluation
-  Gap-16:A                          R=  -3.5  p =1-2.8e-3   unusual          
-  ...and 66 test result(s) without anomalies
+length= 256 megabytes (2^28 bytes), time= 0.5 seconds
+  no anomalies in 67 test result(s)
 

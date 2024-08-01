@@ -4,7 +4,5 @@ test set = core, folding = none
 
 rng=RNG_stdin64, seed=unknown
 length= 256 megabytes (2^28 bytes), time= 0.5 seconds
-  Test Name                         Raw       Processed     Evaluation
-  mod3n(5):(4,9-6)                  R= +10.4  p =  2.1e-4   unusual          
-  ...and 66 test result(s) without anomalies
+  no anomalies in 67 test result(s)
 

@@ -1,18 +1,8 @@
 MRG32k3a
 aes128_prng_dec_k1_r2
-aes128_prng_dec_k1_r3
-aes128_prng_dec_k1_r4
 aes128_prng_dec_k2_r1
-aes128_prng_dec_k2_r2
-aes128_prng_dec_k3_r1
-aes128_prng_dec_k4_r1
 aes128_prng_enc_k1_r2
-aes128_prng_enc_k1_r3
-aes128_prng_enc_k1_r4
 aes128_prng_enc_k2_r1
-aes128_prng_enc_k2_r2
-aes128_prng_enc_k3_r1
-aes128_prng_enc_k4_r1
 aesdeclastrand
 aesdecrand
 aesenclastrand
@@ -20,7 +10,6 @@ aesencrand
 aesimcrand
 bell
 bright
-chacha
 clmulrand
 degski64
 dirk
@@ -62,7 +51,6 @@ romu_trio32
 rrma2xsm2xs
 rrmxmx
 rrxmrrxmsx_0
-salsa20
 sea_slater_64
 seiran
 sfc32

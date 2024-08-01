@@ -2,7 +2,6 @@ MRG32k3a
 aesdeclastrand
 aesenclastrand
 aesimcrand
-chacha
 degski32
 degski64
 klimov_shamir_32
@@ -12,7 +11,6 @@ lehmer64
 mcg128
 murmurhash3
 murmurhash3_32
-salsa20
 splitxix33
 std::default_random_engine
 std::knuth_b

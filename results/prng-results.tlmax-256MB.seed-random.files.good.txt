@@ -1,18 +1,8 @@
 RNG_test.tlmax-256MB.seed-random.prng-MRG32k3a.txt
 RNG_test.tlmax-256MB.seed-random.prng-aes128_prng_dec_k1_r2.txt
-RNG_test.tlmax-256MB.seed-random.prng-aes128_prng_dec_k1_r3.txt
-RNG_test.tlmax-256MB.seed-random.prng-aes128_prng_dec_k1_r4.txt
 RNG_test.tlmax-256MB.seed-random.prng-aes128_prng_dec_k2_r1.txt
-RNG_test.tlmax-256MB.seed-random.prng-aes128_prng_dec_k2_r2.txt
-RNG_test.tlmax-256MB.seed-random.prng-aes128_prng_dec_k3_r1.txt
-RNG_test.tlmax-256MB.seed-random.prng-aes128_prng_dec_k4_r1.txt
 RNG_test.tlmax-256MB.seed-random.prng-aes128_prng_enc_k1_r2.txt
-RNG_test.tlmax-256MB.seed-random.prng-aes128_prng_enc_k1_r3.txt
-RNG_test.tlmax-256MB.seed-random.prng-aes128_prng_enc_k1_r4.txt
 RNG_test.tlmax-256MB.seed-random.prng-aes128_prng_enc_k2_r1.txt
-RNG_test.tlmax-256MB.seed-random.prng-aes128_prng_enc_k2_r2.txt
-RNG_test.tlmax-256MB.seed-random.prng-aes128_prng_enc_k3_r1.txt
-RNG_test.tlmax-256MB.seed-random.prng-aes128_prng_enc_k4_r1.txt
 RNG_test.tlmax-256MB.seed-random.prng-aesdeclastrand.txt
 RNG_test.tlmax-256MB.seed-random.prng-aesdecrand.txt
 RNG_test.tlmax-256MB.seed-random.prng-aesenclastrand.txt
@@ -20,7 +10,6 @@ RNG_test.tlmax-256MB.seed-random.prng-aesencrand.txt
 RNG_test.tlmax-256MB.seed-random.prng-aesimcrand.txt
 RNG_test.tlmax-256MB.seed-random.prng-bell.txt
 RNG_test.tlmax-256MB.seed-random.prng-bright.txt
-RNG_test.tlmax-256MB.seed-random.prng-chacha.txt
 RNG_test.tlmax-256MB.seed-random.prng-clmulrand.txt
 RNG_test.tlmax-256MB.seed-random.prng-degski64.txt
 RNG_test.tlmax-256MB.seed-random.prng-dirk.txt
@@ -38,7 +27,6 @@ RNG_test.tlmax-256MB.seed-random.prng-mcg128.txt
 RNG_test.tlmax-256MB.seed-random.prng-mizuchi.txt
 RNG_test.tlmax-256MB.seed-random.prng-moremur.txt
 RNG_test.tlmax-256MB.seed-random.prng-mover_64.txt
-RNG_test.tlmax-256MB.seed-random.prng-mover_counter_64.txt
 RNG_test.tlmax-256MB.seed-random.prng-mumx_mumx_rrxx_1.txt
 RNG_test.tlmax-256MB.seed-random.prng-mumx_mumx_x1.txt
 RNG_test.tlmax-256MB.seed-random.prng-mumx_mumx_x2.txt
@@ -63,7 +51,6 @@ RNG_test.tlmax-256MB.seed-random.prng-romu_trio32.txt
 RNG_test.tlmax-256MB.seed-random.prng-rrma2xsm2xs.txt
 RNG_test.tlmax-256MB.seed-random.prng-rrmxmx.txt
 RNG_test.tlmax-256MB.seed-random.prng-rrxmrrxmsx_0.txt
-RNG_test.tlmax-256MB.seed-random.prng-salsa20.txt
 RNG_test.tlmax-256MB.seed-random.prng-sea_slater_64.txt
 RNG_test.tlmax-256MB.seed-random.prng-seiran.txt
 RNG_test.tlmax-256MB.seed-random.prng-sfc32.txt
@@ -76,6 +63,7 @@ RNG_test.tlmax-256MB.seed-random.prng-squares32.txt
 RNG_test.tlmax-256MB.seed-random.prng-squares64.txt
 RNG_test.tlmax-256MB.seed-random.prng-stc64.txt
 RNG_test.tlmax-256MB.seed-random.prng-std::mt19937_64.txt
+RNG_test.tlmax-256MB.seed-random.prng-tangle.txt
 RNG_test.tlmax-256MB.seed-random.prng-thrust_alt.txt
 RNG_test.tlmax-256MB.seed-random.prng-topping.txt
 RNG_test.tlmax-256MB.seed-random.prng-wyrand.txt
