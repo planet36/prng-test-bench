@@ -14,7 +14,6 @@
 #include "aesimcrand.hpp"
 #include "aeslastrand.hpp"
 #include "aesrand.hpp"
-#include "chacha.hpp"
 #include "clmulrand.hpp"
 #include "degski.hpp"
 #include "ettinger_mixer.hpp"
@@ -37,7 +36,6 @@
 #include "rrma2xsm2xs.hpp"
 #include "rrmxmx.hpp"
 #include "rrxmrrxmsx_0.hpp"
-#include "salsa20.hpp"
 #include "seiran.hpp"
 #include "sfc.hpp"
 #include "shioi.hpp"
@@ -115,7 +113,6 @@ const std::map<std::string, prng_info_t> prng_name_to_info{
 #endif
 	CREATE_PRNG_INFO_MAP_ENTRY(bell                  ),
 	CREATE_PRNG_INFO_MAP_ENTRY(bright                ),
-	CREATE_PRNG_INFO_MAP_ENTRY(chacha                ),
 #if defined(__PCLMUL__)
 	CREATE_PRNG_INFO_MAP_ENTRY(clmulrand             ),
 #endif
@@ -163,7 +160,6 @@ const std::map<std::string, prng_info_t> prng_name_to_info{
 	CREATE_PRNG_INFO_MAP_ENTRY(rrma2xsm2xs           ),
 	CREATE_PRNG_INFO_MAP_ENTRY(rrmxmx                ),
 	CREATE_PRNG_INFO_MAP_ENTRY(rrxmrrxmsx_0          ),
-	CREATE_PRNG_INFO_MAP_ENTRY(salsa20               ),
 	CREATE_PRNG_INFO_MAP_ENTRY(sea_slater_64         ),
 	CREATE_PRNG_INFO_MAP_ENTRY(seiran                ),
 	CREATE_PRNG_INFO_MAP_ENTRY(sfc32                 ),
