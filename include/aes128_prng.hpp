@@ -29,9 +29,10 @@ static_assert(std::integral<__uint128_t>);
 static_assert(std::unsigned_integral<__uint128_t>);
 
 template <bool enc, size_t Nk, size_t Nr>
-requires (Nk * Nr >= 2)
 class aes128_prng
 {
+static_assert(Nk * Nr >= 2, "must do at least 2 rounds of AES enc/dec");
+
 private:
 	__m128i x;
 	__m128i c; // must be odd
