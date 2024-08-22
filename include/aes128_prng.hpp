@@ -31,7 +31,9 @@ static_assert(std::unsigned_integral<__uint128_t>);
 template <bool enc, size_t Nk, size_t Nr>
 class aes128_prng
 {
-static_assert(Nk * Nr >= 2, "must do at least 2 rounds of AES enc/dec");
+	static_assert(Nk >= 1);
+	static_assert(Nr >= 1);
+	static_assert(Nk * Nr >= 2, "must do at least 2 rounds of AES enc/dec");
 
 private:
 	__m128i x;
@@ -44,6 +46,8 @@ public:
 
 	aes128_prng()
 	{
+		static_assert(sizeof(*this) <= 256,
+		        "getentropy will fail if more than 256 bytes are requested");
 		reseed();
 	}
 
