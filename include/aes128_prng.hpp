@@ -65,11 +65,7 @@ public:
 	void reseed()
 	{
 		if (getentropy(this, sizeof(*this)) < 0)
-		{
 			err(EXIT_FAILURE, "getentropy");
-		}
-
-		// Every odd integer is coprime with every power of 2.  Ensure c is odd.
 		this->c = mm_make_odd_epu64(this->c);
 	}
 
@@ -92,13 +88,9 @@ public:
 	{
 		__m128i dst;
 		if constexpr (enc)
-		{
 			dst = aes128_enc(this->x, this->keys, Nk, Nr);
-		}
 		else
-		{
 			dst = aes128_dec(this->x, this->keys, Nk, Nr);
-		}
 		this->x = _mm_add_epi64(this->x, this->c);
 		return union_128{.xmm = dst}.u128;
 	}
