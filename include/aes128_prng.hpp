@@ -57,6 +57,11 @@ public:
 		(void)std::memcpy(&x, bytes.data(), sizeof(x));
 	}
 
+	/// Assign random bytes to the data members via \c getentropy.
+	/**
+	* Every odd integer is coprime with every power of 2.
+	* Therefore, \c c shall be made odd.
+	*/
 	void reseed()
 	{
 		if (getentropy(this, sizeof(*this)) < 0)
