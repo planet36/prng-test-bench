@@ -12,9 +12,9 @@ union union_128
 	uint16_t u16[8];
 	uint32_t u32[4];
 	uint64_t u64[2];
-	__m128i xmm;
 #if defined(__SIZEOF_INT128__)
 	__int128_t i128;
 	__uint128_t u128;
 #endif
+	__m128i xmm;
 };
