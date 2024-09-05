@@ -1,7 +1,7 @@
 // SPDX-FileCopyrightText: Steven Ward
 // SPDX-License-Identifier: OSL-3.0
 
-/// wyhash primes
+/// wyhash & wyrand primes
 /**
 \file
 \author Steven Ward
