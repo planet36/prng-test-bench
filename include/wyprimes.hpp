@@ -16,10 +16,10 @@
 namespace
 {
 inline constexpr std::array<uint64_t, 4> _wyp{
-	0xa0761d6478bd642f, // prime (popcount = 32)
-	0xe7037ed1a0b428db, // prime (popcount = 32)
-	0x8ebc6af09c88c6e3, // prime (popcount = 32)
-	0x589965cc75374cc3, // prime (popcount = 32)
+	0x2d358dccaa6c78a5, // prime (popcount = 32)
+	0x8bb84b93962eacc9, // prime (popcount = 32)
+	0x4b33a62ed433d4a3, // prime (popcount = 32)
+	0x4d5a2da51de1aa47, // prime (popcount = 32)
 };
 static_assert((_wyp[0] & 1) != 0, "must be odd");
 static_assert((_wyp[1] & 1) != 0, "must be odd");
