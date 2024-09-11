@@ -38,12 +38,13 @@ CXX = g++
 CPPFLAGS = -MMD -MP
 CPPFLAGS += -Iinclude
 
-CXXFLAGS = -pipe -Wall -Wextra -Wpedantic -Wfatal-errors
-CXXFLAGS += -Wno-unused-function
-CXXFLAGS += -std=gnu++26
+# gnu++ needed for static_assert(std::integral<__int128_t>);
+CXXFLAGS = -std=gnu++26
+CXXFLAGS += -pipe -Wall -Wextra -Wpedantic -Wfatal-errors
+CXXFLAGS += -O3 -flto=auto -march=native -fno-math-errno
 # -frecord-gcc-switches is used by readelf
 CXXFLAGS += -frecord-gcc-switches
-CXXFLAGS += -O3 -flto=auto -march=native -fno-math-errno
+CXXFLAGS += -Wno-unused-function
 
 #LDFLAGS +=
 
