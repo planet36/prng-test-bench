@@ -36,37 +36,37 @@ class aes128_prng
 	static_assert(Nk * Nr >= 2, "must do at least 2 rounds of AES enc/dec");
 
 private:
-	__m128i x;
-	__m128i c; // must be odd
 	__m128i keys[Nk];
+	__m128i ctr;
+	__m128i inc; // must be odd
 
 public:
 	using result_type = __uint128_t;
-	using seed_bytes_type = std::array<uint8_t, sizeof(x)>;
+	using seed_bytes_type = std::array<uint8_t, sizeof(ctr)>;
 
 	aes128_prng()
 	{
 		static_assert(sizeof(*this) <= 256,
-		        "getentropy will fail if more than 256 bytes are requested");
+		    "getentropy will fail if more than 256 bytes are requested");
 		reseed();
 	}
 
 	aes128_prng(const seed_bytes_type& bytes)
 	{
 		reseed();
-		(void)std::memcpy(&x, bytes.data(), sizeof(x));
+		(void)std::memcpy(&ctr, bytes.data(), sizeof(ctr));
 	}
 
 	/// Assign random bytes to the data members via \c getentropy.
 	/**
 	* Every odd integer is coprime with every power of 2.
-	* Therefore, \c c shall be made odd.
+	* Therefore, \c inc shall be made odd.
 	*/
 	void reseed()
 	{
 		if (getentropy(this, sizeof(*this)) < 0)
 			err(EXIT_FAILURE, "getentropy");
-		this->c = mm_make_odd_epu64(this->c);
+		this->inc = mm_make_odd_epu64(this->inc);
 	}
 
 	static constexpr result_type min()
@@ -88,10 +88,10 @@ public:
 	{
 		__m128i dst;
 		if constexpr (enc)
-			dst = aes128_enc(this->x, this->keys, Nk, Nr);
+			dst = aes128_enc(this->ctr, this->keys, Nk, Nr);
 		else
-			dst = aes128_dec(this->x, this->keys, Nk, Nr);
-		this->x = _mm_add_epi64(this->x, this->c);
+			dst = aes128_dec(this->ctr, this->keys, Nk, Nr);
+		this->ctr = _mm_add_epi64(this->ctr, this->inc);
 		return union_128{.xmm = dst}.u128;
 	}
 };

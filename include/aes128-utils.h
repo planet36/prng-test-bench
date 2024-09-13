@@ -11,13 +11,6 @@
 
 #include <immintrin.h>
 
-/// Make the packed unsigned 64-bit integers odd.
-static inline __m128i
-mm_make_odd_epu64(const __m128i a)
-{
-	return _mm_or_si128(a, _mm_set_epi64x(1, 1));
-}
-
 /// Do \c _mm_aesenc_si128 on data \a a with \a Nk keys \a keys \a Nr times for each key
 /**
 \pre \a Nk must be at least \c 1.
@@ -27,7 +20,7 @@ mm_make_odd_epu64(const __m128i a)
 \param Nk the number of \a keys
 \param Nr the number of rounds of encryption to perform for each key
 */
-static __m128i
+static inline __m128i
 aes128_enc(__m128i a,
            const __m128i* keys,
            const unsigned int Nk,
@@ -52,7 +45,7 @@ aes128_enc(__m128i a,
 \param Nk the number of \a keys
 \param Nr the number of rounds of decryption to perform for each key
 */
-static __m128i
+static inline __m128i
 aes128_dec(__m128i a,
            const __m128i* keys,
            const unsigned int Nk,
@@ -96,4 +89,32 @@ static inline __m128i
 aes128_dec_davies_meyer(const __m128i H, const __m128i m, const unsigned int Nr)
 {
 	return _mm_xor_si128(H, aes128_dec(H, &m, 1, Nr));
+}
+
+/// Make the packed unsigned 8-bit integers odd.
+static inline __m128i
+mm_make_odd_epu8(const __m128i a)
+{
+	return _mm_or_si128(a, _mm_set1_epi8(1));
+}
+
+/// Make the packed unsigned 16-bit integers odd.
+static inline __m128i
+mm_make_odd_epu16(const __m128i a)
+{
+	return _mm_or_si128(a, _mm_set1_epi16(1));
+}
+
+/// Make the packed unsigned 32-bit integers odd.
+static inline __m128i
+mm_make_odd_epu32(const __m128i a)
+{
+	return _mm_or_si128(a, _mm_set1_epi32(1));
+}
+
+/// Make the packed unsigned 64-bit integers odd.
+static inline __m128i
+mm_make_odd_epu64(const __m128i a)
+{
+	return _mm_or_si128(a, _mm_set1_epi64x(1));
 }
