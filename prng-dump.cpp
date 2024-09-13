@@ -410,8 +410,6 @@ if (prng_name == #NAME) { \
 
 	CONDITIONAL_DUMP_MINE(aesenclastrand        )
 	CONDITIONAL_DUMP_MINE(aesencrand            )
-
-	CONDITIONAL_DUMP_MINE(aesimcrand            )
 #endif
 	CONDITIONAL_DUMP_MINE(bell                  )
 	CONDITIONAL_DUMP_MINE(bright                )
@@ -522,7 +520,6 @@ aesdeclastrand              128  0  340282366920938463463374607431768211455    1
 aesdecrand                  128  0  340282366920938463463374607431768211455    16
 aesenclastrand              128  0  340282366920938463463374607431768211455    16
 aesencrand                  128  0  340282366920938463463374607431768211455    16
-aesimcrand                  128  0  340282366920938463463374607431768211455    16
 bell                         64  0                     18446744073709551615    16
 bright                       64  0                     18446744073709551615     8
 clmulrand                    64  0                     18446744073709551615    16

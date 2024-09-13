@@ -11,7 +11,6 @@
 
 #include "MRG32k3a.hpp"
 #include "aes128_prng.hpp"
-#include "aesimcrand.hpp"
 #include "aeslastrand.hpp"
 #include "aesrand.hpp"
 #include "clmulrand.hpp"
@@ -110,8 +109,6 @@ const std::map<std::string, prng_info_t> prng_name_to_info{
 
 	CREATE_PRNG_INFO_MAP_ENTRY(aesenclastrand        ),
 	CREATE_PRNG_INFO_MAP_ENTRY(aesencrand            ),
-
-	CREATE_PRNG_INFO_MAP_ENTRY(aesimcrand            ),
 #endif
 	CREATE_PRNG_INFO_MAP_ENTRY(bell                  ),
 	CREATE_PRNG_INFO_MAP_ENTRY(bright                ),

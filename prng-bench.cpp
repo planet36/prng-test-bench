@@ -138,8 +138,6 @@ main(int argc, char** argv)
 
 		CONDITIONAL_REG_BENCHMARK_DEFAULT_CTOR(aesenclastrand        )
 		CONDITIONAL_REG_BENCHMARK_DEFAULT_CTOR(aesencrand            )
-
-		CONDITIONAL_REG_BENCHMARK_DEFAULT_CTOR(aesimcrand            )
 #endif
 		CONDITIONAL_REG_BENCHMARK_DEFAULT_CTOR(bell                  )
 		CONDITIONAL_REG_BENCHMARK_DEFAULT_CTOR(bright                )
