@@ -10,7 +10,7 @@
 #pragma once
 
 #include "def_urbg_class.hpp"
-#include "simd-types.hpp"
+#include "union_128.h"
 #include "xxhprimes.hpp"
 
 #include <array>
@@ -18,21 +18,31 @@
 #include <immintrin.h>
 
 #if defined(__SHA__)
-DEF_URBG_CLASS(sha256msg1rand, SINGLE_ARG(std::array<simd128, 2>), uint64_t)
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wignored-attributes"
+DEF_URBG_CLASS(sha256msg1rand, SINGLE_ARG(std::array<__m128i, 2>), __uint128_t)
 {
-	static constexpr simd128 inc{.u64 {xxh_prime64[0], xxh_prime64[1]}};
-	s[0].u64 += inc.u64;
-	s[1].i64 = _mm_sha256msg1_epu32(s[0].i64, s[1].i64);
-	return s[1].u64[0];
+	const __m128i inc = _mm_set_epi64x(xxh_prime64[1], xxh_prime64[0]);
+	const __m128i inc2 = _mm_set_epi64x(xxh_prime64[3], xxh_prime64[2]);
+	s[0] = _mm_add_epi64(s[0], inc);
+	s[1] = _mm_add_epi64(s[1], inc2);
+	const __m128i result = _mm_sha256msg1_epu32(s[0], s[1]);
+	return union_128{.xmm = result}.u128;
 }
+#pragma GCC diagnostic pop
 
-DEF_URBG_CLASS(sha256msg2rand, SINGLE_ARG(std::array<simd128, 2>), uint64_t)
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wignored-attributes"
+DEF_URBG_CLASS(sha256msg2rand, SINGLE_ARG(std::array<__m128i, 2>), __uint128_t)
 {
-	static constexpr simd128 inc{.u64 {xxh_prime64[0], xxh_prime64[1]}};
-	s[0].u64 += inc.u64;
-	s[1].i64 = _mm_sha256msg2_epu32(s[0].i64, s[1].i64);
-	return s[1].u64[0];
+	const __m128i inc = _mm_set_epi64x(xxh_prime64[1], xxh_prime64[0]);
+	const __m128i inc2 = _mm_set_epi64x(xxh_prime64[3], xxh_prime64[2]);
+	s[0] = _mm_add_epi64(s[0], inc);
+	s[1] = _mm_add_epi64(s[1], inc2);
+	const __m128i result = _mm_sha256msg2_epu32(s[0], s[1]);
+	return union_128{.xmm = result}.u128;
 }
+#pragma GCC diagnostic pop
 #else
 #warning "__SHA__ not defined"
 #endif
