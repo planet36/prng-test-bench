@@ -7,19 +7,6 @@ gpp -Iinclude $OPTIMIZE_OPTIONS prng-dump.cpp -o prng-dump && d ./prng-dump
 
 clear ; ./prng-dump -i | column --table --table-right 2,4,5
 
-# From `make test-long`, take the fastest generators that are good (seed zero).
-# The best generators are: (sorted by speed)
-clmulrand         21230
-wyrand            15709
-romu_duo_jr       15246
-
-./prng-dump -i | grep -E -w 'clmulrand|wyrand|romu_duo_jr' |
-column --table --table-right 4,5
-
-clmulrand    64  0  18446744073709551615  16
-romu_duo_jr  64  0  18446744073709551615  16
-wyrand       64  0  18446744073709551615   8
-
 "How to Test with PractRand"
 https://www.pcg-random.org/posts/how-to-test-with-practrand.html
 
