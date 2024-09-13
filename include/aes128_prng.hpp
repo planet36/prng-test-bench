@@ -28,7 +28,7 @@ static_assert(std::signed_integral<__int128_t>);
 static_assert(std::integral<__uint128_t>);
 static_assert(std::unsigned_integral<__uint128_t>);
 
-template <bool enc, size_t Nk, size_t Nr>
+template <bool enc, bool dm, size_t Nk, size_t Nr>
 class aes128_prng
 {
 	static_assert(Nk >= 1);
@@ -88,21 +88,39 @@ public:
 	{
 		__m128i dst;
 		if constexpr (enc)
-			dst = aes128_enc(this->ctr, this->keys, Nk, Nr);
+		{
+			if constexpr (dm)
+				dst = aes128_enc_davies_meyer(this->ctr, this->keys, Nk, Nr);
+			else
+				dst = aes128_enc(this->ctr, this->keys, Nk, Nr);
+		}
 		else
-			dst = aes128_dec(this->ctr, this->keys, Nk, Nr);
+		{
+			if constexpr (dm)
+				dst = aes128_dec_davies_meyer(this->ctr, this->keys, Nk, Nr);
+			else
+				dst = aes128_dec(this->ctr, this->keys, Nk, Nr);
+		}
 		this->ctr = _mm_add_epi64(this->ctr, this->inc);
 		return union_128{.xmm = dst}.u128;
 	}
 };
 
-using aes128_prng_dec_k1_r2 = aes128_prng<false, 1, 2>;
-using aes128_prng_dec_k2_r1 = aes128_prng<false, 2, 1>;
-using aes128_prng_enc_k1_r2 = aes128_prng<true, 1, 2>;
-using aes128_prng_enc_k2_r1 = aes128_prng<true, 2, 1>;
+using aes128_prng_dec_dm_k1_r2 = aes128_prng<false,  true, 1, 2>;
+using aes128_prng_dec_dm_k2_r1 = aes128_prng<false,  true, 2, 1>;
+using aes128_prng_dec_k1_r2    = aes128_prng<false, false, 1, 2>;
+using aes128_prng_dec_k2_r1    = aes128_prng<false, false, 2, 1>;
+using aes128_prng_enc_dm_k1_r2 = aes128_prng< true,  true, 1, 2>;
+using aes128_prng_enc_dm_k2_r1 = aes128_prng< true,  true, 2, 1>;
+using aes128_prng_enc_k1_r2    = aes128_prng< true, false, 1, 2>;
+using aes128_prng_enc_k2_r1    = aes128_prng< true, false, 2, 1>;
 
+static_assert(std::uniform_random_bit_generator<aes128_prng_dec_dm_k1_r2>);
+static_assert(std::uniform_random_bit_generator<aes128_prng_dec_dm_k2_r1>);
 static_assert(std::uniform_random_bit_generator<aes128_prng_dec_k1_r2>);
 static_assert(std::uniform_random_bit_generator<aes128_prng_dec_k2_r1>);
+static_assert(std::uniform_random_bit_generator<aes128_prng_enc_dm_k1_r2>);
+static_assert(std::uniform_random_bit_generator<aes128_prng_enc_dm_k2_r1>);
 static_assert(std::uniform_random_bit_generator<aes128_prng_enc_k1_r2>);
 static_assert(std::uniform_random_bit_generator<aes128_prng_enc_k2_r1>);
 

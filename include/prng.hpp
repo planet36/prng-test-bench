@@ -97,10 +97,14 @@ const std::map<std::string, prng_info_t> prng_name_to_info{
 
 	// mine
 #if defined(__AES__)
-	CREATE_PRNG_INFO_MAP_ENTRY(aes128_prng_dec_k1_r2),
-	CREATE_PRNG_INFO_MAP_ENTRY(aes128_prng_dec_k2_r1),
-	CREATE_PRNG_INFO_MAP_ENTRY(aes128_prng_enc_k1_r2),
-	CREATE_PRNG_INFO_MAP_ENTRY(aes128_prng_enc_k2_r1),
+	CREATE_PRNG_INFO_MAP_ENTRY(aes128_prng_dec_dm_k1_r2),
+	CREATE_PRNG_INFO_MAP_ENTRY(aes128_prng_dec_dm_k2_r1),
+	CREATE_PRNG_INFO_MAP_ENTRY(aes128_prng_dec_k1_r2   ),
+	CREATE_PRNG_INFO_MAP_ENTRY(aes128_prng_dec_k2_r1   ),
+	CREATE_PRNG_INFO_MAP_ENTRY(aes128_prng_enc_dm_k1_r2),
+	CREATE_PRNG_INFO_MAP_ENTRY(aes128_prng_enc_dm_k2_r1),
+	CREATE_PRNG_INFO_MAP_ENTRY(aes128_prng_enc_k1_r2   ),
+	CREATE_PRNG_INFO_MAP_ENTRY(aes128_prng_enc_k2_r1   ),
 #endif
 	CREATE_PRNG_INFO_MAP_ENTRY(bell                  ),
 	CREATE_PRNG_INFO_MAP_ENTRY(bright                ),

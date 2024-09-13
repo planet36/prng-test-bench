@@ -383,10 +383,14 @@ if (prng_name == #NAME) { \
 
 	// mine
 #if defined(__AES__)
-	CONDITIONAL_DUMP_MINE(aes128_prng_dec_k1_r2)
-	CONDITIONAL_DUMP_MINE(aes128_prng_dec_k2_r1)
-	CONDITIONAL_DUMP_MINE(aes128_prng_enc_k1_r2)
-	CONDITIONAL_DUMP_MINE(aes128_prng_enc_k2_r1)
+	CONDITIONAL_DUMP_MINE(aes128_prng_dec_dm_k1_r2)
+	CONDITIONAL_DUMP_MINE(aes128_prng_dec_dm_k2_r1)
+	CONDITIONAL_DUMP_MINE(aes128_prng_dec_k1_r2   )
+	CONDITIONAL_DUMP_MINE(aes128_prng_dec_k2_r1   )
+	CONDITIONAL_DUMP_MINE(aes128_prng_enc_dm_k1_r2)
+	CONDITIONAL_DUMP_MINE(aes128_prng_enc_dm_k2_r1)
+	CONDITIONAL_DUMP_MINE(aes128_prng_enc_k1_r2   )
+	CONDITIONAL_DUMP_MINE(aes128_prng_enc_k2_r1   )
 #endif
 	CONDITIONAL_DUMP_MINE(bell                  )
 	CONDITIONAL_DUMP_MINE(bright                )
