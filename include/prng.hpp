@@ -11,7 +11,6 @@
 
 #include "MRG32k3a.hpp"
 #include "aes128_prng.hpp"
-#include "aesrand.hpp"
 #include "clmulrand.hpp"
 #include "degski.hpp"
 #include "ettinger_mixer.hpp"
@@ -102,9 +101,6 @@ const std::map<std::string, prng_info_t> prng_name_to_info{
 	CREATE_PRNG_INFO_MAP_ENTRY(aes128_prng_dec_k2_r1),
 	CREATE_PRNG_INFO_MAP_ENTRY(aes128_prng_enc_k1_r2),
 	CREATE_PRNG_INFO_MAP_ENTRY(aes128_prng_enc_k2_r1),
-
-	CREATE_PRNG_INFO_MAP_ENTRY(aesdecrand            ),
-	CREATE_PRNG_INFO_MAP_ENTRY(aesencrand            ),
 #endif
 	CREATE_PRNG_INFO_MAP_ENTRY(bell                  ),
 	CREATE_PRNG_INFO_MAP_ENTRY(bright                ),

@@ -9,17 +9,13 @@ clear ; ./prng-dump -i | column --table --table-right 2,4,5
 
 # From `make test-long`, take the fastest generators that are good (seed zero).
 # The best generators are: (sorted by speed)
-aesdecrand        38246
-aesencrand        38011
 clmulrand         21230
 wyrand            15709
 romu_duo_jr       15246
 
-./prng-dump -i | grep -E -w 'aesdecrand|aesencrand|clmulrand|wyrand|romu_duo_jr' |
+./prng-dump -i | grep -E -w 'clmulrand|wyrand|romu_duo_jr' |
 column --table --table-right 4,5
 
-aesdecrand   64  0  18446744073709551615  16
-aesencrand   64  0  18446744073709551615  16
 clmulrand    64  0  18446744073709551615  16
 romu_duo_jr  64  0  18446744073709551615  16
 wyrand       64  0  18446744073709551615   8
@@ -404,9 +400,6 @@ if (prng_name == #NAME) { \
 	CONDITIONAL_DUMP_MINE(aes128_prng_dec_k2_r1)
 	CONDITIONAL_DUMP_MINE(aes128_prng_enc_k1_r2)
 	CONDITIONAL_DUMP_MINE(aes128_prng_enc_k2_r1)
-
-	CONDITIONAL_DUMP_MINE(aesdecrand            )
-	CONDITIONAL_DUMP_MINE(aesencrand            )
 #endif
 	CONDITIONAL_DUMP_MINE(bell                  )
 	CONDITIONAL_DUMP_MINE(bright                )
@@ -513,8 +506,6 @@ aes128_prng_dec_k1_r2       128  0  340282366920938463463374607431768211455    4
 aes128_prng_dec_k2_r1       128  0  340282366920938463463374607431768211455    64
 aes128_prng_enc_k1_r2       128  0  340282366920938463463374607431768211455    48
 aes128_prng_enc_k2_r1       128  0  340282366920938463463374607431768211455    64
-aesdecrand                  128  0  340282366920938463463374607431768211455    16
-aesencrand                  128  0  340282366920938463463374607431768211455    16
 bell                         64  0                     18446744073709551615    16
 bright                       64  0                     18446744073709551615     8
 clmulrand                    64  0                     18446744073709551615    16
