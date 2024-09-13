@@ -133,10 +133,7 @@ main(int argc, char** argv)
 		CONDITIONAL_REG_BENCHMARK_DEFAULT_CTOR(aes128_prng_enc_k1_r2)
 		CONDITIONAL_REG_BENCHMARK_DEFAULT_CTOR(aes128_prng_enc_k2_r1)
 
-		CONDITIONAL_REG_BENCHMARK_DEFAULT_CTOR(aesdeclastrand        )
 		CONDITIONAL_REG_BENCHMARK_DEFAULT_CTOR(aesdecrand            )
-
-		CONDITIONAL_REG_BENCHMARK_DEFAULT_CTOR(aesenclastrand        )
 		CONDITIONAL_REG_BENCHMARK_DEFAULT_CTOR(aesencrand            )
 #endif
 		CONDITIONAL_REG_BENCHMARK_DEFAULT_CTOR(bell                  )

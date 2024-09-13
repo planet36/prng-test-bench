@@ -405,10 +405,7 @@ if (prng_name == #NAME) { \
 	CONDITIONAL_DUMP_MINE(aes128_prng_enc_k1_r2)
 	CONDITIONAL_DUMP_MINE(aes128_prng_enc_k2_r1)
 
-	CONDITIONAL_DUMP_MINE(aesdeclastrand        )
 	CONDITIONAL_DUMP_MINE(aesdecrand            )
-
-	CONDITIONAL_DUMP_MINE(aesenclastrand        )
 	CONDITIONAL_DUMP_MINE(aesencrand            )
 #endif
 	CONDITIONAL_DUMP_MINE(bell                  )
@@ -516,9 +513,7 @@ aes128_prng_dec_k1_r2       128  0  340282366920938463463374607431768211455    4
 aes128_prng_dec_k2_r1       128  0  340282366920938463463374607431768211455    64
 aes128_prng_enc_k1_r2       128  0  340282366920938463463374607431768211455    48
 aes128_prng_enc_k2_r1       128  0  340282366920938463463374607431768211455    64
-aesdeclastrand              128  0  340282366920938463463374607431768211455    16
 aesdecrand                  128  0  340282366920938463463374607431768211455    16
-aesenclastrand              128  0  340282366920938463463374607431768211455    16
 aesencrand                  128  0  340282366920938463463374607431768211455    16
 bell                         64  0                     18446744073709551615    16
 bright                       64  0                     18446744073709551615     8
