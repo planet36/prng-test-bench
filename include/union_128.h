@@ -6,6 +6,11 @@
 #include <immintrin.h>
 #include <stdint.h>
 
+#ifdef __cplusplus
+extern "C"
+{
+#endif
+
 union union_128
 {
 	uint8_t u8[16];
@@ -18,3 +23,7 @@ union union_128
 #endif
 	__m128i xmm;
 };
+
+#ifdef __cplusplus
+} // extern "C"
+#endif

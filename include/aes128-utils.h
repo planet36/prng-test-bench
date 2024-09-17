@@ -11,6 +11,11 @@
 
 #include <immintrin.h>
 
+#ifdef __cplusplus
+extern "C"
+{
+#endif
+
 /// Do \c _mm_aesenc_si128 on data \a a with \a Nk keys \a keys \a Nr times for each key
 /**
 \pre \a Nk must be at least \c 1.
@@ -140,3 +145,7 @@ mm_make_odd_epu64(const __m128i a)
 {
 	return _mm_or_si128(a, _mm_set1_epi64x(1));
 }
+
+#ifdef __cplusplus
+} // extern "C"
+#endif
