@@ -28,6 +28,7 @@ static_assert(std::signed_integral<__int128_t>);
 static_assert(std::integral<__uint128_t>);
 static_assert(std::unsigned_integral<__uint128_t>);
 
+/// A PRNG that uses AES instructions
 template <bool enc, bool dm, size_t Nk, size_t Nr>
 class aes128_prng
 {
@@ -84,6 +85,7 @@ public:
 		return next();
 	}
 
+	/// Get the next PRNG output via AES encryption or decryption.
 	result_type next()
 	{
 		__m128i dst;
