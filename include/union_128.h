@@ -1,6 +1,12 @@
 // SPDX-FileCopyrightText: Steven Ward
 // SPDX-License-Identifier: OSL-3.0
 
+/// Union of size 128 bits with integer data members
+/**
+\file
+\author Steven Ward
+*/
+
 #pragma once
 
 #include <immintrin.h>
@@ -13,10 +19,10 @@ extern "C"
 
 union union_128
 {
-	uint8_t u8[16];
-	uint16_t u16[8];
-	uint32_t u32[4];
-	uint64_t u64[2];
+	uint8_t u8[16 / sizeof(uint8_t)];
+	uint16_t u16[16 / sizeof(uint16_t)];
+	uint32_t u32[16 / sizeof(uint32_t)];
+	uint64_t u64[16 / sizeof(uint64_t)];
 #if defined(__SIZEOF_INT128__)
 	__int128_t i128;
 	__uint128_t u128;
