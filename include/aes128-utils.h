@@ -12,8 +12,7 @@
 #include <immintrin.h>
 
 #ifdef __cplusplus
-extern "C"
-{
+extern "C" {
 #endif
 
 /// Do \c _mm_aesenc_si128 on data \a a with \a Nk keys \a keys \a Nr times for each key
