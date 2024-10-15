@@ -22,6 +22,7 @@
 #include "lehmer64.hpp"
 #include "mcg.hpp"
 #include "moremur.hpp"
+#include "msws.hpp"
 #include "mumx_mumx_rrxx_1.hpp"
 #include "mumx_mumx_x1.hpp"
 #include "mumx_mumx_x2.hpp"
@@ -131,6 +132,8 @@ const std::map<std::string, prng_info_t> prng_name_to_info{
 	CREATE_PRNG_INFO_MAP_ENTRY(mover_64              ),
 	CREATE_PRNG_INFO_MAP_ENTRY(mover_counter_64      ),
 	CREATE_PRNG_INFO_MAP_ENTRY(MRG32k3a              ),
+	CREATE_PRNG_INFO_MAP_ENTRY(msws32                ),
+	CREATE_PRNG_INFO_MAP_ENTRY(msws64                ),
 	CREATE_PRNG_INFO_MAP_ENTRY(mumx_mumx_rrxx_1      ),
 	CREATE_PRNG_INFO_MAP_ENTRY(mumx_mumx_x1          ),
 	CREATE_PRNG_INFO_MAP_ENTRY(mumx_mumx_x2          ),

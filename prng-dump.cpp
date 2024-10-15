@@ -417,6 +417,8 @@ if (prng_name == #NAME) { \
 	CONDITIONAL_DUMP_MINE(mover_64              )
 	CONDITIONAL_DUMP_MINE(mover_counter_64      )
 	CONDITIONAL_DUMP_MINE(MRG32k3a              )
+	CONDITIONAL_DUMP_MINE(msws32                )
+	CONDITIONAL_DUMP_MINE(msws64                )
 	CONDITIONAL_DUMP_MINE(mumx_mumx_rrxx_1      )
 	CONDITIONAL_DUMP_MINE(mumx_mumx_x1          )
 	CONDITIONAL_DUMP_MINE(mumx_mumx_x2          )
