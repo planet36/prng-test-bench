@@ -55,7 +55,7 @@ LDLIBS += -lfmt
 export NUM_THREADS := $(shell nproc --ignore 1)
 
 # Should be an odd number for simpler median
-NUM_SPEED_TESTS := 11
+BENCHMARK_REPS := 11
 
 OUTPUT_DIR := results
 
@@ -89,7 +89,7 @@ $(BINS): prng-% : prng-%.cpp
 bench: prng-bench | $(OUTPUT_DIR)
 	./$< \
 		--benchmark_enable_random_interleaving=true \
-		--benchmark_repetitions=$(NUM_SPEED_TESTS) \
+		--benchmark_repetitions=$(BENCHMARK_REPS) \
 		--benchmark_report_aggregates_only=true \
 		--benchmark_out_format=json \
 		--benchmark_out=$(OUTPUT_DIR)/$<.json
