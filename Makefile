@@ -55,7 +55,7 @@ LDLIBS += -lfmt
 export NUM_THREADS := $(shell nproc --ignore 1)
 
 # Should be an odd number for simpler median
-BENCHMARK_REPS := 11
+BENCHMARK_REPS := 3
 
 OUTPUT_DIR := results
 
