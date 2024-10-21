@@ -1,5 +1,10 @@
 degski32
 klimov_shamir_32
+mover_counter_64
+sha1msg1rand
+sha1msg2rand
+sha256msg1rand
+sha256msg2rand
 std::default_random_engine
 std::knuth_b
 std::minstd_rand

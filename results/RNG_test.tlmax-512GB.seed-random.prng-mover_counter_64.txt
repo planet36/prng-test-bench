@@ -1,54 +1,365 @@
-RNG_test using PractRand version 0.95
+RNG_test using PractRand version 0.95-planet36
 RNG = RNG_stdin64, seed = unknown
 test set = core, folding = extra
 
 rng=RNG_stdin64, seed=unknown
-length= 256 megabytes (2^28 bytes), time= 0.6 seconds
-  no anomalies in 521 test result(s)
-
-rng=RNG_stdin64, seed=unknown
-length= 512 megabytes (2^29 bytes), time= 3.4 seconds
+length= 256 mebibytes (2^28 bytes), time= 0.6 seconds
   Test Name                         Raw       Processed     Evaluation
-  [Low8/64]DC6-9x1Bytes-1           R=  -5.1  p =1-1.2e-3   unusual          
-  ...and 562 test result(s) without anomalies
-
-rng=RNG_stdin64, seed=unknown
-length= 1 gigabyte (2^30 bytes), time= 6.7 seconds
-  no anomalies in 609 test result(s)
-
-rng=RNG_stdin64, seed=unknown
-length= 2 gigabytes (2^31 bytes), time= 10.9 seconds
-  no anomalies in 653 test result(s)
-
-rng=RNG_stdin64, seed=unknown
-length= 4 gigabytes (2^32 bytes), time= 17.0 seconds
-  no anomalies in 692 test result(s)
-
-rng=RNG_stdin64, seed=unknown
-length= 8 gigabytes (2^33 bytes), time= 27.0 seconds
-  no anomalies in 732 test result(s)
-
-rng=RNG_stdin64, seed=unknown
-length= 16 gigabytes (2^34 bytes), time= 44.6 seconds
-  no anomalies in 770 test result(s)
-
-rng=RNG_stdin64, seed=unknown
-length= 32 gigabytes (2^35 bytes), time= 76.2 seconds
-  no anomalies in 805 test result(s)
-
-rng=RNG_stdin64, seed=unknown
-length= 64 gigabytes (2^36 bytes), time= 140 seconds
-  no anomalies in 843 test result(s)
-
-rng=RNG_stdin64, seed=unknown
-length= 128 gigabytes (2^37 bytes), time= 264 seconds
-  no anomalies in 880 test result(s)
-
-rng=RNG_stdin64, seed=unknown
-length= 256 gigabytes (2^38 bytes), time= 498 seconds
-  no anomalies in 915 test result(s)
-
-rng=RNG_stdin64, seed=unknown
-length= 512 gigabytes (2^39 bytes), time= 996 seconds
-  no anomalies in 952 test result(s)
+  BCFN(2+0,13-2,T)                  R>+99999  p = 0           FAIL !!!!!!!!  
+  BCFN(2+1,13-2,T)                  R>+99999  p = 0           FAIL !!!!!!!!  
+  BCFN(2+2,13-3,T)                  R>+99999  p = 0           FAIL !!!!!!!!  
+  BCFN(2+3,13-3,T)                  R>+99999  p = 0           FAIL !!!!!!!!  
+  BCFN(2+4,13-3,T)                  R>+99999  p = 0           FAIL !!!!!!!!  
+  BCFN(2+5,13-4,T)                  R>+99999  p = 0           FAIL !!!!!!!!  
+  BCFN(2+6,13-5,T)                  R>+99999  p = 0           FAIL !!!!!!!!  
+  BCFN(2+7,13-5,T)                  R>+99999  p = 0           FAIL !!!!!!!!  
+  BCFN(2+8,13-6,T)                  R>+99999  p = 0           FAIL !!!!!!!!  
+  BCFN(2+9,13-6,T)                  R>+99999  p = 0           FAIL !!!!!!!!  
+  BCFN(2+10,13-7,T)                 R=+69095  p = 0           FAIL !!!!!!!!  
+  BCFN(2+11,13-8,T)                 R=+40957  p = 0           FAIL !!!!!!!!  
+  BCFN(2+12,13-8,T)                 R=+20441  p =  1e-5188    FAIL !!!!!!!!  
+  BCFN(2+13,13-9,T)                 R=+11734  p =  8e-2638    FAIL !!!!!!!!  
+  BCFN(2+14,13-9,T)                 R= +5853  p =  3e-1316    FAIL !!!!!!!!  
+  DC6-9x1Bytes-1                    R=+46583  p = 0           FAIL !!!!!!!!  
+  Gap-16:A                          R= +6397  p =  4e-5094    FAIL !!!!!!!!  
+  Gap-16:B                          R=+11121  p =  5e-9024    FAIL !!!!!!!!  
+  FPF-14+6/16:(2,14-0)              R= +6615  p =  1e-6121    FAIL !!!!!!!!  
+  FPF-14+6/16:(3,14-0)              R= +3928  p =  1e-3634    FAIL !!!!!!!!  
+  FPF-14+6/16:(4,14-1)              R= +2384  p =  2e-2112    FAIL !!!!!!!!  
+  FPF-14+6/16:(5,14-2)              R= +1491  p =  2e-1303    FAIL !!!!!!!!  
+  FPF-14+6/16:(6,14-2)              R=+755.0  p =  4.2e-660   FAIL !!!!!!!   
+  FPF-14+6/16:(7,14-3)              R=+473.8  p =  4.6e-415   FAIL !!!!!!!   
+  FPF-14+6/16:(8,14-4)              R=+315.2  p =  1.7e-257   FAIL !!!!!!    
+  FPF-14+6/16:(9,14-5)              R=+197.0  p =  3.3e-163   FAIL !!!!!     
+  FPF-14+6/16:(10,14-5)             R= +96.9  p =  3.2e-80    FAIL !!!!      
+  FPF-14+6/16:(11,14-6)             R= +60.9  p =  1.1e-46    FAIL !!!       
+  FPF-14+6/16:(12,14-7)             R= +42.1  p =  2.7e-33    FAIL !!!       
+  FPF-14+6/16:(13,14-8)             R= +30.9  p =  3.0e-22    FAIL !         
+  FPF-14+6/16:(14,14-8)             R= +14.8  p =  1.1e-10  very suspicious  
+  FPF-14+6/16:all                   R=+54697  p = 0           FAIL !!!!!!!!  
+  FPF-14+6/16:cross                 R>+99999  p = 0           FAIL !!!!!!!!  
+  BRank(12):128(4)                  R= +14.0  p~=  2.9e-8   suspicious       
+  BRank(12):256(4)                  R=+103.9  p~=  4.6e-56    FAIL !!!!      
+  BRank(12):384(1)                  R= +88.2  p~=  1.4e-27    FAIL !!        
+  BRank(12):512(2)                  R=+307.4  p~=  1.4e-93    FAIL !!!!!     
+  BRank(12):768(1)                  R=+346.5  p~=  2.4e-105   FAIL !!!!!     
+  BRank(12):1K(2)                   R=+794.5  p~=  3.4e-240   FAIL !!!!!!    
+  BRank(12):1536(1)                 R=+863.2  p~=  7.2e-261   FAIL !!!!!!    
+  BRank(12):2K(1)                   R= +1251  p~=  1.6e-377   FAIL !!!!!!!   
+  mod3n(5):(0,9-6)                  R=+173.0  p =  6.3e-60    FAIL !!!!      
+  TMFn(2+0):wl                      R=+55180  p~=  0          FAIL !!!!!!!!  
+  TMFn(2+1):wl                      R=+27549  p~=  0          FAIL !!!!!!!!  
+  TMFn(2+2):wl                      R=+13734  p~=  0          FAIL !!!!!!!!  
+  TMFn(2+3):wl                      R= +6826  p~=  0          FAIL !!!!!!!!  
+  [Low1/8]BCFN(2+0,13-4,T)          R>+99999  p = 0           FAIL !!!!!!!!  
+  [Low1/8]BCFN(2+1,13-4,T)          R>+99999  p = 0           FAIL !!!!!!!!  
+  [Low1/8]BCFN(2+2,13-5,T)          R>+99999  p = 0           FAIL !!!!!!!!  
+  [Low1/8]BCFN(2+3,13-5,T)          R>+99999  p = 0           FAIL !!!!!!!!  
+  [Low1/8]BCFN(2+4,13-5,T)          R>+99999  p = 0           FAIL !!!!!!!!  
+  [Low1/8]BCFN(2+5,13-6,T)          R>+99999  p = 0           FAIL !!!!!!!!  
+  [Low1/8]BCFN(2+6,13-6,T)          R>+99999  p = 0           FAIL !!!!!!!!  
+  [Low1/8]BCFN(2+7,13-7,T)          R=+69900  p = 0           FAIL !!!!!!!!  
+  [Low1/8]BCFN(2+8,13-8,T)          R=+41294  p = 0           FAIL !!!!!!!!  
+  [Low1/8]BCFN(2+9,13-8,T)          R=+20560  p =  6e-5219    FAIL !!!!!!!!  
+  [Low1/8]BCFN(2+10,13-9,T)         R=+11783  p =  1e-2648    FAIL !!!!!!!!  
+  [Low1/8]BCFN(2+11,13-9,T)         R= +5870  p =  4e-1320    FAIL !!!!!!!!  
+  [Low1/8]DC6-9x1Bytes-1            R>+99999  p = 0           FAIL !!!!!!!!  
+  [Low1/8]Gap-16:A                  R=+65235  p = 0           FAIL !!!!!!!!  
+  [Low1/8]Gap-16:B                  R>+99999  p = 0           FAIL !!!!!!!!  
+  [Low1/8]FPF-14+6/16:(1,14-1)      R>+99999  p = 0           FAIL !!!!!!!!  
+  [Low1/8]FPF-14+6/16:(2,14-2)      R=+91578  p = 0           FAIL !!!!!!!!  
+  [Low1/8]FPF-14+6/16:(3,14-2)      R=+45761  p = 0           FAIL !!!!!!!!  
+  [Low1/8]FPF-14+6/16:(4,14-3)      R=+32370  p = 0           FAIL !!!!!!!!  
+  [Low1/8]FPF-14+6/16:(5,14-4)      R=+22899  p = 0           FAIL !!!!!!!!  
+  [Low1/8]FPF-14+6/16:(6,14-5)      R=+16167  p = 0           FAIL !!!!!!!!  
+  [Low1/8]FPF-14+6/16:(7,14-5)      R=+16144  p = 0           FAIL !!!!!!!!  
+  [Low1/8]FPF-14+6/16:(9,14-7)      R= +8117  p =  2e-6460    FAIL !!!!!!!!  
+  [Low1/8]FPF-14+6/16:(10,14-8)     R= +5738  p =  4e-4129    FAIL !!!!!!!!  
+  [Low1/8]FPF-14+6/16:(11,14-8)     R= +2928  p =  3e-2107    FAIL !!!!!!!!  
+  [Low1/8]FPF-14+6/16:(12,14-9)     R= +2050  p =  6e-1291    FAIL !!!!!!!!  
+  [Low1/8]FPF-14+6/16:(13,14-10)    R= +1505  p =  3.5e-801   FAIL !!!!!!!   
+  [Low1/8]FPF-14+6/16:(14,14-11)    R= +1116  p =  4.5e-487   FAIL !!!!!!!   
+  [Low1/8]FPF-14+6/16:(15,14-11)    R=+533.4  p =  2.4e-233   FAIL !!!!!!    
+  [Low1/8]FPF-14+6/16:all           R>+99999  p = 0           FAIL !!!!!!!!  
+  [Low1/8]FPF-14+6/16:cross         R>+99999  p = 0           FAIL !!!!!!!!  
+  [Low1/8]BRank(12):128(4)          R=+477.7  p~=  6.7e-255   FAIL !!!!!!    
+  [Low1/8]BRank(12):256(2)          R=+824.9  p~=  2.3e-249   FAIL !!!!!!    
+  [Low1/8]BRank(12):384(1)          R=+927.7  p~=  2.6e-280   FAIL !!!!!!    
+  [Low1/8]BRank(12):512(2)          R= +1799  p~=  1.2e-542   FAIL !!!!!!!   
+  [Low1/8]BRank(12):768(1)          R= +1961  p~=  2.3e-591   FAIL !!!!!!!   
+  [Low1/8]BRank(12):1K(1)           R= +2650  p~=  9.8e-799   FAIL !!!!!!!   
+  [Low1/8]mod3n(5):(0,9-6)          R= +45.5  p =  2.2e-16    FAIL !         
+  [Low1/8]TMFn(2+0):wl              R= +4949  p~=  0          FAIL !!!!!!!!  
+  [Low1/16]BCFN(2+0,13-5,T)         R>+99999  p = 0           FAIL !!!!!!!!  
+  [Low1/16]BCFN(2+1,13-5,T)         R>+99999  p = 0           FAIL !!!!!!!!  
+  [Low1/16]BCFN(2+2,13-5,T)         R>+99999  p = 0           FAIL !!!!!!!!  
+  [Low1/16]BCFN(2+3,13-5,T)         R>+99999  p = 0           FAIL !!!!!!!!  
+  [Low1/16]BCFN(2+4,13-6,T)         R>+99999  p = 0           FAIL !!!!!!!!  
+  [Low1/16]BCFN(2+5,13-6,T)         R>+99999  p = 0           FAIL !!!!!!!!  
+  [Low1/16]BCFN(2+6,13-7,T)         R=+70419  p = 0           FAIL !!!!!!!!  
+  [Low1/16]BCFN(2+7,13-8,T)         R=+41511  p = 0           FAIL !!!!!!!!  
+  [Low1/16]BCFN(2+8,13-8,T)         R=+20637  p =  2e-5238    FAIL !!!!!!!!  
+  [Low1/16]BCFN(2+9,13-9,T)         R=+11814  p =  1e-2655    FAIL !!!!!!!!  
+  [Low1/16]BCFN(2+10,13-9,T)        R= +5881  p =  1e-1322    FAIL !!!!!!!!  
+  [Low1/16]DC6-9x1Bytes-1           R>+99999  p = 0           FAIL !!!!!!!!  
+  [Low1/16]Gap-16:A                 R>+99999  p = 0           FAIL !!!!!!!!  
+  [Low1/16]Gap-16:B                 R>+99999  p = 0           FAIL !!!!!!!!  
+  [Low1/16]FPF-14+6/16:(1,14-2)     R>+99999  p = 0           FAIL !!!!!!!!  
+  [Low1/16]FPF-14+6/16:(2,14-2)     R>+99999  p = 0           FAIL !!!!!!!!  
+  [Low1/16]FPF-14+6/16:(3,14-3)     R=+96431  p = 0           FAIL !!!!!!!!  
+  [Low1/16]FPF-14+6/16:(5,14-5)     R=+64134  p = 0           FAIL !!!!!!!!  
+  [Low1/16]FPF-14+6/16:(6,14-5)     R=+32198  p = 0           FAIL !!!!!!!!  
+  [Low1/16]FPF-14+6/16:(7,14-6)     R=+22816  p = 0           FAIL !!!!!!!!  
+  [Low1/16]FPF-14+6/16:(9,14-8)     R=+11503  p =  8e-8278    FAIL !!!!!!!!  
+  [Low1/16]FPF-14+6/16:(10,14-8)    R=+11474  p =  1e-8256    FAIL !!!!!!!!  
+  [Low1/16]FPF-14+6/16:(11,14-9)    R= +8213  p =  7e-5172    FAIL !!!!!!!!  
+  [Low1/16]FPF-14+6/16:(13,14-11)   R= +4296  p =  2e-1873    FAIL !!!!!!!!  
+  [Low1/16]FPF-14+6/16:(14,14-11)   R= +2208  p =  4.4e-963   FAIL !!!!!!!   
+  [Low1/16]FPF-14+6/16:all          R>+99999  p = 0           FAIL !!!!!!!!  
+  [Low1/16]FPF-14+6/16:cross        R>+99999  p = 0           FAIL !!!!!!!!  
+  [Low1/16]BRank(12):128(4)         R= +1167  p~=  2.8e-621   FAIL !!!!!!!   
+  [Low1/16]BRank(12):256(2)         R= +1799  p~=  1.2e-542   FAIL !!!!!!!   
+  [Low1/16]BRank(12):384(1)         R= +1961  p~=  2.3e-591   FAIL !!!!!!!   
+  [Low1/16]BRank(12):512(2)         R= +3748  p~=  3e-1129    FAIL !!!!!!!!  
+  [Low1/16]BRank(12):768(1)         R= +4028  p~=  1e-1213    FAIL !!!!!!!!  
+  [Low1/16]mod3n(5):(0,9-6)         R=+226.0  p =  5.2e-78    FAIL !!!!      
+  [Low1/32]BCFN(2+0,13-5,T)         R>+99999  p = 0           FAIL !!!!!!!!  
+  [Low1/32]BCFN(2+1,13-5,T)         R>+99999  p = 0           FAIL !!!!!!!!  
+  [Low1/32]BCFN(2+2,13-6,T)         R>+99999  p = 0           FAIL !!!!!!!!  
+  [Low1/32]BCFN(2+3,13-6,T)         R>+99999  p = 0           FAIL !!!!!!!!  
+  [Low1/32]BCFN(2+4,13-6,T)         R>+99999  p = 0           FAIL !!!!!!!!  
+  [Low1/32]BCFN(2+5,13-7,T)         R=+71158  p = 0           FAIL !!!!!!!!  
+  [Low1/32]BCFN(2+6,13-8,T)         R=+41820  p = 0           FAIL !!!!!!!!  
+  [Low1/32]BCFN(2+7,13-8,T)         R=+20745  p =  7e-5266    FAIL !!!!!!!!  
+  [Low1/32]BCFN(2+8,13-9,T)         R=+11858  p =  1e-2665    FAIL !!!!!!!!  
+  [Low1/32]BCFN(2+9,13-9,T)         R= +5896  p =  5e-1326    FAIL !!!!!!!!  
+  [Low1/32]DC6-9x1Bytes-1           R>+99999  p = 0           FAIL !!!!!!!!  
+  [Low1/32]Gap-16:A                 R>+99999  p = 0           FAIL !!!!!!!!  
+  [Low1/32]Gap-16:B                 R>+99999  p = 0           FAIL !!!!!!!!  
+  [Low1/32]FPF-14+6/16:(1,14-2)     R>+99999  p = 0           FAIL !!!!!!!!  
+  [Low1/32]FPF-14+6/16:(3,14-4)     R>+99999  p = 0           FAIL !!!!!!!!  
+  [Low1/32]FPF-14+6/16:(5,14-5)     R>+99999  p = 0           FAIL !!!!!!!!  
+  [Low1/32]FPF-14+6/16:(7,14-7)     R>+99999  p = 0           FAIL !!!!!!!!  
+  [Low1/32]FPF-14+6/16:(9,14-8)     R=+68542  p = 0           FAIL !!!!!!!!  
+  [Low1/32]FPF-14+6/16:(11,14-10)   R=+47098  p = 0           FAIL !!!!!!!!  
+  [Low1/32]FPF-14+6/16:(13,14-11)   R=+34046  p = 0           FAIL !!!!!!!!  
+  [Low1/32]FPF-14+6/16:all          R>+99999  p = 0           FAIL !!!!!!!!  
+  [Low1/32]FPF-14+6/16:cross        R>+99999  p = 0           FAIL !!!!!!!!  
+  [Low1/32]BRank(12):128(2)         R= +1799  p~=  1.2e-542   FAIL !!!!!!!   
+  [Low1/32]BRank(12):256(2)         R= +3748  p~=  3e-1129    FAIL !!!!!!!!  
+  [Low1/32]BRank(12):384(1)         R= +4028  p~=  1e-1213    FAIL !!!!!!!!  
+  [Low1/32]BRank(12):512(1)         R= +5405  p~=  3e-1628    FAIL !!!!!!!!  
+  [Low1/32]mod3n(5):(0,9-6)         R= +1401  p =  2.2e-479   FAIL !!!!!!!   
+  [Low1/64]BCFN(2+0,13-6,T)         R>+99999  p = 0           FAIL !!!!!!!!  
+  [Low1/64]BCFN(2+1,13-6,T)         R>+99999  p = 0           FAIL !!!!!!!!  
+  [Low1/64]BCFN(2+2,13-6,T)         R>+99999  p = 0           FAIL !!!!!!!!  
+  [Low1/64]BCFN(2+3,13-6,T)         R>+99999  p = 0           FAIL !!!!!!!!  
+  [Low1/64]BCFN(2+4,13-7,T)         R=+72212  p = 0           FAIL !!!!!!!!  
+  [Low1/64]BCFN(2+5,13-8,T)         R=+42258  p = 0           FAIL !!!!!!!!  
+  [Low1/64]BCFN(2+6,13-8,T)         R=+20899  p =  5e-5305    FAIL !!!!!!!!  
+  [Low1/64]BCFN(2+7,13-9,T)         R=+11920  p =  1e-2679    FAIL !!!!!!!!  
+  [Low1/64]BCFN(2+8,13-9,T)         R= +5918  p =  6e-1331    FAIL !!!!!!!!  
+  [Low1/64]DC6-9x1Bytes-1           R>+99999  p = 0           FAIL !!!!!!!!  
+  [Low1/64]Gap-16:A                 R>+99999  p = 0           FAIL !!!!!!!!  
+  [Low1/64]Gap-16:B                 R>+99999  p = 0           FAIL !!!!!!!!  
+  [Low1/64]FPF-14+6/16:cross        R>+99999  p = 0           FAIL !!!!!!!!  
+  [Low1/64]BRank(12):128(2)         R= +3748  p~=  3e-1129    FAIL !!!!!!!!  
+  [Low1/64]BRank(12):256(2)         R= +7644  p~=  3e-2302    FAIL !!!!!!!!  
+  [Low1/64]BRank(12):384(1)         R= +8161  p~=  1e-2457    FAIL !!!!!!!!  
+  [Low1/64]BRank(12):512(1)         R=+10916  p~=  3e-3287    FAIL !!!!!!!!  
+  [Low1/64]mod3n(5):(0,9-6)         R>+99999  p = 0           FAIL !!!!!!!!  
+  [Low1/64]mod3n(5):(1,9-6)         R>+99999  p = 0           FAIL !!!!!!!!  
+  [Low1/64]mod3n(5):(2,9-6)         R=+52532  p = 0           FAIL !!!!!!!!  
+  [Low1/64]mod3n(5):(3,9-6)         R=+26222  p =  4e-8955    FAIL !!!!!!!!  
+  [Low1/64]mod3n(5):(4,9-6)         R=+13067  p =  6e-4463    FAIL !!!!!!!!  
+  [Low1/64]mod3n(5):(5,9-6)         R= +6490  p =  6e-2217    FAIL !!!!!!!!  
+  [Low1/64]mod3n(5):(6,9-6)         R= +3201  p =  7e-1094    FAIL !!!!!!!!  
+  [Low1/64]mod3n(5):(7,9-6)         R= +1557  p =  2.3e-532   FAIL !!!!!!!   
+  [Low1/64]mod3n(5):(8,9-6)         R=+739.5  p =  2.2e-253   FAIL !!!!!!    
+  [Low1/64]mod3n(5):(9,9-6)         R=+336.2  p =  1.2e-115   FAIL !!!!!     
+  [Low4/16]BCFN(2+0,13-3,T)         R>+99999  p = 0           FAIL !!!!!!!!  
+  [Low4/16]BCFN(2+1,13-3,T)         R>+99999  p = 0           FAIL !!!!!!!!  
+  [Low4/16]BCFN(2+2,13-4,T)         R>+99999  p = 0           FAIL !!!!!!!!  
+  [Low4/16]BCFN(2+3,13-4,T)         R>+99999  p = 0           FAIL !!!!!!!!  
+  [Low4/16]BCFN(2+4,13-5,T)         R>+99999  p = 0           FAIL !!!!!!!!  
+  [Low4/16]BCFN(2+5,13-5,T)         R>+99999  p = 0           FAIL !!!!!!!!  
+  [Low4/16]BCFN(2+6,13-6,T)         R>+99999  p = 0           FAIL !!!!!!!!  
+  [Low4/16]BCFN(2+7,13-6,T)         R>+99999  p = 0           FAIL !!!!!!!!  
+  [Low4/16]BCFN(2+8,13-7,T)         R=+69534  p = 0           FAIL !!!!!!!!  
+  [Low4/16]BCFN(2+9,13-8,T)         R=+41141  p = 0           FAIL !!!!!!!!  
+  [Low4/16]BCFN(2+10,13-8,T)        R=+20506  p =  3e-5205    FAIL !!!!!!!!  
+  [Low4/16]BCFN(2+11,13-9,T)        R=+11761  p =  1e-2643    FAIL !!!!!!!!  
+  [Low4/16]BCFN(2+12,13-9,T)        R= +5862  p =  2e-1318    FAIL !!!!!!!!  
+  [Low4/16]DC6-9x1Bytes-1           R>+99999  p = 0           FAIL !!!!!!!!  
+  [Low4/16]Gap-16:A                 R=+45217  p = 0           FAIL !!!!!!!!  
+  [Low4/16]Gap-16:B                 R>+99999  p = 0           FAIL !!!!!!!!  
+  [Low4/16]FPF-14+6/16:(4,14-2)     R>+99999  p = 0           FAIL !!!!!!!!  
+  [Low4/16]FPF-14+6/16:(5,14-3)     R=+80312  p = 0           FAIL !!!!!!!!  
+  [Low4/16]FPF-14+6/16:(6,14-4)     R=+56711  p = 0           FAIL !!!!!!!!  
+  [Low4/16]FPF-14+6/16:(7,14-5)     R=+40222  p = 0           FAIL !!!!!!!!  
+  [Low4/16]FPF-14+6/16:(8,14-5)     R=+20658  p = 0           FAIL !!!!!!!!  
+  [Low4/16]FPF-14+6/16:(9,14-6)     R=+14646  p = 0           FAIL !!!!!!!!  
+  [Low4/16]FPF-14+6/16:(10,14-7)    R=+10316  p =  6e-8210    FAIL !!!!!!!!  
+  [Low4/16]FPF-14+6/16:(11,14-8)    R= +7323  p =  1e-5269    FAIL !!!!!!!!  
+  [Low4/16]FPF-14+6/16:(12,14-8)    R= +3738  p =  4e-2690    FAIL !!!!!!!!  
+  [Low4/16]FPF-14+6/16:(13,14-9)    R= +2674  p =  3e-1684    FAIL !!!!!!!!  
+  [Low4/16]FPF-14+6/16:(14,14-10)   R= +1860  p =  4.4e-990   FAIL !!!!!!!   
+  [Low4/16]FPF-14+6/16:(15,14-11)   R= +1441  p =  9.0e-629   FAIL !!!!!!!   
+  [Low4/16]FPF-14+6/16:all          R>+99999  p = 0           FAIL !!!!!!!!  
+  [Low4/16]FPF-14+6/16:cross        R>+99999  p = 0           FAIL !!!!!!!!  
+  [Low4/16]BRank(12):128(4)         R=+434.7  p~=  5.3e-232   FAIL !!!!!!    
+  [Low4/16]BRank(12):256(2)         R=+764.0  p~=  5.0e-231   FAIL !!!!!!    
+  [Low4/16]BRank(12):384(1)         R=+863.2  p~=  7.2e-261   FAIL !!!!!!    
+  [Low4/16]BRank(12):512(2)         R= +1677  p~=  5.8e-506   FAIL !!!!!!!   
+  [Low4/16]BRank(12):768(1)         R= +1832  p~=  1.7e-552   FAIL !!!!!!!   
+  [Low4/16]BRank(12):1K(1)          R= +2478  p~=  6.8e-747   FAIL !!!!!!!   
+  [Low4/16]mod3n(5):(0,9-6)         R=+152.3  p =  7.7e-53    FAIL !!!!      
+  [Low4/16]TMFn(2+0):wl             R=+17247  p~=  0          FAIL !!!!!!!!  
+  [Low4/16]TMFn(2+1):wl             R= +8581  p~=  0          FAIL !!!!!!!!  
+  [Low4/32]BCFN(2+0,13-4,T)         R>+99999  p = 0           FAIL !!!!!!!!  
+  [Low4/32]BCFN(2+1,13-4,T)         R>+99999  p = 0           FAIL !!!!!!!!  
+  [Low4/32]BCFN(2+2,13-5,T)         R>+99999  p = 0           FAIL !!!!!!!!  
+  [Low4/32]BCFN(2+3,13-5,T)         R>+99999  p = 0           FAIL !!!!!!!!  
+  [Low4/32]BCFN(2+4,13-5,T)         R>+99999  p = 0           FAIL !!!!!!!!  
+  [Low4/32]BCFN(2+5,13-6,T)         R>+99999  p = 0           FAIL !!!!!!!!  
+  [Low4/32]BCFN(2+6,13-6,T)         R>+99999  p = 0           FAIL !!!!!!!!  
+  [Low4/32]BCFN(2+7,13-7,T)         R=+69900  p = 0           FAIL !!!!!!!!  
+  [Low4/32]BCFN(2+8,13-8,T)         R=+41294  p = 0           FAIL !!!!!!!!  
+  [Low4/32]BCFN(2+9,13-8,T)         R=+20560  p =  6e-5219    FAIL !!!!!!!!  
+  [Low4/32]BCFN(2+10,13-9,T)        R=+11783  p =  1e-2648    FAIL !!!!!!!!  
+  [Low4/32]BCFN(2+11,13-9,T)        R= +5870  p =  4e-1320    FAIL !!!!!!!!  
+  [Low4/32]DC6-9x1Bytes-1           R>+99999  p = 0           FAIL !!!!!!!!  
+  [Low4/32]Gap-16:A                 R>+99999  p = 0           FAIL !!!!!!!!  
+  [Low4/32]Gap-16:B                 R>+99999  p = 0           FAIL !!!!!!!!  
+  [Low4/32]FPF-14+6/16:(2,14-2)     R=+90879  p = 0           FAIL !!!!!!!!  
+  [Low4/32]FPF-14+6/16:(3,14-2)     R=+90857  p = 0           FAIL !!!!!!!!  
+  [Low4/32]FPF-14+6/16:(4,14-3)     R>+99999  p = 0           FAIL !!!!!!!!  
+  [Low4/32]FPF-14+6/16:(5,14-4)     R=+90932  p = 0           FAIL !!!!!!!!  
+  [Low4/32]FPF-14+6/16:(6,14-5)     R=+64160  p = 0           FAIL !!!!!!!!  
+  [Low4/32]FPF-14+6/16:(7,14-5)     R=+64124  p = 0           FAIL !!!!!!!!  
+  [Low4/32]FPF-14+6/16:(9,14-7)     R=+32327  p = 0           FAIL !!!!!!!!  
+  [Low4/32]FPF-14+6/16:(10,14-8)    R=+22943  p = 0           FAIL !!!!!!!!  
+  [Low4/32]FPF-14+6/16:(11,14-8)    R=+22860  p = 0           FAIL !!!!!!!!  
+  [Low4/32]FPF-14+6/16:(12,14-9)    R=+16261  p = 0           FAIL !!!!!!!!  
+  [Low4/32]FPF-14+6/16:(13,14-10)   R=+11659  p =  4e-6203    FAIL !!!!!!!!  
+  [Low4/32]FPF-14+6/16:(14,14-11)   R= +8500  p =  7e-3706    FAIL !!!!!!!!  
+  [Low4/32]FPF-14+6/16:(15,14-11)   R= +4388  p =  1e-1913    FAIL !!!!!!!!  
+  [Low4/32]FPF-14+6/16:all          R>+99999  p = 0           FAIL !!!!!!!!  
+  [Low4/32]FPF-14+6/16:cross        R>+99999  p = 0           FAIL !!!!!!!!  
+  [Low4/32]BRank(12):128(4)         R= +1081  p~=  1.7e-575   FAIL !!!!!!!   
+  [Low4/32]BRank(12):256(2)         R= +1677  p~=  5.8e-506   FAIL !!!!!!!   
+  [Low4/32]BRank(12):384(1)         R= +1832  p~=  1.7e-552   FAIL !!!!!!!   
+  [Low4/32]BRank(12):512(2)         R= +3504  p~=  7e-1056    FAIL !!!!!!!!  
+  [Low4/32]BRank(12):768(1)         R= +3769  p~=  1e-1135    FAIL !!!!!!!!  
+  [Low4/32]BRank(12):1K(1)          R= +5061  p~=  1e-1524    FAIL !!!!!!!!  
+  [Low4/32]mod3n(5):(0,9-6)         R=+263.3  p =  9.2e-91    FAIL !!!!!     
+  [Low4/32]TMFn(2+0):wl             R=+11214  p~=  0          FAIL !!!!!!!!  
+  [Low4/64]BCFN(2+0,13-5,T)         R>+99999  p = 0           FAIL !!!!!!!!  
+  [Low4/64]BCFN(2+1,13-5,T)         R>+99999  p = 0           FAIL !!!!!!!!  
+  [Low4/64]BCFN(2+2,13-5,T)         R>+99999  p = 0           FAIL !!!!!!!!  
+  [Low4/64]BCFN(2+3,13-5,T)         R>+99999  p = 0           FAIL !!!!!!!!  
+  [Low4/64]BCFN(2+4,13-6,T)         R>+99999  p = 0           FAIL !!!!!!!!  
+  [Low4/64]BCFN(2+5,13-6,T)         R>+99999  p = 0           FAIL !!!!!!!!  
+  [Low4/64]BCFN(2+6,13-7,T)         R=+70419  p = 0           FAIL !!!!!!!!  
+  [Low4/64]BCFN(2+7,13-8,T)         R=+41511  p = 0           FAIL !!!!!!!!  
+  [Low4/64]BCFN(2+8,13-8,T)         R=+20637  p =  2e-5238    FAIL !!!!!!!!  
+  [Low4/64]BCFN(2+9,13-9,T)         R=+11814  p =  1e-2655    FAIL !!!!!!!!  
+  [Low4/64]BCFN(2+10,13-9,T)        R= +5881  p =  1e-1322    FAIL !!!!!!!!  
+  [Low4/64]DC6-9x1Bytes-1           R>+99999  p = 0           FAIL !!!!!!!!  
+  [Low4/64]Gap-16:A                 R>+99999  p = 0           FAIL !!!!!!!!  
+  [Low4/64]Gap-16:B                 R>+99999  p = 0           FAIL !!!!!!!!  
+  [Low4/64]FPF-14+6/16:(3,14-3)     R>+99999  p = 0           FAIL !!!!!!!!  
+  [Low4/64]FPF-14+6/16:(5,14-5)     R>+99999  p = 0           FAIL !!!!!!!!  
+  [Low4/64]FPF-14+6/16:(6,14-5)     R>+99999  p = 0           FAIL !!!!!!!!  
+  [Low4/64]FPF-14+6/16:(7,14-6)     R>+99999  p = 0           FAIL !!!!!!!!  
+  [Low4/64]FPF-14+6/16:(10,14-8)    R>+99999  p = 0           FAIL !!!!!!!!  
+  [Low4/64]FPF-14+6/16:(11,14-9)    R=+98095  p = 0           FAIL !!!!!!!!  
+  [Low4/64]FPF-14+6/16:(13,14-11)   R=+51466  p = 0           FAIL !!!!!!!!  
+  [Low4/64]FPF-14+6/16:(14,14-11)   R=+51208  p = 0           FAIL !!!!!!!!  
+  [Low4/64]FPF-14+6/16:all          R>+99999  p = 0           FAIL !!!!!!!!  
+  [Low4/64]FPF-14+6/16:cross        R>+99999  p = 0           FAIL !!!!!!!!  
+  [Low4/64]BRank(12):128(4)         R= +2372  p~=  1e-1262    FAIL !!!!!!!!  
+  [Low4/64]BRank(12):256(2)         R= +3504  p~=  7e-1056    FAIL !!!!!!!!  
+  [Low4/64]BRank(12):384(1)         R= +3769  p~=  1e-1135    FAIL !!!!!!!!  
+  [Low4/64]BRank(12):512(2)         R= +7157  p~=  1e-2155    FAIL !!!!!!!!  
+  [Low4/64]BRank(12):768(1)         R= +7644  p~=  3e-2302    FAIL !!!!!!!!  
+  [Low4/64]mod3n(5):(0,9-6)         R= +2069  p =  2.7e-707   FAIL !!!!!!!   
+  [Low8/32]BCFN(2+0,13-3,T)         R>+99999  p = 0           FAIL !!!!!!!!  
+  [Low8/32]BCFN(2+1,13-3,T)         R>+99999  p = 0           FAIL !!!!!!!!  
+  [Low8/32]BCFN(2+2,13-4,T)         R>+99999  p = 0           FAIL !!!!!!!!  
+  [Low8/32]BCFN(2+3,13-4,T)         R>+99999  p = 0           FAIL !!!!!!!!  
+  [Low8/32]BCFN(2+4,13-5,T)         R>+99999  p = 0           FAIL !!!!!!!!  
+  [Low8/32]BCFN(2+5,13-5,T)         R>+99999  p = 0           FAIL !!!!!!!!  
+  [Low8/32]BCFN(2+6,13-6,T)         R>+99999  p = 0           FAIL !!!!!!!!  
+  [Low8/32]BCFN(2+7,13-6,T)         R>+99999  p = 0           FAIL !!!!!!!!  
+  [Low8/32]BCFN(2+8,13-7,T)         R=+69534  p = 0           FAIL !!!!!!!!  
+  [Low8/32]BCFN(2+9,13-8,T)         R=+41141  p = 0           FAIL !!!!!!!!  
+  [Low8/32]BCFN(2+10,13-8,T)        R=+20506  p =  3e-5205    FAIL !!!!!!!!  
+  [Low8/32]BCFN(2+11,13-9,T)        R=+11761  p =  1e-2643    FAIL !!!!!!!!  
+  [Low8/32]BCFN(2+12,13-9,T)        R= +5862  p =  2e-1318    FAIL !!!!!!!!  
+  [Low8/32]DC6-9x1Bytes-1           R>+99999  p = 0           FAIL !!!!!!!!  
+  [Low8/32]Gap-16:A                 R=+46066  p = 0           FAIL !!!!!!!!  
+  [Low8/32]Gap-16:B                 R>+99999  p = 0           FAIL !!!!!!!!  
+  [Low8/32]FPF-14+6/16:(4,14-2)     R=+90772  p = 0           FAIL !!!!!!!!  
+  [Low8/32]FPF-14+6/16:(5,14-3)     R=+80332  p = 0           FAIL !!!!!!!!  
+  [Low8/32]FPF-14+6/16:(6,14-4)     R=+68127  p = 0           FAIL !!!!!!!!  
+  [Low8/32]FPF-14+6/16:(7,14-5)     R=+56232  p = 0           FAIL !!!!!!!!  
+  [Low8/32]FPF-14+6/16:(8,14-5)     R=+36529  p = 0           FAIL !!!!!!!!  
+  [Low8/32]FPF-14+6/16:(9,14-6)     R=+25751  p = 0           FAIL !!!!!!!!  
+  [Low8/32]FPF-14+6/16:(10,14-7)    R=+18249  p = 0           FAIL !!!!!!!!  
+  [Low8/32]FPF-14+6/16:(11,14-8)    R=+13023  p =  1e-9371    FAIL !!!!!!!!  
+  [Low8/32]FPF-14+6/16:(12,14-8)    R= +6543  p =  4e-4708    FAIL !!!!!!!!  
+  [Low8/32]FPF-14+6/16:(13,14-9)    R= +4671  p =  1e-2941    FAIL !!!!!!!!  
+  [Low8/32]FPF-14+6/16:(14,14-10)   R= +3372  p =  1e-1794    FAIL !!!!!!!!  
+  [Low8/32]FPF-14+6/16:(15,14-11)   R= +2463  p =  2e-1074    FAIL !!!!!!!!  
+  [Low8/32]FPF-14+6/16:all          R>+99999  p = 0           FAIL !!!!!!!!  
+  [Low8/32]FPF-14+6/16:cross        R>+99999  p = 0           FAIL !!!!!!!!  
+  [Low8/32]BRank(12):128(4)         R=+434.7  p~=  5.3e-232   FAIL !!!!!!    
+  [Low8/32]BRank(12):256(2)         R=+794.5  p~=  3.4e-240   FAIL !!!!!!    
+  [Low8/32]BRank(12):384(1)         R=+863.2  p~=  7.2e-261   FAIL !!!!!!    
+  [Low8/32]BRank(12):512(2)         R= +1769  p~=  1.8e-533   FAIL !!!!!!!   
+  [Low8/32]BRank(12):768(1)         R= +1896  p~=  6.3e-572   FAIL !!!!!!!   
+  [Low8/32]BRank(12):1K(1)          R= +2628  p~=  2.9e-792   FAIL !!!!!!!   
+  [Low8/32]mod3n(5):(0,9-6)         R=+518.3  p =  7.6e-178   FAIL !!!!!!    
+  [Low8/32]TMFn(2+0):wl             R=+17247  p~=  0          FAIL !!!!!!!!  
+  [Low8/32]TMFn(2+1):wl             R= +8581  p~=  0          FAIL !!!!!!!!  
+  [Low8/64]BCFN(2+0,13-4,T)         R>+99999  p = 0           FAIL !!!!!!!!  
+  [Low8/64]BCFN(2+1,13-4,T)         R>+99999  p = 0           FAIL !!!!!!!!  
+  [Low8/64]BCFN(2+2,13-5,T)         R>+99999  p = 0           FAIL !!!!!!!!  
+  [Low8/64]BCFN(2+3,13-5,T)         R>+99999  p = 0           FAIL !!!!!!!!  
+  [Low8/64]BCFN(2+4,13-5,T)         R>+99999  p = 0           FAIL !!!!!!!!  
+  [Low8/64]BCFN(2+5,13-6,T)         R>+99999  p = 0           FAIL !!!!!!!!  
+  [Low8/64]BCFN(2+6,13-6,T)         R>+99999  p = 0           FAIL !!!!!!!!  
+  [Low8/64]BCFN(2+7,13-7,T)         R=+69900  p = 0           FAIL !!!!!!!!  
+  [Low8/64]BCFN(2+8,13-8,T)         R=+41294  p = 0           FAIL !!!!!!!!  
+  [Low8/64]BCFN(2+9,13-8,T)         R=+20560  p =  6e-5219    FAIL !!!!!!!!  
+  [Low8/64]BCFN(2+10,13-9,T)        R=+11783  p =  1e-2648    FAIL !!!!!!!!  
+  [Low8/64]BCFN(2+11,13-9,T)        R= +5870  p =  4e-1320    FAIL !!!!!!!!  
+  [Low8/64]DC6-9x1Bytes-1           R>+99999  p = 0           FAIL !!!!!!!!  
+  [Low8/64]Gap-16:A                 R>+99999  p = 0           FAIL !!!!!!!!  
+  [Low8/64]Gap-16:B                 R>+99999  p = 0           FAIL !!!!!!!!  
+  [Low8/64]FPF-14+6/16:(2,14-2)     R=+90879  p = 0           FAIL !!!!!!!!  
+  [Low8/64]FPF-14+6/16:(3,14-2)     R=+90855  p = 0           FAIL !!!!!!!!  
+  [Low8/64]FPF-14+6/16:(4,14-3)     R=+96296  p = 0           FAIL !!!!!!!!  
+  [Low8/64]FPF-14+6/16:(5,14-4)     R=+90896  p = 0           FAIL !!!!!!!!  
+  [Low8/64]FPF-14+6/16:(6,14-5)     R=+80319  p = 0           FAIL !!!!!!!!  
+  [Low8/64]FPF-14+6/16:(7,14-5)     R=+96335  p = 0           FAIL !!!!!!!!  
+  [Low8/64]FPF-14+6/16:(9,14-7)     R=+64505  p = 0           FAIL !!!!!!!!  
+  [Low8/64]FPF-14+6/16:(10,14-8)    R=+45762  p = 0           FAIL !!!!!!!!  
+  [Low8/64]FPF-14+6/16:(11,14-8)    R=+45755  p = 0           FAIL !!!!!!!!  
+  [Low8/64]FPF-14+6/16:(12,14-9)    R=+32649  p = 0           FAIL !!!!!!!!  
+  [Low8/64]FPF-14+6/16:(13,14-10)   R=+23525  p = 0           FAIL !!!!!!!!  
+  [Low8/64]FPF-14+6/16:(14,14-11)   R=+17242  p =  4e-7516    FAIL !!!!!!!!  
+  [Low8/64]FPF-14+6/16:(15,14-11)   R= +8704  p =  2e-3794    FAIL !!!!!!!!  
+  [Low8/64]FPF-14+6/16:all          R>+99999  p = 0           FAIL !!!!!!!!  
+  [Low8/64]FPF-14+6/16:cross        R>+99999  p = 0           FAIL !!!!!!!!  
+  [Low8/64]BRank(12):128(4)         R= +1124  p~=  2.2e-598   FAIL !!!!!!!   
+  [Low8/64]BRank(12):256(2)         R= +1769  p~=  1.8e-533   FAIL !!!!!!!   
+  [Low8/64]BRank(12):384(1)         R= +1896  p~=  6.3e-572   FAIL !!!!!!!   
+  [Low8/64]BRank(12):512(2)         R= +3717  p~=  5e-1120    FAIL !!!!!!!!  
+  [Low8/64]BRank(12):768(1)         R= +3963  p~=  4e-1194    FAIL !!!!!!!!  
+  [Low8/64]BRank(12):1K(1)          R= +5384  p~=  9e-1622    FAIL !!!!!!!!  
+  [Low8/64]mod3n(5):(0,9-6)         R=+966.5  p =  7.2e-331   FAIL !!!!!!!   
+  [Low8/64]TMFn(2+0):wl             R=+11214  p~=  0          FAIL !!!!!!!!  
+  ...and 121 test result(s) without anomalies
 

@@ -1,9 +1,9 @@
-RNG_test using PractRand version 0.95
+RNG_test using PractRand version 0.95-planet36
 RNG = RNG_stdin64, seed = unknown
 test set = core, folding = extra
 
 rng=RNG_stdin64, seed=unknown
-length= 256 megabytes (2^28 bytes), time= 0.9 seconds
+length= 256 mebibytes (2^28 bytes), time= 0.9 seconds
   Test Name                         Raw       Processed     Evaluation
   BCFN(2+0,13-2,T)                  R>+99999  p = 0           FAIL !!!!!!!!  
   BCFN(2+1,13-2,T)                  R>+99999  p = 0           FAIL !!!!!!!!  
@@ -23,20 +23,20 @@ length= 256 megabytes (2^28 bytes), time= 0.9 seconds
   DC6-9x1Bytes-1                    R>+99999  p = 0           FAIL !!!!!!!!  
   Gap-16:A                          R>+99999  p = 0           FAIL !!!!!!!!  
   Gap-16:B                          R>+99999  p = 0           FAIL !!!!!!!!  
-  FPF-14+6/16:(1,14-0)              R=+34286  p = 0           FAIL !!!!!!!!  
-  FPF-14+6/16:(2,14-0)              R=+41002  p = 0           FAIL !!!!!!!!  
-  FPF-14+6/16:(3,14-0)              R=+35602  p = 0           FAIL !!!!!!!!  
-  FPF-14+6/16:(4,14-1)              R=+25142  p = 0           FAIL !!!!!!!!  
-  FPF-14+6/16:(5,14-2)              R=+17752  p = 0           FAIL !!!!!!!!  
-  FPF-14+6/16:(6,14-2)              R=+13289  p = 0           FAIL !!!!!!!!  
-  FPF-14+6/16:(7,14-3)              R= +9401  p =  8e-8240    FAIL !!!!!!!!  
-  FPF-14+6/16:(8,14-4)              R= +6645  p =  4e-5430    FAIL !!!!!!!!  
-  FPF-14+6/16:(9,14-5)              R= +4711  p =  3e-3905    FAIL !!!!!!!!  
-  FPF-14+6/16:(10,14-5)             R= +3241  p =  1e-2686    FAIL !!!!!!!!  
-  FPF-14+6/16:(11,14-6)             R= +2326  p =  3e-1780    FAIL !!!!!!!!  
-  FPF-14+6/16:(12,14-7)             R= +1604  p =  1e-1276    FAIL !!!!!!!!  
-  FPF-14+6/16:(13,14-8)             R= +1142  p =  1.4e-821   FAIL !!!!!!!   
-  FPF-14+6/16:(14,14-8)             R=+721.5  p =  3.0e-519   FAIL !!!!!!!   
+  FPF-14+6/16:(1,14-0)              R=+34284  p = 0           FAIL !!!!!!!!  
+  FPF-14+6/16:(2,14-0)              R=+40967  p = 0           FAIL !!!!!!!!  
+  FPF-14+6/16:(3,14-0)              R=+35565  p = 0           FAIL !!!!!!!!  
+  FPF-14+6/16:(4,14-1)              R=+25138  p = 0           FAIL !!!!!!!!  
+  FPF-14+6/16:(5,14-2)              R=+17852  p = 0           FAIL !!!!!!!!  
+  FPF-14+6/16:(6,14-2)              R=+13263  p = 0           FAIL !!!!!!!!  
+  FPF-14+6/16:(7,14-3)              R= +9383  p =  1e-8224    FAIL !!!!!!!!  
+  FPF-14+6/16:(8,14-4)              R= +6637  p =  6e-5423    FAIL !!!!!!!!  
+  FPF-14+6/16:(9,14-5)              R= +4663  p =  5e-3866    FAIL !!!!!!!!  
+  FPF-14+6/16:(10,14-5)             R= +3178  p =  2e-2634    FAIL !!!!!!!!  
+  FPF-14+6/16:(11,14-6)             R= +2284  p =  3e-1748    FAIL !!!!!!!!  
+  FPF-14+6/16:(12,14-7)             R= +1582  p =  1e-1258    FAIL !!!!!!!!  
+  FPF-14+6/16:(13,14-8)             R= +1169  p =  4.1e-841   FAIL !!!!!!!   
+  FPF-14+6/16:(14,14-8)             R=+749.8  p =  1.3e-539   FAIL !!!!!!!   
   FPF-14+6/16:all                   R>+99999  p = 0           FAIL !!!!!!!!  
   FPF-14+6/16:cross                 R>+99999  p = 0           FAIL !!!!!!!!  
   BRank(12):128(4)                  R= +2630  p~=  7e-1400    FAIL !!!!!!!!  
@@ -51,9 +51,9 @@ length= 256 megabytes (2^28 bytes), time= 0.9 seconds
   mod3n(5):(1,9-6)                  R>+99999  p = 0           FAIL !!!!!!!!  
   mod3n(5):(2,9-6)                  R>+99999  p = 0           FAIL !!!!!!!!  
   TMFn(2+0):wl                      R=+48165  p~=  0          FAIL !!!!!!!!  
-  TMFn(2+1):wl                      R=+24050  p~=  0          FAIL !!!!!!!!  
-  TMFn(2+2):wl                      R=+11995  p~=  0          FAIL !!!!!!!!  
-  TMFn(2+3):wl                      R= +5966  p~=  0          FAIL !!!!!!!!  
+  TMFn(2+1):wl                      R=+24049  p~=  0          FAIL !!!!!!!!  
+  TMFn(2+2):wl                      R=+11994  p~=  0          FAIL !!!!!!!!  
+  TMFn(2+3):wl                      R= +5965  p~=  0          FAIL !!!!!!!!  
   [Low1/8]BCFN(2+0,13-4,T)          R>+99999  p = 0           FAIL !!!!!!!!  
   [Low1/8]BCFN(2+1,13-4,T)          R>+99999  p = 0           FAIL !!!!!!!!  
   [Low1/8]BCFN(2+2,13-5,T)          R>+99999  p = 0           FAIL !!!!!!!!  
@@ -75,8 +75,8 @@ length= 256 megabytes (2^28 bytes), time= 0.9 seconds
   [Low1/8]FPF-14+6/16:(3,14-2)      R>+99999  p = 0           FAIL !!!!!!!!  
   [Low1/8]FPF-14+6/16:(8,14-6)      R>+99999  p = 0           FAIL !!!!!!!!  
   [Low1/8]FPF-14+6/16:(9,14-7)      R>+99999  p = 0           FAIL !!!!!!!!  
-  [Low1/8]FPF-14+6/16:(10,14-8)     R=+91660  p = 0           FAIL !!!!!!!!  
-  [Low1/8]FPF-14+6/16:(11,14-8)     R=+45644  p = 0           FAIL !!!!!!!!  
+  [Low1/8]FPF-14+6/16:(10,14-8)     R=+91143  p = 0           FAIL !!!!!!!!  
+  [Low1/8]FPF-14+6/16:(11,14-8)     R=+45702  p = 0           FAIL !!!!!!!!  
   [Low1/8]FPF-14+6/16:all           R>+99999  p = 0           FAIL !!!!!!!!  
   [Low1/8]FPF-14+6/16:cross         R>+99999  p = 0           FAIL !!!!!!!!  
   [Low1/8]BRank(12):128(4)          R= +2544  p~=  4e-1354    FAIL !!!!!!!!  
@@ -85,8 +85,8 @@ length= 256 megabytes (2^28 bytes), time= 0.9 seconds
   [Low1/8]BRank(12):512(2)          R= +7644  p~=  3e-2302    FAIL !!!!!!!!  
   [Low1/8]BRank(12):768(1)          R= +8161  p~=  1e-2457    FAIL !!!!!!!!  
   [Low1/8]BRank(12):1K(1)           R=+10916  p~=  3e-3287    FAIL !!!!!!!!  
-  [Low1/8]mod3n(5):(0,9-6)          R= +4371  p =  1e-1493    FAIL !!!!!!!!  
-  [Low1/8]TMFn(2+0):wl              R= +2975  p~=  0          FAIL !!!!!!!!  
+  [Low1/8]mod3n(5):(0,9-6)          R= +4123  p =  1e-1408    FAIL !!!!!!!!  
+  [Low1/8]TMFn(2+0):wl              R= +2973  p~=  0          FAIL !!!!!!!!  
   [Low1/16]BCFN(2+0,13-5,T)         R>+99999  p = 0           FAIL !!!!!!!!  
   [Low1/16]BCFN(2+1,13-5,T)         R>+99999  p = 0           FAIL !!!!!!!!  
   [Low1/16]BCFN(2+2,13-5,T)         R>+99999  p = 0           FAIL !!!!!!!!  
@@ -106,9 +106,9 @@ length= 256 megabytes (2^28 bytes), time= 0.9 seconds
   [Low1/16]FPF-14+6/16:(4,14-4)     R>+99999  p = 0           FAIL !!!!!!!!  
   [Low1/16]FPF-14+6/16:(5,14-5)     R>+99999  p = 0           FAIL !!!!!!!!  
   [Low1/16]FPF-14+6/16:(8,14-7)     R>+99999  p = 0           FAIL !!!!!!!!  
-  [Low1/16]FPF-14+6/16:(9,14-8)     R=+91795  p = 0           FAIL !!!!!!!!  
-  [Low1/16]FPF-14+6/16:(12,14-10)   R=+46996  p = 0           FAIL !!!!!!!!  
-  [Low1/16]FPF-14+6/16:(13,14-11)   R=+34308  p = 0           FAIL !!!!!!!!  
+  [Low1/16]FPF-14+6/16:(9,14-8)     R=+91359  p = 0           FAIL !!!!!!!!  
+  [Low1/16]FPF-14+6/16:(12,14-10)   R=+47101  p = 0           FAIL !!!!!!!!  
+  [Low1/16]FPF-14+6/16:(13,14-11)   R=+34089  p = 0           FAIL !!!!!!!!  
   [Low1/16]FPF-14+6/16:all          R>+99999  p = 0           FAIL !!!!!!!!  
   [Low1/16]FPF-14+6/16:cross        R>+99999  p = 0           FAIL !!!!!!!!  
   [Low1/16]BRank(12):128(4)         R= +2544  p~=  4e-1354    FAIL !!!!!!!!  
@@ -116,7 +116,7 @@ length= 256 megabytes (2^28 bytes), time= 0.9 seconds
   [Low1/16]BRank(12):384(1)         R= +4028  p~=  1e-1213    FAIL !!!!!!!!  
   [Low1/16]BRank(12):512(2)         R= +7644  p~=  3e-2302    FAIL !!!!!!!!  
   [Low1/16]BRank(12):768(1)         R= +8161  p~=  1e-2457    FAIL !!!!!!!!  
-  [Low1/16]mod3n(5):(0,9-6)         R= +2221  p =  2.4e-759   FAIL !!!!!!!   
+  [Low1/16]mod3n(5):(0,9-6)         R= +2217  p =  7.5e-758   FAIL !!!!!!!   
   [Low1/32]BCFN(2+0,13-5,T)         R>+99999  p = 0           FAIL !!!!!!!!  
   [Low1/32]BCFN(2+1,13-5,T)         R>+99999  p = 0           FAIL !!!!!!!!  
   [Low1/32]BCFN(2+2,13-6,T)         R>+99999  p = 0           FAIL !!!!!!!!  
@@ -133,17 +133,17 @@ length= 256 megabytes (2^28 bytes), time= 0.9 seconds
   [Low1/32]FPF-14+6/16:(0,14-2)     R>+99999  p = 0           FAIL !!!!!!!!  
   [Low1/32]FPF-14+6/16:(2,14-3)     R>+99999  p = 0           FAIL !!!!!!!!  
   [Low1/32]FPF-14+6/16:(4,14-5)     R>+99999  p = 0           FAIL !!!!!!!!  
-  [Low1/32]FPF-14+6/16:(6,14-6)     R=+91051  p = 0           FAIL !!!!!!!!  
-  [Low1/32]FPF-14+6/16:(8,14-8)     R=+68556  p = 0           FAIL !!!!!!!!  
-  [Low1/32]FPF-14+6/16:(10,14-9)    R=+48915  p = 0           FAIL !!!!!!!!  
-  [Low1/32]FPF-14+6/16:(12,14-11)   R=+34447  p = 0           FAIL !!!!!!!!  
+  [Low1/32]FPF-14+6/16:(6,14-6)     R=+91234  p = 0           FAIL !!!!!!!!  
+  [Low1/32]FPF-14+6/16:(8,14-8)     R=+68815  p = 0           FAIL !!!!!!!!  
+  [Low1/32]FPF-14+6/16:(10,14-9)    R=+49138  p = 0           FAIL !!!!!!!!  
+  [Low1/32]FPF-14+6/16:(12,14-11)   R=+34259  p = 0           FAIL !!!!!!!!  
   [Low1/32]FPF-14+6/16:all          R>+99999  p = 0           FAIL !!!!!!!!  
   [Low1/32]FPF-14+6/16:cross        R>+99999  p = 0           FAIL !!!!!!!!  
   [Low1/32]BRank(12):128(2)         R= +1799  p~=  1.2e-542   FAIL !!!!!!!   
   [Low1/32]BRank(12):256(2)         R= +3748  p~=  3e-1129    FAIL !!!!!!!!  
   [Low1/32]BRank(12):384(1)         R= +4028  p~=  1e-1213    FAIL !!!!!!!!  
   [Low1/32]BRank(12):512(1)         R= +5405  p~=  3e-1628    FAIL !!!!!!!!  
-  [Low1/32]mod3n(5):(0,9-6)         R= +1366  p =  2.6e-467   FAIL !!!!!!!   
+  [Low1/32]mod3n(5):(0,9-6)         R= +1366  p =  3.6e-467   FAIL !!!!!!!   
   [Low4/16]BCFN(2+0,13-3,T)         R>+99999  p = 0           FAIL !!!!!!!!  
   [Low4/16]BCFN(2+1,13-3,T)         R>+99999  p = 0           FAIL !!!!!!!!  
   [Low4/16]BCFN(2+2,13-4,T)         R>+99999  p = 0           FAIL !!!!!!!!  
@@ -166,8 +166,8 @@ length= 256 megabytes (2^28 bytes), time= 0.9 seconds
   [Low4/16]FPF-14+6/16:(3,14-2)     R>+99999  p = 0           FAIL !!!!!!!!  
   [Low4/16]FPF-14+6/16:(4,14-2)     R>+99999  p = 0           FAIL !!!!!!!!  
   [Low4/16]FPF-14+6/16:(5,14-3)     R>+99999  p = 0           FAIL !!!!!!!!  
-  [Low4/16]FPF-14+6/16:(6,14-4)     R=+90828  p = 0           FAIL !!!!!!!!  
-  [Low4/16]FPF-14+6/16:(7,14-5)     R=+64462  p = 0           FAIL !!!!!!!!  
+  [Low4/16]FPF-14+6/16:(6,14-4)     R=+90874  p = 0           FAIL !!!!!!!!  
+  [Low4/16]FPF-14+6/16:(7,14-5)     R=+64428  p = 0           FAIL !!!!!!!!  
   [Low4/16]FPF-14+6/16:all          R>+99999  p = 0           FAIL !!!!!!!!  
   [Low4/16]FPF-14+6/16:cross        R>+99999  p = 0           FAIL !!!!!!!!  
   [Low4/16]BRank(12):128(4)         R= +2544  p~=  4e-1354    FAIL !!!!!!!!  
@@ -177,8 +177,8 @@ length= 256 megabytes (2^28 bytes), time= 0.9 seconds
   [Low4/16]BRank(12):768(1)         R= +8161  p~=  1e-2457    FAIL !!!!!!!!  
   [Low4/16]BRank(12):1K(1)          R=+10916  p~=  3e-3287    FAIL !!!!!!!!  
   [Low4/16]mod3n(5):(0,9-6)         R>+99999  p = 0           FAIL !!!!!!!!  
-  [Low4/16]mod3n(5):(1,9-6)         R= +20.6  p =  7.1e-8   very suspicious  
-  [Low4/16]TMFn(2+0):wl             R=+11994  p~=  0          FAIL !!!!!!!!  
+  [Low4/16]mod3n(5):(1,9-6)         R= +18.4  p =  4.1e-7   suspicious       
+  [Low4/16]TMFn(2+0):wl             R=+11993  p~=  0          FAIL !!!!!!!!  
   [Low4/16]TMFn(2+1):wl             R= +5966  p~=  0          FAIL !!!!!!!!  
   [Low4/32]BCFN(2+0,13-4,T)         R>+99999  p = 0           FAIL !!!!!!!!  
   [Low4/32]BCFN(2+1,13-4,T)         R>+99999  p = 0           FAIL !!!!!!!!  
@@ -201,8 +201,8 @@ length= 256 megabytes (2^28 bytes), time= 0.9 seconds
   [Low4/32]FPF-14+6/16:(3,14-2)     R>+99999  p = 0           FAIL !!!!!!!!  
   [Low4/32]FPF-14+6/16:(8,14-6)     R>+99999  p = 0           FAIL !!!!!!!!  
   [Low4/32]FPF-14+6/16:(9,14-7)     R>+99999  p = 0           FAIL !!!!!!!!  
-  [Low4/32]FPF-14+6/16:(10,14-8)    R=+92116  p = 0           FAIL !!!!!!!!  
-  [Low4/32]FPF-14+6/16:(11,14-8)    R=+46037  p = 0           FAIL !!!!!!!!  
+  [Low4/32]FPF-14+6/16:(10,14-8)    R=+91146  p = 0           FAIL !!!!!!!!  
+  [Low4/32]FPF-14+6/16:(11,14-8)    R=+45561  p = 0           FAIL !!!!!!!!  
   [Low4/32]FPF-14+6/16:all          R>+99999  p = 0           FAIL !!!!!!!!  
   [Low4/32]FPF-14+6/16:cross        R>+99999  p = 0           FAIL !!!!!!!!  
   [Low4/32]BRank(12):128(4)         R= +2544  p~=  4e-1354    FAIL !!!!!!!!  
@@ -211,8 +211,8 @@ length= 256 megabytes (2^28 bytes), time= 0.9 seconds
   [Low4/32]BRank(12):512(2)         R= +7644  p~=  3e-2302    FAIL !!!!!!!!  
   [Low4/32]BRank(12):768(1)         R= +8161  p~=  1e-2457    FAIL !!!!!!!!  
   [Low4/32]BRank(12):1K(1)          R=+10916  p~=  3e-3287    FAIL !!!!!!!!  
-  [Low4/32]mod3n(5):(0,9-6)         R= +4373  p =  3e-1494    FAIL !!!!!!!!  
-  [Low4/32]TMFn(2+0):wl             R= +2976  p~=  0          FAIL !!!!!!!!  
+  [Low4/32]mod3n(5):(0,9-6)         R= +4273  p =  4e-1460    FAIL !!!!!!!!  
+  [Low4/32]TMFn(2+0):wl             R= +2974  p~=  0          FAIL !!!!!!!!  
   [Low8/32]BCFN(2+0,13-3,T)         R>+99999  p = 0           FAIL !!!!!!!!  
   [Low8/32]BCFN(2+1,13-3,T)         R>+99999  p = 0           FAIL !!!!!!!!  
   [Low8/32]BCFN(2+2,13-4,T)         R>+99999  p = 0           FAIL !!!!!!!!  
@@ -235,8 +235,8 @@ length= 256 megabytes (2^28 bytes), time= 0.9 seconds
   [Low8/32]FPF-14+6/16:(3,14-2)     R>+99999  p = 0           FAIL !!!!!!!!  
   [Low8/32]FPF-14+6/16:(4,14-2)     R>+99999  p = 0           FAIL !!!!!!!!  
   [Low8/32]FPF-14+6/16:(5,14-3)     R>+99999  p = 0           FAIL !!!!!!!!  
-  [Low8/32]FPF-14+6/16:(6,14-4)     R=+90859  p = 0           FAIL !!!!!!!!  
-  [Low8/32]FPF-14+6/16:(7,14-5)     R=+64267  p = 0           FAIL !!!!!!!!  
+  [Low8/32]FPF-14+6/16:(6,14-4)     R=+90902  p = 0           FAIL !!!!!!!!  
+  [Low8/32]FPF-14+6/16:(7,14-5)     R=+64434  p = 0           FAIL !!!!!!!!  
   [Low8/32]FPF-14+6/16:all          R>+99999  p = 0           FAIL !!!!!!!!  
   [Low8/32]FPF-14+6/16:cross        R>+99999  p = 0           FAIL !!!!!!!!  
   [Low8/32]BRank(12):128(4)         R= +2544  p~=  4e-1354    FAIL !!!!!!!!  
@@ -246,8 +246,8 @@ length= 256 megabytes (2^28 bytes), time= 0.9 seconds
   [Low8/32]BRank(12):768(1)         R= +8161  p~=  1e-2457    FAIL !!!!!!!!  
   [Low8/32]BRank(12):1K(1)          R=+10916  p~=  3e-3287    FAIL !!!!!!!!  
   [Low8/32]mod3n(5):(0,9-6)         R>+99999  p = 0           FAIL !!!!!!!!  
-  [Low8/32]mod3n(5):(1,9-6)         R= +20.3  p =  8.7e-8   suspicious       
-  [Low8/32]TMFn(2+0):wl             R=+11994  p~=  0          FAIL !!!!!!!!  
-  [Low8/32]TMFn(2+1):wl             R= +5966  p~=  0          FAIL !!!!!!!!  
+  [Low8/32]mod3n(5):(1,9-6)         R= +32.5  p =  5.9e-12   VERY SUSPICIOUS 
+  [Low8/32]TMFn(2+0):wl             R=+11993  p~=  0          FAIL !!!!!!!!  
+  [Low8/32]TMFn(2+1):wl             R= +5965  p~=  0          FAIL !!!!!!!!  
   ...and 231 test result(s) without anomalies
 

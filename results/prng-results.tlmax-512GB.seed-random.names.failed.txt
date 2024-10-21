@@ -1,7 +1,4 @@
 MRG32k3a
-aesdeclastrand
-aesenclastrand
-aesimcrand
 degski32
 degski64
 klimov_shamir_32
@@ -9,8 +6,13 @@ lcg32
 lcg64
 lehmer64
 mcg128
+mover_counter_64
 murmurhash3
 murmurhash3_32
+sha1msg1rand
+sha1msg2rand
+sha256msg1rand
+sha256msg2rand
 splitxix33
 std::default_random_engine
 std::knuth_b
@@ -22,5 +24,4 @@ std::ranlux24
 std::ranlux24_base
 std::ranlux48
 std::ranlux48_base
-tangle
 ttwanghash64

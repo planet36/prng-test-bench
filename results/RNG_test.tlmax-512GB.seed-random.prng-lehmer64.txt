@@ -1,51 +1,51 @@
-RNG_test using PractRand version 0.95
+RNG_test using PractRand version 0.95-planet36
 RNG = RNG_stdin64, seed = unknown
 test set = core, folding = extra
 
 rng=RNG_stdin64, seed=unknown
-length= 256 megabytes (2^28 bytes), time= 0.6 seconds
+length= 256 mebibytes (2^28 bytes), time= 0.6 seconds
   no anomalies in 521 test result(s)
 
 rng=RNG_stdin64, seed=unknown
-length= 512 megabytes (2^29 bytes), time= 3.4 seconds
+length= 512 mebibytes (2^29 bytes), time= 3.4 seconds
   no anomalies in 563 test result(s)
 
 rng=RNG_stdin64, seed=unknown
-length= 1 gigabyte (2^30 bytes), time= 6.7 seconds
+length= 1 gibibyte (2^30 bytes), time= 6.7 seconds
   no anomalies in 609 test result(s)
 
 rng=RNG_stdin64, seed=unknown
-length= 2 gigabytes (2^31 bytes), time= 10.8 seconds
+length= 2 gibibytes (2^31 bytes), time= 10.8 seconds
   no anomalies in 653 test result(s)
 
 rng=RNG_stdin64, seed=unknown
-length= 4 gigabytes (2^32 bytes), time= 16.8 seconds
+length= 4 gibibytes (2^32 bytes), time= 16.8 seconds
   no anomalies in 692 test result(s)
 
 rng=RNG_stdin64, seed=unknown
-length= 8 gigabytes (2^33 bytes), time= 26.8 seconds
+length= 8 gibibytes (2^33 bytes), time= 26.8 seconds
   no anomalies in 732 test result(s)
 
 rng=RNG_stdin64, seed=unknown
-length= 16 gigabytes (2^34 bytes), time= 44.3 seconds
+length= 16 gibibytes (2^34 bytes), time= 44.1 seconds
   no anomalies in 770 test result(s)
 
 rng=RNG_stdin64, seed=unknown
-length= 32 gigabytes (2^35 bytes), time= 74.8 seconds
+length= 32 gibibytes (2^35 bytes), time= 75.4 seconds
   no anomalies in 805 test result(s)
 
 rng=RNG_stdin64, seed=unknown
-length= 64 gigabytes (2^36 bytes), time= 139 seconds
+length= 64 gibibytes (2^36 bytes), time= 140 seconds
   no anomalies in 843 test result(s)
 
 rng=RNG_stdin64, seed=unknown
-length= 128 gigabytes (2^37 bytes), time= 264 seconds
+length= 128 gibibytes (2^37 bytes), time= 264 seconds
   Test Name                         Raw       Processed     Evaluation
-  TMFn(2+12):wl                     R=+180.5  p~=   1e-101    FAIL !!!!!     
-  [Low4/16]TMFn(2+10):wl            R=+182.4  p~=   1e-102    FAIL !!!!!     
-  [Low4/32]TMFn(2+9):wl             R=+180.9  p~=   8e-102    FAIL !!!!!     
-  [Low4/64]TMFn(2+8):wl             R=+181.5  p~=   3e-102    FAIL !!!!!     
-  [Low8/32]TMFn(2+10):wl            R=+182.6  p~=   8e-103    FAIL !!!!!     
-  [Low8/64]TMFn(2+9):wl             R=+182.6  p~=   7e-103    FAIL !!!!!     
+  TMFn(2+12):wl                     R=+177.9  p~=   5e-100    FAIL !!!!!     
+  [Low4/16]TMFn(2+10):wl            R=+181.1  p~=   6e-102    FAIL !!!!!     
+  [Low4/32]TMFn(2+9):wl             R=+180.0  p~=   3e-101    FAIL !!!!!     
+  [Low4/64]TMFn(2+8):wl             R=+181.8  p~=   2e-102    FAIL !!!!!     
+  [Low8/32]TMFn(2+10):wl            R=+179.9  p~=   3e-101    FAIL !!!!!     
+  [Low8/64]TMFn(2+9):wl             R=+180.3  p~=   1e-101    FAIL !!!!!     
   ...and 874 test result(s) without anomalies
 
