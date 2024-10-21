@@ -1,0 +1,34 @@
+RNG_test using PractRand version 0.95-planet36
+RNG = RNG_stdin64, seed = unknown
+test set = core, folding = none
+
+rng=RNG_stdin64, seed=unknown
+length= 256 mebibytes (2^28 bytes), time= 0.7 seconds
+  Test Name                         Raw       Processed     Evaluation
+  BCFN(2+0,13-2,T)                  R=+189.3  p =  2.5e-96    FAIL !!!!!     
+  BCFN(2+1,13-2,T)                  R=+331.0  p =  9.2e-169   FAIL !!!!!!    
+  BCFN(2+2,13-3,T)                  R=+380.7  p =  5.4e-180   FAIL !!!!!!    
+  BCFN(2+3,13-3,T)                  R=+243.4  p =  5.1e-115   FAIL !!!!!     
+  BCFN(2+4,13-3,T)                  R=+249.4  p =  7.7e-118   FAIL !!!!!     
+  BCFN(2+5,13-4,T)                  R=+406.1  p =  2.2e-177   FAIL !!!!!!    
+  BCFN(2+6,13-5,T)                  R=+671.1  p =  6.8e-263   FAIL !!!!!!    
+  BCFN(2+7,13-5,T)                  R=+493.8  p =  1.7e-193   FAIL !!!!!!    
+  BCFN(2+8,13-6,T)                  R=+437.3  p =  3.3e-150   FAIL !!!!!     
+  BCFN(2+9,13-6,T)                  R=+120.2  p =  1.3e-41    FAIL !!!       
+  BCFN(2+10,13-7,T)                 R= +82.3  p =  2.2e-25    FAIL !!        
+  BCFN(2+11,13-8,T)                 R= +45.7  p =  1.5e-12    FAIL           
+  BCFN(2+12,13-8,T)                 R= +18.6  p =  1.1e-5   unusual          
+  Gap-16:A                          R= +6383  p =  9e-5083    FAIL !!!!!!!!  
+  Gap-16:B                          R= +4480  p =  3e-3635    FAIL !!!!!!!!  
+  FPF-14+6/16:(0,14-0)              R=  -6.5  p =1-1.0e-5   unusual          
+  BRank(12):512(2)                  R= +97.5  p~=  2.2e-30    FAIL !!!       
+  BRank(12):768(1)                  R=+109.7  p~=  4.7e-34    FAIL !!!       
+  BRank(12):1K(2)                   R=+459.6  p~=  2.2e-139   FAIL !!!!!     
+  BRank(12):1536(1)                 R=+497.2  p~=  1.0e-150   FAIL !!!!!     
+  BRank(12):2K(1)                   R=+841.6  p~=  2.1e-254   FAIL !!!!!!    
+  TMFn(2+0):wl                      R=+440.2  p~=   6e-258    FAIL !!!!!!    
+  TMFn(2+1):wl                      R=+524.5  p~=   1e-308    FAIL !!!!!!    
+  TMFn(2+2):wl                      R=+535.3  p~=   3e-315    FAIL !!!!!!    
+  TMFn(2+3):wl                      R=+346.6  p~=   1e-201    FAIL !!!!!!    
+  ...and 42 test result(s) without anomalies
+
