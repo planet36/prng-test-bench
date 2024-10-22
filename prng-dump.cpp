@@ -22,7 +22,7 @@ https://www.pcg-random.org/posts/how-to-test-with-practrand.html
 #include <string>
 #include <utility>
 
-#include <fmt/core.h>
+#include <fmt/format.h>
 
 #define nl (void)putchar('\n')
 
