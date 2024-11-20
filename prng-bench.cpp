@@ -29,7 +29,7 @@ const auto BM_prng = [](benchmark::State& state, std::uniform_random_bit_generat
 int
 main(int argc, char** argv)
 {
-	// copied from /usr/include/benchmark/benchmark.h
+	// Copied from /usr/include/benchmark/benchmark.h
 	benchmark::Initialize(&argc, argv);
 
 	/*
