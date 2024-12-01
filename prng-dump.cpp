@@ -167,7 +167,7 @@ print_error(const std::string& s)
 void
 print_usage()
 {
-	fmt::println("Usage: {} [OPTIONS] PRNG", program_invocation_short_name);
+	fmt::println("Usage: {} [OPTION]... PRNG", program_invocation_short_name);
 	fmt::println("Dump random output to stdout.");
 	fmt::println("The default PRNG is {}", default_prng_name);
 	nl;

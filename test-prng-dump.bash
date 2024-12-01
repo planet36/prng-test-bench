@@ -49,7 +49,7 @@ declare -r DEFAULT_TLMAX=1GB
 
 function print_help
 {
-    printf 'Usage: %q [OPTIONS] [PRNGs]\n' "$SCRIPT_NAME"
+    printf 'Usage: %q [OPTION]... [PRNGs]\n' "$SCRIPT_NAME"
     cat <<EOT
 
 Test prng-dump with RNG_test.  If PRNGs are not given, they are all tested.
