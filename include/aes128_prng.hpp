@@ -38,8 +38,8 @@ class aes128_prng
 
 private:
 	__m128i keys[Nk];
-	__m128i ctr;
-	__m128i inc; // must be odd
+	__m128i ctr; ///< The state/counter
+	__m128i inc; ///< The increment (must be odd)
 
 public:
 	using result_type = __uint128_t;
