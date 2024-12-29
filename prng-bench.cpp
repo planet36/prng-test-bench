@@ -14,16 +14,16 @@
 #include <thread>
 #include <vector>
 
-const auto BM_prng = [](benchmark::State& state, std::uniform_random_bit_generator auto gen)
+const auto BM_prng = [](benchmark::State& BM_state, std::uniform_random_bit_generator auto gen)
 {
 	using result_type = typename decltype(gen)::result_type;
 
-	for (auto _ : state)
+	for (auto _ : BM_state)
 	{
 		benchmark::DoNotOptimize(gen());
 	}
 
-	state.SetBytesProcessed(state.iterations() * sizeof(result_type));
+	BM_state.SetBytesProcessed(BM_state.iterations() * sizeof(result_type));
 };
 
 int
