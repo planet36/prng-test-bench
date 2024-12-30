@@ -2,8 +2,8 @@
 # SPDX-License-Identifier: OSL-3.0
 
 __author__ = 'Steven Ward'
-__version__ = '2023-09-08'
 __license__ = 'OSL-3.0'
+__version__ = '2023-09-08'
 
 import json
 import matplotlib.pyplot as plt
