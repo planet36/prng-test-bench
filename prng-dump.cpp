@@ -213,7 +213,7 @@ print_usage()
 void
 process_options(int argc, char* argv[])
 {
-	using namespace std::literals::string_literals;
+	using namespace std::literals;
 
 	const char* short_options = "+Vhvil:s:";
 	int c;
