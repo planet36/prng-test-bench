@@ -23,7 +23,6 @@ union union_128
 	uint32_t u32[16 / sizeof(uint32_t)];
 	uint64_t u64[16 / sizeof(uint64_t)];
 #if defined(__SIZEOF_INT128__)
-	__int128_t i128;
 	__uint128_t u128;
 #endif
 	__m128i xmm;
