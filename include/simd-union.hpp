@@ -26,7 +26,7 @@ union alignas(__m128i) simd_128
 #endif
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wignored-attributes"
-	std::array<__m128i, 16 / sizeof(__m128i)> xmm;
+	__m128i xmm;
 #pragma GCC diagnostic pop
 };
 
@@ -45,7 +45,7 @@ union alignas(__m256i) simd_256
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wignored-attributes"
 	std::array<__m128i, 32 / sizeof(__m128i)> xmm;
-	std::array<__m256i, 32 / sizeof(__m256i)> ymm;
+	__m256i ymm;
 #pragma GCC diagnostic pop
 };
 
@@ -65,7 +65,7 @@ union alignas(__m512i) simd_512
 #pragma GCC diagnostic ignored "-Wignored-attributes"
 	std::array<__m128i, 64 / sizeof(__m128i)> xmm;
 	std::array<__m256i, 64 / sizeof(__m256i)> ymm;
-	std::array<__m512i, 64 / sizeof(__m512i)> zmm;
+	__m512i zmm;
 #pragma GCC diagnostic pop
 };
 
