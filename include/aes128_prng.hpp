@@ -4,7 +4,7 @@
 #pragma once
 
 #include "aes128-utils.h"
-#include "union_128.h"
+#include "union_128.hpp"
 
 #include <array>
 #include <concepts>

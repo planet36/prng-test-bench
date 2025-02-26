@@ -10,7 +10,7 @@
 #pragma once
 
 #include "def_urbg_class.hpp"
-#include "union_128.h"
+#include "union_128.hpp"
 #include "xxhprimes.hpp"
 
 #include <array>
