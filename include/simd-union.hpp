@@ -24,7 +24,10 @@ union alignas(__m128i) simd_128
 #if defined(__SIZEOF_INT128__)
 	std::array<__uint128_t, 16 / sizeof(__uint128_t)> u128;
 #endif
-	__m128i xmm;
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wignored-attributes"
+	std::array<__m128i, 16 / sizeof(__m128i)> xmm;
+#pragma GCC diagnostic pop
 };
 
 static_assert(sizeof(simd_128) == 16);
