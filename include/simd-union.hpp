@@ -50,3 +50,23 @@ union alignas(__m256i) simd_256
 };
 
 static_assert(sizeof(simd_256) == 32);
+
+union alignas(__m512i) simd_512
+{
+	std::array<std::byte, 64 / sizeof(std::byte)> bytes;
+	std::array<uint8_t, 64 / sizeof(uint8_t)> u8;
+	std::array<uint16_t, 64 / sizeof(uint16_t)> u16;
+	std::array<uint32_t, 64 / sizeof(uint32_t)> u32;
+	std::array<uint64_t, 64 / sizeof(uint64_t)> u64;
+#if defined(__SIZEOF_INT128__)
+	std::array<__uint128_t, 64 / sizeof(__uint128_t)> u128;
+#endif
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wignored-attributes"
+	std::array<__m128i, 64 / sizeof(__m128i)> xmm;
+	std::array<__m256i, 64 / sizeof(__m256i)> ymm;
+	std::array<__m512i, 64 / sizeof(__m512i)> zmm;
+#pragma GCC diagnostic pop
+};
+
+static_assert(sizeof(simd_512) == 64);
