@@ -104,7 +104,7 @@ public:
 				dst = aes128_dec(this->ctr, this->keys, Nk, Nr);
 		}
 		this->ctr = _mm_add_epi64(this->ctr, this->inc);
-		return simd_128{.xmm = dst}.u128;
+		return simd_128{.xmm = dst}.u128[0];
 	}
 };
 
