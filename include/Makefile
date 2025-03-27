@@ -9,7 +9,6 @@ CXX = g++
 CPPFLAGS = -MMD -MP
 
 CXXFLAGS = -pipe -Wall -Wextra -Wpedantic -Wfatal-errors
-CXXFLAGS += -Wno-unused-function
 CXXFLAGS += -std=gnu++26
 CXXFLAGS += -O3 -flto=auto -march=native -fno-math-errno
 CXXFLAGS += -Werror -Wno-error=cpp -Wno-error=pedantic

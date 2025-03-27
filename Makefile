@@ -44,7 +44,6 @@ CXXFLAGS += -pipe -Wall -Wextra -Wpedantic -Wfatal-errors
 CXXFLAGS += -O3 -flto=auto -march=native -fno-math-errno
 # -frecord-gcc-switches is used by readelf
 CXXFLAGS += -frecord-gcc-switches
-CXXFLAGS += -Wno-unused-function
 
 #LDFLAGS +=
 
