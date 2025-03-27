@@ -383,22 +383,22 @@ if (prng_name == #NAME) { \
 
 	// mine
 #if defined(__AES__)
-	CONDITIONAL_DUMP_MINE(aes128_prng_dec_dm_k1_r2)
-	CONDITIONAL_DUMP_MINE(aes128_prng_dec_dm_k1_r3)
-	CONDITIONAL_DUMP_MINE(aes128_prng_dec_dm_k2_r1)
-	CONDITIONAL_DUMP_MINE(aes128_prng_dec_dm_k3_r1)
-	CONDITIONAL_DUMP_MINE(aes128_prng_dec_k1_r2   )
-	CONDITIONAL_DUMP_MINE(aes128_prng_dec_k1_r3   )
-	CONDITIONAL_DUMP_MINE(aes128_prng_dec_k2_r1   )
-	CONDITIONAL_DUMP_MINE(aes128_prng_dec_k3_r1   )
-	CONDITIONAL_DUMP_MINE(aes128_prng_enc_dm_k1_r2)
-	CONDITIONAL_DUMP_MINE(aes128_prng_enc_dm_k1_r3)
-	CONDITIONAL_DUMP_MINE(aes128_prng_enc_dm_k2_r1)
-	CONDITIONAL_DUMP_MINE(aes128_prng_enc_dm_k3_r1)
-	CONDITIONAL_DUMP_MINE(aes128_prng_enc_k1_r2   )
-	CONDITIONAL_DUMP_MINE(aes128_prng_enc_k1_r3   )
-	CONDITIONAL_DUMP_MINE(aes128_prng_enc_k2_r1   )
-	CONDITIONAL_DUMP_MINE(aes128_prng_enc_k3_r1   )
+	CONDITIONAL_DUMP_MINE(aes_ctr_128_prng_dec_dm_k1_r2)
+	CONDITIONAL_DUMP_MINE(aes_ctr_128_prng_dec_dm_k1_r3)
+	CONDITIONAL_DUMP_MINE(aes_ctr_128_prng_dec_dm_k2_r1)
+	CONDITIONAL_DUMP_MINE(aes_ctr_128_prng_dec_dm_k3_r1)
+	CONDITIONAL_DUMP_MINE(aes_ctr_128_prng_dec_k1_r2   )
+	CONDITIONAL_DUMP_MINE(aes_ctr_128_prng_dec_k1_r3   )
+	CONDITIONAL_DUMP_MINE(aes_ctr_128_prng_dec_k2_r1   )
+	CONDITIONAL_DUMP_MINE(aes_ctr_128_prng_dec_k3_r1   )
+	CONDITIONAL_DUMP_MINE(aes_ctr_128_prng_enc_dm_k1_r2)
+	CONDITIONAL_DUMP_MINE(aes_ctr_128_prng_enc_dm_k1_r3)
+	CONDITIONAL_DUMP_MINE(aes_ctr_128_prng_enc_dm_k2_r1)
+	CONDITIONAL_DUMP_MINE(aes_ctr_128_prng_enc_dm_k3_r1)
+	CONDITIONAL_DUMP_MINE(aes_ctr_128_prng_enc_k1_r2   )
+	CONDITIONAL_DUMP_MINE(aes_ctr_128_prng_enc_k1_r3   )
+	CONDITIONAL_DUMP_MINE(aes_ctr_128_prng_enc_k2_r1   )
+	CONDITIONAL_DUMP_MINE(aes_ctr_128_prng_enc_k3_r1   )
 #endif
 	CONDITIONAL_DUMP_MINE(bell                  )
 	CONDITIONAL_DUMP_MINE(bright                )
@@ -502,113 +502,113 @@ if (prng_name == #NAME) { \
 
 Output:
 
-MRG32k3a                     64  0                     18446744073709551615     8
-aes128_prng_dec_dm_k1_r2    128  0  340282366920938463463374607431768211455    48
-aes128_prng_dec_dm_k1_r3    128  0  340282366920938463463374607431768211455    48
-aes128_prng_dec_dm_k2_r1    128  0  340282366920938463463374607431768211455    64
-aes128_prng_dec_dm_k3_r1    128  0  340282366920938463463374607431768211455    80
-aes128_prng_dec_k1_r2       128  0  340282366920938463463374607431768211455    48
-aes128_prng_dec_k1_r3       128  0  340282366920938463463374607431768211455    48
-aes128_prng_dec_k2_r1       128  0  340282366920938463463374607431768211455    64
-aes128_prng_dec_k3_r1       128  0  340282366920938463463374607431768211455    80
-aes128_prng_enc_dm_k1_r2    128  0  340282366920938463463374607431768211455    48
-aes128_prng_enc_dm_k1_r3    128  0  340282366920938463463374607431768211455    48
-aes128_prng_enc_dm_k2_r1    128  0  340282366920938463463374607431768211455    64
-aes128_prng_enc_dm_k3_r1    128  0  340282366920938463463374607431768211455    80
-aes128_prng_enc_k1_r2       128  0  340282366920938463463374607431768211455    48
-aes128_prng_enc_k1_r3       128  0  340282366920938463463374607431768211455    48
-aes128_prng_enc_k2_r1       128  0  340282366920938463463374607431768211455    64
-aes128_prng_enc_k3_r1       128  0  340282366920938463463374607431768211455    80
-bell                         64  0                     18446744073709551615    16
-bright                       64  0                     18446744073709551615     8
-clmulrand                    64  0                     18446744073709551615    16
-degski32                     32  0                               4294967295     4
-degski64                     64  0                     18446744073709551615     8
-dirk                         64  0                     18446744073709551615     8
-ettinger_mixer               64  0                     18446744073709551615     8
-gjrand                       64  0                     18446744073709551615    32
-jsf32_2                      32  0                               4294967295    16
-jsf32_3                      32  0                               4294967295    16
-jsf64                        64  0                     18446744073709551615    32
-klimov_shamir_32             32  0                               4294967295     8
-lcg32                        32  0                               4294967295    16
-lcg64                        64  0                     18446744073709551615    16
-lea64                        64  0                     18446744073709551615     8
-lehmer64                     64  0                     18446744073709551615    16
-linnorm                      64  0                     18446744073709551615     8
-mcg128                       64  0                     18446744073709551615    16
-mizuchi                      64  0                     18446744073709551615     8
-moremur                      64  0                     18446744073709551615     8
-mover_64                     64  0                     18446744073709551615    16
-mover_counter_64             64  0                     18446744073709551615    16
-msws32                       32  0                               4294967295    16
-msws64                       64  0                     18446744073709551615    32
-mumx_mumx_rrxx_1             64  0                     18446744073709551615     8
-mumx_mumx_x1                 64  0                     18446744073709551615     8
-mumx_mumx_x2                 64  0                     18446744073709551615     8
-murmurhash3                  64  0                     18446744073709551615     8
-murmurhash3_32               32  0                               4294967295     4
-mx3                          64  0                     18446744073709551615     8
-nasam                        64  0                     18446744073709551615     8
-orbit                        64  0                     18446744073709551615    16
-pcg32                        32  0                               4294967295     8
-pcg32_fast                   32  0                               4294967295     8
-pcg64                        64  0                     18446744073709551615    16
-pcg64dxsm                    64  0                     18446744073709551615    16
-pelican                      64  0                     18446744073709551615     8
-pulley                       64  0                     18446744073709551615     8
-quixotic                     64  0                     18446744073709551615     8
-romu_duo                     64  0                     18446744073709551615    16
-romu_duo_jr                  64  0                     18446744073709551615    16
-romu_quad                    64  0                     18446744073709551615    32
-romu_quad32                  32  0                               4294967295    16
-romu_trio                    64  0                     18446744073709551615    24
-romu_trio32                  32  0                               4294967295    12
-rrma2xsm2xs                  64  0                     18446744073709551615     8
-rrmxmx                       64  0                     18446744073709551615     8
-rrxmrrxmsx_0                 64  0                     18446744073709551615     8
-sea_slater_64                64  0                     18446744073709551615    16
-seiran                       64  0                     18446744073709551615    16
-sfc32                        32  0                               4294967295    16
-sfc64                        64  0                     18446744073709551615    32
-sha1msg1rand                128  0  340282366920938463463374607431768211455    32
-sha1msg2rand                128  0  340282366920938463463374607431768211455    32
-sha256msg1rand              128  0  340282366920938463463374607431768211455    32
-sha256msg2rand              128  0  340282366920938463463374607431768211455    32
-shioi                        64  0                     18446744073709551615    16
-splitmix32                   32  0                               4294967295     8
-splitmix64                   64  0                     18446744073709551615     8
-splitxix33                   64  0                     18446744073709551615     8
-squares32                    32  0                               4294967295     8
-squares64                    64  0                     18446744073709551615     8
-stc64                        64  0                     18446744073709551615    32
-std::default_random_engine   64  1                               2147483646     8
-std::knuth_b                 64  1                               2147483646  2064
-std::minstd_rand             64  1                               2147483646     8
-std::minstd_rand0            64  1                               2147483646     8
-std::mt19937                 64  0                               4294967295  5000
-std::mt19937_64              64  0                     18446744073709551615  2504
-std::ranlux24                64  0                                 16777215   216
-std::ranlux24_base           64  0                                 16777215   208
-std::ranlux48                64  0                          281474976710655   120
-std::ranlux48_base           64  0                          281474976710655   112
-tangle                       64  0                     18446744073709551615    16
-thrust_alt                   64  0                     18446744073709551615     8
-topping                      64  0                     18446744073709551615     8
-ttwanghash64                 64  0                     18446744073709551615     8
-wyrand                       64  0                     18446744073709551615     8
-xoroshiro1024plusplus        64  0                     18446744073709551615   136
-xoroshiro1024starstar        64  0                     18446744073709551615   136
-xoroshiro128plusplus         64  0                     18446744073709551615    16
-xoroshiro128starstar         64  0                     18446744073709551615    16
-xoroshiro64starstar          32  0                               4294967295     8
-xoshiro128plusplus           32  0                               4294967295    16
-xoshiro128starstar           32  0                               4294967295    16
-xoshiro256plusplus           64  0                     18446744073709551615    32
-xoshiro256starstar           64  0                     18446744073709551615    32
-xoshiro512plusplus           64  0                     18446744073709551615    64
-xoshiro512starstar           64  0                     18446744073709551615    64
-xsm32                        32  0                               4294967295     8
-xsm64                        64  0                     18446744073709551615    16
+MRG32k3a                        64  0                     18446744073709551615     8
+aes_ctr_128_prng_dec_dm_k1_r2  128  0  340282366920938463463374607431768211455    48
+aes_ctr_128_prng_dec_dm_k1_r3  128  0  340282366920938463463374607431768211455    48
+aes_ctr_128_prng_dec_dm_k2_r1  128  0  340282366920938463463374607431768211455    64
+aes_ctr_128_prng_dec_dm_k3_r1  128  0  340282366920938463463374607431768211455    80
+aes_ctr_128_prng_dec_k1_r2     128  0  340282366920938463463374607431768211455    48
+aes_ctr_128_prng_dec_k1_r3     128  0  340282366920938463463374607431768211455    48
+aes_ctr_128_prng_dec_k2_r1     128  0  340282366920938463463374607431768211455    64
+aes_ctr_128_prng_dec_k3_r1     128  0  340282366920938463463374607431768211455    80
+aes_ctr_128_prng_enc_dm_k1_r2  128  0  340282366920938463463374607431768211455    48
+aes_ctr_128_prng_enc_dm_k1_r3  128  0  340282366920938463463374607431768211455    48
+aes_ctr_128_prng_enc_dm_k2_r1  128  0  340282366920938463463374607431768211455    64
+aes_ctr_128_prng_enc_dm_k3_r1  128  0  340282366920938463463374607431768211455    80
+aes_ctr_128_prng_enc_k1_r2     128  0  340282366920938463463374607431768211455    48
+aes_ctr_128_prng_enc_k1_r3     128  0  340282366920938463463374607431768211455    48
+aes_ctr_128_prng_enc_k2_r1     128  0  340282366920938463463374607431768211455    64
+aes_ctr_128_prng_enc_k3_r1     128  0  340282366920938463463374607431768211455    80
+bell                            64  0                     18446744073709551615    16
+bright                          64  0                     18446744073709551615     8
+clmulrand                       64  0                     18446744073709551615    16
+degski32                        32  0                               4294967295     4
+degski64                        64  0                     18446744073709551615     8
+dirk                            64  0                     18446744073709551615     8
+ettinger_mixer                  64  0                     18446744073709551615     8
+gjrand                          64  0                     18446744073709551615    32
+jsf32_2                         32  0                               4294967295    16
+jsf32_3                         32  0                               4294967295    16
+jsf64                           64  0                     18446744073709551615    32
+klimov_shamir_32                32  0                               4294967295     8
+lcg32                           32  0                               4294967295    16
+lcg64                           64  0                     18446744073709551615    16
+lea64                           64  0                     18446744073709551615     8
+lehmer64                        64  0                     18446744073709551615    16
+linnorm                         64  0                     18446744073709551615     8
+mcg128                          64  0                     18446744073709551615    16
+mizuchi                         64  0                     18446744073709551615     8
+moremur                         64  0                     18446744073709551615     8
+mover_64                        64  0                     18446744073709551615    16
+mover_counter_64                64  0                     18446744073709551615    16
+msws32                          32  0                               4294967295    16
+msws64                          64  0                     18446744073709551615    32
+mumx_mumx_rrxx_1                64  0                     18446744073709551615     8
+mumx_mumx_x1                    64  0                     18446744073709551615     8
+mumx_mumx_x2                    64  0                     18446744073709551615     8
+murmurhash3                     64  0                     18446744073709551615     8
+murmurhash3_32                  32  0                               4294967295     4
+mx3                             64  0                     18446744073709551615     8
+nasam                           64  0                     18446744073709551615     8
+orbit                           64  0                     18446744073709551615    16
+pcg32                           32  0                               4294967295     8
+pcg32_fast                      32  0                               4294967295     8
+pcg64                           64  0                     18446744073709551615    16
+pcg64dxsm                       64  0                     18446744073709551615    16
+pelican                         64  0                     18446744073709551615     8
+pulley                          64  0                     18446744073709551615     8
+quixotic                        64  0                     18446744073709551615     8
+romu_duo                        64  0                     18446744073709551615    16
+romu_duo_jr                     64  0                     18446744073709551615    16
+romu_quad                       64  0                     18446744073709551615    32
+romu_quad32                     32  0                               4294967295    16
+romu_trio                       64  0                     18446744073709551615    24
+romu_trio32                     32  0                               4294967295    12
+rrma2xsm2xs                     64  0                     18446744073709551615     8
+rrmxmx                          64  0                     18446744073709551615     8
+rrxmrrxmsx_0                    64  0                     18446744073709551615     8
+sea_slater_64                   64  0                     18446744073709551615    16
+seiran                          64  0                     18446744073709551615    16
+sfc32                           32  0                               4294967295    16
+sfc64                           64  0                     18446744073709551615    32
+sha1msg1rand                   128  0  340282366920938463463374607431768211455    32
+sha1msg2rand                   128  0  340282366920938463463374607431768211455    32
+sha256msg1rand                 128  0  340282366920938463463374607431768211455    32
+sha256msg2rand                 128  0  340282366920938463463374607431768211455    32
+shioi                           64  0                     18446744073709551615    16
+splitmix32                      32  0                               4294967295     8
+splitmix64                      64  0                     18446744073709551615     8
+splitxix33                      64  0                     18446744073709551615     8
+squares32                       32  0                               4294967295     8
+squares64                       64  0                     18446744073709551615     8
+stc64                           64  0                     18446744073709551615    32
+std::default_random_engine      64  1                               2147483646     8
+std::knuth_b                    64  1                               2147483646  2064
+std::minstd_rand                64  1                               2147483646     8
+std::minstd_rand0               64  1                               2147483646     8
+std::mt19937                    64  0                               4294967295  5000
+std::mt19937_64                 64  0                     18446744073709551615  2504
+std::ranlux24                   64  0                                 16777215   216
+std::ranlux24_base              64  0                                 16777215   208
+std::ranlux48                   64  0                          281474976710655   120
+std::ranlux48_base              64  0                          281474976710655   112
+tangle                          64  0                     18446744073709551615    16
+thrust_alt                      64  0                     18446744073709551615     8
+topping                         64  0                     18446744073709551615     8
+ttwanghash64                    64  0                     18446744073709551615     8
+wyrand                          64  0                     18446744073709551615     8
+xoroshiro1024plusplus           64  0                     18446744073709551615   136
+xoroshiro1024starstar           64  0                     18446744073709551615   136
+xoroshiro128plusplus            64  0                     18446744073709551615    16
+xoroshiro128starstar            64  0                     18446744073709551615    16
+xoroshiro64starstar             32  0                               4294967295     8
+xoshiro128plusplus              32  0                               4294967295    16
+xoshiro128starstar              32  0                               4294967295    16
+xoshiro256plusplus              64  0                     18446744073709551615    32
+xoshiro256starstar              64  0                     18446744073709551615    32
+xoshiro512plusplus              64  0                     18446744073709551615    64
+xoshiro512starstar              64  0                     18446744073709551615    64
+xsm32                           32  0                               4294967295     8
+xsm64                           64  0                     18446744073709551615    16
 
 */
