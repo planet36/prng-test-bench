@@ -10,7 +10,7 @@
 #pragma once
 
 #include "MRG32k3a.hpp"
-#include "aes128_prng.hpp"
+#include "aes_ctr_128_prng.hpp"
 #include "clmulrand.hpp"
 #include "degski.hpp"
 #include "ettinger_mixer.hpp"
