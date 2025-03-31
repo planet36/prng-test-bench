@@ -51,7 +51,7 @@ public:
 		reseed();
 	}
 
-	aes_whole_state_128_prng(const seed_bytes_type& bytes)
+	explicit aes_whole_state_128_prng(const seed_bytes_type& bytes)
 	{
 		reseed();
 		(void)std::memcpy(&x, bytes.data(), sizeof(x));

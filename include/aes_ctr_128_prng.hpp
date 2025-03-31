@@ -52,7 +52,7 @@ public:
 		reseed();
 	}
 
-	aes_ctr_128_prng(const seed_bytes_type& bytes)
+	explicit aes_ctr_128_prng(const seed_bytes_type& bytes)
 	{
 		reseed();
 		(void)std::memcpy(&ctr, bytes.data(), sizeof(ctr));
