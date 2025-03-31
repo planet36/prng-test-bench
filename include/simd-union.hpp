@@ -16,7 +16,7 @@
 #include <cstdint>
 #include <immintrin.h>
 
-union alignas(__m128i) simd128i
+union alignas(sizeof(__m128i)) simd128i
 {
 	std::array<std::byte, 16 / sizeof(std::byte)> bytes;
 	std::array<uint8_t, 16 / sizeof(uint8_t)> u8;
@@ -31,7 +31,7 @@ union alignas(__m128i) simd128i
 
 static_assert(sizeof(simd128i) == 16);
 
-union alignas(__m256i) simd256i
+union alignas(sizeof(__m256i)) simd256i
 {
 	std::array<std::byte, 32 / sizeof(std::byte)> bytes;
 	std::array<uint8_t, 32 / sizeof(uint8_t)> u8;
@@ -47,7 +47,7 @@ union alignas(__m256i) simd256i
 
 static_assert(sizeof(simd256i) == 32);
 
-union alignas(__m512i) simd512i
+union alignas(sizeof(__m512i)) simd512i
 {
 	std::array<std::byte, 64 / sizeof(std::byte)> bytes;
 	std::array<uint8_t, 64 / sizeof(uint8_t)> u8;
@@ -92,7 +92,7 @@ arr_m256i_to_simd256i(const arr_m256i<N>& x)
 #pragma GCC unroll N
 	for (size_t i = 0; i < N; ++i)
 	{
-		y[i].xmm = x[i];
+		y[i].ymm = x[i];
 	}
 
 	return y;
@@ -109,7 +109,7 @@ arr_m512i_to_simd512i(const arr_m512i<N>& x)
 #pragma GCC unroll N
 	for (size_t i = 0; i < N; ++i)
 	{
-		y[i].xmm = x[i];
+		y[i].zmm = x[i];
 	}
 
 	return y;
@@ -143,7 +143,7 @@ arr_simd256i_to_m256i(const std::array<simd256i, N>& x)
 #pragma GCC unroll N
 	for (size_t i = 0; i < N; ++i)
 	{
-		y[i] = x[i].xmm;
+		y[i] = x[i].ymm;
 	}
 
 	return y;
@@ -160,7 +160,7 @@ arr_simd512i_to_m512i(const std::array<simd512i, N>& x)
 #pragma GCC unroll N
 	for (size_t i = 0; i < N; ++i)
 	{
-		y[i] = x[i].xmm;
+		y[i] = x[i].zmm;
 	}
 
 	return y;
