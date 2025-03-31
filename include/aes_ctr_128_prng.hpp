@@ -67,7 +67,7 @@ public:
 	{
 		if (getentropy(this, sizeof(*this)) < 0)
 			err(EXIT_FAILURE, "getentropy");
-		this->inc = mm_make_odd_epu64(this->inc);
+		inc = mm_make_odd_epu64(inc);
 	}
 
 	static constexpr result_type min()
@@ -91,13 +91,13 @@ public:
 		__m128i dst;
 		if constexpr (enc)
 		{
-			dst = aes128_enc(this->ctr, this->keys, Nk, Nr);
+			dst = aes128_enc(ctr, keys, Nk, Nr);
 		}
 		else
 		{
-			dst = aes128_dec(this->ctr, this->keys, Nk, Nr);
+			dst = aes128_dec(ctr, keys, Nk, Nr);
 		}
-		this->ctr = _mm_add_epi64(this->ctr, this->inc);
+		ctr = _mm_add_epi64(ctr, inc);
 		return simd128i{.xmm = dst}.u128[0];
 	}
 };

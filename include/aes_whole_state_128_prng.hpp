@@ -85,11 +85,11 @@ public:
 		__m128i dst;
 		if constexpr (enc)
 		{
-			dst = aes128_enc(this->x, this->keys, Nk, Nr);
+			dst = aes128_enc(x, keys, Nk, Nr);
 		}
 		else
 		{
-			dst = aes128_dec(this->x, this->keys, Nk, Nr);
+			dst = aes128_dec(x, keys, Nk, Nr);
 		}
 		return simd128i{.xmm = dst}.u128[0];
 	}
