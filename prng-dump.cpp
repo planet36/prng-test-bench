@@ -392,6 +392,15 @@ if (prng_name == #NAME) { \
 	CONDITIONAL_DUMP_MINE(aes_ctr_128_prng_enc_k2_r1)
 	CONDITIONAL_DUMP_MINE(aes_ctr_128_prng_enc_k3_r1)
 
+	CONDITIONAL_DUMP_MINE(aes_half_state_64_prng_dec_k1_r2)
+	CONDITIONAL_DUMP_MINE(aes_half_state_64_prng_dec_k1_r3)
+	CONDITIONAL_DUMP_MINE(aes_half_state_64_prng_dec_k2_r1)
+	CONDITIONAL_DUMP_MINE(aes_half_state_64_prng_dec_k3_r1)
+	CONDITIONAL_DUMP_MINE(aes_half_state_64_prng_enc_k1_r2)
+	CONDITIONAL_DUMP_MINE(aes_half_state_64_prng_enc_k1_r3)
+	CONDITIONAL_DUMP_MINE(aes_half_state_64_prng_enc_k2_r1)
+	CONDITIONAL_DUMP_MINE(aes_half_state_64_prng_enc_k3_r1)
+
 	CONDITIONAL_DUMP_MINE(aes_half_state_128_prng_dec_k1_r2)
 	CONDITIONAL_DUMP_MINE(aes_half_state_128_prng_dec_k1_r3)
 	CONDITIONAL_DUMP_MINE(aes_half_state_128_prng_dec_k2_r1)
@@ -529,6 +538,14 @@ aes_half_state_128_prng_enc_k1_r2   128  0  340282366920938463463374607431768211
 aes_half_state_128_prng_enc_k1_r3   128  0  340282366920938463463374607431768211455    48
 aes_half_state_128_prng_enc_k2_r1   128  0  340282366920938463463374607431768211455    64
 aes_half_state_128_prng_enc_k3_r1   128  0  340282366920938463463374607431768211455    80
+aes_half_state_64_prng_dec_k1_r2     64  0                     18446744073709551615    32
+aes_half_state_64_prng_dec_k1_r3     64  0                     18446744073709551615    32
+aes_half_state_64_prng_dec_k2_r1     64  0                     18446744073709551615    48
+aes_half_state_64_prng_dec_k3_r1     64  0                     18446744073709551615    64
+aes_half_state_64_prng_enc_k1_r2     64  0                     18446744073709551615    32
+aes_half_state_64_prng_enc_k1_r3     64  0                     18446744073709551615    32
+aes_half_state_64_prng_enc_k2_r1     64  0                     18446744073709551615    48
+aes_half_state_64_prng_enc_k3_r1     64  0                     18446744073709551615    64
 aes_whole_state_128_prng_dec_k1_r2  128  0  340282366920938463463374607431768211455    32
 aes_whole_state_128_prng_dec_k1_r3  128  0  340282366920938463463374607431768211455    32
 aes_whole_state_128_prng_dec_k2_r1  128  0  340282366920938463463374607431768211455    48
