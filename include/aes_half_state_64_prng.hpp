@@ -76,19 +76,13 @@ public:
 	/// Get the next PRNG output via AES encryption or decryption.
 	result_type next()
 	{
-		// https://gcc.gnu.org/onlinedocs/gcc/Loop-Specific-Pragmas.html#index-pragma-GCC-unroll-n
-#pragma GCC unroll Nr
 		for (size_t r = 0; r < Nr; ++r)
 		{
-			// https://gcc.gnu.org/onlinedocs/gcc/Loop-Specific-Pragmas.html#index-pragma-GCC-unroll-n
-#pragma GCC unroll Nk
 			for (size_t k = 0; k < Nk; ++k)
 			{
 				if constexpr (Ns > 1)
 					transpose(x);
 
-				// https://gcc.gnu.org/onlinedocs/gcc/Loop-Specific-Pragmas.html#index-pragma-GCC-unroll-n
-#pragma GCC unroll Ns
 				for (size_t i = 0; i < Ns; ++i)
 				{
 					if constexpr (enc)

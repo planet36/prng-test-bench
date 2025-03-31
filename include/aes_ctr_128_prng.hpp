@@ -93,12 +93,8 @@ public:
 		__m128i dst = ctr;
 		ctr = _mm_add_epi64(ctr, inc);
 
-		// https://gcc.gnu.org/onlinedocs/gcc/Loop-Specific-Pragmas.html#index-pragma-GCC-unroll-n
-#pragma GCC unroll Nr
 		for (size_t r = 0; r < Nr; ++r)
 		{
-			// https://gcc.gnu.org/onlinedocs/gcc/Loop-Specific-Pragmas.html#index-pragma-GCC-unroll-n
-#pragma GCC unroll Nk
 			for (size_t k = 0; k < Nk; ++k)
 			{
 				if constexpr (enc)

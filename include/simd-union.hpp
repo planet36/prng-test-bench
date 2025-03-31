@@ -71,8 +71,6 @@ arr_m128i_to_simd128i(const arr_m128i<N>& x)
 	std::array<simd128i, N> y;
 
 	// __m128i to simd128i
-	// https://gcc.gnu.org/onlinedocs/gcc/Loop-Specific-Pragmas.html#index-pragma-GCC-unroll-n
-#pragma GCC unroll N
 	for (size_t i = 0; i < N; ++i)
 	{
 		y[i].xmm = x[i];
@@ -88,8 +86,6 @@ arr_m256i_to_simd256i(const arr_m256i<N>& x)
 	std::array<simd256i, N> y;
 
 	// __m256i to simd256i
-	// https://gcc.gnu.org/onlinedocs/gcc/Loop-Specific-Pragmas.html#index-pragma-GCC-unroll-n
-#pragma GCC unroll N
 	for (size_t i = 0; i < N; ++i)
 	{
 		y[i].ymm = x[i];
@@ -105,8 +101,6 @@ arr_m512i_to_simd512i(const arr_m512i<N>& x)
 	std::array<simd512i, N> y;
 
 	// __m512i to simd512i
-	// https://gcc.gnu.org/onlinedocs/gcc/Loop-Specific-Pragmas.html#index-pragma-GCC-unroll-n
-#pragma GCC unroll N
 	for (size_t i = 0; i < N; ++i)
 	{
 		y[i].zmm = x[i];
@@ -122,8 +116,6 @@ arr_simd128i_to_m128i(const std::array<simd128i, N>& x)
 	arr_m128i<N> y;
 
 	// simd128i to __m128i
-	// https://gcc.gnu.org/onlinedocs/gcc/Loop-Specific-Pragmas.html#index-pragma-GCC-unroll-n
-#pragma GCC unroll N
 	for (size_t i = 0; i < N; ++i)
 	{
 		y[i] = x[i].xmm;
@@ -139,8 +131,6 @@ arr_simd256i_to_m256i(const std::array<simd256i, N>& x)
 	arr_m256i<N> y;
 
 	// simd256i to __m256i
-	// https://gcc.gnu.org/onlinedocs/gcc/Loop-Specific-Pragmas.html#index-pragma-GCC-unroll-n
-#pragma GCC unroll N
 	for (size_t i = 0; i < N; ++i)
 	{
 		y[i] = x[i].ymm;
@@ -156,8 +146,6 @@ arr_simd512i_to_m512i(const std::array<simd512i, N>& x)
 	arr_m512i<N> y;
 
 	// simd512i to __m512i
-	// https://gcc.gnu.org/onlinedocs/gcc/Loop-Specific-Pragmas.html#index-pragma-GCC-unroll-n
-#pragma GCC unroll N
 	for (size_t i = 0; i < N; ++i)
 	{
 		y[i] = x[i].zmm;
