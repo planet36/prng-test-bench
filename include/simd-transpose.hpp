@@ -14,6 +14,13 @@
 #include <array>
 #include <immintrin.h>
 
+inline void
+transpose([[maybe_unused]] arr_m128i<1>& x)
+{
+	// NOP
+}
+
+
 /// Transpose \a x (treating it as a 2x2 array of \c uint64_t) using SSE2 instructions
 void
 transpose(arr_m128i<2>& x)
