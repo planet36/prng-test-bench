@@ -37,9 +37,9 @@ class aes_ctr_128_prng
 	static_assert(Nk * Nr >= 2, "must do at least 2 rounds of AES enc/dec");
 
 private:
-	__m128i keys[Nk];
-	__m128i ctr; ///< The state/counter
-	__m128i inc; ///< The increment (must be odd)
+	__m128i keys[Nk]{};
+	__m128i ctr{}; ///< The state/counter
+	__m128i inc{}; ///< The increment (must be odd)
 
 public:
 	using result_type = __uint128_t;
