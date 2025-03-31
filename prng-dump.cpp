@@ -391,6 +391,15 @@ if (prng_name == #NAME) { \
 	CONDITIONAL_DUMP_MINE(aes_ctr_128_prng_enc_k1_r3)
 	CONDITIONAL_DUMP_MINE(aes_ctr_128_prng_enc_k2_r1)
 	CONDITIONAL_DUMP_MINE(aes_ctr_128_prng_enc_k3_r1)
+
+	CONDITIONAL_DUMP_MINE(aes_whole_state_128_prng_dec_k1_r2)
+	CONDITIONAL_DUMP_MINE(aes_whole_state_128_prng_dec_k1_r3)
+	CONDITIONAL_DUMP_MINE(aes_whole_state_128_prng_dec_k2_r1)
+	CONDITIONAL_DUMP_MINE(aes_whole_state_128_prng_dec_k3_r1)
+	CONDITIONAL_DUMP_MINE(aes_whole_state_128_prng_enc_k1_r2)
+	CONDITIONAL_DUMP_MINE(aes_whole_state_128_prng_enc_k1_r3)
+	CONDITIONAL_DUMP_MINE(aes_whole_state_128_prng_enc_k2_r1)
+	CONDITIONAL_DUMP_MINE(aes_whole_state_128_prng_enc_k3_r1)
 #endif
 	CONDITIONAL_DUMP_MINE(bell                  )
 	CONDITIONAL_DUMP_MINE(bright                )
