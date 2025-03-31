@@ -85,6 +85,7 @@ $(BINS): prng-% : prng-%.cpp
 	readelf -p .GCC.command.line $@ | grep -F 'GNU GIMPLE' | \
 		sed -E -e 's/^\s*\[\s*[0-9]+\]\s*//' | tr -d '\n' > $@.opts
 
+# Takes about 1.9 mins
 bench: prng-bench | $(OUTPUT_DIR)
 	./$< \
 		--benchmark_enable_random_interleaving=true \
