@@ -3,7 +3,8 @@
 
 #pragma once
 
-#include "aes128-utils.h"
+#include "simd-array.hpp"
+#include "simd-transpose.hpp"
 #include "simd-union.hpp"
 
 #include <array>
@@ -32,13 +33,15 @@ static_assert(std::unsigned_integral<__uint128_t>);
 template <bool enc, size_t Nk, size_t Nr>
 class aes_whole_state_128_prng
 {
+	static constexpr size_t Ns = 1; ///< The number of elements in the state
+
 	static_assert(Nk >= 1);
 	static_assert(Nr >= 1);
 	static_assert(Nk * Nr >= 2, "must do at least 2 rounds of AES enc/dec");
 
 private:
-	__m128i x{}; ///< The state
-	__m128i keys[Nk]{};
+	arr_m128i<Ns> x{}; ///< The state
+	arr_m128i<Nk> keys{};
 
 public:
 	using result_type = __uint128_t;
@@ -54,7 +57,7 @@ public:
 	explicit aes_whole_state_128_prng(const seed_bytes_type& bytes)
 	{
 		reseed();
-		(void)std::memcpy(&x, bytes.data(), sizeof(x));
+		(void)std::memcpy(x.data(), bytes.data(), sizeof(x));
 	}
 
 	/// Assign random bytes to the data members via \c getentropy.
@@ -82,16 +85,30 @@ public:
 	/// Get the next PRNG output via AES encryption or decryption.
 	result_type next()
 	{
-		__m128i dst;
-		if constexpr (enc)
+		// https://gcc.gnu.org/onlinedocs/gcc/Loop-Specific-Pragmas.html#index-pragma-GCC-unroll-n
+#pragma GCC unroll Nr
+		for (size_t r = 0; r < Nr; ++r)
 		{
-			dst = aes128_enc(x, keys, Nk, Nr);
+			// https://gcc.gnu.org/onlinedocs/gcc/Loop-Specific-Pragmas.html#index-pragma-GCC-unroll-n
+#pragma GCC unroll Nk
+			for (size_t k = 0; k < Nk; ++k)
+			{
+				if constexpr (Ns > 1)
+					transpose(x);
+
+				// https://gcc.gnu.org/onlinedocs/gcc/Loop-Specific-Pragmas.html#index-pragma-GCC-unroll-n
+#pragma GCC unroll Ns
+				for (size_t i = 0; i < Ns; ++i)
+				{
+					if constexpr (enc)
+						x[i] = _mm_aesenc_si128(x[i], keys[k]);
+					else
+						x[i] = _mm_aesdec_si128(x[i], keys[k]);
+				}
+			}
 		}
-		else
-		{
-			dst = aes128_dec(x, keys, Nk, Nr);
-		}
-		return simd128i{.xmm = dst}.u128[0];
+
+		return simd128i{.xmm = x[0]}.u128[0];
 	}
 };
 

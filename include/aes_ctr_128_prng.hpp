@@ -4,6 +4,8 @@
 #pragma once
 
 #include "aes128-utils.h"
+#include "simd-array.hpp"
+#include "simd-transpose.hpp"
 #include "simd-union.hpp"
 
 #include <array>
@@ -37,7 +39,7 @@ class aes_ctr_128_prng
 	static_assert(Nk * Nr >= 2, "must do at least 2 rounds of AES enc/dec");
 
 private:
-	__m128i keys[Nk]{};
+	arr_m128i<Nk> keys{};
 	__m128i ctr{}; ///< The state/counter
 	__m128i inc{}; ///< The increment (must be odd)
 
@@ -88,16 +90,24 @@ public:
 	/// Get the next PRNG output via AES encryption or decryption.
 	result_type next()
 	{
-		__m128i dst;
-		if constexpr (enc)
-		{
-			dst = aes128_enc(ctr, keys, Nk, Nr);
-		}
-		else
-		{
-			dst = aes128_dec(ctr, keys, Nk, Nr);
-		}
+		__m128i dst = ctr;
 		ctr = _mm_add_epi64(ctr, inc);
+
+		// https://gcc.gnu.org/onlinedocs/gcc/Loop-Specific-Pragmas.html#index-pragma-GCC-unroll-n
+#pragma GCC unroll Nr
+		for (size_t r = 0; r < Nr; ++r)
+		{
+			// https://gcc.gnu.org/onlinedocs/gcc/Loop-Specific-Pragmas.html#index-pragma-GCC-unroll-n
+#pragma GCC unroll Nk
+			for (size_t k = 0; k < Nk; ++k)
+			{
+				if constexpr (enc)
+					dst = _mm_aesenc_si128(dst, keys[k]);
+				else
+					dst = _mm_aesdec_si128(dst, keys[k]);
+			}
+		}
+
 		return simd128i{.xmm = dst}.u128[0];
 	}
 };
