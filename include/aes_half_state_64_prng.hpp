@@ -21,14 +21,14 @@
 #if defined(__AES__)
 
 /// A PRNG that uses AES instructions
-template <bool enc, size_t Nk, size_t Nr>
+template <size_t Nk, size_t Nr>
 class aes_half_state_64_prng
 {
 	static constexpr size_t Ns = 1; ///< The number of elements in the state
 
 	static_assert(Nk >= 1);
 	static_assert(Nr >= 1);
-	static_assert(Nk * Nr >= 2, "must do at least 2 rounds of AES enc/dec");
+	static_assert(Nk * Nr >= 2, "must do at least 2 rounds of AES");
 
 private:
 	arr_m128i<Ns> x{}; ///< The state
@@ -85,10 +85,7 @@ public:
 
 				for (size_t i = 0; i < Ns; ++i)
 				{
-					if constexpr (enc)
-						x[i] = _mm_aesenc_si128(x[i], keys[k]);
-					else
-						x[i] = _mm_aesdec_si128(x[i], keys[k]);
+					x[i] = _mm_aesenc_si128(x[i], keys[k]);
 				}
 			}
 		}
@@ -97,10 +94,10 @@ public:
 	}
 };
 
-using aes_half_state_64_prng_enc_k1_r2 = aes_half_state_64_prng< true, 1, 2>;
-using aes_half_state_64_prng_enc_k1_r3 = aes_half_state_64_prng< true, 1, 3>;
-using aes_half_state_64_prng_enc_k2_r1 = aes_half_state_64_prng< true, 2, 1>;
-using aes_half_state_64_prng_enc_k3_r1 = aes_half_state_64_prng< true, 3, 1>;
+using aes_half_state_64_prng_enc_k1_r2 = aes_half_state_64_prng<1, 2>;
+using aes_half_state_64_prng_enc_k1_r3 = aes_half_state_64_prng<1, 3>;
+using aes_half_state_64_prng_enc_k2_r1 = aes_half_state_64_prng<2, 1>;
+using aes_half_state_64_prng_enc_k3_r1 = aes_half_state_64_prng<3, 1>;
 
 static_assert(std::uniform_random_bit_generator<aes_half_state_64_prng_enc_k1_r2>);
 static_assert(std::uniform_random_bit_generator<aes_half_state_64_prng_enc_k1_r3>);
