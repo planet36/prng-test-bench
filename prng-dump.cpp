@@ -59,11 +59,11 @@ print_all_prng_info()
 	}
 }
 
-template <std::uniform_random_bit_generator Generator>
+template <std::uniform_random_bit_generator URBG>
 void
-prng_dump(Generator&& rng)
+prng_dump(URBG&& gen)
 {
-	using result_type = typename Generator::result_type;
+	using result_type = typename URBG::result_type;
 
 	// /proc/sys/fs/pipe-max-size = 1048576
 	// fcntl(fileno(stdout), F_GETPIPE_SZ) = 65536
@@ -79,7 +79,7 @@ prng_dump(Generator&& rng)
 	{
 		while (true)
 		{
-			for (size_t i = 0; i < buf_num_elems; ++i) { buf[i] = rng(); }
+			for (size_t i = 0; i < buf_num_elems; ++i) { buf[i] = gen(); }
 
 			(void)std::fwrite(&buf[0], sizeof(buf[0]), buf_num_elems, stdout);
 		}
@@ -91,7 +91,7 @@ prng_dump(Generator&& rng)
 
 		for (size_t j = 0; j < num_writes; ++j)
 		{
-			for (size_t i = 0; i < buf_num_elems; ++i) { buf[i] = rng(); }
+			for (size_t i = 0; i < buf_num_elems; ++i) { buf[i] = gen(); }
 
 			(void)std::fwrite(&buf[0], sizeof(buf[0]), buf_num_elems, stdout);
 		}
