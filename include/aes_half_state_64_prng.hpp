@@ -97,19 +97,11 @@ public:
 	}
 };
 
-using aes_half_state_64_prng_dec_k1_r2 = aes_half_state_64_prng<false, 1, 2>;
-using aes_half_state_64_prng_dec_k1_r3 = aes_half_state_64_prng<false, 1, 3>;
-using aes_half_state_64_prng_dec_k2_r1 = aes_half_state_64_prng<false, 2, 1>;
-using aes_half_state_64_prng_dec_k3_r1 = aes_half_state_64_prng<false, 3, 1>;
 using aes_half_state_64_prng_enc_k1_r2 = aes_half_state_64_prng< true, 1, 2>;
 using aes_half_state_64_prng_enc_k1_r3 = aes_half_state_64_prng< true, 1, 3>;
 using aes_half_state_64_prng_enc_k2_r1 = aes_half_state_64_prng< true, 2, 1>;
 using aes_half_state_64_prng_enc_k3_r1 = aes_half_state_64_prng< true, 3, 1>;
 
-static_assert(std::uniform_random_bit_generator<aes_half_state_64_prng_dec_k1_r2>);
-static_assert(std::uniform_random_bit_generator<aes_half_state_64_prng_dec_k1_r3>);
-static_assert(std::uniform_random_bit_generator<aes_half_state_64_prng_dec_k2_r1>);
-static_assert(std::uniform_random_bit_generator<aes_half_state_64_prng_dec_k3_r1>);
 static_assert(std::uniform_random_bit_generator<aes_half_state_64_prng_enc_k1_r2>);
 static_assert(std::uniform_random_bit_generator<aes_half_state_64_prng_enc_k1_r3>);
 static_assert(std::uniform_random_bit_generator<aes_half_state_64_prng_enc_k2_r1>);
