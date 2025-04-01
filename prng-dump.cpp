@@ -20,6 +20,7 @@ https://www.pcg-random.org/posts/how-to-test-with-practrand.html
 #include <cstdint>
 #include <random>
 #include <string>
+#include <unistd.h>
 #include <utility>
 
 #include <fmt/format.h>
@@ -81,7 +82,7 @@ prng_dump(URBG&& gen)
 		{
 			for (size_t i = 0; i < buf_num_elems; ++i) { buf[i] = gen(); }
 
-			(void)std::fwrite(&buf[0], sizeof(buf[0]), buf_num_elems, stdout);
+			(void)::write(STDOUT_FILENO, &buf[0], sizeof(buf));
 		}
 	}
 	else // limit_bytes > 0
@@ -93,7 +94,7 @@ prng_dump(URBG&& gen)
 		{
 			for (size_t i = 0; i < buf_num_elems; ++i) { buf[i] = gen(); }
 
-			(void)std::fwrite(&buf[0], sizeof(buf[0]), buf_num_elems, stdout);
+			(void)::write(STDOUT_FILENO, &buf[0], sizeof(buf));
 		}
 	}
 }
