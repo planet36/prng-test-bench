@@ -101,25 +101,25 @@ const std::map<std::string, prng_info_t> prng_name_to_info{
 
 	// mine
 #if defined(__AES__)
-	CREATE_PRNG_INFO_MAP_ENTRY(aes_ctr_128_prng_enc_k1_r2),
-	CREATE_PRNG_INFO_MAP_ENTRY(aes_ctr_128_prng_enc_k1_r3),
-	CREATE_PRNG_INFO_MAP_ENTRY(aes_ctr_128_prng_enc_k2_r1),
-	CREATE_PRNG_INFO_MAP_ENTRY(aes_ctr_128_prng_enc_k3_r1),
+	CREATE_PRNG_INFO_MAP_ENTRY(aes_ctr_128_k1_r2),
+	CREATE_PRNG_INFO_MAP_ENTRY(aes_ctr_128_k1_r3),
+	CREATE_PRNG_INFO_MAP_ENTRY(aes_ctr_128_k2_r1),
+	CREATE_PRNG_INFO_MAP_ENTRY(aes_ctr_128_k3_r1),
 
-	CREATE_PRNG_INFO_MAP_ENTRY(aes_half_state_64_prng_enc_k1_r2),
-	CREATE_PRNG_INFO_MAP_ENTRY(aes_half_state_64_prng_enc_k1_r3),
-	CREATE_PRNG_INFO_MAP_ENTRY(aes_half_state_64_prng_enc_k2_r1),
-	CREATE_PRNG_INFO_MAP_ENTRY(aes_half_state_64_prng_enc_k3_r1),
+	CREATE_PRNG_INFO_MAP_ENTRY(aes_half_state_64_k1_r2),
+	CREATE_PRNG_INFO_MAP_ENTRY(aes_half_state_64_k1_r3),
+	CREATE_PRNG_INFO_MAP_ENTRY(aes_half_state_64_k2_r1),
+	CREATE_PRNG_INFO_MAP_ENTRY(aes_half_state_64_k3_r1),
 
-	CREATE_PRNG_INFO_MAP_ENTRY(aes_half_state_128_prng_enc_k1_r2),
-	CREATE_PRNG_INFO_MAP_ENTRY(aes_half_state_128_prng_enc_k1_r3),
-	CREATE_PRNG_INFO_MAP_ENTRY(aes_half_state_128_prng_enc_k2_r1),
-	CREATE_PRNG_INFO_MAP_ENTRY(aes_half_state_128_prng_enc_k3_r1),
+	CREATE_PRNG_INFO_MAP_ENTRY(aes_half_state_128_k1_r2),
+	CREATE_PRNG_INFO_MAP_ENTRY(aes_half_state_128_k1_r3),
+	CREATE_PRNG_INFO_MAP_ENTRY(aes_half_state_128_k2_r1),
+	CREATE_PRNG_INFO_MAP_ENTRY(aes_half_state_128_k3_r1),
 
-	CREATE_PRNG_INFO_MAP_ENTRY(aes_whole_state_128_prng_enc_k1_r2),
-	CREATE_PRNG_INFO_MAP_ENTRY(aes_whole_state_128_prng_enc_k1_r3),
-	CREATE_PRNG_INFO_MAP_ENTRY(aes_whole_state_128_prng_enc_k2_r1),
-	CREATE_PRNG_INFO_MAP_ENTRY(aes_whole_state_128_prng_enc_k3_r1),
+	CREATE_PRNG_INFO_MAP_ENTRY(aes_whole_state_128_k1_r2),
+	CREATE_PRNG_INFO_MAP_ENTRY(aes_whole_state_128_k1_r3),
+	CREATE_PRNG_INFO_MAP_ENTRY(aes_whole_state_128_k2_r1),
+	CREATE_PRNG_INFO_MAP_ENTRY(aes_whole_state_128_k3_r1),
 #endif
 	CREATE_PRNG_INFO_MAP_ENTRY(bell                  ),
 	CREATE_PRNG_INFO_MAP_ENTRY(bright                ),
