@@ -10,10 +10,10 @@
 #pragma once
 
 #include "MRG32k3a.hpp"
-#include "aes_ctr_128_prng.hpp"
-#include "aes_half_state_64_prng.hpp"
-#include "aes_half_state_128_prng.hpp"
-#include "aes_whole_state_128_prng.hpp"
+#include "aes_ctr_128.hpp"
+#include "aes_half_state_64.hpp"
+#include "aes_half_state_128.hpp"
+#include "aes_whole_state_128.hpp"
 #include "clmulrand.hpp"
 #include "degski.hpp"
 #include "ettinger_mixer.hpp"
