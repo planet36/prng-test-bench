@@ -14,9 +14,13 @@
 #include <thread>
 #include <vector>
 
-const auto BM_prng = [](benchmark::State& BM_state, std::uniform_random_bit_generator auto gen)
+template <std::uniform_random_bit_generator URBG>
+void
+BM_prng(benchmark::State& BM_state)
 {
-	using result_type = typename decltype(gen)::result_type;
+	using result_type = typename URBG::result_type;
+
+	URBG gen{};
 
 	for (auto _ : BM_state)
 	{
@@ -24,7 +28,7 @@ const auto BM_prng = [](benchmark::State& BM_state, std::uniform_random_bit_gene
 	}
 
 	BM_state.SetBytesProcessed(BM_state.iterations() * sizeof(result_type));
-};
+}
 
 int
 main(int argc, char** argv)
@@ -106,9 +110,9 @@ main(int argc, char** argv)
 	if (prng_name == #NAME)                                       \
 	{                                                             \
 		if (num_threads == 1)                                     \
-			benchmark::RegisterBenchmark(#NAME, BM_prng, NAME{}); \
+			benchmark::RegisterBenchmark(#NAME, BM_prng<NAME>);   \
 		else                                                      \
-			benchmark::RegisterBenchmark(#NAME, BM_prng, NAME{})  \
+			benchmark::RegisterBenchmark(#NAME, BM_prng<NAME>)    \
 			    ->Threads(num_threads);                           \
 	}
 
