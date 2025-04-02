@@ -73,14 +73,14 @@ struct prng_info_t
 	const size_t prng_size_bytes;
 };
 
-template <std::uniform_random_bit_generator Generator>
+template <std::uniform_random_bit_generator URBG>
 prng_info_t create_prng_info()
 {
 	return prng_info_t{
-		.result_type_size_bits = sizeof(typename Generator::result_type) * CHAR_BIT,
-		.result_min = Generator::min(),
-		.result_max = Generator::max(),
-		.prng_size_bytes = sizeof(Generator)
+		.result_type_size_bits = sizeof(typename URBG::result_type) * CHAR_BIT,
+		.result_min = URBG::min(),
+		.result_max = URBG::max(),
+		.prng_size_bytes = sizeof(URBG)
 	};
 }
 

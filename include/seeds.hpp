@@ -125,19 +125,19 @@ inline constexpr std::array<uint8_t, 128> seed_bytes_pattern_128{
     0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA,
 };
 
-template <std::uniform_random_bit_generator G>
+template <std::uniform_random_bit_generator URBG>
 constexpr auto
 get_seed_bytes_zero()
 {
-	constexpr size_t num_seed_bytes = sizeof(typename G::seed_bytes_type);
+	constexpr size_t num_seed_bytes = sizeof(typename URBG::seed_bytes_type);
 	return std::array<uint8_t, num_seed_bytes>{};
 }
 
-template <std::uniform_random_bit_generator G>
+template <std::uniform_random_bit_generator URBG>
 constexpr auto
 get_seed_bytes_pattern()
 {
-	constexpr size_t num_seed_bytes = sizeof(typename G::seed_bytes_type);
+	constexpr size_t num_seed_bytes = sizeof(typename URBG::seed_bytes_type);
 	if constexpr (num_seed_bytes == 4) { return seed_bytes_pattern_4; }
 	else if constexpr (num_seed_bytes == 8) { return seed_bytes_pattern_8; }
 	else if constexpr (num_seed_bytes == 12) { return seed_bytes_pattern_12; }
