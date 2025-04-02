@@ -94,7 +94,7 @@ prng-bench: prng-dump | $(OUTPUT_DIR)
 	# (column 2 is GiB/s)
 	sort -r -k 2 -g -- $(OUTPUT_DIR)/$@.txt | column --table
 
-# Takes about 4.4 mins
+# Takes about 10.3 mins
 short-test: prng-dump prng-bench | $(OUTPUT_DIR)
 	bash test-prng-dump.bash -j $(J_SHORT) -f $(TF_SHORT) -m $(TLMAX_SHORT) \
 		-s default -s pattern -s random -s zero \
