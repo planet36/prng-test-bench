@@ -3,6 +3,8 @@ RNG = RNG_stdin64, seed = unknown
 test set = core, folding = none
 
 rng=RNG_stdin64, seed=unknown
-length= 256 mebibytes (2^28 bytes), time= 0.6 seconds
-  no anomalies in 67 test result(s)
+length= 256 mebibytes (2^28 bytes), time= 0.5 seconds
+  Test Name                         Raw       Processed     Evaluation
+  FPF-14+6/16:cross                 R=  +4.8  p =  2.1e-4   mildly suspicious
+  ...and 66 test result(s) without anomalies
 

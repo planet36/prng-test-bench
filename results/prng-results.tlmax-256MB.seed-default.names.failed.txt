@@ -1,6 +1,5 @@
 degski32
 klimov_shamir_32
-mover_counter_64
 sha1msg1rand
 sha1msg2rand
 sha256msg1rand
@@ -14,5 +13,4 @@ std::ranlux24
 std::ranlux24_base
 std::ranlux48
 std::ranlux48_base
-tangle
 ttwanghash64

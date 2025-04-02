@@ -3,7 +3,7 @@ RNG = RNG_stdin64, seed = unknown
 test set = core, folding = none
 
 rng=RNG_stdin64, seed=unknown
-length= 256 mebibytes (2^28 bytes), time= 0.7 seconds
+length= 256 mebibytes (2^28 bytes), time= 0.6 seconds
   Test Name                         Raw       Processed     Evaluation
   BCFN(2+0,13-2,T)                  R=+167.2  p =  4.8e-85    FAIL !!!!      
   BCFN(2+1,13-2,T)                  R=+302.9  p =  2.2e-154   FAIL !!!!!     
