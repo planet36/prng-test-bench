@@ -9,44 +9,9 @@
 
 #pragma once
 
-#include "seed_seq.hpp"
-
 #include <array>
 #include <cstdint>
 #include <random>
-
-inline constexpr uint32_t seed_zero_32{};
-inline constexpr uint64_t seed_zero_64{};
-
-fill_seed_seq seeder_zero;
-
-/*
-
-bin(0xacac3535)
-'0b10101100101011000011010100110101'
-
-bin(0xcaca5353)
-'0b11001010110010100101001101010011'
-
-bin(0xacac3535caca5353)
-'0b1010110010101100001101010011010111001010110010100101001101010011'
-
-bin(0xcaca5353acac3535)
-'0b1100101011001010010100110101001110101100101011000011010100110101'
-
-bin(0xAAAAAAAAAAAAAAAA)
-'0b1010101010101010101010101010101010101010101010101010101010101010'
-
-*/
-
-//inline constexpr uint32_t seed_pattern_32{0xcaca5353}; // popcount = 16
-// This value matches the one in seed_bytes_pattern_4
-//inline constexpr uint32_t seed_pattern_32{0xE0A06020};
-inline constexpr uint32_t seed_pattern_32{0xAAAAAAAA};
-//inline constexpr uint64_t seed_pattern_64{0xcaca5353acac3535}; // popcount = 32
-// This value matches the one in seed_bytes_pattern_8
-//inline constexpr uint64_t seed_pattern_64{0xF0D0B09070503010};
-inline constexpr uint64_t seed_pattern_64{0xAAAAAAAAAAAAAAAA};
 
 /**
 Python snippet to generate the array
@@ -147,5 +112,3 @@ get_seed_bytes_pattern()
 	else if constexpr (num_seed_bytes == 64) { return seed_bytes_pattern_64; }
 	else if constexpr (num_seed_bytes == 128) { return seed_bytes_pattern_128; }
 }
-
-fill_seed_seq<seed_pattern_32> seeder_pattern;

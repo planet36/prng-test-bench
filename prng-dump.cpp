@@ -13,6 +13,7 @@ https://www.pcg-random.org/posts/how-to-test-with-practrand.html
 */
 
 #include "prng.hpp"
+#include "seed_seq.hpp"
 #include "seeds.hpp"
 
 #include <cassert>
@@ -35,6 +36,8 @@ const char* program_license = "OSL-3.0";
 
 constexpr unsigned long long bytes_per_gigabyte = 1'000ULL * 1'000ULL * 1'000ULL;
 constexpr unsigned long long bytes_per_gibibyte = 1'024ULL * 1'024ULL * 1'024ULL;
+
+constexpr uint32_t seed_pattern_32{0xAAAAAAAA};
 
 const std::string default_prng_name = "default_random_engine";
 
@@ -200,9 +203,9 @@ print_usage()
 	fmt::println("    Specify the type of seed to be used.");
 	fmt::println("    SEED_TYPE must be one of the following values:");
 	fmt::println("      \"d\", \"def\", \"default\",  (The PRNG is default constructed.)");
-	fmt::println("      \"p\", \"pat\", \"pattern\",  (The PRNG is seeded with this repeating pattern of bytes: {:#0{}x}.)", seed_pattern_32, sizeof(seed_pattern_32) * 2 + 2);
-	fmt::println("      \"r\", \"rand\", \"random\",  (The PRNG is seeded with random bytes.)");
-	fmt::println("      \"z\", \"zero\"             (The PRNG is seeded with this repeating pattern of bytes: {:#0{}x}.)", seed_zero_32, sizeof(seed_zero_32) * 2 + 2);
+	fmt::println("      \"p\", \"pat\", \"pattern\",  (The PRNG is seeded with bytes of value 0x{:0{}X}.)", seed_pattern_32, sizeof(seed_pattern_32) * 2);
+	fmt::println("      \"r\", \"rand\", \"random\",  (The PRNG is seeded with bytes of random values.)");
+	fmt::println("      \"z\", \"zero\",            (The PRNG is seeded with bytes of value 0x00.)");
 	nl;
 }
 
@@ -352,6 +355,8 @@ main([[maybe_unused]] int argc, [[maybe_unused]] char* argv[])
 
 #define CONDITIONAL_DUMP_STD(NAME) \
 if (prng_name == #NAME) { \
+	fill_seed_seq<seed_pattern_32> seeder_pattern; \
+	fill_seed_seq<0> seeder_zero; \
 	if (use_default_ctor) prng_dump(NAME{}); \
 	else if (use_pattern_seed) prng_dump(NAME{seeder_pattern}); \
 	else if (use_random_seed) prng_dump(random_device_seeded<NAME>()); \
