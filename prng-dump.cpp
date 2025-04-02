@@ -70,10 +70,10 @@ prng_dump(URBG&& gen)
 	using result_type = typename URBG::result_type;
 
 	// /proc/sys/fs/pipe-max-size = 1048576
-	// fcntl(fileno(stdout), F_GETPIPE_SZ) = 65536
+	// fcntl(STDOUT_FILENO, F_GETPIPE_SZ) = 65536
 	// BUFSIZ = 8192
-	// PractRand uses a buffer of size 4096 bytes for reading from stdin.
-	constexpr size_t buf_size_bytes = 4096;
+	// PractRand uses a buffer of size BUFSIZ bytes for reading from stdin.
+	constexpr size_t buf_size_bytes = BUFSIZ;
 	constexpr size_t buf_num_elems = buf_size_bytes / sizeof(result_type);
 	static_assert(buf_size_bytes % sizeof(result_type) == 0);
 
