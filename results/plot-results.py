@@ -3,7 +3,7 @@
 
 __author__ = 'Steven Ward'
 __license__ = 'OSL-3.0'
-__version__ = '2023-09-08'
+__version__ = '2025-04-02'
 
 import json
 import matplotlib.pyplot as plt
@@ -44,7 +44,7 @@ ax.set_title("PRNG PractRand endurance vs. speed")
 # https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.set_xlabel.html
 ax.set_xlabel('Test ended at $2^x$ (bytes)')
 # https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.set_ylabel.html
-ax.set_ylabel('Throughput (MiB/s)')
+ax.set_ylabel('Throughput (GiB/s)')
 
 # https://matplotlib.org/stable/api/_as_gen/matplotlib.axis.Axis.set_major_formatter.html
 ax.yaxis.set_major_formatter(lambda x, pos: '{:,}'.format(int(x)))

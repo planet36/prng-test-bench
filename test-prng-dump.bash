@@ -56,7 +56,7 @@ Test prng-dump with RNG_test.  If PRNGs are not given, they are all tested.
 
 Run "./prng-dump -i" to list all PRNGs.
 
-The prng-bench program must be run before this script for benchmark analysis to be done.
+The prng-bench target must be run before this script for benchmark analysis to be done.
 
 OPTIONS
 
