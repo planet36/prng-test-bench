@@ -9,7 +9,7 @@ import json
 import matplotlib.pyplot as plt
 import sys
 
-# This is a prng-results.*.json file, not the benchmark file (prng-bench.json)
+# This is a prng-results.*.json file.
 prng_results_file_name = sys.argv[1]
 
 with open(prng_results_file_name) as f:

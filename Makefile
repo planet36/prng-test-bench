@@ -24,7 +24,6 @@ rm \
 RNG_test \
 sed \
 sort \
-sponge \
 tail \
 time \
 tr
@@ -47,14 +46,7 @@ CXXFLAGS += -frecord-gcc-switches
 
 #LDFLAGS +=
 
-LDLIBS += -lbenchmark
 LDLIBS += -lfmt
-
-# Use N-1 threads in the bench test
-export NUM_THREADS := $(shell nproc --ignore 1)
-
-# Should be an odd number for simpler median
-BENCHMARK_REPS := 7
 
 OUTPUT_DIR := results
 
@@ -84,31 +76,6 @@ $(BINS): prng-% : prng-%.cpp
 	@# Extract compile options
 	readelf -p .GCC.command.line $@ | grep -F 'GNU GIMPLE' | \
 		sed -E -e 's/^\s*\[\s*[0-9]+\]\s*//' | tr -d '\n' > $@.opts
-
-# Takes about 1.9 mins
-bench: prng-bench | $(OUTPUT_DIR)
-	./$< \
-		--benchmark_enable_random_interleaving=true \
-		--benchmark_repetitions=$(BENCHMARK_REPS) \
-		--benchmark_report_aggregates_only=true \
-		--benchmark_out_format=json \
-		--benchmark_out=$(OUTPUT_DIR)/$<.json
-
-	@# Preserve the given order because --benchmark_enable_random_interleaving=true shuffles the order of the tests.
-	jq '.benchmarks |= sort_by(.family_index)' \
-		< $(OUTPUT_DIR)/$<.json | sponge $(OUTPUT_DIR)/$<.json
-
-	@# Insert compile options
-	jq --rawfile compile_opts $<.opts '. + {compile_opts: $$compile_opts}' \
-		< $(OUTPUT_DIR)/$<.json | sponge $(OUTPUT_DIR)/$<.json
-
-	jq -r '.benchmarks[] | select(.aggregate_name == "median") | "\(.run_name)\t\(.bytes_per_second)"' \
-		$(OUTPUT_DIR)/$<.json | \
-		sed -E -e 's/\/threads:[0-9]+//' | \
-		awk '{printf "%s\t%.0f\n", $$1, $$2/(2**20)}' > $(OUTPUT_DIR)/$<.txt
-
-	# (column 2 is MiB/s)
-	sort -r -k 2 -g $(OUTPUT_DIR)/$<.txt | column --table
 
 # Takes about 4.4 mins
 short-test: prng-dump bench | $(OUTPUT_DIR)
@@ -151,6 +118,6 @@ lint:
 	-clang-tidy --quiet $(SRCS) -- $(CPPFLAGS) $(CXXFLAGS) $(LDLIBS)
 
 # https://www.gnu.org/software/make/manual/make.html#Phony-Targets
-.PHONY: all bench short-test long-test update-short-test update-long-test clean lint
+.PHONY: all short-test long-test update-short-test update-long-test clean lint
 
 -include $(DEPS)
