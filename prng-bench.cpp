@@ -86,7 +86,7 @@ main(int argc, char** argv)
 			// verify the given function names are valid
 			if (!prng_name_to_info.contains(prng_name))
 			{
-				fmt::println(stderr, "Error: \"{}\" is not a valid function name.", prng_name);
+				fmt::println(stderr, "Error: {:?} is not a valid function name.", prng_name);
 
 				fmt::println(stderr, "Valid function names are:");
 				const auto keys = std::views::keys(prng_name_to_info);

@@ -297,7 +297,7 @@ process_options(int argc, char* argv[])
 			}
 			else
 			{
-				print_error(fmt::format("Invalid option value: '{}'", optarg));
+				print_error(fmt::format("Invalid option value: {:?}", optarg));
 			}
 			break;
 
