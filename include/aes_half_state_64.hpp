@@ -31,8 +31,8 @@ class aes_half_state_64_prng
 	static_assert(Nk * Nr >= 2, "must do at least 2 rounds of AES");
 
 private:
-	arr_m128i<Ns> x{}; ///< The state
 	arr_m128i<Nk> keys{};
+	arr_m128i<Ns> x{}; ///< The state
 
 public:
 	using result_type = uint64_t;
