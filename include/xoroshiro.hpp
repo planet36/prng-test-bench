@@ -13,7 +13,7 @@
 
 #pragma once
 
-#include "def_urbg_class_details.hpp"
+#include "def_urbg_class.hpp"
 
 #include <array>
 #include <bit>
@@ -28,28 +28,19 @@
  *
  * The state must be seeded so that it is not everywhere zero.
  */
-struct xoroshiro64starstar
+// XXX: must not give zero seed
+DEF_URBG_CLASS(xoroshiro64starstar, SINGLE_ARG(std::array<uint32_t, 2>), uint32_t)
 {
-	using state_type = std::array<uint32_t, 2>;
-	using result_type = uint32_t;
+	const auto s0 = s[0];
+	auto s1 = s[1];
+	const auto result = std::rotl(s0 * 0x9E3779BB, 5) * 5;
 
-DEF_URBG_CLASS_DETAILS(xoroshiro64starstar)
+	s1 ^= s0;
+	s[0] = std::rotl(s0, 26) ^ s1 ^ (s1 << 9); // a, b
+	s[1] = std::rotl(s1, 13); // c
 
-	// XXX: must not give zero seed
-
-	constexpr result_type next()
-	{
-		const auto s0 = s[0];
-		auto s1 = s[1];
-		const auto result = std::rotl(s0 * 0x9E3779BB, 5) * 5;
-
-		s1 ^= s0;
-		s[0] = std::rotl(s0, 26) ^ s1 ^ (s1 << 9); // a, b
-		s[1] = std::rotl(s1, 13); // c
-
-		return result;
-	}
-};
+	return result;
+}
 
 /** This is xoroshiro128++ 1.0, one of our all-purpose, rock-solid, small-state
  * generators. It is extremely (sub-ns) fast and it passes all tests we are
@@ -62,29 +53,19 @@ DEF_URBG_CLASS_DETAILS(xoroshiro64starstar)
  * 64-bit seed, we suggest to seed a splitmix64 generator and use its output to
  * fill s.
  */
-struct xoroshiro128plusplus
+// XXX: must not give zero seed
+DEF_URBG_CLASS(xoroshiro128plusplus, SINGLE_ARG(std::array<uint64_t, 2>), uint64_t)
 {
-	using state_type = std::array<uint64_t, 2>;
-	using result_type = uint64_t;
+	const auto s0 = s[0];
+	auto s1 = s[1];
+	const auto result = std::rotl(s0 + s1, 17) + s0;
 
-private:
-DEF_URBG_CLASS_DETAILS(xoroshiro128plusplus)
+	s1 ^= s0;
+	s[0] = std::rotl(s0, 49) ^ s1 ^ (s1 << 21); // a, b
+	s[1] = std::rotl(s1, 28); // c
 
-	// XXX: must not give zero seed
-
-	constexpr result_type next()
-	{
-		const auto s0 = s[0];
-		auto s1 = s[1];
-		const auto result = std::rotl(s0 + s1, 17) + s0;
-
-		s1 ^= s0;
-		s[0] = std::rotl(s0, 49) ^ s1 ^ (s1 << 21); // a, b
-		s[1] = std::rotl(s1, 28); // c
-
-		return result;
-	}
-};
+	return result;
+}
 
 /** This is xoroshiro128** 1.0, one of our all-purpose, rock-solid, small-state
  * generators. It is extremely (sub-ns) fast and it passes all tests we are
@@ -97,29 +78,19 @@ DEF_URBG_CLASS_DETAILS(xoroshiro128plusplus)
  * 64-bit seed, we suggest to seed a splitmix64 generator and use its output to
  * fill s.
  */
-struct xoroshiro128starstar
+// XXX: must not give zero seed
+DEF_URBG_CLASS(xoroshiro128starstar, SINGLE_ARG(std::array<uint64_t, 2>), uint64_t)
 {
-	using state_type = std::array<uint64_t, 2>;
-	using result_type = uint64_t;
+	const auto s0 = s[0];
+	auto s1 = s[1];
+	const auto result = std::rotl(s0 * 5, 7) * 9;
 
-private:
-DEF_URBG_CLASS_DETAILS(xoroshiro128starstar)
+	s1 ^= s0;
+	s[0] = std::rotl(s0, 24) ^ s1 ^ (s1 << 16); // a, b
+	s[1] = std::rotl(s1, 37); // c
 
-	// XXX: must not give zero seed
-
-	constexpr result_type next()
-	{
-		const auto s0 = s[0];
-		auto s1 = s[1];
-		const auto result = std::rotl(s0 * 5, 7) * 9;
-
-		s1 ^= s0;
-		s[0] = std::rotl(s0, 24) ^ s1 ^ (s1 << 16); // a, b
-		s[1] = std::rotl(s1, 37); // c
-
-		return result;
-	}
-};
+	return result;
+}
 
 /** This is xoroshiro1024++ 1.0, one of our all-purpose, rock-solid,
  * large-state generators. It is extremely fast and it passes all tests we are
@@ -133,32 +104,22 @@ DEF_URBG_CLASS_DETAILS(xoroshiro128starstar)
  * 64-bit seed, we suggest to seed a splitmix64 generator and use its output to
  * fill s.
  */
-struct xoroshiro1024plusplus
+// XXX: must not give zero seed
+DEF_URBG_CLASS(xoroshiro1024plusplus, SINGLE_ARG(std::array<uint64_t, 16>), uint64_t)
 {
-	using state_type = std::array<uint64_t, 16>;
-	using result_type = uint64_t;
+	static unsigned int p{};
+	const auto q = p;
+	p = (p + 1) % s.size();
+	const auto s0 = s[p];
+	auto s15 = s[q];
+	const auto result = std::rotl(s0 + s15, 23) + s15;
 
-private:
-	unsigned int p{};
-DEF_URBG_CLASS_DETAILS(xoroshiro1024plusplus)
+	s15 ^= s0;
+	s[q] = std::rotl(s0, 25) ^ s15 ^ (s15 << 27);
+	s[p] = std::rotl(s15, 36);
 
-	// XXX: must not give zero seed
-
-	constexpr result_type next()
-	{
-		const auto q = p;
-		p = (p + 1) % s.size();
-		const auto s0 = s[p];
-		auto s15 = s[q];
-		const auto result = std::rotl(s0 + s15, 23) + s15;
-
-		s15 ^= s0;
-		s[q] = std::rotl(s0, 25) ^ s15 ^ (s15 << 27);
-		s[p] = std::rotl(s15, 36);
-
-		return result;
-	}
-};
+	return result;
+}
 
 /** This is xoroshiro1024** 1.0, one of our all-purpose, rock-solid,
  * large-state generators. It is extremely fast and it passes all tests we are
@@ -172,29 +133,19 @@ DEF_URBG_CLASS_DETAILS(xoroshiro1024plusplus)
  * 64-bit seed, we suggest to seed a splitmix64 generator and use its output to
  * fill s.
  */
-struct xoroshiro1024starstar
+// XXX: must not give zero seed
+DEF_URBG_CLASS(xoroshiro1024starstar, SINGLE_ARG(std::array<uint64_t, 16>), uint64_t)
 {
-	using state_type = std::array<uint64_t, 16>;
-	using result_type = uint64_t;
+	static unsigned int p{};
+	const auto q = p;
+	p = (p + 1) % s.size();
+	const auto s0 = s[p];
+	auto s15 = s[q];
+	const auto result = std::rotl(s0 * 5, 7) * 9;
 
-private:
-	unsigned int p{};
-DEF_URBG_CLASS_DETAILS(xoroshiro1024starstar)
+	s15 ^= s0;
+	s[q] = std::rotl(s0, 25) ^ s15 ^ (s15 << 27);
+	s[p] = std::rotl(s15, 36);
 
-	// XXX: must not give zero seed
-
-	constexpr result_type next()
-	{
-		const auto q = p;
-		p = (p + 1) % s.size();
-		const auto s0 = s[p];
-		auto s15 = s[q];
-		const auto result = std::rotl(s0 * 5, 7) * 9;
-
-		s15 ^= s0;
-		s[q] = std::rotl(s0, 25) ^ s15 ^ (s15 << 27);
-		s[p] = std::rotl(s15, 36);
-
-		return result;
-	}
-};
+	return result;
+}
