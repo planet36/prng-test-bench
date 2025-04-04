@@ -21,10 +21,10 @@
 #if defined(__AES__)
 
 /// A PRNG that uses AES instructions
-template <size_t Nk, size_t Nr>
+template <unsigned int Nk, unsigned int Nr>
 class aes_half_state_64_prng
 {
-	static constexpr size_t Ns = 1; ///< The number of elements in the state
+	static constexpr unsigned int Ns = 1; ///< The number of elements in the state
 
 	static_assert(Nk >= 1);
 	static_assert(Nr >= 1);
@@ -76,14 +76,14 @@ public:
 	/// Get the next PRNG output via AES encryption or decryption.
 	result_type next()
 	{
-		for (size_t r = 0; r < Nr; ++r)
+		for (unsigned int r = 0; r < Nr; ++r)
 		{
-			for (size_t k = 0; k < Nk; ++k)
+			for (unsigned int k = 0; k < Nk; ++k)
 			{
 				if constexpr (Ns > 1)
 					transpose(x);
 
-				for (size_t i = 0; i < Ns; ++i)
+				for (unsigned int i = 0; i < Ns; ++i)
 				{
 					x[i] = _mm_aesenc_si128(x[i], keys[k]);
 				}

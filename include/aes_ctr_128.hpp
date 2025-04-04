@@ -31,7 +31,7 @@ static_assert(std::integral<__uint128_t>);
 static_assert(std::unsigned_integral<__uint128_t>);
 
 /// A PRNG that uses AES instructions
-template <size_t Nk, size_t Nr>
+template <unsigned int Nk, unsigned int Nr>
 class aes_ctr_128_prng
 {
 	static_assert(Nk >= 1);
@@ -93,9 +93,9 @@ public:
 		__m128i dst = ctr;
 		ctr = _mm_add_epi64(ctr, inc);
 
-		for (size_t r = 0; r < Nr; ++r)
+		for (unsigned int r = 0; r < Nr; ++r)
 		{
-			for (size_t k = 0; k < Nk; ++k)
+			for (unsigned int k = 0; k < Nk; ++k)
 			{
 				dst = _mm_aesenc_si128(dst, keys[k]);
 			}
