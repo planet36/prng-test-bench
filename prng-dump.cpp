@@ -469,6 +469,8 @@ if (prng_name == #NAME) { \
 	CONDITIONAL_DUMP_MINE(sha1msg2rand          )
 	CONDITIONAL_DUMP_MINE(sha256msg1rand        )
 	CONDITIONAL_DUMP_MINE(sha256msg2rand        )
+	CONDITIONAL_DUMP_MINE(sha1_ctr_128          )
+	CONDITIONAL_DUMP_MINE(sha256_ctr_128        )
 #endif
 	CONDITIONAL_DUMP_MINE(shioi                 )
 	CONDITIONAL_DUMP_MINE(splitmix32            )

@@ -41,6 +41,8 @@
 #include "sfc.hpp"
 #include "sha1rand.hpp"
 #include "sha256rand.hpp"
+#include "sha1_ctr_128.hpp"
+#include "sha256_ctr_128.hpp"
 #include "shioi.hpp"
 #include "splitmix.hpp"
 #include "splitxix33.hpp"
@@ -181,6 +183,8 @@ const std::map<std::string, prng_info_t> prng_name_to_info{
 	CREATE_PRNG_INFO_MAP_ENTRY(sha1msg2rand          ),
 	CREATE_PRNG_INFO_MAP_ENTRY(sha256msg1rand        ),
 	CREATE_PRNG_INFO_MAP_ENTRY(sha256msg2rand        ),
+	CREATE_PRNG_INFO_MAP_ENTRY(sha1_ctr_128          ),
+	CREATE_PRNG_INFO_MAP_ENTRY(sha256_ctr_128        ),
 #endif
 	CREATE_PRNG_INFO_MAP_ENTRY(shioi                 ),
 	CREATE_PRNG_INFO_MAP_ENTRY(splitmix32            ),
