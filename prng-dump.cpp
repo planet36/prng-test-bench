@@ -72,8 +72,8 @@ prng_dump(URBG&& gen)
 	// /proc/sys/fs/pipe-max-size = 1048576
 	// fcntl(STDOUT_FILENO, F_GETPIPE_SZ) = 65536
 	// BUFSIZ = 8192
-	// PractRand uses a buffer of size BUFSIZ bytes for reading from stdin.
-	constexpr size_t buf_size_bytes = BUFSIZ;
+	// PractRand uses a buffer of size 32768 bytes for reading from stdin.
+	constexpr size_t buf_size_bytes = 32768;
 	constexpr size_t buf_num_elems = buf_size_bytes / sizeof(result_type);
 	static_assert(buf_size_bytes % sizeof(result_type) == 0);
 
