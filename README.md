@@ -22,5 +22,8 @@ The following libraries are required to build:
 - [fmt](https://github.com/fmtlib/fmt)
 
 The following programs are required to run:
+- [hyperfine](https://github.com/sharkdp/hyperfine)
+- [jq](https://github.com/jqlang/jq)
+- [parallel](https://www.gnu.org/software/parallel/)
 - [PractRand](https://github.com/planet36/PractRand)
 - See [Makefile](Makefile) for detailed list
