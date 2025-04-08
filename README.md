@@ -19,7 +19,6 @@ Results are saved in the "results" folder.
 ## Requirements
 
 The following libraries are required to build:
-- [Google Benchmark](https://github.com/google/benchmark)
 - [fmt](https://github.com/fmtlib/fmt)
 
 The following programs are required to run:
