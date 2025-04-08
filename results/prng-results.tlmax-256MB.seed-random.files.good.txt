@@ -34,7 +34,6 @@ RNG_test.tlmax-256MB.seed-random.prng-mcg128.txt
 RNG_test.tlmax-256MB.seed-random.prng-mizuchi.txt
 RNG_test.tlmax-256MB.seed-random.prng-moremur.txt
 RNG_test.tlmax-256MB.seed-random.prng-mover_64.txt
-RNG_test.tlmax-256MB.seed-random.prng-mover_counter_64.txt
 RNG_test.tlmax-256MB.seed-random.prng-msws32.txt
 RNG_test.tlmax-256MB.seed-random.prng-msws64.txt
 RNG_test.tlmax-256MB.seed-random.prng-mumx_mumx_rrxx_1.txt

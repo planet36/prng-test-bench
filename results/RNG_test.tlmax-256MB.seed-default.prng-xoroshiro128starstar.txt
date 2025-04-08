@@ -4,7 +4,5 @@ test set = core, folding = none
 
 rng=RNG_stdin64, seed=unknown
 length= 256 mebibytes (2^28 bytes), time= 0.7 seconds
-  Test Name                         Raw       Processed     Evaluation
-  DC6-9x1Bytes-1                    R=  +6.8  p =  1.4e-3   mildly suspicious
-  ...and 66 test result(s) without anomalies
+  no anomalies in 67 test result(s)
 
