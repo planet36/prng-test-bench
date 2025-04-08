@@ -19,7 +19,6 @@ jq \
 mkdir \
 mktemp \
 parallel \
-python3 \
 readelf \
 rm \
 RNG_test \
