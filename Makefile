@@ -77,7 +77,7 @@ $(BINS): prng-% : prng-%.cpp
 	readelf -p .GCC.command.line $@ | grep -F 'GNU GIMPLE' | \
 		sed -E -e 's/^\s*\[\s*[0-9]+\]\s*//' | tr -d '\n' > $@.opts
 
-# Takes about 8.6 mins
+# Takes about 9 mins
 prng-bench: prng-dump | $(OUTPUT_DIR)
 	@# Write 1 GiB of random data
 	hyperfine \
@@ -93,7 +93,7 @@ prng-bench: prng-dump | $(OUTPUT_DIR)
 	# (column 2 is GiB/s)
 	sort -r -k 2 -g -- $(OUTPUT_DIR)/$@.txt | column --table
 
-# Takes about 10.3 mins
+# Takes about 11 mins
 short-test: prng-dump prng-bench | $(OUTPUT_DIR)
 	bash test-prng-dump.bash -j $(J_SHORT) -f $(TF_SHORT) -m $(TLMAX_SHORT) \
 		-s default -s pattern -s random -s zero \

@@ -9,7 +9,7 @@ To run the benchmark only: `make prng-bench`
 
 To run the short test: `make short-test`
 * `prng-bench` is a prerequisite
-* Takes about 11.2 minutes to finish
+* Takes about 11 minutes to finish
 
 To run the long test: `make long-test`
 * `prng-bench` is a prerequisite
