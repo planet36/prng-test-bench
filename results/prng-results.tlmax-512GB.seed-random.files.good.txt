@@ -14,11 +14,6 @@ RNG_test.tlmax-512GB.seed-random.prng-aes128_prng_enc_k1_r2.txt
 RNG_test.tlmax-512GB.seed-random.prng-aes128_prng_enc_k1_r3.txt
 RNG_test.tlmax-512GB.seed-random.prng-aes128_prng_enc_k2_r1.txt
 RNG_test.tlmax-512GB.seed-random.prng-aes128_prng_enc_k3_r1.txt
-RNG_test.tlmax-512GB.seed-random.prng-aesdeclastrand.txt
-RNG_test.tlmax-512GB.seed-random.prng-aesdecrand.txt
-RNG_test.tlmax-512GB.seed-random.prng-aesenclastrand.txt
-RNG_test.tlmax-512GB.seed-random.prng-aesencrand.txt
-RNG_test.tlmax-512GB.seed-random.prng-aesimcrand.txt
 RNG_test.tlmax-512GB.seed-random.prng-bell.txt
 RNG_test.tlmax-512GB.seed-random.prng-bright.txt
 RNG_test.tlmax-512GB.seed-random.prng-clmulrand.txt

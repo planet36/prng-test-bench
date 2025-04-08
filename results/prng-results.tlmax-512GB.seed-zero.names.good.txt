@@ -15,11 +15,6 @@ aes128_prng_enc_k1_r2
 aes128_prng_enc_k1_r3
 aes128_prng_enc_k2_r1
 aes128_prng_enc_k3_r1
-aesdeclastrand
-aesdecrand
-aesenclastrand
-aesencrand
-aesimcrand
 bright
 clmulrand
 dirk

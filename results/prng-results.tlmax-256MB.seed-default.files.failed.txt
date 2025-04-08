@@ -1,9 +1,5 @@
 RNG_test.tlmax-256MB.seed-default.prng-degski32.txt
 RNG_test.tlmax-256MB.seed-default.prng-klimov_shamir_32.txt
-RNG_test.tlmax-256MB.seed-default.prng-sha1msg1rand.txt
-RNG_test.tlmax-256MB.seed-default.prng-sha1msg2rand.txt
-RNG_test.tlmax-256MB.seed-default.prng-sha256msg1rand.txt
-RNG_test.tlmax-256MB.seed-default.prng-sha256msg2rand.txt
 RNG_test.tlmax-256MB.seed-default.prng-std::default_random_engine.txt
 RNG_test.tlmax-256MB.seed-default.prng-std::knuth_b.txt
 RNG_test.tlmax-256MB.seed-default.prng-std::minstd_rand.txt
