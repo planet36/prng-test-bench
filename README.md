@@ -4,17 +4,18 @@ C++ PRNG test bench that uses [Google Benchmark](https://github.com/google/bench
 
 ## Usage
 
-To run the benchmark only: `make bench`
+To run the benchmark only: `make prng-bench`
+* Takes about 9 minutes to finish
 
 To run the short test: `make short-test`
-* `benchmark` is a prerequisite
-* Takes about 12.5 minutes to finish
+* `prng-bench` is a prerequisite
+* Takes about 11.2 minutes to finish
 
 To run the long test: `make long-test`
-* `benchmark` is a prerequisite
+* `prng-bench` is a prerequisite
 * Takes about 40 hours to finish
 
-Results are saved in the "results" folder.
+Results are saved in the `results` folder.
 
 ## Requirements
 
