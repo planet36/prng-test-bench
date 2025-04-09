@@ -18,7 +18,7 @@
 
 union alignas(sizeof(__m128i)) simd128i
 {
-	std::array<std::byte, 16 / sizeof(std::byte)> bytes;
+	std::array<std::byte, 16 / sizeof(std::byte)> bytes{};
 	std::array<uint8_t, 16 / sizeof(uint8_t)> u8;
 	std::array<uint16_t, 16 / sizeof(uint16_t)> u16;
 	std::array<uint32_t, 16 / sizeof(uint32_t)> u32;
@@ -33,7 +33,7 @@ static_assert(sizeof(simd128i) == 16);
 
 union alignas(sizeof(__m256i)) simd256i
 {
-	std::array<std::byte, 32 / sizeof(std::byte)> bytes;
+	std::array<std::byte, 32 / sizeof(std::byte)> bytes{};
 	std::array<uint8_t, 32 / sizeof(uint8_t)> u8;
 	std::array<uint16_t, 32 / sizeof(uint16_t)> u16;
 	std::array<uint32_t, 32 / sizeof(uint32_t)> u32;
@@ -49,7 +49,7 @@ static_assert(sizeof(simd256i) == 32);
 
 union alignas(sizeof(__m512i)) simd512i
 {
-	std::array<std::byte, 64 / sizeof(std::byte)> bytes;
+	std::array<std::byte, 64 / sizeof(std::byte)> bytes{};
 	std::array<uint8_t, 64 / sizeof(uint8_t)> u8;
 	std::array<uint16_t, 64 / sizeof(uint16_t)> u16;
 	std::array<uint32_t, 64 / sizeof(uint32_t)> u32;
