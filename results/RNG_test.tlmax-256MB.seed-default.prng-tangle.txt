@@ -5,8 +5,7 @@ test set = core, folding = none
 rng=RNG_stdin64, seed=unknown
 length= 256 mebibytes (2^28 bytes), time= 0.4 seconds
   Test Name                         Raw       Processed     Evaluation
-  DC6-9x1Bytes-1                    R=  -3.5  p = 0.987     unusual          
-  BRank(12):128(4)                  R= +17.9  p~=  2.6e-10   VERY SUSPICIOUS 
+  BRank(12):128(4)                  R= +14.0  p~=  2.9e-8   very suspicious  
   BRank(12):256(4)                  R=+103.9  p~=  4.6e-56    FAIL !!!!      
   BRank(12):384(1)                  R= +88.2  p~=  1.4e-27    FAIL !!        
   BRank(12):512(2)                  R=+307.4  p~=  1.4e-93    FAIL !!!!!     
@@ -14,5 +13,5 @@ length= 256 mebibytes (2^28 bytes), time= 0.4 seconds
   BRank(12):1K(2)                   R=+794.5  p~=  3.4e-240   FAIL !!!!!!    
   BRank(12):1536(1)                 R=+863.2  p~=  7.2e-261   FAIL !!!!!!    
   BRank(12):2K(1)                   R= +1251  p~=  1.6e-377   FAIL !!!!!!!   
-  ...and 58 test result(s) without anomalies
+  ...and 59 test result(s) without anomalies
 
