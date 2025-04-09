@@ -202,10 +202,10 @@ print_usage()
 	fmt::println("-s  SEED_TYPE");
 	fmt::println("    Specify the type of seed to be used.");
 	fmt::println("    SEED_TYPE must be one of the following values:");
-	fmt::println("      \"d\", \"def\", \"default\",  (The PRNG is default constructed.)");
-	fmt::println("      \"p\", \"pat\", \"pattern\",  (The PRNG is seeded with bytes of value 0x{:0{}X}.)", seed_pattern_32, sizeof(seed_pattern_32) * 2);
-	fmt::println("      \"r\", \"rand\", \"random\",  (The PRNG is seeded with bytes of random values.)");
-	fmt::println("      \"z\", \"zero\",            (The PRNG is seeded with bytes of value 0x00.)");
+	fmt::println(R"(      "d", "def", "default",  (The PRNG is default constructed.))");
+	fmt::println(R"(      "p", "pat", "pattern",  (The PRNG is seeded with bytes of value 0x{:0{}X}.))", seed_pattern_32, sizeof(seed_pattern_32) * 2);
+	fmt::println(R"(      "r", "rand", "random",  (The PRNG is seeded with bytes of random values.))");
+	fmt::println(R"(      "z", "zero",            (The PRNG is seeded with bytes of value 0x00.))");
 	nl;
 }
 
