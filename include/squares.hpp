@@ -19,59 +19,59 @@
 
 DEF_URBG_CLASS(squares32, uint64_t, uint32_t)
 {
-	static constexpr uint64_t key = xxh_prime64[0];
-	static_assert(key & 1, "must be odd");
+    static constexpr uint64_t key = xxh_prime64[0];
+    static_assert(key & 1, "must be odd");
 
-	++s; // (SDW)
+    ++s; // (SDW)
 
-	auto x = s * key;
-	const auto y = x;
-	const auto z = y + key;
+    auto x = s * key;
+    const auto y = x;
+    const auto z = y + key;
 
-	// round 1
-	x = x * x + y;
-	x = std::rotl(x, 32);
+    // round 1
+    x = x * x + y;
+    x = std::rotl(x, 32);
 
-	// round 2
-	x = x * x + z;
-	x = std::rotl(x, 32);
+    // round 2
+    x = x * x + z;
+    x = std::rotl(x, 32);
 
-	// round 3
-	x = x * x + y;
-	x = std::rotl(x, 32);
+    // round 3
+    x = x * x + y;
+    x = std::rotl(x, 32);
 
-	// round 4
-	return (x * x + z) >> 32;
+    // round 4
+    return (x * x + z) >> 32;
 }
 
 DEF_URBG_CLASS(squares64, uint64_t, uint64_t)
 {
-	static constexpr uint64_t key = xxh_prime64[0];
-	static_assert(key & 1, "must be odd");
+    static constexpr uint64_t key = xxh_prime64[0];
+    static_assert(key & 1, "must be odd");
 
-	++s; // (SDW)
+    ++s; // (SDW)
 
-	auto x = s * key;
-	const auto y = x;
-	const auto z = y + key;
+    auto x = s * key;
+    const auto y = x;
+    const auto z = y + key;
 
-	// round 1
-	x = x * x + y;
-	x = std::rotl(x, 32);
+    // round 1
+    x = x * x + y;
+    x = std::rotl(x, 32);
 
-	// round 2
-	x = x * x + z;
-	x = std::rotl(x, 32);
+    // round 2
+    x = x * x + z;
+    x = std::rotl(x, 32);
 
-	// round 3
-	x = x * x + y;
-	x = std::rotl(x, 32);
+    // round 3
+    x = x * x + y;
+    x = std::rotl(x, 32);
 
-	// round 4
-	x = x * x + z;
-	const auto t = x;
-	x = std::rotl(x, 32);
+    // round 4
+    x = x * x + z;
+    const auto t = x;
+    x = std::rotl(x, 32);
 
-	// round 5
-	return t ^ ((x * x + y) >> 32);
+    // round 5
+    return t ^ ((x * x + y) >> 32);
 }

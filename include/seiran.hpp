@@ -19,19 +19,19 @@
 
 DEF_URBG_CLASS(seiran, SINGLE_ARG(std::array<uint64_t, 2>), uint64_t)
 {
-	static constexpr unsigned int M1 = 9;
-	static_assert(M1 & 1, "must be odd");
-	static constexpr unsigned int R1 = 29;
-	static constexpr unsigned int S1 = 9;
+    static constexpr unsigned int M1 = 9;
+    static_assert(M1 & 1, "must be odd");
+    static constexpr unsigned int R1 = 29;
+    static constexpr unsigned int S1 = 9;
 
-	s[0] += xxh_prime64[0]; // (SDW)
-	s[1] += xxh_prime64[1]; // (SDW)
+    s[0] += xxh_prime64[0]; // (SDW)
+    s[1] += xxh_prime64[1]; // (SDW)
 
-	const auto old_s = s;
-	const result_type result = std::rotl((old_s[0] + old_s[1]) * M1, R1) + old_s[0];
+    const auto old_s = s;
+    const result_type result = std::rotl((old_s[0] + old_s[1]) * M1, R1) + old_s[0];
 
-	s[0] = old_s[0] ^ std::rotl(old_s[1], R1);
-	s[1] = old_s[0] ^ (old_s[1] << S1);
+    s[0] = old_s[0] ^ std::rotl(old_s[1], R1);
+    s[1] = old_s[0] ^ (old_s[1] << S1);
 
-	return result;
+    return result;
 }

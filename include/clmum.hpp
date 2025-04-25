@@ -20,69 +20,69 @@
 static inline void
 clmul(__m128i& a)
 {
-	// https://clang.llvm.org/doxygen/____wmmintrin__pclmul_8h.html
-	// https://github.com/gcc-mirror/gcc/blob/master/gcc/config/i386/wmmintrin.h#L103
-	// __m128i _mm_clmulepi64_si128(__m128i a, __m128i b, int imm8)
-	// imm8: 0x00 => b[0] * a[0]
-	// imm8: 0x01 => b[0] * a[1]
-	// imm8: 0x10 => b[1] * a[0]
-	// imm8: 0x11 => b[1] * a[1]
+    // https://clang.llvm.org/doxygen/____wmmintrin__pclmul_8h.html
+    // https://github.com/gcc-mirror/gcc/blob/master/gcc/config/i386/wmmintrin.h#L103
+    // __m128i _mm_clmulepi64_si128(__m128i a, __m128i b, int imm8)
+    // imm8: 0x00 => b[0] * a[0]
+    // imm8: 0x01 => b[0] * a[1]
+    // imm8: 0x10 => b[1] * a[0]
+    // imm8: 0x11 => b[1] * a[1]
 
-	// MSB in result is always 0
-	a = _mm_clmulepi64_si128(a, a, 0x10);
+    // MSB in result is always 0
+    a = _mm_clmulepi64_si128(a, a, 0x10);
 }
 
 static inline uint64_t
 clmumx(__m128i a)
 {
-	clmul(a);
-	return static_cast<uint64_t>(_mm_extract_epi64(a, 1)) ^ static_cast<uint64_t>(_mm_extract_epi64(a, 0));
+    clmul(a);
+    return static_cast<uint64_t>(_mm_extract_epi64(a, 1)) ^ static_cast<uint64_t>(_mm_extract_epi64(a, 0));
 }
 
 static inline uint64_t
 clmuma(__m128i a)
 {
-	clmul(a);
-	return static_cast<uint64_t>(_mm_extract_epi64(a, 1)) + static_cast<uint64_t>(_mm_extract_epi64(a, 0));
+    clmul(a);
+    return static_cast<uint64_t>(_mm_extract_epi64(a, 1)) + static_cast<uint64_t>(_mm_extract_epi64(a, 0));
 }
 
 static inline uint64_t
 clmums(__m128i a)
 {
-	clmul(a);
-	return static_cast<uint64_t>(_mm_extract_epi64(a, 1)) - static_cast<uint64_t>(_mm_extract_epi64(a, 0));
+    clmul(a);
+    return static_cast<uint64_t>(_mm_extract_epi64(a, 1)) - static_cast<uint64_t>(_mm_extract_epi64(a, 0));
 }
 
 static void
 clmul(uint64_t& hi, uint64_t& lo)
 {
-	__m128i result = _mm_set_epi64x(static_cast<long long int>(hi), static_cast<long long int>(lo)); // order of hi, lo doesn't matter
+    __m128i result = _mm_set_epi64x(static_cast<long long int>(hi), static_cast<long long int>(lo)); // order of hi, lo doesn't matter
 
-	clmul(result);
+    clmul(result);
 
-	hi = static_cast<uint64_t>(_mm_extract_epi64(result, 1));
-	lo = static_cast<uint64_t>(_mm_extract_epi64(result, 0));
+    hi = static_cast<uint64_t>(_mm_extract_epi64(result, 1));
+    lo = static_cast<uint64_t>(_mm_extract_epi64(result, 0));
 }
 
 static inline uint64_t
 clmumx(uint64_t a, uint64_t b)
 {
-	clmul(a, b);
-	return a ^ b;
+    clmul(a, b);
+    return a ^ b;
 }
 
 static inline uint64_t
 clmuma(uint64_t a, uint64_t b)
 {
-	clmul(a, b);
-	return a + b;
+    clmul(a, b);
+    return a + b;
 }
 
 static inline uint64_t
 clmums(uint64_t a, uint64_t b)
 {
-	clmul(a, b);
-	return a - b;
+    clmul(a, b);
+    return a - b;
 }
 #else
 #warning "__PCLMUL__ not defined"

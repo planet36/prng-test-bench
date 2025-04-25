@@ -19,7 +19,7 @@
 
 DEF_URBG_CLASS(clmulrand, __m128i, uint64_t)
 {
-	const __m128i inc = _mm_set_epi64x(byteprimes[1], byteprimes[0]);
-	s = _mm_add_epi64(s, inc);
-	return clmums(s);
+    const __m128i inc = _mm_set_epi64x(byteprimes[1], byteprimes[0]);
+    s = _mm_add_epi64(s, inc);
+    return clmums(s);
 }

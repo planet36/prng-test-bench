@@ -43,22 +43,22 @@ static_assert((_mum_finish_prime1     & 1) != 0, "must be odd");
 static_assert((_mum_finish_prime2     & 1) != 0, "must be odd");
 
 inline constexpr std::array<uint64_t, 16> _mum_primes{
-	0x9ebdcae10d981691, // prime (popcount = 31)
-	0x32b9b9b97a27ac7d, // prime (popcount = 37)
-	0x29b5584d83d35bbd, // prime (popcount = 34)
-	0x4b04e0e61401255f, // prime (popcount = 25)
-	0x25e8f7b1f1c9d027, // prime (popcount = 34)
-	0x80d4c8c000f3e881, // prime (popcount = 22)
-	0xbd1255431904b9dd, // prime (popcount = 30)
-	0x8a3bd4485eee6d81, // prime (popcount = 32)
-	0x3bc721b2aad05197, // prime (popcount = 31)
-	0x71b1a19b907d6e33, // prime (popcount = 33)
-	0x525e6c1084a8534b, // prime (popcount = 26)
-	0x9e4c2cd340c1299f, // prime (popcount = 29)
-	0xde3add92e94caa37, // prime (popcount = 36)
-	0x7e14eadb1f65311d, // prime (popcount = 35)
-	0x3f5aa40f89812853, // prime (popcount = 28)
-	0x33b15a3b587d15c9, // prime (popcount = 33)
+    0x9ebdcae10d981691, // prime (popcount = 31)
+    0x32b9b9b97a27ac7d, // prime (popcount = 37)
+    0x29b5584d83d35bbd, // prime (popcount = 34)
+    0x4b04e0e61401255f, // prime (popcount = 25)
+    0x25e8f7b1f1c9d027, // prime (popcount = 34)
+    0x80d4c8c000f3e881, // prime (popcount = 22)
+    0xbd1255431904b9dd, // prime (popcount = 30)
+    0x8a3bd4485eee6d81, // prime (popcount = 32)
+    0x3bc721b2aad05197, // prime (popcount = 31)
+    0x71b1a19b907d6e33, // prime (popcount = 33)
+    0x525e6c1084a8534b, // prime (popcount = 26)
+    0x9e4c2cd340c1299f, // prime (popcount = 29)
+    0xde3add92e94caa37, // prime (popcount = 36)
+    0x7e14eadb1f65311d, // prime (popcount = 35)
+    0x3f5aa40f89812853, // prime (popcount = 28)
+    0x33b15a3b587d15c9, // prime (popcount = 33)
 };
 static_assert((_mum_primes[ 0] & 1) != 0, "must be odd");
 static_assert((_mum_primes[ 1] & 1) != 0, "must be odd");
@@ -83,11 +83,11 @@ template <std::unsigned_integral T>
 constexpr void
 mul(T& hi, T& lo)
 {
-	// When T is uint64_t, this is optimized the same as _mulx_u64.
-	using T2 = next_larger<T>;
-	const T2 r = static_cast<T2>(hi) * static_cast<T2>(lo);
-	hi = static_cast<T>(r >> std::numeric_limits<T>::digits);
-	lo = static_cast<T>(r);
+    // When T is uint64_t, this is optimized the same as _mulx_u64.
+    using T2 = next_larger<T>;
+    const T2 r = static_cast<T2>(hi) * static_cast<T2>(lo);
+    hi = static_cast<T>(r >> std::numeric_limits<T>::digits);
+    lo = static_cast<T>(r);
 }
 
 /// Multiply \a a and \a b and return the XOR of the high and low parts of the product
@@ -95,8 +95,8 @@ template <std::unsigned_integral T>
 constexpr T
 mumx(T a, T b)
 {
-	mul(a, b);
-	return a ^ b;
+    mul(a, b);
+    return a ^ b;
 }
 
 /// Multiply \a a and \a b and return the sum of the high and low parts of the product
@@ -104,8 +104,8 @@ template <std::unsigned_integral T>
 constexpr T
 muma(T a, T b)
 {
-	mul(a, b);
-	return a + b;
+    mul(a, b);
+    return a + b;
 }
 
 /// Multiply \a a and \a b and return the difference of the high and low parts of the product
@@ -113,6 +113,6 @@ template <std::unsigned_integral T>
 constexpr T
 mums(T a, T b)
 {
-	mul(a, b);
-	return a - b;
+    mul(a, b);
+    return a - b;
 }

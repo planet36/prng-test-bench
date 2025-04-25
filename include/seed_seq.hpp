@@ -32,16 +32,16 @@ Adapted from the following sources.
 */
 struct random_device_seed_seq
 {
-	using result_type = std::seed_seq::result_type;
+    using result_type = std::seed_seq::result_type;
 
-	template <std::random_access_iterator Iter>
-	void generate(Iter first, Iter last)
-	{
-		std::generate(first, last, std::ref(random_device));
-	}
+    template <std::random_access_iterator Iter>
+    void generate(Iter first, Iter last)
+    {
+        std::generate(first, last, std::ref(random_device));
+    }
 
 private:
-	std::random_device random_device;
+    std::random_device random_device;
 };
 
 /// Return an instance of \a PRNG that has been seeded with \c random_device_seed_seq
@@ -67,32 +67,32 @@ template <typename PRNG = std::mt19937_64>
 PRNG
 random_device_seeded()
 {
-	thread_local random_device_seed_seq rd_ss;
-	return PRNG{rd_ss};
+    thread_local random_device_seed_seq rd_ss;
+    return PRNG{rd_ss};
 }
 
 /// A seed sequence that uses a constant value
 template <std::seed_seq::result_type value = 0>
 struct fill_seed_seq
 {
-	using result_type = std::seed_seq::result_type;
+    using result_type = std::seed_seq::result_type;
 
-	template <std::random_access_iterator Iter>
-	void generate(Iter first, Iter last)
-	{
-		std::fill(first, last, value);
-	}
+    template <std::random_access_iterator Iter>
+    void generate(Iter first, Iter last)
+    {
+        std::fill(first, last, value);
+    }
 };
 
 /// A seed sequence that uses sequentially increasing values
 template <std::seed_seq::result_type value = 0>
 struct iota_seed_seq
 {
-	using result_type = std::seed_seq::result_type;
+    using result_type = std::seed_seq::result_type;
 
-	template <std::random_access_iterator Iter>
-	void generate(Iter first, Iter last)
-	{
-		std::iota(first, last, value);
-	}
+    template <std::random_access_iterator Iter>
+    void generate(Iter first, Iter last)
+    {
+        std::iota(first, last, value);
+    }
 };

@@ -33,74 +33,74 @@ static_assert(std::unsigned_integral<__uint128_t>);
 template <unsigned int Nk, unsigned int Nr>
 class aes_half_state_128_prng
 {
-	static constexpr unsigned int Ns = 2; ///< The number of elements in the state
+    static constexpr unsigned int Ns = 2; ///< The number of elements in the state
 
-	static_assert(Nk >= 1);
-	static_assert(Nr >= 1);
-	static_assert(Nk * Nr >= 2, "must do at least 2 rounds of AES");
+    static_assert(Nk >= 1);
+    static_assert(Nr >= 1);
+    static_assert(Nk * Nr >= 2, "must do at least 2 rounds of AES");
 
 private:
-	arr_m128i<Nk> keys{};
-	arr_m128i<Ns> x{}; ///< The state
+    arr_m128i<Nk> keys{};
+    arr_m128i<Ns> x{}; ///< The state
 
 public:
-	using result_type = __uint128_t;
-	using seed_bytes_type = std::array<uint8_t, sizeof(x)>;
+    using result_type = __uint128_t;
+    using seed_bytes_type = std::array<uint8_t, sizeof(x)>;
 
-	aes_half_state_128_prng()
-	{
-		static_assert(sizeof(*this) <= 256,
-		    "getentropy will fail if more than 256 bytes are requested");
-		reseed();
-	}
+    aes_half_state_128_prng()
+    {
+        static_assert(sizeof(*this) <= 256,
+            "getentropy will fail if more than 256 bytes are requested");
+        reseed();
+    }
 
-	explicit aes_half_state_128_prng(const seed_bytes_type& bytes)
-	{
-		reseed();
-		(void)std::memcpy(x.data(), bytes.data(), sizeof(x));
-	}
+    explicit aes_half_state_128_prng(const seed_bytes_type& bytes)
+    {
+        reseed();
+        (void)std::memcpy(x.data(), bytes.data(), sizeof(x));
+    }
 
-	/// Assign random bytes to the data members via \c getentropy.
-	void reseed()
-	{
-		if (getentropy(this, sizeof(*this)) < 0)
-			err(EXIT_FAILURE, "getentropy");
-	}
+    /// Assign random bytes to the data members via \c getentropy.
+    void reseed()
+    {
+        if (getentropy(this, sizeof(*this)) < 0)
+            err(EXIT_FAILURE, "getentropy");
+    }
 
-	static constexpr result_type min()
-	{
-		return std::numeric_limits<result_type>::min();
-	}
+    static constexpr result_type min()
+    {
+        return std::numeric_limits<result_type>::min();
+    }
 
-	static constexpr result_type max()
-	{
-		return std::numeric_limits<result_type>::max();
-	}
+    static constexpr result_type max()
+    {
+        return std::numeric_limits<result_type>::max();
+    }
 
-	result_type operator()()
-	{
-		return next();
-	}
+    result_type operator()()
+    {
+        return next();
+    }
 
-	/// Get the next PRNG output via AES encryption or decryption.
-	result_type next()
-	{
-		for (unsigned int r = 0; r < Nr; ++r)
-		{
-			for (unsigned int k = 0; k < Nk; ++k)
-			{
-				if constexpr (Ns > 1)
-					transpose(x);
+    /// Get the next PRNG output via AES encryption or decryption.
+    result_type next()
+    {
+        for (unsigned int r = 0; r < Nr; ++r)
+        {
+            for (unsigned int k = 0; k < Nk; ++k)
+            {
+                if constexpr (Ns > 1)
+                    transpose(x);
 
-				for (unsigned int i = 0; i < Ns; ++i)
-				{
-					x[i] = _mm_aesenc_si128(x[i], keys[k]);
-				}
-			}
-		}
+                for (unsigned int i = 0; i < Ns; ++i)
+                {
+                    x[i] = _mm_aesenc_si128(x[i], keys[k]);
+                }
+            }
+        }
 
-		return simd128i{.xmm = x[0]}.u128[0];
-	}
+        return simd128i{.xmm = x[0]}.u128[0];
+    }
 };
 
 using aes_half_state_128_k1_r2 = aes_half_state_128_prng<1, 2>;

@@ -20,6 +20,6 @@
 
 DEF_URBG_CLASS(wyrand, uint64_t, uint64_t)
 {
-	s += _wyp[0];
-	return mumx(s, s ^ _wyp[1]);
+    s += _wyp[0];
+    return mumx(s, s ^ _wyp[1]);
 }

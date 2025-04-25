@@ -97,8 +97,8 @@ template <std::integral T>
 constexpr auto
 widen(const T n)
 {
-	using T2 = next_larger<T>;
-	return static_cast<T2>(n);
+    using T2 = next_larger<T>;
+    return static_cast<T2>(n);
 }
 
 /**
@@ -110,16 +110,16 @@ template <std::integral T>
 constexpr auto
 narrow(const T n)
 {
-	using T2 = next_smaller<T>;
+    using T2 = next_smaller<T>;
 
-	if constexpr (std::is_signed_v<T>)
-	{
-		if (std::cmp_less(n, std::numeric_limits<T2>::min()))
-			return std::numeric_limits<T2>::min();
-	}
+    if constexpr (std::is_signed_v<T>)
+    {
+        if (std::cmp_less(n, std::numeric_limits<T2>::min()))
+            return std::numeric_limits<T2>::min();
+    }
 
-	if (std::cmp_greater(n, std::numeric_limits<T2>::max()))
-		return std::numeric_limits<T2>::max();
+    if (std::cmp_greater(n, std::numeric_limits<T2>::max()))
+        return std::numeric_limits<T2>::max();
 
-	return static_cast<T2>(n);
+    return static_cast<T2>(n);
 }

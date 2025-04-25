@@ -31,19 +31,19 @@
 // XXX: must not give zero seed
 DEF_URBG_CLASS(xoshiro128plusplus, SINGLE_ARG(std::array<uint32_t, 4>), uint32_t)
 {
-	const auto result = std::rotl(s[0] + s[3], 7) + s[0];
-	const auto t = s[1] << 9;
+    const auto result = std::rotl(s[0] + s[3], 7) + s[0];
+    const auto t = s[1] << 9;
 
-	s[2] ^= s[0];
-	s[3] ^= s[1];
-	s[1] ^= s[2];
-	s[0] ^= s[3];
+    s[2] ^= s[0];
+    s[3] ^= s[1];
+    s[1] ^= s[2];
+    s[0] ^= s[3];
 
-	s[2] ^= t;
+    s[2] ^= t;
 
-	s[3] = std::rotl(s[3], 11);
+    s[3] = std::rotl(s[3], 11);
 
-	return result;
+    return result;
 }
 
 /** This is xoshiro128** 1.1, one of our 32-bit all-purpose, rock-solid
@@ -61,19 +61,19 @@ DEF_URBG_CLASS(xoshiro128plusplus, SINGLE_ARG(std::array<uint32_t, 4>), uint32_t
 // XXX: must not give zero seed
 DEF_URBG_CLASS(xoshiro128starstar, SINGLE_ARG(std::array<uint32_t, 4>), uint32_t)
 {
-	const auto result = std::rotl(s[1] * 5, 7) * 9;
-	const auto t = s[1] << 9;
+    const auto result = std::rotl(s[1] * 5, 7) * 9;
+    const auto t = s[1] << 9;
 
-	s[2] ^= s[0];
-	s[3] ^= s[1];
-	s[1] ^= s[2];
-	s[0] ^= s[3];
+    s[2] ^= s[0];
+    s[3] ^= s[1];
+    s[1] ^= s[2];
+    s[0] ^= s[3];
 
-	s[2] ^= t;
+    s[2] ^= t;
 
-	s[3] = std::rotl(s[3], 11);
+    s[3] = std::rotl(s[3], 11);
 
-	return result;
+    return result;
 }
 
 /** This is xoshiro256++ 1.0, one of our all-purpose, rock-solid generators. It
@@ -89,19 +89,19 @@ DEF_URBG_CLASS(xoshiro128starstar, SINGLE_ARG(std::array<uint32_t, 4>), uint32_t
 // XXX: must not give zero seed
 DEF_URBG_CLASS(xoshiro256plusplus, SINGLE_ARG(std::array<uint64_t, 4>), uint64_t)
 {
-	const auto result = std::rotl(s[0] + s[3], 23) + s[0];
-	const auto t = s[1] << 17;
+    const auto result = std::rotl(s[0] + s[3], 23) + s[0];
+    const auto t = s[1] << 17;
 
-	s[2] ^= s[0];
-	s[3] ^= s[1];
-	s[1] ^= s[2];
-	s[0] ^= s[3];
+    s[2] ^= s[0];
+    s[3] ^= s[1];
+    s[1] ^= s[2];
+    s[0] ^= s[3];
 
-	s[2] ^= t;
+    s[2] ^= t;
 
-	s[3] = std::rotl(s[3], 45);
+    s[3] = std::rotl(s[3], 45);
 
-	return result;
+    return result;
 }
 
 /** This is xoshiro256** 1.0, one of our all-purpose, rock-solid generators. It
@@ -117,19 +117,19 @@ DEF_URBG_CLASS(xoshiro256plusplus, SINGLE_ARG(std::array<uint64_t, 4>), uint64_t
 // XXX: must not give zero seed
 DEF_URBG_CLASS(xoshiro256starstar, SINGLE_ARG(std::array<uint64_t, 4>), uint64_t)
 {
-	const auto result = std::rotl(s[1] * 5, 7) * 9;
-	const auto t = s[1] << 17;
+    const auto result = std::rotl(s[1] * 5, 7) * 9;
+    const auto t = s[1] << 17;
 
-	s[2] ^= s[0];
-	s[3] ^= s[1];
-	s[1] ^= s[2];
-	s[0] ^= s[3];
+    s[2] ^= s[0];
+    s[3] ^= s[1];
+    s[1] ^= s[2];
+    s[0] ^= s[3];
 
-	s[2] ^= t;
+    s[2] ^= t;
 
-	s[3] = std::rotl(s[3], 45);
+    s[3] = std::rotl(s[3], 45);
 
-	return result;
+    return result;
 }
 
 /** This is xoshiro512++ 1.0, one of our all-purpose, rock-solid generators. It
@@ -145,23 +145,23 @@ DEF_URBG_CLASS(xoshiro256starstar, SINGLE_ARG(std::array<uint64_t, 4>), uint64_t
 // XXX: must not give zero seed
 DEF_URBG_CLASS(xoshiro512plusplus, SINGLE_ARG(std::array<uint64_t, 8>), uint64_t)
 {
-	const auto result = std::rotl(s[0] + s[2], 17) + s[2];
-	const auto t = s[1] << 11;
+    const auto result = std::rotl(s[0] + s[2], 17) + s[2];
+    const auto t = s[1] << 11;
 
-	s[2] ^= s[0];
-	s[5] ^= s[1];
-	s[1] ^= s[2];
-	s[7] ^= s[3];
-	s[3] ^= s[4];
-	s[4] ^= s[5];
-	s[0] ^= s[6];
-	s[6] ^= s[7];
+    s[2] ^= s[0];
+    s[5] ^= s[1];
+    s[1] ^= s[2];
+    s[7] ^= s[3];
+    s[3] ^= s[4];
+    s[4] ^= s[5];
+    s[0] ^= s[6];
+    s[6] ^= s[7];
 
-	s[6] ^= t;
+    s[6] ^= t;
 
-	s[7] = std::rotl(s[7], 21);
+    s[7] = std::rotl(s[7], 21);
 
-	return result;
+    return result;
 }
 
 /** This is xoshiro512** 1.0, one of our all-purpose, rock-solid generators
@@ -178,21 +178,21 @@ DEF_URBG_CLASS(xoshiro512plusplus, SINGLE_ARG(std::array<uint64_t, 8>), uint64_t
 // XXX: must not give zero seed
 DEF_URBG_CLASS(xoshiro512starstar, SINGLE_ARG(std::array<uint64_t, 8>), uint64_t)
 {
-	const auto result = std::rotl(s[1] * 5, 7) * 9;
-	const auto t = s[1] << 11;
+    const auto result = std::rotl(s[1] * 5, 7) * 9;
+    const auto t = s[1] << 11;
 
-	s[2] ^= s[0];
-	s[5] ^= s[1];
-	s[1] ^= s[2];
-	s[7] ^= s[3];
-	s[3] ^= s[4];
-	s[4] ^= s[5];
-	s[0] ^= s[6];
-	s[6] ^= s[7];
+    s[2] ^= s[0];
+    s[5] ^= s[1];
+    s[1] ^= s[2];
+    s[7] ^= s[3];
+    s[3] ^= s[4];
+    s[4] ^= s[5];
+    s[0] ^= s[6];
+    s[6] ^= s[7];
 
-	s[6] ^= t;
+    s[6] ^= t;
 
-	s[7] = std::rotl(s[7], 21);
+    s[7] = std::rotl(s[7], 21);
 
-	return result;
+    return result;
 }

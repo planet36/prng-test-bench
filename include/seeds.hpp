@@ -94,21 +94,21 @@ template <std::uniform_random_bit_generator URBG>
 constexpr auto
 get_seed_bytes_zero()
 {
-	constexpr size_t num_seed_bytes = sizeof(typename URBG::seed_bytes_type);
-	return std::array<uint8_t, num_seed_bytes>{};
+    constexpr size_t num_seed_bytes = sizeof(typename URBG::seed_bytes_type);
+    return std::array<uint8_t, num_seed_bytes>{};
 }
 
 template <std::uniform_random_bit_generator URBG>
 constexpr auto
 get_seed_bytes_pattern()
 {
-	constexpr size_t num_seed_bytes = sizeof(typename URBG::seed_bytes_type);
-	if constexpr (num_seed_bytes == 4) { return seed_bytes_pattern_4; }
-	else if constexpr (num_seed_bytes == 8) { return seed_bytes_pattern_8; }
-	else if constexpr (num_seed_bytes == 12) { return seed_bytes_pattern_12; }
-	else if constexpr (num_seed_bytes == 16) { return seed_bytes_pattern_16; }
-	else if constexpr (num_seed_bytes == 24) { return seed_bytes_pattern_24; }
-	else if constexpr (num_seed_bytes == 32) { return seed_bytes_pattern_32; }
-	else if constexpr (num_seed_bytes == 64) { return seed_bytes_pattern_64; }
-	else if constexpr (num_seed_bytes == 128) { return seed_bytes_pattern_128; }
+    constexpr size_t num_seed_bytes = sizeof(typename URBG::seed_bytes_type);
+    if constexpr (num_seed_bytes == 4) { return seed_bytes_pattern_4; }
+    else if constexpr (num_seed_bytes == 8) { return seed_bytes_pattern_8; }
+    else if constexpr (num_seed_bytes == 12) { return seed_bytes_pattern_12; }
+    else if constexpr (num_seed_bytes == 16) { return seed_bytes_pattern_16; }
+    else if constexpr (num_seed_bytes == 24) { return seed_bytes_pattern_24; }
+    else if constexpr (num_seed_bytes == 32) { return seed_bytes_pattern_32; }
+    else if constexpr (num_seed_bytes == 64) { return seed_bytes_pattern_64; }
+    else if constexpr (num_seed_bytes == 128) { return seed_bytes_pattern_128; }
 }

@@ -31,15 +31,15 @@
 // XXX: must not give zero seed
 DEF_URBG_CLASS(xoroshiro64starstar, SINGLE_ARG(std::array<uint32_t, 2>), uint32_t)
 {
-	const auto s0 = s[0];
-	auto s1 = s[1];
-	const auto result = std::rotl(s0 * 0x9E3779BB, 5) * 5;
+    const auto s0 = s[0];
+    auto s1 = s[1];
+    const auto result = std::rotl(s0 * 0x9E3779BB, 5) * 5;
 
-	s1 ^= s0;
-	s[0] = std::rotl(s0, 26) ^ s1 ^ (s1 << 9); // a, b
-	s[1] = std::rotl(s1, 13); // c
+    s1 ^= s0;
+    s[0] = std::rotl(s0, 26) ^ s1 ^ (s1 << 9); // a, b
+    s[1] = std::rotl(s1, 13); // c
 
-	return result;
+    return result;
 }
 
 /** This is xoroshiro128++ 1.0, one of our all-purpose, rock-solid, small-state
@@ -56,15 +56,15 @@ DEF_URBG_CLASS(xoroshiro64starstar, SINGLE_ARG(std::array<uint32_t, 2>), uint32_
 // XXX: must not give zero seed
 DEF_URBG_CLASS(xoroshiro128plusplus, SINGLE_ARG(std::array<uint64_t, 2>), uint64_t)
 {
-	const auto s0 = s[0];
-	auto s1 = s[1];
-	const auto result = std::rotl(s0 + s1, 17) + s0;
+    const auto s0 = s[0];
+    auto s1 = s[1];
+    const auto result = std::rotl(s0 + s1, 17) + s0;
 
-	s1 ^= s0;
-	s[0] = std::rotl(s0, 49) ^ s1 ^ (s1 << 21); // a, b
-	s[1] = std::rotl(s1, 28); // c
+    s1 ^= s0;
+    s[0] = std::rotl(s0, 49) ^ s1 ^ (s1 << 21); // a, b
+    s[1] = std::rotl(s1, 28); // c
 
-	return result;
+    return result;
 }
 
 /** This is xoroshiro128** 1.0, one of our all-purpose, rock-solid, small-state
@@ -81,15 +81,15 @@ DEF_URBG_CLASS(xoroshiro128plusplus, SINGLE_ARG(std::array<uint64_t, 2>), uint64
 // XXX: must not give zero seed
 DEF_URBG_CLASS(xoroshiro128starstar, SINGLE_ARG(std::array<uint64_t, 2>), uint64_t)
 {
-	const auto s0 = s[0];
-	auto s1 = s[1];
-	const auto result = std::rotl(s0 * 5, 7) * 9;
+    const auto s0 = s[0];
+    auto s1 = s[1];
+    const auto result = std::rotl(s0 * 5, 7) * 9;
 
-	s1 ^= s0;
-	s[0] = std::rotl(s0, 24) ^ s1 ^ (s1 << 16); // a, b
-	s[1] = std::rotl(s1, 37); // c
+    s1 ^= s0;
+    s[0] = std::rotl(s0, 24) ^ s1 ^ (s1 << 16); // a, b
+    s[1] = std::rotl(s1, 37); // c
 
-	return result;
+    return result;
 }
 
 /** This is xoroshiro1024++ 1.0, one of our all-purpose, rock-solid,
@@ -107,18 +107,18 @@ DEF_URBG_CLASS(xoroshiro128starstar, SINGLE_ARG(std::array<uint64_t, 2>), uint64
 // XXX: must not give zero seed
 DEF_URBG_CLASS(xoroshiro1024plusplus, SINGLE_ARG(std::array<uint64_t, 16>), uint64_t)
 {
-	static unsigned int p{};
-	const auto q = p;
-	p = (p + 1) % s.size();
-	const auto s0 = s[p];
-	auto s15 = s[q];
-	const auto result = std::rotl(s0 + s15, 23) + s15;
+    static unsigned int p{};
+    const auto q = p;
+    p = (p + 1) % s.size();
+    const auto s0 = s[p];
+    auto s15 = s[q];
+    const auto result = std::rotl(s0 + s15, 23) + s15;
 
-	s15 ^= s0;
-	s[q] = std::rotl(s0, 25) ^ s15 ^ (s15 << 27);
-	s[p] = std::rotl(s15, 36);
+    s15 ^= s0;
+    s[q] = std::rotl(s0, 25) ^ s15 ^ (s15 << 27);
+    s[p] = std::rotl(s15, 36);
 
-	return result;
+    return result;
 }
 
 /** This is xoroshiro1024** 1.0, one of our all-purpose, rock-solid,
@@ -136,16 +136,16 @@ DEF_URBG_CLASS(xoroshiro1024plusplus, SINGLE_ARG(std::array<uint64_t, 16>), uint
 // XXX: must not give zero seed
 DEF_URBG_CLASS(xoroshiro1024starstar, SINGLE_ARG(std::array<uint64_t, 16>), uint64_t)
 {
-	static unsigned int p{};
-	const auto q = p;
-	p = (p + 1) % s.size();
-	const auto s0 = s[p];
-	auto s15 = s[q];
-	const auto result = std::rotl(s0 * 5, 7) * 9;
+    static unsigned int p{};
+    const auto q = p;
+    p = (p + 1) % s.size();
+    const auto s0 = s[p];
+    auto s15 = s[q];
+    const auto result = std::rotl(s0 * 5, 7) * 9;
 
-	s15 ^= s0;
-	s[q] = std::rotl(s0, 25) ^ s15 ^ (s15 << 27);
-	s[p] = std::rotl(s15, 36);
+    s15 ^= s0;
+    s[q] = std::rotl(s0, 25) ^ s15 ^ (s15 << 27);
+    s[p] = std::rotl(s15, 36);
 
-	return result;
+    return result;
 }

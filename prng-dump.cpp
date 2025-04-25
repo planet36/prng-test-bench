@@ -51,72 +51,72 @@ bool use_zero_seed = false;
 void
 print_all_prng_info()
 {
-	for (const auto& [prng_name, info] : prng_name_to_info)
-	{
-		fmt::println("{}\t{}\t{}\t{}\t{}",
-				prng_name,
-				info.result_type_size_bits,
-				info.result_min,
-				info.result_max,
-				info.prng_size_bytes
-				);
-	}
+    for (const auto& [prng_name, info] : prng_name_to_info)
+    {
+        fmt::println("{}\t{}\t{}\t{}\t{}",
+                prng_name,
+                info.result_type_size_bits,
+                info.result_min,
+                info.result_max,
+                info.prng_size_bytes
+                );
+    }
 }
 
 template <std::uniform_random_bit_generator URBG>
 void
 prng_dump(URBG&& gen)
 {
-	using result_type = typename URBG::result_type;
+    using result_type = typename URBG::result_type;
 
-	// /proc/sys/fs/pipe-max-size = 1048576
-	// fcntl(STDOUT_FILENO, F_GETPIPE_SZ) = 65536
-	// BUFSIZ = 8192
-	// PractRand uses a buffer of size 32768 bytes for reading from stdin.
-	constexpr size_t buf_size_bytes = 32768;
-	constexpr size_t buf_num_elems = buf_size_bytes / sizeof(result_type);
-	static_assert(buf_size_bytes % sizeof(result_type) == 0);
+    // /proc/sys/fs/pipe-max-size = 1048576
+    // fcntl(STDOUT_FILENO, F_GETPIPE_SZ) = 65536
+    // BUFSIZ = 8192
+    // PractRand uses a buffer of size 32768 bytes for reading from stdin.
+    constexpr size_t buf_size_bytes = 32768;
+    constexpr size_t buf_num_elems = buf_size_bytes / sizeof(result_type);
+    static_assert(buf_size_bytes % sizeof(result_type) == 0);
 
-	result_type buf[buf_num_elems] = {0};
+    result_type buf[buf_num_elems] = {0};
 
-	if (limit_bytes == 0)
-	{
-		while (true)
-		{
-			for (size_t i = 0; i < buf_num_elems; ++i) { buf[i] = gen(); }
+    if (limit_bytes == 0)
+    {
+        while (true)
+        {
+            for (size_t i = 0; i < buf_num_elems; ++i) { buf[i] = gen(); }
 
-			(void)::write(STDOUT_FILENO, &buf[0], sizeof(buf));
-		}
-	}
-	else // limit_bytes > 0
-	{
-		const size_t num_writes = limit_bytes / buf_size_bytes;
-		assert(limit_bytes % buf_size_bytes == 0);
+            (void)::write(STDOUT_FILENO, &buf[0], sizeof(buf));
+        }
+    }
+    else // limit_bytes > 0
+    {
+        const size_t num_writes = limit_bytes / buf_size_bytes;
+        assert(limit_bytes % buf_size_bytes == 0);
 
-		for (size_t j = 0; j < num_writes; ++j)
-		{
-			for (size_t i = 0; i < buf_num_elems; ++i) { buf[i] = gen(); }
+        for (size_t j = 0; j < num_writes; ++j)
+        {
+            for (size_t i = 0; i < buf_num_elems; ++i) { buf[i] = gen(); }
 
-			(void)::write(STDOUT_FILENO, &buf[0], sizeof(buf));
-		}
-	}
+            (void)::write(STDOUT_FILENO, &buf[0], sizeof(buf));
+        }
+    }
 }
 
 /// Print the version information.
 void
 print_version()
 {
-	fmt::println("{} {}", program_invocation_short_name, program_version);
-	fmt::println("License: {}", program_license);
-	fmt::println("Written by {}", program_author);
+    fmt::println("{} {}", program_invocation_short_name, program_version);
+    fmt::println("License: {}", program_license);
+    fmt::println("Written by {}", program_author);
 }
 
 /// Print the suggestion message.
 void
 print_suggestion()
 {
-	fmt::println(stderr, "Try '{} -h' for more information.",
-	             program_invocation_short_name);
+    fmt::println(stderr, "Try '{} -h' for more information.",
+                 program_invocation_short_name);
 }
 
 /// Print the message if verbose is enabled.
@@ -126,11 +126,11 @@ print_suggestion()
 void
 print_verbose(const std::string& s)
 {
-	if (verbose && !s.empty())
-	{
-		(void)std::fputs(s.c_str(), stderr);
-		(void)std::fputc('\n', stderr);
-	}
+    if (verbose && !s.empty())
+    {
+        (void)std::fputs(s.c_str(), stderr);
+        (void)std::fputc('\n', stderr);
+    }
 }
 
 /// Print the warning message.
@@ -140,12 +140,12 @@ print_verbose(const std::string& s)
 void
 print_warning(const std::string& s)
 {
-	if (!s.empty())
-	{
-		(void)std::fputs("Warning: ", stderr);
-		(void)std::fputs(s.c_str(), stderr);
-		(void)std::fputc('\n', stderr);
-	}
+    if (!s.empty())
+    {
+        (void)std::fputs("Warning: ", stderr);
+        (void)std::fputs(s.c_str(), stderr);
+        (void)std::fputc('\n', stderr);
+    }
 }
 
 /// Print the error message.
@@ -155,58 +155,58 @@ print_warning(const std::string& s)
 [[noreturn]] void
 print_error(const std::string& s)
 {
-	if (!s.empty())
-	{
-		(void)std::fputs("Error: ", stderr);
-		(void)std::fputs(s.c_str(), stderr);
-		(void)std::fputc('\n', stderr);
-	}
+    if (!s.empty())
+    {
+        (void)std::fputs("Error: ", stderr);
+        (void)std::fputs(s.c_str(), stderr);
+        (void)std::fputc('\n', stderr);
+    }
 
-	print_suggestion();
+    print_suggestion();
 
-	std::exit(EXIT_FAILURE);
+    std::exit(EXIT_FAILURE);
 }
 
 /// Print the help message.
 void
 print_usage()
 {
-	fmt::println("Usage: {} [OPTION]... PRNG", program_invocation_short_name);
-	fmt::println("Dump random output to stdout.");
-	fmt::println("The default PRNG is {}", default_prng_name);
-	nl;
+    fmt::println("Usage: {} [OPTION]... PRNG", program_invocation_short_name);
+    fmt::println("Dump random output to stdout.");
+    fmt::println("The default PRNG is {}", default_prng_name);
+    nl;
 
-	fmt::println("OPTIONS");
-	nl;
+    fmt::println("OPTIONS");
+    nl;
 
-	fmt::println("-V");
-	fmt::println("    Print the version information, then exit.");
-	nl;
+    fmt::println("-V");
+    fmt::println("    Print the version information, then exit.");
+    nl;
 
-	fmt::println("-h");
-	fmt::println("    Print this message, then exit.");
-	nl;
+    fmt::println("-h");
+    fmt::println("    Print this message, then exit.");
+    nl;
 
-	fmt::println("-v");
-	fmt::println("    Print diagnostics.");
-	nl;
+    fmt::println("-v");
+    fmt::println("    Print diagnostics.");
+    nl;
 
-	fmt::println("-i");
-	fmt::println("    Print information about the available PRNGs, then exit.");
-	nl;
+    fmt::println("-i");
+    fmt::println("    Print information about the available PRNGs, then exit.");
+    nl;
 
-	fmt::println("-l  MAX");
-	fmt::println("    Limit the output to no more than MAX gibibytes.");
-	nl;
+    fmt::println("-l  MAX");
+    fmt::println("    Limit the output to no more than MAX gibibytes.");
+    nl;
 
-	fmt::println("-s  SEED_TYPE");
-	fmt::println("    Specify the type of seed to be used.");
-	fmt::println("    SEED_TYPE must be one of the following values:");
-	fmt::println(R"(      "d", "def", "default",  (The PRNG is default constructed.))");
-	fmt::println(R"(      "p", "pat", "pattern",  (The PRNG is seeded with bytes of value 0x{:0{}X}.))", seed_pattern_32, sizeof(seed_pattern_32) * 2);
-	fmt::println(R"(      "r", "rand", "random",  (The PRNG is seeded with bytes of random values.))");
-	fmt::println(R"(      "z", "zero",            (The PRNG is seeded with bytes of value 0x00.))");
-	nl;
+    fmt::println("-s  SEED_TYPE");
+    fmt::println("    Specify the type of seed to be used.");
+    fmt::println("    SEED_TYPE must be one of the following values:");
+    fmt::println(R"(      "d", "def", "default",  (The PRNG is default constructed.))");
+    fmt::println(R"(      "p", "pat", "pattern",  (The PRNG is seeded with bytes of value 0x{:0{}X}.))", seed_pattern_32, sizeof(seed_pattern_32) * 2);
+    fmt::println(R"(      "r", "rand", "random",  (The PRNG is seeded with bytes of random values.))");
+    fmt::println(R"(      "z", "zero",            (The PRNG is seeded with bytes of value 0x00.))");
+    nl;
 }
 
 /// Process the command line options.
@@ -217,94 +217,94 @@ print_usage()
 void
 process_options(int argc, char* argv[])
 {
-	using namespace std::literals;
+    using namespace std::literals;
 
-	const char* short_options = "+Vhvil:s:";
-	int c;
-	while ((c = getopt(argc, argv, short_options)) != -1)
-	{
-		switch (c)
-		{
-		case 'h':
-			print_usage();
-			std::exit(EXIT_SUCCESS);
-			break;
+    const char* short_options = "+Vhvil:s:";
+    int c;
+    while ((c = getopt(argc, argv, short_options)) != -1)
+    {
+        switch (c)
+        {
+        case 'h':
+            print_usage();
+            std::exit(EXIT_SUCCESS);
+            break;
 
-		case 'V':
-			print_version();
-			std::exit(EXIT_SUCCESS);
-			break;
+        case 'V':
+            print_version();
+            std::exit(EXIT_SUCCESS);
+            break;
 
-		case 'v':
-			verbose = true;
-			break;
+        case 'v':
+            verbose = true;
+            break;
 
-		case 'i':
-			print_all_prng_info();
-			std::exit(EXIT_SUCCESS);
-			break;
+        case 'i':
+            print_all_prng_info();
+            std::exit(EXIT_SUCCESS);
+            break;
 
-		case 'l':
-			try
-			{
-				limit_bytes = std::stoull(optarg);
-			}
-			catch (const std::invalid_argument& ex)
-			{
-				print_error(fmt::format("invalid_argument: {}", ex.what()));
-			}
-			catch (const std::out_of_range& ex)
-			{
-				print_error(fmt::format("out_of_range: {}", ex.what()));
-			}
+        case 'l':
+            try
+            {
+                limit_bytes = std::stoull(optarg);
+            }
+            catch (const std::invalid_argument& ex)
+            {
+                print_error(fmt::format("invalid_argument: {}", ex.what()));
+            }
+            catch (const std::out_of_range& ex)
+            {
+                print_error(fmt::format("out_of_range: {}", ex.what()));
+            }
 
-			//if (__builtin_umulll_overflow(limit_bytes, bytes_per_gibibyte, &limit_bytes))
-			if (limit_bytes > std::numeric_limits<decltype(limit_bytes)>::max() / bytes_per_gibibyte)
-			{
-				print_error(fmt::format("Arithmetic overflow: {} * {}", optarg, bytes_per_gibibyte));
-			}
-			limit_bytes *= bytes_per_gibibyte;
-			break;
+            //if (__builtin_umulll_overflow(limit_bytes, bytes_per_gibibyte, &limit_bytes))
+            if (limit_bytes > std::numeric_limits<decltype(limit_bytes)>::max() / bytes_per_gibibyte)
+            {
+                print_error(fmt::format("Arithmetic overflow: {} * {}", optarg, bytes_per_gibibyte));
+            }
+            limit_bytes *= bytes_per_gibibyte;
+            break;
 
-		case 's':
-			if ((optarg == "d"s) || (optarg == "def"s) || (optarg == "default"s))
-			{
-				use_default_ctor = true;
-				use_pattern_seed = false;
-				use_random_seed = false;
-				use_zero_seed = false;
-			}
-			else if ((optarg == "p"s) || (optarg == "pat"s) || (optarg == "pattern"s))
-			{
-				use_default_ctor = false;
-				use_pattern_seed = true;
-				use_random_seed = false;
-				use_zero_seed = false;
-			}
-			else if ((optarg == "r"s) || (optarg == "rand"s) || (optarg == "random"s))
-			{
-				use_default_ctor = false;
-				use_pattern_seed = false;
-				use_random_seed = true;
-				use_zero_seed = false;
-			}
-			else if ((optarg == "z"s) || (optarg == "zero"s))
-			{
-				use_default_ctor = false;
-				use_pattern_seed = false;
-				use_random_seed = false;
-				use_zero_seed = true;
-			}
-			else
-			{
-				print_error(fmt::format("Invalid option value: {:?}", optarg));
-			}
-			break;
+        case 's':
+            if ((optarg == "d"s) || (optarg == "def"s) || (optarg == "default"s))
+            {
+                use_default_ctor = true;
+                use_pattern_seed = false;
+                use_random_seed = false;
+                use_zero_seed = false;
+            }
+            else if ((optarg == "p"s) || (optarg == "pat"s) || (optarg == "pattern"s))
+            {
+                use_default_ctor = false;
+                use_pattern_seed = true;
+                use_random_seed = false;
+                use_zero_seed = false;
+            }
+            else if ((optarg == "r"s) || (optarg == "rand"s) || (optarg == "random"s))
+            {
+                use_default_ctor = false;
+                use_pattern_seed = false;
+                use_random_seed = true;
+                use_zero_seed = false;
+            }
+            else if ((optarg == "z"s) || (optarg == "zero"s))
+            {
+                use_default_ctor = false;
+                use_pattern_seed = false;
+                use_random_seed = false;
+                use_zero_seed = true;
+            }
+            else
+            {
+                print_error(fmt::format("Invalid option value: {:?}", optarg));
+            }
+            break;
 
-		default:
-			std::exit(EXIT_FAILURE);
-		}
-	}
+        default:
+            std::exit(EXIT_FAILURE);
+        }
+    }
 }
 
 /*
@@ -312,197 +312,197 @@ std::chrono::time_point<std::chrono::steady_clock> start_time;
 
 void print_elapsed_time()
 {
-	const auto end_time = std::chrono::steady_clock::now();
-	const auto elapsed_time = end_time - start_time;
-	const auto elapsed_time_s = std::chrono::duration<double>(elapsed_time).count();
-	print_verbose(fmt::format("# time elapsed = {:.3f} s", elapsed_time_s));
+    const auto end_time = std::chrono::steady_clock::now();
+    const auto elapsed_time = end_time - start_time;
+    const auto elapsed_time_s = std::chrono::duration<double>(elapsed_time).count();
+    print_verbose(fmt::format("# time elapsed = {:.3f} s", elapsed_time_s));
 }
 */
 
 int
 main([[maybe_unused]] int argc, [[maybe_unused]] char* argv[])
 {
-	process_options(argc, argv);
+    process_options(argc, argv);
 
-	std::string prng_name = default_prng_name;
+    std::string prng_name = default_prng_name;
 
-	for (int i = optind; i < argc; ++i)
-	{
-		prng_name = argv[i];
-	}
+    for (int i = optind; i < argc; ++i)
+    {
+        prng_name = argv[i];
+    }
 
-	print_verbose(fmt::format("# limit_bytes={}", limit_bytes));
-	print_verbose(fmt::format("# prng_name={}", prng_name));
+    print_verbose(fmt::format("# limit_bytes={}", limit_bytes));
+    print_verbose(fmt::format("# prng_name={}", prng_name));
 
-	if (!prng_name_to_info.contains(prng_name))
-	{
-		print_error(fmt::format("Unknown PRNG: {}", prng_name));
-	}
+    if (!prng_name_to_info.contains(prng_name))
+    {
+        print_error(fmt::format("Unknown PRNG: {}", prng_name));
+    }
 
-	/*
-	start_time = std::chrono::steady_clock::now();
+    /*
+    start_time = std::chrono::steady_clock::now();
 
-	assert(atexit(print_elapsed_time) == 0);
-	*/
+    assert(atexit(print_elapsed_time) == 0);
+    */
 
-	/*
-	{
-		const time_t now_time_t = time(nullptr);
-		const tm now_time_tm = *localtime(&now_time_t);
-		print_verbose(fmt::format("# begin {:%FT%T%z}", now_time_tm));
-	}
-	*/
+    /*
+    {
+        const time_t now_time_t = time(nullptr);
+        const tm now_time_tm = *localtime(&now_time_t);
+        print_verbose(fmt::format("# begin {:%FT%T%z}", now_time_tm));
+    }
+    */
 
 #define CONDITIONAL_DUMP_STD(NAME) \
 if (prng_name == #NAME) { \
-	fill_seed_seq<seed_pattern_32> seeder_pattern; \
-	fill_seed_seq<0> seeder_zero; \
-	if (use_default_ctor) prng_dump(NAME{}); \
-	else if (use_pattern_seed) prng_dump(NAME{seeder_pattern}); \
-	else if (use_random_seed) prng_dump(random_device_seeded<NAME>()); \
-	else if (use_zero_seed) prng_dump(NAME{seeder_zero}); \
-	else  std::unreachable(); \
-	return 0; \
+    fill_seed_seq<seed_pattern_32> seeder_pattern; \
+    fill_seed_seq<0> seeder_zero; \
+    if (use_default_ctor) prng_dump(NAME{}); \
+    else if (use_pattern_seed) prng_dump(NAME{seeder_pattern}); \
+    else if (use_random_seed) prng_dump(random_device_seeded<NAME>()); \
+    else if (use_zero_seed) prng_dump(NAME{seeder_zero}); \
+    else  std::unreachable(); \
+    return 0; \
 }
 
 #define CONDITIONAL_DUMP_MINE(NAME) \
 if (prng_name == #NAME) { \
-	if (use_default_ctor) prng_dump(NAME{}); \
-	else if (use_pattern_seed) prng_dump(NAME{get_seed_bytes_pattern<NAME>()}); \
-	else if (use_random_seed) prng_dump(NAME{}); \
-	else if (use_zero_seed) prng_dump(NAME{get_seed_bytes_zero<NAME>()}); \
-	else  std::unreachable(); \
-	return 0; \
+    if (use_default_ctor) prng_dump(NAME{}); \
+    else if (use_pattern_seed) prng_dump(NAME{get_seed_bytes_pattern<NAME>()}); \
+    else if (use_random_seed) prng_dump(NAME{}); \
+    else if (use_zero_seed) prng_dump(NAME{get_seed_bytes_zero<NAME>()}); \
+    else  std::unreachable(); \
+    return 0; \
 }
 
-	// <random>
-	CONDITIONAL_DUMP_STD(std::default_random_engine)
-	CONDITIONAL_DUMP_STD(std::knuth_b              )
-	CONDITIONAL_DUMP_STD(std::minstd_rand          )
-	CONDITIONAL_DUMP_STD(std::minstd_rand0         )
-	CONDITIONAL_DUMP_STD(std::mt19937              )
-	CONDITIONAL_DUMP_STD(std::mt19937_64           )
-	CONDITIONAL_DUMP_STD(std::ranlux24             )
-	CONDITIONAL_DUMP_STD(std::ranlux24_base        )
-	CONDITIONAL_DUMP_STD(std::ranlux48             )
-	CONDITIONAL_DUMP_STD(std::ranlux48_base        )
+    // <random>
+    CONDITIONAL_DUMP_STD(std::default_random_engine)
+    CONDITIONAL_DUMP_STD(std::knuth_b              )
+    CONDITIONAL_DUMP_STD(std::minstd_rand          )
+    CONDITIONAL_DUMP_STD(std::minstd_rand0         )
+    CONDITIONAL_DUMP_STD(std::mt19937              )
+    CONDITIONAL_DUMP_STD(std::mt19937_64           )
+    CONDITIONAL_DUMP_STD(std::ranlux24             )
+    CONDITIONAL_DUMP_STD(std::ranlux24_base        )
+    CONDITIONAL_DUMP_STD(std::ranlux48             )
+    CONDITIONAL_DUMP_STD(std::ranlux48_base        )
 
-	// mine
+    // mine
 #if defined(__AES__)
-	CONDITIONAL_DUMP_MINE(aes_ctr_128_k1_r2)
-	CONDITIONAL_DUMP_MINE(aes_ctr_128_k1_r3)
-	CONDITIONAL_DUMP_MINE(aes_ctr_128_k2_r1)
-	CONDITIONAL_DUMP_MINE(aes_ctr_128_k3_r1)
+    CONDITIONAL_DUMP_MINE(aes_ctr_128_k1_r2)
+    CONDITIONAL_DUMP_MINE(aes_ctr_128_k1_r3)
+    CONDITIONAL_DUMP_MINE(aes_ctr_128_k2_r1)
+    CONDITIONAL_DUMP_MINE(aes_ctr_128_k3_r1)
 
-	CONDITIONAL_DUMP_MINE(aes_half_state_64_k1_r2)
-	CONDITIONAL_DUMP_MINE(aes_half_state_64_k1_r3)
-	CONDITIONAL_DUMP_MINE(aes_half_state_64_k2_r1)
-	CONDITIONAL_DUMP_MINE(aes_half_state_64_k3_r1)
+    CONDITIONAL_DUMP_MINE(aes_half_state_64_k1_r2)
+    CONDITIONAL_DUMP_MINE(aes_half_state_64_k1_r3)
+    CONDITIONAL_DUMP_MINE(aes_half_state_64_k2_r1)
+    CONDITIONAL_DUMP_MINE(aes_half_state_64_k3_r1)
 
-	CONDITIONAL_DUMP_MINE(aes_half_state_128_k1_r2)
-	CONDITIONAL_DUMP_MINE(aes_half_state_128_k1_r3)
-	CONDITIONAL_DUMP_MINE(aes_half_state_128_k2_r1)
-	CONDITIONAL_DUMP_MINE(aes_half_state_128_k3_r1)
+    CONDITIONAL_DUMP_MINE(aes_half_state_128_k1_r2)
+    CONDITIONAL_DUMP_MINE(aes_half_state_128_k1_r3)
+    CONDITIONAL_DUMP_MINE(aes_half_state_128_k2_r1)
+    CONDITIONAL_DUMP_MINE(aes_half_state_128_k3_r1)
 
-	CONDITIONAL_DUMP_MINE(aes_whole_state_128_k1_r2)
-	CONDITIONAL_DUMP_MINE(aes_whole_state_128_k1_r3)
-	CONDITIONAL_DUMP_MINE(aes_whole_state_128_k2_r1)
-	CONDITIONAL_DUMP_MINE(aes_whole_state_128_k3_r1)
+    CONDITIONAL_DUMP_MINE(aes_whole_state_128_k1_r2)
+    CONDITIONAL_DUMP_MINE(aes_whole_state_128_k1_r3)
+    CONDITIONAL_DUMP_MINE(aes_whole_state_128_k2_r1)
+    CONDITIONAL_DUMP_MINE(aes_whole_state_128_k3_r1)
 #endif
-	CONDITIONAL_DUMP_MINE(bell                  )
-	CONDITIONAL_DUMP_MINE(bright                )
+    CONDITIONAL_DUMP_MINE(bell                  )
+    CONDITIONAL_DUMP_MINE(bright                )
 #if defined(__PCLMUL__)
-	CONDITIONAL_DUMP_MINE(clmulrand             )
+    CONDITIONAL_DUMP_MINE(clmulrand             )
 #endif
-	CONDITIONAL_DUMP_MINE(degski32              )
-	CONDITIONAL_DUMP_MINE(degski64              )
-	CONDITIONAL_DUMP_MINE(dirk                  )
-	CONDITIONAL_DUMP_MINE(ettinger_mixer        )
-	CONDITIONAL_DUMP_MINE(gjrand                )
-	CONDITIONAL_DUMP_MINE(jsf32_2               )
-	CONDITIONAL_DUMP_MINE(jsf32_3               )
-	CONDITIONAL_DUMP_MINE(jsf64                 )
-	CONDITIONAL_DUMP_MINE(klimov_shamir_32      )
-	CONDITIONAL_DUMP_MINE(lcg32                 )
-	CONDITIONAL_DUMP_MINE(lcg64                 )
-	CONDITIONAL_DUMP_MINE(lea64                 )
-	CONDITIONAL_DUMP_MINE(lehmer64              )
-	CONDITIONAL_DUMP_MINE(linnorm               )
-	CONDITIONAL_DUMP_MINE(mcg128                )
-	CONDITIONAL_DUMP_MINE(mizuchi               )
-	CONDITIONAL_DUMP_MINE(moremur               )
-	CONDITIONAL_DUMP_MINE(mover_64              )
-	CONDITIONAL_DUMP_MINE(mover_counter_64      )
-	CONDITIONAL_DUMP_MINE(MRG32k3a              )
-	CONDITIONAL_DUMP_MINE(msws32                )
-	CONDITIONAL_DUMP_MINE(msws64                )
-	CONDITIONAL_DUMP_MINE(mumx_mumx_rrxx_1      )
-	CONDITIONAL_DUMP_MINE(mumx_mumx_x1          )
-	CONDITIONAL_DUMP_MINE(mumx_mumx_x2          )
-	CONDITIONAL_DUMP_MINE(murmurhash3           )
-	CONDITIONAL_DUMP_MINE(murmurhash3_32        )
-	CONDITIONAL_DUMP_MINE(mx3                   )
-	CONDITIONAL_DUMP_MINE(nasam                 )
-	CONDITIONAL_DUMP_MINE(orbit                 )
-	CONDITIONAL_DUMP_MINE(pcg32                 )
-	CONDITIONAL_DUMP_MINE(pcg32_fast            )
-	CONDITIONAL_DUMP_MINE(pcg64                 )
-	CONDITIONAL_DUMP_MINE(pcg64dxsm             )
-	CONDITIONAL_DUMP_MINE(pelican               )
-	CONDITIONAL_DUMP_MINE(pulley                )
-	CONDITIONAL_DUMP_MINE(quixotic              )
-	CONDITIONAL_DUMP_MINE(romu_duo              )
-	CONDITIONAL_DUMP_MINE(romu_duo_jr           )
-	CONDITIONAL_DUMP_MINE(romu_quad             )
-	CONDITIONAL_DUMP_MINE(romu_quad32           )
-	CONDITIONAL_DUMP_MINE(romu_trio             )
-	CONDITIONAL_DUMP_MINE(romu_trio32           )
-	CONDITIONAL_DUMP_MINE(rrma2xsm2xs           )
-	CONDITIONAL_DUMP_MINE(rrmxmx                )
-	CONDITIONAL_DUMP_MINE(rrxmrrxmsx_0          )
-	CONDITIONAL_DUMP_MINE(sea_slater_64         )
-	CONDITIONAL_DUMP_MINE(seiran                )
-	CONDITIONAL_DUMP_MINE(sfc32                 )
-	CONDITIONAL_DUMP_MINE(sfc64                 )
+    CONDITIONAL_DUMP_MINE(degski32              )
+    CONDITIONAL_DUMP_MINE(degski64              )
+    CONDITIONAL_DUMP_MINE(dirk                  )
+    CONDITIONAL_DUMP_MINE(ettinger_mixer        )
+    CONDITIONAL_DUMP_MINE(gjrand                )
+    CONDITIONAL_DUMP_MINE(jsf32_2               )
+    CONDITIONAL_DUMP_MINE(jsf32_3               )
+    CONDITIONAL_DUMP_MINE(jsf64                 )
+    CONDITIONAL_DUMP_MINE(klimov_shamir_32      )
+    CONDITIONAL_DUMP_MINE(lcg32                 )
+    CONDITIONAL_DUMP_MINE(lcg64                 )
+    CONDITIONAL_DUMP_MINE(lea64                 )
+    CONDITIONAL_DUMP_MINE(lehmer64              )
+    CONDITIONAL_DUMP_MINE(linnorm               )
+    CONDITIONAL_DUMP_MINE(mcg128                )
+    CONDITIONAL_DUMP_MINE(mizuchi               )
+    CONDITIONAL_DUMP_MINE(moremur               )
+    CONDITIONAL_DUMP_MINE(mover_64              )
+    CONDITIONAL_DUMP_MINE(mover_counter_64      )
+    CONDITIONAL_DUMP_MINE(MRG32k3a              )
+    CONDITIONAL_DUMP_MINE(msws32                )
+    CONDITIONAL_DUMP_MINE(msws64                )
+    CONDITIONAL_DUMP_MINE(mumx_mumx_rrxx_1      )
+    CONDITIONAL_DUMP_MINE(mumx_mumx_x1          )
+    CONDITIONAL_DUMP_MINE(mumx_mumx_x2          )
+    CONDITIONAL_DUMP_MINE(murmurhash3           )
+    CONDITIONAL_DUMP_MINE(murmurhash3_32        )
+    CONDITIONAL_DUMP_MINE(mx3                   )
+    CONDITIONAL_DUMP_MINE(nasam                 )
+    CONDITIONAL_DUMP_MINE(orbit                 )
+    CONDITIONAL_DUMP_MINE(pcg32                 )
+    CONDITIONAL_DUMP_MINE(pcg32_fast            )
+    CONDITIONAL_DUMP_MINE(pcg64                 )
+    CONDITIONAL_DUMP_MINE(pcg64dxsm             )
+    CONDITIONAL_DUMP_MINE(pelican               )
+    CONDITIONAL_DUMP_MINE(pulley                )
+    CONDITIONAL_DUMP_MINE(quixotic              )
+    CONDITIONAL_DUMP_MINE(romu_duo              )
+    CONDITIONAL_DUMP_MINE(romu_duo_jr           )
+    CONDITIONAL_DUMP_MINE(romu_quad             )
+    CONDITIONAL_DUMP_MINE(romu_quad32           )
+    CONDITIONAL_DUMP_MINE(romu_trio             )
+    CONDITIONAL_DUMP_MINE(romu_trio32           )
+    CONDITIONAL_DUMP_MINE(rrma2xsm2xs           )
+    CONDITIONAL_DUMP_MINE(rrmxmx                )
+    CONDITIONAL_DUMP_MINE(rrxmrrxmsx_0          )
+    CONDITIONAL_DUMP_MINE(sea_slater_64         )
+    CONDITIONAL_DUMP_MINE(seiran                )
+    CONDITIONAL_DUMP_MINE(sfc32                 )
+    CONDITIONAL_DUMP_MINE(sfc64                 )
 #if defined(__SHA__)
-	CONDITIONAL_DUMP_MINE(sha1_ctr_128          )
-	CONDITIONAL_DUMP_MINE(sha256_ctr_128        )
+    CONDITIONAL_DUMP_MINE(sha1_ctr_128          )
+    CONDITIONAL_DUMP_MINE(sha256_ctr_128        )
 #endif
-	CONDITIONAL_DUMP_MINE(shioi                 )
-	CONDITIONAL_DUMP_MINE(splitmix32            )
-	CONDITIONAL_DUMP_MINE(splitmix64            )
-	CONDITIONAL_DUMP_MINE(splitxix33            )
-	CONDITIONAL_DUMP_MINE(squares32             )
-	CONDITIONAL_DUMP_MINE(squares64             )
-	CONDITIONAL_DUMP_MINE(stc64                 )
-	CONDITIONAL_DUMP_MINE(tangle                )
-	CONDITIONAL_DUMP_MINE(thrust_alt            )
-	CONDITIONAL_DUMP_MINE(topping               )
-	CONDITIONAL_DUMP_MINE(ttwanghash64          )
-	CONDITIONAL_DUMP_MINE(wyrand                )
-	CONDITIONAL_DUMP_MINE(xoroshiro64starstar   )
-	CONDITIONAL_DUMP_MINE(xoroshiro128plusplus  )
-	CONDITIONAL_DUMP_MINE(xoroshiro128starstar  )
-	CONDITIONAL_DUMP_MINE(xoroshiro1024plusplus )
-	CONDITIONAL_DUMP_MINE(xoroshiro1024starstar )
-	CONDITIONAL_DUMP_MINE(xoshiro128plusplus    )
-	CONDITIONAL_DUMP_MINE(xoshiro128starstar    )
-	CONDITIONAL_DUMP_MINE(xoshiro256plusplus    )
-	CONDITIONAL_DUMP_MINE(xoshiro256starstar    )
-	CONDITIONAL_DUMP_MINE(xoshiro512plusplus    )
-	CONDITIONAL_DUMP_MINE(xoshiro512starstar    )
-	CONDITIONAL_DUMP_MINE(xsm32                 )
-	CONDITIONAL_DUMP_MINE(xsm64                 )
+    CONDITIONAL_DUMP_MINE(shioi                 )
+    CONDITIONAL_DUMP_MINE(splitmix32            )
+    CONDITIONAL_DUMP_MINE(splitmix64            )
+    CONDITIONAL_DUMP_MINE(splitxix33            )
+    CONDITIONAL_DUMP_MINE(squares32             )
+    CONDITIONAL_DUMP_MINE(squares64             )
+    CONDITIONAL_DUMP_MINE(stc64                 )
+    CONDITIONAL_DUMP_MINE(tangle                )
+    CONDITIONAL_DUMP_MINE(thrust_alt            )
+    CONDITIONAL_DUMP_MINE(topping               )
+    CONDITIONAL_DUMP_MINE(ttwanghash64          )
+    CONDITIONAL_DUMP_MINE(wyrand                )
+    CONDITIONAL_DUMP_MINE(xoroshiro64starstar   )
+    CONDITIONAL_DUMP_MINE(xoroshiro128plusplus  )
+    CONDITIONAL_DUMP_MINE(xoroshiro128starstar  )
+    CONDITIONAL_DUMP_MINE(xoroshiro1024plusplus )
+    CONDITIONAL_DUMP_MINE(xoroshiro1024starstar )
+    CONDITIONAL_DUMP_MINE(xoshiro128plusplus    )
+    CONDITIONAL_DUMP_MINE(xoshiro128starstar    )
+    CONDITIONAL_DUMP_MINE(xoshiro256plusplus    )
+    CONDITIONAL_DUMP_MINE(xoshiro256starstar    )
+    CONDITIONAL_DUMP_MINE(xoshiro512plusplus    )
+    CONDITIONAL_DUMP_MINE(xoshiro512starstar    )
+    CONDITIONAL_DUMP_MINE(xsm32                 )
+    CONDITIONAL_DUMP_MINE(xsm64                 )
 
-	/*
-	{
-		const time_t now_time_t = time(nullptr);
-		const tm now_time_tm = *localtime(&now_time_t);
-		print_verbose(fmt::format("# end {:%FT%T%z}", now_time_tm));
-	}
-	*/
+    /*
+    {
+        const time_t now_time_t = time(nullptr);
+        const tm now_time_tm = *localtime(&now_time_t);
+        print_verbose(fmt::format("# end {:%FT%T%z}", now_time_tm));
+    }
+    */
 
-	return 0;
+    return 0;
 }
 
 /*

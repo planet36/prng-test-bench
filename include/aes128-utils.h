@@ -30,14 +30,14 @@ aes128_enc(__m128i a,
            const unsigned int Nk,
            const unsigned int Nr)
 {
-	for (unsigned int r = 0; r < Nr; ++r)
-	{
-		for (unsigned int k = 0; k < Nk; ++k)
-		{
-			a = _mm_aesenc_si128(a, keys[k]);
-		}
-	}
-	return a;
+    for (unsigned int r = 0; r < Nr; ++r)
+    {
+        for (unsigned int k = 0; k < Nk; ++k)
+        {
+            a = _mm_aesenc_si128(a, keys[k]);
+        }
+    }
+    return a;
 }
 
 /// Do \c _mm_aesdec_si128 on data \a a with \a Nk keys \a keys \a Nr times for all keys
@@ -55,14 +55,14 @@ aes128_dec(__m128i a,
            const unsigned int Nk,
            const unsigned int Nr)
 {
-	for (unsigned int r = 0; r < Nr; ++r)
-	{
-		for (unsigned int k = 0; k < Nk; ++k)
-		{
-			a = _mm_aesdec_si128(a, keys[k]);
-		}
-	}
-	return a;
+    for (unsigned int r = 0; r < Nr; ++r)
+    {
+        for (unsigned int k = 0; k < Nk; ++k)
+        {
+            a = _mm_aesdec_si128(a, keys[k]);
+        }
+    }
+    return a;
 }
 
 /// Davies-Meyer single-block-length compression function that uses AES as the block cipher
@@ -81,16 +81,16 @@ aes128_enc_davies_meyer(const __m128i H,
            const unsigned int Nk,
            const unsigned int Nr)
 {
-	__m128i a = H;
-	for (unsigned int r = 0; r < Nr; ++r)
-	{
-		for (unsigned int k = 0; k < Nk; ++k)
-		{
-			a = _mm_aesenc_si128(a, keys[k]);
-		}
-		a = _mm_xor_si128(a, H);
-	}
-	return a;
+    __m128i a = H;
+    for (unsigned int r = 0; r < Nr; ++r)
+    {
+        for (unsigned int k = 0; k < Nk; ++k)
+        {
+            a = _mm_aesenc_si128(a, keys[k]);
+        }
+        a = _mm_xor_si128(a, H);
+    }
+    return a;
 }
 
 /// Davies-Meyer single-block-length compression function that uses AES as the block cipher
@@ -109,44 +109,44 @@ aes128_dec_davies_meyer(const __m128i H,
            const unsigned int Nk,
            const unsigned int Nr)
 {
-	__m128i a = H;
-	for (unsigned int r = 0; r < Nr; ++r)
-	{
-		for (unsigned int k = 0; k < Nk; ++k)
-		{
-			a = _mm_aesdec_si128(a, keys[k]);
-		}
-		a = _mm_xor_si128(a, H);
-	}
-	return a;
+    __m128i a = H;
+    for (unsigned int r = 0; r < Nr; ++r)
+    {
+        for (unsigned int k = 0; k < Nk; ++k)
+        {
+            a = _mm_aesdec_si128(a, keys[k]);
+        }
+        a = _mm_xor_si128(a, H);
+    }
+    return a;
 }
 
 /// Make the packed unsigned 8-bit integers odd.
 static inline __m128i
 mm_make_odd_epu8(const __m128i a)
 {
-	return _mm_or_si128(a, _mm_set1_epi8(1));
+    return _mm_or_si128(a, _mm_set1_epi8(1));
 }
 
 /// Make the packed unsigned 16-bit integers odd.
 static inline __m128i
 mm_make_odd_epu16(const __m128i a)
 {
-	return _mm_or_si128(a, _mm_set1_epi16(1));
+    return _mm_or_si128(a, _mm_set1_epi16(1));
 }
 
 /// Make the packed unsigned 32-bit integers odd.
 static inline __m128i
 mm_make_odd_epu32(const __m128i a)
 {
-	return _mm_or_si128(a, _mm_set1_epi32(1));
+    return _mm_or_si128(a, _mm_set1_epi32(1));
 }
 
 /// Make the packed unsigned 64-bit integers odd.
 static inline __m128i
 mm_make_odd_epu64(const __m128i a)
 {
-	return _mm_or_si128(a, _mm_set1_epi64x(1));
+    return _mm_or_si128(a, _mm_set1_epi64x(1));
 }
 
 #ifdef __cplusplus
