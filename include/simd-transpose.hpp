@@ -1,7 +1,7 @@
 // SPDX-FileCopyrightText: Steven Ward
 // SPDX-License-Identifier: OSL-3.0
 
-/// Transpose an array of \c __m128i (treating it as a square matrix of integers) using SSE2 instructions
+/// Transpose an array of \c __m128i (treating it as a square matrix of integers) using SSE2 intrinsics
 /**
 \file
 \author Steven Ward
@@ -14,15 +14,15 @@
 #include <array>
 #include <immintrin.h>
 
-inline void
+static inline void
 transpose([[maybe_unused]] arr_m128i<1>& x)
 {
     // NOP
 }
 
 
-/// Transpose \a x (treating it as a 2x2 array of \c uint64_t) using SSE2 instructions
-void
+/// Transpose \a x (treating it as a 2x2 matrix of \c uint64_t) using SSE2 intrinsics
+static void
 transpose(arr_m128i<2>& x)
 {
     const __m128i A0_B0 = _mm_unpacklo_epi64(x[0], x[1]);
@@ -33,11 +33,11 @@ transpose(arr_m128i<2>& x)
 }
 
 
-/// Transpose \a x (treating it as a 4x4 array of \c uint32_t) using SSE2 instructions
+/// Transpose \a x (treating it as a 4x4 matrix of \c uint32_t) using SSE2 intrinsics
 /**
 \sa https://randombit.net/bitbashing/posts/integer_matrix_transpose_in_sse2.html
 */
-void
+static void
 transpose(arr_m128i<4>& x)
 {
     const __m128i A01_B01 = _mm_unpacklo_epi32(x[0], x[1]);
@@ -52,14 +52,14 @@ transpose(arr_m128i<4>& x)
 }
 
 
-/// Transpose \a x (treating it as a 4x4 array of \c uint32_t) using the \c _MM_TRANSPOSE4_PS macro
+/// Transpose \a x (treating it as a 4x4 matrix of \c uint32_t) using the \c _MM_TRANSPOSE4_PS macro
 /**
 \sa https://community.intel.com/t5/Intel-ISA-Extensions/4x4-matrix-transpose-using-sse2-intrinsics/m-p/785883#M353
 \verbatim
 Cast your __m128i variables into __m128 variables (using _mm_castsi128_ps), use the macro _MM_TRANSPOSE_PS, then cast back using _mm_castps_si128.
 \endverbatim
 */
-void
+static void
 transpose_macro(arr_m128i<4>& x)
 {
     __m128 A = _mm_castsi128_ps(x[0]);
@@ -76,11 +76,11 @@ transpose_macro(arr_m128i<4>& x)
 }
 
 
-/// Transpose \a x (treating it as an 8x8 array of \c uint16_t) using SSE2 instructions
+/// Transpose \a x (treating it as an 8x8 matrix of \c uint16_t) using SSE2 intrinsics
 /**
 \sa https://stackoverflow.com/a/4951060/1892784
 */
-void
+static void
 transpose(arr_m128i<8>& x)
 {
     const __m128i A03_B03 = _mm_unpacklo_epi16(x[0], x[1]);
@@ -112,8 +112,11 @@ transpose(arr_m128i<8>& x)
 }
 
 
-/// Transpose \a x (treating it as a 16x16 array of \c uint8_t) using SSE2 instructions
-void
+/// Transpose \a x (treating it as a 16x16 matrix of \c uint8_t) using SSE2 intrinsics
+/**
+\sa https://codereview.stackexchange.com/questions/295941/16x16-integer-matrix-transpose-using-sse2-intrinsics-in-c
+*/
+static void
 transpose(arr_m128i<16>& x)
 {
     const __m128i A07_B07 = _mm_unpacklo_epi8(x[0x0], x[0x1]);
