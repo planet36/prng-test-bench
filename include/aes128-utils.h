@@ -15,14 +15,14 @@
 extern "C" {
 #endif
 
-/// Do \c _mm_aesenc_si128 on data \a a with \a Nk keys \a keys \a Nr times for all keys
+/// Do \c _mm_aesenc_si128 on data \a a with \a Nk keys \a keys \a Nr times for each key
 /**
 \pre \a Nk must be at least \c 1.
 \pre \a Nr must be at least \c 1.
 \param a the data
 \param keys the keys
 \param Nk the number of \a keys
-\param Nr the number of rounds of encryption to perform for all keys
+\param Nr the number of rounds of encryption to perform for each key
 */
 static inline __m128i
 aes128_enc(__m128i a,
@@ -30,9 +30,9 @@ aes128_enc(__m128i a,
            const unsigned int Nk,
            const unsigned int Nr)
 {
-    for (unsigned int r = 0; r < Nr; ++r)
+    for (unsigned int k = 0; k < Nk; ++k)
     {
-        for (unsigned int k = 0; k < Nk; ++k)
+        for (unsigned int r = 0; r < Nr; ++r)
         {
             a = _mm_aesenc_si128(a, keys[k]);
         }
@@ -40,14 +40,14 @@ aes128_enc(__m128i a,
     return a;
 }
 
-/// Do \c _mm_aesdec_si128 on data \a a with \a Nk keys \a keys \a Nr times for all keys
+/// Do \c _mm_aesdec_si128 on data \a a with \a Nk keys \a keys \a Nr times for each key
 /**
 \pre \a Nk must be at least \c 1.
 \pre \a Nr must be at least \c 1.
 \param a the data
 \param keys the keys
 \param Nk the number of \a keys
-\param Nr the number of rounds of decryption to perform for all keys
+\param Nr the number of rounds of decryption to perform for each key
 */
 static inline __m128i
 aes128_dec(__m128i a,
@@ -55,9 +55,9 @@ aes128_dec(__m128i a,
            const unsigned int Nk,
            const unsigned int Nr)
 {
-    for (unsigned int r = 0; r < Nr; ++r)
+    for (unsigned int k = 0; k < Nk; ++k)
     {
-        for (unsigned int k = 0; k < Nk; ++k)
+        for (unsigned int r = 0; r < Nr; ++r)
         {
             a = _mm_aesdec_si128(a, keys[k]);
         }
@@ -73,7 +73,7 @@ aes128_dec(__m128i a,
 \param H the previous hash value
 \param keys the keys
 \param Nk the number of \a keys
-\param Nr the number of rounds of encryption to perform for all keys
+\param Nr the number of rounds of encryption to perform for each key
 */
 static inline __m128i
 aes128_enc_davies_meyer(const __m128i H,
@@ -82,9 +82,9 @@ aes128_enc_davies_meyer(const __m128i H,
            const unsigned int Nr)
 {
     __m128i a = H;
-    for (unsigned int r = 0; r < Nr; ++r)
+    for (unsigned int k = 0; k < Nk; ++k)
     {
-        for (unsigned int k = 0; k < Nk; ++k)
+        for (unsigned int r = 0; r < Nr; ++r)
         {
             a = _mm_aesenc_si128(a, keys[k]);
         }
@@ -101,7 +101,7 @@ aes128_enc_davies_meyer(const __m128i H,
 \param H the previous hash value
 \param keys the keys
 \param Nk the number of \a keys
-\param Nr the number of rounds of decryption to perform for all keys
+\param Nr the number of rounds of decryption to perform for each key
 */
 static inline __m128i
 aes128_dec_davies_meyer(const __m128i H,
@@ -110,9 +110,9 @@ aes128_dec_davies_meyer(const __m128i H,
            const unsigned int Nr)
 {
     __m128i a = H;
-    for (unsigned int r = 0; r < Nr; ++r)
+    for (unsigned int k = 0; k < Nk; ++k)
     {
-        for (unsigned int k = 0; k < Nk; ++k)
+        for (unsigned int r = 0; r < Nr; ++r)
         {
             a = _mm_aesdec_si128(a, keys[k]);
         }
