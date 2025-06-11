@@ -50,7 +50,7 @@ public:
     aes_half_state_128_prng()
     {
         static_assert(sizeof(*this) <= 256,
-            "getentropy will fail if more than 256 bytes are requested");
+                      "getentropy will fail if more than 256 bytes are requested");
         reseed();
     }
 
@@ -67,20 +67,11 @@ public:
             err(EXIT_FAILURE, "getentropy");
     }
 
-    static constexpr result_type min()
-    {
-        return std::numeric_limits<result_type>::min();
-    }
+    static constexpr result_type min() { return std::numeric_limits<result_type>::min(); }
 
-    static constexpr result_type max()
-    {
-        return std::numeric_limits<result_type>::max();
-    }
+    static constexpr result_type max() { return std::numeric_limits<result_type>::max(); }
 
-    result_type operator()()
-    {
-        return next();
-    }
+    result_type operator()() { return next(); }
 
     /// Get the next PRNG output via AES encryption or decryption.
     result_type next()

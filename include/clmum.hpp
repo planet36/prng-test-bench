@@ -36,27 +36,32 @@ static inline uint64_t
 clmumx(__m128i a)
 {
     clmul(a);
-    return static_cast<uint64_t>(_mm_extract_epi64(a, 1)) ^ static_cast<uint64_t>(_mm_extract_epi64(a, 0));
+    return static_cast<uint64_t>(_mm_extract_epi64(a, 1)) ^
+           static_cast<uint64_t>(_mm_extract_epi64(a, 0));
 }
 
 static inline uint64_t
 clmuma(__m128i a)
 {
     clmul(a);
-    return static_cast<uint64_t>(_mm_extract_epi64(a, 1)) + static_cast<uint64_t>(_mm_extract_epi64(a, 0));
+    return static_cast<uint64_t>(_mm_extract_epi64(a, 1)) +
+           static_cast<uint64_t>(_mm_extract_epi64(a, 0));
 }
 
 static inline uint64_t
 clmums(__m128i a)
 {
     clmul(a);
-    return static_cast<uint64_t>(_mm_extract_epi64(a, 1)) - static_cast<uint64_t>(_mm_extract_epi64(a, 0));
+    return static_cast<uint64_t>(_mm_extract_epi64(a, 1)) -
+           static_cast<uint64_t>(_mm_extract_epi64(a, 0));
 }
 
 static void
 clmul(uint64_t& hi, uint64_t& lo)
 {
-    __m128i result = _mm_set_epi64x(static_cast<long long int>(hi), static_cast<long long int>(lo)); // order of hi, lo doesn't matter
+    __m128i result =
+        _mm_set_epi64x(static_cast<long long int>(hi),
+                       static_cast<long long int>(lo)); // order of hi, lo doesn't matter
 
     clmul(result);
 

@@ -50,8 +50,7 @@ fill_rand(T& x)
 {
     if (getentropy(&x, sizeof(T)) < 0)
     {
-        throw std::system_error(std::make_error_code(std::errc{errno}),
-                                "getentropy");
+        throw std::system_error(std::make_error_code(std::errc{errno}), "getentropy");
     }
 }
 
@@ -62,8 +61,7 @@ fill_rand(std::ranges::contiguous_range auto& container)
 
     if (getentropy(std::data(span_bytes), span_bytes.size_bytes()) < 0)
     {
-        throw std::system_error(std::make_error_code(std::errc{errno}),
-                                "getentropy");
+        throw std::system_error(std::make_error_code(std::errc{errno}), "getentropy");
     }
 }
 
@@ -85,8 +83,7 @@ fill_rand(T& x)
     // https://en.cppreference.com/w/cpp/numeric/random/random_device
     if constexpr (sizeof(T) <= sizeof(typename std::random_device::result_type))
         x = rd();
-    else if constexpr (sizeof(T) <=
-                       2 * sizeof(typename std::random_device::result_type))
+    else if constexpr (sizeof(T) <= 2 * sizeof(typename std::random_device::result_type))
         x = int_join(rd(), rd());
     else
         std::unreachable();
@@ -102,11 +99,9 @@ fill_rand(std::array<T, N>& container)
     {
         // std::random_device::result_type is unsigned int
         // https://en.cppreference.com/w/cpp/numeric/random/random_device
-        if constexpr (sizeof(T) <=
-                      sizeof(typename std::random_device::result_type))
+        if constexpr (sizeof(T) <= sizeof(typename std::random_device::result_type))
             x = rd();
-        else if constexpr (sizeof(T) <=
-                           2 * sizeof(typename std::random_device::result_type))
+        else if constexpr (sizeof(T) <= 2 * sizeof(typename std::random_device::result_type))
             x = int_join(rd(), rd());
         else
             std::unreachable();
@@ -123,11 +118,9 @@ fill_rand(std::vector<T>& container)
     {
         // std::random_device::result_type is unsigned int
         // https://en.cppreference.com/w/cpp/numeric/random/random_device
-        if constexpr (sizeof(T) <=
-                      sizeof(typename std::random_device::result_type))
+        if constexpr (sizeof(T) <= sizeof(typename std::random_device::result_type))
             x = rd();
-        else if constexpr (sizeof(T) <=
-                           2 * sizeof(typename std::random_device::result_type))
+        else if constexpr (sizeof(T) <= 2 * sizeof(typename std::random_device::result_type))
             x = int_join(rd(), rd());
         else
             std::unreachable();

@@ -28,6 +28,7 @@
 
 namespace
 {
+
 inline constexpr std::array<uint64_t, 3> pcg_const64 = {
     0x5851f42d4c957f2d, // not prime (popcount = 33)
     0x14057b7ef767814f, // not prime (popcount = 35)
@@ -39,12 +40,14 @@ static_assert((pcg_const64[2] & 1) != 0, "must be odd");
 
 #if defined(__SIZEOF_INT128__)
 inline constexpr std::array<__uint128_t, 2> pcg_const128 = {
-    int_join(UINT64_C(0x2360ed051fc65da4), UINT64_C(0x4385df649fccf645)), // not prime (popcount = 65)
+    int_join(UINT64_C(0x2360ed051fc65da4),
+             UINT64_C(0x4385df649fccf645)),   // not prime (popcount = 65)
     int_join(pcg_const64[0], pcg_const64[1]), // not prime (popcount = 68)
 };
 static_assert((pcg_const128[0] & 1) != 0, "must be odd");
 static_assert((pcg_const128[1] & 1) != 0, "must be odd");
 #endif
+
 }
 
 /// PCG-XSH-RR

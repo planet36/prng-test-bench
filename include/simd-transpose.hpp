@@ -20,7 +20,6 @@ transpose([[maybe_unused]] arr_m128i<1>& x)
     // NOP
 }
 
-
 /// Transpose \a x (treating it as a 2x2 matrix of \c uint64_t) using SSE2 intrinsics
 static void
 transpose(arr_m128i<2>& x)
@@ -31,7 +30,6 @@ transpose(arr_m128i<2>& x)
     x[0] = A0_B0;
     x[1] = A1_B1;
 }
-
 
 /// Transpose \a x (treating it as a 4x4 matrix of \c uint32_t) using SSE2 intrinsics
 /**
@@ -50,7 +48,6 @@ transpose(arr_m128i<4>& x)
     x[2] = _mm_unpacklo_epi64(A23_B23, C23_D23); // A2_B2_C2_D2
     x[3] = _mm_unpackhi_epi64(A23_B23, C23_D23); // A3_B3_C3_D3
 }
-
 
 /// Transpose \a x (treating it as a 4x4 matrix of \c uint32_t) using the \c _MM_TRANSPOSE4_PS macro
 /**
@@ -74,7 +71,6 @@ transpose_macro(arr_m128i<4>& x)
     x[2] = _mm_castps_si128(C);
     x[3] = _mm_castps_si128(D);
 }
-
 
 /// Transpose \a x (treating it as an 8x8 matrix of \c uint16_t) using SSE2 intrinsics
 /**
@@ -110,7 +106,6 @@ transpose(arr_m128i<8>& x)
     x[6] = _mm_unpacklo_epi64(A67_B67_C67_D67, E67_F67_G67_H67); // A6_B6_C6_D6_E6_F6_G6_H6
     x[7] = _mm_unpackhi_epi64(A67_B67_C67_D67, E67_F67_G67_H67); // A7_B7_C7_D7_E7_F7_G7_H7
 }
-
 
 /// Transpose \a x (treating it as a 16x16 matrix of \c uint8_t) using SSE2 intrinsics
 /**

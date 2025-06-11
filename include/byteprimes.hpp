@@ -54,6 +54,7 @@ https://www.wolframalpha.com/input?i=CoprimeQ%5B0x00fbf1efe9e5e3df%2C+2%5E64%5D
 
 namespace
 {
+
 inline constexpr std::array<uint64_t, 7> byteprimes{
     0x110d0b0705030201, // not prime (popcount = 17)
     0x2f2b29251f1d1713, // not prime (popcount = 31)
@@ -70,4 +71,5 @@ static_assert((byteprimes[3] & 1) != 0, "must be odd");
 static_assert((byteprimes[4] & 1) != 0, "must be odd");
 static_assert((byteprimes[5] & 1) != 0, "must be odd");
 static_assert((byteprimes[6] & 1) != 0, "must be odd");
+
 }

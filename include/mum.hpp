@@ -22,6 +22,7 @@
 
 namespace
 {
+
 // https://github.com/vnmakarov/mum-hash/blob/master/mum.h#L83
 
 /* Here are different primes randomly generated with the equal
@@ -76,6 +77,7 @@ static_assert((_mum_primes[12] & 1) != 0, "must be odd");
 static_assert((_mum_primes[13] & 1) != 0, "must be odd");
 static_assert((_mum_primes[14] & 1) != 0, "must be odd");
 static_assert((_mum_primes[15] & 1) != 0, "must be odd");
+
 }
 
 /// Multiply \a hi and \a lo and return the high and low parts of the product

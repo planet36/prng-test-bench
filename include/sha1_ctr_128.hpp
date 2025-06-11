@@ -18,7 +18,8 @@
 #if defined(__SHA__)
 
 /// 16 rounds of SHA-1
-inline __m128i sha1_rnds4x4(__m128i a, __m128i b)
+inline __m128i
+sha1_rnds4x4(__m128i a, __m128i b)
 {
     a = _mm_sha1rnds4_epu32(a, b, 0);
     a = _mm_sha1rnds4_epu32(a, b, 1);
@@ -50,7 +51,7 @@ public:
     sha1_ctr_128()
     {
         static_assert(sizeof(*this) <= 256,
-            "getentropy will fail if more than 256 bytes are requested");
+                      "getentropy will fail if more than 256 bytes are requested");
         reseed();
     }
 
@@ -72,20 +73,11 @@ public:
         inc = mm_make_odd_epu64(inc);
     }
 
-    static constexpr result_type min()
-    {
-        return std::numeric_limits<result_type>::min();
-    }
+    static constexpr result_type min() { return std::numeric_limits<result_type>::min(); }
 
-    static constexpr result_type max()
-    {
-        return std::numeric_limits<result_type>::max();
-    }
+    static constexpr result_type max() { return std::numeric_limits<result_type>::max(); }
 
-    result_type operator()()
-    {
-        return next();
-    }
+    result_type operator()() { return next(); }
 
     /// Get the next PRNG output via SHA-1 instructions.
     result_type next()

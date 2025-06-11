@@ -23,7 +23,7 @@
 
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wignored-attributes"
-static const std::array<__m128i, 32> sha256_round_constants {
+static const std::array<__m128i, 32> sha256_round_constants{
     _mm_setr_epi32(0x428a2f98, 0x71374491, 0, 0), _mm_setr_epi32(0xb5c0fbcf, 0xe9b5dba5, 0, 0),
     _mm_setr_epi32(0x3956c25b, 0x59f111f1, 0, 0), _mm_setr_epi32(0x923f82a4, 0xab1c5ed5, 0, 0),
     _mm_setr_epi32(0xd807aa98, 0x12835b01, 0, 0), _mm_setr_epi32(0x243185be, 0x550c7dc3, 0, 0),
@@ -44,7 +44,8 @@ static const std::array<__m128i, 32> sha256_round_constants {
 #pragma GCC diagnostic pop
 
 /// 16 rounds of SHA-256
-inline __m128i sha256_rnds2x8(__m128i a, __m128i b)
+inline __m128i
+sha256_rnds2x8(__m128i a, __m128i b)
 {
     b = _mm_sha256rnds2_epu32(a, b, sha256_round_constants[0]);
     b = _mm_sha256rnds2_epu32(a, b, sha256_round_constants[1]);
@@ -80,7 +81,7 @@ public:
     sha256_ctr_128()
     {
         static_assert(sizeof(*this) <= 256,
-            "getentropy will fail if more than 256 bytes are requested");
+                      "getentropy will fail if more than 256 bytes are requested");
         reseed();
     }
 
@@ -102,20 +103,11 @@ public:
         inc = mm_make_odd_epu64(inc);
     }
 
-    static constexpr result_type min()
-    {
-        return std::numeric_limits<result_type>::min();
-    }
+    static constexpr result_type min() { return std::numeric_limits<result_type>::min(); }
 
-    static constexpr result_type max()
-    {
-        return std::numeric_limits<result_type>::max();
-    }
+    static constexpr result_type max() { return std::numeric_limits<result_type>::max(); }
 
-    result_type operator()()
-    {
-        return next();
-    }
+    result_type operator()() { return next(); }
 
     /// Get the next PRNG output via SHA-256 instructions.
     result_type next()

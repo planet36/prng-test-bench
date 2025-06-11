@@ -15,6 +15,7 @@
 
 namespace
 {
+
 // https://github.com/Cyan4973/xxHash/blob/release/xxhash.h#L2560
 inline constexpr std::array<uint32_t, 5> xxh_prime32 = {
     0x9e3779b1, // prime (popcount = 19)
@@ -42,4 +43,5 @@ static_assert((xxh_prime64[1] & 1) != 0, "must be odd");
 static_assert((xxh_prime64[2] & 1) != 0, "must be odd");
 static_assert((xxh_prime64[3] & 1) != 0, "must be odd");
 static_assert((xxh_prime64[4] & 1) != 0, "must be odd");
+
 }

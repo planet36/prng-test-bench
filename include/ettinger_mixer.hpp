@@ -24,7 +24,7 @@ DEF_URBG_CLASS(ettinger_mixer, uint64_t, uint64_t)
     static constexpr uint64_t X1 = 0xdb4f0b9175ae2165; // not prime (popcount = 33)
     static_assert(X1 & 1, "must be odd");
     static constexpr uint64_t M1 = 0x4823a80b2006e21b; // prime (popcount = 22)
-    static constexpr uint32_t M2 = 0x81383173; // prime (popcount = 13)
+    static constexpr uint32_t M2 = 0x81383173;         // prime (popcount = 13)
     static_assert(M1 & 1, "must be odd");
     static_assert(M2 & 1, "must be odd");
     static constexpr unsigned int R1 = 12;

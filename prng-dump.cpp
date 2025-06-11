@@ -34,8 +34,8 @@ const char* program_license = "OSL-3.0";
 
 // Globals
 
-constexpr unsigned long long bytes_per_gigabyte = 1'000ULL * 1'000ULL * 1'000ULL;
-constexpr unsigned long long bytes_per_gibibyte = 1'024ULL * 1'024ULL * 1'024ULL;
+constexpr unsigned long long bytes_per_gigabyte = 1000ULL * 1000ULL * 1000ULL;
+constexpr unsigned long long bytes_per_gibibyte = 1024ULL * 1024ULL * 1024ULL;
 
 constexpr uint32_t seed_pattern_32{0xAAAAAAAA};
 
@@ -83,7 +83,10 @@ prng_dump(URBG&& gen)
     {
         while (true)
         {
-            for (size_t i = 0; i < buf_num_elems; ++i) { buf[i] = gen(); }
+            for (size_t i = 0; i < buf_num_elems; ++i)
+            {
+                buf[i] = gen();
+            }
 
             (void)::write(STDOUT_FILENO, &buf[0], sizeof(buf));
         }
@@ -95,7 +98,10 @@ prng_dump(URBG&& gen)
 
         for (size_t j = 0; j < num_writes; ++j)
         {
-            for (size_t i = 0; i < buf_num_elems; ++i) { buf[i] = gen(); }
+            for (size_t i = 0; i < buf_num_elems; ++i)
+            {
+                buf[i] = gen();
+            }
 
             (void)::write(STDOUT_FILENO, &buf[0], sizeof(buf));
         }
@@ -115,8 +121,7 @@ print_version()
 void
 print_suggestion()
 {
-    fmt::println(stderr, "Try '{} -h' for more information.",
-                 program_invocation_short_name);
+    fmt::println(stderr, "Try '{} -h' for more information.", program_invocation_short_name);
 }
 
 /// Print the message if verbose is enabled.
