@@ -12,6 +12,7 @@
 
 #include "def_urbg_class.hpp"
 #include "mum.hpp"
+#include "mum-primes.hpp"
 
 #include <bit>
 #include <cstdint>
