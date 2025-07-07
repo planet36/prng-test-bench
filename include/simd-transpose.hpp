@@ -11,7 +11,6 @@
 
 #include "simd-array.hpp"
 
-#include <array>
 #include <immintrin.h>
 
 static inline void

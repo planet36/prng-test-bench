@@ -29,6 +29,8 @@ Adapted from the following sources.
 \sa https://old.reddit.com/r/cpp/comments/31857s/random_number_generation_it_might_be_harder_than/cq08lli/
 \sa https://probablydance.com/2016/12/29/random_seed_seq-a-small-utility-to-properly-seed-random-number-generators-in-c/
 \sa https://codingnest.com/generating-random-numbers-using-c-standard-library-the-solutions/
+For \c std::mersenne_twister_engine, \c std::generate calls \c std::random_device::operator() \em 624 times!
+For \c std::subtract_with_carry_engine, \c std::generate calls \c std::random_device::operator() \em 24 times!
 */
 struct random_device_seed_seq
 {
