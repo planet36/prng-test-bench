@@ -3,15 +3,15 @@
 
 /// Macro that defines a Uniform Random Bit Generator class
 /**
-\file
-\author Steven Ward
-\sa https://en.cppreference.com/w/cpp/named_req/UniformRandomBitGenerator
-\sa https://en.cppreference.com/w/cpp/named_req/RandomNumberEngine
-\sa https://eel.is/c++draft/rand.req.urng
-\sa https://eel.is/c++draft/rand.req.eng
-Note: This does not meet the requirements of a random number engine.
-The default ctor does not create an engine with the same initial state as all
-other default-constructed engines of the same type.
+* \file
+* \author Steven Ward
+* \sa https://en.cppreference.com/w/cpp/named_req/UniformRandomBitGenerator
+* \sa https://en.cppreference.com/w/cpp/named_req/RandomNumberEngine
+* \sa https://eel.is/c++draft/rand.req.urng
+* \sa https://eel.is/c++draft/rand.req.eng
+* Note: This does not meet the requirements of a random number engine.
+* The default ctor does not create an engine with the same initial state as all
+* other default-constructed engines of the same type.
 */
 
 #pragma once
