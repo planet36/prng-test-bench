@@ -68,32 +68,19 @@ other default-constructed engines of the same type.
         /* ctors */                                                          \
         constexpr CLASS_NAME() noexcept                                      \
         {                                                                    \
-            seed();                                                          \
+            fill_rand(s);                                                    \
         }                                                                    \
         explicit constexpr CLASS_NAME(const state_type& new_s) noexcept      \
         {                                                                    \
-            seed(new_s);                                                     \
+            s = new_s;                                                       \
         }                                                                    \
         explicit constexpr CLASS_NAME(const seed_bytes_type& bytes) noexcept \
         {                                                                    \
-            seed(bytes);                                                     \
+            (void)std::memcpy(&s, bytes.data(), sizeof(state_type));         \
         }                                                                    \
         CLASS_NAME(const CLASS_NAME&) = default;                             \
         /* copy assignment operator */                                       \
         CLASS_NAME& operator=(const CLASS_NAME&) = default;                  \
-        /* seed functions */                                                 \
-        void seed() noexcept                                                 \
-        {                                                                    \
-            fill_rand(s);                                                    \
-        }                                                                    \
-        constexpr void seed(const state_type& new_s) noexcept                \
-        {                                                                    \
-            s = new_s;                                                       \
-        }                                                                    \
-        void seed(const seed_bytes_type& bytes) noexcept                     \
-        {                                                                    \
-            (void)std::memcpy(&s, bytes.data(), sizeof(state_type));         \
-        }                                                                    \
         /* non-static member function declaration */                         \
         constexpr result_type next(); /* XXX: must define this below */      \
     };                                                                       \
