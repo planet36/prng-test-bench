@@ -53,6 +53,7 @@ print_all_prng_info()
 {
     for (const auto& [prng_name, info] : prng_name_to_info)
     {
+        // XXX: Do not change the order of the fields.
         fmt::println("{}\t{}\t{}\t{}\t{}",
                 prng_name,
                 info.result_size_bits,
