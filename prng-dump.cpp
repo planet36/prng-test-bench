@@ -55,11 +55,10 @@ print_all_prng_info()
     {
         fmt::println("{}\t{}\t{}\t{}\t{}",
                 prng_name,
-                info.result_type_size_bits,
+                info.result_size_bits,
                 info.result_min,
                 info.result_max,
-                info.prng_size_bytes
-                );
+                info.state_size_bytes);
     }
 }
 

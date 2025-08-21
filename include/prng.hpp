@@ -54,15 +54,32 @@
 #include "xsm.hpp"
 
 #include <climits>
+#include <concepts>
 #include <cstddef>
 #include <cstdint>
 #include <map>
 #include <random>
 #include <string>
 
+template <std::uniform_random_bit_generator URBG>
+constexpr size_t
+get_state_size_bytes()
+{
+    constexpr bool has_state_type = requires(const URBG& prng)
+    {
+        typename URBG::state_type;
+    };
+
+    if constexpr (has_state_type)
+        return sizeof(typename URBG::state_type);
+    else
+        return sizeof(URBG);
+}
+
 struct prng_info_t
 {
-    const size_t result_type_size_bits;
+    const size_t state_size_bytes;
+    const size_t result_size_bits; // This has to be bits because of how RNG_test works.
 #if defined(__SIZEOF_INT128__)
     const __uint128_t result_min;
     const __uint128_t result_max;
@@ -70,17 +87,16 @@ struct prng_info_t
     const uintmax_t result_min;
     const uintmax_t result_max;
 #endif
-    const size_t prng_size_bytes;
 };
 
 template <std::uniform_random_bit_generator URBG>
 prng_info_t create_prng_info()
 {
     return prng_info_t{
-        .result_type_size_bits = sizeof(typename URBG::result_type) * CHAR_BIT,
+        .state_size_bytes = get_state_size_bytes<URBG>(),
+        .result_size_bits = sizeof(typename URBG::result_type) * CHAR_BIT,
         .result_min = URBG::min(),
         .result_max = URBG::max(),
-        .prng_size_bytes = sizeof(URBG)
     };
 }
 
