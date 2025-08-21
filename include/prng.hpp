@@ -23,6 +23,7 @@
 #include "lcg.hpp"
 #include "lea64.hpp"
 #include "lehmer64.hpp"
+#include "lxm.hpp"
 #include "mcg.hpp"
 #include "moremur.hpp"
 #include "msws.hpp"
@@ -156,6 +157,7 @@ const std::map<std::string, prng_info_t> prng_name_to_info{
     CREATE_PRNG_INFO_MAP_ENTRY(lea64                 ),
     CREATE_PRNG_INFO_MAP_ENTRY(lehmer64              ),
     CREATE_PRNG_INFO_MAP_ENTRY(linnorm               ),
+    CREATE_PRNG_INFO_MAP_ENTRY(lxm                   ),
     CREATE_PRNG_INFO_MAP_ENTRY(mcg128                ),
     CREATE_PRNG_INFO_MAP_ENTRY(mizuchi               ),
     CREATE_PRNG_INFO_MAP_ENTRY(moremur               ),

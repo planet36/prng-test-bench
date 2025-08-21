@@ -432,6 +432,7 @@ if (prng_name == #NAME) { \
     CONDITIONAL_DUMP_MINE(lea64                 )
     CONDITIONAL_DUMP_MINE(lehmer64              )
     CONDITIONAL_DUMP_MINE(linnorm               )
+    CONDITIONAL_DUMP_MINE(lxm                   )
     CONDITIONAL_DUMP_MINE(mcg128                )
     CONDITIONAL_DUMP_MINE(mizuchi               )
     CONDITIONAL_DUMP_MINE(moremur               )
@@ -547,6 +548,7 @@ lcg64                        64  0                     18446744073709551615    1
 lea64                        64  0                     18446744073709551615     8
 lehmer64                     64  0                     18446744073709551615    16
 linnorm                      64  0                     18446744073709551615     8
+lxm                          64  0                     18446744073709551615    32
 mcg128                       64  0                     18446744073709551615    16
 mizuchi                      64  0                     18446744073709551615     8
 moremur                      64  0                     18446744073709551615     8
