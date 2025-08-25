@@ -395,9 +395,6 @@ if (prng_name == #NAME) { \
     // mine
 #if defined(__AES__)
     CONDITIONAL_DUMP_MINE(aes_ctr_128_k1_r2)
-    CONDITIONAL_DUMP_MINE(aes_ctr_128_k1_r3)
-    CONDITIONAL_DUMP_MINE(aes_ctr_128_k2_r1)
-    CONDITIONAL_DUMP_MINE(aes_ctr_128_k3_r1)
 #endif
     CONDITIONAL_DUMP_MINE(bell                  )
     CONDITIONAL_DUMP_MINE(bright                )
@@ -502,9 +499,6 @@ Output:
 
 MRG32k3a                     64  0                     18446744073709551615     8
 aes_ctr_128_k1_r2           128  0  340282366920938463463374607431768211455    48
-aes_ctr_128_k1_r3           128  0  340282366920938463463374607431768211455    48
-aes_ctr_128_k2_r1           128  0  340282366920938463463374607431768211455    64
-aes_ctr_128_k3_r1           128  0  340282366920938463463374607431768211455    80
 bell                         64  0                     18446744073709551615    16
 bright                       64  0                     18446744073709551615     8
 clmulrand                    64  0                     18446744073709551615    16

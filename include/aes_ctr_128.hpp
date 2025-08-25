@@ -97,14 +97,8 @@ public:
 };
 
 using aes_ctr_128_k1_r2 = aes_ctr_128_prng<1, 2>;
-using aes_ctr_128_k1_r3 = aes_ctr_128_prng<1, 3>;
-using aes_ctr_128_k2_r1 = aes_ctr_128_prng<2, 1>;
-using aes_ctr_128_k3_r1 = aes_ctr_128_prng<3, 1>;
 
 static_assert(std::uniform_random_bit_generator<aes_ctr_128_k1_r2>);
-static_assert(std::uniform_random_bit_generator<aes_ctr_128_k1_r3>);
-static_assert(std::uniform_random_bit_generator<aes_ctr_128_k2_r1>);
-static_assert(std::uniform_random_bit_generator<aes_ctr_128_k3_r1>);
 
 #else
 #warning "__AES__ not defined"
