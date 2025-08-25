@@ -3,11 +3,13 @@
 
 /// Make packed unsigned integers odd
 /**
-\file
-\author Steven Ward
+* \file
+* \author Steven Ward
 */
 
 #pragma once
+
+#if defined(__x86_64__) && defined(__SSE2__)
 
 #include <immintrin.h>
 
@@ -45,4 +47,6 @@ mm_make_odd_epu64(const __m128i a)
 
 #ifdef __cplusplus
 } // extern "C"
+#endif
+
 #endif
