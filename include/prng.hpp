@@ -11,9 +11,6 @@
 
 #include "MRG32k3a.hpp"
 #include "aes_ctr_128.hpp"
-#include "aes_half_state_64.hpp"
-#include "aes_half_state_128.hpp"
-#include "aes_whole_state_128.hpp"
 #include "clmulrand.hpp"
 #include "degski.hpp"
 #include "ettinger_mixer.hpp"
@@ -122,21 +119,6 @@ const std::map<std::string, prng_info_t> prng_name_to_info{
     CREATE_PRNG_INFO_MAP_ENTRY(aes_ctr_128_k1_r3),
     CREATE_PRNG_INFO_MAP_ENTRY(aes_ctr_128_k2_r1),
     CREATE_PRNG_INFO_MAP_ENTRY(aes_ctr_128_k3_r1),
-
-    CREATE_PRNG_INFO_MAP_ENTRY(aes_half_state_64_k1_r2),
-    CREATE_PRNG_INFO_MAP_ENTRY(aes_half_state_64_k1_r3),
-    CREATE_PRNG_INFO_MAP_ENTRY(aes_half_state_64_k2_r1),
-    CREATE_PRNG_INFO_MAP_ENTRY(aes_half_state_64_k3_r1),
-
-    CREATE_PRNG_INFO_MAP_ENTRY(aes_half_state_128_k1_r2),
-    CREATE_PRNG_INFO_MAP_ENTRY(aes_half_state_128_k1_r3),
-    CREATE_PRNG_INFO_MAP_ENTRY(aes_half_state_128_k2_r1),
-    CREATE_PRNG_INFO_MAP_ENTRY(aes_half_state_128_k3_r1),
-
-    CREATE_PRNG_INFO_MAP_ENTRY(aes_whole_state_128_k1_r2),
-    CREATE_PRNG_INFO_MAP_ENTRY(aes_whole_state_128_k1_r3),
-    CREATE_PRNG_INFO_MAP_ENTRY(aes_whole_state_128_k2_r1),
-    CREATE_PRNG_INFO_MAP_ENTRY(aes_whole_state_128_k3_r1),
 #endif
     CREATE_PRNG_INFO_MAP_ENTRY(bell                  ),
     CREATE_PRNG_INFO_MAP_ENTRY(bright                ),
