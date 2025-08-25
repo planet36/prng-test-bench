@@ -9,6 +9,8 @@
 
 #pragma once
 
+#if defined(__x86_64__) && defined(__AES__)
+
 #include <immintrin.h>
 
 #ifdef __cplusplus
@@ -117,4 +119,6 @@ aes128_dec_davies_meyer(const __m128i H,
 
 #ifdef __cplusplus
 } // extern "C"
+#endif
+
 #endif
