@@ -28,9 +28,9 @@ class aes128_ctr_64_prng
     static_assert(Nk * Nr >= 2, "must do at least 2 rounds of AES");
 
 private:
-    arr_m128i<Nk> keys{};
     __m128i ctr{}; ///< The state/counter
     __m128i inc{}; ///< The increment (must be odd)
+    arr_m128i<Nk> keys{};
 
 public:
     using result_type = uint64_t;
