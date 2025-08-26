@@ -12,6 +12,7 @@
 #if defined(__x86_64__) && defined(__SSE2__)
 
 #include <immintrin.h>
+#include <stdint.h>
 
 #ifdef __cplusplus
 extern "C" {
