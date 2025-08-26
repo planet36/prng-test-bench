@@ -3,6 +3,8 @@
 
 #pragma once
 
+#if defined(__AES__)
+
 #include "hxor.h"
 #include "make_odd.h"
 #include "simd-array.hpp"
@@ -16,8 +18,6 @@
 #include <limits>
 #include <random>
 #include <unistd.h>
-
-#if defined(__AES__)
 
 /// A PRNG that uses AES instructions
 template <unsigned int Nk, unsigned int Nr>
@@ -90,5 +90,7 @@ using aes128_ctr_64_k1_r2 = aes128_ctr_64_prng<1, 2>;
 static_assert(std::uniform_random_bit_generator<aes128_ctr_64_k1_r2>);
 
 #else
+
 #warning "__AES__ not defined"
+
 #endif
