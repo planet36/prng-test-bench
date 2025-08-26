@@ -53,8 +53,8 @@ public:
 
     explicit sha1_ctr_64(const seed_bytes_type& bytes)
     {
-        init();
         (void)std::memcpy(&s[0], bytes.data(), sizeof(s));
+        init();
     }
 
     /// Assign random bytes to the data members via \c getentropy.
