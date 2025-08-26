@@ -38,7 +38,7 @@
 #include "seiran.hpp"
 #include "sfc.hpp"
 #include "sha1_ctr_64.hpp"
-#include "sha256_ctr_128.hpp"
+#include "sha256_ctr_64.hpp"
 #include "shioi.hpp"
 #include "splitmix.hpp"
 #include "splitxix33.hpp"
