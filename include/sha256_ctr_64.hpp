@@ -20,9 +20,7 @@
 // Adapted from
 // https://git.savannah.gnu.org/cgit/gnulib.git/tree/lib/sha256.c#n267
 
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wignored-attributes"
-static const std::array<__m128i, 32> sha256_round_constants{
+static const arr_m128i<32> sha256_round_constants {
     _mm_setr_epi32(0x428a2f98, 0x71374491, 0, 0), _mm_setr_epi32(0xb5c0fbcf, 0xe9b5dba5, 0, 0),
     _mm_setr_epi32(0x3956c25b, 0x59f111f1, 0, 0), _mm_setr_epi32(0x923f82a4, 0xab1c5ed5, 0, 0),
     _mm_setr_epi32(0xd807aa98, 0x12835b01, 0, 0), _mm_setr_epi32(0x243185be, 0x550c7dc3, 0, 0),
@@ -40,7 +38,6 @@ static const std::array<__m128i, 32> sha256_round_constants{
     _mm_setr_epi32(0x748f82ee, 0x78a5636f, 0, 0), _mm_setr_epi32(0x84c87814, 0x8cc70208, 0, 0),
     _mm_setr_epi32(0x90befffa, 0xa4506ceb, 0, 0), _mm_setr_epi32(0xbef9a3f7, 0xc67178f2, 0, 0),
 };
-#pragma GCC diagnostic pop
 
 /// 16 rounds of SHA-256
 static __m128i
