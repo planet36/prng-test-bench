@@ -18,7 +18,7 @@ Python snippet to generate the array
 \code{.py}
 from itertools import batched
 
-for n in (4, 8, 12, 16, 24, 32, 64, 128):
+for n in (4, 8, 12, 16, 24, 32, 48, 64, 128):
     w = 256//n
     print(f"inline constexpr std::array<uint8_t, {n}> seed_bytes_pattern_{n}{{")
     #bytes = [w//2 + w*i for i in range(n)]
@@ -54,6 +54,15 @@ inline constexpr std::array<uint8_t, 24> seed_bytes_pattern_24{
 };
 
 inline constexpr std::array<uint8_t, 32> seed_bytes_pattern_32{
+    0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA,
+    0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA,
+    0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA,
+    0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA,
+};
+
+inline constexpr std::array<uint8_t, 48> seed_bytes_pattern_48{
+    0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA,
+    0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA,
     0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA,
     0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA,
     0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA,
@@ -109,6 +118,7 @@ get_seed_bytes_pattern()
     else if constexpr (num_seed_bytes == 16) { return seed_bytes_pattern_16; }
     else if constexpr (num_seed_bytes == 24) { return seed_bytes_pattern_24; }
     else if constexpr (num_seed_bytes == 32) { return seed_bytes_pattern_32; }
+    else if constexpr (num_seed_bytes == 48) { return seed_bytes_pattern_48; }
     else if constexpr (num_seed_bytes == 64) { return seed_bytes_pattern_64; }
     else if constexpr (num_seed_bytes == 128) { return seed_bytes_pattern_128; }
 }
