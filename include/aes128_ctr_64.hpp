@@ -37,6 +37,7 @@ public:
     using result_type = uint64_t;
     using seed_bytes_type = std::array<uint8_t, sizeof(s)>;
 
+    /// Assign random bytes to the data members via \c getentropy.
     aes128_ctr_64_prng()
     {
         static_assert(sizeof(s) <= 256,
@@ -54,7 +55,6 @@ public:
         init();
     }
 
-    /// Assign random bytes to the data members via \c getentropy.
     /**
     * Every odd integer is coprime with every power of 2.
     * Therefore, \c inc shall be made odd.
