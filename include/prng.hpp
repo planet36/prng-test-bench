@@ -174,7 +174,7 @@ const std::map<std::string, prng_info_t> prng_name_to_info{
     CREATE_PRNG_INFO_MAP_ENTRY(sfc32                 ),
     CREATE_PRNG_INFO_MAP_ENTRY(sfc64                 ),
 #if defined(__SHA__)
-    CREATE_PRNG_INFO_MAP_ENTRY(sha1_ctr_128          ),
+    CREATE_PRNG_INFO_MAP_ENTRY(sha1_ctr_64           ),
     CREATE_PRNG_INFO_MAP_ENTRY(sha256_ctr_128        ),
 #endif
     CREATE_PRNG_INFO_MAP_ENTRY(shioi                 ),

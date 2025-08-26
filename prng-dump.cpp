@@ -453,7 +453,7 @@ if (prng_name == #NAME) { \
     CONDITIONAL_DUMP_MINE(sfc32                 )
     CONDITIONAL_DUMP_MINE(sfc64                 )
 #if defined(__SHA__)
-    CONDITIONAL_DUMP_MINE(sha1_ctr_128          )
+    CONDITIONAL_DUMP_MINE(sha1_ctr_64           )
     CONDITIONAL_DUMP_MINE(sha256_ctr_128        )
 #endif
     CONDITIONAL_DUMP_MINE(shioi                 )
