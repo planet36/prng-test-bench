@@ -62,7 +62,7 @@ public:
 
     explicit AbstractURBG(const seed_bytes_type& bytes)
     {
-        (void)std::memcpy(&s, std::data(bytes), sizeof(state_type));
+        (void)std::memcpy(std::data(s), std::data(bytes), sizeof(state_type));
     }
 
     AbstractURBG(const AbstractURBG&) = default;
@@ -73,7 +73,7 @@ public:
     virtual ~AbstractURBG()
     {
         // zeroize the state
-        (void)std::memset(&s, 0, sizeof(state_type));
+        (void)std::memset(std::data(s), 0, sizeof(state_type));
     }
 
     virtual result_type next() = 0; // XXX: must override this
