@@ -58,7 +58,7 @@ sha256_rnds2x8(__m128i a, __m128i b)
 }
 
 /// A PRNG that uses SHA-256 instructions
-class sha256_ctr_128
+class sha256_ctr_64
 {
 private:
     arr_m128i<2> s{};
@@ -69,14 +69,14 @@ public:
     using result_type = uint64_t;
     using seed_bytes_type = std::array<uint8_t, sizeof(s)>;
 
-    sha256_ctr_128()
+    sha256_ctr_64()
     {
         static_assert(sizeof(s) <= 256,
                       "getentropy will fail if more than 256 bytes are requested");
         reseed();
     }
 
-    explicit sha256_ctr_128(const seed_bytes_type& bytes)
+    explicit sha256_ctr_64(const seed_bytes_type& bytes)
     {
         reseed();
         (void)std::memcpy(&s[0], bytes.data(), sizeof(s));
