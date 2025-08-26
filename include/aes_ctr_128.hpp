@@ -3,32 +3,21 @@
 
 #pragma once
 
+#include "hxor.h"
 #include "make_odd.h"
 #include "simd-array.hpp"
 #include "simd-transpose.hpp"
-#include "simd-union.hpp"
 
 #include <array>
-#include <concepts>
 #include <cstdint>
 #include <cstring>
 #include <err.h>
 #include <immintrin.h>
 #include <limits>
 #include <random>
-#include <type_traits>
 #include <unistd.h>
 
 #if defined(__AES__)
-
-// Must use -std=gnu++XX for these static_asserts to succeed.
-// https://stackoverflow.com/a/71710062/1892784
-
-static_assert(std::integral<__int128_t>);
-static_assert(std::signed_integral<__int128_t>);
-
-static_assert(std::integral<__uint128_t>);
-static_assert(std::unsigned_integral<__uint128_t>);
 
 /// A PRNG that uses AES instructions
 template <unsigned int Nk, unsigned int Nr>
@@ -44,7 +33,7 @@ private:
     __m128i inc{}; ///< The increment (must be odd)
 
 public:
-    using result_type = __uint128_t;
+    using result_type = uint64_t;
     using seed_bytes_type = std::array<uint8_t, sizeof(ctr)>;
 
     aes_ctr_128_prng()
@@ -92,7 +81,7 @@ public:
             }
         }
 
-        return simd128i{.xmm = dst}.u128[0];
+        return mm_hxor_epu64(dst);
     }
 };
 

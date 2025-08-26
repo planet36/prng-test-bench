@@ -3,18 +3,16 @@
 
 #pragma once
 
+#include "hxor.h"
 #include "make_odd.h"
 #include "simd-array.hpp"
-#include "simd-union.hpp"
 
 #include <array>
-#include <concepts>
 #include <cstdint>
 #include <cstring>
 #include <err.h>
 #include <immintrin.h>
 #include <limits>
-#include <type_traits>
 #include <unistd.h>
 
 #if defined(__SHA__)
@@ -59,15 +57,6 @@ sha256_rnds2x8(__m128i a, __m128i b)
     return b;
 }
 
-// Must use -std=gnu++XX for these static_asserts to succeed.
-// https://stackoverflow.com/a/71710062/1892784
-
-static_assert(std::integral<__int128_t>);
-static_assert(std::signed_integral<__int128_t>);
-
-static_assert(std::integral<__uint128_t>);
-static_assert(std::unsigned_integral<__uint128_t>);
-
 /// A PRNG that uses SHA-256 instructions
 class sha256_ctr_128
 {
@@ -77,7 +66,7 @@ private:
     // s[1] is the increment (must be odd)
 
 public:
-    using result_type = __uint128_t;
+    using result_type = uint64_t;
     using seed_bytes_type = std::array<uint8_t, sizeof(s)>;
 
     sha256_ctr_128()
@@ -117,7 +106,7 @@ public:
         __m128i dst = s[0];
         s[0] = _mm_add_epi64(s[0], s[1]);
         dst = sha256_rnds2x8(dst, dst);
-        return simd128i{.xmm = dst}.u128[0];
+        return mm_hxor_epu64(dst);
     }
 };
 
