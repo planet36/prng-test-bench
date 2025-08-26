@@ -21,7 +21,7 @@
 
 /// A PRNG that uses AES instructions
 template <unsigned int Nk, unsigned int Nr>
-class aes_ctr_128_prng
+class aes128_ctr_64_prng
 {
     static_assert(Nk >= 1);
     static_assert(Nr >= 1);
@@ -36,14 +36,14 @@ public:
     using result_type = uint64_t;
     using seed_bytes_type = std::array<uint8_t, sizeof(ctr)>;
 
-    aes_ctr_128_prng()
+    aes128_ctr_64_prng()
     {
         static_assert(sizeof(*this) <= 256,
                       "getentropy will fail if more than 256 bytes are requested");
         reseed();
     }
 
-    explicit aes_ctr_128_prng(const seed_bytes_type& bytes)
+    explicit aes128_ctr_64_prng(const seed_bytes_type& bytes)
     {
         reseed();
         (void)std::memcpy(&ctr, bytes.data(), sizeof(ctr));
@@ -85,9 +85,9 @@ public:
     }
 };
 
-using aes_ctr_128_k1_r2 = aes_ctr_128_prng<1, 2>;
+using aes128_ctr_64_k1_r2 = aes128_ctr_64_prng<1, 2>;
 
-static_assert(std::uniform_random_bit_generator<aes_ctr_128_k1_r2>);
+static_assert(std::uniform_random_bit_generator<aes128_ctr_64_k1_r2>);
 
 #else
 #warning "__AES__ not defined"
