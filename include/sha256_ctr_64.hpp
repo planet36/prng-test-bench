@@ -43,7 +43,7 @@ static const std::array<__m128i, 32> sha256_round_constants{
 #pragma GCC diagnostic pop
 
 /// 16 rounds of SHA-256
-inline __m128i
+static __m128i
 sha256_rnds2x8(__m128i a, __m128i b)
 {
     b = _mm_sha256rnds2_epu32(a, b, sha256_round_constants[0]);

@@ -18,7 +18,7 @@
 #if defined(__SHA__)
 
 /// 16 rounds of SHA-1
-inline __m128i
+static __m128i
 sha1_rnds4x4(__m128i a, __m128i b)
 {
     a = _mm_sha1rnds4_epu32(a, b, 0);
