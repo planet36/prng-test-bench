@@ -3,6 +3,8 @@
 
 #pragma once
 
+#if defined(__SHA__)
+
 #include "hxor.h"
 #include "make_odd.h"
 #include "simd-array.hpp"
@@ -14,8 +16,6 @@
 #include <immintrin.h>
 #include <limits>
 #include <unistd.h>
-
-#if defined(__SHA__)
 
 /// 16 rounds of SHA-1
 static __m128i
@@ -82,5 +82,7 @@ public:
 };
 
 #else
+
 #warning "__SHA__ not defined"
+
 #endif

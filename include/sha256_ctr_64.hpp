@@ -3,6 +3,8 @@
 
 #pragma once
 
+#if defined(__SHA__)
+
 #include "hxor.h"
 #include "make_odd.h"
 #include "simd-array.hpp"
@@ -14,8 +16,6 @@
 #include <immintrin.h>
 #include <limits>
 #include <unistd.h>
-
-#if defined(__SHA__)
 
 // Adapted from
 // https://git.savannah.gnu.org/cgit/gnulib.git/tree/lib/sha256.c#n267
@@ -108,5 +108,7 @@ public:
 };
 
 #else
+
 #warning "__SHA__ not defined"
+
 #endif
