@@ -70,12 +70,12 @@ public:
     {
         static_assert(sizeof(s) <= 256,
                       "getentropy will fail if more than 256 bytes are requested");
-        reseed();
+        init();
     }
 
     explicit sha256_ctr_64(const seed_bytes_type& bytes)
     {
-        reseed();
+        init();
         (void)std::memcpy(&s[0], bytes.data(), sizeof(s));
     }
 
@@ -84,7 +84,7 @@ public:
     * Every odd integer is coprime with every power of 2.
     * Therefore, \c inc shall be made odd.
     */
-    void reseed()
+    void init()
     {
         if (getentropy(&s[0], sizeof(s)) < 0)
             err(EXIT_FAILURE, "getentropy");
