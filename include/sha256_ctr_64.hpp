@@ -62,6 +62,15 @@ private:
     // s[0] is the state/counter
     // s[1] is the increment (must be odd)
 
+    /**
+    * Every odd integer is coprime with every power of 2.
+    * Therefore, \c inc shall be made odd.
+    */
+    void init()
+    {
+        s[1] = mm_make_odd_epu64(s[1]);
+    }
+
 public:
     using result_type = uint64_t;
     using seed_bytes_type = std::array<uint8_t, sizeof(s)>;
@@ -82,15 +91,6 @@ public:
     {
         (void)std::memcpy(&s[0], bytes.data(), sizeof(s));
         init();
-    }
-
-    /**
-    * Every odd integer is coprime with every power of 2.
-    * Therefore, \c inc shall be made odd.
-    */
-    void init()
-    {
-        s[1] = mm_make_odd_epu64(s[1]);
     }
 
     static constexpr result_type min() { return std::numeric_limits<result_type>::min(); }
