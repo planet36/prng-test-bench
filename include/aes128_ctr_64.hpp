@@ -28,17 +28,18 @@ class aes128_ctr_64_prng
     static_assert(Nk * Nr >= 2, "must do at least 2 rounds of AES");
 
 private:
-    __m128i ctr{}; ///< The state/counter
-    __m128i inc{}; ///< The increment (must be odd)
-    arr_m128i<Nk> keys{};
+    arr_m128i<2+Nk> s{};
+    // s[0] is the state/counter
+    // s[1] is the increment (must be odd)
+    // s[2...] are the keys
 
 public:
     using result_type = uint64_t;
-    using seed_bytes_type = std::array<uint8_t, sizeof(ctr)>;
+    using seed_bytes_type = std::array<uint8_t, sizeof(s)>;
 
     aes128_ctr_64_prng()
     {
-        static_assert(sizeof(*this) <= 256,
+        static_assert(sizeof(s) <= 256,
                       "getentropy will fail if more than 256 bytes are requested");
         reseed();
     }
@@ -46,7 +47,7 @@ public:
     explicit aes128_ctr_64_prng(const seed_bytes_type& bytes)
     {
         reseed();
-        (void)std::memcpy(&ctr, bytes.data(), sizeof(ctr));
+        (void)std::memcpy(&s[0], bytes.data(), sizeof(s));
     }
 
     /// Assign random bytes to the data members via \c getentropy.
@@ -56,9 +57,9 @@ public:
     */
     void reseed()
     {
-        if (getentropy(this, sizeof(*this)) < 0)
+        if (getentropy(&s[0], sizeof(s)) < 0)
             err(EXIT_FAILURE, "getentropy");
-        inc = mm_make_odd_epu64(inc);
+        s[1] = mm_make_odd_epu64(s[1]);
     }
 
     static constexpr result_type min() { return std::numeric_limits<result_type>::min(); }
@@ -70,14 +71,14 @@ public:
     /// Get the next PRNG output via AES encryption or decryption.
     result_type next()
     {
-        __m128i dst = ctr;
-        ctr = _mm_add_epi64(ctr, inc);
+        __m128i dst = s[0];
+        s[0] = _mm_add_epi64(s[0], s[1]);
 
         for (unsigned int r = 0; r < Nr; ++r)
         {
             for (unsigned int k = 0; k < Nk; ++k)
             {
-                dst = _mm_aesenc_si128(dst, keys[k]);
+                dst = _mm_aesenc_si128(dst, s[2+k]);
             }
         }
 
