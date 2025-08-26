@@ -44,6 +44,10 @@ public:
     {
         static_assert(sizeof(s) <= 256,
                       "getentropy will fail if more than 256 bytes are requested");
+
+        if (getentropy(&s[0], sizeof(s)) < 0)
+            err(EXIT_FAILURE, "getentropy");
+
         init();
     }
 
@@ -60,8 +64,6 @@ public:
     */
     void init()
     {
-        if (getentropy(&s[0], sizeof(s)) < 0)
-            err(EXIT_FAILURE, "getentropy");
         s[1] = mm_make_odd_epu64(s[1]);
     }
 
