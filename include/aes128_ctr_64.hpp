@@ -21,7 +21,7 @@
 
 /// A PRNG that uses AES instructions
 template <unsigned int Nk, unsigned int Nr>
-class aes128_ctr_64_prng
+struct aes128_ctr_64_prng
 {
     static_assert(Nk >= 1);
     static_assert(Nr >= 1);

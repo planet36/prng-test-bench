@@ -29,7 +29,7 @@ sha1_rnds4x4(__m128i a, __m128i b)
 }
 
 /// A PRNG that uses SHA-1 instructions
-class sha1_ctr_64
+struct sha1_ctr_64
 {
 private:
     arr_m128i<2> s{};
