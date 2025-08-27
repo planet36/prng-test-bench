@@ -17,9 +17,10 @@
 #include <immintrin.h>
 #include <limits>
 
-// Adapted from
-// https://git.savannah.gnu.org/cgit/gnulib.git/tree/lib/sha256.c#n267
-
+/**
+* Adapted from
+* https://git.savannah.gnu.org/cgit/gnulib.git/tree/lib/sha256.c#n267
+*/
 static const arr_m128i<32> sha256_round_constants {
     _mm_setr_epi32(0x428a2f98, 0x71374491, 0, 0), _mm_setr_epi32(0xb5c0fbcf, 0xe9b5dba5, 0, 0),
     _mm_setr_epi32(0x3956c25b, 0x59f111f1, 0, 0), _mm_setr_epi32(0x923f82a4, 0xab1c5ed5, 0, 0),
@@ -39,18 +40,14 @@ static const arr_m128i<32> sha256_round_constants {
     _mm_setr_epi32(0x90befffa, 0xa4506ceb, 0, 0), _mm_setr_epi32(0xbef9a3f7, 0xc67178f2, 0, 0),
 };
 
-/// 16 rounds of SHA-256
+/// 2*4 rounds of SHA-256
 static __m128i
-sha256_rnds2x8(__m128i a, __m128i b)
+sha256_rnds2x4(__m128i a, __m128i b)
 {
-    b = _mm_sha256rnds2_epu32(a, b, sha256_round_constants[0]);
+    a = _mm_sha256rnds2_epu32(a, b, sha256_round_constants[0]);
     b = _mm_sha256rnds2_epu32(a, b, sha256_round_constants[1]);
-    b = _mm_sha256rnds2_epu32(a, b, sha256_round_constants[2]);
+    a = _mm_sha256rnds2_epu32(a, b, sha256_round_constants[2]);
     b = _mm_sha256rnds2_epu32(a, b, sha256_round_constants[3]);
-    b = _mm_sha256rnds2_epu32(a, b, sha256_round_constants[4]);
-    b = _mm_sha256rnds2_epu32(a, b, sha256_round_constants[5]);
-    b = _mm_sha256rnds2_epu32(a, b, sha256_round_constants[6]);
-    b = _mm_sha256rnds2_epu32(a, b, sha256_round_constants[7]);
     return b;
 }
 
@@ -97,7 +94,7 @@ public:
     {
         __m128i dst = s[0];
         s[0] = _mm_add_epi64(s[0], s[1]);
-        dst = sha256_rnds2x8(dst, dst);
+        dst = sha256_rnds2x4(dst, dst);
         return mm_hxor_epu64(dst);
     }
 };
