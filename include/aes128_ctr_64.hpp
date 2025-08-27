@@ -6,6 +6,7 @@
 #if defined(__AES__)
 
 #include "hxor.h"
+#include "fill_rand.hpp"
 #include "make_odd.h"
 #include "simd-array.hpp"
 #include "simd-transpose.hpp"
@@ -17,7 +18,6 @@
 #include <immintrin.h>
 #include <limits>
 #include <random>
-#include <unistd.h>
 
 /// A PRNG that uses AES instructions
 struct aes128_ctr_64
@@ -44,12 +44,7 @@ public:
     /// Assign random bytes to the data members via \c getentropy.
     aes128_ctr_64()
     {
-        static_assert(sizeof(s) <= 256,
-                      "getentropy will fail if more than 256 bytes are requested");
-
-        if (getentropy(std::data(s), sizeof(s)) < 0)
-            err(EXIT_FAILURE, "getentropy");
-
+        fill_rand(s);
         init();
     }
 

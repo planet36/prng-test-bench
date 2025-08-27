@@ -6,6 +6,7 @@
 #if defined(__SHA__)
 
 #include "hxor.h"
+#include "fill_rand.hpp"
 #include "make_odd.h"
 #include "simd-array.hpp"
 
@@ -15,7 +16,6 @@
 #include <err.h>
 #include <immintrin.h>
 #include <limits>
-#include <unistd.h>
 
 /// 16 rounds of SHA-1
 static __m128i
@@ -52,12 +52,7 @@ public:
     /// Assign random bytes to the data members via \c getentropy.
     sha1_ctr_64()
     {
-        static_assert(sizeof(s) <= 256,
-                      "getentropy will fail if more than 256 bytes are requested");
-
-        if (getentropy(std::data(s), sizeof(s)) < 0)
-            err(EXIT_FAILURE, "getentropy");
-
+        fill_rand(s);
         init();
     }
 
