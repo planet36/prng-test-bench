@@ -88,9 +88,9 @@ public:
     }
 };
 
-using aes128_ctr_64_k1_r2 = aes128_ctr_64_prng<1, 2>;
+using aes128_ctr_64 = aes128_ctr_64_prng<1, 2>;
 
-static_assert(std::uniform_random_bit_generator<aes128_ctr_64_k1_r2>);
+static_assert(std::uniform_random_bit_generator<aes128_ctr_64>);
 
 #else
 
