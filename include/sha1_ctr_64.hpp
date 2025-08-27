@@ -17,15 +17,15 @@
 #include <immintrin.h>
 #include <limits>
 
-/// 16 rounds of SHA-1
+/// 4*4 rounds of SHA-1
 static __m128i
 sha1_rnds4x4(__m128i a, __m128i b)
 {
     a = _mm_sha1rnds4_epu32(a, b, 0);
-    a = _mm_sha1rnds4_epu32(a, b, 1);
+    b = _mm_sha1rnds4_epu32(a, b, 1);
     a = _mm_sha1rnds4_epu32(a, b, 2);
-    a = _mm_sha1rnds4_epu32(a, b, 3);
-    return a;
+    b = _mm_sha1rnds4_epu32(a, b, 3);
+    return b;
 }
 
 /// A PRNG that uses SHA-1 instructions
