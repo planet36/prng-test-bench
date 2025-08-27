@@ -26,6 +26,9 @@
 
 /// Abstract Uniform Random Bit Generator class
 /**
+* \tparam S the state type
+* \tparam R the result type
+*
 * Some random number engines have criteria for their initial state.
 * For example, the state must not be 0, or a particular element must be odd.
 * In the derived class, be sure to override the constructors to prepare the
