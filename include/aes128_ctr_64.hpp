@@ -52,7 +52,7 @@ public:
         static_assert(sizeof(s) <= 256,
                       "getentropy will fail if more than 256 bytes are requested");
 
-        if (getentropy(&s[0], sizeof(s)) < 0)
+        if (getentropy(std::data(s), sizeof(s)) < 0)
             err(EXIT_FAILURE, "getentropy");
 
         init();
@@ -60,7 +60,7 @@ public:
 
     explicit aes128_ctr_64_prng(const seed_bytes_type& bytes)
     {
-        (void)std::memcpy(&s[0], bytes.data(), sizeof(s));
+        (void)std::memcpy(std::data(s), bytes.data(), sizeof(s));
         init();
     }
 
