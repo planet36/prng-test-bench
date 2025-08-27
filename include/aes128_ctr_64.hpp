@@ -41,7 +41,6 @@ public:
     using result_type = uint64_t;
     using seed_bytes_type = std::array<uint8_t, sizeof(s)>;
 
-    /// Assign random bytes to the data members via \c getentropy.
     aes128_ctr_64()
     {
         fill_rand(s);
@@ -60,7 +59,6 @@ public:
 
     result_type operator()() { return next(); }
 
-    /// Get the next PRNG output via AES encryption or decryption.
     result_type next()
     {
         // must do at least 2 rounds of AES
