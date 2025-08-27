@@ -76,7 +76,7 @@
         }                                                                    \
         explicit constexpr CLASS_NAME(const seed_bytes_type& bytes) noexcept \
         {                                                                    \
-            (void)std::memcpy(&s, bytes.data(), sizeof(state_type));         \
+            (void)std::memcpy(&s, std::data(bytes), sizeof(state_type));     \
         }                                                                    \
         CLASS_NAME(const CLASS_NAME&) = default;                             \
         /* copy assignment operator */                                       \

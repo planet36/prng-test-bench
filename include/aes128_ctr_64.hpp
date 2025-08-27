@@ -60,7 +60,7 @@ public:
 
     explicit aes128_ctr_64_prng(const seed_bytes_type& bytes)
     {
-        (void)std::memcpy(std::data(s), bytes.data(), sizeof(s));
+        (void)std::memcpy(std::data(s), std::data(bytes), sizeof(s));
         init();
     }
 

@@ -63,7 +63,7 @@ public:
 
     explicit sha1_ctr_64(const seed_bytes_type& bytes)
     {
-        (void)std::memcpy(std::data(s), bytes.data(), sizeof(s));
+        (void)std::memcpy(std::data(s), std::data(bytes), sizeof(s));
         init();
     }
 
