@@ -27,7 +27,7 @@ struct aes128_ctr_64_prng
     static_assert(Nr >= 1);
     static_assert(Nk * Nr >= 2, "must do at least 2 rounds of AES");
 
-private:
+protected:
     arr_m128i<2+Nk> s{};
     // s[0] is the state/counter
     // s[1] is the increment (must be odd)

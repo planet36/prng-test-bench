@@ -57,7 +57,7 @@ sha256_rnds2x8(__m128i a, __m128i b)
 /// A PRNG that uses SHA-256 instructions
 struct sha256_ctr_64
 {
-private:
+protected:
     arr_m128i<2> s{};
     // s[0] is the state/counter
     // s[1] is the increment (must be odd)

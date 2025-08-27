@@ -35,7 +35,7 @@
         using state_type = STATE_TYPE;                                       \
         using result_type = RESULT_TYPE;                                     \
                                                                              \
-    private:                                                                 \
+    protected:                                                               \
         state_type s{};                                                      \
         void zeroize()                                                       \
         {                                                                    \

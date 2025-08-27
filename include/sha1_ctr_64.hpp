@@ -31,7 +31,7 @@ sha1_rnds4x4(__m128i a, __m128i b)
 /// A PRNG that uses SHA-1 instructions
 struct sha1_ctr_64
 {
-private:
+protected:
     arr_m128i<2> s{};
     // s[0] is the state/counter
     // s[1] is the increment (must be odd)
