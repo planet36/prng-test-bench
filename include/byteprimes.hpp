@@ -3,17 +3,17 @@
 
 /// numbers where each byte is prime
 /**
-\file
-\author Steven Ward
-\sa https://github.com/dragontamer/AESRand/blob/master/AESRand/AESRand/AESRand.cpp#L12
-These were inspired by the byte sequence used in AESRand.
-
-1 isn't prime, but every number must be odd.
-
-The last number is left padded with "00".
-
-Fish shell commands to generate the numbers:
-\code{.sh}
+* \file
+* \author Steven Ward
+* \sa https://github.com/dragontamer/AESRand/blob/master/AESRand/AESRand/AESRand.cpp#L12
+* These were inspired by the byte sequence used in AESRand.
+*
+* 1 isn't prime, but every number must be odd.
+*
+* The last number is left padded with "00".
+*
+* Fish shell commands to generate the numbers:
+* \code{.sh}
 begin
 echo "01"
 openssl prime $(seq 255) | grep -F 'is prime' | cut -d ' ' -f 1 |
@@ -23,9 +23,9 @@ tac | xargs -n 8 | tac |
 sed -e 's/^/0x/' -e 's/ //g' -e 's/$/,/' |
 tr '[:upper:]' '[:lower:]'
 \endcode
-
-Bash shell commands to generate the numbers:
-\code{.sh}
+*
+* Bash shell commands to generate the numbers:
+* \code{.sh}
 # (bash)
 {
 echo "01"
@@ -36,15 +36,15 @@ tac | xargs -n 8 | tac |
 sed -e 's/^/0x/' -e 's/ //g' -e 's/$/,/' |
 tr '[:upper:]' '[:lower:]'
 \endcode
-
-The values are are coprime with 2**64.
-https://www.wolframalpha.com/input?i=CoprimeQ%5B0x110d0b0705030201%2C+2%5E64%5D
-https://www.wolframalpha.com/input?i=CoprimeQ%5B0x2f2b29251f1d1713%2C+2%5E64%5D
-https://www.wolframalpha.com/input?i=CoprimeQ%5B0x534f4947433d3b35%2C+2%5E64%5D
-https://www.wolframalpha.com/input?i=CoprimeQ%5B0x7f716d6b67656159%2C+2%5E64%5D
-https://www.wolframalpha.com/input?i=CoprimeQ%5B0xa7a39d97958b8983%2C+2%5E64%5D
-https://www.wolframalpha.com/input?i=CoprimeQ%5B0xd3c7c5c1bfb5b3ad%2C+2%5E64%5D
-https://www.wolframalpha.com/input?i=CoprimeQ%5B0x00fbf1efe9e5e3df%2C+2%5E64%5D
+*
+* The values are are coprime with 2**64.
+* https://www.wolframalpha.com/input?i=CoprimeQ%5B0x110d0b0705030201%2C+2%5E64%5D
+* https://www.wolframalpha.com/input?i=CoprimeQ%5B0x2f2b29251f1d1713%2C+2%5E64%5D
+* https://www.wolframalpha.com/input?i=CoprimeQ%5B0x534f4947433d3b35%2C+2%5E64%5D
+* https://www.wolframalpha.com/input?i=CoprimeQ%5B0x7f716d6b67656159%2C+2%5E64%5D
+* https://www.wolframalpha.com/input?i=CoprimeQ%5B0xa7a39d97958b8983%2C+2%5E64%5D
+* https://www.wolframalpha.com/input?i=CoprimeQ%5B0xd3c7c5c1bfb5b3ad%2C+2%5E64%5D
+* https://www.wolframalpha.com/input?i=CoprimeQ%5B0x00fbf1efe9e5e3df%2C+2%5E64%5D
 */
 
 #pragma once

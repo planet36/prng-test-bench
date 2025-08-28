@@ -3,10 +3,10 @@
 
 /// SFC (Small Fast Chaotic) PRNG by Chris Doty-Humphrey
 /**
-\file
-\author Steven Ward
-\sa https://github.com/numpy/numpy/blob/main/numpy/random/src/sfc64/sfc64.h
-\sa https://sourceforge.net/projects/pracrand/files/
+* \file
+* \author Steven Ward
+* \sa https://github.com/numpy/numpy/blob/main/numpy/random/src/sfc64/sfc64.h
+* \sa https://sourceforge.net/projects/pracrand/files/
 */
 
 #pragma once

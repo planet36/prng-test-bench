@@ -3,9 +3,9 @@
 
 /// PRNGs from https://github.com/tommyettinger/sarong
 /**
-\file
-\author Steven Ward
-\sa https://github.com/tommyettinger/sarong/tree/master/src/main/java/sarong
+* \file
+* \author Steven Ward
+* \sa https://github.com/tommyettinger/sarong/tree/master/src/main/java/sarong
 */
 
 #pragma once

@@ -3,10 +3,10 @@
 
 /// squares32, squares64 PRNGs
 /**
-\file
-\author Steven Ward
-\sa https://arxiv.org/pdf/2004.06278.pdf
-\sa https://www.arxiv-vanity.com/papers/2004.06278/
+* \file
+* \author Steven Ward
+* \sa https://arxiv.org/pdf/2004.06278.pdf
+* \sa https://www.arxiv-vanity.com/papers/2004.06278/
 */
 
 #pragma once

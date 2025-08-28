@@ -3,11 +3,11 @@
 
 /// LXM PRNG
 /**
-\file
-\author Steven Ward
-\sa https://vigna.di.unimi.it/ftp/papers/LXM.pdf
-\sa https://github.com/s417-lama/lxm_random/blob/master/include/lxm_random/lxm_random.hpp
-\sa https://issues.apache.org/jira/browse/RNG-168
+* \file
+* \author Steven Ward
+* \sa https://vigna.di.unimi.it/ftp/papers/LXM.pdf
+* \sa https://github.com/s417-lama/lxm_random/blob/master/include/lxm_random/lxm_random.hpp
+* \sa https://issues.apache.org/jira/browse/RNG-168
 */
 
 #pragma once

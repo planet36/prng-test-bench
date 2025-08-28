@@ -3,8 +3,8 @@
 
 /// Alias templates for arrays of SIMD types
 /**
-\file
-\author Steven Ward
+* \file
+* \author Steven Ward
 */
 
 #pragma once

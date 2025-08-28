@@ -3,9 +3,9 @@
 
 /// Middle-Square Weyl Sequence PRNG
 /**
-\file
-\author Steven Ward
-\sa https://arxiv.org/pdf/1704.00358
+* \file
+* \author Steven Ward
+* \sa https://arxiv.org/pdf/1704.00358
 */
 
 #pragma once

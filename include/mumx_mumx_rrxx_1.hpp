@@ -3,9 +3,9 @@
 
 /// mumx_mumx_rrxx_1 PRNG
 /**
-\file
-\author Steven Ward
-\sa https://github.com/martinus/better-faster-stronger-mixer/blob/master/include/mixer/mumx_mumx_rrxx_1.h
+* \file
+* \author Steven Ward
+* \sa https://github.com/martinus/better-faster-stronger-mixer/blob/master/include/mixer/mumx_mumx_rrxx_1.h
 */
 
 #pragma once

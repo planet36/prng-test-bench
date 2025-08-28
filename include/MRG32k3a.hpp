@@ -3,9 +3,9 @@
 
 /// MRG32k3a PRNG
 /**
-\file
-\author Steven Ward
-\sa https://github.com/vigna/MRG32k3a/blob/master/MRG32k3a.c
+* \file
+* \author Steven Ward
+* \sa https://github.com/vigna/MRG32k3a/blob/master/MRG32k3a.c
 */
 
 #pragma once

@@ -3,9 +3,9 @@
 
 /// splitxix33 PRNG
 /**
-\file
-\author Steven Ward
-\sa https://github.com/skeeto/scratch/tree/master/splitxix33
+* \file
+* \author Steven Ward
+* \sa https://github.com/skeeto/scratch/tree/master/splitxix33
 */
 
 #pragma once

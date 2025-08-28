@@ -3,9 +3,9 @@
 
 /// rrmxmx PRNG
 /**
-\file
-\author Steven Ward
-\sa https://mostlymangling.blogspot.com/2019/01/better-stronger-mixer-and-test-procedure.html
+* \file
+* \author Steven Ward
+* \sa https://mostlymangling.blogspot.com/2019/01/better-stronger-mixer-and-test-procedure.html
 */
 
 #pragma once

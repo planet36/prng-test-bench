@@ -3,10 +3,10 @@
 
 /// nasam PRNG
 /**
-\file
-\author Steven Ward
-\sa http://mostlymangling.blogspot.com/2020/01/nasam-not-another-strange-acronym-mixer.html
-\sa https://github.com/martinus/better-faster-stronger-mixer/blob/master/include/mixer/nasam.h
+* \file
+* \author Steven Ward
+* \sa http://mostlymangling.blogspot.com/2020/01/nasam-not-another-strange-acronym-mixer.html
+* \sa https://github.com/martinus/better-faster-stronger-mixer/blob/master/include/mixer/nasam.h
 */
 
 #pragma once

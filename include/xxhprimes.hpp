@@ -3,9 +3,9 @@
 
 /// xxhash primes
 /**
-\file
-\author Steven Ward
-\sa https://github.com/Cyan4973/xxHash/blob/dev/xxhash.h
+* \file
+* \author Steven Ward
+* \sa https://github.com/Cyan4973/xxHash/blob/dev/xxhash.h
 */
 
 #pragma once

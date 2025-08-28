@@ -3,8 +3,8 @@
 
 /// Union that holds parts of a whole unsigned integer
 /**
-\file
-\author Steven Ward
+* \file
+* \author Steven Ward
 */
 
 #pragma once

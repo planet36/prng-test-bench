@@ -3,9 +3,9 @@
 
 /// seiran PRNG
 /**
-\file
-\author Steven Ward
-\sa https://github.com/andanteyk/prng-seiran/blob/master/seiran128.c
+* \file
+* \author Steven Ward
+* \sa https://github.com/andanteyk/prng-seiran/blob/master/seiran128.c
 */
 
 #pragma once

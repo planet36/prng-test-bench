@@ -3,8 +3,8 @@
 
 /// all header files of PRNGs to be tested, map of PRNG names to PRNG info
 /**
-\file
-\author Steven Ward
+* \file
+* \author Steven Ward
 */
 
 #pragma once

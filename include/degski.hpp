@@ -3,8 +3,8 @@
 
 /// degski32, degski64 PRNGs
 /**
-\file
-\author Steven Ward
+* \file
+* \author Steven Ward
 */
 
 #pragma once

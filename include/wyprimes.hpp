@@ -3,9 +3,9 @@
 
 /// wyhash & wyrand primes
 /**
-\file
-\author Steven Ward
-\sa https://github.com/wangyi-fudan/wyhash/blob/master/wyhash.h#L144
+* \file
+* \author Steven Ward
+* \sa https://github.com/wangyi-fudan/wyhash/blob/master/wyhash.h#L144
 */
 
 #pragma once

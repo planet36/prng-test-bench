@@ -3,9 +3,9 @@
 
 /// moremur PRNG
 /**
-\file
-\author Steven Ward
-\sa https://mostlymangling.blogspot.com/2019/12/stronger-better-morer-moremur-better.html
+* \file
+* \author Steven Ward
+* \sa https://mostlymangling.blogspot.com/2019/12/stronger-better-morer-moremur-better.html
 */
 
 #pragma once

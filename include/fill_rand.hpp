@@ -3,8 +3,8 @@
 
 /// Fill a buffer with random bytes
 /**
-\file
-\author Steven Ward
+* \file
+* \author Steven Ward
 */
 
 #pragma once

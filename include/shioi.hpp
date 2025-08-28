@@ -3,9 +3,9 @@
 
 /// shioi PRNG
 /**
-\file
-\author Steven Ward
-\sa https://github.com/andanteyk/prng-shioi/blob/master/shioi128.c
+* \file
+* \author Steven Ward
+* \sa https://github.com/andanteyk/prng-shioi/blob/master/shioi128.c
 */
 
 #pragma once

@@ -3,9 +3,9 @@
 
 /// rrma2xsm2xs PRNG
 /**
-\file
-\author Steven Ward
-\sa http://mostlymangling.blogspot.com/2020/01/nasam-not-another-strange-acronym-mixer.html
+* \file
+* \author Steven Ward
+* \sa http://mostlymangling.blogspot.com/2020/01/nasam-not-another-strange-acronym-mixer.html
 */
 
 #pragma once

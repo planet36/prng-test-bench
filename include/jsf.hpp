@@ -3,9 +3,9 @@
 
 /// JSF (Jenkins' Small Fast) PRNG by Bob Jenkins
 /**
-\file
-\author Steven Ward
-\sa https://burtleburtle.net/bob/rand/smallprng.html
+* \file
+* \author Steven Ward
+* \sa https://burtleburtle.net/bob/rand/smallprng.html
 */
 
 #pragma once

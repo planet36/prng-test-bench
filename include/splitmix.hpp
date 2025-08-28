@@ -3,10 +3,10 @@
 
 /// splitmix64 PRNG
 /**
-\file
-\author Steven Ward
-\sa https://hg.openjdk.java.net/jdk8/jdk8/jdk/file/tip/src/share/classes/java/util/SplittableRandom.java
-\sa https://gee.cs.oswego.edu/dl/papers/oopsla14.pdf
+* \file
+* \author Steven Ward
+* \sa https://hg.openjdk.java.net/jdk8/jdk8/jdk/file/tip/src/share/classes/java/util/SplittableRandom.java
+* \sa https://gee.cs.oswego.edu/dl/papers/oopsla14.pdf
 */
 
 #pragma once

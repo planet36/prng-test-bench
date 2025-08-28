@@ -3,9 +3,9 @@
 
 /// lcg32, lcg64 PRNGs
 /**
-\file
-\author Steven Ward
-\sa https://www.pcg-random.org/posts/does-it-beat-the-minimal-standard.html
+* \file
+* \author Steven Ward
+* \sa https://www.pcg-random.org/posts/does-it-beat-the-minimal-standard.html
 */
 
 #pragma once

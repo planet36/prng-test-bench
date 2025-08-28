@@ -3,9 +3,9 @@
 
 /// compile-time typing of integers based on a given byte size or bit size
 /**
-\file
-\author Steven Ward
-\sa https://peter.bloomfield.online/using-cpp-templates-for-size-based-type-selection/
+* \file
+* \author Steven Ward
+* \sa https://peter.bloomfield.online/using-cpp-templates-for-size-based-type-selection/
 */
 
 #pragma once

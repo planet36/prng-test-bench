@@ -3,10 +3,10 @@
 
 /// Carry-less MUltiply and Mix ("MUM") functions
 /**
-\file
-\author Steven Ward
-\sa https://en.wikipedia.org/wiki/CLMUL_instruction_set
-\sa https://www.felixcloutier.com/x86/pclmulqdq
+* \file
+* \author Steven Ward
+* \sa https://en.wikipedia.org/wiki/CLMUL_instruction_set
+* \sa https://www.felixcloutier.com/x86/pclmulqdq
 */
 
 #pragma once

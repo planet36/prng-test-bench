@@ -3,9 +3,9 @@
 
 /// Romu PRNG
 /**
-\file
-\author Steven Ward
-\sa https://www.romu-random.org/code.c
+* \file
+* \author Steven Ward
+* \sa https://www.romu-random.org/code.c
 */
 
 #pragma once

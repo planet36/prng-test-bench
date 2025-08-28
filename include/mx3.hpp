@@ -3,9 +3,9 @@
 
 /// mx3 PRNG
 /**
-\file
-\author Steven Ward
-\sa https://github.com/jonmaiga/mx3/blob/master/mx3.h
+* \file
+* \author Steven Ward
+* \sa https://github.com/jonmaiga/mx3/blob/master/mx3.h
 */
 
 #pragma once

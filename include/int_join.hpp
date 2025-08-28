@@ -3,8 +3,8 @@
 
 /// Join smaller unsigned ints into larger unsigned ints
 /**
-\file
-\author Steven Ward
+* \file
+* \author Steven Ward
 */
 
 #pragma once

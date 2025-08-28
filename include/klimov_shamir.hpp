@@ -3,8 +3,8 @@
 
 /// klimov_shamir_32 PRNG
 /**
-\file
-\author Steven Ward
+* \file
+* \author Steven Ward
 */
 
 #pragma once

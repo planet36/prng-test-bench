@@ -3,8 +3,8 @@
 
 /// Unions with data members that are standard integers and SIMD types
 /**
-\file
-\author Steven Ward
+* \file
+* \author Steven Ward
 */
 
 #pragma once

@@ -3,8 +3,8 @@
 
 /// seeds and seed sequences used by the test suite
 /**
-\file
-\author Steven Ward
+* \file
+* \author Steven Ward
 */
 
 #pragma once
@@ -14,8 +14,8 @@
 #include <random>
 
 /**
-Python snippet to generate the array
-\code{.py}
+* Python snippet to generate the array
+* \code{.py}
 from itertools import batched
 
 for n in (4, 8, 12, 16, 24, 32, 48, 64, 128):

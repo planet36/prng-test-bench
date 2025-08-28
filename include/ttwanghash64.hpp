@@ -3,9 +3,9 @@
 
 /// ttwanghash64 PRNG
 /**
-\file
-\author Steven Ward
-\sa https://web.archive.org/web/20121102023700/http://www.concentric.net/~ttwang/tech/inthash.htm
+* \file
+* \author Steven Ward
+* \sa https://web.archive.org/web/20121102023700/http://www.concentric.net/~ttwang/tech/inthash.htm
 */
 
 #pragma once

@@ -3,9 +3,9 @@
 
 /// murmurhash3_32, murmurhash3 PRNGs
 /**
-\file
-\author Steven Ward
-\sa https://github.com/aappleby/smhasher/blob/master/src/MurmurHash3.cpp
+* \file
+* \author Steven Ward
+* \sa https://github.com/aappleby/smhasher/blob/master/src/MurmurHash3.cpp
 */
 
 #pragma once

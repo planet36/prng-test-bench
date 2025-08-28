@@ -3,9 +3,9 @@
 
 /// mcg128 PRNG
 /**
-\file
-\author Steven Ward
-\sa https://www.pcg-random.org/posts/128-bit-mcg-passes-practrand.html
+* \file
+* \author Steven Ward
+* \sa https://www.pcg-random.org/posts/128-bit-mcg-passes-practrand.html
 */
 
 #pragma once

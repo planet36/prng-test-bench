@@ -3,9 +3,9 @@
 
 /// lea64 PRNG
 /**
-\file
-\author Steven Ward
-\sa https://mostlymangling.blogspot.com/2021/11/applying-rrc-64-test-to-degski64-and.html
+* \file
+* \author Steven Ward
+* \sa https://mostlymangling.blogspot.com/2021/11/applying-rrc-64-test-to-degski64-and.html
 */
 
 #pragma once

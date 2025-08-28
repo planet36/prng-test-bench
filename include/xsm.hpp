@@ -3,9 +3,9 @@
 
 /// xsm32, xsm64 PRNGs
 /**
-\file
-\author Steven Ward
-\sa https://github.com/planet36/PractRand/blob/main/src/RNGs/xsm.cpp
+* \file
+* \author Steven Ward
+* \sa https://github.com/planet36/PractRand/blob/main/src/RNGs/xsm.cpp
 */
 
 #pragma once

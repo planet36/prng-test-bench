@@ -5,10 +5,10 @@
 
 /// xoshiro PRNG
 /**
-\file
-\author Steven Ward
-\sa https://prng.di.unimi.it/
-\sa https://vigna.di.unimi.it/ftp/papers/ScrambledLinear.pdf
+* \file
+* \author Steven Ward
+* \sa https://prng.di.unimi.it/
+* \sa https://vigna.di.unimi.it/ftp/papers/ScrambledLinear.pdf
 */
 
 #pragma once

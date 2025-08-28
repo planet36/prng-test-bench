@@ -3,9 +3,9 @@
 
 /// Prime numbers from MUM hash
 /**
-\file
-\author Steven Ward
-\sa https://github.com/vnmakarov/mum-hash/blob/master/mum.h#L77
+* \file
+* \author Steven Ward
+* \sa https://github.com/vnmakarov/mum-hash/blob/master/mum.h#L77
 */
 
 #pragma once

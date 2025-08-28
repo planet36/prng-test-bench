@@ -3,9 +3,9 @@
 
 /// PCG PRNG
 /**
-\file
-\author Steven Ward
-\sa https://www.pcg-random.org/
+* \file
+* \author Steven Ward
+* \sa https://www.pcg-random.org/
 */
 
 #pragma once

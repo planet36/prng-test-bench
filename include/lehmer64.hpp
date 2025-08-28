@@ -3,11 +3,11 @@
 
 /// Lehmer PRNG
 /**
-\file
-\author Steven Ward
-\sa https://lemire.me/blog/2019/03/19/the-fastest-conventional-random-number-generator-that-can-pass-big-crush/
-\sa https://www.pcg-random.org/posts/128-bit-mcg-passes-practrand.html
-\sa https://github.com/lemire/testingRNG/blob/master/source/lehmer64.h
+* \file
+* \author Steven Ward
+* \sa https://lemire.me/blog/2019/03/19/the-fastest-conventional-random-number-generator-that-can-pass-big-crush/
+* \sa https://www.pcg-random.org/posts/128-bit-mcg-passes-practrand.html
+* \sa https://github.com/lemire/testingRNG/blob/master/source/lehmer64.h
 */
 
 #pragma once
