@@ -1,6 +1,12 @@
 // SPDX-FileCopyrightText: Steven Ward
 // SPDX-License-Identifier: OSL-3.0
 
+/// A PRNG that uses SHA-1 instructions
+/**
+* \file
+* \author Steven Ward
+*/
+
 #pragma once
 
 #if defined(__SHA__)
@@ -28,7 +34,6 @@ sha1_rnds4x4(__m128i a, __m128i b)
     return b;
 }
 
-/// A PRNG that uses SHA-1 instructions
 struct sha1_ctr_64
 {
 protected:

@@ -1,6 +1,12 @@
 // SPDX-FileCopyrightText: Steven Ward
 // SPDX-License-Identifier: OSL-3.0
 
+/// A PRNG that uses AES instructions
+/**
+* \file
+* \author Steven Ward
+*/
+
 #pragma once
 
 #if defined(__AES__)
@@ -19,7 +25,6 @@
 #include <limits>
 #include <random>
 
-/// A PRNG that uses AES instructions
 struct aes128_ctr_64
 {
 protected:
