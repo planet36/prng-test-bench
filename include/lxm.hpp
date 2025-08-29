@@ -17,6 +17,7 @@
 
 #include <bit>
 #include <cstdint>
+#include <random>
 
 namespace
 {
@@ -131,3 +132,5 @@ public:
         return z;
     }
 };
+
+static_assert(std::uniform_random_bit_generator<lxm>);
