@@ -11,17 +11,15 @@
 
 #if defined(__SHA__)
 
+#include "abstract_urbg_class.hpp"
 #include "hxor.h"
-#include "fill_rand.hpp"
 #include "make_odd.h"
 #include "simd-array.hpp"
 
 #include <array>
 #include <cstdint>
-#include <cstring>
-#include <err.h>
 #include <immintrin.h>
-#include <limits>
+#include <random>
 
 /**
 * Adapted from
@@ -57,13 +55,13 @@ sha256_rnds2x4(__m128i a, __m128i b)
     return b;
 }
 
-struct sha256_ctr_64
+struct sha256_ctr_64 final : public AbstractURBG<arr_m128i<2>, uint64_t>
 {
 protected:
-    arr_m128i<2> s{};
     // s[0] is the state/counter
     // s[1] is the increment (must be odd)
 
+    /// prepare the initial state
     /**
     * Every odd integer is coprime with every power of 2.
     * Therefore, \c inc shall be made odd.
@@ -74,28 +72,23 @@ protected:
     }
 
 public:
-    using result_type = uint64_t;
-    using seed_bytes_type = std::array<uint8_t, sizeof(s)>;
 
     sha256_ctr_64()
     {
-        fill_rand(s);
         init();
     }
 
-    explicit sha256_ctr_64(const seed_bytes_type& bytes)
+    explicit sha256_ctr_64(const state_type& new_s) : AbstractURBG(new_s)
     {
-        (void)std::memcpy(std::data(s), std::data(bytes), sizeof(s));
         init();
     }
 
-    static constexpr result_type min() { return std::numeric_limits<result_type>::min(); }
+    explicit sha256_ctr_64(const seed_bytes_type& bytes) : AbstractURBG(bytes)
+    {
+        init();
+    }
 
-    static constexpr result_type max() { return std::numeric_limits<result_type>::max(); }
-
-    result_type operator()() { return next(); }
-
-    result_type next()
+    result_type next() override
     {
         __m128i dst = s[0];
         s[0] = _mm_add_epi64(s[0], s[1]);
@@ -103,6 +96,8 @@ public:
         return mm_hxor_epu64(dst);
     }
 };
+
+static_assert(std::uniform_random_bit_generator<sha256_ctr_64>);
 
 #else
 
