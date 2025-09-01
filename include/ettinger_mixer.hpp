@@ -10,10 +10,15 @@
 #pragma once
 
 #include "def_urbg_class.hpp"
-#include "scaled-const.hpp"
 
 #include <bit>
 #include <cstdint>
+
+/// GoldenRatio scaled to uint64_t
+/**
+* https://www.wolframalpha.com/input?i=IntegerString%5BFloor%5B%282**64%29*Frac%5BGoldenRatio%5D%5D%2C16%5D
+*/
+#define GOLDEN_RATIO_64 UINT64_C(0x9e3779b97f4a7c15) // not prime (popcount = 38)
 
 /*
 adapted from:
@@ -35,7 +40,7 @@ DEF_URBG_CLASS(ettinger_mixer, uint64_t, uint64_t)
 
     x ^= X1;
     x *= M1;
-    x ^= std::rotr(x, R1) ^ std::rotl(x, R2) ^ GoldenRatio_64;
+    x ^= std::rotr(x, R1) ^ std::rotl(x, R2) ^ GOLDEN_RATIO_64;
     x *= M2;
     x ^= x >> S1;
     return x;

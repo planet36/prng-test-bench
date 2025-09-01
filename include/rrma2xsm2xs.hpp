@@ -11,10 +11,15 @@
 #pragma once
 
 #include "def_urbg_class.hpp"
-#include "scaled-const.hpp"
 
 #include <bit>
 #include <cstdint>
+
+/// GoldenRatio scaled to uint64_t
+/**
+* https://www.wolframalpha.com/input?i=IntegerString%5BFloor%5B%282**64%29*Frac%5BGoldenRatio%5D%5D%2C16%5D
+*/
+#define GOLDEN_RATIO_64 UINT64_C(0x9e3779b97f4a7c15) // not prime (popcount = 38)
 
 DEF_URBG_CLASS(rrma2xsm2xs, uint64_t, uint64_t)
 {
@@ -23,7 +28,7 @@ DEF_URBG_CLASS(rrma2xsm2xs, uint64_t, uint64_t)
     static_assert(M1 & 1, "must be odd");
     static_assert(M2 & 1, "must be odd");
 
-    static constexpr auto C = GoldenRatio_64; // (SDW)
+    static constexpr auto C = GOLDEN_RATIO_64; // (SDW)
 
     static constexpr unsigned int R1 = 25;
     static constexpr unsigned int R2 = 47;
