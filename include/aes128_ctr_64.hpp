@@ -51,6 +51,16 @@ protected:
 
             s[1] = mm_make_odd_epu64(s[1]);
         }
+
+        // the key must have more than 1 unique byte
+        if (mm_all_equal_epi8(s[2]))
+        {
+            // most significant elem first
+            const auto mask_key = _mm_set_epi64x(FLOOR_SCALED_FRAC_SQRT_7,
+                                                 FLOOR_SCALED_FRAC_SQRT_5);
+
+            s[2] = _mm_xor_si128(s[2], mask_key);
+        }
     }
 
 public:
