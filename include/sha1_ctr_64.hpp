@@ -83,7 +83,7 @@ public:
     {
         __m128i dst = s[0];
         s[0] = _mm_add_epi64(s[0], s[1]);
-        dst = sha1_rnds4x4(dst, dst);
+        dst = sha1_rnds4x4(dst, s[0]);
         return mm_hxor_epu64(dst);
     }
 };
