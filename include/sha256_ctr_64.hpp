@@ -18,7 +18,6 @@
 #include "scaled-const.h"
 #include "simd-array.hpp"
 
-#include <array>
 #include <cstdint>
 #include <immintrin.h>
 #include <random>

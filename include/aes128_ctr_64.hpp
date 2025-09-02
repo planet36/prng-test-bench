@@ -19,7 +19,6 @@
 #include "simd-array.hpp"
 #include "simd-transpose.hpp"
 
-#include <array>
 #include <cstdint>
 #include <immintrin.h>
 #include <random>
