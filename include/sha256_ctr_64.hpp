@@ -25,6 +25,9 @@
 /**
 * Adapted from
 * https://git.savannah.gnu.org/cgit/gnulib.git/tree/lib/sha256.c#n267
+*
+* \sa https://www.felixcloutier.com/x86/sha256rnds2
+* > Note that only the two lower dwords of XMM0 are used by the instruction.
 */
 static const arr_m128i<32> sha256_round_constants {
     _mm_setr_epi32(0x428a2f98, 0x71374491, 0, 0), _mm_setr_epi32(0xb5c0fbcf, 0xe9b5dba5, 0, 0),
@@ -46,13 +49,17 @@ static const arr_m128i<32> sha256_round_constants {
 };
 
 /// 2*4 rounds of SHA-256
+/**
+* \sa https://www.felixcloutier.com/x86/sha256rnds2
+* \sa https://github.com/noloader/SHA-Intrinsics/blob/master/sha256-x86.c
+*/
 static __m128i
 sha256_rnds2x4(__m128i a, __m128i b)
 {
     a = _mm_sha256rnds2_epu32(a, b, sha256_round_constants[0]);
-    b = _mm_sha256rnds2_epu32(a, b, sha256_round_constants[1]);
+    b = _mm_sha256rnds2_epu32(b, a, sha256_round_constants[1]);
     a = _mm_sha256rnds2_epu32(a, b, sha256_round_constants[2]);
-    b = _mm_sha256rnds2_epu32(a, b, sha256_round_constants[3]);
+    b = _mm_sha256rnds2_epu32(b, a, sha256_round_constants[3]);
     return b;
 }
 

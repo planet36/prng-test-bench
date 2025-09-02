@@ -23,13 +23,17 @@
 #include <random>
 
 /// 4*4 rounds of SHA-1
+/**
+* \sa https://www.felixcloutier.com/x86/sha1rnds4
+* \sa https://github.com/noloader/SHA-Intrinsics/blob/master/sha1-x86.c
+*/
 static __m128i
 sha1_rnds4x4(__m128i a, __m128i b)
 {
     a = _mm_sha1rnds4_epu32(a, b, 0);
-    b = _mm_sha1rnds4_epu32(a, b, 1);
+    b = _mm_sha1rnds4_epu32(b, a, 1);
     a = _mm_sha1rnds4_epu32(a, b, 2);
-    b = _mm_sha1rnds4_epu32(a, b, 3);
+    b = _mm_sha1rnds4_epu32(b, a, 3);
     return b;
 }
 
