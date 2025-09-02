@@ -14,6 +14,7 @@
 #include "abstract_urbg_class.hpp"
 #include "hxor.h"
 #include "make_odd.h"
+#include "mm_equal.h"
 #include "scaled-const.h"
 #include "simd-array.hpp"
 
@@ -48,22 +49,17 @@ protected:
     {
         s[1] = mm_make_odd_epu64(s[1]);
 
-        uint64_t inc_0 = _mm_extract_epi64(s[1], 0);
-        uint64_t inc_1 = _mm_extract_epi64(s[1], 1);
-
         // both increment values must be unique (and odd)
-        if (inc_0 == inc_1)
+        if (mm_all_equal_epi64(s[1]))
         {
-            // make unique
-            inc_0 ^= FLOOR_SCALED_FRAC_SQRT_2;
-            inc_1 ^= FLOOR_SCALED_FRAC_SQRT_3;
-
-            // make odd
-            inc_0 |= 1;
-            inc_1 |= 1;
-
             // most significant elem first
-            s[1] = _mm_set_epi64x(inc_1, inc_0);
+            const auto mask_inc = _mm_set_epi64x(FLOOR_SCALED_FRAC_SQRT_3,
+                                                 FLOOR_SCALED_FRAC_SQRT_2);
+
+            // make unique
+            s[1] = _mm_xor_si128(s[1], mask_inc);
+
+            s[1] = mm_make_odd_epu64(s[1]);
         }
     }
 
