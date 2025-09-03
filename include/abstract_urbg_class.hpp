@@ -23,6 +23,7 @@
 #include <cstdint>
 #include <cstring>
 #include <limits>
+#include <memory>
 
 /// Abstract Uniform Random Bit Generator class
 /**
@@ -65,7 +66,7 @@ public:
 
     explicit AbstractURBG(const seed_bytes_type& bytes)
     {
-        (void)std::memcpy(std::data(s), std::data(bytes), sizeof(state_type));
+        (void)std::memcpy(std::addressof(s), std::data(bytes), sizeof(state_type));
     }
 
     AbstractURBG(const AbstractURBG&) = default;
@@ -80,11 +81,11 @@ public:
         // https://www.gnu.org/software//gnulib/manual/html_node/memset_005fexplicit.html
         // https://sourceware.org/glibc/manual/latest/html_node/Erasing-Sensitive-Data.html
 #if defined(memset_explicit)
-        (void)memset_explicit(std::data(s), 0, sizeof(state_type));
+        (void)memset_explicit(std::addressof(s), 0, sizeof(state_type));
 #elif defined(explicit_bzero)
-        explicit_bzero(std::data(s), sizeof(state_type));
+        explicit_bzero(std::addressof(s), sizeof(state_type));
 #else
-        (void)std::memset(std::data(s), 0, sizeof(state_type));
+        (void)std::memset(std::addressof(s), 0, sizeof(state_type));
 #endif
     }
 
