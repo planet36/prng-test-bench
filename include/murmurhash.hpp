@@ -10,13 +10,20 @@
 
 #pragma once
 
-#include "def_urbg_class.hpp"
+#include "abstract_urbg_class.hpp"
 #include "xxhprimes.hpp"
 
 #include <cstdint>
 
 // https://github.com/aappleby/smhasher/blob/master/src/MurmurHash3.cpp#L68
-DEF_URBG_CLASS(murmurhash3_32, uint32_t, uint32_t)
+DEF_URBG_SUBCLASS(murmurhash3_32, uint32_t, uint32_t)
+
+/// prepare the initial state
+void murmurhash3_32::init()
+{
+}
+
+murmurhash3_32::result_type murmurhash3_32::next()
 {
     static constexpr uint32_t inc = xxh_prime32[0]; // inc=1 yields failures
     static_assert(inc & 1, "must be odd");
@@ -39,7 +46,14 @@ DEF_URBG_CLASS(murmurhash3_32, uint32_t, uint32_t)
 }
 
 // https://github.com/aappleby/smhasher/blob/master/src/MurmurHash3.cpp#L81
-DEF_URBG_CLASS(murmurhash3, uint64_t, uint64_t)
+DEF_URBG_SUBCLASS(murmurhash3, uint64_t, uint64_t)
+
+/// prepare the initial state
+void murmurhash3::init()
+{
+}
+
+murmurhash3::result_type murmurhash3::next()
 {
     static constexpr uint64_t inc = xxh_prime64[0]; // inc=1 yields failures
     static_assert(inc & 1, "must be odd");

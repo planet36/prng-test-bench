@@ -10,13 +10,20 @@
 
 #pragma once
 
-#include "def_urbg_class.hpp"
+#include "abstract_urbg_class.hpp"
 
 #include <bit>
 #include <cstdint>
 
 // Old mixer, my rrmxmx
-DEF_URBG_CLASS(rrmxmx, uint64_t, uint64_t)
+DEF_URBG_SUBCLASS(rrmxmx, uint64_t, uint64_t)
+
+/// prepare the initial state
+void rrmxmx::init()
+{
+}
+
+rrmxmx::result_type rrmxmx::next()
 {
     static constexpr uint64_t M1 = 0x9fb21c651e98df25; // prime (popcount = 34)
     static constexpr uint64_t M2 = 0x9fb21c651e98df25; // prime (popcount = 34)

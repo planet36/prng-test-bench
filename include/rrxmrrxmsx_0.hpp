@@ -10,7 +10,7 @@
 
 #pragma once
 
-#include "def_urbg_class.hpp"
+#include "abstract_urbg_class.hpp"
 
 #include <bit>
 #include <cstdint>
@@ -18,7 +18,14 @@
 // New mixer, "rrxmrrxmsx_0", failing one subtest of RR-64-40-TF2-0.94.
 // With a unit counter starting at 0, it has passed 128 TB of
 // PractRand 0.94 -tf 2 without anomalies found past 2 TB.
-DEF_URBG_CLASS(rrxmrrxmsx_0, uint64_t, uint64_t)
+DEF_URBG_SUBCLASS(rrxmrrxmsx_0, uint64_t, uint64_t)
+
+/// prepare the initial state
+void rrxmrrxmsx_0::init()
+{
+}
+
+rrxmrrxmsx_0::result_type rrxmrrxmsx_0::next()
 {
     static constexpr uint64_t M1 = 0xa24baed4963ee407; // not prime (popcount = 32)
     static constexpr uint64_t M2 = 0x9fb21c651e98df25; // prime (popcount = 34)

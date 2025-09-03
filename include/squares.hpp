@@ -11,13 +11,20 @@
 
 #pragma once
 
-#include "def_urbg_class.hpp"
+#include "abstract_urbg_class.hpp"
 #include "xxhprimes.hpp"
 
 #include <bit>
 #include <cstdint>
 
-DEF_URBG_CLASS(squares32, uint64_t, uint32_t)
+DEF_URBG_SUBCLASS(squares32, uint64_t, uint32_t)
+
+/// prepare the initial state
+void squares32::init()
+{
+}
+
+squares32::result_type squares32::next()
 {
     static constexpr uint64_t key = xxh_prime64[0];
     static_assert(key & 1, "must be odd");
@@ -44,7 +51,14 @@ DEF_URBG_CLASS(squares32, uint64_t, uint32_t)
     return (x * x + z) >> 32;
 }
 
-DEF_URBG_CLASS(squares64, uint64_t, uint64_t)
+DEF_URBG_SUBCLASS(squares64, uint64_t, uint64_t)
+
+/// prepare the initial state
+void squares64::init()
+{
+}
+
+squares64::result_type squares64::next()
 {
     static constexpr uint64_t key = xxh_prime64[0];
     static_assert(key & 1, "must be odd");

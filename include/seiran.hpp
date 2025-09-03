@@ -10,14 +10,21 @@
 
 #pragma once
 
-#include "def_urbg_class.hpp"
+#include "abstract_urbg_class.hpp"
 #include "xxhprimes.hpp"
 
 #include <array>
 #include <bit>
 #include <cstdint>
 
-DEF_URBG_CLASS(seiran, SINGLE_ARG(std::array<uint64_t, 2>), uint64_t)
+DEF_URBG_SUBCLASS(seiran, SINGLE_ARG(std::array<uint64_t, 2>), uint64_t)
+
+/// prepare the initial state
+void seiran::init()
+{
+}
+
+seiran::result_type seiran::next()
 {
     static constexpr unsigned int M1 = 9;
     static_assert(M1 & 1, "must be odd");

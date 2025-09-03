@@ -10,13 +10,20 @@
 
 #pragma once
 
-#include "def_urbg_class.hpp"
+#include "abstract_urbg_class.hpp"
 
 #include <array>
 #include <bit>
 #include <cstdint>
 
-DEF_URBG_CLASS(romu_quad, SINGLE_ARG(std::array<uint64_t, 4>), uint64_t)
+DEF_URBG_SUBCLASS(romu_quad, SINGLE_ARG(std::array<uint64_t, 4>), uint64_t)
+
+/// prepare the initial state
+void romu_quad::init()
+{
+}
+
+romu_quad::result_type romu_quad::next()
 {
     static constexpr uint64_t M1 = 0xd3833e804f4c574b; // not prime (popcount = 31)
     static_assert(M1 & 1, "must be odd");
@@ -32,7 +39,14 @@ DEF_URBG_CLASS(romu_quad, SINGLE_ARG(std::array<uint64_t, 4>), uint64_t)
     return old_s[1];
 }
 
-DEF_URBG_CLASS(romu_trio, SINGLE_ARG(std::array<uint64_t, 3>), uint64_t)
+DEF_URBG_SUBCLASS(romu_trio, SINGLE_ARG(std::array<uint64_t, 3>), uint64_t)
+
+/// prepare the initial state
+void romu_trio::init()
+{
+}
+
+romu_trio::result_type romu_trio::next()
 {
     static constexpr uint64_t M1 = 0xd3833e804f4c574b; // not prime (popcount = 31)
     static_assert(M1 & 1, "must be odd");
@@ -47,7 +61,14 @@ DEF_URBG_CLASS(romu_trio, SINGLE_ARG(std::array<uint64_t, 3>), uint64_t)
     return old_s[0];
 }
 
-DEF_URBG_CLASS(romu_duo, SINGLE_ARG(std::array<uint64_t, 2>), uint64_t)
+DEF_URBG_SUBCLASS(romu_duo, SINGLE_ARG(std::array<uint64_t, 2>), uint64_t)
+
+/// prepare the initial state
+void romu_duo::init()
+{
+}
+
+romu_duo::result_type romu_duo::next()
 {
     static constexpr uint64_t M1 = 0xd3833e804f4c574b; // not prime (popcount = 31)
     static_assert(M1 & 1, "must be odd");
@@ -61,7 +82,14 @@ DEF_URBG_CLASS(romu_duo, SINGLE_ARG(std::array<uint64_t, 2>), uint64_t)
     return old_s[0];
 }
 
-DEF_URBG_CLASS(romu_duo_jr, SINGLE_ARG(std::array<uint64_t, 2>), uint64_t)
+DEF_URBG_SUBCLASS(romu_duo_jr, SINGLE_ARG(std::array<uint64_t, 2>), uint64_t)
+
+/// prepare the initial state
+void romu_duo_jr::init()
+{
+}
+
+romu_duo_jr::result_type romu_duo_jr::next()
 {
     static constexpr uint64_t M1 = 0xd3833e804f4c574b; // not prime (popcount = 31)
     static_assert(M1 & 1, "must be odd");
@@ -74,7 +102,14 @@ DEF_URBG_CLASS(romu_duo_jr, SINGLE_ARG(std::array<uint64_t, 2>), uint64_t)
     return old_s[0];
 }
 
-DEF_URBG_CLASS(romu_quad32, SINGLE_ARG(std::array<uint32_t, 4>), uint32_t)
+DEF_URBG_SUBCLASS(romu_quad32, SINGLE_ARG(std::array<uint32_t, 4>), uint32_t)
+
+/// prepare the initial state
+void romu_quad32::init()
+{
+}
+
+romu_quad32::result_type romu_quad32::next()
 {
     static constexpr uint32_t M1 = 0xc61d672b; // not prime (popcount = 17)
     static_assert(M1 & 1, "must be odd");
@@ -90,7 +125,14 @@ DEF_URBG_CLASS(romu_quad32, SINGLE_ARG(std::array<uint32_t, 4>), uint32_t)
     return old_s[1];
 }
 
-DEF_URBG_CLASS(romu_trio32, SINGLE_ARG(std::array<uint32_t, 3>), uint32_t)
+DEF_URBG_SUBCLASS(romu_trio32, SINGLE_ARG(std::array<uint32_t, 3>), uint32_t)
+
+/// prepare the initial state
+void romu_trio32::init()
+{
+}
+
+romu_trio32::result_type romu_trio32::next()
 {
     static constexpr uint32_t M1 = 0xc61d672b; // not prime (popcount = 17)
     static_assert(M1 & 1, "must be odd");

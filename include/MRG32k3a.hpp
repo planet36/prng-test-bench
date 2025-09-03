@@ -10,12 +10,19 @@
 
 #pragma once
 
-#include "def_urbg_class.hpp"
+#include "abstract_urbg_class.hpp"
 #include "xxhprimes.hpp"
 
 #include <cstdint>
 
-DEF_URBG_CLASS(MRG32k3a, uint64_t, uint64_t)
+DEF_URBG_SUBCLASS(MRG32k3a, uint64_t, uint64_t)
+
+/// prepare the initial state
+void MRG32k3a::init()
+{
+}
+
+MRG32k3a::result_type MRG32k3a::next()
 {
     static constexpr uint64_t inc = xxh_prime64[0]; // inc=1 yields failures
     static_assert(inc & 1, "must be odd");

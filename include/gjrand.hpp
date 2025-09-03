@@ -9,7 +9,7 @@
 
 #pragma once
 
-#include "def_urbg_class.hpp"
+#include "abstract_urbg_class.hpp"
 
 #include <array>
 #include <bit>
@@ -19,7 +19,14 @@
 https://gist.github.com/imneme/7a783e20f71259cc13e219829bcea4ac
 https://sourceforge.net/projects/gjrand/files/
 */
-DEF_URBG_CLASS(gjrand, SINGLE_ARG(std::array<uint64_t, 4>), uint64_t)
+DEF_URBG_SUBCLASS(gjrand, SINGLE_ARG(std::array<uint64_t, 4>), uint64_t)
+
+/// prepare the initial state
+void gjrand::init()
+{
+}
+
+gjrand::result_type gjrand::next()
 {
     static constexpr uint64_t A1 = 0x55aa96a5; // not prime (popcount = 16)
     static_assert(A1 & 1, "must be odd");

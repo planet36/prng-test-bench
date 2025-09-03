@@ -9,7 +9,7 @@
 
 #pragma once
 
-#include "def_urbg_class.hpp"
+#include "abstract_urbg_class.hpp"
 
 #include <bit>
 #include <cstdint>
@@ -24,7 +24,14 @@
 adapted from:
 https://mostlymangling.blogspot.com/2019/01/better-stronger-mixer-and-test-procedure.html?showComment=1548399531434#c7135800794322093693
 */
-DEF_URBG_CLASS(ettinger_mixer, uint64_t, uint64_t)
+DEF_URBG_SUBCLASS(ettinger_mixer, uint64_t, uint64_t)
+
+/// prepare the initial state
+void ettinger_mixer::init()
+{
+}
+
+ettinger_mixer::result_type ettinger_mixer::next()
 {
     static constexpr uint64_t X1 = 0xdb4f0b9175ae2165; // not prime (popcount = 33)
     static_assert(X1 & 1, "must be odd");

@@ -10,11 +10,18 @@
 
 #pragma once
 
-#include "def_urbg_class.hpp"
+#include "abstract_urbg_class.hpp"
 
 #include <cstdint>
 
-DEF_URBG_CLASS(mx3, uint64_t, uint64_t)
+DEF_URBG_SUBCLASS(mx3, uint64_t, uint64_t)
+
+/// prepare the initial state
+void mx3::init()
+{
+}
+
+mx3::result_type mx3::next()
 {
     static constexpr uint64_t M1 = 0xbea225f9eb34556d; // not prime (popcount = 36)
     static_assert(M1 & 1, "must be odd");

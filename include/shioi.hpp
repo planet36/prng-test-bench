@@ -10,14 +10,21 @@
 
 #pragma once
 
-#include "def_urbg_class.hpp"
+#include "abstract_urbg_class.hpp"
 #include "xxhprimes.hpp"
 
 #include <array>
 #include <bit>
 #include <cstdint>
 
-DEF_URBG_CLASS(shioi, SINGLE_ARG(std::array<uint64_t, 2>), uint64_t)
+DEF_URBG_SUBCLASS(shioi, SINGLE_ARG(std::array<uint64_t, 2>), uint64_t)
+
+/// prepare the initial state
+void shioi::init()
+{
+}
+
+shioi::result_type shioi::next()
 {
     static constexpr uint64_t M1 = 0xd2b74407b1ce6e93; // not prime (popcount = 33)
     static_assert(M1 & 1, "must be odd");

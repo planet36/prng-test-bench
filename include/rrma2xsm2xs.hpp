@@ -10,7 +10,7 @@
 
 #pragma once
 
-#include "def_urbg_class.hpp"
+#include "abstract_urbg_class.hpp"
 
 #include <bit>
 #include <cstdint>
@@ -21,7 +21,14 @@
 */
 #define GOLDEN_RATIO_64 UINT64_C(0x9e3779b97f4a7c15) // not prime (popcount = 38)
 
-DEF_URBG_CLASS(rrma2xsm2xs, uint64_t, uint64_t)
+DEF_URBG_SUBCLASS(rrma2xsm2xs, uint64_t, uint64_t)
+
+/// prepare the initial state
+void rrma2xsm2xs::init()
+{
+}
+
+rrma2xsm2xs::result_type rrma2xsm2xs::next()
 {
     static constexpr uint64_t M1 = 0x9e6c63d0676a9a99; // not prime (popcount = 33)
     static constexpr uint64_t M2 = 0x9e6d62d06f6a9a9b; // not prime (popcount = 35)

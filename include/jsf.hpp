@@ -10,14 +10,21 @@
 
 #pragma once
 
-#include "def_urbg_class.hpp"
+#include "abstract_urbg_class.hpp"
 
 #include <array>
 #include <bit>
 #include <cstdint>
 
 // 2-rotate version
-DEF_URBG_CLASS(jsf32_2, SINGLE_ARG(std::array<uint32_t, 4>), uint32_t)
+DEF_URBG_SUBCLASS(jsf32_2, SINGLE_ARG(std::array<uint32_t, 4>), uint32_t)
+
+/// prepare the initial state
+void jsf32_2::init()
+{
+}
+
+jsf32_2::result_type jsf32_2::next()
 {
     static constexpr unsigned int R1 = 27;
     static constexpr unsigned int R2 = 17;
@@ -32,7 +39,14 @@ DEF_URBG_CLASS(jsf32_2, SINGLE_ARG(std::array<uint32_t, 4>), uint32_t)
 }
 
 // 3-rotate version
-DEF_URBG_CLASS(jsf32_3, SINGLE_ARG(std::array<uint32_t, 4>), uint32_t)
+DEF_URBG_SUBCLASS(jsf32_3, SINGLE_ARG(std::array<uint32_t, 4>), uint32_t)
+
+/// prepare the initial state
+void jsf32_3::init()
+{
+}
+
+jsf32_3::result_type jsf32_3::next()
 {
     static constexpr unsigned int R1 = 23;
     static constexpr unsigned int R2 = 16;
@@ -47,7 +61,14 @@ DEF_URBG_CLASS(jsf32_3, SINGLE_ARG(std::array<uint32_t, 4>), uint32_t)
     return s[3];
 }
 
-DEF_URBG_CLASS(jsf64, SINGLE_ARG(std::array<uint64_t, 4>), uint64_t)
+DEF_URBG_SUBCLASS(jsf64, SINGLE_ARG(std::array<uint64_t, 4>), uint64_t)
+
+/// prepare the initial state
+void jsf64::init()
+{
+}
+
+jsf64::result_type jsf64::next()
 {
     static constexpr unsigned int R1 = 7;
     static constexpr unsigned int R2 = 13;

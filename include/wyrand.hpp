@@ -12,13 +12,20 @@
 
 #pragma once
 
-#include "def_urbg_class.hpp"
+#include "abstract_urbg_class.hpp"
 #include "mum.hpp"
 #include "wyprimes.hpp"
 
 #include <cstdint>
 
-DEF_URBG_CLASS(wyrand, uint64_t, uint64_t)
+DEF_URBG_SUBCLASS(wyrand, uint64_t, uint64_t)
+
+/// prepare the initial state
+void wyrand::init()
+{
+}
+
+wyrand::result_type wyrand::next()
 {
     s += _wyp[0];
     return mumx(s, s ^ _wyp[1]);

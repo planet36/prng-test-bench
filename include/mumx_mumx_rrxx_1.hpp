@@ -10,14 +10,21 @@
 
 #pragma once
 
-#include "def_urbg_class.hpp"
+#include "abstract_urbg_class.hpp"
 #include "mum.hpp"
 #include "mum-primes.hpp"
 
 #include <bit>
 #include <cstdint>
 
-DEF_URBG_CLASS(mumx_mumx_rrxx_1, uint64_t, uint64_t)
+DEF_URBG_SUBCLASS(mumx_mumx_rrxx_1, uint64_t, uint64_t)
+
+/// prepare the initial state
+void mumx_mumx_rrxx_1::init()
+{
+}
+
+mumx_mumx_rrxx_1::result_type mumx_mumx_rrxx_1::next()
 {
     static constexpr uint64_t inc = _mum_primes[0];
     static_assert((inc & 1) != 0, "must be odd");

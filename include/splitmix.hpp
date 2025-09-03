@@ -11,7 +11,7 @@
 
 #pragma once
 
-#include "def_urbg_class.hpp"
+#include "abstract_urbg_class.hpp"
 
 #include <cstdint>
 
@@ -21,7 +21,14 @@
 */
 #define GOLDEN_RATIO_64 UINT64_C(0x9e3779b97f4a7c15) // not prime (popcount = 38)
 
-DEF_URBG_CLASS(splitmix32, uint64_t, uint32_t)
+DEF_URBG_SUBCLASS(splitmix32, uint64_t, uint32_t)
+
+/// prepare the initial state
+void splitmix32::init()
+{
+}
+
+splitmix32::result_type splitmix32::next()
 {
     static constexpr uint64_t inc = GOLDEN_RATIO_64;
     static_assert((inc & 1) != 0, "must be odd");
@@ -51,7 +58,14 @@ DEF_URBG_CLASS(splitmix32, uint64_t, uint32_t)
     return x;
 }
 
-DEF_URBG_CLASS(splitmix64, uint64_t, uint64_t)
+DEF_URBG_SUBCLASS(splitmix64, uint64_t, uint64_t)
+
+/// prepare the initial state
+void splitmix64::init()
+{
+}
+
+splitmix64::result_type splitmix64::next()
 {
     static constexpr uint64_t inc = GOLDEN_RATIO_64;
     static_assert((inc & 1) != 0, "must be odd");

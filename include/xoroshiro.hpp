@@ -13,7 +13,7 @@
 
 #pragma once
 
-#include "def_urbg_class.hpp"
+#include "abstract_urbg_class.hpp"
 
 #include <array>
 #include <bit>
@@ -29,7 +29,14 @@
  * The state must be seeded so that it is not everywhere zero.
  */
 // XXX: must not give zero seed
-DEF_URBG_CLASS(xoroshiro64starstar, SINGLE_ARG(std::array<uint32_t, 2>), uint32_t)
+DEF_URBG_SUBCLASS(xoroshiro64starstar, SINGLE_ARG(std::array<uint32_t, 2>), uint32_t)
+
+/// prepare the initial state
+void xoroshiro64starstar::init()
+{
+}
+
+xoroshiro64starstar::result_type xoroshiro64starstar::next()
 {
     const auto s0 = s[0];
     auto s1 = s[1];
@@ -54,7 +61,14 @@ DEF_URBG_CLASS(xoroshiro64starstar, SINGLE_ARG(std::array<uint32_t, 2>), uint32_
  * fill s.
  */
 // XXX: must not give zero seed
-DEF_URBG_CLASS(xoroshiro128plusplus, SINGLE_ARG(std::array<uint64_t, 2>), uint64_t)
+DEF_URBG_SUBCLASS(xoroshiro128plusplus, SINGLE_ARG(std::array<uint64_t, 2>), uint64_t)
+
+/// prepare the initial state
+void xoroshiro128plusplus::init()
+{
+}
+
+xoroshiro128plusplus::result_type xoroshiro128plusplus::next()
 {
     const auto s0 = s[0];
     auto s1 = s[1];
@@ -79,7 +93,14 @@ DEF_URBG_CLASS(xoroshiro128plusplus, SINGLE_ARG(std::array<uint64_t, 2>), uint64
  * fill s.
  */
 // XXX: must not give zero seed
-DEF_URBG_CLASS(xoroshiro128starstar, SINGLE_ARG(std::array<uint64_t, 2>), uint64_t)
+DEF_URBG_SUBCLASS(xoroshiro128starstar, SINGLE_ARG(std::array<uint64_t, 2>), uint64_t)
+
+/// prepare the initial state
+void xoroshiro128starstar::init()
+{
+}
+
+xoroshiro128starstar::result_type xoroshiro128starstar::next()
 {
     const auto s0 = s[0];
     auto s1 = s[1];
@@ -105,7 +126,14 @@ DEF_URBG_CLASS(xoroshiro128starstar, SINGLE_ARG(std::array<uint64_t, 2>), uint64
  * fill s.
  */
 // XXX: must not give zero seed
-DEF_URBG_CLASS(xoroshiro1024plusplus, SINGLE_ARG(std::array<uint64_t, 16>), uint64_t)
+DEF_URBG_SUBCLASS(xoroshiro1024plusplus, SINGLE_ARG(std::array<uint64_t, 16>), uint64_t)
+
+/// prepare the initial state
+void xoroshiro1024plusplus::init()
+{
+}
+
+xoroshiro1024plusplus::result_type xoroshiro1024plusplus::next()
 {
     static unsigned int p{};
     const auto q = p;
@@ -134,7 +162,14 @@ DEF_URBG_CLASS(xoroshiro1024plusplus, SINGLE_ARG(std::array<uint64_t, 16>), uint
  * fill s.
  */
 // XXX: must not give zero seed
-DEF_URBG_CLASS(xoroshiro1024starstar, SINGLE_ARG(std::array<uint64_t, 16>), uint64_t)
+DEF_URBG_SUBCLASS(xoroshiro1024starstar, SINGLE_ARG(std::array<uint64_t, 16>), uint64_t)
+
+/// prepare the initial state
+void xoroshiro1024starstar::init()
+{
+}
+
+xoroshiro1024starstar::result_type xoroshiro1024starstar::next()
 {
     static unsigned int p{};
     const auto q = p;

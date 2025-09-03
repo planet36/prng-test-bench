@@ -13,7 +13,7 @@
 
 #pragma once
 
-#include "def_urbg_class.hpp"
+#include "abstract_urbg_class.hpp"
 
 #include <array>
 #include <bit>
@@ -29,7 +29,14 @@
  * The state must be seeded so that it is not everywhere zero.
  */
 // XXX: must not give zero seed
-DEF_URBG_CLASS(xoshiro128plusplus, SINGLE_ARG(std::array<uint32_t, 4>), uint32_t)
+DEF_URBG_SUBCLASS(xoshiro128plusplus, SINGLE_ARG(std::array<uint32_t, 4>), uint32_t)
+
+/// prepare the initial state
+void xoshiro128plusplus::init()
+{
+}
+
+xoshiro128plusplus::result_type xoshiro128plusplus::next()
 {
     const auto result = std::rotl(s[0] + s[3], 7) + s[0];
     const auto t = s[1] << 9;
@@ -59,7 +66,14 @@ DEF_URBG_CLASS(xoshiro128plusplus, SINGLE_ARG(std::array<uint32_t, 4>), uint32_t
  * The state must be seeded so that it is not everywhere zero.
  */
 // XXX: must not give zero seed
-DEF_URBG_CLASS(xoshiro128starstar, SINGLE_ARG(std::array<uint32_t, 4>), uint32_t)
+DEF_URBG_SUBCLASS(xoshiro128starstar, SINGLE_ARG(std::array<uint32_t, 4>), uint32_t)
+
+/// prepare the initial state
+void xoshiro128starstar::init()
+{
+}
+
+xoshiro128starstar::result_type xoshiro128starstar::next()
 {
     const auto result = std::rotl(s[1] * 5, 7) * 9;
     const auto t = s[1] << 9;
@@ -87,7 +101,14 @@ DEF_URBG_CLASS(xoshiro128starstar, SINGLE_ARG(std::array<uint32_t, 4>), uint32_t
  * fill s.
  */
 // XXX: must not give zero seed
-DEF_URBG_CLASS(xoshiro256plusplus, SINGLE_ARG(std::array<uint64_t, 4>), uint64_t)
+DEF_URBG_SUBCLASS(xoshiro256plusplus, SINGLE_ARG(std::array<uint64_t, 4>), uint64_t)
+
+/// prepare the initial state
+void xoshiro256plusplus::init()
+{
+}
+
+xoshiro256plusplus::result_type xoshiro256plusplus::next()
 {
     const auto result = std::rotl(s[0] + s[3], 23) + s[0];
     const auto t = s[1] << 17;
@@ -115,7 +136,14 @@ DEF_URBG_CLASS(xoshiro256plusplus, SINGLE_ARG(std::array<uint64_t, 4>), uint64_t
  * fill s.
  */
 // XXX: must not give zero seed
-DEF_URBG_CLASS(xoshiro256starstar, SINGLE_ARG(std::array<uint64_t, 4>), uint64_t)
+DEF_URBG_SUBCLASS(xoshiro256starstar, SINGLE_ARG(std::array<uint64_t, 4>), uint64_t)
+
+/// prepare the initial state
+void xoshiro256starstar::init()
+{
+}
+
+xoshiro256starstar::result_type xoshiro256starstar::next()
 {
     const auto result = std::rotl(s[1] * 5, 7) * 9;
     const auto t = s[1] << 17;
@@ -143,7 +171,14 @@ DEF_URBG_CLASS(xoshiro256starstar, SINGLE_ARG(std::array<uint64_t, 4>), uint64_t
  * fill s.
  */
 // XXX: must not give zero seed
-DEF_URBG_CLASS(xoshiro512plusplus, SINGLE_ARG(std::array<uint64_t, 8>), uint64_t)
+DEF_URBG_SUBCLASS(xoshiro512plusplus, SINGLE_ARG(std::array<uint64_t, 8>), uint64_t)
+
+/// prepare the initial state
+void xoshiro512plusplus::init()
+{
+}
+
+xoshiro512plusplus::result_type xoshiro512plusplus::next()
 {
     const auto result = std::rotl(s[0] + s[2], 17) + s[2];
     const auto t = s[1] << 11;
@@ -176,7 +211,14 @@ DEF_URBG_CLASS(xoshiro512plusplus, SINGLE_ARG(std::array<uint64_t, 8>), uint64_t
  * fill s.
  */
 // XXX: must not give zero seed
-DEF_URBG_CLASS(xoshiro512starstar, SINGLE_ARG(std::array<uint64_t, 8>), uint64_t)
+DEF_URBG_SUBCLASS(xoshiro512starstar, SINGLE_ARG(std::array<uint64_t, 8>), uint64_t)
+
+/// prepare the initial state
+void xoshiro512starstar::init()
+{
+}
+
+xoshiro512starstar::result_type xoshiro512starstar::next()
 {
     const auto result = std::rotl(s[1] * 5, 7) * 9;
     const auto t = s[1] << 11;

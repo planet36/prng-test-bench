@@ -10,7 +10,7 @@
 
 #pragma once
 
-#include "def_urbg_class.hpp"
+#include "abstract_urbg_class.hpp"
 #include "xxhprimes.hpp"
 
 #include <array>
@@ -19,7 +19,14 @@
 
 // source:
 // PractRand-pre0.95/src/RNGs/xsm.cpp
-DEF_URBG_CLASS(xsm32, SINGLE_ARG(std::array<uint32_t, 2>), uint32_t)
+DEF_URBG_SUBCLASS(xsm32, SINGLE_ARG(std::array<uint32_t, 2>), uint32_t)
+
+/// prepare the initial state
+void xsm32::init()
+{
+}
+
+xsm32::result_type xsm32::next()
 {
     //const uint32_t K = 0xE99569B5;  // 11101001100101010110100110110101 473  205 - best value found so far
     //const uint32_t K = 0x299529B5;  // 00101001100101010010100110110101 470  202
@@ -58,7 +65,14 @@ DEF_URBG_CLASS(xsm32, SINGLE_ARG(std::array<uint32_t, 2>), uint32_t)
 
 // source:
 // PractRand-pre0.95/src/RNGs/xsm.cpp
-DEF_URBG_CLASS(xsm64, SINGLE_ARG(std::array<uint64_t, 2>), uint64_t)
+DEF_URBG_SUBCLASS(xsm64, SINGLE_ARG(std::array<uint64_t, 2>), uint64_t)
+
+/// prepare the initial state
+void xsm64::init()
+{
+}
+
+xsm64::result_type xsm64::next()
 {
     static constexpr uint64_t M1 = 0xa3ec647659359acd; // not prime (popcount = 34)
     static_assert(M1 & 1, "must be odd");

@@ -9,7 +9,7 @@
 
 #pragma once
 
-#include "def_urbg_class.hpp"
+#include "abstract_urbg_class.hpp"
 
 #include <array>
 #include <bit>
@@ -21,7 +21,14 @@ https://github.com/stclib/STC/blob/master/include/stc/crand.h#L79
 https://github.com/tkaitchuck/Mwc256XXA64/discussions/3#discussioncomment-2326885
 https://github.com/stclib/STC/blob/master/docs/crandom_api.md
 */
-DEF_URBG_CLASS(stc64, SINGLE_ARG(std::array<uint64_t, 4>), uint64_t)
+DEF_URBG_SUBCLASS(stc64, SINGLE_ARG(std::array<uint64_t, 4>), uint64_t)
+
+/// prepare the initial state
+void stc64::init()
+{
+}
+
+stc64::result_type stc64::next()
 {
     static constexpr unsigned int S1 = 11;
     static constexpr unsigned int S2 = 3;

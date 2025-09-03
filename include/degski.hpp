@@ -9,13 +9,20 @@
 
 #pragma once
 
-#include "def_urbg_class.hpp"
+#include "abstract_urbg_class.hpp"
 #include "xxhprimes.hpp"
 
 #include <cstdint>
 
 // https://gist.github.com/degski/6e2069d6035ae04d5d6f64981c995ec2#file-invertible_hash_functions-hpp-L29
-DEF_URBG_CLASS(degski32, uint32_t, uint32_t)
+DEF_URBG_SUBCLASS(degski32, uint32_t, uint32_t)
+
+/// prepare the initial state
+void degski32::init()
+{
+}
+
+degski32::result_type degski32::next()
 {
     static constexpr uint32_t inc = xxh_prime32[0]; // inc=1 yields failures
     static_assert(inc & 1, "must be odd");
@@ -38,7 +45,14 @@ DEF_URBG_CLASS(degski32, uint32_t, uint32_t)
 }
 
 // https://gist.github.com/degski/6e2069d6035ae04d5d6f64981c995ec2#file-invertible_hash_functions-hpp-L43
-DEF_URBG_CLASS(degski64, uint64_t, uint64_t)
+DEF_URBG_SUBCLASS(degski64, uint64_t, uint64_t)
+
+/// prepare the initial state
+void degski64::init()
+{
+}
+
+degski64::result_type degski64::next()
 {
     static constexpr uint64_t inc = xxh_prime64[0]; // inc=1 yields failures
     static_assert(inc & 1, "must be odd");

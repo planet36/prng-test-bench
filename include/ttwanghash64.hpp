@@ -10,11 +10,18 @@
 
 #pragma once
 
-#include "def_urbg_class.hpp"
+#include "abstract_urbg_class.hpp"
 
 #include <cstdint>
 
-DEF_URBG_CLASS(ttwanghash64, uint64_t, uint64_t)
+DEF_URBG_SUBCLASS(ttwanghash64, uint64_t, uint64_t)
+
+/// prepare the initial state
+void ttwanghash64::init()
+{
+}
+
+ttwanghash64::result_type ttwanghash64::next()
 {
     auto x = s++; // (SDW)
 

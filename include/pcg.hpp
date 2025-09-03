@@ -10,7 +10,7 @@
 
 #pragma once
 
-#include "def_urbg_class.hpp"
+#include "abstract_urbg_class.hpp"
 
 #if defined(__SIZEOF_INT128__)
 #include "int_join.hpp"
@@ -51,7 +51,14 @@ static_assert((pcg_const128[1] & 1) != 0, "must be odd");
 }
 
 /// PCG-XSH-RR
-DEF_URBG_CLASS(pcg32, uint64_t, uint32_t)
+DEF_URBG_SUBCLASS(pcg32, uint64_t, uint32_t)
+
+/// prepare the initial state
+void pcg32::init()
+{
+}
+
+pcg32::result_type pcg32::next()
 {
     static constexpr state_type mul = pcg_const64[0];
     static_assert((mul & 1) != 0, "must be odd");
@@ -70,7 +77,14 @@ DEF_URBG_CLASS(pcg32, uint64_t, uint32_t)
 }
 
 /// PCG-XSH-RS
-DEF_URBG_CLASS(pcg32_fast, uint64_t, uint32_t)
+DEF_URBG_SUBCLASS(pcg32_fast, uint64_t, uint32_t)
+
+/// prepare the initial state
+void pcg32_fast::init()
+{
+}
+
+pcg32_fast::result_type pcg32_fast::next()
 {
     static constexpr state_type mul = pcg_const64[0];
     static_assert((mul & 1) != 0, "must be odd");
@@ -88,7 +102,14 @@ DEF_URBG_CLASS(pcg32_fast, uint64_t, uint32_t)
 
 #if defined(__SIZEOF_INT128__)
 /// PCG-XSL-RR
-DEF_URBG_CLASS(pcg64, __uint128_t, uint64_t)
+DEF_URBG_SUBCLASS(pcg64, __uint128_t, uint64_t)
+
+/// prepare the initial state
+void pcg64::init()
+{
+}
+
+pcg64::result_type pcg64::next()
 {
     /* "There is no support in GCC for expressing an integer constant of
     *  type __int128 for targets with long long integer less than 128 bits
@@ -119,7 +140,14 @@ DEF_URBG_CLASS(pcg64, __uint128_t, uint64_t)
 * https://dotat.at/cgi/git/pcg-dxsm.git/blob/HEAD:/pcg64_dxsm.h
 * https://github.com/imneme/pcg-cpp/commit/871d0494ee9c9a7b7c43f753e3d8ca47c26f8005
 */
-DEF_URBG_CLASS(pcg64dxsm, __uint128_t, uint64_t)
+DEF_URBG_SUBCLASS(pcg64dxsm, __uint128_t, uint64_t)
+
+/// prepare the initial state
+void pcg64dxsm::init()
+{
+}
+
+pcg64dxsm::result_type pcg64dxsm::next()
 {
     // "cheap multiplier"
     static constexpr uint64_t mul = pcg_const64[2];

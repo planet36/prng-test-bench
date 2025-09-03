@@ -10,12 +10,19 @@
 
 #pragma once
 
-#include "def_urbg_class.hpp"
+#include "abstract_urbg_class.hpp"
 #include "int_join.hpp"
 
 #include <cstdint>
 
-DEF_URBG_CLASS(lcg32, __uint128_t, uint32_t)
+DEF_URBG_SUBCLASS(lcg32, __uint128_t, uint32_t)
+
+/// prepare the initial state
+void lcg32::init()
+{
+}
+
+lcg32::result_type lcg32::next()
 {
     static constexpr __uint128_t M = int_join(0xc580caddUL, 0x754f7336d2eaa27dUL); // prime (popcount = 52)
     static_assert(M & 1, "must be odd");
@@ -25,7 +32,14 @@ DEF_URBG_CLASS(lcg32, __uint128_t, uint32_t)
     return s >> 64;
 }
 
-DEF_URBG_CLASS(lcg64, __uint128_t, uint64_t)
+DEF_URBG_SUBCLASS(lcg64, __uint128_t, uint64_t)
+
+/// prepare the initial state
+void lcg64::init()
+{
+}
+
+lcg64::result_type lcg64::next()
 {
     static constexpr __uint128_t M = int_join(0x2d99787926d46932UL, 0xa4c1f32680f70c55UL); // not prime (popcount = 60)
     static_assert(M & 1, "must be odd");

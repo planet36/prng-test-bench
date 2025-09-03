@@ -10,7 +10,7 @@
 
 #pragma once
 
-#include "def_urbg_class.hpp"
+#include "abstract_urbg_class.hpp"
 
 #include <cstdint>
 
@@ -20,7 +20,14 @@
 */
 #define GOLDEN_RATIO_64 UINT64_C(0x9e3779b97f4a7c15) // not prime (popcount = 38)
 
-DEF_URBG_CLASS(moremur, uint64_t, uint64_t)
+DEF_URBG_SUBCLASS(moremur, uint64_t, uint64_t)
+
+/// prepare the initial state
+void moremur::init()
+{
+}
+
+moremur::result_type moremur::next()
 {
     static constexpr uint64_t inc = GOLDEN_RATIO_64;
     static_assert((inc & 1) != 0, "must be odd");
