@@ -93,3 +93,17 @@ public:
 
     result_type operator()() { return next(); }
 };
+
+#define DEF_URBG_SUBCLASS(CLASS_NAME, STATE_TYPE, RESULT_TYPE)                          \
+struct CLASS_NAME final : public AbstractURBG<STATE_TYPE, RESULT_TYPE>                  \
+{                                                                                       \
+protected:                                                                              \
+    void init(); /* must implement this */                                              \
+public:                                                                                 \
+    CLASS_NAME() { init(); }                                                            \
+    explicit CLASS_NAME(const state_type& new_s) : AbstractURBG(new_s) { init(); }      \
+    explicit CLASS_NAME(const seed_bytes_type& bytes) : AbstractURBG(bytes) { init(); } \
+    result_type next() override; /* must implement this */                              \
+};                                                                                      \
+static_assert(std::uniform_random_bit_generator<CLASS_NAME>);                           \
+
