@@ -94,6 +94,10 @@ public:
     result_type operator()() { return next(); }
 };
 
+// https://stackoverflow.com/a/13842612
+#define SINGLE_ARG(...) __VA_ARGS__
+// Use SINGLE_ARG when a macro arg has a comma.
+
 #define DEF_URBG_SUBCLASS(CLASS_NAME, STATE_TYPE, RESULT_TYPE)                          \
 struct CLASS_NAME final : public AbstractURBG<STATE_TYPE, RESULT_TYPE>                  \
 {                                                                                       \
