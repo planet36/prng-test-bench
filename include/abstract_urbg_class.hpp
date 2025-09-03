@@ -76,7 +76,16 @@ public:
     virtual ~AbstractURBG()
     {
         // zeroize the state
+        // https://en.cppreference.com/w/c/string/byte/memset
+        // https://www.gnu.org/software//gnulib/manual/html_node/memset_005fexplicit.html
+        // https://sourceware.org/glibc/manual/latest/html_node/Erasing-Sensitive-Data.html
+#if defined(memset_explicit)
+        (void)memset_explicit(std::data(s), 0, sizeof(state_type));
+#elif defined(explicit_bzero)
+        explicit_bzero(std::data(s), sizeof(state_type));
+#else
         (void)std::memset(std::data(s), 0, sizeof(state_type));
+#endif
     }
 
     virtual result_type next() = 0; // XXX: must override this
