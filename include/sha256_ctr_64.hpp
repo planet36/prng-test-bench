@@ -63,62 +63,41 @@ sha256_rnds2x4(__m128i a, __m128i b)
     return b;
 }
 
-struct sha256_ctr_64 final : public AbstractURBG<arr_m128i<2>, uint64_t>
+DEF_URBG_SUBCLASS(sha256_ctr_64, arr_m128i<2>, uint64_t)
+
+// s[0] is the state/counter
+// s[1] is the increment (must be odd)
+
+/// prepare the initial state
+/**
+* Every odd integer is coprime with every power of 2.
+* Therefore, \c inc shall be made odd.
+*/
+void sha256_ctr_64::init()
 {
-protected:
-    // s[0] is the state/counter
-    // s[1] is the increment (must be odd)
+    s[1] = mm_make_odd_epu64(s[1]);
 
-    /// prepare the initial state
-    /**
-    * Every odd integer is coprime with every power of 2.
-    * Therefore, \c inc shall be made odd.
-    */
-    void init()
+    // both increment values must be unique (and odd)
+    if (mm_all_equal_epi64(s[1]))
     {
+        // most significant elem first
+        const auto mask_inc = _mm_set_epi64x(FLOOR_SCALED_FRAC_SQRT_3,
+                                             FLOOR_SCALED_FRAC_SQRT_2);
+
+        // make unique
+        s[1] = _mm_xor_si128(s[1], mask_inc);
+
         s[1] = mm_make_odd_epu64(s[1]);
-
-        // both increment values must be unique (and odd)
-        if (mm_all_equal_epi64(s[1]))
-        {
-            // most significant elem first
-            const auto mask_inc = _mm_set_epi64x(FLOOR_SCALED_FRAC_SQRT_3,
-                                                 FLOOR_SCALED_FRAC_SQRT_2);
-
-            // make unique
-            s[1] = _mm_xor_si128(s[1], mask_inc);
-
-            s[1] = mm_make_odd_epu64(s[1]);
-        }
     }
+}
 
-public:
-
-    sha256_ctr_64()
-    {
-        init();
-    }
-
-    explicit sha256_ctr_64(const state_type& new_s) : AbstractURBG(new_s)
-    {
-        init();
-    }
-
-    explicit sha256_ctr_64(const seed_bytes_type& bytes) : AbstractURBG(bytes)
-    {
-        init();
-    }
-
-    result_type next() override
-    {
-        __m128i dst = s[0];
-        s[0] = _mm_add_epi64(s[0], s[1]);
-        dst = sha256_rnds2x4(dst, s[0]);
-        return mm_hxor_epu64(dst);
-    }
-};
-
-static_assert(std::uniform_random_bit_generator<sha256_ctr_64>);
+sha256_ctr_64::result_type sha256_ctr_64::next()
+{
+    __m128i dst = s[0];
+    s[0] = _mm_add_epi64(s[0], s[1]);
+    dst = sha256_rnds2x4(dst, s[0]);
+    return mm_hxor_epu64(dst);
+}
 
 #else
 
