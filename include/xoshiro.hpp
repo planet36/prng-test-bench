@@ -40,6 +40,11 @@ void xoshiro128plusplus::init()
             s[i] = i+1;
         }
     }
+
+    for (int i = 0; i < 4; ++i)
+    {
+        (void)next();
+    }
 }
 
 xoshiro128plusplus::result_type xoshiro128plusplus::next()
@@ -83,6 +88,11 @@ void xoshiro128starstar::init()
             s[i] = i+1;
         }
     }
+
+    for (int i = 0; i < 4; ++i)
+    {
+        (void)next();
+    }
 }
 
 xoshiro128starstar::result_type xoshiro128starstar::next()
@@ -123,6 +133,11 @@ void xoshiro256plusplus::init()
         {
             s[i] = i+1;
         }
+    }
+
+    for (int i = 0; i < 4; ++i)
+    {
+        (void)next();
     }
 }
 
@@ -165,6 +180,11 @@ void xoshiro256starstar::init()
             s[i] = i+1;
         }
     }
+
+    for (int i = 0; i < 6; ++i)
+    {
+        (void)next();
+    }
 }
 
 xoshiro256starstar::result_type xoshiro256starstar::next()
@@ -205,6 +225,11 @@ void xoshiro512plusplus::init()
         {
             s[i] = i+1;
         }
+    }
+
+    for (int i = 0; i < 8; ++i)
+    {
+        (void)next();
     }
 }
 
@@ -251,6 +276,11 @@ void xoshiro512starstar::init()
         {
             s[i] = i+1;
         }
+    }
+
+    for (int i = 0; i < 8; ++i)
+    {
+        (void)next();
     }
 }
 
