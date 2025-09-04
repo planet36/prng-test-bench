@@ -125,7 +125,7 @@ void mover_counter_64::init()
 
 mover_counter_64::result_type mover_counter_64::next()
 {
-    s[1] += 0x9e3779b97f4a7af6; // (SDW: adding an even number?!)
+    s[1] += 0x9e3779b97f4a7af6; // (SDW: XXX: adding an even number?!)
     s[0] = std::rotl(s[0], 21) * s[1];
     return s[0] * 0x41c64e6b;
 }
@@ -226,7 +226,7 @@ void tangle::init()
 tangle::result_type tangle::next()
 {
     s[0] += 0xc6bc279692b5c323;
-    s[1] += 0x9e3779b97f4a7c16; // (SDW: adding an even number?!)
+    s[1] += 0x9e3779b97f4a7c16; // (SDW: XXX: adding an even number?!)
     const auto x = (s[0] ^ (s[0] >> 31)) * s[1];
     return x ^ (x >> 26) ^ (x >> 6);
 }
