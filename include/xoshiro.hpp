@@ -33,7 +33,13 @@ DEF_URBG_SUBCLASS(xoshiro128plusplus, SINGLE_ARG(std::array<uint32_t, 4>), uint3
 /// prepare the initial state
 void xoshiro128plusplus::init()
 {
-    // XXX: must not give zero seed
+    if (s == state_type{})
+    {
+        for (unsigned int i = 0; i < std::size(s); ++i)
+        {
+            s[i] = i+1;
+        }
+    }
 }
 
 xoshiro128plusplus::result_type xoshiro128plusplus::next()
@@ -70,7 +76,13 @@ DEF_URBG_SUBCLASS(xoshiro128starstar, SINGLE_ARG(std::array<uint32_t, 4>), uint3
 /// prepare the initial state
 void xoshiro128starstar::init()
 {
-    // XXX: must not give zero seed
+    if (s == state_type{})
+    {
+        for (unsigned int i = 0; i < std::size(s); ++i)
+        {
+            s[i] = i+1;
+        }
+    }
 }
 
 xoshiro128starstar::result_type xoshiro128starstar::next()
@@ -105,7 +117,13 @@ DEF_URBG_SUBCLASS(xoshiro256plusplus, SINGLE_ARG(std::array<uint64_t, 4>), uint6
 /// prepare the initial state
 void xoshiro256plusplus::init()
 {
-    // XXX: must not give zero seed
+    if (s == state_type{})
+    {
+        for (unsigned int i = 0; i < std::size(s); ++i)
+        {
+            s[i] = i+1;
+        }
+    }
 }
 
 xoshiro256plusplus::result_type xoshiro256plusplus::next()
@@ -140,7 +158,13 @@ DEF_URBG_SUBCLASS(xoshiro256starstar, SINGLE_ARG(std::array<uint64_t, 4>), uint6
 /// prepare the initial state
 void xoshiro256starstar::init()
 {
-    // XXX: must not give zero seed
+    if (s == state_type{})
+    {
+        for (unsigned int i = 0; i < std::size(s); ++i)
+        {
+            s[i] = i+1;
+        }
+    }
 }
 
 xoshiro256starstar::result_type xoshiro256starstar::next()
@@ -175,7 +199,13 @@ DEF_URBG_SUBCLASS(xoshiro512plusplus, SINGLE_ARG(std::array<uint64_t, 8>), uint6
 /// prepare the initial state
 void xoshiro512plusplus::init()
 {
-    // XXX: must not give zero seed
+    if (s == state_type{})
+    {
+        for (unsigned int i = 0; i < std::size(s); ++i)
+        {
+            s[i] = i+1;
+        }
+    }
 }
 
 xoshiro512plusplus::result_type xoshiro512plusplus::next()
@@ -215,7 +245,13 @@ DEF_URBG_SUBCLASS(xoshiro512starstar, SINGLE_ARG(std::array<uint64_t, 8>), uint6
 /// prepare the initial state
 void xoshiro512starstar::init()
 {
-    // XXX: must not give zero seed
+    if (s == state_type{})
+    {
+        for (unsigned int i = 0; i < std::size(s); ++i)
+        {
+            s[i] = i+1;
+        }
+    }
 }
 
 xoshiro512starstar::result_type xoshiro512starstar::next()

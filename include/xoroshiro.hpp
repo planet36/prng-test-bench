@@ -33,7 +33,13 @@ DEF_URBG_SUBCLASS(xoroshiro64starstar, SINGLE_ARG(std::array<uint32_t, 2>), uint
 /// prepare the initial state
 void xoroshiro64starstar::init()
 {
-    // XXX: must not give zero seed
+    if (s == state_type{})
+    {
+        for (unsigned int i = 0; i < std::size(s); ++i)
+        {
+            s[i] = i+1;
+        }
+    }
 }
 
 xoroshiro64starstar::result_type xoroshiro64starstar::next()
@@ -65,7 +71,13 @@ DEF_URBG_SUBCLASS(xoroshiro128plusplus, SINGLE_ARG(std::array<uint64_t, 2>), uin
 /// prepare the initial state
 void xoroshiro128plusplus::init()
 {
-    // XXX: must not give zero seed
+    if (s == state_type{})
+    {
+        for (unsigned int i = 0; i < std::size(s); ++i)
+        {
+            s[i] = i+1;
+        }
+    }
 }
 
 xoroshiro128plusplus::result_type xoroshiro128plusplus::next()
@@ -97,7 +109,13 @@ DEF_URBG_SUBCLASS(xoroshiro128starstar, SINGLE_ARG(std::array<uint64_t, 2>), uin
 /// prepare the initial state
 void xoroshiro128starstar::init()
 {
-    // XXX: must not give zero seed
+    if (s == state_type{})
+    {
+        for (unsigned int i = 0; i < std::size(s); ++i)
+        {
+            s[i] = i+1;
+        }
+    }
 }
 
 xoroshiro128starstar::result_type xoroshiro128starstar::next()
@@ -130,7 +148,13 @@ DEF_URBG_SUBCLASS(xoroshiro1024plusplus, SINGLE_ARG(std::array<uint64_t, 16>), u
 /// prepare the initial state
 void xoroshiro1024plusplus::init()
 {
-    // XXX: must not give zero seed
+    if (s == state_type{})
+    {
+        for (unsigned int i = 0; i < std::size(s); ++i)
+        {
+            s[i] = i+1;
+        }
+    }
 }
 
 xoroshiro1024plusplus::result_type xoroshiro1024plusplus::next()
@@ -166,7 +190,13 @@ DEF_URBG_SUBCLASS(xoroshiro1024starstar, SINGLE_ARG(std::array<uint64_t, 16>), u
 /// prepare the initial state
 void xoroshiro1024starstar::init()
 {
-    // XXX: must not give zero seed
+    if (s == state_type{})
+    {
+        for (unsigned int i = 0; i < std::size(s); ++i)
+        {
+            s[i] = i+1;
+        }
+    }
 }
 
 xoroshiro1024starstar::result_type xoroshiro1024starstar::next()
