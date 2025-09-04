@@ -24,8 +24,10 @@ DEF_URBG_SUBCLASS(sfc32, SINGLE_ARG(std::array<uint32_t, 4>), uint32_t)
 /// prepare the initial state
 void sfc32::init()
 {
-    // XXX: If a zero seed is given, it takes about 7 iterations for the bits
-    // to avalanche.
+    for (int i = 0; i < 6; ++i)
+    {
+        (void)next();
+    }
 }
 
 sfc32::result_type sfc32::next()
@@ -46,8 +48,10 @@ DEF_URBG_SUBCLASS(sfc64, SINGLE_ARG(std::array<uint64_t, 4>), uint64_t)
 /// prepare the initial state
 void sfc64::init()
 {
-    // XXX: If a zero seed is given, it takes about 10 iterations for the bits
-    // to avalanche.
+    for (int i = 0; i < 9; ++i)
+    {
+        (void)next();
+    }
 }
 
 sfc64::result_type sfc64::next()
