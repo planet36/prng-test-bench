@@ -11,6 +11,7 @@
 
 #include "MRG32k3a.hpp"
 #include "aes128_ctr_64.hpp"
+#include "biski64.hpp"
 #include "clmulrand.hpp"
 #include "degski.hpp"
 #include "ettinger_mixer.hpp"
@@ -118,6 +119,7 @@ const std::map<std::string, prng_info_t> prng_name_to_info{
     CREATE_PRNG_INFO_MAP_ENTRY(aes128_ctr_64         ),
 #endif
     CREATE_PRNG_INFO_MAP_ENTRY(bell                  ),
+    CREATE_PRNG_INFO_MAP_ENTRY(biski64               ),
     CREATE_PRNG_INFO_MAP_ENTRY(bright                ),
 #if defined(__PCLMUL__)
     CREATE_PRNG_INFO_MAP_ENTRY(clmulrand             ),

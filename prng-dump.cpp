@@ -396,6 +396,7 @@ if (prng_name == #NAME) { \
     CONDITIONAL_DUMP_MINE(aes128_ctr_64         )
 #endif
     CONDITIONAL_DUMP_MINE(bell                  )
+    CONDITIONAL_DUMP_MINE(biski64               )
     CONDITIONAL_DUMP_MINE(bright                )
 #if defined(__PCLMUL__)
     CONDITIONAL_DUMP_MINE(clmulrand             )
