@@ -78,6 +78,11 @@ void xoroshiro128plusplus::init()
             s[i] = i+1;
         }
     }
+
+    for (int i = 0; i < 2; ++i)
+    {
+        (void)next();
+    }
 }
 
 xoroshiro128plusplus::result_type xoroshiro128plusplus::next()
@@ -115,6 +120,11 @@ void xoroshiro128starstar::init()
         {
             s[i] = i+1;
         }
+    }
+
+    for (int i = 0; i < 4; ++i)
+    {
+        (void)next();
     }
 }
 
@@ -154,6 +164,11 @@ void xoroshiro1024plusplus::init()
         {
             s[i] = i+1;
         }
+    }
+
+    for (int i = 0; i < 8; ++i)
+    {
+        (void)next();
     }
 }
 
@@ -196,6 +211,11 @@ void xoroshiro1024starstar::init()
         {
             s[i] = i+1;
         }
+    }
+
+    for (int i = 0; i < 22; ++i)
+    {
+        (void)next();
     }
 }
 
