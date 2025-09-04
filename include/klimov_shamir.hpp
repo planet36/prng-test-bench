@@ -36,10 +36,11 @@ klimov_shamir_32::result_type klimov_shamir_32::next()
 
 #if 0
     s += (s * s) | C;
-    return s >> 32;
+    result_type result = s >> 32;
 #else
-
-#endif
     s += inc; // (SDW)
-    return (s + ((s * s) | C)) >> 32; // (SDW)
+    result_type result = (s + ((s * s) | C)) >> 32; // (SDW)
+#endif
+
+    return result;
 }
