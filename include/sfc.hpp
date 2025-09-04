@@ -24,13 +24,12 @@ DEF_URBG_SUBCLASS(sfc32, SINGLE_ARG(std::array<uint32_t, 4>), uint32_t)
 /// prepare the initial state
 void sfc32::init()
 {
+    // XXX: If a zero seed is given, it takes about 7 iterations for the bits
+    // to avalanche.
 }
 
 sfc32::result_type sfc32::next()
 {
-    // XXX: If a zero seed is given, it takes about 7 iterations for the bits
-    // to avalanche.
-
     static constexpr unsigned int S1 = 9;
     static constexpr unsigned int S2 = 3;
     static constexpr unsigned int R1 = 21;
@@ -47,13 +46,12 @@ DEF_URBG_SUBCLASS(sfc64, SINGLE_ARG(std::array<uint64_t, 4>), uint64_t)
 /// prepare the initial state
 void sfc64::init()
 {
+    // XXX: If a zero seed is given, it takes about 10 iterations for the bits
+    // to avalanche.
 }
 
 sfc64::result_type sfc64::next()
 {
-    // XXX: If a zero seed is given, it takes about 10 iterations for the bits
-    // to avalanche.
-
     static constexpr unsigned int S1 = 11;
     static constexpr unsigned int S2 = 3;
     static constexpr unsigned int R1 = 24;

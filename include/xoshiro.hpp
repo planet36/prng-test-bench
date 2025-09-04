@@ -28,12 +28,12 @@
  *
  * The state must be seeded so that it is not everywhere zero.
  */
-// XXX: must not give zero seed
 DEF_URBG_SUBCLASS(xoshiro128plusplus, SINGLE_ARG(std::array<uint32_t, 4>), uint32_t)
 
 /// prepare the initial state
 void xoshiro128plusplus::init()
 {
+    // XXX: must not give zero seed
 }
 
 xoshiro128plusplus::result_type xoshiro128plusplus::next()
@@ -65,12 +65,12 @@ xoshiro128plusplus::result_type xoshiro128plusplus::next()
  *
  * The state must be seeded so that it is not everywhere zero.
  */
-// XXX: must not give zero seed
 DEF_URBG_SUBCLASS(xoshiro128starstar, SINGLE_ARG(std::array<uint32_t, 4>), uint32_t)
 
 /// prepare the initial state
 void xoshiro128starstar::init()
 {
+    // XXX: must not give zero seed
 }
 
 xoshiro128starstar::result_type xoshiro128starstar::next()
@@ -100,12 +100,12 @@ xoshiro128starstar::result_type xoshiro128starstar::next()
  * 64-bit seed, we suggest to seed a splitmix64 generator and use its output to
  * fill s.
  */
-// XXX: must not give zero seed
 DEF_URBG_SUBCLASS(xoshiro256plusplus, SINGLE_ARG(std::array<uint64_t, 4>), uint64_t)
 
 /// prepare the initial state
 void xoshiro256plusplus::init()
 {
+    // XXX: must not give zero seed
 }
 
 xoshiro256plusplus::result_type xoshiro256plusplus::next()
@@ -135,12 +135,12 @@ xoshiro256plusplus::result_type xoshiro256plusplus::next()
  * 64-bit seed, we suggest to seed a splitmix64 generator and use its output to
  * fill s.
  */
-// XXX: must not give zero seed
 DEF_URBG_SUBCLASS(xoshiro256starstar, SINGLE_ARG(std::array<uint64_t, 4>), uint64_t)
 
 /// prepare the initial state
 void xoshiro256starstar::init()
 {
+    // XXX: must not give zero seed
 }
 
 xoshiro256starstar::result_type xoshiro256starstar::next()
@@ -170,12 +170,12 @@ xoshiro256starstar::result_type xoshiro256starstar::next()
  * 64-bit seed, we suggest to seed a splitmix64 generator and use its output to
  * fill s.
  */
-// XXX: must not give zero seed
 DEF_URBG_SUBCLASS(xoshiro512plusplus, SINGLE_ARG(std::array<uint64_t, 8>), uint64_t)
 
 /// prepare the initial state
 void xoshiro512plusplus::init()
 {
+    // XXX: must not give zero seed
 }
 
 xoshiro512plusplus::result_type xoshiro512plusplus::next()
@@ -210,12 +210,12 @@ xoshiro512plusplus::result_type xoshiro512plusplus::next()
  * 64-bit seed, we suggest to seed a splitmix64 generator and use its output to
  * fill s.
  */
-// XXX: must not give zero seed
 DEF_URBG_SUBCLASS(xoshiro512starstar, SINGLE_ARG(std::array<uint64_t, 8>), uint64_t)
 
 /// prepare the initial state
 void xoshiro512starstar::init()
 {
+    // XXX: must not give zero seed
 }
 
 xoshiro512starstar::result_type xoshiro512starstar::next()

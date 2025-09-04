@@ -28,12 +28,12 @@
  *
  * The state must be seeded so that it is not everywhere zero.
  */
-// XXX: must not give zero seed
 DEF_URBG_SUBCLASS(xoroshiro64starstar, SINGLE_ARG(std::array<uint32_t, 2>), uint32_t)
 
 /// prepare the initial state
 void xoroshiro64starstar::init()
 {
+    // XXX: must not give zero seed
 }
 
 xoroshiro64starstar::result_type xoroshiro64starstar::next()
@@ -60,12 +60,12 @@ xoroshiro64starstar::result_type xoroshiro64starstar::next()
  * 64-bit seed, we suggest to seed a splitmix64 generator and use its output to
  * fill s.
  */
-// XXX: must not give zero seed
 DEF_URBG_SUBCLASS(xoroshiro128plusplus, SINGLE_ARG(std::array<uint64_t, 2>), uint64_t)
 
 /// prepare the initial state
 void xoroshiro128plusplus::init()
 {
+    // XXX: must not give zero seed
 }
 
 xoroshiro128plusplus::result_type xoroshiro128plusplus::next()
@@ -92,12 +92,12 @@ xoroshiro128plusplus::result_type xoroshiro128plusplus::next()
  * 64-bit seed, we suggest to seed a splitmix64 generator and use its output to
  * fill s.
  */
-// XXX: must not give zero seed
 DEF_URBG_SUBCLASS(xoroshiro128starstar, SINGLE_ARG(std::array<uint64_t, 2>), uint64_t)
 
 /// prepare the initial state
 void xoroshiro128starstar::init()
 {
+    // XXX: must not give zero seed
 }
 
 xoroshiro128starstar::result_type xoroshiro128starstar::next()
@@ -125,12 +125,12 @@ xoroshiro128starstar::result_type xoroshiro128starstar::next()
  * 64-bit seed, we suggest to seed a splitmix64 generator and use its output to
  * fill s.
  */
-// XXX: must not give zero seed
 DEF_URBG_SUBCLASS(xoroshiro1024plusplus, SINGLE_ARG(std::array<uint64_t, 16>), uint64_t)
 
 /// prepare the initial state
 void xoroshiro1024plusplus::init()
 {
+    // XXX: must not give zero seed
 }
 
 xoroshiro1024plusplus::result_type xoroshiro1024plusplus::next()
@@ -161,12 +161,12 @@ xoroshiro1024plusplus::result_type xoroshiro1024plusplus::next()
  * 64-bit seed, we suggest to seed a splitmix64 generator and use its output to
  * fill s.
  */
-// XXX: must not give zero seed
 DEF_URBG_SUBCLASS(xoroshiro1024starstar, SINGLE_ARG(std::array<uint64_t, 16>), uint64_t)
 
 /// prepare the initial state
 void xoroshiro1024starstar::init()
 {
+    // XXX: must not give zero seed
 }
 
 xoroshiro1024starstar::result_type xoroshiro1024starstar::next()
