@@ -12,9 +12,9 @@
 #if defined(__SHA__)
 
 #include "abstract_urbg_class.hpp"
-#include "hxor.h"
 #include "make_odd.h"
 #include "mm_equal.h"
+#include "mm_hxor.h"
 #include "scaled-const.h"
 #include "simd-array.hpp"
 
