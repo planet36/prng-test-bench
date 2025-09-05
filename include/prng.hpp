@@ -45,7 +45,6 @@
 #include "splitxix33.hpp"
 #include "squares.hpp"
 #include "stc.hpp"
-#include "tommyettinger-sarong.hpp"
 #include "ttwanghash64.hpp"
 #include "wyrand.hpp"
 #include "xoroshiro.hpp"
@@ -119,15 +118,12 @@ const std::map<std::string, prng_info_t> prng_name_to_info{
     CREATE_PRNG_INFO_MAP_ENTRY(aes128_ctr_64         ),
     CREATE_PRNG_INFO_MAP_ENTRY(aes128_ctr_128        ),
 #endif
-    CREATE_PRNG_INFO_MAP_ENTRY(bell                  ),
     CREATE_PRNG_INFO_MAP_ENTRY(biski64               ),
-    CREATE_PRNG_INFO_MAP_ENTRY(bright                ),
 #if defined(__PCLMUL__)
     CREATE_PRNG_INFO_MAP_ENTRY(clmulrand             ),
 #endif
     CREATE_PRNG_INFO_MAP_ENTRY(degski32              ),
     CREATE_PRNG_INFO_MAP_ENTRY(degski64              ),
-    CREATE_PRNG_INFO_MAP_ENTRY(dirk                  ),
     CREATE_PRNG_INFO_MAP_ENTRY(ettinger_mixer        ),
     CREATE_PRNG_INFO_MAP_ENTRY(gjrand                ),
     CREATE_PRNG_INFO_MAP_ENTRY(jsf32_2               ),
@@ -138,13 +134,9 @@ const std::map<std::string, prng_info_t> prng_name_to_info{
     CREATE_PRNG_INFO_MAP_ENTRY(lcg64                 ),
     CREATE_PRNG_INFO_MAP_ENTRY(lea64                 ),
     CREATE_PRNG_INFO_MAP_ENTRY(lehmer64              ),
-    CREATE_PRNG_INFO_MAP_ENTRY(linnorm               ),
     CREATE_PRNG_INFO_MAP_ENTRY(lxm                   ),
     CREATE_PRNG_INFO_MAP_ENTRY(mcg128                ),
-    CREATE_PRNG_INFO_MAP_ENTRY(mizuchi               ),
     CREATE_PRNG_INFO_MAP_ENTRY(moremur               ),
-    CREATE_PRNG_INFO_MAP_ENTRY(mover_64              ),
-    CREATE_PRNG_INFO_MAP_ENTRY(mover_counter_64      ),
     CREATE_PRNG_INFO_MAP_ENTRY(MRG32k3a              ),
     CREATE_PRNG_INFO_MAP_ENTRY(msws32                ),
     CREATE_PRNG_INFO_MAP_ENTRY(msws64                ),
@@ -155,14 +147,10 @@ const std::map<std::string, prng_info_t> prng_name_to_info{
     CREATE_PRNG_INFO_MAP_ENTRY(murmurhash3_32        ),
     CREATE_PRNG_INFO_MAP_ENTRY(mx3                   ),
     CREATE_PRNG_INFO_MAP_ENTRY(nasam                 ),
-    CREATE_PRNG_INFO_MAP_ENTRY(orbit                 ),
     CREATE_PRNG_INFO_MAP_ENTRY(pcg32                 ),
     CREATE_PRNG_INFO_MAP_ENTRY(pcg32_fast            ),
     CREATE_PRNG_INFO_MAP_ENTRY(pcg64                 ),
     CREATE_PRNG_INFO_MAP_ENTRY(pcg64dxsm             ),
-    CREATE_PRNG_INFO_MAP_ENTRY(pelican               ),
-    CREATE_PRNG_INFO_MAP_ENTRY(pulley                ),
-    CREATE_PRNG_INFO_MAP_ENTRY(quixotic              ),
     CREATE_PRNG_INFO_MAP_ENTRY(romu_duo              ),
     CREATE_PRNG_INFO_MAP_ENTRY(romu_duo_jr           ),
     CREATE_PRNG_INFO_MAP_ENTRY(romu_quad             ),
@@ -172,7 +160,6 @@ const std::map<std::string, prng_info_t> prng_name_to_info{
     CREATE_PRNG_INFO_MAP_ENTRY(rrma2xsm2xs           ),
     CREATE_PRNG_INFO_MAP_ENTRY(rrmxmx                ),
     CREATE_PRNG_INFO_MAP_ENTRY(rrxmrrxmsx_0          ),
-    CREATE_PRNG_INFO_MAP_ENTRY(sea_slater_64         ),
     CREATE_PRNG_INFO_MAP_ENTRY(seiran                ),
     CREATE_PRNG_INFO_MAP_ENTRY(sfc32                 ),
     CREATE_PRNG_INFO_MAP_ENTRY(sfc64                 ),
@@ -189,9 +176,6 @@ const std::map<std::string, prng_info_t> prng_name_to_info{
     CREATE_PRNG_INFO_MAP_ENTRY(squares32             ),
     CREATE_PRNG_INFO_MAP_ENTRY(squares64             ),
     CREATE_PRNG_INFO_MAP_ENTRY(stc64                 ),
-    CREATE_PRNG_INFO_MAP_ENTRY(tangle                ),
-    CREATE_PRNG_INFO_MAP_ENTRY(thrust_alt            ),
-    CREATE_PRNG_INFO_MAP_ENTRY(topping               ),
     CREATE_PRNG_INFO_MAP_ENTRY(ttwanghash64          ),
     CREATE_PRNG_INFO_MAP_ENTRY(wyrand                ),
     CREATE_PRNG_INFO_MAP_ENTRY(xoroshiro64starstar   ),
