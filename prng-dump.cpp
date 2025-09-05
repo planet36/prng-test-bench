@@ -29,7 +29,7 @@ https://www.pcg-random.org/posts/how-to-test-with-practrand.html
 #define nl (void)putchar('\n')
 
 const char* program_author = "Steven Ward";
-const char* program_version = "2025-09-03";
+const char* program_version = "2025-09-04";
 const char* program_license = "OSL-3.0";
 
 // Globals
