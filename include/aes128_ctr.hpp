@@ -17,7 +17,6 @@
 #include "mm_equal.h"
 #include "scaled-const.h"
 #include "simd-array.hpp"
-#include "simd-transpose.hpp"
 
 #include <cstdint>
 #include <immintrin.h>
