@@ -7,6 +7,7 @@
 * \author Steven Ward
 * \sa https://en.wikipedia.org/wiki/CLMUL_instruction_set
 * \sa https://www.felixcloutier.com/x86/pclmulqdq
+* \sa https://www.intel.com/content/dam/develop/external/us/en/documents/clmul-wp-rev-2-02-2014-04-20.pdf
 */
 
 #pragma once
