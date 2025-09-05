@@ -11,6 +11,7 @@
 #pragma once
 
 #include "abstract_urbg_class.hpp"
+#include "xxhprimes.hpp"
 
 #include <cstdint>
 
@@ -21,9 +22,14 @@ void ttwanghash64::init()
 {
 }
 
+// adapted from hash64shift
 ttwanghash64::result_type ttwanghash64::next()
 {
-    auto x = s++; // (SDW)
+    constexpr uint64_t inc = xxh_prime64[0]; // inc=1 yields failures
+    static_assert(inc & 1, "must be odd");
+
+    auto x = s;
+    s += inc; // (SDW)
 
     x = (~x) + (x << 21); // x = (x << 21) - x - 1;
     x ^= (x >> 24);
