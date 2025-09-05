@@ -394,6 +394,7 @@ if (prng_name == #NAME) { \
     // mine
 #if defined(__AES__)
     CONDITIONAL_DUMP_MINE(aes128_ctr_64         )
+    CONDITIONAL_DUMP_MINE(aes128_ctr_128        )
 #endif
     CONDITIONAL_DUMP_MINE(bell                  )
     CONDITIONAL_DUMP_MINE(biski64               )

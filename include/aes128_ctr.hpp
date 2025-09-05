@@ -100,6 +100,19 @@ aes128_ctr_64::result_type aes128_ctr_64::next()
     return uint64_from_m128i(aes128_ctr::advance_state_and_generate_value(s));
 }
 
+DEF_URBG_SUBCLASS(aes128_ctr_128, aes128_ctr::state_type, __uint128_t)
+
+/// prepare the initial state
+void aes128_ctr_128::init()
+{
+    aes128_ctr::prepare_initial_state(s);
+}
+
+aes128_ctr_128::result_type aes128_ctr_128::next()
+{
+    return uint128_from_m128i(aes128_ctr::advance_state_and_generate_value(s));
+}
+
 #else
 
 #warning "__AES__ not defined"
