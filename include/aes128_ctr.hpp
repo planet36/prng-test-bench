@@ -13,8 +13,8 @@
 
 #include "abstract_urbg_class.hpp"
 #include "make_odd.h"
+#include "mm_cast.hpp"
 #include "mm_equal.h"
-#include "mm_hxor.h"
 #include "scaled-const.h"
 #include "simd-array.hpp"
 #include "simd-transpose.hpp"
@@ -76,7 +76,7 @@ aes128_ctr_64::result_type aes128_ctr_64::next()
         dst = _mm_aesenc_si128(dst, s[2]);
     }
 
-    return mm_hxor_epu64(dst);
+    return uint64_from_m128i(dst);
 }
 
 #else

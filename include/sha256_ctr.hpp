@@ -13,8 +13,8 @@
 
 #include "abstract_urbg_class.hpp"
 #include "make_odd.h"
+#include "mm_cast.hpp"
 #include "mm_equal.h"
-#include "mm_hxor.h"
 #include "scaled-const.h"
 #include "simd-array.hpp"
 
@@ -96,7 +96,7 @@ sha256_ctr_64::result_type sha256_ctr_64::next()
     __m128i dst = s[0];
     s[0] = _mm_add_epi64(s[0], s[1]);
     dst = sha256_rnds2x4(dst, s[0]);
-    return mm_hxor_epu64(dst);
+    return uint64_from_m128i(dst);
 }
 
 #else
