@@ -13,8 +13,8 @@
 #pragma once
 
 #include "abstract_urbg_class.hpp"
-#include "byteprimes.hpp"
 #include "clmum.hpp"
+#include "xxhprimes.hpp"
 
 #include <cstdint>
 
@@ -30,7 +30,8 @@ void clmulrand::init()
 
 clmulrand::result_type clmulrand::next()
 {
-    const __m128i inc = _mm_set_epi64x(byteprimes[1], byteprimes[0]);
+    // most significant elem first
+    const __m128i inc = _mm_set_epi64x(xxh_prime64[1], xxh_prime64[0]);
     s = _mm_add_epi64(s, inc);
     return clmums(s);
 }
