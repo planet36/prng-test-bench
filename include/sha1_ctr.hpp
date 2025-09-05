@@ -37,7 +37,10 @@ sha1_rnds4x4(__m128i a, __m128i b)
     return b;
 }
 
-DEF_URBG_SUBCLASS(sha1_ctr_64, arr_m128i<2>, uint64_t)
+namespace sha1_ctr
+{
+
+using state_type = arr_m128i<2>;
 
 // s[0] is the state/counter
 // s[1] is the increment (must be odd)
@@ -47,7 +50,8 @@ DEF_URBG_SUBCLASS(sha1_ctr_64, arr_m128i<2>, uint64_t)
 * Every odd integer is coprime with every power of 2.
 * Therefore, \c inc shall be made odd.
 */
-void sha1_ctr_64::init()
+void
+prepare_initial_state(state_type& s)
 {
     s[1] = mm_make_odd_epu64(s[1]);
 
@@ -65,12 +69,29 @@ void sha1_ctr_64::init()
     }
 }
 
-sha1_ctr_64::result_type sha1_ctr_64::next()
+/// advance the state of the PRNG, and generate a pseudo-random value
+__m128i
+advance_state_and_generate_value(state_type& s)
 {
     __m128i dst = s[0];
     s[0] = _mm_add_epi64(s[0], s[1]);
     dst = sha1_rnds4x4(dst, s[0]);
-    return uint64_from_m128i(dst);
+    return dst;
+}
+
+}
+
+DEF_URBG_SUBCLASS(sha1_ctr_64, sha1_ctr::state_type, uint64_t)
+
+/// prepare the initial state
+void sha1_ctr_64::init()
+{
+    sha1_ctr::prepare_initial_state(s);
+}
+
+sha1_ctr_64::result_type sha1_ctr_64::next()
+{
+    return uint64_from_m128i(sha1_ctr::advance_state_and_generate_value(s));
 }
 
 #else

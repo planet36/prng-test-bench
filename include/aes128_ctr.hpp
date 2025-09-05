@@ -23,7 +23,10 @@
 #include <immintrin.h>
 #include <random>
 
-DEF_URBG_SUBCLASS(aes128_ctr_64, arr_m128i<3>, uint64_t)
+namespace aes128_ctr
+{
+
+using state_type = arr_m128i<3>;
 
 // s[0] is the state/counter
 // s[1] is the increment (must be odd)
@@ -34,7 +37,8 @@ DEF_URBG_SUBCLASS(aes128_ctr_64, arr_m128i<3>, uint64_t)
 * Every odd integer is coprime with every power of 2.
 * Therefore, \c inc shall be made odd.
 */
-void aes128_ctr_64::init()
+void
+prepare_initial_state(state_type& s)
 {
     s[1] = mm_make_odd_epu64(s[1]);
 
@@ -62,7 +66,9 @@ void aes128_ctr_64::init()
     }
 }
 
-aes128_ctr_64::result_type aes128_ctr_64::next()
+/// advance the state of the PRNG, and generate a pseudo-random value
+__m128i
+advance_state_and_generate_value(state_type& s)
 {
     // must do at least 2 rounds of AES
     constexpr unsigned int Nr = 2;
@@ -76,7 +82,22 @@ aes128_ctr_64::result_type aes128_ctr_64::next()
         dst = _mm_aesenc_si128(dst, s[2]);
     }
 
-    return uint64_from_m128i(dst);
+    return dst;
+}
+
+}
+
+DEF_URBG_SUBCLASS(aes128_ctr_64, aes128_ctr::state_type, uint64_t)
+
+/// prepare the initial state
+void aes128_ctr_64::init()
+{
+    aes128_ctr::prepare_initial_state(s);
+}
+
+aes128_ctr_64::result_type aes128_ctr_64::next()
+{
+    return uint64_from_m128i(aes128_ctr::advance_state_and_generate_value(s));
 }
 
 #else
