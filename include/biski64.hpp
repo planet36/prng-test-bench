@@ -44,7 +44,7 @@ biski64::result_type biski64::next()
 
     s[2] = s[0] ^ s[1];
     s[1] = std::rotl(s[1], R1) + std::rotl(old_loop_mix, R2);
-    s[0] += 0x9999999999999999ULL; // Additive constant for the Weyl sequence.
+    s[0] += 0x9999999999999999; // Additive constant for the Weyl sequence.
 
     return result;
 }
