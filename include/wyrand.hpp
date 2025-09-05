@@ -8,6 +8,7 @@
 * \sa https://github.com/lemire/testingRNG/blob/master/source/wyrand.h
 * \sa https://github.com/wangyi-fudan/wyhash/blob/master/wyhash.h
 * \sa https://github.com/rurban/smhasher/blob/master/wyhash.h
+* \sa https://github.com/Nicoshev/rapidhash/blob/master/secret.h#L7
 */
 
 #pragma once
