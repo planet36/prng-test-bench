@@ -26,10 +26,10 @@ void shioi::init()
 
 shioi::result_type shioi::next()
 {
-    static constexpr uint64_t M1 = 0xd2b74407b1ce6e93; // not prime (popcount = 33)
+    constexpr uint64_t M1 = 0xd2b74407b1ce6e93; // not prime (popcount = 33)
     static_assert(M1 & 1, "must be odd");
-    static constexpr unsigned int R1 = 29;
-    static constexpr unsigned int S1 = 19;
+    constexpr unsigned int R1 = 29;
+    constexpr unsigned int S1 = 19;
 
     s[0] += xxh_prime64[0]; // (SDW)
     s[1] += xxh_prime64[1]; // (SDW)

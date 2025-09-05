@@ -26,13 +26,13 @@ void mumx_mumx_rrxx_1::init()
 
 mumx_mumx_rrxx_1::result_type mumx_mumx_rrxx_1::next()
 {
-    static constexpr uint64_t inc = _mum_primes[0];
+    constexpr uint64_t inc = _mum_primes[0];
     static_assert((inc & 1) != 0, "must be odd");
 
-    static constexpr uint64_t a = 0xd14fff8ace476a59; // not prime (popcount = 37)
+    constexpr uint64_t a = 0xd14fff8ace476a59; // not prime (popcount = 37)
     static_assert(a & 1, "must be odd");
-    static constexpr unsigned int R1 = 25;
-    static constexpr unsigned int R2 = 47;
+    constexpr unsigned int R1 = 25;
+    constexpr unsigned int R2 = 47;
 
     // mumx(x,a) is not bijective, it only has ~64% coverage. Using data parallel execution, in the
     // meantime we calculate the rrx (rotate & rotate & xor & xor):

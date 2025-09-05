@@ -24,16 +24,16 @@ void degski32::init()
 
 degski32::result_type degski32::next()
 {
-    static constexpr uint32_t inc = xxh_prime32[0]; // inc=1 yields failures
+    constexpr uint32_t inc = xxh_prime32[0]; // inc=1 yields failures
     static_assert(inc & 1, "must be odd");
 
-    static constexpr uint32_t M1 = 0x45d9f3b; // not prime (popcount = 17)
-    static constexpr uint32_t M2 = 0x45d9f3b; // not prime (popcount = 17)
+    constexpr uint32_t M1 = 0x45d9f3b; // not prime (popcount = 17)
+    constexpr uint32_t M2 = 0x45d9f3b; // not prime (popcount = 17)
     static_assert(M1 & 1, "must be odd");
     static_assert(M2 & 1, "must be odd");
-    static constexpr unsigned int S1 = 16;
-    static constexpr unsigned int S2 = 16;
-    static constexpr unsigned int S3 = 16;
+    constexpr unsigned int S1 = 16;
+    constexpr unsigned int S2 = 16;
+    constexpr unsigned int S3 = 16;
 
     auto x = s;
     s += inc; // (SDW)
@@ -54,16 +54,16 @@ void degski64::init()
 
 degski64::result_type degski64::next()
 {
-    static constexpr uint64_t inc = xxh_prime64[0]; // inc=1 yields failures
+    constexpr uint64_t inc = xxh_prime64[0]; // inc=1 yields failures
     static_assert(inc & 1, "must be odd");
 
-    static constexpr uint64_t M1 = 0xd6e8feb86659fd93; // not prime (popcount = 39)
-    static constexpr uint64_t M2 = 0xd6e8feb86659fd93; // not prime (popcount = 39)
+    constexpr uint64_t M1 = 0xd6e8feb86659fd93; // not prime (popcount = 39)
+    constexpr uint64_t M2 = 0xd6e8feb86659fd93; // not prime (popcount = 39)
     static_assert(M1 & 1, "must be odd");
     static_assert(M2 & 1, "must be odd");
-    static constexpr unsigned int S1 = 32;
-    static constexpr unsigned int S2 = 32;
-    static constexpr unsigned int S3 = 32;
+    constexpr unsigned int S1 = 32;
+    constexpr unsigned int S2 = 32;
+    constexpr unsigned int S3 = 32;
 
     auto x = s;
     s += inc; // (SDW)

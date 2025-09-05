@@ -26,10 +26,10 @@ void klimov_shamir_32::init()
 
 klimov_shamir_32::result_type klimov_shamir_32::next()
 {
-    static constexpr uint64_t inc = xxh_prime64[0];
+    constexpr uint64_t inc = xxh_prime64[0];
     static_assert(inc & 1, "must be odd");
 
-    static constexpr unsigned int C = 5;
+    constexpr unsigned int C = 5;
     static_assert(C & 0b001, "least significant bit must be 1");
     static_assert(C & 0b100, "third least significant bit must be 1");
 

@@ -23,12 +23,12 @@ void splitxix33::init()
 
 splitxix33::result_type splitxix33::next()
 {
-    static constexpr uint64_t inc = 1'111'111'111'111'111'111U; // prime (popcount = 35)
+    constexpr uint64_t inc = 1'111'111'111'111'111'111U; // prime (popcount = 35)
     static_assert(inc & 1, "must be odd");
 
-    static constexpr uint64_t M = 1'111'111'111'111'111'111U; // prime (popcount = 35)
+    constexpr uint64_t M = 1'111'111'111'111'111'111U; // prime (popcount = 35)
     static_assert(M & 1, "must be odd");
-    static constexpr unsigned int S = 33;
+    constexpr unsigned int S = 33;
 
     s += inc;
     auto x = s;

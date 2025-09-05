@@ -27,15 +27,15 @@ void rrxmrrxmsx_0::init()
 
 rrxmrrxmsx_0::result_type rrxmrrxmsx_0::next()
 {
-    static constexpr uint64_t M1 = 0xa24baed4963ee407; // not prime (popcount = 32)
-    static constexpr uint64_t M2 = 0x9fb21c651e98df25; // prime (popcount = 34)
+    constexpr uint64_t M1 = 0xa24baed4963ee407; // not prime (popcount = 32)
+    constexpr uint64_t M2 = 0x9fb21c651e98df25; // prime (popcount = 34)
     static_assert(M1 & 1, "must be odd");
     static_assert(M2 & 1, "must be odd");
-    static constexpr unsigned int R1 = 25;
-    static constexpr unsigned int R2 = 50;
-    static constexpr unsigned int R3 = 24;
-    static constexpr unsigned int R4 = 49;
-    static constexpr unsigned int S1 = 28;
+    constexpr unsigned int R1 = 25;
+    constexpr unsigned int R2 = 50;
+    constexpr unsigned int R3 = 24;
+    constexpr unsigned int R4 = 49;
+    constexpr unsigned int S1 = 28;
 
     auto x = s++; // (SDW)
 

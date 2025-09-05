@@ -26,10 +26,10 @@ void seiran::init()
 
 seiran::result_type seiran::next()
 {
-    static constexpr unsigned int M1 = 9;
+    constexpr unsigned int M1 = 9;
     static_assert(M1 & 1, "must be odd");
-    static constexpr unsigned int R1 = 29;
-    static constexpr unsigned int S1 = 9;
+    constexpr unsigned int R1 = 29;
+    constexpr unsigned int S1 = 9;
 
     s[0] += xxh_prime64[0]; // (SDW)
     s[1] += xxh_prime64[1]; // (SDW)

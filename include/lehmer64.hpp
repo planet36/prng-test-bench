@@ -29,7 +29,7 @@ void lehmer64::init()
 
 lehmer64::result_type lehmer64::next()
 {
-    static constexpr uint64_t M = 0xda942042e4dd58b5; // not prime (popcount = 29)
+    constexpr uint64_t M = 0xda942042e4dd58b5; // not prime (popcount = 29)
     static_assert((M & 1) != 0, "must be odd");
 
     ++s; // (SDW)

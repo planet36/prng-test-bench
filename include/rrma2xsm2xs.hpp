@@ -30,17 +30,17 @@ void rrma2xsm2xs::init()
 
 rrma2xsm2xs::result_type rrma2xsm2xs::next()
 {
-    static constexpr uint64_t M1 = 0x9e6c63d0676a9a99; // not prime (popcount = 33)
-    static constexpr uint64_t M2 = 0x9e6d62d06f6a9a9b; // not prime (popcount = 35)
+    constexpr uint64_t M1 = 0x9e6c63d0676a9a99; // not prime (popcount = 33)
+    constexpr uint64_t M2 = 0x9e6d62d06f6a9a9b; // not prime (popcount = 35)
     static_assert(M1 & 1, "must be odd");
     static_assert(M2 & 1, "must be odd");
 
-    static constexpr auto C = GOLDEN_RATIO_64; // (SDW)
+    constexpr auto C = GOLDEN_RATIO_64; // (SDW)
 
-    static constexpr unsigned int R1 = 25;
-    static constexpr unsigned int R2 = 47;
-    static constexpr unsigned int S1 = 23;
-    static constexpr unsigned int S2 = 51;
+    constexpr unsigned int R1 = 25;
+    constexpr unsigned int R2 = 47;
+    constexpr unsigned int S1 = 23;
+    constexpr unsigned int S2 = 51;
 
     s ^= std::rotr(s, R1) ^ std::rotr(s, R2);
     s = s * M1 + C; // Avoids trivial fixpoint at 0.

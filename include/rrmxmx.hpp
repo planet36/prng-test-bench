@@ -25,14 +25,14 @@ void rrmxmx::init()
 
 rrmxmx::result_type rrmxmx::next()
 {
-    static constexpr uint64_t M1 = 0x9fb21c651e98df25; // prime (popcount = 34)
-    static constexpr uint64_t M2 = 0x9fb21c651e98df25; // prime (popcount = 34)
+    constexpr uint64_t M1 = 0x9fb21c651e98df25; // prime (popcount = 34)
+    constexpr uint64_t M2 = 0x9fb21c651e98df25; // prime (popcount = 34)
     static_assert(M1 & 1, "must be odd");
     static_assert(M2 & 1, "must be odd");
-    static constexpr unsigned int R1 = 49;
-    static constexpr unsigned int R2 = 24;
-    static constexpr unsigned int S1 = 28;
-    static constexpr unsigned int S2 = 28;
+    constexpr unsigned int R1 = 49;
+    constexpr unsigned int R2 = 24;
+    constexpr unsigned int S1 = 28;
+    constexpr unsigned int S2 = 28;
 
     auto x = s++; // (SDW)
 

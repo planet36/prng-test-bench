@@ -60,9 +60,9 @@ void pcg32::init()
 
 pcg32::result_type pcg32::next()
 {
-    static constexpr state_type mul = pcg_const64[0];
+    constexpr state_type mul = pcg_const64[0];
     static_assert((mul & 1) != 0, "must be odd");
-    static constexpr state_type inc = pcg_const64[1];
+    constexpr state_type inc = pcg_const64[1];
     static_assert((inc & 1) != 0, "must be odd");
 
     const auto old_s = s;
@@ -86,9 +86,9 @@ void pcg32_fast::init()
 
 pcg32_fast::result_type pcg32_fast::next()
 {
-    static constexpr state_type mul = pcg_const64[0];
+    constexpr state_type mul = pcg_const64[0];
     static_assert((mul & 1) != 0, "must be odd");
-    static constexpr state_type inc = pcg_const64[1];
+    constexpr state_type inc = pcg_const64[1];
     static_assert((inc & 1) != 0, "must be odd");
 
     const auto old_s = s;
@@ -116,9 +116,9 @@ pcg64::result_type pcg64::next()
     *  wide."
     *  https://gcc.gnu.org/onlinedocs/gcc/_005f_005fint128.html
     */
-    static constexpr __uint128_t mul = pcg_const128[0];
+    constexpr __uint128_t mul = pcg_const128[0];
     static_assert((mul & 1) != 0, "must be odd");
-    static constexpr __uint128_t inc = pcg_const128[1];
+    constexpr __uint128_t inc = pcg_const128[1];
     static_assert((inc & 1) != 0, "must be odd");
 
     const auto old_s = s;
@@ -150,9 +150,9 @@ void pcg64dxsm::init()
 pcg64dxsm::result_type pcg64dxsm::next()
 {
     // "cheap multiplier"
-    static constexpr uint64_t mul = pcg_const64[2];
+    constexpr uint64_t mul = pcg_const64[2];
     static_assert((mul & 1) != 0, "must be odd");
-    static constexpr __uint128_t inc = pcg_const128[1];
+    constexpr __uint128_t inc = pcg_const128[1];
     static_assert((inc & 1) != 0, "must be odd");
 
     const auto old_s = s;

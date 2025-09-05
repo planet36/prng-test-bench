@@ -30,14 +30,14 @@ void splitmix32::init()
 
 splitmix32::result_type splitmix32::next()
 {
-    static constexpr uint64_t inc = GOLDEN_RATIO_64;
+    constexpr uint64_t inc = GOLDEN_RATIO_64;
     static_assert((inc & 1) != 0, "must be odd");
 
-    static constexpr uint64_t M1 = 0x62a9d9ed799705f5; // not prime (popcount = 36)
-    static constexpr uint64_t M2 = 0xcb24d0a5c88c35b3; // not prime (popcount = 29)
-    static constexpr unsigned int S1 = 33;
-    static constexpr unsigned int S2 = 28;
-    static constexpr unsigned int S3 = 32;
+    constexpr uint64_t M1 = 0x62a9d9ed799705f5; // not prime (popcount = 36)
+    constexpr uint64_t M2 = 0xcb24d0a5c88c35b3; // not prime (popcount = 29)
+    constexpr unsigned int S1 = 33;
+    constexpr unsigned int S2 = 28;
+    constexpr unsigned int S3 = 32;
     static_assert((M1 & 1) != 0, "must be odd");
     static_assert((M2 & 1) != 0, "must be odd");
 
@@ -67,14 +67,14 @@ void splitmix64::init()
 
 splitmix64::result_type splitmix64::next()
 {
-    static constexpr uint64_t inc = GOLDEN_RATIO_64;
+    constexpr uint64_t inc = GOLDEN_RATIO_64;
     static_assert((inc & 1) != 0, "must be odd");
 
-    static constexpr uint64_t M1 = 0xbf58476d1ce4e5b9; // not prime (popcount = 36)
-    static constexpr uint64_t M2 = 0x94d049bb133111eb; // not prime (popcount = 29)
-    static constexpr unsigned int S1 = 30;
-    static constexpr unsigned int S2 = 27;
-    static constexpr unsigned int S3 = 31;
+    constexpr uint64_t M1 = 0xbf58476d1ce4e5b9; // not prime (popcount = 36)
+    constexpr uint64_t M2 = 0x94d049bb133111eb; // not prime (popcount = 29)
+    constexpr unsigned int S1 = 30;
+    constexpr unsigned int S2 = 27;
+    constexpr unsigned int S3 = 31;
     static_assert((M1 & 1) != 0, "must be odd");
     static_assert((M2 & 1) != 0, "must be odd");
 

@@ -32,9 +32,9 @@ void sfc32::init()
 
 sfc32::result_type sfc32::next()
 {
-    static constexpr unsigned int S1 = 9;
-    static constexpr unsigned int S2 = 3;
-    static constexpr unsigned int R1 = 21;
+    constexpr unsigned int S1 = 9;
+    constexpr unsigned int S2 = 3;
+    constexpr unsigned int R1 = 21;
 
     const result_type result = s[0] + s[1] + s[3]++;
     s[0] = s[1] ^ (s[1] >> S1);
@@ -56,9 +56,9 @@ void sfc64::init()
 
 sfc64::result_type sfc64::next()
 {
-    static constexpr unsigned int S1 = 11;
-    static constexpr unsigned int S2 = 3;
-    static constexpr unsigned int R1 = 24;
+    constexpr unsigned int S1 = 11;
+    constexpr unsigned int S2 = 3;
+    constexpr unsigned int R1 = 24;
 
     const result_type result = s[0] + s[1] + s[3]++;
     s[0] = s[1] ^ (s[1] >> S1);

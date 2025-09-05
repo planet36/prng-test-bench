@@ -29,14 +29,14 @@ void moremur::init()
 
 moremur::result_type moremur::next()
 {
-    static constexpr uint64_t inc = GOLDEN_RATIO_64;
+    constexpr uint64_t inc = GOLDEN_RATIO_64;
     static_assert((inc & 1) != 0, "must be odd");
 
-    static constexpr uint64_t M1 = 0x3c79ac492ba7b653; // not prime (popcount = 34)
-    static constexpr uint64_t M2 = 0x1c69b3f74ac4ae35; // not prime (popcount = 34)
-    static constexpr unsigned int S1 = 27;
-    static constexpr unsigned int S2 = 33;
-    static constexpr unsigned int S3 = 27;
+    constexpr uint64_t M1 = 0x3c79ac492ba7b653; // not prime (popcount = 34)
+    constexpr uint64_t M2 = 0x1c69b3f74ac4ae35; // not prime (popcount = 34)
+    constexpr unsigned int S1 = 27;
+    constexpr unsigned int S2 = 33;
+    constexpr unsigned int S3 = 27;
     static_assert((M1 & 1) != 0, "must be odd");
     static_assert((M2 & 1) != 0, "must be odd");
 

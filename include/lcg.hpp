@@ -24,7 +24,7 @@ void lcg32::init()
 
 lcg32::result_type lcg32::next()
 {
-    static constexpr __uint128_t M = int_join(0xc580caddUL, 0x754f7336d2eaa27dUL); // prime (popcount = 52)
+    constexpr __uint128_t M = int_join(0xc580caddUL, 0x754f7336d2eaa27dUL); // prime (popcount = 52)
     static_assert(M & 1, "must be odd");
 
     s *= M;
@@ -41,7 +41,7 @@ void lcg64::init()
 
 lcg64::result_type lcg64::next()
 {
-    static constexpr __uint128_t M = int_join(0x2d99787926d46932UL, 0xa4c1f32680f70c55UL); // not prime (popcount = 60)
+    constexpr __uint128_t M = int_join(0x2d99787926d46932UL, 0xa4c1f32680f70c55UL); // not prime (popcount = 60)
     static_assert(M & 1, "must be odd");
 
     s *= M;

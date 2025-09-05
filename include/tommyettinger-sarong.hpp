@@ -89,7 +89,7 @@ void mizuchi::init()
 
 mizuchi::result_type mizuchi::next()
 {
-    static constexpr uint64_t stream = 1;
+    constexpr uint64_t stream = 1;
     static_assert(stream & 1, "must be odd");
 
     // stream is an odd number

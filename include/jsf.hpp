@@ -26,8 +26,8 @@ void jsf32_2::init()
 
 jsf32_2::result_type jsf32_2::next()
 {
-    static constexpr unsigned int R1 = 27;
-    static constexpr unsigned int R2 = 17;
+    constexpr unsigned int R1 = 27;
+    constexpr unsigned int R2 = 17;
 
     ++s[0]; // (SDW)
     const auto e = s[0] - std::rotl(s[1], R1);
@@ -48,9 +48,9 @@ void jsf32_3::init()
 
 jsf32_3::result_type jsf32_3::next()
 {
-    static constexpr unsigned int R1 = 23;
-    static constexpr unsigned int R2 = 16;
-    static constexpr unsigned int R3 = 11;
+    constexpr unsigned int R1 = 23;
+    constexpr unsigned int R2 = 16;
+    constexpr unsigned int R3 = 11;
 
     ++s[0]; // (SDW)
     const auto e = s[0] - std::rotl(s[1], R1);
@@ -70,9 +70,9 @@ void jsf64::init()
 
 jsf64::result_type jsf64::next()
 {
-    static constexpr unsigned int R1 = 7;
-    static constexpr unsigned int R2 = 13;
-    static constexpr unsigned int R3 = 37;
+    constexpr unsigned int R1 = 7;
+    constexpr unsigned int R2 = 13;
+    constexpr unsigned int R3 = 37;
 
     ++s[0]; // (SDW)
     const auto e = s[0] - std::rotl(s[1], R1);

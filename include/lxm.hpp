@@ -86,12 +86,12 @@ void lxm::init()
 
 lxm::result_type lxm::next()
 {
-    static constexpr uint64_t M = 0xd1342543de82ef95; // not prime (popcount = 32)
+    constexpr uint64_t M = 0xd1342543de82ef95; // not prime (popcount = 32)
     static_assert((M & 1) != 0, "must be odd");
 
-    static constexpr unsigned int R1 = 24;
-    static constexpr unsigned int R2 = 37;
-    static constexpr unsigned int S1 = 16;
+    constexpr unsigned int R1 = 24;
+    constexpr unsigned int R2 = 37;
+    constexpr unsigned int S1 = 16;
 
     // Mixing function (lea64)
     const uint64_t z = mix_lea(s[1] + s[2]);

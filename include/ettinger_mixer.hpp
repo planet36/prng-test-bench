@@ -33,15 +33,15 @@ void ettinger_mixer::init()
 
 ettinger_mixer::result_type ettinger_mixer::next()
 {
-    static constexpr uint64_t X1 = 0xdb4f0b9175ae2165; // not prime (popcount = 33)
+    constexpr uint64_t X1 = 0xdb4f0b9175ae2165; // not prime (popcount = 33)
     static_assert(X1 & 1, "must be odd");
-    static constexpr uint64_t M1 = 0x4823a80b2006e21b; // prime (popcount = 22)
-    static constexpr uint32_t M2 = 0x81383173;         // prime (popcount = 13)
+    constexpr uint64_t M1 = 0x4823a80b2006e21b; // prime (popcount = 22)
+    constexpr uint32_t M2 = 0x81383173;         // prime (popcount = 13)
     static_assert(M1 & 1, "must be odd");
     static_assert(M2 & 1, "must be odd");
-    static constexpr unsigned int R1 = 12;
-    static constexpr unsigned int R2 = 21;
-    static constexpr unsigned int S1 = 28;
+    constexpr unsigned int R1 = 12;
+    constexpr unsigned int R2 = 21;
+    constexpr unsigned int S1 = 28;
 
     auto x = s++; // (SDW)
 

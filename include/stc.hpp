@@ -30,9 +30,9 @@ void stc64::init()
 
 stc64::result_type stc64::next()
 {
-    static constexpr unsigned int S1 = 11;
-    static constexpr unsigned int S2 = 3;
-    static constexpr unsigned int R1 = 24;
+    constexpr unsigned int S1 = 11;
+    constexpr unsigned int S2 = 3;
+    constexpr unsigned int R1 = 24;
 
     // NOTE: Their algorithm adds a constant to the seed.
 

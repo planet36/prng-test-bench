@@ -26,7 +26,7 @@ void squares32::init()
 
 squares32::result_type squares32::next()
 {
-    static constexpr uint64_t key = xxh_prime64[0];
+    constexpr uint64_t key = xxh_prime64[0];
     static_assert(key & 1, "must be odd");
 
     ++s; // (SDW)
@@ -60,7 +60,7 @@ void squares64::init()
 
 squares64::result_type squares64::next()
 {
-    static constexpr uint64_t key = xxh_prime64[0];
+    constexpr uint64_t key = xxh_prime64[0];
     static_assert(key & 1, "must be odd");
 
     ++s; // (SDW)
