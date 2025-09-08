@@ -5,6 +5,9 @@
 /**
 * \file
 * \author Steven Ward
+* Based on SFC
+* https://github.com/stclib/STC/blob/main/include/stc/random.h
+* https://github.com/stclib/STC/blob/main/docs/random_api.md
 */
 
 #pragma once
@@ -16,11 +19,6 @@
 #include <bit>
 #include <cstdint>
 
-/*
-* Based on SFC
-* https://github.com/stclib/STC/blob/main/include/stc/random.h
-* https://github.com/stclib/STC/blob/main/docs/random_api.md
-*/
 DEF_URBG_SUBCLASS(stc64, SINGLE_ARG(std::array<uint64_t, 4>), uint64_t)
 
 /// prepare the initial state
