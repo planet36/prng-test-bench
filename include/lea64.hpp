@@ -11,14 +11,9 @@
 #pragma once
 
 #include "abstract_urbg_class.hpp"
+#include "golden_ratio.h"
 
 #include <cstdint>
-
-/// GoldenRatio scaled to uint64_t
-/**
-* https://www.wolframalpha.com/input?i=IntegerString%5BFloor%5B%282**64%29*Frac%5BGoldenRatio%5D%5D%2C16%5D
-*/
-#define GOLDEN_RATIO_64 UINT64_C(0x9e3779b97f4a7c15) // not prime (popcount = 38)
 
 DEF_URBG_SUBCLASS(lea64, uint64_t, uint64_t)
 
