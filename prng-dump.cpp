@@ -453,6 +453,7 @@ if (prng_name == #NAME) { \
     CONDITIONAL_DUMP_MINE(splitxix33            )
     CONDITIONAL_DUMP_MINE(squares32             )
     CONDITIONAL_DUMP_MINE(squares64             )
+    CONDITIONAL_DUMP_MINE(stc_crand32           )
     CONDITIONAL_DUMP_MINE(stc_crand64           )
     CONDITIONAL_DUMP_MINE(ttwanghash64          )
     CONDITIONAL_DUMP_MINE(wyrand                )
