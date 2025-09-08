@@ -44,7 +44,7 @@
 #include "splitmix.hpp"
 #include "splitxix33.hpp"
 #include "squares.hpp"
-#include "stc.hpp"
+#include "stc_crand.hpp"
 #include "ttwanghash64.hpp"
 #include "wyrand.hpp"
 #include "xoroshiro.hpp"
