@@ -453,7 +453,7 @@ if (prng_name == #NAME) { \
     CONDITIONAL_DUMP_MINE(splitxix33            )
     CONDITIONAL_DUMP_MINE(squares32             )
     CONDITIONAL_DUMP_MINE(squares64             )
-    CONDITIONAL_DUMP_MINE(stc64                 )
+    CONDITIONAL_DUMP_MINE(stc_crand64           )
     CONDITIONAL_DUMP_MINE(ttwanghash64          )
     CONDITIONAL_DUMP_MINE(wyrand                )
     CONDITIONAL_DUMP_MINE(xoroshiro64starstar   )
@@ -544,7 +544,7 @@ splitmix64                   64  0                     18446744073709551615     
 splitxix33                   64  0                     18446744073709551615     8
 squares32                    32  0                               4294967295     8
 squares64                    64  0                     18446744073709551615     8
-stc64                        64  0                     18446744073709551615    32
+stc_crand64                  64  0                     18446744073709551615    32
 std::default_random_engine   64  1                               2147483646     8
 std::knuth_b                 64  1                               2147483646  2064
 std::minstd_rand             64  1                               2147483646     8

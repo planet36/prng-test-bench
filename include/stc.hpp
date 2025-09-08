@@ -1,7 +1,7 @@
 // SPDX-FileCopyrightText: Steven Ward
 // SPDX-License-Identifier: OSL-3.0
 
-/// stc64 PRNG
+/// STC crand PRNG
 /**
 * \file
 * \author Steven Ward
@@ -19,14 +19,14 @@
 #include <bit>
 #include <cstdint>
 
-DEF_URBG_SUBCLASS(stc64, SINGLE_ARG(std::array<uint64_t, 4>), uint64_t)
+DEF_URBG_SUBCLASS(stc_crand64, SINGLE_ARG(std::array<uint64_t, 4>), uint64_t)
 
 /// prepare the initial state
-void stc64::init()
+void stc_crand64::init()
 {
 }
 
-stc64::result_type stc64::next()
+stc_crand64::result_type stc_crand64::next()
 {
     constexpr uint64_t inc = GOLDEN_RATIO_64;
     static_assert((inc & 1) != 0, "must be odd");

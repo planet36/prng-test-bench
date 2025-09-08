@@ -176,7 +176,7 @@ const std::map<std::string, prng_info_t> prng_name_to_info{
     CREATE_PRNG_INFO_MAP_ENTRY(splitxix33            ),
     CREATE_PRNG_INFO_MAP_ENTRY(squares32             ),
     CREATE_PRNG_INFO_MAP_ENTRY(squares64             ),
-    CREATE_PRNG_INFO_MAP_ENTRY(stc64                 ),
+    CREATE_PRNG_INFO_MAP_ENTRY(stc_crand64           ),
     CREATE_PRNG_INFO_MAP_ENTRY(ttwanghash64          ),
     CREATE_PRNG_INFO_MAP_ENTRY(wyrand                ),
     CREATE_PRNG_INFO_MAP_ENTRY(xoroshiro64starstar   ),
