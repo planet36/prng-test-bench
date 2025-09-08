@@ -25,7 +25,7 @@ void msws32::init()
 
 msws32::result_type msws32::next()
 {
-    constexpr uint64_t inc = 0xb5ad4eceda1ce2a9;
+    constexpr uint64_t inc = 0xb5ad4eceda1ce2a9; // not prime (popcount = 35)
     static_assert(inc & 1, "must be odd");
 
     s[0] *= s[0];
@@ -44,8 +44,8 @@ void msws64::init()
 
 msws64::result_type msws64::next()
 {
-    constexpr uint64_t inc = 0xb5ad4eceda1ce2a9;
-    constexpr uint64_t inc2 = 0x278c5a4d8419fe6b;
+    constexpr uint64_t inc = 0xb5ad4eceda1ce2a9; // not prime (popcount = 35)
+    constexpr uint64_t inc2 = 0x278c5a4d8419fe6b; // not prime (popcount = 32)
 
     static_assert(inc & 1, "must be odd");
     static_assert(inc2 & 1, "must be odd");
