@@ -10,6 +10,7 @@
 #pragma once
 
 #include "abstract_urbg_class.hpp"
+#include "golden_ratio.h"
 
 #include <array>
 #include <bit>
@@ -29,9 +30,10 @@ void stc64::init()
 
 stc64::result_type stc64::next()
 {
-    //const result_type result = (s[0] ^ (s[3] += s[4])) + s[1];
-    //const result_type result = (s[0] ^ (s[3] += inc)) + s[1];
-    const result_type result = (s[0] ^ s[3]++) + s[1]; // (SDW)
+    constexpr uint64_t inc = GOLDEN_RATIO_64;
+    static_assert((inc & 1) != 0, "must be odd");
+
+    const result_type result = (s[0] ^ (s[3] += inc)) + s[1];
     s[0] = s[1] ^ (s[1] >> 11);
     s[1] = s[2] + (s[2] << 3);
     s[2] = std::rotl(s[2], 24) + result;
