@@ -26,7 +26,7 @@ void klimov_shamir_32::init()
 
 klimov_shamir_32::result_type klimov_shamir_32::next()
 {
-    constexpr uint64_t inc = xxh_prime64[0];
+    constexpr uint64_t inc = XXH_PRIME64_1;
     static_assert(inc & 1, "must be odd");
 
     constexpr unsigned int C = 5;

@@ -26,7 +26,7 @@ void mumx_mumx_rrxx_1::init()
 
 mumx_mumx_rrxx_1::result_type mumx_mumx_rrxx_1::next()
 {
-    constexpr uint64_t inc = xxh_prime64[0];
+    constexpr uint64_t inc = XXH_PRIME64_1;
     static_assert((inc & 1) != 0, "must be odd");
 
     constexpr uint64_t a = 0xd14fff8ace476a59; // not prime (popcount = 37)

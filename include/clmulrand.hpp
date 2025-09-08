@@ -31,7 +31,7 @@ void clmulrand::init()
 clmulrand::result_type clmulrand::next()
 {
     // most significant elem first
-    const __m128i inc = _mm_set_epi64x(xxh_prime64[1], xxh_prime64[0]);
+    const __m128i inc = _mm_set_epi64x(XXH_PRIME64_2, XXH_PRIME64_1);
     s = _mm_add_epi64(s, inc);
     return clmums(s);
 }

@@ -25,7 +25,7 @@ void ttwanghash64::init()
 // adapted from hash64shift
 ttwanghash64::result_type ttwanghash64::next()
 {
-    constexpr uint64_t inc = xxh_prime64[0]; // inc=1 yields failures
+    constexpr uint64_t inc = XXH_PRIME64_1; // inc=1 yields failures
     static_assert(inc & 1, "must be odd");
 
     auto x = s;

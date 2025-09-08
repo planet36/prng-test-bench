@@ -26,7 +26,7 @@ void murmurhash3_32::init()
 // https://github.com/aappleby/smhasher/blob/master/src/MurmurHash3.cpp#L68
 murmurhash3_32::result_type murmurhash3_32::next()
 {
-    constexpr uint32_t inc = xxh_prime32[0]; // inc=1 yields failures
+    constexpr uint32_t inc = XXH_PRIME32_1; // inc=1 yields failures
     static_assert(inc & 1, "must be odd");
 
     constexpr uint32_t M1 = 0x85ebca6b; // not prime (popcount = 18)
@@ -57,7 +57,7 @@ void murmurhash3::init()
 // https://github.com/aappleby/smhasher/blob/master/src/MurmurHash3.cpp#L81
 murmurhash3::result_type murmurhash3::next()
 {
-    constexpr uint64_t inc = xxh_prime64[0]; // inc=1 yields failures
+    constexpr uint64_t inc = XXH_PRIME64_1; // inc=1 yields failures
     static_assert(inc & 1, "must be odd");
 
     constexpr uint64_t M1 = 0xff51afd7ed558ccd; // prime (popcount = 41)

@@ -31,8 +31,8 @@ shioi::result_type shioi::next()
     constexpr unsigned int R1 = 29;
     constexpr unsigned int S1 = 19;
 
-    s[0] += xxh_prime64[0]; // (SDW)
-    s[1] += xxh_prime64[1]; // (SDW)
+    s[0] += XXH_PRIME64_1; // (SDW)
+    s[1] += XXH_PRIME64_2; // (SDW)
     const auto old_s = s;
     const result_type result = std::rotl(old_s[0] * M1, R1) + old_s[1];
 

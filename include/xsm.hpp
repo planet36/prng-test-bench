@@ -49,13 +49,13 @@ xsm32::result_type xsm32::next()
     constexpr unsigned int S1 = 16;
 
     result_type result = s[1] ^ std::rotl(s[1] + s[0], R1);
-    result ^= std::rotl(result + xxh_prime32[1], R2);
+    result ^= std::rotl(result + XXH_PRIME32_2, R2);
     result *= M1;
     {
         // step forward
-        const auto tmp = s[0] + xxh_prime32[1];
-        s[0] += xxh_prime32[0];
-        s[1] += tmp + ((s[0] < xxh_prime32[0]) ? 1 : 0);
+        const auto tmp = s[0] + XXH_PRIME32_2;
+        s[0] += XXH_PRIME32_1;
+        s[1] += tmp + ((s[0] < XXH_PRIME32_1) ? 1 : 0);
     }
     result ^= std::rotl(result + s[1], R3);
     result *= M2;
@@ -82,13 +82,13 @@ xsm64::result_type xsm64::next()
     constexpr unsigned int S1 = 32;
 
     result_type result = s[1] ^ std::rotl(s[1] + s[0], R1);
-    result ^= std::rotl(result + xxh_prime64[1], R2);
+    result ^= std::rotl(result + XXH_PRIME64_2, R2);
     result *= M1;
     {
         // step forward
-        const auto tmp = s[0] + xxh_prime64[1];
-        s[0] += xxh_prime64[0];
-        s[1] += tmp + ((s[0] < xxh_prime64[0]) ? 1 : 0);
+        const auto tmp = s[0] + XXH_PRIME64_2;
+        s[0] += XXH_PRIME64_1;
+        s[1] += tmp + ((s[0] < XXH_PRIME64_1) ? 1 : 0);
     }
     result ^= std::rotl(result + s[1], R3);
     result *= M1;
