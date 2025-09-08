@@ -21,6 +21,7 @@ void splitxix33::init()
 {
 }
 
+// https://github.com/skeeto/scratch/blob/master/splitxix33/splitxix33.c
 splitxix33::result_type splitxix33::next()
 {
     constexpr uint64_t inc = UINT64_C(1'111'111'111'111'111'111); // prime (popcount = 35)
