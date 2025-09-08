@@ -16,10 +16,9 @@
 #include <cstdint>
 
 /*
-very similar to SFC
-https://github.com/stclib/STC/blob/master/include/stc/crand.h#L79
-https://github.com/tkaitchuck/Mwc256XXA64/discussions/3#discussioncomment-2326885
-https://github.com/stclib/STC/blob/master/docs/crandom_api.md
+* Based on SFC
+* https://github.com/stclib/STC/blob/main/include/stc/random.h
+* https://github.com/stclib/STC/blob/main/docs/random_api.md
 */
 DEF_URBG_SUBCLASS(stc64, SINGLE_ARG(std::array<uint64_t, 4>), uint64_t)
 
@@ -30,8 +29,6 @@ void stc64::init()
 
 stc64::result_type stc64::next()
 {
-    // NOTE: Their algorithm adds a constant to the seed.
-
     //const result_type result = (s[0] ^ (s[3] += s[4])) + s[1];
     //const result_type result = (s[0] ^ (s[3] += inc)) + s[1];
     const result_type result = (s[0] ^ s[3]++) + s[1]; // (SDW)
