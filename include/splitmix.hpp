@@ -35,9 +35,6 @@ splitmix32::result_type splitmix32::next()
 
     constexpr uint64_t M1 = 0x62a9d9ed799705f5; // not prime (popcount = 36)
     constexpr uint64_t M2 = 0xcb24d0a5c88c35b3; // not prime (popcount = 29)
-    constexpr unsigned int S1 = 33;
-    constexpr unsigned int S2 = 28;
-    constexpr unsigned int S3 = 32;
     static_assert((M1 & 1) != 0, "must be odd");
     static_assert((M2 & 1) != 0, "must be odd");
 
@@ -45,15 +42,15 @@ splitmix32::result_type splitmix32::next()
     auto x = s;
     s += inc; // (SDW)
 
-    x ^= x >> S1;
+    x ^= x >> 33;
     x *= M1;
-    x ^= x >> S2;
+    x ^= x >> 28;
     x *= M2;
 #if 0
-    x ^= x >> S3;
+    x ^= x >> 32;
 #else
     // "Returns the 32 high bits of Stafford variant 4 mix64 function as int."
-    x >>= S3;
+    x >>= 32;
 #endif
     return x;
 }
@@ -72,19 +69,16 @@ splitmix64::result_type splitmix64::next()
 
     constexpr uint64_t M1 = 0xbf58476d1ce4e5b9; // not prime (popcount = 36)
     constexpr uint64_t M2 = 0x94d049bb133111eb; // not prime (popcount = 29)
-    constexpr unsigned int S1 = 30;
-    constexpr unsigned int S2 = 27;
-    constexpr unsigned int S3 = 31;
     static_assert((M1 & 1) != 0, "must be odd");
     static_assert((M2 & 1) != 0, "must be odd");
 
     auto x = s;
     s += inc; // (SDW)
 
-    x ^= x >> S1;
+    x ^= x >> 30;
     x *= M1;
-    x ^= x >> S2;
+    x ^= x >> 27;
     x *= M2;
-    x ^= x >> S3;
+    x ^= x >> 31;
     return x;
 }

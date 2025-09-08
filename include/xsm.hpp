@@ -43,13 +43,9 @@ xsm32::result_type xsm32::next()
     constexpr uint32_t M2 = 0x299529b5; // not prime (popcount = 15)
     static_assert(M1 & 1, "must be odd");
     static_assert(M2 & 1, "must be odd");
-    constexpr unsigned int R1 = 9;
-    constexpr unsigned int R2 = 19;
-    constexpr unsigned int R3 = 16;
-    constexpr unsigned int S1 = 16;
 
-    result_type result = s[1] ^ std::rotl(s[1] + s[0], R1);
-    result ^= std::rotl(result + XXH_PRIME32_2, R2);
+    result_type result = s[1] ^ std::rotl(s[1] + s[0], 9);
+    result ^= std::rotl(result + XXH_PRIME32_2, 19);
     result *= M1;
     {
         // step forward
@@ -57,9 +53,9 @@ xsm32::result_type xsm32::next()
         s[0] += XXH_PRIME32_1;
         s[1] += tmp + ((s[0] < XXH_PRIME32_1) ? 1 : 0);
     }
-    result ^= std::rotl(result + s[1], R3);
+    result ^= std::rotl(result + s[1], 16);
     result *= M2;
-    result ^= result >> S1;
+    result ^= result >> 16;
     return result;
 }
 
@@ -76,13 +72,9 @@ xsm64::result_type xsm64::next()
 {
     constexpr uint64_t M1 = 0xa3ec647659359acd; // not prime (popcount = 34)
     static_assert(M1 & 1, "must be odd");
-    constexpr unsigned int R1 = 16;
-    constexpr unsigned int R2 = 40;
-    constexpr unsigned int R3 = 32;
-    constexpr unsigned int S1 = 32;
 
-    result_type result = s[1] ^ std::rotl(s[1] + s[0], R1);
-    result ^= std::rotl(result + XXH_PRIME64_2, R2);
+    result_type result = s[1] ^ std::rotl(s[1] + s[0], 16);
+    result ^= std::rotl(result + XXH_PRIME64_2, 40);
     result *= M1;
     {
         // step forward
@@ -90,8 +82,8 @@ xsm64::result_type xsm64::next()
         s[0] += XXH_PRIME64_1;
         s[1] += tmp + ((s[0] < XXH_PRIME64_1) ? 1 : 0);
     }
-    result ^= std::rotl(result + s[1], R3);
+    result ^= std::rotl(result + s[1], 32);
     result *= M1;
-    result ^= result >> S1;
+    result ^= result >> 32;
     return result;
 }

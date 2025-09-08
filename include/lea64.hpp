@@ -34,19 +34,16 @@ lea64::result_type lea64::next()
 
     constexpr uint64_t M1 = 0xdaba0b6eb09322e3; // not prime (popcount = 32)
     constexpr uint64_t M2 = 0xdaba0b6eb09322e3; // not prime (popcount = 32)
-    constexpr unsigned int S1 = 32;
-    constexpr unsigned int S2 = 32;
-    constexpr unsigned int S3 = 32;
     static_assert((M1 & 1) != 0, "must be odd");
     static_assert((M2 & 1) != 0, "must be odd");
 
     auto x = s;
     s += inc; // (SDW)
 
-    x ^= x >> S1;
+    x ^= x >> 32;
     x *= M1;
-    x ^= x >> S2;
+    x ^= x >> 32;
     x *= M2;
-    x ^= x >> S3;
+    x ^= x >> 32;
     return x;
 }

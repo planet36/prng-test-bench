@@ -31,18 +31,13 @@ rrxmrrxmsx_0::result_type rrxmrrxmsx_0::next()
     constexpr uint64_t M2 = 0x9fb21c651e98df25; // prime (popcount = 34)
     static_assert(M1 & 1, "must be odd");
     static_assert(M2 & 1, "must be odd");
-    constexpr unsigned int R1 = 25;
-    constexpr unsigned int R2 = 50;
-    constexpr unsigned int R3 = 24;
-    constexpr unsigned int R4 = 49;
-    constexpr unsigned int S1 = 28;
 
     auto x = s++; // (SDW)
 
-    x ^= std::rotr(x, R1) ^ std::rotr(x, R2);
+    x ^= std::rotr(x, 25) ^ std::rotr(x, 50);
     x *= M1;
-    x ^= std::rotr(x, R3) ^ std::rotr(x, R4);
+    x ^= std::rotr(x, 24) ^ std::rotr(x, 49);
     x *= M2;
-    x ^= x >> S1;
+    x ^= x >> 28;
     return x;
 }

@@ -28,17 +28,15 @@ seiran::result_type seiran::next()
 {
     constexpr unsigned int M1 = 9;
     static_assert(M1 & 1, "must be odd");
-    constexpr unsigned int R1 = 29;
-    constexpr unsigned int S1 = 9;
 
     s[0] += XXH_PRIME64_1; // (SDW)
     s[1] += XXH_PRIME64_2; // (SDW)
 
     const auto old_s = s;
-    const result_type result = std::rotl((old_s[0] + old_s[1]) * M1, R1) + old_s[0];
+    const result_type result = std::rotl((old_s[0] + old_s[1]) * M1, 29) + old_s[0];
 
-    s[0] = old_s[0] ^ std::rotl(old_s[1], R1);
-    s[1] = old_s[0] ^ (old_s[1] << S1);
+    s[0] = old_s[0] ^ std::rotl(old_s[1], 29);
+    s[1] = old_s[0] ^ (old_s[1] << 9);
 
     return result;
 }

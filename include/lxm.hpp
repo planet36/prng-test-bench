@@ -89,10 +89,6 @@ lxm::result_type lxm::next()
     constexpr uint64_t M = 0xd1342543de82ef95; // not prime (popcount = 32)
     static_assert((M & 1) != 0, "must be odd");
 
-    constexpr unsigned int R1 = 24;
-    constexpr unsigned int R2 = 37;
-    constexpr unsigned int S1 = 16;
-
     // Mixing function (lea64)
     const uint64_t z = mix_lea(s[1] + s[2]);
 
@@ -103,9 +99,9 @@ lxm::result_type lxm::next()
     uint64_t q0 = s[2];
     uint64_t q1 = s[3];
     q1 ^= q0;
-    q0 = std::rotl(q0, R1);
-    q0 ^= q1 ^ (q1 << S1);
-    q1 = std::rotl(q1, R2);
+    q0 = std::rotl(q0, 24);
+    q0 ^= q1 ^ (q1 << 16);
+    q1 = std::rotl(q1, 37);
     s[2] = q0;
     s[3] = q1;
 

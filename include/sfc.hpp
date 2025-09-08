@@ -32,14 +32,10 @@ void sfc32::init()
 
 sfc32::result_type sfc32::next()
 {
-    constexpr unsigned int S1 = 9;
-    constexpr unsigned int S2 = 3;
-    constexpr unsigned int R1 = 21;
-
     const result_type result = s[0] + s[1] + s[3]++;
-    s[0] = s[1] ^ (s[1] >> S1);
-    s[1] = s[2] + (s[2] << S2);
-    s[2] = std::rotl(s[2], R1) + result;
+    s[0] = s[1] ^ (s[1] >> 9);
+    s[1] = s[2] + (s[2] << 3);
+    s[2] = std::rotl(s[2], 21) + result;
     return result;
 }
 
@@ -56,13 +52,9 @@ void sfc64::init()
 
 sfc64::result_type sfc64::next()
 {
-    constexpr unsigned int S1 = 11;
-    constexpr unsigned int S2 = 3;
-    constexpr unsigned int R1 = 24;
-
     const result_type result = s[0] + s[1] + s[3]++;
-    s[0] = s[1] ^ (s[1] >> S1);
-    s[1] = s[2] + (s[2] << S2);
-    s[2] = std::rotl(s[2], R1) + result;
+    s[0] = s[1] ^ (s[1] >> 11);
+    s[1] = s[2] + (s[2] << 3);
+    s[2] = std::rotl(s[2], 24) + result;
     return result;
 }

@@ -39,16 +39,13 @@ ettinger_mixer::result_type ettinger_mixer::next()
     constexpr uint32_t M2 = 0x81383173;         // prime (popcount = 13)
     static_assert(M1 & 1, "must be odd");
     static_assert(M2 & 1, "must be odd");
-    constexpr unsigned int R1 = 12;
-    constexpr unsigned int R2 = 21;
-    constexpr unsigned int S1 = 28;
 
     auto x = s++; // (SDW)
 
     x ^= X1;
     x *= M1;
-    x ^= std::rotr(x, R1) ^ std::rotl(x, R2) ^ GOLDEN_RATIO_64;
+    x ^= std::rotr(x, 12) ^ std::rotl(x, 21) ^ GOLDEN_RATIO_64;
     x *= M2;
-    x ^= x >> S1;
+    x ^= x >> 28;
     return x;
 }

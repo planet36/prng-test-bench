@@ -30,18 +30,13 @@ nasam::result_type nasam::next()
     static_assert(M1 & 1, "must be odd");
     static_assert(M2 & 1, "must be odd");
 
-    constexpr unsigned int R1 = 25;
-    constexpr unsigned int R2 = 47;
-    constexpr unsigned int S1 = 23;
-    constexpr unsigned int S2 = 51;
-
     auto x = s++; // (SDW)
 
-    x ^= std::rotr(x, R1) ^ std::rotr(x, R2);
+    x ^= std::rotr(x, 25) ^ std::rotr(x, 47);
     x *= M1;
-    x ^= (x >> S1) ^ (x >> S2);
+    x ^= (x >> 23) ^ (x >> 51);
     x *= M2;
-    x ^= (x >> S1) ^ (x >> S2);
+    x ^= (x >> 23) ^ (x >> 51);
 
     return x;
 }

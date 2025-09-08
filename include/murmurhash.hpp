@@ -33,16 +33,13 @@ murmurhash3_32::result_type murmurhash3_32::next()
     constexpr uint32_t M2 = 0xc2b2ae35; // not prime (popcount = 16)
     static_assert(M1 & 1, "must be odd");
     static_assert(M2 & 1, "must be odd");
-    constexpr unsigned int S1 = 16;
-    constexpr unsigned int S2 = 13;
-    constexpr unsigned int S3 = 16;
 
     auto x = s;
     s += inc; // (SDW)
 
-    x ^= x >> S1; x *= M1;
-    x ^= x >> S2; x *= M2;
-    x ^= x >> S3;
+    x ^= x >> 16; x *= M1;
+    x ^= x >> 13; x *= M2;
+    x ^= x >> 16;
     return x;
 }
 
@@ -64,15 +61,12 @@ murmurhash3::result_type murmurhash3::next()
     constexpr uint64_t M2 = 0xc4ceb9fe1a85ec53; // not prime (popcount = 35)
     static_assert(M1 & 1, "must be odd");
     static_assert(M2 & 1, "must be odd");
-    constexpr unsigned int S1 = 33;
-    constexpr unsigned int S2 = 33;
-    constexpr unsigned int S3 = 33;
 
     auto x = s;
     s += inc; // (SDW)
 
-    x ^= x >> S1; x *= M1;
-    x ^= x >> S2; x *= M2;
-    x ^= x >> S3;
+    x ^= x >> 33; x *= M1;
+    x ^= x >> 33; x *= M2;
+    x ^= x >> 33;
     return x;
 }

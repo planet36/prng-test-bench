@@ -25,18 +25,14 @@ mx3::result_type mx3::next()
 {
     constexpr uint64_t M1 = 0xbea225f9eb34556d; // not prime (popcount = 36)
     static_assert(M1 & 1, "must be odd");
-    constexpr unsigned int S1 = 32;
-    constexpr unsigned int S2 = 29;
-    constexpr unsigned int S3 = 32;
-    constexpr unsigned int S4 = 29;
 
     // NOTE: Their algorithm adds M1 to the seed.
     // NOTE: Their state is named "_counter".
     auto x = s++;
 
-    x ^= x >> S1; x *= M1;
-    x ^= x >> S2; x *= M1;
-    x ^= x >> S3; x *= M1;
-    x ^= x >> S4;
+    x ^= x >> 32; x *= M1;
+    x ^= x >> 29; x *= M1;
+    x ^= x >> 32; x *= M1;
+    x ^= x >> 29;
     return x;
 }

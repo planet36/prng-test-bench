@@ -30,17 +30,13 @@ void stc64::init()
 
 stc64::result_type stc64::next()
 {
-    constexpr unsigned int S1 = 11;
-    constexpr unsigned int S2 = 3;
-    constexpr unsigned int R1 = 24;
-
     // NOTE: Their algorithm adds a constant to the seed.
 
     //const result_type result = (s[0] ^ (s[3] += s[4])) + s[1];
     //const result_type result = (s[0] ^ (s[3] += inc)) + s[1];
     const result_type result = (s[0] ^ s[3]++) + s[1]; // (SDW)
-    s[0] = s[1] ^ (s[1] >> S1);
-    s[1] = s[2] + (s[2] << S2);
-    s[2] = std::rotl(s[2], R1) + result;
+    s[0] = s[1] ^ (s[1] >> 11);
+    s[1] = s[2] + (s[2] << 3);
+    s[2] = std::rotl(s[2], 24) + result;
     return result;
 }

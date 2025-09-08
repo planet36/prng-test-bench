@@ -37,16 +37,11 @@ rrma2xsm2xs::result_type rrma2xsm2xs::next()
 
     constexpr auto C = GOLDEN_RATIO_64; // (SDW)
 
-    constexpr unsigned int R1 = 25;
-    constexpr unsigned int R2 = 47;
-    constexpr unsigned int S1 = 23;
-    constexpr unsigned int S2 = 51;
-
-    s ^= std::rotr(s, R1) ^ std::rotr(s, R2);
+    s ^= std::rotr(s, 25) ^ std::rotr(s, 47);
     s = s * M1 + C; // Avoids trivial fixpoint at 0.
-    s ^= (s >> S1) ^ (s >> S2);
+    s ^= (s >> 23) ^ (s >> 51);
     s *= M2;
-    s ^= (s >> S1) ^ (s >> S2);
+    s ^= (s >> 23) ^ (s >> 51);
 
     return s;
 }

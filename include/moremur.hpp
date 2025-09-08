@@ -34,19 +34,16 @@ moremur::result_type moremur::next()
 
     constexpr uint64_t M1 = 0x3c79ac492ba7b653; // not prime (popcount = 34)
     constexpr uint64_t M2 = 0x1c69b3f74ac4ae35; // not prime (popcount = 34)
-    constexpr unsigned int S1 = 27;
-    constexpr unsigned int S2 = 33;
-    constexpr unsigned int S3 = 27;
     static_assert((M1 & 1) != 0, "must be odd");
     static_assert((M2 & 1) != 0, "must be odd");
 
     auto x = s;
     s += inc; // (SDW)
 
-    x ^= x >> S1;
+    x ^= x >> 27;
     x *= M1;
-    x ^= x >> S2;
+    x ^= x >> 33;
     x *= M2;
-    x ^= x >> S3;
+    x ^= x >> 27;
     return x;
 }

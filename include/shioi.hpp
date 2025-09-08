@@ -28,17 +28,15 @@ shioi::result_type shioi::next()
 {
     constexpr uint64_t M1 = 0xd2b74407b1ce6e93; // not prime (popcount = 33)
     static_assert(M1 & 1, "must be odd");
-    constexpr unsigned int R1 = 29;
-    constexpr unsigned int S1 = 19;
 
     s[0] += XXH_PRIME64_1; // (SDW)
     s[1] += XXH_PRIME64_2; // (SDW)
     const auto old_s = s;
-    const result_type result = std::rotl(old_s[0] * M1, R1) + old_s[1];
+    const result_type result = std::rotl(old_s[0] * M1, 29) + old_s[1];
 
     // Note: MUST use arithmetic right shift
     s[0] = old_s[1];
-    s[1] = (old_s[0] << 2) ^ (static_cast<int64_t>(old_s[0]) >> S1) ^ old_s[1];
+    s[1] = (old_s[0] << 2) ^ (static_cast<int64_t>(old_s[0]) >> 19) ^ old_s[1];
 
     return result;
 }
