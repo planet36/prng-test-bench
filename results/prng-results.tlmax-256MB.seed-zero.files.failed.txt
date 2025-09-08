@@ -1,6 +1,5 @@
 RNG_test.tlmax-256MB.seed-zero.prng-degski32.txt
 RNG_test.tlmax-256MB.seed-zero.prng-klimov_shamir_32.txt
-RNG_test.tlmax-256MB.seed-zero.prng-mover_counter_64.txt
 RNG_test.tlmax-256MB.seed-zero.prng-std::default_random_engine.txt
 RNG_test.tlmax-256MB.seed-zero.prng-std::knuth_b.txt
 RNG_test.tlmax-256MB.seed-zero.prng-std::minstd_rand.txt
@@ -11,16 +10,4 @@ RNG_test.tlmax-256MB.seed-zero.prng-std::ranlux24.txt
 RNG_test.tlmax-256MB.seed-zero.prng-std::ranlux24_base.txt
 RNG_test.tlmax-256MB.seed-zero.prng-std::ranlux48.txt
 RNG_test.tlmax-256MB.seed-zero.prng-std::ranlux48_base.txt
-RNG_test.tlmax-256MB.seed-zero.prng-tangle.txt
-RNG_test.tlmax-256MB.seed-zero.prng-ttwanghash64.txt
-RNG_test.tlmax-256MB.seed-zero.prng-xoroshiro1024plusplus.txt
-RNG_test.tlmax-256MB.seed-zero.prng-xoroshiro1024starstar.txt
-RNG_test.tlmax-256MB.seed-zero.prng-xoroshiro128plusplus.txt
-RNG_test.tlmax-256MB.seed-zero.prng-xoroshiro128starstar.txt
-RNG_test.tlmax-256MB.seed-zero.prng-xoroshiro64starstar.txt
-RNG_test.tlmax-256MB.seed-zero.prng-xoshiro128plusplus.txt
-RNG_test.tlmax-256MB.seed-zero.prng-xoshiro128starstar.txt
-RNG_test.tlmax-256MB.seed-zero.prng-xoshiro256plusplus.txt
-RNG_test.tlmax-256MB.seed-zero.prng-xoshiro256starstar.txt
-RNG_test.tlmax-256MB.seed-zero.prng-xoshiro512plusplus.txt
-RNG_test.tlmax-256MB.seed-zero.prng-xoshiro512starstar.txt
+RNG_test.tlmax-256MB.seed-zero.prng-xxh3_avalanche.txt

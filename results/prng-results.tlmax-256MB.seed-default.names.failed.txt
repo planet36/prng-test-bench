@@ -9,5 +9,4 @@ std::ranlux24
 std::ranlux24_base
 std::ranlux48
 std::ranlux48_base
-tangle
-ttwanghash64
+xxh3_avalanche

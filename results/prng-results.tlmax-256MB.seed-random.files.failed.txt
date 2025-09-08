@@ -9,4 +9,4 @@ RNG_test.tlmax-256MB.seed-random.prng-std::ranlux24.txt
 RNG_test.tlmax-256MB.seed-random.prng-std::ranlux24_base.txt
 RNG_test.tlmax-256MB.seed-random.prng-std::ranlux48.txt
 RNG_test.tlmax-256MB.seed-random.prng-std::ranlux48_base.txt
-RNG_test.tlmax-256MB.seed-random.prng-ttwanghash64.txt
+RNG_test.tlmax-256MB.seed-random.prng-xxh3_avalanche.txt

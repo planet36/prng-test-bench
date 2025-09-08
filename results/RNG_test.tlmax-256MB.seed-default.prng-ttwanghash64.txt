@@ -3,25 +3,6 @@ RNG = RNG_stdin64, seed = unknown
 test set = core, folding = none
 
 rng=RNG_stdin64, seed=unknown
-length= 256 mebibytes (2^28 bytes), time= 0.7 seconds
-  Test Name                         Raw       Processed     Evaluation
-  BCFN(2+0,13-2,T)                  R= +2823  p =  3e-1442    FAIL !!!!!!!!  
-  BCFN(2+1,13-2,T)                  R=+820.8  p =  4.3e-419   FAIL !!!!!!!   
-  BCFN(2+2,13-3,T)                  R=+623.1  p =  1.0e-294   FAIL !!!!!!    
-  BCFN(2+3,13-3,T)                  R=+191.7  p =  1.5e-90    FAIL !!!!!     
-  BCFN(2+4,13-3,T)                  R=+153.9  p =  1.2e-72    FAIL !!!!      
-  BCFN(2+5,13-4,T)                  R= +83.2  p =  2.7e-36    FAIL !!!       
-  BCFN(2+6,13-5,T)                  R= +79.5  p =  2.7e-31    FAIL !!!       
-  BCFN(2+7,13-5,T)                  R= +27.9  p =  4.1e-11   VERY SUSPICIOUS 
-  BCFN(2+8,13-6,T)                  R= +31.1  p =  4.4e-11   VERY SUSPICIOUS 
-  BCFN(2+9,13-6,T)                  R= +14.4  p =  2.3e-5   unusual          
-  DC6-9x1Bytes-1                    R= +4000  p =  5e-2098    FAIL !!!!!!!!  
-  Gap-16:A                          R= +61.0  p =  2.5e-48    FAIL !!!!      
-  Gap-16:B                          R= +57.1  p =  2.3e-46    FAIL !!!       
-  BRank(12):1K(2)                   R= +47.1  p~=  3.2e-15    FAIL           
-  BRank(12):2K(1)                   R= +68.9  p~=  8.9e-22    FAIL !!        
-  mod3n(5):(3,9-6)                  R=+10105  p =  1e-3451    FAIL !!!!!!!!  
-  mod3n(5):(4,9-6)                  R= +83.2  p =  2.9e-29    FAIL !!!       
-  TMFn(2+0):wl                      R= +46.7  p~=   5e-21     FAIL !!        
-  ...and 49 test result(s) without anomalies
+length= 256 mebibytes (2^28 bytes), time= 0.4 seconds
+  no anomalies in 67 test result(s)
 

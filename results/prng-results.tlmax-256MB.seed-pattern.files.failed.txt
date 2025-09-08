@@ -1,6 +1,5 @@
 RNG_test.tlmax-256MB.seed-pattern.prng-degski32.txt
 RNG_test.tlmax-256MB.seed-pattern.prng-klimov_shamir_32.txt
-RNG_test.tlmax-256MB.seed-pattern.prng-mover_counter_64.txt
 RNG_test.tlmax-256MB.seed-pattern.prng-std::default_random_engine.txt
 RNG_test.tlmax-256MB.seed-pattern.prng-std::knuth_b.txt
 RNG_test.tlmax-256MB.seed-pattern.prng-std::minstd_rand.txt
@@ -11,5 +10,4 @@ RNG_test.tlmax-256MB.seed-pattern.prng-std::ranlux24.txt
 RNG_test.tlmax-256MB.seed-pattern.prng-std::ranlux24_base.txt
 RNG_test.tlmax-256MB.seed-pattern.prng-std::ranlux48.txt
 RNG_test.tlmax-256MB.seed-pattern.prng-std::ranlux48_base.txt
-RNG_test.tlmax-256MB.seed-pattern.prng-tangle.txt
-RNG_test.tlmax-256MB.seed-pattern.prng-ttwanghash64.txt
+RNG_test.tlmax-256MB.seed-pattern.prng-xxh3_avalanche.txt
