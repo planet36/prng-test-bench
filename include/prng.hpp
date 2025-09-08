@@ -50,6 +50,7 @@
 #include "xoroshiro.hpp"
 #include "xoshiro.hpp"
 #include "xsm.hpp"
+#include "xxh.hpp"
 
 #include <climits>
 #include <concepts>
@@ -191,4 +192,8 @@ const std::map<std::string, prng_info_t> prng_name_to_info{
     CREATE_PRNG_INFO_MAP_ENTRY(xoshiro512starstar    ),
     CREATE_PRNG_INFO_MAP_ENTRY(xsm32                 ),
     CREATE_PRNG_INFO_MAP_ENTRY(xsm64                 ),
+    CREATE_PRNG_INFO_MAP_ENTRY(xxh32_avalanche       ),
+    CREATE_PRNG_INFO_MAP_ENTRY(xxh64_avalanche       ),
+    CREATE_PRNG_INFO_MAP_ENTRY(xxh3_avalanche        ),
+    CREATE_PRNG_INFO_MAP_ENTRY(xxh3_rrmxmx           ),
 };

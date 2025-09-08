@@ -469,6 +469,10 @@ if (prng_name == #NAME) { \
     CONDITIONAL_DUMP_MINE(xoshiro512starstar    )
     CONDITIONAL_DUMP_MINE(xsm32                 )
     CONDITIONAL_DUMP_MINE(xsm64                 )
+    CONDITIONAL_DUMP_MINE(xxh32_avalanche       )
+    CONDITIONAL_DUMP_MINE(xxh64_avalanche       )
+    CONDITIONAL_DUMP_MINE(xxh3_avalanche        )
+    CONDITIONAL_DUMP_MINE(xxh3_rrmxmx           )
 
     /*
     {
