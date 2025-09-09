@@ -59,14 +59,10 @@ BINS = $(basename $(SRCS))
 
 J_SHORT := 50%
 TF_SHORT := 0
-# For all tf values, PRNGs that fail quickly do so within 256MB.
 TLMAX_SHORT := 256MB
 
 J_LONG := 1
-# These fail (seed=random) with tf=2 but not tf=1:
-#   MRG32k3a, degski64, murmurhash3, splitxix33, tangle
 TF_LONG := 2
-# With tf=2, PRNGs that pass 512GB also pass 1024GB.
 TLMAX_LONG := 512GB
 
 all: $(BINS)
@@ -100,9 +96,7 @@ short-test: prng-dump prng-bench | $(OUTPUT_DIR)
 		-s default -s pattern -s random -s zero \
 		&> $(OUTPUT_DIR)/prng-results.tlmax-$(TLMAX_SHORT).summary.txt
 
-# Takes about 43 hrs (random, zero)
 # Takes about 23.5 hrs (random)
-# Takes about 19.5 hrs (zero)
 long-test: prng-dump prng-bench | $(OUTPUT_DIR)
 	bash test-prng-dump.bash -j $(J_LONG) -f $(TF_LONG) -m $(TLMAX_LONG) \
 		-s random -s zero \
