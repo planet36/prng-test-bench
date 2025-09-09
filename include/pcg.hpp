@@ -12,10 +12,6 @@
 
 #include "abstract_urbg_class.hpp"
 
-#if defined(__SIZEOF_INT128__)
-#include "int_join.hpp"
-#endif
-
 #include <array>
 #include <bit>
 #include <cstdint>

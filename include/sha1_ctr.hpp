@@ -94,6 +94,10 @@ sha1_ctr_64::result_type sha1_ctr_64::next()
     return uint64_from_m128i(sha1_ctr::advance_state_and_generate_value(s));
 }
 
+#if defined(__SIZEOF_INT128__)
+#include "int_join.hpp"
+#endif
+
 DEF_URBG_SUBCLASS(sha1_ctr_128, sha1_ctr::state_type, __uint128_t)
 
 /// prepare the initial state

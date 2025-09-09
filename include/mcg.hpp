@@ -15,6 +15,10 @@
 
 #include <cstdint>
 
+#if !defined(__SIZEOF_INT128__)
+#error "__SIZEOF_INT128__ not defined"
+#endif
+
 DEF_URBG_SUBCLASS(mcg128, __uint128_t, uint64_t)
 
 /// prepare the initial state

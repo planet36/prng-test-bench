@@ -12,13 +12,13 @@
 
 #pragma once
 
-#if !defined(__SIZEOF_INT128__)
-#error "__SIZEOF_INT128__ not defined"
-#endif
-
 #include "abstract_urbg_class.hpp"
 
 #include <cstdint>
+
+#if !defined(__SIZEOF_INT128__)
+#error "__SIZEOF_INT128__ not defined"
+#endif
 
 DEF_URBG_SUBCLASS(lehmer64, __uint128_t, uint64_t)
 
