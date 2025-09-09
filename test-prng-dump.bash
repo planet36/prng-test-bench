@@ -43,6 +43,10 @@ declare -r DEFAULT_SEED_TYPE=default
 declare -r -a VALID_TFS=(0 1 2)
 declare -r DEFAULT_TF=1
 
+declare -r -a VALID_TES=(0 1 10)
+# te=1 takes about 2.7 times as long as te=0
+declare -r DEFAULT_TE=0
+
 declare -r DEFAULT_TLMIN=256MB
 
 declare -r DEFAULT_TLMAX=1GB
@@ -100,6 +104,8 @@ declare -a SEED_TYPES=()
 # Passed to RNG_test
 
 TF="$DEFAULT_TF"
+
+TE="$DEFAULT_TE"
 
 TLMIN="$DEFAULT_TLMIN"
 
@@ -223,6 +229,7 @@ echo "# SEED_TYPES=(${SEED_TYPES[*]})"
 echo
 echo "# (passed to RNG_test)"
 echo "# TF=$TF"
+echo "# TE=$TE"
 echo "# TLMIN=$TLMIN"
 echo "# TLMAX=$TLMAX"
 echo "# MULTITHREADED=$MULTITHREADED"
@@ -242,8 +249,8 @@ do
         then
             PRNG_RESULT_SIZE_BITS=64
         fi
-        printf "./prng-dump -s %s %s | RNG_test %s -tf %d -tlmin %s -tlmax %s %s > %q\n" \
-            "$SEED_TYPE" "$PRNG_NAME" "stdin$PRNG_RESULT_SIZE_BITS" "$TF" \
+        printf "./prng-dump -s %s %s | RNG_test %s -tf %d -te %d -tlmin %s -tlmax %s %s > %q\n" \
+            "$SEED_TYPE" "$PRNG_NAME" "stdin$PRNG_RESULT_SIZE_BITS" "$TF" "$TE" \
             "$TLMIN" "$TLMAX" "$MULTITHREADED" "$OUTPUT_DIR/$PRACTRAND_OUTFILE_STEM.prng-$PRNG_NAME.txt"
     done < "$PRNG_DUMP_INFO_FILE" > "$PRNG_DUMP_CMDS_FILE"
 
