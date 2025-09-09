@@ -58,7 +58,7 @@ DEPS = $(SRCS:.cpp=.d)
 BINS = $(basename $(SRCS))
 
 J_SHORT := 50%
-TF_SHORT := 0
+TF_SHORT := 1
 TLMAX_SHORT := 256MB
 
 J_LONG := 1
