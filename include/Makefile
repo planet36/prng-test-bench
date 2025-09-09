@@ -15,6 +15,8 @@ CXXFLAGS += -O3 -flto=auto -march=native -fno-math-errno
 CXXFLAGS += -Wno-unused-function
 CXXFLAGS += -Werror -Wno-error=cpp -Wno-error=pedantic
 
+#CXXFLAGS += -march=raptorlake
+
 #LDFLAGS +=
 
 #LDLIBS +=

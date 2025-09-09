@@ -45,6 +45,8 @@ CXXFLAGS += -Wno-unused-function
 # -frecord-gcc-switches is used by readelf
 CXXFLAGS += -frecord-gcc-switches
 
+#CXXFLAGS += -march=raptorlake
+
 #LDFLAGS +=
 
 LDLIBS += -lfmt
