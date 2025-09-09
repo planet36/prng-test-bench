@@ -99,7 +99,7 @@ short-test: prng-dump prng-bench | $(OUTPUT_DIR)
 # Takes about 23.5 hrs (random)
 long-test: prng-dump prng-bench | $(OUTPUT_DIR)
 	bash test-prng-dump.bash -j $(J_LONG) -f $(TF_LONG) -m $(TLMAX_LONG) \
-		-s random -s zero \
+		-s random \
 		&> $(OUTPUT_DIR)/prng-results.tlmax-$(TLMAX_LONG).summary.txt
 
 # These "update" targets are identical to their respective non-update targets,
