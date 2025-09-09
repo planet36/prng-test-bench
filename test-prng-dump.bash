@@ -66,7 +66,7 @@ OPTIONS
 
   -f TF : Specify the value of the '-tf' option passed to RNG_test.
      If not given, $DEFAULT_TF is the default value.
-     Must be at least $DEFAULT_TF.  See "RNG_test -help" for details.
+     See "RNG_test -help" for details.
      Valid values are: ${VALID_TFS[@]}
 
   -j JOBS : Specify the value of the '--jobs' option passed to parallel.
