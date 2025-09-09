@@ -30,8 +30,8 @@ fill_rand(T& x) noexcept
 void
 fill_rand(std::ranges::contiguous_range auto& container)
 {
-    auto span_bytes = std::as_writable_bytes(std::span{container});
-    arc4random_buf(std::data(span_bytes), span_bytes.size_bytes());
+    auto sp = std::span{container};
+    arc4random_buf(std::data(sp), sp.size_bytes());
 }
 
 #elif defined(_GLIBCXX_HAVE_GETENTROPY)
@@ -57,9 +57,9 @@ fill_rand(T& x)
 void
 fill_rand(std::ranges::contiguous_range auto& container)
 {
-    auto span_bytes = std::as_writable_bytes(std::span{container});
+    auto sp = std::span{container};
 
-    if (getentropy(std::data(span_bytes), span_bytes.size_bytes()) < 0)
+    if (getentropy(std::data(sp), sp.size_bytes()) < 0)
     {
         throw std::system_error(std::make_error_code(std::errc{errno}), "getentropy");
     }
