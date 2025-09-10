@@ -1,9 +1,9 @@
 RNG_test using PractRand version 0.95-planet36
 RNG = RNG_stdin64, seed = unknown
-test set = core, folding = none
+test set = core, folding = standard (64 bit)
 
 rng=RNG_stdin64, seed=unknown
-length= 256 mebibytes (2^28 bytes), time= 2.2 seconds
+length= 256 mebibytes (2^28 bytes), time= 2.1 seconds
   Test Name                         Raw       Processed     Evaluation
   BCFN(2+0,13-2,T)                  R>+99999  p = 0           FAIL !!!!!!!!  
   BCFN(2+1,13-2,T)                  R>+99999  p = 0           FAIL !!!!!!!!  
@@ -48,5 +48,5 @@ length= 256 mebibytes (2^28 bytes), time= 2.2 seconds
   TMFn(2+1):wl                      R=+30072  p~=  0          FAIL !!!!!!!!  
   TMFn(2+2):wl                      R=+15001  p~=  0          FAIL !!!!!!!!  
   TMFn(2+3):wl                      R= +7466  p~=  0          FAIL !!!!!!!!  
-  ...and 24 test result(s) without anomalies
+  ...and 170 test result(s) without anomalies
 

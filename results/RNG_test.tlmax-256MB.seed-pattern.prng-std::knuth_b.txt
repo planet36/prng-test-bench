@@ -1,6 +1,6 @@
 RNG_test using PractRand version 0.95-planet36
 RNG = RNG_stdin64, seed = unknown
-test set = core, folding = none
+test set = core, folding = standard (64 bit)
 
 rng=RNG_stdin64, seed=unknown
 length= 256 mebibytes (2^28 bytes), time= 1.0 seconds
@@ -23,7 +23,6 @@ length= 256 mebibytes (2^28 bytes), time= 1.0 seconds
   DC6-9x1Bytes-1                    R>+99999  p = 0           FAIL !!!!!!!!  
   Gap-16:A                          R>+99999  p = 0           FAIL !!!!!!!!  
   Gap-16:B                          R>+99999  p = 0           FAIL !!!!!!!!  
-  FPF-14+6/16:(0,14-0)              R=  -6.1  p =1-2.6e-5   unusual          
   FPF-14+6/16:(1,14-0)              R=+34279  p = 0           FAIL !!!!!!!!  
   FPF-14+6/16:(2,14-0)              R=+40997  p = 0           FAIL !!!!!!!!  
   FPF-14+6/16:(3,14-0)              R=+35579  p = 0           FAIL !!!!!!!!  
@@ -55,5 +54,6 @@ length= 256 mebibytes (2^28 bytes), time= 1.0 seconds
   TMFn(2+1):wl                      R=+24052  p~=  0          FAIL !!!!!!!!  
   TMFn(2+2):wl                      R=+11993  p~=  0          FAIL !!!!!!!!  
   TMFn(2+3):wl                      R= +5966  p~=  0          FAIL !!!!!!!!  
-  ...and 17 test result(s) without anomalies
+  [Low16/64]FPF-14+6/16:all         R=  -6.4  p =1-8.3e-6   mildly suspicious
+  ...and 163 test result(s) without anomalies
 

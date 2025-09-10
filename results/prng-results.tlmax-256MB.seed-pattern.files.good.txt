@@ -51,7 +51,6 @@ RNG_test.tlmax-256MB.seed-pattern.prng-splitmix64.txt
 RNG_test.tlmax-256MB.seed-pattern.prng-splitxix33.txt
 RNG_test.tlmax-256MB.seed-pattern.prng-squares32.txt
 RNG_test.tlmax-256MB.seed-pattern.prng-squares64.txt
-RNG_test.tlmax-256MB.seed-pattern.prng-stc64.txt
 RNG_test.tlmax-256MB.seed-pattern.prng-stc_crand32.txt
 RNG_test.tlmax-256MB.seed-pattern.prng-stc_crand64.txt
 RNG_test.tlmax-256MB.seed-pattern.prng-ttwanghash64.txt

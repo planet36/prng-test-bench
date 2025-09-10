@@ -1,11 +1,11 @@
 RNG_test using PractRand version 0.95-planet36
 RNG = RNG_stdin32, seed = unknown
-test set = core, folding = none
+test set = core, folding = standard (32 bit)
 
 rng=RNG_stdin32, seed=unknown
-length= 256 mebibytes (2^28 bytes), time= 0.7 seconds
+length= 256 mebibytes (2^28 bytes), time= 1.0 seconds
   Test Name                         Raw       Processed     Evaluation
-  Gap-16:A                          R= +17.3  p =  1.7e-13    FAIL           
-  Gap-16:B                          R=  +4.8  p =  6.3e-4   unusual          
-  ...and 65 test result(s) without anomalies
+  Gap-16:A                          R= +17.6  p =  9.8e-14    FAIL           
+  Gap-16:B                          R= +10.3  p =  2.1e-8   very suspicious  
+  ...and 166 test result(s) without anomalies
 
