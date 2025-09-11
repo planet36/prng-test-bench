@@ -11,6 +11,7 @@
 #pragma once
 
 #include "abstract_urbg_class.hpp"
+#include "int_join.hpp"
 
 #include <array>
 #include <bit>
