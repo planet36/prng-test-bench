@@ -18,6 +18,7 @@
 static inline uint64_t
 uint64_from_m128i(__m128i a) { return _mm_cvtsi128_si64(a); }
 
+// same as m128i_from_uint128
 static inline __m128i
 m128i_from_uint64(uint64_t lo, uint64_t hi) { return _mm_set_epi64x(hi, lo); }
 
@@ -28,6 +29,7 @@ m128i_from_uint64(uint64_t lo, uint64_t hi) { return _mm_set_epi64x(hi, lo); }
 static inline __uint128_t
 uint128_from_m128i(__m128i a) { return std::bit_cast<__uint128_t>(a); }
 
+// same as m128i_from_uint64
 static inline __m128i
 m128i_from_uint128(__uint128_t a) { return std::bit_cast<__m128i>(a); }
 
