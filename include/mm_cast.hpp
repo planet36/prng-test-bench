@@ -28,4 +28,7 @@ m128i_from_uint64(uint64_t hi, uint64_t lo) { return _mm_set_epi64x(hi, lo); }
 static inline __uint128_t
 uint128_from_m128i(__m128i a) { return std::bit_cast<__uint128_t>(a); }
 
+static inline __m128i
+m128i_from_uint128(__uint128_t a) { return std::bit_cast<__m128i>(a); }
+
 #endif
