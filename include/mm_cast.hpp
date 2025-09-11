@@ -19,7 +19,7 @@ static inline uint64_t
 uint64_from_m128i(__m128i a) { return _mm_cvtsi128_si64(a); }
 
 static inline __m128i
-m128i_from_uint64(uint64_t hi, uint64_t lo) { return _mm_set_epi64x(hi, lo); }
+m128i_from_uint64(uint64_t lo, uint64_t hi) { return _mm_set_epi64x(hi, lo); }
 
 #endif
 
