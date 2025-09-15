@@ -5,6 +5,7 @@ test set = core, folding = standard (32 bit)
 rng=RNG_stdin32, seed=unknown
 length= 256 mebibytes (2^28 bytes), time= 0.7 seconds
   Test Name                         Raw       Processed     Evaluation
-  Gap-16:A                          R=  +7.2  p =  1.9e-5   mildly suspicious
-  ...and 167 test result(s) without anomalies
+  Gap-16:A                          R= +10.9  p =  2.0e-8   very suspicious  
+  Gap-16:B                          R=  +4.8  p =  6.1e-4   unusual          
+  ...and 166 test result(s) without anomalies
 

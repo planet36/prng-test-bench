@@ -1,4 +1,3 @@
-bell
 degski32
 degski64
 klimov_shamir_32
@@ -6,7 +5,6 @@ lcg32
 lcg64
 lehmer64
 mcg128
-mover_counter_64
 murmurhash3
 murmurhash3_32
 splitxix33
@@ -20,7 +18,6 @@ std::ranlux24
 std::ranlux24_base
 std::ranlux48
 std::ranlux48_base
-tangle
 ttwanghash64
 xoroshiro1024plusplus
 xoroshiro1024starstar

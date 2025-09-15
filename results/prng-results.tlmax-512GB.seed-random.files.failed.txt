@@ -1,4 +1,5 @@
 RNG_test.tlmax-512GB.seed-random.prng-MRG32k3a.txt
+RNG_test.tlmax-512GB.seed-random.prng-biski64.txt
 RNG_test.tlmax-512GB.seed-random.prng-degski32.txt
 RNG_test.tlmax-512GB.seed-random.prng-degski64.txt
 RNG_test.tlmax-512GB.seed-random.prng-klimov_shamir_32.txt
@@ -6,7 +7,6 @@ RNG_test.tlmax-512GB.seed-random.prng-lcg32.txt
 RNG_test.tlmax-512GB.seed-random.prng-lcg64.txt
 RNG_test.tlmax-512GB.seed-random.prng-lehmer64.txt
 RNG_test.tlmax-512GB.seed-random.prng-mcg128.txt
-RNG_test.tlmax-512GB.seed-random.prng-mover_counter_64.txt
 RNG_test.tlmax-512GB.seed-random.prng-murmurhash3.txt
 RNG_test.tlmax-512GB.seed-random.prng-murmurhash3_32.txt
 RNG_test.tlmax-512GB.seed-random.prng-splitxix33.txt
@@ -21,3 +21,5 @@ RNG_test.tlmax-512GB.seed-random.prng-std::ranlux24_base.txt
 RNG_test.tlmax-512GB.seed-random.prng-std::ranlux48.txt
 RNG_test.tlmax-512GB.seed-random.prng-std::ranlux48_base.txt
 RNG_test.tlmax-512GB.seed-random.prng-ttwanghash64.txt
+RNG_test.tlmax-512GB.seed-random.prng-xxh32_avalanche.txt
+RNG_test.tlmax-512GB.seed-random.prng-xxh3_avalanche.txt

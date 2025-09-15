@@ -3,10 +3,9 @@ RNG = RNG_stdin64, seed = unknown
 test set = core, folding = standard (64 bit)
 
 rng=RNG_stdin64, seed=unknown
-length= 256 mebibytes (2^28 bytes), time= 0.6 seconds
+length= 256 mebibytes (2^28 bytes), time= 0.7 seconds
   Test Name                         Raw       Processed     Evaluation
-  Gap-16:A                          R= +30.7  p =  3.4e-24    FAIL !!        
-  Gap-16:B                          R= +18.5  p =  4.4e-15    FAIL !         
-  [Low16/64]Gap-16:A                R=  +5.3  p =  5.5e-4   unusual          
-  ...and 210 test result(s) without anomalies
+  Gap-16:A                          R= +34.4  p =  3.9e-27    FAIL !!        
+  Gap-16:B                          R= +22.5  p =  2.6e-18    FAIL !         
+  ...and 211 test result(s) without anomalies
 

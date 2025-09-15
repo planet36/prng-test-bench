@@ -3,16 +3,13 @@ RNG = RNG_stdin32, seed = unknown
 test set = core, folding = extra
 
 rng=RNG_stdin32, seed=unknown
-length= 256 mebibytes (2^28 bytes), time= 0.7 seconds
+length= 256 mebibytes (2^28 bytes), time= 0.8 seconds
   Test Name                         Raw       Processed     Evaluation
-  Gap-16:A                          R= +18.8  p =  1.0e-14    FAIL           
-  Gap-16:B                          R=  +7.1  p =  8.5e-6   mildly suspicious
-  FPF-14+6/16:all                   R=  -5.2  p =1-1.2e-4   unusual          
-  [Low1/16]Gap-16:A                 R= +22.3  p =  3.6e-17    FAIL !         
-  [Low1/16]FPF-14+6/16:(0,14-1)     R=  +9.6  p =  3.2e-8   suspicious       
-  [Low1/16]FPF-14+6/16:all          R= +10.9  p =  1.0e-9    VERY SUSPICIOUS 
-  [Low1/16]FPF-14+6/16:cross        R=  +8.5  p =  3.9e-7   suspicious       
-  [Low4/16]Gap-16:A                 R= +21.7  p =  2.5e-18    FAIL !         
-  [Low4/16]Gap-16:B                 R=  +9.9  p =  1.3e-8   very suspicious  
-  ...and 512 test result(s) without anomalies
+  Gap-16:A                          R= +18.4  p =  2.1e-14    FAIL           
+  Gap-16:B                          R=  +8.9  p =  2.6e-7   very suspicious  
+  [Low1/16]Gap-16:A                 R= +21.0  p =  3.7e-16    FAIL !         
+  [Low1/16]FPF-14+6/16:all          R=  +7.7  p =  1.0e-6   suspicious       
+  [Low4/16]Gap-16:A                 R= +26.6  p =  1.3e-22    FAIL !!        
+  [Low4/16]Gap-16:B                 R=  +9.6  p =  2.9e-8   very suspicious  
+  ...and 515 test result(s) without anomalies
 

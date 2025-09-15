@@ -1,22 +1,7 @@
 
 # prng-dump.opts=
-#   GNU GIMPLE 14.2.1 20240910 -march=alderlake -mmmx -mpopcnt -msse -msse2 -msse3 
-#   -mssse3 -msse4.1 -msse4.2 -mavx -mavx2 -mno-sse4a -mno-fma4 -mno-xop -mfma 
-#   -mno-avx512f -mbmi -mbmi2 -maes -mpclmul -mno-avx512vl -mno-avx512bw 
-#   -mno-avx512dq -mno-avx512cd -mno-avx512vbmi -mno-avx512ifma 
-#   -mno-avx512vpopcntdq -mno-avx512vbmi2 -mno-gfni -mno-vpclmulqdq -mno-avx512vnni 
-#   -mno-avx512bitalg -mno-avx512bf16 -mno-avx512vp2intersect -mno-3dnow -madx 
-#   -mabm -mno-cldemote -mclflushopt -mno-clwb -mno-clzero -mcx16 -mno-enqcmd 
-#   -mf16c -mfsgsbase -mfxsr -mno-hle -msahf -mno-lwp -mlzcnt -mmovbe 
-#   -mno-movdir64b -mno-movdiri -mno-mwaitx -mno-pconfig -mno-pku -mprfchw 
-#   -mno-ptwrite -mno-rdpid -mrdrnd -mrdseed -mno-rtm -mno-serialize -mno-sgx -msha 
-#   -mno-shstk -mno-tbm -mno-tsxldtrk -mno-vaes -mno-waitpkg -mno-wbnoinvd -mxsave 
-#   -mno-xsavec -mno-xsaveopt -mno-xsaves -mno-amx-tile -mno-amx-int8 -mno-amx-bf16 
-#   -mno-uintr -mno-hreset -mno-kl -mno-widekl -mno-avxvnni -mno-avx512fp16 
-#   -mno-avxifma -mno-avxvnniint8 -mno-avxneconvert -mno-cmpccxadd -mno-amx-fp16 
-#   -mno-prefetchi -mno-raoint -mno-amx-complex -mno-avxvnniint16 -mno-sm3 
-#   -mno-sha512 -mno-sm4 -mno-apxf -mno-usermsr -mtune=alderlake -O3 -O3 
-#   -fno-openmp -fno-openacc -fPIC -fcf-protection=none -fno-math-errno -fltrans
+#   GNU GIMPLE 15.2.1 20250813 -march=raptorlake -O3 -O3 -fno-openmp -fno-openacc 
+#   -fPIE -fcf-protection=none -fno-math-errno -fltrans
 
 # nproc=8
 # PRNG_DUMP_INFO_FILE=/run/user/1000/prng-dump-info.txt
@@ -27,54 +12,31 @@
 # JOBS=--jobs=1
 
 # (passed to prng-dump)
-# SEED_TYPES=(random zero)
+# SEED_TYPES=(random)
 
 # (passed to RNG_test)
 # TF=2
+# TE=0
 # TLMIN=256MB
 # TLMAX=512GB
 # MULTITHREADED=-multithreaded
 
 # Run each test with: seed=random, tf=2, tlmin=256MB, tlmax=512GB
 
-# Took 24:10:49
+# Took 23:44:40
 
 # Good (seed random):
-aes128_prng_dec_dm_k1_r2
-aes128_prng_dec_dm_k1_r3
-aes128_prng_dec_dm_k2_r1
-aes128_prng_dec_dm_k3_r1
-aes128_prng_dec_k1_r2
-aes128_prng_dec_k1_r3
-aes128_prng_dec_k2_r1
-aes128_prng_dec_k3_r1
-aes128_prng_enc_dm_k1_r2
-aes128_prng_enc_dm_k1_r3
-aes128_prng_enc_dm_k2_r1
-aes128_prng_enc_dm_k3_r1
-aes128_prng_enc_k1_r2
-aes128_prng_enc_k1_r3
-aes128_prng_enc_k2_r1
-aes128_prng_enc_k3_r1
-aesdeclastrand
-aesdecrand
-aesenclastrand
-aesencrand
-aesimcrand
-bell
-bright
+aes128_ctr_128
+aes128_ctr_64
 clmulrand
-dirk
 ettinger_mixer
 gjrand
 jsf32_2
 jsf32_3
 jsf64
 lea64
-linnorm
-mizuchi
+lxm
 moremur
-mover_64
 msws32
 msws64
 mumx_mumx_rrxx_1
@@ -82,14 +44,10 @@ mumx_mumx_x1
 mumx_mumx_x2
 mx3
 nasam
-orbit
 pcg32
 pcg32_fast
 pcg64
 pcg64dxsm
-pelican
-pulley
-quixotic
 romu_duo
 romu_duo_jr
 romu_quad
@@ -99,19 +57,21 @@ romu_trio32
 rrma2xsm2xs
 rrmxmx
 rrxmrrxmsx_0
-sea_slater_64
 seiran
 sfc32
 sfc64
+sha1_ctr_128
+sha1_ctr_64
+sha256_ctr_128
+sha256_ctr_64
 shioi
 splitmix32
 splitmix64
 squares32
 squares64
 stc64
-tangle
-thrust_alt
-topping
+stc_crand32
+stc_crand64
 wyrand
 xoroshiro1024plusplus
 xoroshiro1024starstar
@@ -126,9 +86,12 @@ xoshiro512plusplus
 xoshiro512starstar
 xsm32
 xsm64
+xxh3_rrmxmx
+xxh64_avalanche
 
 # Failed (seed random):
 MRG32k3a
+biski64
 degski32
 degski64
 klimov_shamir_32
@@ -136,13 +99,8 @@ lcg32
 lcg64
 lehmer64
 mcg128
-mover_counter_64
 murmurhash3
 murmurhash3_32
-sha1msg1rand
-sha1msg2rand
-sha256msg1rand
-sha256msg2rand
 splitxix33
 std::default_random_engine
 std::knuth_b
@@ -155,623 +113,255 @@ std::ranlux24_base
 std::ranlux48
 std::ranlux48_base
 ttwanghash64
+xxh32_avalanche
+xxh3_avalanche
 
 # Time taken for RNG_test to reach 512GB (only for good generators (seed random)):
-aes128_prng_dec_dm_k1_r2  length=  512  gibibytes  (2^39  bytes),  time=  1013  seconds
-aes128_prng_dec_dm_k1_r3  length=  512  gibibytes  (2^39  bytes),  time=  1008  seconds
-aes128_prng_dec_dm_k2_r1  length=  512  gibibytes  (2^39  bytes),  time=  1010  seconds
-aes128_prng_dec_dm_k3_r1  length=  512  gibibytes  (2^39  bytes),  time=  1019  seconds
-aes128_prng_dec_k1_r2     length=  512  gibibytes  (2^39  bytes),  time=  1014  seconds
-aes128_prng_dec_k1_r3     length=  512  gibibytes  (2^39  bytes),  time=  1017  seconds
-aes128_prng_dec_k2_r1     length=  512  gibibytes  (2^39  bytes),  time=  1006  seconds
-aes128_prng_dec_k3_r1     length=  512  gibibytes  (2^39  bytes),  time=  1010  seconds
-aes128_prng_enc_dm_k1_r2  length=  512  gibibytes  (2^39  bytes),  time=  1008  seconds
-aes128_prng_enc_dm_k1_r3  length=  512  gibibytes  (2^39  bytes),  time=  1006  seconds
-aes128_prng_enc_dm_k2_r1  length=  512  gibibytes  (2^39  bytes),  time=  1015  seconds
-aes128_prng_enc_dm_k3_r1  length=  512  gibibytes  (2^39  bytes),  time=  1026  seconds
-aes128_prng_enc_k1_r2     length=  512  gibibytes  (2^39  bytes),  time=  1012  seconds
-aes128_prng_enc_k1_r3     length=  512  gibibytes  (2^39  bytes),  time=  1011  seconds
-aes128_prng_enc_k2_r1     length=  512  gibibytes  (2^39  bytes),  time=  1012  seconds
-aes128_prng_enc_k3_r1     length=  512  gibibytes  (2^39  bytes),  time=  1006  seconds
-bell                      length=  512  gibibytes  (2^39  bytes),  time=  995   seconds
-bright                    length=  512  gibibytes  (2^39  bytes),  time=  1006  seconds
-clmulrand                 length=  512  gibibytes  (2^39  bytes),  time=  1006  seconds
-dirk                      length=  512  gibibytes  (2^39  bytes),  time=  1041  seconds
-ettinger_mixer            length=  512  gibibytes  (2^39  bytes),  time=  1041  seconds
-gjrand                    length=  512  gibibytes  (2^39  bytes),  time=  994   seconds
-jsf32_2                   length=  512  gibibytes  (2^39  bytes),  time=  1053  seconds
-jsf32_3                   length=  512  gibibytes  (2^39  bytes),  time=  1051  seconds
-jsf64                     length=  512  gibibytes  (2^39  bytes),  time=  997   seconds
-lea64                     length=  512  gibibytes  (2^39  bytes),  time=  1014  seconds
-linnorm                   length=  512  gibibytes  (2^39  bytes),  time=  1014  seconds
-mizuchi                   length=  512  gibibytes  (2^39  bytes),  time=  1018  seconds
-moremur                   length=  512  gibibytes  (2^39  bytes),  time=  1003  seconds
-mover_64                  length=  512  gibibytes  (2^39  bytes),  time=  994   seconds
-msws32                    length=  512  gibibytes  (2^39  bytes),  time=  1045  seconds
-msws64                    length=  512  gibibytes  (2^39  bytes),  time=  993   seconds
-mumx_mumx_rrxx_1          length=  512  gibibytes  (2^39  bytes),  time=  999   seconds
-mumx_mumx_x1              length=  512  gibibytes  (2^39  bytes),  time=  1002  seconds
-mumx_mumx_x2              length=  512  gibibytes  (2^39  bytes),  time=  1003  seconds
-mx3                       length=  512  gibibytes  (2^39  bytes),  time=  1004  seconds
-nasam                     length=  512  gibibytes  (2^39  bytes),  time=  1002  seconds
-orbit                     length=  512  gibibytes  (2^39  bytes),  time=  997   seconds
-pcg32                     length=  512  gibibytes  (2^39  bytes),  time=  1049  seconds
-pcg32_fast                length=  512  gibibytes  (2^39  bytes),  time=  1045  seconds
-pcg64                     length=  512  gibibytes  (2^39  bytes),  time=  996   seconds
-pcg64dxsm                 length=  512  gibibytes  (2^39  bytes),  time=  995   seconds
-pelican                   length=  512  gibibytes  (2^39  bytes),  time=  1001  seconds
-pulley                    length=  512  gibibytes  (2^39  bytes),  time=  1004  seconds
-quixotic                  length=  512  gibibytes  (2^39  bytes),  time=  1008  seconds
-romu_duo                  length=  512  gibibytes  (2^39  bytes),  time=  985   seconds
-romu_duo_jr               length=  512  gibibytes  (2^39  bytes),  time=  993   seconds
-romu_quad                 length=  512  gibibytes  (2^39  bytes),  time=  999   seconds
-romu_quad32               length=  512  gibibytes  (2^39  bytes),  time=  1039  seconds
-romu_trio                 length=  512  gibibytes  (2^39  bytes),  time=  982   seconds
-romu_trio32               length=  512  gibibytes  (2^39  bytes),  time=  1027  seconds
-rrma2xsm2xs               length=  512  gibibytes  (2^39  bytes),  time=  1075  seconds
-rrmxmx                    length=  512  gibibytes  (2^39  bytes),  time=  1004  seconds
-rrxmrrxmsx_0              length=  512  gibibytes  (2^39  bytes),  time=  998   seconds
-sea_slater_64             length=  512  gibibytes  (2^39  bytes),  time=  996   seconds
-seiran                    length=  512  gibibytes  (2^39  bytes),  time=  993   seconds
-sfc32                     length=  512  gibibytes  (2^39  bytes),  time=  1059  seconds
-sfc64                     length=  512  gibibytes  (2^39  bytes),  time=  1015  seconds
-shioi                     length=  512  gibibytes  (2^39  bytes),  time=  997   seconds
-splitmix32                length=  512  gibibytes  (2^39  bytes),  time=  1061  seconds
-splitmix64                length=  512  gibibytes  (2^39  bytes),  time=  1005  seconds
-squares32                 length=  512  gibibytes  (2^39  bytes),  time=  1026  seconds
-squares64                 length=  512  gibibytes  (2^39  bytes),  time=  992   seconds
-stc64                     length=  512  gibibytes  (2^39  bytes),  time=  999   seconds
-tangle                    length=  512  gibibytes  (2^39  bytes),  time=  1003  seconds
-thrust_alt                length=  512  gibibytes  (2^39  bytes),  time=  1007  seconds
-topping                   length=  512  gibibytes  (2^39  bytes),  time=  1000  seconds
-wyrand                    length=  512  gibibytes  (2^39  bytes),  time=  1005  seconds
-xoroshiro1024plusplus     length=  512  gibibytes  (2^39  bytes),  time=  989   seconds
-xoroshiro1024starstar     length=  512  gibibytes  (2^39  bytes),  time=  1038  seconds
-xoroshiro128plusplus      length=  512  gibibytes  (2^39  bytes),  time=  1005  seconds
-xoroshiro128starstar      length=  512  gibibytes  (2^39  bytes),  time=  1002  seconds
-xoroshiro64starstar       length=  512  gibibytes  (2^39  bytes),  time=  1067  seconds
-xoshiro128plusplus        length=  512  gibibytes  (2^39  bytes),  time=  1080  seconds
-xoshiro128starstar        length=  512  gibibytes  (2^39  bytes),  time=  1062  seconds
-xoshiro256plusplus        length=  512  gibibytes  (2^39  bytes),  time=  1013  seconds
-xoshiro256starstar        length=  512  gibibytes  (2^39  bytes),  time=  1002  seconds
-xoshiro512plusplus        length=  512  gibibytes  (2^39  bytes),  time=  997   seconds
-xoshiro512starstar        length=  512  gibibytes  (2^39  bytes),  time=  997   seconds
-xsm32                     length=  512  gibibytes  (2^39  bytes),  time=  1033  seconds
-xsm64                     length=  512  gibibytes  (2^39  bytes),  time=  988   seconds
+aes128_ctr_128         length=  512  gibibytes  (2^39  bytes),  time=  1277  seconds
+aes128_ctr_64          length=  512  gibibytes  (2^39  bytes),  time=  1272  seconds
+clmulrand              length=  512  gibibytes  (2^39  bytes),  time=  1281  seconds
+ettinger_mixer         length=  512  gibibytes  (2^39  bytes),  time=  1313  seconds
+gjrand                 length=  512  gibibytes  (2^39  bytes),  time=  1283  seconds
+jsf32_2                length=  512  gibibytes  (2^39  bytes),  time=  1360  seconds
+jsf32_3                length=  512  gibibytes  (2^39  bytes),  time=  1350  seconds
+jsf64                  length=  512  gibibytes  (2^39  bytes),  time=  1278  seconds
+lea64                  length=  512  gibibytes  (2^39  bytes),  time=  1290  seconds
+lxm                    length=  512  gibibytes  (2^39  bytes),  time=  1293  seconds
+moremur                length=  512  gibibytes  (2^39  bytes),  time=  1279  seconds
+msws32                 length=  512  gibibytes  (2^39  bytes),  time=  1337  seconds
+msws64                 length=  512  gibibytes  (2^39  bytes),  time=  1290  seconds
+mumx_mumx_rrxx_1       length=  512  gibibytes  (2^39  bytes),  time=  1285  seconds
+mumx_mumx_x1           length=  512  gibibytes  (2^39  bytes),  time=  1279  seconds
+mumx_mumx_x2           length=  512  gibibytes  (2^39  bytes),  time=  1285  seconds
+mx3                    length=  512  gibibytes  (2^39  bytes),  time=  1287  seconds
+nasam                  length=  512  gibibytes  (2^39  bytes),  time=  1280  seconds
+pcg32                  length=  512  gibibytes  (2^39  bytes),  time=  1355  seconds
+pcg32_fast             length=  512  gibibytes  (2^39  bytes),  time=  1349  seconds
+pcg64                  length=  512  gibibytes  (2^39  bytes),  time=  1290  seconds
+pcg64dxsm              length=  512  gibibytes  (2^39  bytes),  time=  1291  seconds
+romu_duo               length=  512  gibibytes  (2^39  bytes),  time=  1287  seconds
+romu_duo_jr            length=  512  gibibytes  (2^39  bytes),  time=  1293  seconds
+romu_quad              length=  512  gibibytes  (2^39  bytes),  time=  1282  seconds
+romu_quad32            length=  512  gibibytes  (2^39  bytes),  time=  1337  seconds
+romu_trio              length=  512  gibibytes  (2^39  bytes),  time=  1288  seconds
+romu_trio32            length=  512  gibibytes  (2^39  bytes),  time=  1337  seconds
+rrma2xsm2xs            length=  512  gibibytes  (2^39  bytes),  time=  1353  seconds
+rrmxmx                 length=  512  gibibytes  (2^39  bytes),  time=  1279  seconds
+rrxmrrxmsx_0           length=  512  gibibytes  (2^39  bytes),  time=  1284  seconds
+seiran                 length=  512  gibibytes  (2^39  bytes),  time=  1279  seconds
+sfc32                  length=  512  gibibytes  (2^39  bytes),  time=  1350  seconds
+sfc64                  length=  512  gibibytes  (2^39  bytes),  time=  1280  seconds
+sha1_ctr_128           length=  512  gibibytes  (2^39  bytes),  time=  1290  seconds
+sha1_ctr_64            length=  512  gibibytes  (2^39  bytes),  time=  1319  seconds
+sha256_ctr_128         length=  512  gibibytes  (2^39  bytes),  time=  1286  seconds
+sha256_ctr_64          length=  512  gibibytes  (2^39  bytes),  time=  1320  seconds
+shioi                  length=  512  gibibytes  (2^39  bytes),  time=  1289  seconds
+splitmix32             length=  512  gibibytes  (2^39  bytes),  time=  1348  seconds
+splitmix64             length=  512  gibibytes  (2^39  bytes),  time=  1285  seconds
+squares32              length=  512  gibibytes  (2^39  bytes),  time=  1350  seconds
+squares64              length=  512  gibibytes  (2^39  bytes),  time=  1285  seconds
+stc64                  length=  512  gibibytes  (2^39  bytes),  time=  999   seconds
+stc_crand32            length=  512  gibibytes  (2^39  bytes),  time=  1353  seconds
+stc_crand64            length=  512  gibibytes  (2^39  bytes),  time=  1282  seconds
+wyrand                 length=  512  gibibytes  (2^39  bytes),  time=  1276  seconds
+xoroshiro1024plusplus  length=  512  gibibytes  (2^39  bytes),  time=  1288  seconds
+xoroshiro1024starstar  length=  512  gibibytes  (2^39  bytes),  time=  1287  seconds
+xoroshiro128plusplus   length=  512  gibibytes  (2^39  bytes),  time=  1284  seconds
+xoroshiro128starstar   length=  512  gibibytes  (2^39  bytes),  time=  1304  seconds
+xoroshiro64starstar    length=  512  gibibytes  (2^39  bytes),  time=  1341  seconds
+xoshiro128plusplus     length=  512  gibibytes  (2^39  bytes),  time=  1352  seconds
+xoshiro128starstar     length=  512  gibibytes  (2^39  bytes),  time=  1350  seconds
+xoshiro256plusplus     length=  512  gibibytes  (2^39  bytes),  time=  1284  seconds
+xoshiro256starstar     length=  512  gibibytes  (2^39  bytes),  time=  1295  seconds
+xoshiro512plusplus     length=  512  gibibytes  (2^39  bytes),  time=  1282  seconds
+xoshiro512starstar     length=  512  gibibytes  (2^39  bytes),  time=  1287  seconds
+xsm32                  length=  512  gibibytes  (2^39  bytes),  time=  1348  seconds
+xsm64                  length=  512  gibibytes  (2^39  bytes),  time=  1289  seconds
+xxh3_rrmxmx            length=  512  gibibytes  (2^39  bytes),  time=  1290  seconds
+xxh64_avalanche        length=  512  gibibytes  (2^39  bytes),  time=  1274  seconds
 
 # Failure happened after this length (seed random):
-MRG32k3a                    length=  512  gibibytes  (2^39  bytes),  time=  1016  seconds
-degski32                    length=  256  mebibytes  (2^28  bytes),  time=  0.7   seconds
-degski64                    length=  64   gibibytes  (2^36  bytes),  time=  142   seconds
-klimov_shamir_32            length=  256  mebibytes  (2^28  bytes),  time=  0.6   seconds
-lcg32                       length=  64   gibibytes  (2^36  bytes),  time=  143   seconds
-lcg64                       length=  128  gibibytes  (2^37  bytes),  time=  263   seconds
-lehmer64                    length=  128  gibibytes  (2^37  bytes),  time=  264   seconds
-mcg128                      length=  128  gibibytes  (2^37  bytes),  time=  261   seconds
-mover_counter_64            length=  256  mebibytes  (2^28  bytes),  time=  0.6   seconds
-murmurhash3                 length=  512  gibibytes  (2^39  bytes),  time=  1002  seconds
-murmurhash3_32              length=  256  mebibytes  (2^28  bytes),  time=  0.6   seconds
-sha1msg1rand                length=  256  mebibytes  (2^28  bytes),  time=  0.6   seconds
-sha1msg2rand                length=  256  mebibytes  (2^28  bytes),  time=  0.6   seconds
-sha256msg1rand              length=  256  mebibytes  (2^28  bytes),  time=  0.6   seconds
-sha256msg2rand              length=  256  mebibytes  (2^28  bytes),  time=  0.6   seconds
-splitxix33                  length=  256  gibibytes  (2^38  bytes),  time=  507   seconds
-std::default_random_engine  length=  256  mebibytes  (2^28  bytes),  time=  0.7   seconds
-std::knuth_b                length=  256  mebibytes  (2^28  bytes),  time=  0.9   seconds
-std::minstd_rand            length=  256  mebibytes  (2^28  bytes),  time=  0.7   seconds
-std::minstd_rand0           length=  256  mebibytes  (2^28  bytes),  time=  0.7   seconds
-std::mt19937                length=  256  mebibytes  (2^28  bytes),  time=  0.7   seconds
-std::mt19937_64             length=  512  gibibytes  (2^39  bytes),  time=  987   seconds
-std::ranlux24               length=  256  mebibytes  (2^28  bytes),  time=  1.8   seconds
-std::ranlux24_base          length=  256  mebibytes  (2^28  bytes),  time=  0.8   seconds
-std::ranlux48               length=  256  mebibytes  (2^28  bytes),  time=  4.2   seconds
-std::ranlux48_base          length=  256  mebibytes  (2^28  bytes),  time=  0.7   seconds
-ttwanghash64                length=  256  mebibytes  (2^28  bytes),  time=  0.6   seconds
-
-# Run each test with: seed=zero, tf=2, tlmin=256MB, tlmax=512GB
-
-# Took 20:06:18
-
-# Good (seed zero):
-MRG32k3a
-aes128_prng_dec_dm_k1_r2
-aes128_prng_dec_dm_k1_r3
-aes128_prng_dec_dm_k2_r1
-aes128_prng_dec_dm_k3_r1
-aes128_prng_dec_k1_r2
-aes128_prng_dec_k1_r3
-aes128_prng_dec_k2_r1
-aes128_prng_dec_k3_r1
-aes128_prng_enc_dm_k1_r2
-aes128_prng_enc_dm_k1_r3
-aes128_prng_enc_dm_k2_r1
-aes128_prng_enc_dm_k3_r1
-aes128_prng_enc_k1_r2
-aes128_prng_enc_k1_r3
-aes128_prng_enc_k2_r1
-aes128_prng_enc_k3_r1
-aesdeclastrand
-aesdecrand
-aesenclastrand
-aesencrand
-aesimcrand
-bright
-clmulrand
-dirk
-ettinger_mixer
-gjrand
-jsf32_2
-jsf32_3
-jsf64
-lea64
-linnorm
-mizuchi
-moremur
-mover_64
-msws32
-msws64
-mumx_mumx_rrxx_1
-mumx_mumx_x1
-mumx_mumx_x2
-mx3
-nasam
-orbit
-pcg32
-pcg32_fast
-pcg64
-pcg64dxsm
-pelican
-pulley
-quixotic
-romu_duo
-romu_duo_jr
-romu_quad
-romu_quad32
-romu_trio
-romu_trio32
-rrma2xsm2xs
-rrmxmx
-rrxmrrxmsx_0
-sea_slater_64
-seiran
-sfc32
-sfc64
-shioi
-splitmix32
-splitmix64
-squares32
-squares64
-stc64
-thrust_alt
-topping
-wyrand
-xsm32
-xsm64
-
-# Failed (seed zero):
-bell
-degski32
-degski64
-klimov_shamir_32
-lcg32
-lcg64
-lehmer64
-mcg128
-mover_counter_64
-murmurhash3
-murmurhash3_32
-sha1msg1rand
-sha1msg2rand
-sha256msg1rand
-sha256msg2rand
-splitxix33
-std::default_random_engine
-std::knuth_b
-std::minstd_rand
-std::minstd_rand0
-std::mt19937
-std::mt19937_64
-std::ranlux24
-std::ranlux24_base
-std::ranlux48
-std::ranlux48_base
-tangle
-ttwanghash64
-xoroshiro1024plusplus
-xoroshiro1024starstar
-xoroshiro128plusplus
-xoroshiro128starstar
-xoroshiro64starstar
-xoshiro128plusplus
-xoshiro128starstar
-xoshiro256plusplus
-xoshiro256starstar
-xoshiro512plusplus
-xoshiro512starstar
-
-# Time taken for RNG_test to reach 512GB (only for good generators (seed zero)):
-MRG32k3a                  length=  512  gibibytes  (2^39  bytes),  time=  1013  seconds
-aes128_prng_dec_dm_k1_r2  length=  512  gibibytes  (2^39  bytes),  time=  1005  seconds
-aes128_prng_dec_dm_k1_r3  length=  512  gibibytes  (2^39  bytes),  time=  1005  seconds
-aes128_prng_dec_dm_k2_r1  length=  512  gibibytes  (2^39  bytes),  time=  1001  seconds
-aes128_prng_dec_dm_k3_r1  length=  512  gibibytes  (2^39  bytes),  time=  1009  seconds
-aes128_prng_dec_k1_r2     length=  512  gibibytes  (2^39  bytes),  time=  1006  seconds
-aes128_prng_dec_k1_r3     length=  512  gibibytes  (2^39  bytes),  time=  1011  seconds
-aes128_prng_dec_k2_r1     length=  512  gibibytes  (2^39  bytes),  time=  1009  seconds
-aes128_prng_dec_k3_r1     length=  512  gibibytes  (2^39  bytes),  time=  1001  seconds
-aes128_prng_enc_dm_k1_r2  length=  512  gibibytes  (2^39  bytes),  time=  1000  seconds
-aes128_prng_enc_dm_k1_r3  length=  512  gibibytes  (2^39  bytes),  time=  1000  seconds
-aes128_prng_enc_dm_k2_r1  length=  512  gibibytes  (2^39  bytes),  time=  1037  seconds
-aes128_prng_enc_dm_k3_r1  length=  512  gibibytes  (2^39  bytes),  time=  1006  seconds
-aes128_prng_enc_k1_r2     length=  512  gibibytes  (2^39  bytes),  time=  1003  seconds
-aes128_prng_enc_k1_r3     length=  512  gibibytes  (2^39  bytes),  time=  1004  seconds
-aes128_prng_enc_k2_r1     length=  512  gibibytes  (2^39  bytes),  time=  1001  seconds
-aes128_prng_enc_k3_r1     length=  512  gibibytes  (2^39  bytes),  time=  1010  seconds
-bright                    length=  512  gibibytes  (2^39  bytes),  time=  1007  seconds
-clmulrand                 length=  512  gibibytes  (2^39  bytes),  time=  1005  seconds
-dirk                      length=  512  gibibytes  (2^39  bytes),  time=  1004  seconds
-ettinger_mixer            length=  512  gibibytes  (2^39  bytes),  time=  1049  seconds
-gjrand                    length=  512  gibibytes  (2^39  bytes),  time=  991   seconds
-jsf32_2                   length=  512  gibibytes  (2^39  bytes),  time=  1052  seconds
-jsf32_3                   length=  512  gibibytes  (2^39  bytes),  time=  1047  seconds
-jsf64                     length=  512  gibibytes  (2^39  bytes),  time=  993   seconds
-lea64                     length=  512  gibibytes  (2^39  bytes),  time=  1001  seconds
-linnorm                   length=  512  gibibytes  (2^39  bytes),  time=  998   seconds
-mizuchi                   length=  512  gibibytes  (2^39  bytes),  time=  997   seconds
-moremur                   length=  512  gibibytes  (2^39  bytes),  time=  1003  seconds
-mover_64                  length=  512  gibibytes  (2^39  bytes),  time=  997   seconds
-msws32                    length=  512  gibibytes  (2^39  bytes),  time=  1037  seconds
-msws64                    length=  512  gibibytes  (2^39  bytes),  time=  996   seconds
-mumx_mumx_rrxx_1          length=  512  gibibytes  (2^39  bytes),  time=  1009  seconds
-mumx_mumx_x1              length=  512  gibibytes  (2^39  bytes),  time=  1007  seconds
-mumx_mumx_x2              length=  512  gibibytes  (2^39  bytes),  time=  999   seconds
-mx3                       length=  512  gibibytes  (2^39  bytes),  time=  996   seconds
-nasam                     length=  512  gibibytes  (2^39  bytes),  time=  1006  seconds
-orbit                     length=  512  gibibytes  (2^39  bytes),  time=  996   seconds
-pcg32                     length=  512  gibibytes  (2^39  bytes),  time=  1042  seconds
-pcg32_fast                length=  512  gibibytes  (2^39  bytes),  time=  1045  seconds
-pcg64                     length=  512  gibibytes  (2^39  bytes),  time=  990   seconds
-pcg64dxsm                 length=  512  gibibytes  (2^39  bytes),  time=  998   seconds
-pelican                   length=  512  gibibytes  (2^39  bytes),  time=  1001  seconds
-pulley                    length=  512  gibibytes  (2^39  bytes),  time=  1004  seconds
-quixotic                  length=  512  gibibytes  (2^39  bytes),  time=  999   seconds
-romu_duo                  length=  512  gibibytes  (2^39  bytes),  time=  985   seconds
-romu_duo_jr               length=  512  gibibytes  (2^39  bytes),  time=  986   seconds
-romu_quad                 length=  512  gibibytes  (2^39  bytes),  time=  983   seconds
-romu_quad32               length=  512  gibibytes  (2^39  bytes),  time=  1030  seconds
-romu_trio                 length=  512  gibibytes  (2^39  bytes),  time=  985   seconds
-romu_trio32               length=  512  gibibytes  (2^39  bytes),  time=  1016  seconds
-rrma2xsm2xs               length=  512  gibibytes  (2^39  bytes),  time=  1074  seconds
-rrmxmx                    length=  512  gibibytes  (2^39  bytes),  time=  1013  seconds
-rrxmrrxmsx_0              length=  512  gibibytes  (2^39  bytes),  time=  1007  seconds
-sea_slater_64             length=  512  gibibytes  (2^39  bytes),  time=  983   seconds
-seiran                    length=  512  gibibytes  (2^39  bytes),  time=  989   seconds
-sfc32                     length=  512  gibibytes  (2^39  bytes),  time=  1050  seconds
-sfc64                     length=  512  gibibytes  (2^39  bytes),  time=  1005  seconds
-shioi                     length=  512  gibibytes  (2^39  bytes),  time=  1015  seconds
-splitmix32                length=  512  gibibytes  (2^39  bytes),  time=  1064  seconds
-splitmix64                length=  512  gibibytes  (2^39  bytes),  time=  1003  seconds
-squares32                 length=  512  gibibytes  (2^39  bytes),  time=  1029  seconds
-squares64                 length=  512  gibibytes  (2^39  bytes),  time=  989   seconds
-stc64                     length=  512  gibibytes  (2^39  bytes),  time=  1012  seconds
-thrust_alt                length=  512  gibibytes  (2^39  bytes),  time=  1013  seconds
-topping                   length=  512  gibibytes  (2^39  bytes),  time=  996   seconds
-wyrand                    length=  512  gibibytes  (2^39  bytes),  time=  1017  seconds
-xsm32                     length=  512  gibibytes  (2^39  bytes),  time=  1029  seconds
-xsm64                     length=  512  gibibytes  (2^39  bytes),  time=  989   seconds
-
-# Failure happened after this length (seed zero):
-bell                        length=  8    gibibytes  (2^33  bytes),  time=  26.6  seconds
-degski32                    length=  256  mebibytes  (2^28  bytes),  time=  0.6   seconds
-degski64                    length=  64   gibibytes  (2^36  bytes),  time=  140   seconds
-klimov_shamir_32            length=  256  mebibytes  (2^28  bytes),  time=  0.6   seconds
-lcg32                       length=  64   gibibytes  (2^36  bytes),  time=  142   seconds
-lcg64                       length=  128  gibibytes  (2^37  bytes),  time=  262   seconds
-lehmer64                    length=  128  gibibytes  (2^37  bytes),  time=  263   seconds
-mcg128                      length=  128  gibibytes  (2^37  bytes),  time=  263   seconds
-mover_counter_64            length=  256  mebibytes  (2^28  bytes),  time=  0.7   seconds
-murmurhash3                 length=  512  gibibytes  (2^39  bytes),  time=  1004  seconds
-murmurhash3_32              length=  256  mebibytes  (2^28  bytes),  time=  0.6   seconds
-sha1msg1rand                length=  256  mebibytes  (2^28  bytes),  time=  0.6   seconds
-sha1msg2rand                length=  256  mebibytes  (2^28  bytes),  time=  0.6   seconds
-sha256msg1rand              length=  256  mebibytes  (2^28  bytes),  time=  0.6   seconds
-sha256msg2rand              length=  256  mebibytes  (2^28  bytes),  time=  0.6   seconds
-splitxix33                  length=  128  gibibytes  (2^37  bytes),  time=  266   seconds
-std::default_random_engine  length=  256  mebibytes  (2^28  bytes),  time=  0.7   seconds
-std::knuth_b                length=  256  mebibytes  (2^28  bytes),  time=  0.9   seconds
-std::minstd_rand            length=  256  mebibytes  (2^28  bytes),  time=  0.7   seconds
-std::minstd_rand0           length=  256  mebibytes  (2^28  bytes),  time=  0.7   seconds
-std::mt19937                length=  256  mebibytes  (2^28  bytes),  time=  0.7   seconds
-std::mt19937_64             length=  256  mebibytes  (2^28  bytes),  time=  0.6   seconds
-std::ranlux24               length=  256  mebibytes  (2^28  bytes),  time=  1.8   seconds
-std::ranlux24_base          length=  256  mebibytes  (2^28  bytes),  time=  0.8   seconds
-std::ranlux48               length=  256  mebibytes  (2^28  bytes),  time=  4.1   seconds
-std::ranlux48_base          length=  256  mebibytes  (2^28  bytes),  time=  0.7   seconds
-tangle                      length=  256  mebibytes  (2^28  bytes),  time=  0.6   seconds
-ttwanghash64                length=  256  mebibytes  (2^28  bytes),  time=  0.6   seconds
-xoroshiro1024plusplus       length=  256  mebibytes  (2^28  bytes),  time=  0.6   seconds
-xoroshiro1024starstar       length=  256  mebibytes  (2^28  bytes),  time=  0.6   seconds
-xoroshiro128plusplus        length=  256  mebibytes  (2^28  bytes),  time=  0.6   seconds
-xoroshiro128starstar        length=  256  mebibytes  (2^28  bytes),  time=  0.6   seconds
-xoroshiro64starstar         length=  256  mebibytes  (2^28  bytes),  time=  0.7   seconds
-xoshiro128plusplus          length=  256  mebibytes  (2^28  bytes),  time=  0.6   seconds
-xoshiro128starstar          length=  256  mebibytes  (2^28  bytes),  time=  0.7   seconds
-xoshiro256plusplus          length=  256  mebibytes  (2^28  bytes),  time=  0.6   seconds
-xoshiro256starstar          length=  256  mebibytes  (2^28  bytes),  time=  0.6   seconds
-xoshiro512plusplus          length=  256  mebibytes  (2^28  bytes),  time=  0.7   seconds
-xoshiro512starstar          length=  256  mebibytes  (2^28  bytes),  time=  0.6   seconds
+MRG32k3a                    length=  512  gibibytes  (2^39  bytes),  time=  1284  seconds
+biski64                     length=  16   gibibytes  (2^34  bytes),  time=  54.4  seconds
+degski32                    length=  256  mebibytes  (2^28  bytes),  time=  0.8   seconds
+degski64                    length=  64   gibibytes  (2^36  bytes),  time=  179   seconds
+klimov_shamir_32            length=  256  mebibytes  (2^28  bytes),  time=  0.7   seconds
+lcg32                       length=  64   gibibytes  (2^36  bytes),  time=  186   seconds
+lcg64                       length=  128  gibibytes  (2^37  bytes),  time=  340   seconds
+lehmer64                    length=  128  gibibytes  (2^37  bytes),  time=  341   seconds
+mcg128                      length=  128  gibibytes  (2^37  bytes),  time=  339   seconds
+murmurhash3                 length=  512  gibibytes  (2^39  bytes),  time=  1277  seconds
+murmurhash3_32              length=  256  mebibytes  (2^28  bytes),  time=  0.8   seconds
+splitxix33                  length=  128  gibibytes  (2^37  bytes),  time=  337   seconds
+std::default_random_engine  length=  256  mebibytes  (2^28  bytes),  time=  0.8   seconds
+std::knuth_b                length=  256  mebibytes  (2^28  bytes),  time=  1.1   seconds
+std::minstd_rand            length=  256  mebibytes  (2^28  bytes),  time=  0.8   seconds
+std::minstd_rand0           length=  256  mebibytes  (2^28  bytes),  time=  0.9   seconds
+std::mt19937                length=  256  mebibytes  (2^28  bytes),  time=  0.8   seconds
+std::mt19937_64             length=  512  gibibytes  (2^39  bytes),  time=  1296  seconds
+std::ranlux24               length=  256  mebibytes  (2^28  bytes),  time=  2.3   seconds
+std::ranlux24_base          length=  256  mebibytes  (2^28  bytes),  time=  0.9   seconds
+std::ranlux48               length=  256  mebibytes  (2^28  bytes),  time=  5.4   seconds
+std::ranlux48_base          length=  256  mebibytes  (2^28  bytes),  time=  0.8   seconds
+ttwanghash64                length=  256  mebibytes  (2^28  bytes),  time=  0.7   seconds
+xxh32_avalanche             length=  256  mebibytes  (2^28  bytes),  time=  0.8   seconds
+xxh3_avalanche              length=  256  mebibytes  (2^28  bytes),  time=  0.8   seconds
 
 
 # Performance all:
-aes128_prng_dec_k1_r2       65063
-aes128_prng_enc_k1_r2       64525
-aes128_prng_enc_k2_r1       64471
-aes128_prng_dec_k2_r1       49264
-aes128_prng_dec_k3_r1       45612
-aes128_prng_enc_k1_r3       45239
-aes128_prng_enc_k3_r1       42104
-sha1msg1rand                39654
-aes128_prng_dec_k1_r3       39280
-sha256msg2rand              34494
-aes128_prng_dec_dm_k2_r1    30280
-aes128_prng_enc_dm_k2_r1    29614
-aes128_prng_enc_dm_k1_r2    29460
-aes128_prng_dec_dm_k1_r2    29452
-aes128_prng_enc_dm_k3_r1    23106
-aes128_prng_dec_dm_k3_r1    22897
-aes128_prng_dec_dm_k1_r3    22780
-aes128_prng_enc_dm_k1_r3    22645
-wyrand                      18982
-clmulrand                   15627
-mumx_mumx_x1                14154
-thrust_alt                  13526
-MRG32k3a                    13112
-degski64                    13034
-lea64                       12975
-splitxix33                  12847
-murmurhash3                 12828
-splitmix64                  12790
-moremur                     12675
-romu_duo_jr                 12539
-stc64                       11797
-romu_trio                   11733
-tangle                      11711
-sha256msg1rand              11361
-sha1msg2rand                11361
-xoroshiro128starstar        11357
-mumx_mumx_x2                11334
-xoshiro256plusplus          10883
-romu_quad                   10708
-bright                      10646
-xoshiro256starstar          10276
-sfc64                       10051
-ettinger_mixer              9940
-klimov_shamir_32            9750
-mizuchi                     9747
-linnorm                     9714
-orbit                       9627
-dirk                        9486
-mx3                         9432
-romu_duo                    9386
-jsf64                       9291
-xoroshiro128plusplus        9255
-shioi                       9228
-mumx_mumx_rrxx_1            9173
-rrmxmx                      9086
-xoshiro512plusplus          8984
-xoshiro512starstar          8896
-mover_counter_64            8703
-seiran                      8403
-pulley                      8260
-ttwanghash64                8128
-rrxmrrxmsx_0                8098
-topping                     7845
-quixotic                    7395
-nasam                       7199
-squares64                   6847
-pelican                     6837
-lehmer64                    6809
-pcg64dxsm                   6751
-msws64                      6636
-mover_64                    6499
-gjrand                      6450
-murmurhash3_32              6423
-degski32                    6369
-xsm64                       6365
-splitmix32                  6195
-sea_slater_64               5919
-bell                        5893
-std::mt19937_64             5846
-lcg64                       5758
-std::mt19937                5756
-mcg128                      5641
-pcg64                       5584
-jsf32_2                     5363
-romu_trio32                 5357
-romu_quad32                 5161
-xoshiro128plusplus          5135
-sfc32                       5053
-xoshiro128starstar          4771
-jsf32_3                     4593
-xoroshiro64starstar         4561
-xoroshiro1024starstar       4427
-pcg32_fast                  4275
-squares32                   4255
-xoroshiro1024plusplus       4248
-pcg32                       4218
-msws32                      3424
-xsm32                       3276
-lcg32                       2744
-std::minstd_rand            2468
-std::minstd_rand0           2461
-std::default_random_engine  2427
-std::ranlux48_base          2164
-rrma2xsm2xs                 1932
-std::ranlux24_base          1825
-std::knuth_b                885
-std::ranlux24               193
-std::ranlux48               62
+aes128_ctr_128              49.0103
+xxh32_avalanche             33.331
+murmurhash3_32              32.8002
+degski32                    32.7547
+xxh3_avalanche              28.6024
+aes128_ctr_64               27.6867
+wyrand                      18.3987
+lea64                       17.5322
+splitmix64                  17.2906
+ttwanghash64                17.2365
+xxh64_avalanche             17.104
+degski64                    17.0404
+moremur                     16.8874
+murmurhash3                 16.7888
+clmulrand                   16.6608
+splitxix33                  16.6324
+MRG32k3a                    15.3941
+mumx_mumx_x1                15.2356
+klimov_shamir_32            14.0408
+xxh3_rrmxmx                 13.6857
+rrmxmx                      13.6831
+biski64                     13.3475
+nasam                       11.809
+stc_crand64                 11.7329
+mx3                         11.6735
+sfc64                       11.5256
+mumx_mumx_x2                11.4983
+rrxmrrxmsx_0                11.2142
+mumx_mumx_rrxx_1            10.7906
+xoshiro256starstar          9.98299
+xoshiro256plusplus          9.73663
+jsf64                       9.68813
+xoroshiro128starstar        9.45248
+ettinger_mixer              9.24025
+xoshiro512starstar          9.21253
+xoroshiro128plusplus        9.17426
+shioi                       9.12246
+xoshiro512plusplus          9.06321
+xoroshiro1024starstar       8.83755
+xoroshiro1024plusplus       8.49673
+splitmix32                  8.21096
+seiran                      7.81185
+xsm64                       7.40352
+lehmer64                    7.10429
+msws64                      7.01803
+pcg64dxsm                   6.86774
+gjrand                      6.62301
+std::mt19937_64             6.58573
+romu_duo_jr                 6.49285
+lxm                         6.25891
+sfc32                       6.1423
+romu_trio                   5.97266
+stc_crand32                 5.96306
+sha1_ctr_128                5.94342
+sha256_ctr_128              5.92203
+std::mt19937                5.90164
+mcg128                      5.8999
+lcg64                       5.85894
+jsf32_2                     5.74884
+pcg64                       5.50386
+romu_quad                   5.48883
+xoshiro128plusplus          5.24973
+xoshiro128starstar          5.23999
+jsf32_3                     4.96848
+squares64                   4.95243
+romu_duo                    4.79175
+pcg32_fast                  4.49074
+pcg32                       4.47199
+xoroshiro64starstar         4.38442
+msws32                      3.58054
+xsm32                       3.56885
+squares32                   3.16341
+sha1_ctr_64                 2.99167
+sha256_ctr_64               2.98504
+lcg32                       2.96092
+romu_trio32                 2.88215
+romu_quad32                 2.81939
+std::minstd_rand0           2.56974
+std::default_random_engine  2.5552
+std::minstd_rand            2.55346
+std::ranlux48_base          2.32401
+rrma2xsm2xs                 2.02601
+std::ranlux24_base          1.90223
+std::knuth_b                0.956071
+std::ranlux24               0.202701
+std::ranlux48               0.0669084
 
-q1       mean      median   q3        iqr
-5727.25  12973.42  9129.50  12799.50  7072.25
+q1    mean  median  q3     iqr
+4.96  9.96  7.25    12.96  8.01
 
 # Performance good (seed random):
-aes128_prng_dec_k1_r2     65063
-aes128_prng_enc_k1_r2     64525
-aes128_prng_enc_k2_r1     64471
-aes128_prng_dec_k2_r1     49264
-aes128_prng_dec_k3_r1     45612
-aes128_prng_enc_k1_r3     45239
-aes128_prng_enc_k3_r1     42104
-aes128_prng_dec_k1_r3     39280
-aes128_prng_dec_dm_k2_r1  30280
-aes128_prng_enc_dm_k2_r1  29614
-aes128_prng_enc_dm_k1_r2  29460
-aes128_prng_dec_dm_k1_r2  29452
-aes128_prng_enc_dm_k3_r1  23106
-aes128_prng_dec_dm_k3_r1  22897
-aes128_prng_dec_dm_k1_r3  22780
-aes128_prng_enc_dm_k1_r3  22645
-wyrand                    18982
-clmulrand                 15627
-mumx_mumx_x1              14154
-thrust_alt                13526
-lea64                     12975
-splitmix64                12790
-moremur                   12675
-romu_duo_jr               12539
-stc64                     11797
-romu_trio                 11733
-tangle                    11711
-xoroshiro128starstar      11357
-mumx_mumx_x2              11334
-xoshiro256plusplus        10883
-romu_quad                 10708
-bright                    10646
-xoshiro256starstar        10276
-sfc64                     10051
-ettinger_mixer            9940
-mizuchi                   9747
-linnorm                   9714
-orbit                     9627
-dirk                      9486
-mx3                       9432
-romu_duo                  9386
-jsf64                     9291
-xoroshiro128plusplus      9255
-shioi                     9228
-mumx_mumx_rrxx_1          9173
-rrmxmx                    9086
-xoshiro512plusplus        8984
-xoshiro512starstar        8896
-seiran                    8403
-pulley                    8260
-rrxmrrxmsx_0              8098
-topping                   7845
-quixotic                  7395
-nasam                     7199
-squares64                 6847
-pelican                   6837
-pcg64dxsm                 6751
-msws64                    6636
-mover_64                  6499
-gjrand                    6450
-xsm64                     6365
-splitmix32                6195
-sea_slater_64             5919
-bell                      5893
-pcg64                     5584
-jsf32_2                   5363
-romu_trio32               5357
-romu_quad32               5161
-xoshiro128plusplus        5135
-sfc32                     5053
-xoshiro128starstar        4771
-jsf32_3                   4593
-xoroshiro64starstar       4561
-xoroshiro1024starstar     4427
-pcg32_fast                4275
-squares32                 4255
-xoroshiro1024plusplus     4248
-pcg32                     4218
-msws32                    3424
-xsm32                     3276
-rrma2xsm2xs               1932
+aes128_ctr_128         49.0103
+aes128_ctr_64          27.6867
+wyrand                 18.3987
+lea64                  17.5322
+splitmix64             17.2906
+xxh64_avalanche        17.104
+moremur                16.8874
+clmulrand              16.6608
+mumx_mumx_x1           15.2356
+xxh3_rrmxmx            13.6857
+rrmxmx                 13.6831
+nasam                  11.809
+stc_crand64            11.7329
+mx3                    11.6735
+sfc64                  11.5256
+mumx_mumx_x2           11.4983
+rrxmrrxmsx_0           11.2142
+mumx_mumx_rrxx_1       10.7906
+xoshiro256starstar     9.98299
+xoshiro256plusplus     9.73663
+jsf64                  9.68813
+xoroshiro128starstar   9.45248
+ettinger_mixer         9.24025
+xoshiro512starstar     9.21253
+xoroshiro128plusplus   9.17426
+shioi                  9.12246
+xoshiro512plusplus     9.06321
+xoroshiro1024starstar  8.83755
+xoroshiro1024plusplus  8.49673
+splitmix32             8.21096
+seiran                 7.81185
+xsm64                  7.40352
+msws64                 7.01803
+pcg64dxsm              6.86774
+gjrand                 6.62301
+romu_duo_jr            6.49285
+lxm                    6.25891
+sfc32                  6.1423
+romu_trio              5.97266
+stc_crand32            5.96306
+sha1_ctr_128           5.94342
+sha256_ctr_128         5.92203
+jsf32_2                5.74884
+pcg64                  5.50386
+romu_quad              5.48883
+xoshiro128plusplus     5.24973
+xoshiro128starstar     5.23999
+jsf32_3                4.96848
+squares64              4.95243
+romu_duo               4.79175
+pcg32_fast             4.49074
+pcg32                  4.47199
+xoroshiro64starstar    4.38442
+msws32                 3.58054
+xsm32                  3.56885
+squares32              3.16341
+sha1_ctr_64            2.99167
+sha256_ctr_64          2.98504
+romu_trio32            2.88215
+romu_quad32            2.81939
+rrma2xsm2xs            2.02601
 
-q1       mean      median   q3        iqr
-6365.00  14420.07  9386.00  12975.00  6610.00
-
-# Performance good (seed zero):
-aes128_prng_dec_k1_r2     65063
-aes128_prng_enc_k1_r2     64525
-aes128_prng_enc_k2_r1     64471
-aes128_prng_dec_k2_r1     49264
-aes128_prng_dec_k3_r1     45612
-aes128_prng_enc_k1_r3     45239
-aes128_prng_enc_k3_r1     42104
-aes128_prng_dec_k1_r3     39280
-aes128_prng_dec_dm_k2_r1  30280
-aes128_prng_enc_dm_k2_r1  29614
-aes128_prng_enc_dm_k1_r2  29460
-aes128_prng_dec_dm_k1_r2  29452
-aes128_prng_enc_dm_k3_r1  23106
-aes128_prng_dec_dm_k3_r1  22897
-aes128_prng_dec_dm_k1_r3  22780
-aes128_prng_enc_dm_k1_r3  22645
-wyrand                    18982
-clmulrand                 15627
-mumx_mumx_x1              14154
-thrust_alt                13526
-MRG32k3a                  13112
-lea64                     12975
-splitmix64                12790
-moremur                   12675
-romu_duo_jr               12539
-stc64                     11797
-romu_trio                 11733
-mumx_mumx_x2              11334
-romu_quad                 10708
-bright                    10646
-sfc64                     10051
-ettinger_mixer            9940
-mizuchi                   9747
-linnorm                   9714
-orbit                     9627
-dirk                      9486
-mx3                       9432
-romu_duo                  9386
-jsf64                     9291
-shioi                     9228
-mumx_mumx_rrxx_1          9173
-rrmxmx                    9086
-seiran                    8403
-pulley                    8260
-rrxmrrxmsx_0              8098
-topping                   7845
-quixotic                  7395
-nasam                     7199
-squares64                 6847
-pelican                   6837
-pcg64dxsm                 6751
-msws64                    6636
-mover_64                  6499
-gjrand                    6450
-xsm64                     6365
-splitmix32                6195
-sea_slater_64             5919
-pcg64                     5584
-jsf32_2                   5363
-romu_trio32               5357
-romu_quad32               5161
-sfc32                     5053
-jsf32_3                   4593
-pcg32_fast                4275
-squares32                 4255
-pcg32                     4218
-msws32                    3424
-xsm32                     3276
-rrma2xsm2xs               1932
-
-q1       mean      median   q3        iqr
-6636.00  15662.91  9627.00  15627.00  8991.00
+q1    mean  median  q3     iqr
+5.25  9.37  7.81    11.50  6.25
 
