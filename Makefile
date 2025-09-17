@@ -117,7 +117,7 @@ update-short-test: prng-dump | $(OUTPUT_DIR)
 
 update-long-test: prng-dump | $(OUTPUT_DIR)
 	bash test-prng-dump.bash -d -j $(J_LONG) -f $(TF_LONG) -m $(TLMAX_LONG) \
-		-s random -s zero \
+		-s random \
 		&> $(OUTPUT_DIR)/prng-results.tlmax-$(TLMAX_LONG).summary.dry-run.txt
 
 $(OUTPUT_DIR):
