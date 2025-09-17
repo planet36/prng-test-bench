@@ -97,7 +97,7 @@ short-test: prng-dump prng-bench | $(OUTPUT_DIR)
 		-s default -s pattern -s random -s zero \
 		&> $(OUTPUT_DIR)/prng-results.tlmax-$(TLMAX_SHORT).summary.txt
 
-# Takes about 23.5 hrs (random)
+# Takes about 23.8 hrs (random)
 long-test: prng-dump prng-bench | $(OUTPUT_DIR)
 	bash test-prng-dump.bash -j $(J_LONG) -f $(TF_LONG) -m $(TLMAX_LONG) \
 		-s random \
