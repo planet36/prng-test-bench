@@ -21,6 +21,7 @@ https://www.pcg-random.org/posts/how-to-test-with-practrand.html
 #include <cstdint>
 #include <random>
 #include <string>
+#include <string_view>
 #include <unistd.h>
 #include <utility>
 
@@ -39,7 +40,7 @@ constexpr unsigned long long bytes_per_gibibyte = 1024ULL * 1024ULL * 1024ULL;
 
 constexpr uint32_t seed_pattern_32{0xAAAAAAAA};
 
-const std::string default_prng_name = "default_random_engine";
+constexpr std::string_view default_prng_name{"default_random_engine"};
 
 bool verbose = false;
 unsigned long long limit_bytes = 0;
@@ -329,7 +330,7 @@ main([[maybe_unused]] int argc, [[maybe_unused]] char* argv[])
 {
     process_options(argc, argv);
 
-    std::string prng_name = default_prng_name;
+    std::string prng_name{default_prng_name};
 
     for (int i = optind; i < argc; ++i)
     {
