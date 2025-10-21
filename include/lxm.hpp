@@ -24,7 +24,7 @@ namespace
 
 // MurmurHash3
 // https://github.com/aappleby/smhasher/wiki/MurmurHash3
-inline constexpr uint64_t
+constexpr uint64_t
 mix_murmur(uint64_t h)
 {
     h ^= h >> 33;
@@ -37,7 +37,7 @@ mix_murmur(uint64_t h)
 
 // David Stafford's mixing function
 // http://zimbry.blogspot.com/2011/09/better-bit-mixing-improving-on.html
-inline constexpr uint64_t
+constexpr uint64_t
 mix_stafford13(uint64_t h)
 {
     h ^= h >> 30;
@@ -49,7 +49,7 @@ mix_stafford13(uint64_t h)
 }
 
 // Doug Lea's mixing function
-inline constexpr uint64_t
+constexpr uint64_t
 mix_lea(uint64_t h)
 {
     h ^= h >> 32;
