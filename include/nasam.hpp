@@ -19,11 +19,12 @@
 DEF_URBG_SUBCLASS(nasam, uint64_t, uint64_t)
 
 /// prepare the initial state
-void nasam::init()
-{
-}
+void
+nasam::init()
+{}
 
-nasam::result_type nasam::next()
+nasam::result_type
+nasam::next()
 {
     constexpr uint64_t M1 = 0x9e6c63d0676a9a99; // not prime (popcount = 33)
     constexpr uint64_t M2 = 0x9e6d62d06f6a9a9b; // not prime (popcount = 35)

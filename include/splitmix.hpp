@@ -19,11 +19,12 @@
 DEF_URBG_SUBCLASS(splitmix32, uint64_t, uint32_t)
 
 /// prepare the initial state
-void splitmix32::init()
-{
-}
+void
+splitmix32::init()
+{}
 
-splitmix32::result_type splitmix32::next()
+splitmix32::result_type
+splitmix32::next()
 {
     constexpr uint64_t inc = GOLDEN_RATIO_64;
     static_assert((inc & 1) != 0, "must be odd");
@@ -53,11 +54,12 @@ splitmix32::result_type splitmix32::next()
 DEF_URBG_SUBCLASS(splitmix64, uint64_t, uint64_t)
 
 /// prepare the initial state
-void splitmix64::init()
-{
-}
+void
+splitmix64::init()
+{}
 
-splitmix64::result_type splitmix64::next()
+splitmix64::result_type
+splitmix64::next()
 {
     constexpr uint64_t inc = GOLDEN_RATIO_64;
     static_assert((inc & 1) != 0, "must be odd");

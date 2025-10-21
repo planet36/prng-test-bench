@@ -18,11 +18,12 @@
 DEF_URBG_SUBCLASS(MRG32k3a, uint64_t, uint64_t)
 
 /// prepare the initial state
-void MRG32k3a::init()
-{
-}
+void
+MRG32k3a::init()
+{}
 
-MRG32k3a::result_type MRG32k3a::next()
+MRG32k3a::result_type
+MRG32k3a::next()
 {
     constexpr uint64_t inc = XXH_PRIME64_1; // inc=1 yields failures
     static_assert(inc & 1, "must be odd");

@@ -17,6 +17,7 @@
 #include <cstdint>
 
 DEF_URBG_SUBCLASS(biski64, SINGLE_ARG(std::array<uint64_t, 3>), uint64_t)
+
 // s[0] is the fast_loop
 // s[1] is the mix
 // s[2] is the loop_mix
@@ -26,7 +27,8 @@ DEF_URBG_SUBCLASS(biski64, SINGLE_ARG(std::array<uint64_t, 3>), uint64_t)
 * Adapted from biski64_warmup
 * \sa https://github.com/danielcota/biski64/blob/main/c/biski64.c#L49
 */
-void biski64::init()
+void
+biski64::init()
 {
     for (int i = 0; i < 16; ++i)
     {
@@ -34,7 +36,8 @@ void biski64::init()
     }
 }
 
-biski64::result_type biski64::next()
+biski64::result_type
+biski64::next()
 {
     constexpr unsigned int R1 = 16;
     constexpr unsigned int R2 = 40;

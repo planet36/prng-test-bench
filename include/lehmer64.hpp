@@ -23,11 +23,12 @@
 DEF_URBG_SUBCLASS(lehmer64, __uint128_t, uint64_t)
 
 /// prepare the initial state
-void lehmer64::init()
-{
-}
+void
+lehmer64::init()
+{}
 
-lehmer64::result_type lehmer64::next()
+lehmer64::result_type
+lehmer64::next()
 {
     constexpr uint64_t M = 0xda942042e4dd58b5; // not prime (popcount = 29)
     static_assert((M & 1) != 0, "must be odd");

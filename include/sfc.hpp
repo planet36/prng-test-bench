@@ -22,7 +22,8 @@
 DEF_URBG_SUBCLASS(sfc32, SINGLE_ARG(std::array<uint32_t, 4>), uint32_t)
 
 /// prepare the initial state
-void sfc32::init()
+void
+sfc32::init()
 {
     for (int i = 0; i < 6; ++i)
     {
@@ -30,7 +31,8 @@ void sfc32::init()
     }
 }
 
-sfc32::result_type sfc32::next()
+sfc32::result_type
+sfc32::next()
 {
     const result_type result = s[0] + s[1] + s[3]++;
     s[0] = s[1] ^ (s[1] >> 9);
@@ -42,7 +44,8 @@ sfc32::result_type sfc32::next()
 DEF_URBG_SUBCLASS(sfc64, SINGLE_ARG(std::array<uint64_t, 4>), uint64_t)
 
 /// prepare the initial state
-void sfc64::init()
+void
+sfc64::init()
 {
     for (int i = 0; i < 9; ++i)
     {
@@ -50,7 +53,8 @@ void sfc64::init()
     }
 }
 
-sfc64::result_type sfc64::next()
+sfc64::result_type
+sfc64::next()
 {
     const result_type result = s[0] + s[1] + s[3]++;
     s[0] = s[1] ^ (s[1] >> 11);

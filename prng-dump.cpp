@@ -324,7 +324,8 @@ void print_elapsed_time()
 }
 */
 
-int main([[maybe_unused]] int argc, [[maybe_unused]] char* argv[])
+int
+main([[maybe_unused]] int argc, [[maybe_unused]] char* argv[])
 {
     process_options(argc, argv);
 

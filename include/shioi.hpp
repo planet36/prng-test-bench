@@ -20,11 +20,12 @@
 DEF_URBG_SUBCLASS(shioi, SINGLE_ARG(std::array<uint64_t, 2>), uint64_t)
 
 /// prepare the initial state
-void shioi::init()
-{
-}
+void
+shioi::init()
+{}
 
-shioi::result_type shioi::next()
+shioi::result_type
+shioi::next()
 {
     constexpr uint64_t M1 = 0xd2b74407b1ce6e93; // not prime (popcount = 33)
     static_assert(M1 & 1, "must be odd");

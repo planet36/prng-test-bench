@@ -59,8 +59,8 @@ prepare_initial_state(state_type& s)
     if (mm_all_equal_epi64(s[1]))
     {
         // most significant elem first
-        const auto mask_inc = _mm_set_epi64x(FLOOR_SCALED_FRAC_SQRT_3,
-                                             FLOOR_SCALED_FRAC_SQRT_2);
+        const auto mask_inc =
+            _mm_set_epi64x(FLOOR_SCALED_FRAC_SQRT_3, FLOOR_SCALED_FRAC_SQRT_2);
 
         // make unique
         s[1] = _mm_xor_si128(s[1], mask_inc);
@@ -84,12 +84,14 @@ advance_state_and_generate_value(state_type& s)
 DEF_URBG_SUBCLASS(sha1_ctr_64, sha1_ctr::state_type, uint64_t)
 
 /// prepare the initial state
-void sha1_ctr_64::init()
+void
+sha1_ctr_64::init()
 {
     sha1_ctr::prepare_initial_state(s);
 }
 
-sha1_ctr_64::result_type sha1_ctr_64::next()
+sha1_ctr_64::result_type
+sha1_ctr_64::next()
 {
     return uint64_from_m128i(sha1_ctr::advance_state_and_generate_value(s));
 }
@@ -101,12 +103,14 @@ sha1_ctr_64::result_type sha1_ctr_64::next()
 DEF_URBG_SUBCLASS(sha1_ctr_128, sha1_ctr::state_type, __uint128_t)
 
 /// prepare the initial state
-void sha1_ctr_128::init()
+void
+sha1_ctr_128::init()
 {
     sha1_ctr::prepare_initial_state(s);
 }
 
-sha1_ctr_128::result_type sha1_ctr_128::next()
+sha1_ctr_128::result_type
+sha1_ctr_128::next()
 {
     return uint128_from_m128i(sha1_ctr::advance_state_and_generate_value(s));
 }

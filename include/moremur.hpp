@@ -18,11 +18,12 @@
 DEF_URBG_SUBCLASS(moremur, uint64_t, uint64_t)
 
 /// prepare the initial state
-void moremur::init()
-{
-}
+void
+moremur::init()
+{}
 
-moremur::result_type moremur::next()
+moremur::result_type
+moremur::next()
 {
     constexpr uint64_t inc = GOLDEN_RATIO_64;
     static_assert((inc & 1) != 0, "must be odd");

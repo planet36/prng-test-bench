@@ -19,12 +19,13 @@
 DEF_URBG_SUBCLASS(xxh32_avalanche, uint32_t, uint32_t)
 
 /// prepare the initial state
-void xxh32_avalanche::init()
-{
-}
+void
+xxh32_avalanche::init()
+{}
 
 // https://github.com/Cyan4973/xxHash/blob/release/xxhash.h#L2985
-xxh32_avalanche::result_type xxh32_avalanche::next()
+xxh32_avalanche::result_type
+xxh32_avalanche::next()
 {
     auto x = s;
     s += XXH_PRIME32_1; // (SDW)
@@ -40,12 +41,13 @@ xxh32_avalanche::result_type xxh32_avalanche::next()
 DEF_URBG_SUBCLASS(xxh64_avalanche, uint64_t, uint64_t)
 
 /// prepare the initial state
-void xxh64_avalanche::init()
-{
-}
+void
+xxh64_avalanche::init()
+{}
 
 // https://github.com/Cyan4973/xxHash/blob/release/xxhash.h#L3503
-xxh64_avalanche::result_type xxh64_avalanche::next()
+xxh64_avalanche::result_type
+xxh64_avalanche::next()
 {
     auto x = s;
     s += XXH_PRIME64_1; // (SDW)
@@ -61,12 +63,13 @@ xxh64_avalanche::result_type xxh64_avalanche::next()
 DEF_URBG_SUBCLASS(xxh3_avalanche, uint64_t, uint64_t)
 
 /// prepare the initial state
-void xxh3_avalanche::init()
-{
-}
+void
+xxh3_avalanche::init()
+{}
 
 // https://github.com/Cyan4973/xxHash/blob/release/xxhash.h#L4583
-xxh3_avalanche::result_type xxh3_avalanche::next()
+xxh3_avalanche::result_type
+xxh3_avalanche::next()
 {
     auto x = s;
     s += XXH_PRIME64_1; // (SDW)
@@ -80,12 +83,13 @@ xxh3_avalanche::result_type xxh3_avalanche::next()
 DEF_URBG_SUBCLASS(xxh3_rrmxmx, uint64_t, uint64_t)
 
 /// prepare the initial state
-void xxh3_rrmxmx::init()
-{
-}
+void
+xxh3_rrmxmx::init()
+{}
 
 // https://github.com/Cyan4973/xxHash/blob/release/xxhash.h#L4596
-xxh3_rrmxmx::result_type xxh3_rrmxmx::next()
+xxh3_rrmxmx::result_type
+xxh3_rrmxmx::next()
 {
     auto x = s;
     s += XXH_PRIME64_1; // (SDW)

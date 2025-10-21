@@ -18,11 +18,12 @@
 DEF_URBG_SUBCLASS(lea64, uint64_t, uint64_t)
 
 /// prepare the initial state
-void lea64::init()
-{
-}
+void
+lea64::init()
+{}
 
-lea64::result_type lea64::next()
+lea64::result_type
+lea64::next()
 {
     constexpr uint64_t inc = GOLDEN_RATIO_64;
     static_assert((inc & 1) != 0, "must be odd");

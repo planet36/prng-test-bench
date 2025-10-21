@@ -21,11 +21,12 @@
 DEF_URBG_SUBCLASS(rrxmrrxmsx_0, uint64_t, uint64_t)
 
 /// prepare the initial state
-void rrxmrrxmsx_0::init()
-{
-}
+void
+rrxmrrxmsx_0::init()
+{}
 
-rrxmrrxmsx_0::result_type rrxmrrxmsx_0::next()
+rrxmrrxmsx_0::result_type
+rrxmrrxmsx_0::next()
 {
     constexpr uint64_t M1 = 0xa24baed4963ee407; // not prime (popcount = 32)
     constexpr uint64_t M2 = 0x9fb21c651e98df25; // prime (popcount = 34)

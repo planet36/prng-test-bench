@@ -20,11 +20,12 @@
 DEF_URBG_SUBCLASS(klimov_shamir_32, uint64_t, uint32_t)
 
 /// prepare the initial state
-void klimov_shamir_32::init()
-{
-}
+void
+klimov_shamir_32::init()
+{}
 
-klimov_shamir_32::result_type klimov_shamir_32::next()
+klimov_shamir_32::result_type
+klimov_shamir_32::next()
 {
     constexpr uint64_t inc = XXH_PRIME64_1;
     static_assert(inc & 1, "must be odd");

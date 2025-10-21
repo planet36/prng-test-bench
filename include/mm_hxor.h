@@ -22,18 +22,15 @@ extern "C" {
 static inline uint32_t
 mm_hxor_epu32(const __m128i a)
 {
-    return (uint32_t)_mm_extract_epi32(a, 0) ^
-           (uint32_t)_mm_extract_epi32(a, 1) ^
-           (uint32_t)_mm_extract_epi32(a, 2) ^
-           (uint32_t)_mm_extract_epi32(a, 3);
+    return (uint32_t)_mm_extract_epi32(a, 0) ^ (uint32_t)_mm_extract_epi32(a, 1) ^
+           (uint32_t)_mm_extract_epi32(a, 2) ^ (uint32_t)_mm_extract_epi32(a, 3);
 }
 
 /// Get the horizontal XOR of packed unsigned 64-bit integers
 static inline uint64_t
 mm_hxor_epu64(const __m128i a)
 {
-    return (uint64_t)_mm_extract_epi64(a, 0) ^
-           (uint64_t)_mm_extract_epi64(a, 1);
+    return (uint64_t)_mm_extract_epi64(a, 0) ^ (uint64_t)_mm_extract_epi64(a, 1);
 }
 
 #ifdef __cplusplus

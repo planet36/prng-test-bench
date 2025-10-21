@@ -22,11 +22,12 @@
 DEF_URBG_SUBCLASS(stc_crand32, SINGLE_ARG(std::array<uint32_t, 4>), uint32_t)
 
 /// prepare the initial state
-void stc_crand32::init()
-{
-}
+void
+stc_crand32::init()
+{}
 
-stc_crand32::result_type stc_crand32::next()
+stc_crand32::result_type
+stc_crand32::next()
 {
     constexpr uint32_t inc = GOLDEN_RATIO_32;
     static_assert((inc & 1) != 0, "must be odd");
@@ -38,15 +39,15 @@ stc_crand32::result_type stc_crand32::next()
     return result;
 }
 
-
 DEF_URBG_SUBCLASS(stc_crand64, SINGLE_ARG(std::array<uint64_t, 4>), uint64_t)
 
 /// prepare the initial state
-void stc_crand64::init()
-{
-}
+void
+stc_crand64::init()
+{}
 
-stc_crand64::result_type stc_crand64::next()
+stc_crand64::result_type
+stc_crand64::next()
 {
     constexpr uint64_t inc = GOLDEN_RATIO_64;
     static_assert((inc & 1) != 0, "must be odd");

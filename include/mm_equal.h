@@ -12,8 +12,8 @@
 
 #if defined(__x86_64__)
 
-#include <string.h>
 #include <immintrin.h>
+#include <string.h>
 
 #ifdef __cplusplus
 extern "C" {

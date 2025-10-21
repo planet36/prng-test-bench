@@ -89,7 +89,8 @@ struct prng_info_t
 };
 
 template <std::uniform_random_bit_generator URBG>
-prng_info_t create_prng_info()
+prng_info_t
+create_prng_info()
 {
     return prng_info_t{
         .state_size_bytes = get_state_size_bytes<URBG>(),

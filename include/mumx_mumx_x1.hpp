@@ -19,11 +19,12 @@
 DEF_URBG_SUBCLASS(mumx_mumx_x1, uint64_t, uint64_t)
 
 /// prepare the initial state
-void mumx_mumx_x1::init()
-{
-}
+void
+mumx_mumx_x1::init()
+{}
 
-mumx_mumx_x1::result_type mumx_mumx_x1::next()
+mumx_mumx_x1::result_type
+mumx_mumx_x1::next()
 {
     constexpr uint64_t inc = XXH_PRIME64_1; // inc=1 yields failures
     static_assert((inc & 1) != 0, "must be odd");

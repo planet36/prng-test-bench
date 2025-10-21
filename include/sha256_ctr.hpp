@@ -29,7 +29,7 @@
 * \sa https://www.felixcloutier.com/x86/sha256rnds2
 * > Note that only the two lower dwords of XMM0 are used by the instruction.
 */
-static const arr_m128i<32> sha256_round_constants {
+static const arr_m128i<32> sha256_round_constants{
     _mm_setr_epi32(0x428a2f98, 0x71374491, 0, 0), _mm_setr_epi32(0xb5c0fbcf, 0xe9b5dba5, 0, 0),
     _mm_setr_epi32(0x3956c25b, 0x59f111f1, 0, 0), _mm_setr_epi32(0x923f82a4, 0xab1c5ed5, 0, 0),
     _mm_setr_epi32(0xd807aa98, 0x12835b01, 0, 0), _mm_setr_epi32(0x243185be, 0x550c7dc3, 0, 0),
@@ -85,8 +85,8 @@ prepare_initial_state(state_type& s)
     if (mm_all_equal_epi64(s[1]))
     {
         // most significant elem first
-        const auto mask_inc = _mm_set_epi64x(FLOOR_SCALED_FRAC_SQRT_3,
-                                             FLOOR_SCALED_FRAC_SQRT_2);
+        const auto mask_inc =
+            _mm_set_epi64x(FLOOR_SCALED_FRAC_SQRT_3, FLOOR_SCALED_FRAC_SQRT_2);
 
         // make unique
         s[1] = _mm_xor_si128(s[1], mask_inc);
@@ -110,12 +110,14 @@ advance_state_and_generate_value(state_type& s)
 DEF_URBG_SUBCLASS(sha256_ctr_64, sha256_ctr::state_type, uint64_t)
 
 /// prepare the initial state
-void sha256_ctr_64::init()
+void
+sha256_ctr_64::init()
 {
     sha256_ctr::prepare_initial_state(s);
 }
 
-sha256_ctr_64::result_type sha256_ctr_64::next()
+sha256_ctr_64::result_type
+sha256_ctr_64::next()
 {
     return uint64_from_m128i(sha256_ctr::advance_state_and_generate_value(s));
 }
@@ -127,12 +129,14 @@ sha256_ctr_64::result_type sha256_ctr_64::next()
 DEF_URBG_SUBCLASS(sha256_ctr_128, sha256_ctr::state_type, __uint128_t)
 
 /// prepare the initial state
-void sha256_ctr_128::init()
+void
+sha256_ctr_128::init()
 {
     sha256_ctr::prepare_initial_state(s);
 }
 
-sha256_ctr_128::result_type sha256_ctr_128::next()
+sha256_ctr_128::result_type
+sha256_ctr_128::next()
 {
     return uint128_from_m128i(sha256_ctr::advance_state_and_generate_value(s));
 }

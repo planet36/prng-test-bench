@@ -22,11 +22,12 @@ https://mostlymangling.blogspot.com/2019/01/better-stronger-mixer-and-test-proce
 DEF_URBG_SUBCLASS(ettinger_mixer, uint64_t, uint64_t)
 
 /// prepare the initial state
-void ettinger_mixer::init()
-{
-}
+void
+ettinger_mixer::init()
+{}
 
-ettinger_mixer::result_type ettinger_mixer::next()
+ettinger_mixer::result_type
+ettinger_mixer::next()
 {
     constexpr uint64_t X1 = 0xdb4f0b9175ae2165; // not prime (popcount = 33)
     static_assert(X1 & 1, "must be odd");

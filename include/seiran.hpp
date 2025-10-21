@@ -20,11 +20,12 @@
 DEF_URBG_SUBCLASS(seiran, SINGLE_ARG(std::array<uint64_t, 2>), uint64_t)
 
 /// prepare the initial state
-void seiran::init()
-{
-}
+void
+seiran::init()
+{}
 
-seiran::result_type seiran::next()
+seiran::result_type
+seiran::next()
 {
     constexpr unsigned int M1 = 9;
     static_assert(M1 & 1, "must be odd");

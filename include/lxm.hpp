@@ -65,7 +65,8 @@ mix_lea(uint64_t h)
 DEF_URBG_SUBCLASS(lxm, SINGLE_ARG(std::array<uint64_t, 4>), uint64_t)
 
 /// prepare the initial state
-void lxm::init()
+void
+lxm::init()
 {
     // must be odd
     s[0] |= 1;
@@ -79,7 +80,8 @@ void lxm::init()
     }
 }
 
-lxm::result_type lxm::next()
+lxm::result_type
+lxm::next()
 {
     constexpr uint64_t M = 0xd1342543de82ef95; // not prime (popcount = 32)
     static_assert((M & 1) != 0, "must be odd");

@@ -18,11 +18,12 @@
 DEF_URBG_SUBCLASS(degski32, uint32_t, uint32_t)
 
 /// prepare the initial state
-void degski32::init()
-{
-}
+void
+degski32::init()
+{}
 
-degski32::result_type degski32::next()
+degski32::result_type
+degski32::next()
 {
     constexpr uint32_t inc = XXH_PRIME32_1; // inc=1 yields failures
     static_assert(inc & 1, "must be odd");
@@ -35,8 +36,10 @@ degski32::result_type degski32::next()
     auto x = s;
     s += inc; // (SDW)
 
-    x ^= x >> 16; x *= M1;
-    x ^= x >> 16; x *= M2;
+    x ^= x >> 16;
+    x *= M1;
+    x ^= x >> 16;
+    x *= M2;
     x ^= x >> 16;
     return x;
 }
@@ -45,11 +48,12 @@ degski32::result_type degski32::next()
 DEF_URBG_SUBCLASS(degski64, uint64_t, uint64_t)
 
 /// prepare the initial state
-void degski64::init()
-{
-}
+void
+degski64::init()
+{}
 
-degski64::result_type degski64::next()
+degski64::result_type
+degski64::next()
 {
     constexpr uint64_t inc = XXH_PRIME64_1; // inc=1 yields failures
     static_assert(inc & 1, "must be odd");
@@ -62,8 +66,10 @@ degski64::result_type degski64::next()
     auto x = s;
     s += inc; // (SDW)
 
-    x ^= x >> 32; x *= M1;
-    x ^= x >> 32; x *= M2;
+    x ^= x >> 32;
+    x *= M1;
+    x ^= x >> 32;
+    x *= M2;
     x ^= x >> 32;
     return x;
 }

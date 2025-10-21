@@ -22,13 +22,16 @@
 DEF_URBG_SUBCLASS(mcg128, __uint128_t, uint64_t)
 
 /// prepare the initial state
-void mcg128::init()
-{
-}
+void
+mcg128::init()
+{}
 
-mcg128::result_type mcg128::next()
+mcg128::result_type
+mcg128::next()
 {
-    constexpr __uint128_t M = int_join(UINT64_C(0x45a31efc5a35d971), UINT64_C(0x261fd0407a968add)); // not prime (popcount = 64)
+    constexpr __uint128_t M =
+        int_join(UINT64_C(0x45a31efc5a35d971),
+                 UINT64_C(0x261fd0407a968add)); // not prime (popcount = 64)
     static_assert(M & 1, "must be odd");
 
     s *= M;

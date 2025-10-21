@@ -19,11 +19,12 @@
 DEF_URBG_SUBCLASS(msws32, SINGLE_ARG(std::array<uint64_t, 2>), uint32_t)
 
 /// prepare the initial state
-void msws32::init()
-{
-}
+void
+msws32::init()
+{}
 
-msws32::result_type msws32::next()
+msws32::result_type
+msws32::next()
 {
     constexpr uint64_t inc = 0xb5ad4eceda1ce2a9; // not prime (popcount = 35)
     static_assert(inc & 1, "must be odd");
@@ -38,13 +39,14 @@ msws32::result_type msws32::next()
 DEF_URBG_SUBCLASS(msws64, SINGLE_ARG(std::array<uint64_t, 4>), uint64_t)
 
 /// prepare the initial state
-void msws64::init()
-{
-}
+void
+msws64::init()
+{}
 
-msws64::result_type msws64::next()
+msws64::result_type
+msws64::next()
 {
-    constexpr uint64_t inc = 0xb5ad4eceda1ce2a9; // not prime (popcount = 35)
+    constexpr uint64_t inc = 0xb5ad4eceda1ce2a9;  // not prime (popcount = 35)
     constexpr uint64_t inc2 = 0x278c5a4d8419fe6b; // not prime (popcount = 32)
 
     static_assert(inc & 1, "must be odd");

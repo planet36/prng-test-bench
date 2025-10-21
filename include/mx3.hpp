@@ -17,11 +17,12 @@
 DEF_URBG_SUBCLASS(mx3, uint64_t, uint64_t)
 
 /// prepare the initial state
-void mx3::init()
-{
-}
+void
+mx3::init()
+{}
 
-mx3::result_type mx3::next()
+mx3::result_type
+mx3::next()
 {
     constexpr uint64_t M1 = 0xbea225f9eb34556d; // not prime (popcount = 36)
     static_assert(M1 & 1, "must be odd");
@@ -30,9 +31,12 @@ mx3::result_type mx3::next()
     // NOTE: Their state is named "_counter".
     auto x = s++;
 
-    x ^= x >> 32; x *= M1;
-    x ^= x >> 29; x *= M1;
-    x ^= x >> 32; x *= M1;
+    x ^= x >> 32;
+    x *= M1;
+    x ^= x >> 29;
+    x *= M1;
+    x ^= x >> 32;
+    x *= M1;
     x ^= x >> 29;
     return x;
 }

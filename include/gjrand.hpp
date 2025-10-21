@@ -22,11 +22,12 @@ https://sourceforge.net/projects/gjrand/files/
 DEF_URBG_SUBCLASS(gjrand, SINGLE_ARG(std::array<uint64_t, 4>), uint64_t)
 
 /// prepare the initial state
-void gjrand::init()
-{
-}
+void
+gjrand::init()
+{}
 
-gjrand::result_type gjrand::next()
+gjrand::result_type
+gjrand::next()
 {
     constexpr uint64_t A1 = 0x55aa96a5; // not prime (popcount = 16)
     static_assert(A1 & 1, "must be odd");

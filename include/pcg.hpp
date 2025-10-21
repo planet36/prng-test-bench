@@ -51,11 +51,12 @@ static_assert((pcg_const128[1] & 1) != 0, "must be odd");
 DEF_URBG_SUBCLASS(pcg32, uint64_t, uint32_t)
 
 /// prepare the initial state
-void pcg32::init()
-{
-}
+void
+pcg32::init()
+{}
 
-pcg32::result_type pcg32::next()
+pcg32::result_type
+pcg32::next()
 {
     constexpr state_type mul = pcg_const64[0];
     static_assert((mul & 1) != 0, "must be odd");
@@ -77,11 +78,12 @@ pcg32::result_type pcg32::next()
 DEF_URBG_SUBCLASS(pcg32_fast, uint64_t, uint32_t)
 
 /// prepare the initial state
-void pcg32_fast::init()
-{
-}
+void
+pcg32_fast::init()
+{}
 
-pcg32_fast::result_type pcg32_fast::next()
+pcg32_fast::result_type
+pcg32_fast::next()
 {
     constexpr state_type mul = pcg_const64[0];
     static_assert((mul & 1) != 0, "must be odd");
@@ -102,11 +104,12 @@ pcg32_fast::result_type pcg32_fast::next()
 DEF_URBG_SUBCLASS(pcg64, __uint128_t, uint64_t)
 
 /// prepare the initial state
-void pcg64::init()
-{
-}
+void
+pcg64::init()
+{}
 
-pcg64::result_type pcg64::next()
+pcg64::result_type
+pcg64::next()
 {
     /* "There is no support in GCC for expressing an integer constant of
     *  type __int128 for targets with long long integer less than 128 bits
@@ -140,11 +143,12 @@ pcg64::result_type pcg64::next()
 DEF_URBG_SUBCLASS(pcg64dxsm, __uint128_t, uint64_t)
 
 /// prepare the initial state
-void pcg64dxsm::init()
-{
-}
+void
+pcg64dxsm::init()
+{}
 
-pcg64dxsm::result_type pcg64dxsm::next()
+pcg64dxsm::result_type
+pcg64dxsm::next()
 {
     // "cheap multiplier"
     constexpr uint64_t mul = pcg_const64[2];

@@ -20,11 +20,12 @@
 DEF_URBG_SUBCLASS(jsf32_2, SINGLE_ARG(std::array<uint32_t, 4>), uint32_t)
 
 /// prepare the initial state
-void jsf32_2::init()
-{
-}
+void
+jsf32_2::init()
+{}
 
-jsf32_2::result_type jsf32_2::next()
+jsf32_2::result_type
+jsf32_2::next()
 {
     constexpr unsigned int R1 = 27;
     constexpr unsigned int R2 = 17;
@@ -42,11 +43,12 @@ jsf32_2::result_type jsf32_2::next()
 DEF_URBG_SUBCLASS(jsf32_3, SINGLE_ARG(std::array<uint32_t, 4>), uint32_t)
 
 /// prepare the initial state
-void jsf32_3::init()
-{
-}
+void
+jsf32_3::init()
+{}
 
-jsf32_3::result_type jsf32_3::next()
+jsf32_3::result_type
+jsf32_3::next()
 {
     constexpr unsigned int R1 = 23;
     constexpr unsigned int R2 = 16;
@@ -64,11 +66,12 @@ jsf32_3::result_type jsf32_3::next()
 DEF_URBG_SUBCLASS(jsf64, SINGLE_ARG(std::array<uint64_t, 4>), uint64_t)
 
 /// prepare the initial state
-void jsf64::init()
-{
-}
+void
+jsf64::init()
+{}
 
-jsf64::result_type jsf64::next()
+jsf64::result_type
+jsf64::next()
 {
     constexpr unsigned int R1 = 7;
     constexpr unsigned int R2 = 13;

@@ -31,18 +31,20 @@
 DEF_URBG_SUBCLASS(xoroshiro64starstar, SINGLE_ARG(std::array<uint32_t, 2>), uint32_t)
 
 /// prepare the initial state
-void xoroshiro64starstar::init()
+void
+xoroshiro64starstar::init()
 {
     if (s == state_type{})
     {
         for (unsigned int i = 0; i < std::size(s); ++i)
         {
-            s[i] = i+1;
+            s[i] = i + 1;
         }
     }
 }
 
-xoroshiro64starstar::result_type xoroshiro64starstar::next()
+xoroshiro64starstar::result_type
+xoroshiro64starstar::next()
 {
     const auto s0 = s[0];
     auto s1 = s[1];
@@ -69,13 +71,14 @@ xoroshiro64starstar::result_type xoroshiro64starstar::next()
 DEF_URBG_SUBCLASS(xoroshiro128plusplus, SINGLE_ARG(std::array<uint64_t, 2>), uint64_t)
 
 /// prepare the initial state
-void xoroshiro128plusplus::init()
+void
+xoroshiro128plusplus::init()
 {
     if (s == state_type{})
     {
         for (unsigned int i = 0; i < std::size(s); ++i)
         {
-            s[i] = i+1;
+            s[i] = i + 1;
         }
     }
 
@@ -85,7 +88,8 @@ void xoroshiro128plusplus::init()
     }
 }
 
-xoroshiro128plusplus::result_type xoroshiro128plusplus::next()
+xoroshiro128plusplus::result_type
+xoroshiro128plusplus::next()
 {
     const auto s0 = s[0];
     auto s1 = s[1];
@@ -112,13 +116,14 @@ xoroshiro128plusplus::result_type xoroshiro128plusplus::next()
 DEF_URBG_SUBCLASS(xoroshiro128starstar, SINGLE_ARG(std::array<uint64_t, 2>), uint64_t)
 
 /// prepare the initial state
-void xoroshiro128starstar::init()
+void
+xoroshiro128starstar::init()
 {
     if (s == state_type{})
     {
         for (unsigned int i = 0; i < std::size(s); ++i)
         {
-            s[i] = i+1;
+            s[i] = i + 1;
         }
     }
 
@@ -128,7 +133,8 @@ void xoroshiro128starstar::init()
     }
 }
 
-xoroshiro128starstar::result_type xoroshiro128starstar::next()
+xoroshiro128starstar::result_type
+xoroshiro128starstar::next()
 {
     const auto s0 = s[0];
     auto s1 = s[1];
@@ -156,13 +162,14 @@ xoroshiro128starstar::result_type xoroshiro128starstar::next()
 DEF_URBG_SUBCLASS(xoroshiro1024plusplus, SINGLE_ARG(std::array<uint64_t, 16>), uint64_t)
 
 /// prepare the initial state
-void xoroshiro1024plusplus::init()
+void
+xoroshiro1024plusplus::init()
 {
     if (s == state_type{})
     {
         for (unsigned int i = 0; i < std::size(s); ++i)
         {
-            s[i] = i+1;
+            s[i] = i + 1;
         }
     }
 
@@ -172,7 +179,8 @@ void xoroshiro1024plusplus::init()
     }
 }
 
-xoroshiro1024plusplus::result_type xoroshiro1024plusplus::next()
+xoroshiro1024plusplus::result_type
+xoroshiro1024plusplus::next()
 {
     static unsigned int p{};
     const auto q = p;
@@ -203,13 +211,14 @@ xoroshiro1024plusplus::result_type xoroshiro1024plusplus::next()
 DEF_URBG_SUBCLASS(xoroshiro1024starstar, SINGLE_ARG(std::array<uint64_t, 16>), uint64_t)
 
 /// prepare the initial state
-void xoroshiro1024starstar::init()
+void
+xoroshiro1024starstar::init()
 {
     if (s == state_type{})
     {
         for (unsigned int i = 0; i < std::size(s); ++i)
         {
-            s[i] = i+1;
+            s[i] = i + 1;
         }
     }
 
@@ -219,7 +228,8 @@ void xoroshiro1024starstar::init()
     }
 }
 
-xoroshiro1024starstar::result_type xoroshiro1024starstar::next()
+xoroshiro1024starstar::result_type
+xoroshiro1024starstar::next()
 {
     static unsigned int p{};
     const auto q = p;

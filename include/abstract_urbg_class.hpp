@@ -39,7 +39,6 @@ template <typename S, std::unsigned_integral R>
 struct AbstractURBG
 {
 public:
-
     using state_type = S;
     using result_type = R;
 
@@ -53,16 +52,14 @@ public:
     static constexpr result_type max() { return std::numeric_limits<result_type>::max(); }
 
 protected:
-
     state_type s{};
 
 public:
-
     // ctors
 
     AbstractURBG() { fill_rand(s); }
 
-    explicit AbstractURBG(const state_type& new_s) : s(new_s) { }
+    explicit AbstractURBG(const state_type& new_s) : s(new_s) {}
 
     explicit AbstractURBG(const seed_bytes_type& bytes)
     {

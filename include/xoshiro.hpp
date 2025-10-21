@@ -31,13 +31,14 @@
 DEF_URBG_SUBCLASS(xoshiro128plusplus, SINGLE_ARG(std::array<uint32_t, 4>), uint32_t)
 
 /// prepare the initial state
-void xoshiro128plusplus::init()
+void
+xoshiro128plusplus::init()
 {
     if (s == state_type{})
     {
         for (unsigned int i = 0; i < std::size(s); ++i)
         {
-            s[i] = i+1;
+            s[i] = i + 1;
         }
     }
 
@@ -47,7 +48,8 @@ void xoshiro128plusplus::init()
     }
 }
 
-xoshiro128plusplus::result_type xoshiro128plusplus::next()
+xoshiro128plusplus::result_type
+xoshiro128plusplus::next()
 {
     const auto result = std::rotl(s[0] + s[3], 7) + s[0];
     const auto t = s[1] << 9;
@@ -79,13 +81,14 @@ xoshiro128plusplus::result_type xoshiro128plusplus::next()
 DEF_URBG_SUBCLASS(xoshiro128starstar, SINGLE_ARG(std::array<uint32_t, 4>), uint32_t)
 
 /// prepare the initial state
-void xoshiro128starstar::init()
+void
+xoshiro128starstar::init()
 {
     if (s == state_type{})
     {
         for (unsigned int i = 0; i < std::size(s); ++i)
         {
-            s[i] = i+1;
+            s[i] = i + 1;
         }
     }
 
@@ -95,7 +98,8 @@ void xoshiro128starstar::init()
     }
 }
 
-xoshiro128starstar::result_type xoshiro128starstar::next()
+xoshiro128starstar::result_type
+xoshiro128starstar::next()
 {
     const auto result = std::rotl(s[1] * 5, 7) * 9;
     const auto t = s[1] << 9;
@@ -125,13 +129,14 @@ xoshiro128starstar::result_type xoshiro128starstar::next()
 DEF_URBG_SUBCLASS(xoshiro256plusplus, SINGLE_ARG(std::array<uint64_t, 4>), uint64_t)
 
 /// prepare the initial state
-void xoshiro256plusplus::init()
+void
+xoshiro256plusplus::init()
 {
     if (s == state_type{})
     {
         for (unsigned int i = 0; i < std::size(s); ++i)
         {
-            s[i] = i+1;
+            s[i] = i + 1;
         }
     }
 
@@ -141,7 +146,8 @@ void xoshiro256plusplus::init()
     }
 }
 
-xoshiro256plusplus::result_type xoshiro256plusplus::next()
+xoshiro256plusplus::result_type
+xoshiro256plusplus::next()
 {
     const auto result = std::rotl(s[0] + s[3], 23) + s[0];
     const auto t = s[1] << 17;
@@ -171,13 +177,14 @@ xoshiro256plusplus::result_type xoshiro256plusplus::next()
 DEF_URBG_SUBCLASS(xoshiro256starstar, SINGLE_ARG(std::array<uint64_t, 4>), uint64_t)
 
 /// prepare the initial state
-void xoshiro256starstar::init()
+void
+xoshiro256starstar::init()
 {
     if (s == state_type{})
     {
         for (unsigned int i = 0; i < std::size(s); ++i)
         {
-            s[i] = i+1;
+            s[i] = i + 1;
         }
     }
 
@@ -187,7 +194,8 @@ void xoshiro256starstar::init()
     }
 }
 
-xoshiro256starstar::result_type xoshiro256starstar::next()
+xoshiro256starstar::result_type
+xoshiro256starstar::next()
 {
     const auto result = std::rotl(s[1] * 5, 7) * 9;
     const auto t = s[1] << 17;
@@ -217,13 +225,14 @@ xoshiro256starstar::result_type xoshiro256starstar::next()
 DEF_URBG_SUBCLASS(xoshiro512plusplus, SINGLE_ARG(std::array<uint64_t, 8>), uint64_t)
 
 /// prepare the initial state
-void xoshiro512plusplus::init()
+void
+xoshiro512plusplus::init()
 {
     if (s == state_type{})
     {
         for (unsigned int i = 0; i < std::size(s); ++i)
         {
-            s[i] = i+1;
+            s[i] = i + 1;
         }
     }
 
@@ -233,7 +242,8 @@ void xoshiro512plusplus::init()
     }
 }
 
-xoshiro512plusplus::result_type xoshiro512plusplus::next()
+xoshiro512plusplus::result_type
+xoshiro512plusplus::next()
 {
     const auto result = std::rotl(s[0] + s[2], 17) + s[2];
     const auto t = s[1] << 11;
@@ -268,13 +278,14 @@ xoshiro512plusplus::result_type xoshiro512plusplus::next()
 DEF_URBG_SUBCLASS(xoshiro512starstar, SINGLE_ARG(std::array<uint64_t, 8>), uint64_t)
 
 /// prepare the initial state
-void xoshiro512starstar::init()
+void
+xoshiro512starstar::init()
 {
     if (s == state_type{})
     {
         for (unsigned int i = 0; i < std::size(s); ++i)
         {
-            s[i] = i+1;
+            s[i] = i + 1;
         }
     }
 
@@ -284,7 +295,8 @@ void xoshiro512starstar::init()
     }
 }
 
-xoshiro512starstar::result_type xoshiro512starstar::next()
+xoshiro512starstar::result_type
+xoshiro512starstar::next()
 {
     const auto result = std::rotl(s[1] * 5, 7) * 9;
     const auto t = s[1] << 11;

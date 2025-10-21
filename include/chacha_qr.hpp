@@ -18,8 +18,12 @@
 constexpr void
 chacha_qr(uint32_t& a, uint32_t& b, uint32_t& c, uint32_t& d)
 {
-    a += b; d = std::rotl(d ^ a, 16);
-    c += d; b = std::rotl(b ^ c, 12);
-    a += b; d = std::rotl(d ^ a,  8);
-    c += d; b = std::rotl(b ^ c,  7);
+    a += b;
+    d = std::rotl(d ^ a, 16);
+    c += d;
+    b = std::rotl(b ^ c, 12);
+    a += b;
+    d = std::rotl(d ^ a, 8);
+    c += d;
+    b = std::rotl(b ^ c, 7);
 }

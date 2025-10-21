@@ -19,12 +19,13 @@
 DEF_URBG_SUBCLASS(murmurhash3_32, uint32_t, uint32_t)
 
 /// prepare the initial state
-void murmurhash3_32::init()
-{
-}
+void
+murmurhash3_32::init()
+{}
 
 // https://github.com/aappleby/smhasher/blob/master/src/MurmurHash3.cpp#L68
-murmurhash3_32::result_type murmurhash3_32::next()
+murmurhash3_32::result_type
+murmurhash3_32::next()
 {
     constexpr uint32_t inc = XXH_PRIME32_1; // inc=1 yields failures
     static_assert(inc & 1, "must be odd");
@@ -37,8 +38,10 @@ murmurhash3_32::result_type murmurhash3_32::next()
     auto x = s;
     s += inc; // (SDW)
 
-    x ^= x >> 16; x *= M1;
-    x ^= x >> 13; x *= M2;
+    x ^= x >> 16;
+    x *= M1;
+    x ^= x >> 13;
+    x *= M2;
     x ^= x >> 16;
     return x;
 }
@@ -47,12 +50,13 @@ murmurhash3_32::result_type murmurhash3_32::next()
 DEF_URBG_SUBCLASS(murmurhash3, uint64_t, uint64_t)
 
 /// prepare the initial state
-void murmurhash3::init()
-{
-}
+void
+murmurhash3::init()
+{}
 
 // https://github.com/aappleby/smhasher/blob/master/src/MurmurHash3.cpp#L81
-murmurhash3::result_type murmurhash3::next()
+murmurhash3::result_type
+murmurhash3::next()
 {
     constexpr uint64_t inc = XXH_PRIME64_1; // inc=1 yields failures
     static_assert(inc & 1, "must be odd");
@@ -65,8 +69,10 @@ murmurhash3::result_type murmurhash3::next()
     auto x = s;
     s += inc; // (SDW)
 
-    x ^= x >> 33; x *= M1;
-    x ^= x >> 33; x *= M2;
+    x ^= x >> 33;
+    x *= M1;
+    x ^= x >> 33;
+    x *= M2;
     x ^= x >> 33;
     return x;
 }

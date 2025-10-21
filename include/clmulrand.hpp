@@ -24,11 +24,12 @@ DEF_URBG_SUBCLASS(clmulrand, __m128i, uint64_t)
 #pragma GCC diagnostic pop
 
 /// prepare the initial state
-void clmulrand::init()
-{
-}
+void
+clmulrand::init()
+{}
 
-clmulrand::result_type clmulrand::next()
+clmulrand::result_type
+clmulrand::next()
 {
     // most significant elem first
     const __m128i inc = _mm_set_epi64x(XXH_PRIME64_2, XXH_PRIME64_1);

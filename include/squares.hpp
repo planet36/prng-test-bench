@@ -20,11 +20,12 @@
 DEF_URBG_SUBCLASS(squares32, uint64_t, uint32_t)
 
 /// prepare the initial state
-void squares32::init()
-{
-}
+void
+squares32::init()
+{}
 
-squares32::result_type squares32::next()
+squares32::result_type
+squares32::next()
 {
     constexpr uint64_t key = XXH_PRIME64_1;
     static_assert(key & 1, "must be odd");
@@ -54,11 +55,12 @@ squares32::result_type squares32::next()
 DEF_URBG_SUBCLASS(squares64, uint64_t, uint64_t)
 
 /// prepare the initial state
-void squares64::init()
-{
-}
+void
+squares64::init()
+{}
 
-squares64::result_type squares64::next()
+squares64::result_type
+squares64::next()
 {
     constexpr uint64_t key = XXH_PRIME64_1;
     static_assert(key & 1, "must be odd");

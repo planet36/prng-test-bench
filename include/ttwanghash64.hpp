@@ -18,12 +18,13 @@
 DEF_URBG_SUBCLASS(ttwanghash64, uint64_t, uint64_t)
 
 /// prepare the initial state
-void ttwanghash64::init()
-{
-}
+void
+ttwanghash64::init()
+{}
 
 // adapted from hash64shift
-ttwanghash64::result_type ttwanghash64::next()
+ttwanghash64::result_type
+ttwanghash64::next()
 {
     constexpr uint64_t inc = XXH_PRIME64_1; // inc=1 yields failures
     static_assert(inc & 1, "must be odd");
