@@ -29,9 +29,9 @@ https://www.pcg-random.org/posts/how-to-test-with-practrand.html
 
 #define nl (void)putchar('\n')
 
-const char* program_author = "Steven Ward";
-const char* program_version = "2025-10-21";
-const char* program_license = "OSL-3.0";
+inline constexpr std::string_view program_author = "Steven Ward";
+inline constexpr std::string_view program_version = "2025-10-21";
+inline constexpr std::string_view program_license = "OSL-3.0";
 
 // Globals
 
@@ -40,7 +40,7 @@ constexpr unsigned long long bytes_per_gibibyte = 1024ULL * 1024ULL * 1024ULL;
 
 constexpr uint32_t seed_pattern_32{0xAAAAAAAA};
 
-constexpr std::string_view default_prng_name{"default_random_engine"};
+inline constexpr std::string_view default_prng_name{"default_random_engine"};
 
 bool verbose = false;
 unsigned long long limit_bytes = 0;
