@@ -35,10 +35,10 @@ inline constexpr std::string_view program_license = "OSL-3.0";
 
 // Globals
 
-constexpr unsigned long long bytes_per_gigabyte = 1000ULL * 1000ULL * 1000ULL;
-constexpr unsigned long long bytes_per_gibibyte = 1024ULL * 1024ULL * 1024ULL;
+inline constexpr unsigned long long bytes_per_gigabyte = 1000ULL * 1000ULL * 1000ULL;
+inline constexpr unsigned long long bytes_per_gibibyte = 1024ULL * 1024ULL * 1024ULL;
 
-constexpr uint32_t seed_pattern_32{0xAAAAAAAA};
+inline constexpr uint32_t seed_pattern_32{0xAAAAAAAA};
 
 inline constexpr std::string_view default_prng_name{"default_random_engine"};
 
