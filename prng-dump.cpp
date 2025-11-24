@@ -119,32 +119,6 @@ print_version()
     fmt::println("Written by {}", program_author);
 }
 
-/// Print the suggestion message.
-void
-print_suggestion()
-{
-    fmt::println(stderr, "Try '{} -h' for more information.", program_invocation_short_name);
-}
-
-/// Print the error message.
-/**
-\param s the string to print
-*/
-[[noreturn]] void
-print_error(const std::string& s)
-{
-    if (!s.empty())
-    {
-        (void)std::fputs("Error: ", stderr);
-        (void)std::fputs(s.c_str(), stderr);
-        (void)std::fputc('\n', stderr);
-    }
-
-    print_suggestion();
-
-    std::exit(EXIT_FAILURE);
-}
-
 /// Print the help message.
 void
 print_usage()
