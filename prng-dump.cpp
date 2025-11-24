@@ -313,18 +313,6 @@ process_options(int argc, char* argv[])
     }
 }
 
-/*
-std::chrono::time_point<std::chrono::steady_clock> start_time;
-
-void print_elapsed_time()
-{
-    const auto end_time = std::chrono::steady_clock::now();
-    const auto elapsed_time = end_time - start_time;
-    const auto elapsed_time_s = std::chrono::duration<double>(elapsed_time).count();
-    print_verbose(fmt::format("# time elapsed = {:.3f} s", elapsed_time_s));
-}
-*/
-
 int
 main([[maybe_unused]] int argc, [[maybe_unused]] char* argv[])
 {
@@ -344,20 +332,6 @@ main([[maybe_unused]] int argc, [[maybe_unused]] char* argv[])
     {
         print_error(fmt::format("Unknown PRNG: {}", prng_name));
     }
-
-    /*
-    start_time = std::chrono::steady_clock::now();
-
-    assert(atexit(print_elapsed_time) == 0);
-    */
-
-    /*
-    {
-        const time_t now_time_t = time(nullptr);
-        const tm now_time_tm = *localtime(&now_time_t);
-        print_verbose(fmt::format("# begin {:%FT%T%z}", now_time_tm));
-    }
-    */
 
 #define CONDITIONAL_DUMP_STD(NAME) \
 if (prng_name == #NAME) { \
@@ -476,14 +450,6 @@ if (prng_name == #NAME) { \
     CONDITIONAL_DUMP_MINE(xxh64_avalanche       )
     CONDITIONAL_DUMP_MINE(xxh3_avalanche        )
     CONDITIONAL_DUMP_MINE(xxh3_rrmxmx           )
-
-    /*
-    {
-        const time_t now_time_t = time(nullptr);
-        const tm now_time_tm = *localtime(&now_time_t);
-        print_verbose(fmt::format("# end {:%FT%T%z}", now_time_tm));
-    }
-    */
 
     return 0;
 }
