@@ -19,6 +19,7 @@ https://www.pcg-random.org/posts/how-to-test-with-practrand.html
 #include <cassert>
 #include <climits>
 #include <cstdint>
+#include <err.h>
 #include <random>
 #include <string>
 #include <string_view>
@@ -228,17 +229,17 @@ process_options(int argc, char* argv[])
             }
             catch (const std::invalid_argument& ex)
             {
-                print_error(fmt::format("invalid_argument: {}", ex.what()));
+                errx(EXIT_FAILURE, "invalid argument: %s: \"%s\"", ex.what(), optarg);
             }
             catch (const std::out_of_range& ex)
             {
-                print_error(fmt::format("out_of_range: {}", ex.what()));
+                errx(EXIT_FAILURE, "out of range: %s: \"%s\"", ex.what(), optarg);
             }
 
             //if (__builtin_umulll_overflow(limit_bytes, bytes_per_gibibyte, &limit_bytes))
             if (limit_bytes > std::numeric_limits<decltype(limit_bytes)>::max() / bytes_per_gibibyte)
             {
-                print_error(fmt::format("Arithmetic overflow: {} * {}", optarg, bytes_per_gibibyte));
+                errx(EXIT_FAILURE, "Arithmetic overflow: %s * %llu", optarg, bytes_per_gibibyte);
             }
             limit_bytes *= bytes_per_gibibyte;
             break;
@@ -274,7 +275,7 @@ process_options(int argc, char* argv[])
             }
             else
             {
-                print_error(fmt::format("Invalid option value: {:?}", optarg));
+                errx(EXIT_FAILURE, "Invalid option value: \"%s\"", optarg);
             }
             break;
 
@@ -304,7 +305,7 @@ main([[maybe_unused]] int argc, [[maybe_unused]] char* argv[])
 
     if (!prng_name_to_info.contains(prng_name))
     {
-        print_error(fmt::format("Unknown PRNG: {}", prng_name));
+        errx(EXIT_FAILURE, "Unknown PRNG: \"%s\"", prng_name.c_str());
     }
 
 #define CONDITIONAL_DUMP_STD(NAME) \
