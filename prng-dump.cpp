@@ -125,20 +125,6 @@ print_suggestion()
     fmt::println(stderr, "Try '{} -h' for more information.", program_invocation_short_name);
 }
 
-/// Print the message if verbose is enabled.
-/**
-\param s the string to print
-*/
-void
-print_verbose(const std::string& s)
-{
-    if (verbose && !s.empty())
-    {
-        (void)std::fputs(s.c_str(), stderr);
-        (void)std::fputc('\n', stderr);
-    }
-}
-
 /// Print the error message.
 /**
 \param s the string to print
@@ -310,8 +296,11 @@ main([[maybe_unused]] int argc, [[maybe_unused]] char* argv[])
         prng_name = argv[i];
     }
 
-    print_verbose(fmt::format("# limit_bytes={}", limit_bytes));
-    print_verbose(fmt::format("# prng_name={}", prng_name));
+    if (verbose)
+    {
+        fmt::println("# limit_bytes={}", limit_bytes);
+        fmt::println("# prng_name={}", prng_name);
+    }
 
     if (!prng_name_to_info.contains(prng_name))
     {
