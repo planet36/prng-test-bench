@@ -139,21 +139,6 @@ print_verbose(const std::string& s)
     }
 }
 
-/// Print the warning message.
-/**
-\param s the string to print
-*/
-void
-print_warning(const std::string& s)
-{
-    if (!s.empty())
-    {
-        (void)std::fputs("Warning: ", stderr);
-        (void)std::fputs(s.c_str(), stderr);
-        (void)std::fputc('\n', stderr);
-    }
-}
-
 /// Print the error message.
 /**
 \param s the string to print
