@@ -1,7 +1,7 @@
 # SPDX-FileCopyrightText: Steven Ward
 # SPDX-License-Identifier: OSL-3.0
 
-export LC_ALL := C
+export LC_ALL = C
 
 # clang++ not supported
 CXX = g++
@@ -20,10 +20,10 @@ CXXFLAGS += -Werror -Wno-error=cpp -Wno-error=pedantic
 
 #LDLIBS =
 
-HDRS := $(wildcard *.hpp)
+HDRS = $(wildcard *.hpp)
 DEPS = $(HDRS:.hpp=.d)
-OBJS := $(addsuffix .o, $(basename $(HDRS)))
-BINS := $(addsuffix .out, $(basename $(HDRS)))
+OBJS = $(addsuffix .o, $(basename $(HDRS)))
+BINS = $(addsuffix .out, $(basename $(HDRS)))
 
 all: $(OBJS)
 

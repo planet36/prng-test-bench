@@ -1,7 +1,7 @@
 # SPDX-FileCopyrightText: Steven Ward
 # SPDX-License-Identifier: OSL-3.0
 
-export LC_ALL := C
+export LC_ALL = C
 
 # https://how.wtf/check-if-a-program-exists-from-a-makefile.html
 REQUIRED_BINS := \
@@ -50,19 +50,19 @@ CXXFLAGS += -frecord-gcc-switches
 
 LDLIBS = -lfmt
 
-OUTPUT_DIR := results
+OUTPUT_DIR = results
 
 SRCS = $(wildcard prng-*.cpp)
 DEPS = $(SRCS:.cpp=.d)
 BINS = $(basename $(SRCS))
 
-J_SHORT := 50%
-TF_SHORT := 1
-TLMAX_SHORT := 256MB
+J_SHORT = 50%
+TF_SHORT = 1
+TLMAX_SHORT = 256MB
 
-J_LONG := 1
-TF_LONG := 2
-TLMAX_LONG := 512GB
+J_LONG = 1
+TF_LONG = 2
+TLMAX_LONG = 512GB
 
 all: $(BINS)
 
