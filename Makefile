@@ -44,12 +44,11 @@ CXXFLAGS += -O3 -flto=auto -march=native -fno-math-errno
 CXXFLAGS += -Wno-unused-function
 # -frecord-gcc-switches is used by readelf
 CXXFLAGS += -frecord-gcc-switches
-
 #CXXFLAGS += -march=raptorlake
 
-#LDFLAGS +=
+#LDFLAGS =
 
-LDLIBS += -lfmt
+LDLIBS = -lfmt
 
 OUTPUT_DIR := results
 

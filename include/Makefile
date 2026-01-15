@@ -14,12 +14,11 @@ CXXFLAGS += -pipe -Wall -Wextra -Wpedantic -Wfatal-errors
 CXXFLAGS += -O3 -flto=auto -march=native -fno-math-errno
 CXXFLAGS += -Wno-unused-function
 CXXFLAGS += -Werror -Wno-error=cpp -Wno-error=pedantic
-
 #CXXFLAGS += -march=raptorlake
 
-#LDFLAGS +=
+#LDFLAGS =
 
-#LDLIBS +=
+#LDLIBS =
 
 HDRS := $(wildcard *.hpp)
 DEPS = $(HDRS:.hpp=.d)
