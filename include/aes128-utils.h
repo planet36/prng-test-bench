@@ -77,16 +77,7 @@ aes128_enc_davies_meyer(const __m128i H,
                         const unsigned int Nk,
                         const unsigned int Nr)
 {
-    __m128i a = H;
-    for (unsigned int k = 0; k < Nk; ++k)
-    {
-        for (unsigned int r = 0; r < Nr; ++r)
-        {
-            a = _mm_aesenc_si128(a, keys[k]);
-        }
-    }
-    a = _mm_xor_si128(a, H);
-    return a;
+    return _mm_xor_si128(aes128_enc(H, keys, Nk, Nr), H);
 }
 
 /// Davies-Meyer single-block-length compression function that uses AES as the block cipher
@@ -105,16 +96,7 @@ aes128_dec_davies_meyer(const __m128i H,
                         const unsigned int Nk,
                         const unsigned int Nr)
 {
-    __m128i a = H;
-    for (unsigned int k = 0; k < Nk; ++k)
-    {
-        for (unsigned int r = 0; r < Nr; ++r)
-        {
-            a = _mm_aesdec_si128(a, keys[k]);
-        }
-    }
-    a = _mm_xor_si128(a, H);
-    return a;
+    return _mm_xor_si128(aes128_dec(H, keys, Nk, Nr), H);
 }
 
 #ifdef __cplusplus
