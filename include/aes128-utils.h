@@ -84,8 +84,8 @@ aes128_enc_davies_meyer(const __m128i H,
         {
             a = _mm_aesenc_si128(a, keys[k]);
         }
-        a = _mm_xor_si128(a, H);
     }
+    a = _mm_xor_si128(a, H);
     return a;
 }
 
@@ -112,8 +112,8 @@ aes128_dec_davies_meyer(const __m128i H,
         {
             a = _mm_aesdec_si128(a, keys[k]);
         }
-        a = _mm_xor_si128(a, H);
     }
+    a = _mm_xor_si128(a, H);
     return a;
 }
 
