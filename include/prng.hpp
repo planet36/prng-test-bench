@@ -10,7 +10,7 @@
 #pragma once
 
 #include "MRG32k3a.hpp"
-#include "aes128_ctr.hpp"
+#include "aes_ctr_128.hpp"
 #include "biski64.hpp"
 #include "clmulrand.hpp"
 #include "degski.hpp"
