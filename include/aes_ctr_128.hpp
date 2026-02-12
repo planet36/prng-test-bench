@@ -86,21 +86,6 @@ advance_state_and_generate_value(state_type& s)
 
 }
 
-DEF_URBG_SUBCLASS(aes_ctr_128_64, aes_ctr_128::state_type, uint64_t)
-
-/// prepare the initial state
-void
-aes_ctr_128_64::init()
-{
-    aes_ctr_128::prepare_initial_state(s);
-}
-
-aes_ctr_128_64::result_type
-aes_ctr_128_64::next()
-{
-    return uint64_from_m128i(aes_ctr_128::advance_state_and_generate_value(s));
-}
-
 #if !defined(__SIZEOF_INT128__)
 #error "__SIZEOF_INT128__ not defined"
 #endif
