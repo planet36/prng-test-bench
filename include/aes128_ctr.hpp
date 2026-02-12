@@ -69,9 +69,9 @@ prepare_initial_state(state_type& s)
 __m128i
 advance_state_and_generate_value(state_type& s)
 {
-    // must do at least 2 rounds of AES
-    constexpr unsigned int Nr = 2;
-    static_assert(Nr >= 2);
+    // must do at least 3 rounds of AES
+    constexpr unsigned int Nr = 3;
+    static_assert(Nr >= 3);
 
     __m128i dst = s[0];
     s[0] = _mm_add_epi64(s[0], s[1]);
