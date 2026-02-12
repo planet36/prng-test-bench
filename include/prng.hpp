@@ -117,8 +117,8 @@ const std::map<std::string, prng_info_t> prng_name_to_info{
 
     // mine
 #if defined(__AES__)
-    CREATE_PRNG_INFO_MAP_ENTRY(aes128_ctr_64         ),
-    CREATE_PRNG_INFO_MAP_ENTRY(aes128_ctr_128        ),
+    CREATE_PRNG_INFO_MAP_ENTRY(aes_ctr_128_64        ),
+    CREATE_PRNG_INFO_MAP_ENTRY(aes_ctr_128_128       ),
 #endif
     CREATE_PRNG_INFO_MAP_ENTRY(biski64               ),
 #if defined(__PCLMUL__)

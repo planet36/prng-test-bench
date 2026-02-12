@@ -22,7 +22,7 @@
 #include <immintrin.h>
 #include <random>
 
-namespace aes128_ctr
+namespace aes_ctr_128
 {
 
 using state_type = arr_m128i<3>;
@@ -86,38 +86,38 @@ advance_state_and_generate_value(state_type& s)
 
 }
 
-DEF_URBG_SUBCLASS(aes128_ctr_64, aes128_ctr::state_type, uint64_t)
+DEF_URBG_SUBCLASS(aes_ctr_128_64, aes_ctr_128::state_type, uint64_t)
 
 /// prepare the initial state
 void
-aes128_ctr_64::init()
+aes_ctr_128_64::init()
 {
-    aes128_ctr::prepare_initial_state(s);
+    aes_ctr_128::prepare_initial_state(s);
 }
 
-aes128_ctr_64::result_type
-aes128_ctr_64::next()
+aes_ctr_128_64::result_type
+aes_ctr_128_64::next()
 {
-    return uint64_from_m128i(aes128_ctr::advance_state_and_generate_value(s));
+    return uint64_from_m128i(aes_ctr_128::advance_state_and_generate_value(s));
 }
 
 #if !defined(__SIZEOF_INT128__)
 #error "__SIZEOF_INT128__ not defined"
 #endif
 
-DEF_URBG_SUBCLASS(aes128_ctr_128, aes128_ctr::state_type, __uint128_t)
+DEF_URBG_SUBCLASS(aes_ctr_128_128, aes_ctr_128::state_type, __uint128_t)
 
 /// prepare the initial state
 void
-aes128_ctr_128::init()
+aes_ctr_128_128::init()
 {
-    aes128_ctr::prepare_initial_state(s);
+    aes_ctr_128::prepare_initial_state(s);
 }
 
-aes128_ctr_128::result_type
-aes128_ctr_128::next()
+aes_ctr_128_128::result_type
+aes_ctr_128_128::next()
 {
-    return uint128_from_m128i(aes128_ctr::advance_state_and_generate_value(s));
+    return uint128_from_m128i(aes_ctr_128::advance_state_and_generate_value(s));
 }
 
 #else
