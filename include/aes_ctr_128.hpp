@@ -22,14 +22,14 @@
 #include <immintrin.h>
 #include <random>
 
-namespace aes_ctr_128
-{
-
-using state_type = arr_m128i<3>;
+#if !defined(__SIZEOF_INT128__)
+#error "__SIZEOF_INT128__ not defined"
+#endif
 
 // s[0] is the state/counter
 // s[1] is the increment (must be odd)
 // s[2] is the key
+DEF_URBG_SUBCLASS(aes_ctr_128_128, arr_m128i<3>, __uint128_t)
 
 /// prepare the initial state
 /**
@@ -37,7 +37,7 @@ using state_type = arr_m128i<3>;
 * Therefore, \c inc shall be made odd.
 */
 void
-prepare_initial_state(state_type& s)
+aes_ctr_128_128::init()
 {
     s[1] = mm_make_odd_epu64(s[1]);
 
@@ -66,8 +66,8 @@ prepare_initial_state(state_type& s)
 }
 
 /// advance the state of the PRNG, and generate a pseudo-random value
-__m128i
-advance_state_and_generate_value(state_type& s)
+aes_ctr_128_128::result_type
+aes_ctr_128_128::next()
 {
     // must do at least 3 rounds of AES
     constexpr unsigned int Nr = 3;
@@ -81,28 +81,7 @@ advance_state_and_generate_value(state_type& s)
         dst = _mm_aesenc_si128(dst, s[2]);
     }
 
-    return dst;
-}
-
-}
-
-#if !defined(__SIZEOF_INT128__)
-#error "__SIZEOF_INT128__ not defined"
-#endif
-
-DEF_URBG_SUBCLASS(aes_ctr_128_128, aes_ctr_128::state_type, __uint128_t)
-
-/// prepare the initial state
-void
-aes_ctr_128_128::init()
-{
-    aes_ctr_128::prepare_initial_state(s);
-}
-
-aes_ctr_128_128::result_type
-aes_ctr_128_128::next()
-{
-    return uint128_from_m128i(aes_ctr_128::advance_state_and_generate_value(s));
+    return uint128_from_m128i(dst);
 }
 
 #else
