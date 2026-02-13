@@ -29,7 +29,7 @@
 // s[0] is the state/counter
 // s[1] is the increment (must be odd)
 // s[2] is the key
-DEF_URBG_SUBCLASS(aes_ctr_128_128, arr_m128i<3>, __uint128_t)
+DEF_URBG_SUBCLASS(aes_ctr_128, arr_m128i<3>, __uint128_t)
 
 /// prepare the initial state
 /**
@@ -37,7 +37,7 @@ DEF_URBG_SUBCLASS(aes_ctr_128_128, arr_m128i<3>, __uint128_t)
 * Therefore, \c inc shall be made odd.
 */
 void
-aes_ctr_128_128::init()
+aes_ctr_128::init()
 {
     s[1] = mm_make_odd_epu64(s[1]);
 
@@ -66,8 +66,8 @@ aes_ctr_128_128::init()
 }
 
 /// advance the state of the PRNG, and generate a pseudo-random value
-aes_ctr_128_128::result_type
-aes_ctr_128_128::next()
+aes_ctr_128::result_type
+aes_ctr_128::next()
 {
     // must do at least 3 rounds of AES
     constexpr unsigned int Nr = 3;
