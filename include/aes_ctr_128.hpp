@@ -13,13 +13,9 @@
 
 #include "abstract_urbg_class.hpp"
 #include "mm_cast.hpp"
-#include "mm_equal.h"
-#include "scaled-const.h"
 #include "simd-array.hpp"
 
-#include <cstdint>
 #include <immintrin.h>
-#include <random>
 
 #if !defined(__SIZEOF_INT128__)
 #error "__SIZEOF_INT128__ not defined"
@@ -33,15 +29,6 @@ DEF_URBG_SUBCLASS(aes_ctr_128, arr_m128i<2>, __uint128_t)
 void
 aes_ctr_128::init()
 {
-    // the key must have more than 1 unique byte
-    if (mm_all_equal_epi8(s[1]))
-    {
-        // most significant elem first
-        const auto mask_key =
-            _mm_set_epi64x(FLOOR_SCALED_FRAC_SQRT_7, FLOOR_SCALED_FRAC_SQRT_5);
-
-        s[1] = _mm_xor_si128(s[1], mask_key);
-    }
 }
 
 /// advance the state of the PRNG, and generate a pseudo-random value
