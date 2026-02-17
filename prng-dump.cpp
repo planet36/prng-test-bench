@@ -367,9 +367,7 @@ if (prng_name == #NAME) { \
     CONDITIONAL_DUMP_MINE(sfc32                 )
     CONDITIONAL_DUMP_MINE(sfc64                 )
 #if defined(__SHA__)
-    CONDITIONAL_DUMP_MINE(sha1_ctr_64           )
     CONDITIONAL_DUMP_MINE(sha1_ctr_128          )
-    CONDITIONAL_DUMP_MINE(sha256_ctr_64         )
     CONDITIONAL_DUMP_MINE(sha256_ctr_128        )
 #endif
     CONDITIONAL_DUMP_MINE(shioi                 )
@@ -453,9 +451,7 @@ seiran                       64  0                     18446744073709551615    1
 sfc32                        32  0                               4294967295    16
 sfc64                        64  0                     18446744073709551615    32
 sha1_ctr_128                128  0  340282366920938463463374607431768211455    32
-sha1_ctr_64                  64  0                     18446744073709551615    32
 sha256_ctr_128              128  0  340282366920938463463374607431768211455    32
-sha256_ctr_64                64  0                     18446744073709551615    32
 shioi                        64  0                     18446744073709551615    16
 splitmix32                   32  0                               4294967295     8
 splitmix64                   64  0                     18446744073709551615     8

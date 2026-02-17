@@ -81,21 +81,6 @@ advance_state_and_generate_value(state_type& s)
 
 }
 
-DEF_URBG_SUBCLASS(sha1_ctr_64, sha1_ctr::state_type, uint64_t)
-
-/// prepare the initial state
-void
-sha1_ctr_64::init()
-{
-    sha1_ctr::prepare_initial_state(s);
-}
-
-sha1_ctr_64::result_type
-sha1_ctr_64::next()
-{
-    return uint64_from_m128i(sha1_ctr::advance_state_and_generate_value(s));
-}
-
 DEF_URBG_SUBCLASS(sha1_ctr_128, sha1_ctr::state_type, __uint128_t)
 
 /// prepare the initial state
