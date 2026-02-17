@@ -318,6 +318,7 @@ if (prng_name == #NAME) { \
 
     // mine
 #if defined(__AES__)
+    CONDITIONAL_DUMP_MINE(aes_compress_ctr2_128 )
     CONDITIONAL_DUMP_MINE(aes_ctr_128           )
 #endif
     CONDITIONAL_DUMP_MINE(biski64               )
@@ -407,7 +408,8 @@ if (prng_name == #NAME) { \
 Output:
 
 MRG32k3a                     64  0                     18446744073709551615     8
-aes_ctr_128                 128  0  340282366920938463463374607431768211455    48
+aes_compress_ctr2_128       128  0  340282366920938463463374607431768211455    32
+aes_ctr_128                 128  0  340282366920938463463374607431768211455    32
 biski64                      64  0                     18446744073709551615    24
 clmulrand                    64  0                     18446744073709551615    16
 degski32                     32  0                               4294967295     4
