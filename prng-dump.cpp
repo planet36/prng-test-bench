@@ -31,7 +31,7 @@ https://www.pcg-random.org/posts/how-to-test-with-practrand.html
 #define nl (void)putchar('\n')
 
 inline constexpr std::string_view program_author = "Steven Ward";
-inline constexpr std::string_view program_version = "2025-10-21";
+inline constexpr std::string_view program_version = "2026-02-17";
 inline constexpr std::string_view program_license = "OSL-3.0";
 
 // Globals
