@@ -122,10 +122,6 @@ sha256_ctr_64::next()
     return uint64_from_m128i(sha256_ctr::advance_state_and_generate_value(s));
 }
 
-#if defined(__SIZEOF_INT128__)
-#include "int_join.hpp"
-#endif
-
 DEF_URBG_SUBCLASS(sha256_ctr_128, sha256_ctr::state_type, __uint128_t)
 
 /// prepare the initial state
