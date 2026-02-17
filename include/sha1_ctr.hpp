@@ -60,7 +60,7 @@ prepare_initial_state(state_type& s)
     {
         // most significant elem first
         const auto mask_inc =
-            _mm_set_epi64x(FLOOR_SCALED_FRAC_SQRT_3, FLOOR_SCALED_FRAC_SQRT_2);
+            _mm_set_epi64x(U64_FLOOR_SCALED_FRAC_SQRT_3, U64_FLOOR_SCALED_FRAC_SQRT_2);
 
         // make unique
         s[1] = _mm_xor_si128(s[1], mask_inc);
