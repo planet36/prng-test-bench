@@ -3,7 +3,7 @@
 
 /*
 
-gpp -Iinclude $OPTIMIZE_OPTIONS prng-dump.cpp -o prng-dump && d ./prng-dump
+gpp -I include $OPTIMIZE_OPTIONS prng-dump.cpp -o prng-dump && d ./prng-dump
 
 clear ; ./prng-dump -i | column --table --table-right 2,4,5
 

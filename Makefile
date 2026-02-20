@@ -35,7 +35,7 @@ $(foreach bin,$(REQUIRED_BINS),\
 CXX = g++
 
 CPPFLAGS = -MMD -MP
-CPPFLAGS += -Iinclude
+CPPFLAGS += -I include
 
 # gnu++ needed for static_assert(std::integral<__int128_t>);
 CXXFLAGS = -std=gnu++26
