@@ -3,8 +3,6 @@ RNG = RNG_stdin32, seed = unknown
 test set = core, folding = standard (32 bit)
 
 rng=RNG_stdin32, seed=unknown
-length= 256 mebibytes (2^28 bytes), time= 0.8 seconds
-  Test Name                         Raw       Processed     Evaluation
-  BCFN(2+2,13-3,T)                  R=  +8.4  p =  9.5e-4   unusual          
-  ...and 167 test result(s) without anomalies
+length= 256 mebibytes (2^28 bytes), time= 0.7 seconds
+  no anomalies in 168 test result(s)
 

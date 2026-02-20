@@ -1,6 +1,8 @@
 MRG32k3a
 aes128_ctr_128
 aes128_ctr_64
+aes_compress_ctr2_128
+aes_ctr_128
 biski64
 clmulrand
 degski64

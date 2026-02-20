@@ -1,6 +1,8 @@
 RNG_test.tlmax-256MB.seed-zero.prng-MRG32k3a.txt
 RNG_test.tlmax-256MB.seed-zero.prng-aes128_ctr_128.txt
 RNG_test.tlmax-256MB.seed-zero.prng-aes128_ctr_64.txt
+RNG_test.tlmax-256MB.seed-zero.prng-aes_compress_ctr2_128.txt
+RNG_test.tlmax-256MB.seed-zero.prng-aes_ctr_128.txt
 RNG_test.tlmax-256MB.seed-zero.prng-biski64.txt
 RNG_test.tlmax-256MB.seed-zero.prng-clmulrand.txt
 RNG_test.tlmax-256MB.seed-zero.prng-degski64.txt

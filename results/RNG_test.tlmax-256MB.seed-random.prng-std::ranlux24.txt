@@ -3,7 +3,7 @@ RNG = RNG_stdin64, seed = unknown
 test set = core, folding = standard (64 bit)
 
 rng=RNG_stdin64, seed=unknown
-length= 256 mebibytes (2^28 bytes), time= 2.5 seconds
+length= 256 mebibytes (2^28 bytes), time= 2.1 seconds
   Test Name                         Raw       Processed     Evaluation
   BCFN(2+0,13-2,T)                  R>+99999  p = 0           FAIL !!!!!!!!  
   BCFN(2+1,13-2,T)                  R>+99999  p = 0           FAIL !!!!!!!!  
@@ -28,9 +28,9 @@ length= 256 mebibytes (2^28 bytes), time= 2.5 seconds
   FPF-14+6/16:(2,14-0)              R>+99999  p = 0           FAIL !!!!!!!!  
   FPF-14+6/16:(3,14-0)              R>+99999  p = 0           FAIL !!!!!!!!  
   FPF-14+6/16:(4,14-1)              R>+99999  p = 0           FAIL !!!!!!!!  
-  FPF-14+6/16:(5,14-2)              R=+91100  p = 0           FAIL !!!!!!!!  
-  FPF-14+6/16:(6,14-2)              R=+51124  p = 0           FAIL !!!!!!!!  
-  FPF-14+6/16:(7,14-3)              R=+36108  p = 0           FAIL !!!!!!!!  
+  FPF-14+6/16:(5,14-2)              R=+90872  p = 0           FAIL !!!!!!!!  
+  FPF-14+6/16:(6,14-2)              R=+51172  p = 0           FAIL !!!!!!!!  
+  FPF-14+6/16:(7,14-3)              R=+36283  p = 0           FAIL !!!!!!!!  
   FPF-14+6/16:all                   R>+99999  p = 0           FAIL !!!!!!!!  
   FPF-14+6/16:cross                 R>+99999  p = 0           FAIL !!!!!!!!  
   BRank(12):128(4)                  R= +3233  p~=  2e-1720    FAIL !!!!!!!!  
@@ -44,9 +44,9 @@ length= 256 mebibytes (2^28 bytes), time= 2.5 seconds
   mod3n(5):(0,9-6)                  R>+99999  p = 0           FAIL !!!!!!!!  
   mod3n(5):(1,9-6)                  R>+99999  p = 0           FAIL !!!!!!!!  
   mod3n(5):(2,9-6)                  R>+99999  p = 0           FAIL !!!!!!!!  
-  TMFn(2+0):wl                      R=+60217  p~=  0          FAIL !!!!!!!!  
-  TMFn(2+1):wl                      R=+30073  p~=  0          FAIL !!!!!!!!  
+  TMFn(2+0):wl                      R=+60215  p~=  0          FAIL !!!!!!!!  
+  TMFn(2+1):wl                      R=+30072  p~=  0          FAIL !!!!!!!!  
   TMFn(2+2):wl                      R=+15000  p~=  0          FAIL !!!!!!!!  
-  TMFn(2+3):wl                      R= +7465  p~=  0          FAIL !!!!!!!!  
+  TMFn(2+3):wl                      R= +7464  p~=  0          FAIL !!!!!!!!  
   ...and 170 test result(s) without anomalies
 
