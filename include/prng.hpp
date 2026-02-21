@@ -1,5 +1,5 @@
 // SPDX-FileCopyrightText: Steven Ward
-// SPDX-License-Identifier: OSL-3.0
+// SPDX-License-Identifier: MPL-2.0
 
 /// all header files of PRNGs to be tested, map of PRNG names to PRNG info
 /**

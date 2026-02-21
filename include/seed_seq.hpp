@@ -1,5 +1,5 @@
 // SPDX-FileCopyrightText: Steven Ward
-// SPDX-License-Identifier: OSL-3.0
+// SPDX-License-Identifier: MPL-2.0
 
 /// Seed sequences (mimicking \c std::seed_seq) that use \c std::random_device, constant values, or increasing values
 /**

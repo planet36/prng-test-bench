@@ -1,5 +1,5 @@
 // SPDX-FileCopyrightText: Steven Ward
-// SPDX-License-Identifier: OSL-3.0
+// SPDX-License-Identifier: MPL-2.0
 
 /*
 
@@ -32,7 +32,7 @@ https://www.pcg-random.org/posts/how-to-test-with-practrand.html
 
 inline constexpr std::string_view program_author = "Steven Ward";
 inline constexpr std::string_view program_version = "2026-02-17";
-inline constexpr std::string_view program_license = "OSL-3.0";
+inline constexpr std::string_view program_license = "MPL-2.0";
 
 // Globals
 

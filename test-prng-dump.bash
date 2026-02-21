@@ -1,6 +1,6 @@
 #!/usr/bin/bash
 # SPDX-FileCopyrightText: Steven Ward
-# SPDX-License-Identifier: OSL-3.0
+# SPDX-License-Identifier: MPL-2.0
 
 # XXX: If "Broken pipe" error happens, it's likely due to out-of-memory.
 
