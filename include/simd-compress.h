@@ -91,14 +91,12 @@ static inline uint8x16_t
 compress_aesenc2_128(const uint8x16_t a, const uint8x16_t b)
 {
 #if defined(__x86_64__) && defined(__AES__)
-    return
-        _mm_aesenc_si128(
+    return _mm_aesenc_si128(
                 _mm_aesenc_si128(a, b),
                 a);
 #elif defined(__aarch64__) && defined(__ARM_FEATURE_AES)
     const uint8x16_t zero = vdupq_n_u8(0);
-    return
-        vaesmcq_u8(vaeseq_u8(
+    return vaesmcq_u8(vaeseq_u8(
                     vaesmcq_u8(vaeseq_u8(a, zero)),
                     b)) ^ a;
 #endif
@@ -114,16 +112,14 @@ static inline uint8x16_t
 compress_aesenc3_128(const uint8x16_t a, const uint8x16_t b)
 {
 #if defined(__x86_64__) && defined(__AES__)
-    return
-        _mm_aesenc_si128(
+    return _mm_aesenc_si128(
                 _mm_aesenc_si128(
                     _mm_aesenc_si128(b, a),
                     b),
                 a);
 #elif defined(__aarch64__) && defined(__ARM_FEATURE_AES)
     const uint8x16_t zero = vdupq_n_u8(0);
-    return
-        vaesmcq_u8(vaeseq_u8(
+    return vaesmcq_u8(vaeseq_u8(
                     vaesmcq_u8(vaeseq_u8(
                             vaesmcq_u8(vaeseq_u8(b, zero)),
                             a)),
@@ -141,8 +137,7 @@ static inline uint8x16_t
 compress_aesenc4_128(const uint8x16_t a, const uint8x16_t b)
 {
 #if defined(__x86_64__) && defined(__AES__)
-    return
-        _mm_aesenc_si128(
+    return _mm_aesenc_si128(
                 _mm_aesenc_si128(
                     _mm_aesenc_si128(
                         _mm_aesenc_si128(a, b),
@@ -151,8 +146,7 @@ compress_aesenc4_128(const uint8x16_t a, const uint8x16_t b)
                 a);
 #elif defined(__aarch64__) && defined(__ARM_FEATURE_AES)
     const uint8x16_t zero = vdupq_n_u8(0);
-    return
-        vaesmcq_u8(vaeseq_u8(
+    return vaesmcq_u8(vaeseq_u8(
                     vaesmcq_u8(vaeseq_u8(
                             vaesmcq_u8(vaeseq_u8(
                                     vaesmcq_u8(vaeseq_u8(a, zero)),
