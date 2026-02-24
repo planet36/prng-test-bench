@@ -53,10 +53,9 @@
 
 #if defined(__x86_64__) && defined(__AES__)
 #include <immintrin.h>
-typedef __m128i simd128_t;
+typedef __m128i uint8x16_t;
 #elif defined(__aarch64__) && defined(__ARM_FEATURE_AES)
 #include <arm_neon.h>
-typedef uint8x16_t simd128_t;
 #else
 #error "Architecture not supported"
 #endif
@@ -71,13 +70,13 @@ extern "C" {
 * \li diffusion rate of \a a = 0.8%
 * \li diffusion rate of \a b = 12.6%
 */
-static inline simd128_t
-compress_aesenc1_128(const simd128_t a, const simd128_t b)
+static inline uint8x16_t
+compress_aesenc1_128(const uint8x16_t a, const uint8x16_t b)
 {
 #if defined(__x86_64__) && defined(__AES__)
     return _mm_aesenc_si128(b, a);
 #elif defined(__aarch64__) && defined(__ARM_FEATURE_AES)
-    const simd128_t zero = vdupq_n_u8(0);
+    const uint8x16_t zero = vdupq_n_u8(0);
     return vaesmcq_u8(vaeseq_u8(b, zero)) ^ a;
 #endif
 }
@@ -88,8 +87,8 @@ compress_aesenc1_128(const simd128_t a, const simd128_t b)
 * \li diffusion rate of \a a = 50.3%
 * \li diffusion rate of \a b = 12.7%
 */
-static inline simd128_t
-compress_aesenc2_128(const simd128_t a, const simd128_t b)
+static inline uint8x16_t
+compress_aesenc2_128(const uint8x16_t a, const uint8x16_t b)
 {
 #if defined(__x86_64__) && defined(__AES__)
     return
@@ -97,7 +96,7 @@ compress_aesenc2_128(const simd128_t a, const simd128_t b)
                 _mm_aesenc_si128(a, b),
                 a);
 #elif defined(__aarch64__) && defined(__ARM_FEATURE_AES)
-    const simd128_t zero = vdupq_n_u8(0);
+    const uint8x16_t zero = vdupq_n_u8(0);
     return
         vaesmcq_u8(vaeseq_u8(
                     vaesmcq_u8(vaeseq_u8(a, zero)),
@@ -111,8 +110,8 @@ compress_aesenc2_128(const simd128_t a, const simd128_t b)
 * \li diffusion rate of \a a = 50.2%
 * \li diffusion rate of \a b = 50.0%
 */
-static inline simd128_t
-compress_aesenc3_128(const simd128_t a, const simd128_t b)
+static inline uint8x16_t
+compress_aesenc3_128(const uint8x16_t a, const uint8x16_t b)
 {
 #if defined(__x86_64__) && defined(__AES__)
     return
@@ -122,7 +121,7 @@ compress_aesenc3_128(const simd128_t a, const simd128_t b)
                     b),
                 a);
 #elif defined(__aarch64__) && defined(__ARM_FEATURE_AES)
-    const simd128_t zero = vdupq_n_u8(0);
+    const uint8x16_t zero = vdupq_n_u8(0);
     return
         vaesmcq_u8(vaeseq_u8(
                     vaesmcq_u8(vaeseq_u8(
@@ -138,8 +137,8 @@ compress_aesenc3_128(const simd128_t a, const simd128_t b)
 * \li diffusion rate of \a a = 50.0%
 * \li diffusion rate of \a b = 50.0%
 */
-static inline simd128_t
-compress_aesenc4_128(const simd128_t a, const simd128_t b)
+static inline uint8x16_t
+compress_aesenc4_128(const uint8x16_t a, const uint8x16_t b)
 {
 #if defined(__x86_64__) && defined(__AES__)
     return
@@ -151,7 +150,7 @@ compress_aesenc4_128(const simd128_t a, const simd128_t b)
                     b),
                 a);
 #elif defined(__aarch64__) && defined(__ARM_FEATURE_AES)
-    const simd128_t zero = vdupq_n_u8(0);
+    const uint8x16_t zero = vdupq_n_u8(0);
     return
         vaesmcq_u8(vaeseq_u8(
                     vaesmcq_u8(vaeseq_u8(
