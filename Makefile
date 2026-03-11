@@ -126,7 +126,7 @@ clean:
 	@$(RM) --verbose -- $(DEPS) $(BINS) *.opts
 
 lint:
-	-clang-tidy --quiet $(SRCS) -- $(CPPFLAGS) $(CXXFLAGS) $(LDLIBS)
+	-clang-tidy --quiet $(SRCS) -- $(CPPFLAGS) $(CXXFLAGS)
 
 # https://www.gnu.org/software/make/manual/make.html#Phony-Targets
 .PHONY: all prng-bench short-test long-test update-short-test update-long-test clean lint
