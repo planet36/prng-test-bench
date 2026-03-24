@@ -33,7 +33,6 @@ aes_ctr_128::init()
 
 /// advance the state of the PRNG, and generate a pseudo-random value
 /**
-* Every odd integer is coprime with every power of 2.
 * Therefore, \c inc shall be made odd.
 */
 aes_ctr_128::result_type
@@ -43,9 +42,10 @@ aes_ctr_128::next()
     constexpr unsigned int Nr = 3;
     static_assert(Nr >= 3);
 
-    /*
+    /**
     * Criteria for integers of \c inc:
     *   1) Must be odd
+    *       * Every odd integer is coprime with every power of 2.
     *   2) Must be unique
     *   3) Should have half the bits set
     *
