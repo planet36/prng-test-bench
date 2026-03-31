@@ -54,5 +54,5 @@ aes_compress_ctr2_128::next()
     s[0] = _mm_add_epi32(s[0], inc[0]);
     s[1] = _mm_add_epi32(s[1], inc[1]);
 
-    return uint128_from_m128i(compress_aesenc4_128(s[0], s[1]));
+    return uint128_from_m128i(compress_aesenc4(s[0], s[1]));
 }

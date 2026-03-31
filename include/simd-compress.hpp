@@ -72,7 +72,7 @@ typedef __m256i uint8x16x2_t;
 * \li diffusion rate of \a b = 12.7%
 */
 static inline uint8x16_t
-compress_aesenc2_128(const uint8x16_t a, const uint8x16_t b)
+compress_aesenc2(const uint8x16_t a, const uint8x16_t b)
 {
 #if defined(__x86_64__) && defined(__AES__)
     return _mm_aesenc_si128(
@@ -93,7 +93,7 @@ compress_aesenc2_128(const uint8x16_t a, const uint8x16_t b)
 * \li diffusion rate of \a b = 50.0%
 */
 static inline uint8x16_t
-compress_aesenc3_128(const uint8x16_t a, const uint8x16_t b)
+compress_aesenc3(const uint8x16_t a, const uint8x16_t b)
 {
 #if defined(__x86_64__) && defined(__AES__)
     return _mm_aesenc_si128(
@@ -118,7 +118,7 @@ compress_aesenc3_128(const uint8x16_t a, const uint8x16_t b)
 * \li diffusion rate of \a b = 50.0%
 */
 static inline uint8x16_t
-compress_aesenc4_128(const uint8x16_t a, const uint8x16_t b)
+compress_aesenc4(const uint8x16_t a, const uint8x16_t b)
 {
 #if defined(__x86_64__) && defined(__AES__)
     return _mm_aesenc_si128(
@@ -143,7 +143,7 @@ compress_aesenc4_128(const uint8x16_t a, const uint8x16_t b)
 /// Compress (via 2 rounds of AES encryption) 2 256-bit SIMD registers into 1,
 /// non-symmetrically and non-linearly
 static inline uint8x16x2_t
-compress_aesenc2_256(const uint8x16x2_t a, const uint8x16x2_t b)
+compress_aesenc2(const uint8x16x2_t a, const uint8x16x2_t b)
 {
 #if defined(__x86_64__) && defined(__VAES__)
     return _mm256_aesenc_epi128(
@@ -151,23 +151,23 @@ compress_aesenc2_256(const uint8x16x2_t a, const uint8x16x2_t b)
                 a);
 #elif defined(__x86_64__) && defined(__AES__)
     return _mm256_setr_m128i(
-            compress_aesenc2_128(
+            compress_aesenc2(
                 _mm256_extracti128_si256(a, 0),
                 _mm256_extracti128_si256(b, 0)),
-            compress_aesenc2_128(
+            compress_aesenc2(
                 _mm256_extracti128_si256(a, 1),
                 _mm256_extracti128_si256(b, 1))
             );
 #elif defined(__aarch64__) && defined(__ARM_FEATURE_AES)
-    return { compress_aesenc2_128(a.val[0], b.val[0]),
-        compress_aesenc2_128(a.val[1], b.val[1]) };
+    return { compress_aesenc2(a.val[0], b.val[0]),
+        compress_aesenc2(a.val[1], b.val[1]) };
 #endif
 }
 
 /// Compress (via 3 rounds of AES encryption) 2 256-bit SIMD registers into 1,
 /// non-symmetrically and non-linearly
 static inline uint8x16x2_t
-compress_aesenc3_256(const uint8x16x2_t a, const uint8x16x2_t b)
+compress_aesenc3(const uint8x16x2_t a, const uint8x16x2_t b)
 {
 #if defined(__x86_64__) && defined(__VAES__)
     return _mm256_aesenc_epi128(
@@ -177,23 +177,23 @@ compress_aesenc3_256(const uint8x16x2_t a, const uint8x16x2_t b)
                 a);
 #elif defined(__x86_64__) && defined(__AES__)
     return _mm256_setr_m128i(
-            compress_aesenc3_128(
+            compress_aesenc3(
                 _mm256_extracti128_si256(a, 0),
                 _mm256_extracti128_si256(b, 0)),
-            compress_aesenc3_128(
+            compress_aesenc3(
                 _mm256_extracti128_si256(a, 1),
                 _mm256_extracti128_si256(b, 1))
             );
 #elif defined(__aarch64__) && defined(__ARM_FEATURE_AES)
-    return { compress_aesenc3_128(a.val[0], b.val[0]),
-        compress_aesenc3_128(a.val[1], b.val[1]) };
+    return { compress_aesenc3(a.val[0], b.val[0]),
+        compress_aesenc3(a.val[1], b.val[1]) };
 #endif
 }
 
 /// Compress (via 4 rounds of AES encryption) 2 256-bit SIMD registers into 1,
 /// non-symmetrically and non-linearly
 static inline uint8x16x2_t
-compress_aesenc4_256(const uint8x16x2_t a, const uint8x16x2_t b)
+compress_aesenc4(const uint8x16x2_t a, const uint8x16x2_t b)
 {
 #if defined(__x86_64__) && defined(__VAES__)
     return _mm256_aesenc_epi128(
@@ -205,15 +205,15 @@ compress_aesenc4_256(const uint8x16x2_t a, const uint8x16x2_t b)
                 a);
 #elif defined(__x86_64__) && defined(__AES__)
     return _mm256_setr_m128i(
-            compress_aesenc4_128(
+            compress_aesenc4(
                 _mm256_extracti128_si256(a, 0),
                 _mm256_extracti128_si256(b, 0)),
-            compress_aesenc4_128(
+            compress_aesenc4(
                 _mm256_extracti128_si256(a, 1),
                 _mm256_extracti128_si256(b, 1))
             );
 #elif defined(__aarch64__) && defined(__ARM_FEATURE_AES)
-    return { compress_aesenc4_128(a.val[0], b.val[0]),
-        compress_aesenc4_128(a.val[1], b.val[1]) };
+    return { compress_aesenc4(a.val[0], b.val[0]),
+        compress_aesenc4(a.val[1], b.val[1]) };
 #endif
 }
