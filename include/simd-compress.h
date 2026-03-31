@@ -54,6 +54,11 @@
 #if defined(__x86_64__) && defined(__AES__)
 #include <immintrin.h>
 typedef __m128i uint8x16_t;
+
+#if defined(__AVX__)
+typedef __m256i uint8x16x2_t;
+#endif
+
 #elif defined(__aarch64__) && defined(__ARM_FEATURE_AES)
 #include <arm_neon.h>
 #else
@@ -136,6 +141,84 @@ compress_aesenc4_128(const uint8x16_t a, const uint8x16_t b)
                                     b)),
                             a)),
                     b)) ^ a;
+#endif
+}
+
+/// Compress (via 2 rounds of AES encryption) 2 256-bit SIMD registers into 1,
+/// non-symmetrically and non-linearly
+static inline uint8x16x2_t
+compress_aesenc2_256(const uint8x16x2_t a, const uint8x16x2_t b)
+{
+#if defined(__x86_64__) && defined(__VAES__)
+    return _mm256_aesenc_epi128(
+                _mm256_aesenc_epi128(a, b),
+                a);
+#elif defined(__x86_64__) && defined(__AES__)
+    return _mm256_setr_m128i(
+            compress_aesenc2_128(
+                _mm256_extracti128_si256(a, 0),
+                _mm256_extracti128_si256(b, 0)),
+            compress_aesenc2_128(
+                _mm256_extracti128_si256(a, 1),
+                _mm256_extracti128_si256(b, 1))
+            );
+#elif defined(__aarch64__) && defined(__ARM_FEATURE_AES)
+    return { compress_aesenc2_128(a.val[0], b.val[0]),
+        compress_aesenc2_128(a.val[1], b.val[1]) };
+#endif
+}
+
+/// Compress (via 3 rounds of AES encryption) 2 256-bit SIMD registers into 1,
+/// non-symmetrically and non-linearly
+static inline uint8x16x2_t
+compress_aesenc3_256(const uint8x16x2_t a, const uint8x16x2_t b)
+{
+#if defined(__x86_64__) && defined(__VAES__)
+    return _mm256_aesenc_epi128(
+                _mm256_aesenc_epi128(
+                    _mm256_aesenc_epi128(b, a),
+                    b),
+                a);
+#elif defined(__x86_64__) && defined(__AES__)
+    return _mm256_setr_m128i(
+            compress_aesenc3_128(
+                _mm256_extracti128_si256(a, 0),
+                _mm256_extracti128_si256(b, 0)),
+            compress_aesenc3_128(
+                _mm256_extracti128_si256(a, 1),
+                _mm256_extracti128_si256(b, 1))
+            );
+#elif defined(__aarch64__) && defined(__ARM_FEATURE_AES)
+    return { compress_aesenc3_128(a.val[0], b.val[0]),
+        compress_aesenc3_128(a.val[1], b.val[1]) };
+#endif
+}
+
+/// Compress (via 4 rounds of AES encryption) 2 256-bit SIMD registers into 1,
+/// non-symmetrically and non-linearly
+static inline uint8x16x2_t
+compress_aesenc4_256(const uint8x16x2_t a, const uint8x16x2_t b)
+{
+#if defined(__x86_64__) && defined(__VAES__)
+    return _mm256_aesenc_epi128(
+                _mm256_aesenc_epi128(
+                    _mm256_aesenc_epi128(
+                        _mm256_aesenc_epi128(a, b),
+                        a),
+                    b),
+                a);
+#elif defined(__x86_64__) && defined(__AES__)
+    return _mm256_setr_m128i(
+            compress_aesenc4_128(
+                _mm256_extracti128_si256(a, 0),
+                _mm256_extracti128_si256(b, 0)),
+            compress_aesenc4_128(
+                _mm256_extracti128_si256(a, 1),
+                _mm256_extracti128_si256(b, 1))
+            );
+#elif defined(__aarch64__) && defined(__ARM_FEATURE_AES)
+    return { compress_aesenc4_128(a.val[0], b.val[0]),
+        compress_aesenc4_128(a.val[1], b.val[1]) };
 #endif
 }
 
