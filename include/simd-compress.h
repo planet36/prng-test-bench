@@ -64,23 +64,6 @@ typedef __m128i uint8x16_t;
 extern "C" {
 #endif
 
-/// Compress (via 1 round of AES encryption) 2 128-bit SIMD registers into 1,
-/// non-symmetrically and non-linearly
-/**
-* \li diffusion rate of \a a = 0.8%
-* \li diffusion rate of \a b = 12.6%
-*/
-static inline uint8x16_t
-compress_aesenc1_128(const uint8x16_t a, const uint8x16_t b)
-{
-#if defined(__x86_64__) && defined(__AES__)
-    return _mm_aesenc_si128(b, a);
-#elif defined(__aarch64__) && defined(__ARM_FEATURE_AES)
-    const uint8x16_t zero = vdupq_n_u8(0);
-    return vaesmcq_u8(vaeseq_u8(b, zero)) ^ a;
-#endif
-}
-
 /// Compress (via 2 rounds of AES encryption) 2 128-bit SIMD registers into 1,
 /// non-symmetrically and non-linearly
 /**
