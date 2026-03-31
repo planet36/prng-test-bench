@@ -12,7 +12,7 @@
 #include "abstract_urbg_class.hpp"
 #include "mm_cast.hpp"
 #include "simd-array.hpp"
-#include "simd-compress.h"
+#include "simd-compress.hpp"
 
 #include <immintrin.h>
 
