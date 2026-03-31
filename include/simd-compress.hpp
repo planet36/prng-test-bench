@@ -65,10 +65,6 @@ typedef __m256i uint8x16x2_t;
 #error "Architecture not supported"
 #endif
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
 /// Compress (via 2 rounds of AES encryption) 2 128-bit SIMD registers into 1,
 /// non-symmetrically and non-linearly
 /**
@@ -221,7 +217,3 @@ compress_aesenc4_256(const uint8x16x2_t a, const uint8x16x2_t b)
         compress_aesenc4_128(a.val[1], b.val[1]) };
 #endif
 }
-
-#ifdef __cplusplus
-} // extern "C"
-#endif
