@@ -53,10 +53,10 @@
 
 #if defined(__x86_64__) && defined(__AES__)
 #include <immintrin.h>
-typedef __m128i uint8x16_t;
+using uint8x16_t = __m128i;
 
 #if defined(__AVX__)
-typedef __m256i uint8x16x2_t;
+using uint8x16x2_t = __m256i;
 #endif
 
 #elif defined(__aarch64__) && defined(__ARM_FEATURE_AES)
