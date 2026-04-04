@@ -172,7 +172,7 @@ process_options(int argc, char* argv[])
     using namespace std::literals;
 
     const char* short_options = "+Vhvil:s:";
-    int c;
+    int c = 0;
     while ((c = getopt(argc, argv, short_options)) != -1)
     {
         switch (c)

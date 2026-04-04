@@ -52,7 +52,7 @@ msws64::next()
     static_assert(inc & 1, "must be odd");
     static_assert(inc2 & 1, "must be odd");
 
-    uint64_t xx;
+    uint64_t xx = 0;
 
     s[0] *= s[0];
     s[0] += (s[1] += inc);
