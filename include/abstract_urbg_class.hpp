@@ -67,8 +67,10 @@ public:
     }
 
     AbstractURBG(const AbstractURBG&) = default;
-
     AbstractURBG& operator=(const AbstractURBG&) = default;
+
+    AbstractURBG(AbstractURBG&&) = default;
+    AbstractURBG& operator=(AbstractURBG&&) = default;
 
     /// dtor
     virtual ~AbstractURBG()
