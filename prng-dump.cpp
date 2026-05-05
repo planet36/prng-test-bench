@@ -31,7 +31,7 @@ https://www.pcg-random.org/posts/how-to-test-with-practrand.html
 #define nl (void)putchar('\n')
 
 inline constexpr std::string_view program_author = "Steven Ward";
-inline constexpr std::string_view program_version = "2026-05-04";
+inline constexpr std::string_view program_version = "2026-05-05";
 inline constexpr std::string_view program_license = "MPL-2.0";
 
 // Globals
@@ -388,6 +388,7 @@ if (prng_name == #NAME) { \
     CONDITIONAL_DUMP_MINE(xoroshiro128starstar  )
     CONDITIONAL_DUMP_MINE(xoroshiro1024plusplus )
     CONDITIONAL_DUMP_MINE(xoroshiro1024starstar )
+    CONDITIONAL_DUMP_MINE(xoroshiro128aox       )
     CONDITIONAL_DUMP_MINE(xoshiro128plusplus    )
     CONDITIONAL_DUMP_MINE(xoshiro128starstar    )
     CONDITIONAL_DUMP_MINE(xoshiro256plusplus    )
@@ -480,6 +481,7 @@ ttwanghash64                 64  0                     18446744073709551615     
 wyrand                       64  0                     18446744073709551615     8
 xoroshiro1024plusplus        64  0                     18446744073709551615   128
 xoroshiro1024starstar        64  0                     18446744073709551615   128
+xoroshiro128aox              64  0                     18446744073709551615    16
 xoroshiro128plusplus         64  0                     18446744073709551615    16
 xoroshiro128starstar         64  0                     18446744073709551615    16
 xoroshiro64starstar          32  0                               4294967295     8

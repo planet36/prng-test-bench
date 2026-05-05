@@ -50,6 +50,7 @@
 #include "ttwanghash64.hpp"
 #include "wyrand.hpp"
 #include "xoroshiro.hpp"
+#include "xoroshiro128aox.hpp"
 #include "xoshiro.hpp"
 #include "xsm.hpp"
 #include "xxh.hpp"
@@ -189,6 +190,7 @@ const std::map<std::string, prng_info_t> prng_name_to_info{
     CREATE_PRNG_INFO_MAP_ENTRY(xoroshiro128starstar  ),
     CREATE_PRNG_INFO_MAP_ENTRY(xoroshiro1024plusplus ),
     CREATE_PRNG_INFO_MAP_ENTRY(xoroshiro1024starstar ),
+    CREATE_PRNG_INFO_MAP_ENTRY(xoroshiro128aox       ),
     CREATE_PRNG_INFO_MAP_ENTRY(xoshiro128plusplus    ),
     CREATE_PRNG_INFO_MAP_ENTRY(xoshiro128starstar    ),
     CREATE_PRNG_INFO_MAP_ENTRY(xoshiro256plusplus    ),
