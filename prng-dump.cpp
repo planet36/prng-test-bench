@@ -311,6 +311,8 @@ if (prng_name == #NAME) { \
     CONDITIONAL_DUMP_STD(std::minstd_rand0         )
     CONDITIONAL_DUMP_STD(std::mt19937              )
     CONDITIONAL_DUMP_STD(std::mt19937_64           )
+    CONDITIONAL_DUMP_STD(std::philox4x32           )
+    CONDITIONAL_DUMP_STD(std::philox4x64           )
     CONDITIONAL_DUMP_STD(std::ranlux24             )
     CONDITIONAL_DUMP_STD(std::ranlux24_base        )
     CONDITIONAL_DUMP_STD(std::ranlux48             )
@@ -468,6 +470,8 @@ std::minstd_rand             64  1                               2147483646     
 std::minstd_rand0            64  1                               2147483646     8
 std::mt19937                 64  0                               4294967295  5000
 std::mt19937_64              64  0                     18446744073709551615  2504
+std::philox4x32              64  0                               4294967295    88
+std::philox4x64              64  0                     18446744073709551615    88
 std::ranlux24                64  0                                 16777215   216
 std::ranlux24_base           64  0                                 16777215   208
 std::ranlux48                64  0                          281474976710655   120

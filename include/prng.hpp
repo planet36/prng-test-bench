@@ -112,6 +112,8 @@ const std::map<std::string, prng_info_t> prng_name_to_info{
     CREATE_PRNG_INFO_MAP_ENTRY(std::minstd_rand0         ),
     CREATE_PRNG_INFO_MAP_ENTRY(std::mt19937              ),
     CREATE_PRNG_INFO_MAP_ENTRY(std::mt19937_64           ),
+    CREATE_PRNG_INFO_MAP_ENTRY(std::philox4x32           ),
+    CREATE_PRNG_INFO_MAP_ENTRY(std::philox4x64           ),
     CREATE_PRNG_INFO_MAP_ENTRY(std::ranlux24             ),
     CREATE_PRNG_INFO_MAP_ENTRY(std::ranlux24_base        ),
     CREATE_PRNG_INFO_MAP_ENTRY(std::ranlux48             ),
