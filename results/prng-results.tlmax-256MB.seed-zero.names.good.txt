@@ -1,6 +1,4 @@
 MRG32k3a
-aes128_ctr_128
-aes128_ctr_64
 aes_compress_ctr2_128
 aes_ctr_128
 biski64
@@ -44,9 +42,7 @@ seiran
 sfc32
 sfc64
 sha1_ctr_128
-sha1_ctr_64
 sha256_ctr_128
-sha256_ctr_64
 shioi
 splitmix32
 splitmix64
@@ -55,6 +51,7 @@ squares32
 squares64
 stc_crand32
 stc_crand64
+std::philox4x64
 ttwanghash64
 wyrand
 xoroshiro1024plusplus

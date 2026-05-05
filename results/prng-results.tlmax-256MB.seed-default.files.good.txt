@@ -1,6 +1,4 @@
 RNG_test.tlmax-256MB.seed-default.prng-MRG32k3a.txt
-RNG_test.tlmax-256MB.seed-default.prng-aes128_ctr_128.txt
-RNG_test.tlmax-256MB.seed-default.prng-aes128_ctr_64.txt
 RNG_test.tlmax-256MB.seed-default.prng-aes_compress_ctr2_128.txt
 RNG_test.tlmax-256MB.seed-default.prng-aes_ctr_128.txt
 RNG_test.tlmax-256MB.seed-default.prng-biski64.txt
@@ -44,9 +42,7 @@ RNG_test.tlmax-256MB.seed-default.prng-seiran.txt
 RNG_test.tlmax-256MB.seed-default.prng-sfc32.txt
 RNG_test.tlmax-256MB.seed-default.prng-sfc64.txt
 RNG_test.tlmax-256MB.seed-default.prng-sha1_ctr_128.txt
-RNG_test.tlmax-256MB.seed-default.prng-sha1_ctr_64.txt
 RNG_test.tlmax-256MB.seed-default.prng-sha256_ctr_128.txt
-RNG_test.tlmax-256MB.seed-default.prng-sha256_ctr_64.txt
 RNG_test.tlmax-256MB.seed-default.prng-shioi.txt
 RNG_test.tlmax-256MB.seed-default.prng-splitmix32.txt
 RNG_test.tlmax-256MB.seed-default.prng-splitmix64.txt
@@ -56,6 +52,7 @@ RNG_test.tlmax-256MB.seed-default.prng-squares64.txt
 RNG_test.tlmax-256MB.seed-default.prng-stc_crand32.txt
 RNG_test.tlmax-256MB.seed-default.prng-stc_crand64.txt
 RNG_test.tlmax-256MB.seed-default.prng-std::mt19937_64.txt
+RNG_test.tlmax-256MB.seed-default.prng-std::philox4x64.txt
 RNG_test.tlmax-256MB.seed-default.prng-ttwanghash64.txt
 RNG_test.tlmax-256MB.seed-default.prng-wyrand.txt
 RNG_test.tlmax-256MB.seed-default.prng-xoroshiro1024plusplus.txt
