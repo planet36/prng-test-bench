@@ -12,4 +12,5 @@ std::ranlux24
 std::ranlux24_base
 std::ranlux48
 std::ranlux48_base
+xoroshiro128aox
 xxh3_avalanche

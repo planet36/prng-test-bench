@@ -56,6 +56,7 @@ RNG_test.tlmax-256MB.seed-pattern.prng-ttwanghash64.txt
 RNG_test.tlmax-256MB.seed-pattern.prng-wyrand.txt
 RNG_test.tlmax-256MB.seed-pattern.prng-xoroshiro1024plusplus.txt
 RNG_test.tlmax-256MB.seed-pattern.prng-xoroshiro1024starstar.txt
+RNG_test.tlmax-256MB.seed-pattern.prng-xoroshiro128aox.txt
 RNG_test.tlmax-256MB.seed-pattern.prng-xoroshiro128plusplus.txt
 RNG_test.tlmax-256MB.seed-pattern.prng-xoroshiro128starstar.txt
 RNG_test.tlmax-256MB.seed-pattern.prng-xoroshiro64starstar.txt

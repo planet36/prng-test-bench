@@ -3,10 +3,10 @@ RNG = RNG_stdin32, seed = unknown
 test set = core, folding = standard (32 bit)
 
 rng=RNG_stdin32, seed=unknown
-length= 256 mebibytes (2^28 bytes), time= 0.9 seconds
+length= 256 mebibytes (2^28 bytes), time= 1.0 seconds
   Test Name                         Raw       Processed     Evaluation
-  Gap-16:A                          R= +13.4  p =  1.9e-10   VERY SUSPICIOUS 
-  Gap-16:B                          R=  +7.0  p =  9.4e-6   suspicious       
-  FPF-14+6/16:all                   R=  -5.2  p =1-1.2e-4   unusual          
+  Gap-16:A                          R= +18.0  p =  4.5e-14    FAIL           
+  Gap-16:B                          R=  +9.7  p =  6.2e-8   very suspicious  
+  FPF-14+6/16:all                   R=  -4.6  p =1-4.9e-4   unusual          
   ...and 165 test result(s) without anomalies
 

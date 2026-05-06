@@ -3,7 +3,6 @@ RNG_test.tlmax-256MB.seed-random.prng-aes_compress_ctr2_128.txt
 RNG_test.tlmax-256MB.seed-random.prng-aes_ctr_128.txt
 RNG_test.tlmax-256MB.seed-random.prng-biski64.txt
 RNG_test.tlmax-256MB.seed-random.prng-clmulrand.txt
-RNG_test.tlmax-256MB.seed-random.prng-degski32.txt
 RNG_test.tlmax-256MB.seed-random.prng-degski64.txt
 RNG_test.tlmax-256MB.seed-random.prng-ettinger_mixer.txt
 RNG_test.tlmax-256MB.seed-random.prng-gjrand.txt
@@ -58,6 +57,7 @@ RNG_test.tlmax-256MB.seed-random.prng-ttwanghash64.txt
 RNG_test.tlmax-256MB.seed-random.prng-wyrand.txt
 RNG_test.tlmax-256MB.seed-random.prng-xoroshiro1024plusplus.txt
 RNG_test.tlmax-256MB.seed-random.prng-xoroshiro1024starstar.txt
+RNG_test.tlmax-256MB.seed-random.prng-xoroshiro128aox.txt
 RNG_test.tlmax-256MB.seed-random.prng-xoroshiro128plusplus.txt
 RNG_test.tlmax-256MB.seed-random.prng-xoroshiro128starstar.txt
 RNG_test.tlmax-256MB.seed-random.prng-xoroshiro64starstar.txt

@@ -57,6 +57,7 @@ ttwanghash64
 wyrand
 xoroshiro1024plusplus
 xoroshiro1024starstar
+xoroshiro128aox
 xoroshiro128plusplus
 xoroshiro128starstar
 xoroshiro64starstar
