@@ -38,7 +38,7 @@ CPPFLAGS = -MMD -MP
 CPPFLAGS += -I include
 
 # gnu++ needed for static_assert(std::integral<__int128_t>);
-CXXFLAGS = -std=gnu++26
+CXXFLAGS = -std=c++26
 CXXFLAGS += -pipe -Wall -Wextra -Wpedantic -Wfatal-errors
 CXXFLAGS += -O3 -flto=auto -march=native
 CXXFLAGS += -Wno-unused-function
