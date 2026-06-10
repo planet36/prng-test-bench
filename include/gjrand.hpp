@@ -31,9 +31,9 @@ gjrand::next()
 {
     constexpr uint64_t A1 = 0x55aa96a5; // not prime (popcount = 16)
     static_assert(A1 & 1, "must be odd");
-    constexpr unsigned int R1 = 32;
-    constexpr unsigned int R2 = 23;
-    constexpr unsigned int R3 = 19;
+    constexpr int R1 = 32;
+    constexpr int R2 = 23;
+    constexpr int R3 = 19;
 
     s[1] += s[2];
     s[0] = std::rotl(s[0], R1);

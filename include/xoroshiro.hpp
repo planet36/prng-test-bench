@@ -36,7 +36,7 @@ xoroshiro64starstar::init()
 {
     if (s == state_type{})
     {
-        for (unsigned int i = 0; i < std::size(s); ++i)
+        for (int i = 0; i < std::ssize(s); ++i)
         {
             s[i] = i + 1;
         }
@@ -76,7 +76,7 @@ xoroshiro128plusplus::init()
 {
     if (s == state_type{})
     {
-        for (unsigned int i = 0; i < std::size(s); ++i)
+        for (int i = 0; i < std::ssize(s); ++i)
         {
             s[i] = i + 1;
         }
@@ -121,7 +121,7 @@ xoroshiro128starstar::init()
 {
     if (s == state_type{})
     {
-        for (unsigned int i = 0; i < std::size(s); ++i)
+        for (int i = 0; i < std::ssize(s); ++i)
         {
             s[i] = i + 1;
         }
@@ -167,7 +167,7 @@ xoroshiro1024plusplus::init()
 {
     if (s == state_type{})
     {
-        for (unsigned int i = 0; i < std::size(s); ++i)
+        for (int i = 0; i < std::ssize(s); ++i)
         {
             s[i] = i + 1;
         }
@@ -216,7 +216,7 @@ xoroshiro1024starstar::init()
 {
     if (s == state_type{})
     {
-        for (unsigned int i = 0; i < std::size(s); ++i)
+        for (int i = 0; i < std::ssize(s); ++i)
         {
             s[i] = i + 1;
         }

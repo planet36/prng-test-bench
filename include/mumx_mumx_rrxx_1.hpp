@@ -32,8 +32,8 @@ mumx_mumx_rrxx_1::next()
 
     constexpr uint64_t a = 0xd14fff8ace476a59; // not prime (popcount = 37)
     static_assert(a & 1, "must be odd");
-    constexpr unsigned int R1 = 25;
-    constexpr unsigned int R2 = 47;
+    constexpr int R1 = 25;
+    constexpr int R2 = 47;
 
     // mumx(x,a) is not bijective, it only has ~64% coverage. Using data parallel execution, in the
     // meantime we calculate the rrx (rotate & rotate & xor & xor):

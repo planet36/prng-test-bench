@@ -28,8 +28,8 @@ romu_quad::next()
 {
     constexpr uint64_t M1 = 0xd3833e804f4c574b; // not prime (popcount = 31)
     static_assert(M1 & 1, "must be odd");
-    constexpr unsigned int R1 = 52;
-    constexpr unsigned int R2 = 19;
+    constexpr int R1 = 52;
+    constexpr int R2 = 19;
 
     const auto old_s = s;
 
@@ -52,8 +52,8 @@ romu_trio::next()
 {
     constexpr uint64_t M1 = 0xd3833e804f4c574b; // not prime (popcount = 31)
     static_assert(M1 & 1, "must be odd");
-    constexpr unsigned int R1 = 12;
-    constexpr unsigned int R2 = 44;
+    constexpr int R1 = 12;
+    constexpr int R2 = 44;
 
     const auto old_s = s;
 
@@ -75,8 +75,8 @@ romu_duo::next()
 {
     constexpr uint64_t M1 = 0xd3833e804f4c574b; // not prime (popcount = 31)
     static_assert(M1 & 1, "must be odd");
-    constexpr unsigned int R1 = 36;
-    constexpr unsigned int R2 = 15;
+    constexpr int R1 = 36;
+    constexpr int R2 = 15;
 
     const auto old_s = s;
 
@@ -97,7 +97,7 @@ romu_duo_jr::next()
 {
     constexpr uint64_t M1 = 0xd3833e804f4c574b; // not prime (popcount = 31)
     static_assert(M1 & 1, "must be odd");
-    constexpr unsigned int R1 = 27;
+    constexpr int R1 = 27;
 
     const auto old_s = s;
 
@@ -118,8 +118,8 @@ romu_quad32::next()
 {
     constexpr uint32_t M1 = 0xc61d672b; // not prime (popcount = 17)
     static_assert(M1 & 1, "must be odd");
-    constexpr unsigned int R1 = 26;
-    constexpr unsigned int R2 = 9;
+    constexpr int R1 = 26;
+    constexpr int R2 = 9;
 
     const auto old_s = s;
 
@@ -142,8 +142,8 @@ romu_trio32::next()
 {
     constexpr uint32_t M1 = 0xc61d672b; // not prime (popcount = 17)
     static_assert(M1 & 1, "must be odd");
-    constexpr unsigned int R1 = 6;
-    constexpr unsigned int R2 = 22;
+    constexpr int R1 = 6;
+    constexpr int R2 = 22;
 
     const auto old_s = s;
 

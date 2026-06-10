@@ -39,8 +39,8 @@ biski64::init()
 biski64::result_type
 biski64::next()
 {
-    constexpr unsigned int R1 = 16;
-    constexpr unsigned int R2 = 40;
+    constexpr int R1 = 16;
+    constexpr int R2 = 40;
 
     const result_type result = s[1] + s[2];
     const auto old_loop_mix = s[2];

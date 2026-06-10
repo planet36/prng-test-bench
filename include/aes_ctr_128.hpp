@@ -39,7 +39,7 @@ aes_ctr_128::result_type
 aes_ctr_128::next()
 {
     // must do at least 3 rounds of AES
-    constexpr unsigned int Nr = 3;
+    constexpr int Nr = 3;
     static_assert(Nr >= 3);
 
     /**
@@ -60,7 +60,7 @@ aes_ctr_128::next()
     __m128i dst = s[0];
     s[0] = _mm_add_epi32(s[0], inc);
 
-    for (unsigned int r = 0; r < Nr; ++r)
+    for (int r = 0; r < Nr; ++r)
     {
         dst = _mm_aesenc_si128(dst, s[1]);
     }

@@ -27,7 +27,7 @@ seiran::init()
 seiran::result_type
 seiran::next()
 {
-    constexpr unsigned int M1 = 9;
+    constexpr int M1 = 9;
     static_assert(M1 & 1, "must be odd");
 
     s[0] += XXH_PRIME64_1; // (SDW)
