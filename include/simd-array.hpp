@@ -16,13 +16,13 @@
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wignored-attributes"
 
-template <int N>
+template <size_t N>
 using arr_m128i = std::array<__m128i, N>;
 
-template <int N>
+template <size_t N>
 using arr_m256i = std::array<__m256i, N>;
 
-template <int N>
+template <size_t N>
 using arr_m512i = std::array<__m512i, N>;
 
 #pragma GCC diagnostic pop

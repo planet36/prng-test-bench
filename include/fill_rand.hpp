@@ -89,7 +89,7 @@ fill_rand(T& x)
         std::unreachable();
 }
 
-template <std::unsigned_integral T, unsigned int N>
+template <std::unsigned_integral T, size_t N>
 void
 fill_rand(std::array<T, N>& container)
 {
