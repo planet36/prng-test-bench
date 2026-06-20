@@ -51,28 +51,33 @@
 
 #pragma once
 
+#include <array>
+#include <cstddef>
+
 #if defined(__x86_64__) && defined(__AES__)
+
 #include <immintrin.h>
+
 using uint8x16_t = __m128i;
 
-#if defined(__AVX__)
-using uint8x16x2_t = __m256i;
-#endif
-
 #elif defined(__aarch64__) && defined(__ARM_FEATURE_AES)
+
 #include <arm_neon.h>
+
 #else
+
 #error "Architecture not supported"
+
 #endif
 
 /// Compress (via 2 rounds of AES encryption) 2 128-bit SIMD registers into 1,
 /// non-symmetrically and non-linearly
 /**
-* \li diffusion rate of \a a = 50.3%
+* \li diffusion rate of \a a = 50.2%
 * \li diffusion rate of \a b = 12.7%
 */
-static inline uint8x16_t
-compress_aesenc2(const uint8x16_t a, const uint8x16_t b)
+[[nodiscard]] static inline uint8x16_t
+simd_compress_aes_enc_r2(const uint8x16_t a, const uint8x16_t b) noexcept
 {
 #if defined(__x86_64__) && defined(__AES__)
     return _mm_aesenc_si128(
@@ -92,8 +97,8 @@ compress_aesenc2(const uint8x16_t a, const uint8x16_t b)
 * \li diffusion rate of \a a = 50.2%
 * \li diffusion rate of \a b = 50.0%
 */
-static inline uint8x16_t
-compress_aesenc3(const uint8x16_t a, const uint8x16_t b)
+[[nodiscard]] static inline uint8x16_t
+simd_compress_aes_enc_r3(const uint8x16_t a, const uint8x16_t b) noexcept
 {
 #if defined(__x86_64__) && defined(__AES__)
     return _mm_aesenc_si128(
@@ -117,8 +122,8 @@ compress_aesenc3(const uint8x16_t a, const uint8x16_t b)
 * \li diffusion rate of \a a = 50.0%
 * \li diffusion rate of \a b = 50.0%
 */
-static inline uint8x16_t
-compress_aesenc4(const uint8x16_t a, const uint8x16_t b)
+[[nodiscard]] static inline uint8x16_t
+simd_compress_aes_enc_r4(const uint8x16_t a, const uint8x16_t b) noexcept
 {
 #if defined(__x86_64__) && defined(__AES__)
     return _mm_aesenc_si128(
@@ -140,62 +145,35 @@ compress_aesenc4(const uint8x16_t a, const uint8x16_t b)
 #endif
 }
 
+#if defined(__x86_64__) && defined(__VAES__)
+
 /// Compress (via 2 rounds of AES encryption) 2 256-bit SIMD registers into 1,
 /// non-symmetrically and non-linearly
-static inline uint8x16x2_t
-compress_aesenc2(const uint8x16x2_t a, const uint8x16x2_t b)
+[[nodiscard]] static inline __m256i
+simd_compress_aes_enc_r2(const __m256i a, const __m256i b) noexcept
 {
-#if defined(__x86_64__) && defined(__VAES__)
     return _mm256_aesenc_epi128(
                 _mm256_aesenc_epi128(a, b),
                 a);
-#elif defined(__x86_64__) && defined(__AES__)
-    return _mm256_setr_m128i(
-            compress_aesenc2(
-                _mm256_extracti128_si256(a, 0),
-                _mm256_extracti128_si256(b, 0)),
-            compress_aesenc2(
-                _mm256_extracti128_si256(a, 1),
-                _mm256_extracti128_si256(b, 1))
-            );
-#elif defined(__aarch64__) && defined(__ARM_FEATURE_AES)
-    return { compress_aesenc2(a.val[0], b.val[0]),
-        compress_aesenc2(a.val[1], b.val[1]) };
-#endif
 }
 
 /// Compress (via 3 rounds of AES encryption) 2 256-bit SIMD registers into 1,
 /// non-symmetrically and non-linearly
-static inline uint8x16x2_t
-compress_aesenc3(const uint8x16x2_t a, const uint8x16x2_t b)
+[[nodiscard]] static inline __m256i
+simd_compress_aes_enc_r3(const __m256i a, const __m256i b) noexcept
 {
-#if defined(__x86_64__) && defined(__VAES__)
     return _mm256_aesenc_epi128(
                 _mm256_aesenc_epi128(
                     _mm256_aesenc_epi128(b, a),
                     b),
                 a);
-#elif defined(__x86_64__) && defined(__AES__)
-    return _mm256_setr_m128i(
-            compress_aesenc3(
-                _mm256_extracti128_si256(a, 0),
-                _mm256_extracti128_si256(b, 0)),
-            compress_aesenc3(
-                _mm256_extracti128_si256(a, 1),
-                _mm256_extracti128_si256(b, 1))
-            );
-#elif defined(__aarch64__) && defined(__ARM_FEATURE_AES)
-    return { compress_aesenc3(a.val[0], b.val[0]),
-        compress_aesenc3(a.val[1], b.val[1]) };
-#endif
 }
 
 /// Compress (via 4 rounds of AES encryption) 2 256-bit SIMD registers into 1,
 /// non-symmetrically and non-linearly
-static inline uint8x16x2_t
-compress_aesenc4(const uint8x16x2_t a, const uint8x16x2_t b)
+[[nodiscard]] static inline __m256i
+simd_compress_aes_enc_r4(const __m256i a, const __m256i b) noexcept
 {
-#if defined(__x86_64__) && defined(__VAES__)
     return _mm256_aesenc_epi128(
                 _mm256_aesenc_epi128(
                     _mm256_aesenc_epi128(
@@ -203,17 +181,115 @@ compress_aesenc4(const uint8x16x2_t a, const uint8x16x2_t b)
                         a),
                     b),
                 a);
-#elif defined(__x86_64__) && defined(__AES__)
-    return _mm256_setr_m128i(
-            compress_aesenc4(
-                _mm256_extracti128_si256(a, 0),
-                _mm256_extracti128_si256(b, 0)),
-            compress_aesenc4(
-                _mm256_extracti128_si256(a, 1),
-                _mm256_extracti128_si256(b, 1))
-            );
-#elif defined(__aarch64__) && defined(__ARM_FEATURE_AES)
-    return { compress_aesenc4(a.val[0], b.val[0]),
-        compress_aesenc4(a.val[1], b.val[1]) };
+}
+
 #endif
+
+#if defined(__x86_64__) && defined(__VAES__)
+
+/// Perform \c simd_compress_aes_enc_r2 on corresponding elements of \a arr_1 and \a arr_2
+/**
+* \pre \a arr_2 points to \a N elements
+*/
+template <size_t N>
+requires (N > 0) && ((N % 2) == 0) // N must be positive and even
+static void
+simd_compress_aes_enc_r2_arr(std::array<uint8x16_t, N>& arr_1, const uint8x16_t* arr_2) noexcept
+{
+    for (unsigned int i = 0; i < N; i += 2)
+    {
+        // Cast adjacent pairs of elements to __m256i.
+        __m256i v_1 = _mm256_loadu_si256(reinterpret_cast<const __m256i*>(&arr_1[i]));
+        __m256i v_2 = _mm256_loadu_si256(reinterpret_cast<const __m256i*>(&arr_2[i]));
+
+        v_1 = simd_compress_aes_enc_r2(v_1, v_2);
+
+        _mm256_storeu_si256(reinterpret_cast<__m256i*>(&arr_1[i]), v_1);
+    }
+}
+
+/// Perform \c simd_compress_aes_enc_r3 on corresponding elements of \a arr_1 and \a arr_2
+/**
+* \pre \a arr_2 points to \a N elements
+*/
+template <size_t N>
+requires (N > 0) && ((N % 2) == 0) // N must be positive and even
+static void
+simd_compress_aes_enc_r3_arr(std::array<uint8x16_t, N>& arr_1, const uint8x16_t* arr_2) noexcept
+{
+    for (unsigned int i = 0; i < N; i += 2)
+    {
+        // Cast adjacent pairs of elements to __m256i.
+        __m256i v_1 = _mm256_loadu_si256(reinterpret_cast<const __m256i*>(&arr_1[i]));
+        __m256i v_2 = _mm256_loadu_si256(reinterpret_cast<const __m256i*>(&arr_2[i]));
+
+        v_1 = simd_compress_aes_enc_r3(v_1, v_2);
+
+        _mm256_storeu_si256(reinterpret_cast<__m256i*>(&arr_1[i]), v_1);
+    }
+}
+
+/// Perform \c simd_compress_aes_enc_r4 on corresponding elements of \a arr_1 and \a arr_2
+/**
+* \pre \a arr_2 points to \a N elements
+*/
+template <size_t N>
+requires (N > 0) && ((N % 2) == 0) // N must be positive and even
+static void
+simd_compress_aes_enc_r4_arr(std::array<uint8x16_t, N>& arr_1, const uint8x16_t* arr_2) noexcept
+{
+    for (unsigned int i = 0; i < N; i += 2)
+    {
+        // Cast adjacent pairs of elements to __m256i.
+        __m256i v_1 = _mm256_loadu_si256(reinterpret_cast<const __m256i*>(&arr_1[i]));
+        __m256i v_2 = _mm256_loadu_si256(reinterpret_cast<const __m256i*>(&arr_2[i]));
+
+        v_1 = simd_compress_aes_enc_r4(v_1, v_2);
+
+        _mm256_storeu_si256(reinterpret_cast<__m256i*>(&arr_1[i]), v_1);
+    }
+}
+
+#endif
+
+/// Perform \c simd_compress_aes_enc_r2 on corresponding elements of \a arr_1 and \a arr_2
+/**
+* \pre \a arr_2 points to \a N elements
+*/
+template <size_t N>
+static void
+simd_compress_aes_enc_r2_arr(std::array<uint8x16_t, N>& arr_1, const uint8x16_t* arr_2) noexcept
+{
+    for (unsigned int i = 0; i < N; ++i)
+    {
+        arr_1[i] = simd_compress_aes_enc_r2(arr_1[i], arr_2[i]);
+    }
+}
+
+/// Perform \c simd_compress_aes_enc_r3 on corresponding elements of \a arr_1 and \a arr_2
+/**
+* \pre \a arr_2 points to \a N elements
+*/
+template <size_t N>
+static void
+simd_compress_aes_enc_r3_arr(std::array<uint8x16_t, N>& arr_1, const uint8x16_t* arr_2) noexcept
+{
+    for (unsigned int i = 0; i < N; ++i)
+    {
+        arr_1[i] = simd_compress_aes_enc_r3(arr_1[i], arr_2[i]);
+    }
+}
+
+/// Perform \c simd_compress_aes_enc_r4 on corresponding elements of \a arr_1 and \a arr_2
+/**
+* \pre \a arr_2 points to \a N elements
+*/
+template <size_t N>
+static void
+simd_compress_aes_enc_r4_arr(std::array<uint8x16_t, N>& arr_1, const uint8x16_t* arr_2) noexcept
+{
+    for (unsigned int i = 0; i < N; ++i)
+    {
+        arr_1[i] = simd_compress_aes_enc_r4(arr_1[i], arr_2[i]);
+    }
 }
