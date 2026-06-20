@@ -41,7 +41,6 @@ RNG_test.tlmax-512GB.seed-random.prng-splitmix32.txt
 RNG_test.tlmax-512GB.seed-random.prng-splitmix64.txt
 RNG_test.tlmax-512GB.seed-random.prng-squares32.txt
 RNG_test.tlmax-512GB.seed-random.prng-squares64.txt
-RNG_test.tlmax-512GB.seed-random.prng-stc64.txt
 RNG_test.tlmax-512GB.seed-random.prng-stc_crand32.txt
 RNG_test.tlmax-512GB.seed-random.prng-stc_crand64.txt
 RNG_test.tlmax-512GB.seed-random.prng-wyrand.txt

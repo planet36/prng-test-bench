@@ -41,7 +41,6 @@ splitmix32
 splitmix64
 squares32
 squares64
-stc64
 stc_crand32
 stc_crand64
 wyrand
