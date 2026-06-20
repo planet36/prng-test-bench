@@ -13,6 +13,7 @@ CXXFLAGS += -pipe -Wall -Wextra -Wpedantic -Wfatal-errors
 CXXFLAGS += -O3 -flto=auto -march=native
 CXXFLAGS += -Wno-unused-function
 CXXFLAGS += -Werror -Wno-error=cpp -Wno-error=pedantic
+CXXFLAGS += -Wno-error=ignored-attributes
 #CXXFLAGS += -march=raptorlake
 
 #LDFLAGS =
