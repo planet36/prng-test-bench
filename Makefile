@@ -39,10 +39,13 @@ CPPFLAGS += -I include
 
 CXXFLAGS = -std=c++26
 CXXFLAGS += -pipe -Wall -Wextra -Wpedantic -Wfatal-errors
-CXXFLAGS += -O3 -flto=auto -march=native
+CXXFLAGS += -O3 -flto=auto
 CXXFLAGS += -Wno-unused-function
 # -frecord-gcc-switches is used by readelf
 CXXFLAGS += -frecord-gcc-switches
+
+CXXFLAGS += -march=native
+#CXXFLAGS += -march=x86-64-v3 -maes -mvaes
 #CXXFLAGS += -march=raptorlake
 
 #LDFLAGS =
