@@ -11,6 +11,7 @@
 
 #include <ranges>
 #include <span>
+#include <type_traits>
 
 #if defined(_GLIBCXX_HAVE_ARC4RANDOM)
 
@@ -20,15 +21,17 @@
 // https://www.gnu.org/software/libc/manual/html_node/High-Quality-Random.html
 
 template <typename T>
-requires (!std::ranges::contiguous_range<T>)
+requires (!std::ranges::contiguous_range<T> && std::is_trivially_copyable_v<T>)
 void
 fill_rand(T& x) noexcept
 {
     arc4random_buf(&x, sizeof(T));
 }
 
+template <std::ranges::contiguous_range T>
+requires std::is_trivially_copyable_v<std::ranges::range_value_t<T>>
 void
-fill_rand(std::ranges::contiguous_range auto& container)
+fill_rand(T& container) noexcept
 {
     auto sp = std::span{container};
     arc4random_buf(std::data(sp), sp.size_bytes());
@@ -36,15 +39,20 @@ fill_rand(std::ranges::contiguous_range auto& container)
 
 #elif defined(_GLIBCXX_HAVE_GETENTROPY)
 
+#include <algorithm>
+#include <cerrno>
+#include <cstddef>
 #include <system_error>
 #include <unistd.h>
 
 // getentropy
 // https://www.gnu.org/software/libc/manual/html_node/Unpredictable-Bytes.html
 // Max num bytes allowed is 256
+inline constexpr size_t getentropy_max_len = 256;
 
 template <typename T>
-requires (!std::ranges::contiguous_range<T> && (sizeof(T) <= 256))
+requires (!std::ranges::contiguous_range<T> && std::is_trivially_copyable_v<T> &&
+          (sizeof(T) <= getentropy_max_len))
 void
 fill_rand(T& x)
 {
@@ -54,14 +62,23 @@ fill_rand(T& x)
     }
 }
 
+template <std::ranges::contiguous_range T>
+requires std::is_trivially_copyable_v<std::ranges::range_value_t<T>>
 void
-fill_rand(std::ranges::contiguous_range auto& container)
+fill_rand(T& container)
 {
-    auto sp = std::span{container};
+    std::span<std::byte> sp = std::as_writable_bytes(std::span{container});
 
-    if (getentropy(std::data(sp), sp.size_bytes()) < 0)
+    while (!sp.empty())
     {
-        throw std::system_error(std::make_error_code(std::errc{errno}), "getentropy");
+        const size_t len = std::min(sp.size(), getentropy_max_len);
+
+        if (getentropy(sp.data(), len) < 0)
+        {
+            throw std::system_error(std::make_error_code(std::errc{errno}), "getentropy");
+        }
+
+        sp = sp.subspan(len);
     }
 }
 
@@ -69,9 +86,11 @@ fill_rand(std::ranges::contiguous_range auto& container)
 
 #include "int_join.hpp"
 
+#include <array>
 #include <concepts>
 #include <random>
 #include <utility>
+#include <vector>
 
 template <std::unsigned_integral T>
 void

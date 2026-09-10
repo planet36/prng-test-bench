@@ -22,6 +22,7 @@
 #include <algorithm>
 #include <functional>
 #include <iterator>
+#include <numeric>
 #include <random>
 
 /// A seed sequence that uses \c std::random_device

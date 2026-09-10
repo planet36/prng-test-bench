@@ -76,7 +76,7 @@ using uint8x16_t = __m128i;
 * \li diffusion rate of \a a = 50.2%
 * \li diffusion rate of \a b = 12.7%
 */
-[[nodiscard]] static inline uint8x16_t
+[[nodiscard]] inline uint8x16_t
 simd_compress_aes_enc_r2(const uint8x16_t a, const uint8x16_t b) noexcept
 {
 #if defined(__x86_64__) && defined(__AES__)
@@ -97,7 +97,7 @@ simd_compress_aes_enc_r2(const uint8x16_t a, const uint8x16_t b) noexcept
 * \li diffusion rate of \a a = 50.2%
 * \li diffusion rate of \a b = 50.0%
 */
-[[nodiscard]] static inline uint8x16_t
+[[nodiscard]] inline uint8x16_t
 simd_compress_aes_enc_r3(const uint8x16_t a, const uint8x16_t b) noexcept
 {
 #if defined(__x86_64__) && defined(__AES__)
@@ -122,7 +122,7 @@ simd_compress_aes_enc_r3(const uint8x16_t a, const uint8x16_t b) noexcept
 * \li diffusion rate of \a a = 50.0%
 * \li diffusion rate of \a b = 50.0%
 */
-[[nodiscard]] static inline uint8x16_t
+[[nodiscard]] inline uint8x16_t
 simd_compress_aes_enc_r4(const uint8x16_t a, const uint8x16_t b) noexcept
 {
 #if defined(__x86_64__) && defined(__AES__)
@@ -149,7 +149,7 @@ simd_compress_aes_enc_r4(const uint8x16_t a, const uint8x16_t b) noexcept
 
 /// Compress (via 2 rounds of AES encryption) 2 256-bit SIMD registers into 1,
 /// non-symmetrically and non-linearly
-[[nodiscard]] static inline __m256i
+[[nodiscard]] inline __m256i
 simd_compress_aes_enc_r2(const __m256i a, const __m256i b) noexcept
 {
     return _mm256_aesenc_epi128(
@@ -159,7 +159,7 @@ simd_compress_aes_enc_r2(const __m256i a, const __m256i b) noexcept
 
 /// Compress (via 3 rounds of AES encryption) 2 256-bit SIMD registers into 1,
 /// non-symmetrically and non-linearly
-[[nodiscard]] static inline __m256i
+[[nodiscard]] inline __m256i
 simd_compress_aes_enc_r3(const __m256i a, const __m256i b) noexcept
 {
     return _mm256_aesenc_epi128(
@@ -171,7 +171,7 @@ simd_compress_aes_enc_r3(const __m256i a, const __m256i b) noexcept
 
 /// Compress (via 4 rounds of AES encryption) 2 256-bit SIMD registers into 1,
 /// non-symmetrically and non-linearly
-[[nodiscard]] static inline __m256i
+[[nodiscard]] inline __m256i
 simd_compress_aes_enc_r4(const __m256i a, const __m256i b) noexcept
 {
     return _mm256_aesenc_epi128(
@@ -185,15 +185,19 @@ simd_compress_aes_enc_r4(const __m256i a, const __m256i b) noexcept
 
 #endif
 
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wignored-attributes"
+
 #if defined(__x86_64__) && defined(__VAES__)
 
 /// Perform \c simd_compress_aes_enc_r2 on corresponding elements of \a arr_1 and \a arr_2
 /**
 * \pre \a arr_2 points to \a N elements
+* \note \a arr_2 need not be aligned.
 */
 template <size_t N>
 requires (N > 0) && ((N % 2) == 0) // N must be positive and even
-static void
+void
 simd_compress_aes_enc_r2_arr(std::array<uint8x16_t, N>& arr_1, const uint8x16_t* arr_2) noexcept
 {
     for (unsigned int i = 0; i < N; i += 2)
@@ -211,10 +215,11 @@ simd_compress_aes_enc_r2_arr(std::array<uint8x16_t, N>& arr_1, const uint8x16_t*
 /// Perform \c simd_compress_aes_enc_r3 on corresponding elements of \a arr_1 and \a arr_2
 /**
 * \pre \a arr_2 points to \a N elements
+* \note \a arr_2 need not be aligned.
 */
 template <size_t N>
 requires (N > 0) && ((N % 2) == 0) // N must be positive and even
-static void
+void
 simd_compress_aes_enc_r3_arr(std::array<uint8x16_t, N>& arr_1, const uint8x16_t* arr_2) noexcept
 {
     for (unsigned int i = 0; i < N; i += 2)
@@ -232,10 +237,11 @@ simd_compress_aes_enc_r3_arr(std::array<uint8x16_t, N>& arr_1, const uint8x16_t*
 /// Perform \c simd_compress_aes_enc_r4 on corresponding elements of \a arr_1 and \a arr_2
 /**
 * \pre \a arr_2 points to \a N elements
+* \note \a arr_2 need not be aligned.
 */
 template <size_t N>
 requires (N > 0) && ((N % 2) == 0) // N must be positive and even
-static void
+void
 simd_compress_aes_enc_r4_arr(std::array<uint8x16_t, N>& arr_1, const uint8x16_t* arr_2) noexcept
 {
     for (unsigned int i = 0; i < N; i += 2)
@@ -255,9 +261,10 @@ simd_compress_aes_enc_r4_arr(std::array<uint8x16_t, N>& arr_1, const uint8x16_t*
 /// Perform \c simd_compress_aes_enc_r2 on corresponding elements of \a arr_1 and \a arr_2
 /**
 * \pre \a arr_2 points to \a N elements
+* \note \a arr_2 need not be aligned.
 */
 template <size_t N>
-static void
+void
 simd_compress_aes_enc_r2_arr(std::array<uint8x16_t, N>& arr_1, const uint8x16_t* arr_2) noexcept
 {
     for (unsigned int i = 0; i < N; ++i)
@@ -269,9 +276,10 @@ simd_compress_aes_enc_r2_arr(std::array<uint8x16_t, N>& arr_1, const uint8x16_t*
 /// Perform \c simd_compress_aes_enc_r3 on corresponding elements of \a arr_1 and \a arr_2
 /**
 * \pre \a arr_2 points to \a N elements
+* \note \a arr_2 need not be aligned.
 */
 template <size_t N>
-static void
+void
 simd_compress_aes_enc_r3_arr(std::array<uint8x16_t, N>& arr_1, const uint8x16_t* arr_2) noexcept
 {
     for (unsigned int i = 0; i < N; ++i)
@@ -283,9 +291,10 @@ simd_compress_aes_enc_r3_arr(std::array<uint8x16_t, N>& arr_1, const uint8x16_t*
 /// Perform \c simd_compress_aes_enc_r4 on corresponding elements of \a arr_1 and \a arr_2
 /**
 * \pre \a arr_2 points to \a N elements
+* \note \a arr_2 need not be aligned.
 */
 template <size_t N>
-static void
+void
 simd_compress_aes_enc_r4_arr(std::array<uint8x16_t, N>& arr_1, const uint8x16_t* arr_2) noexcept
 {
     for (unsigned int i = 0; i < N; ++i)
@@ -293,3 +302,5 @@ simd_compress_aes_enc_r4_arr(std::array<uint8x16_t, N>& arr_1, const uint8x16_t*
         arr_1[i] = simd_compress_aes_enc_r4(arr_1[i], arr_2[i]);
     }
 }
+
+#pragma GCC diagnostic pop

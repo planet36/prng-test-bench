@@ -22,13 +22,15 @@
 DEF_URBG_SUBCLASS(wyrand, uint64_t, uint64_t)
 
 /// prepare the initial state
-void
+inline void
 wyrand::init()
 {}
 
-wyrand::result_type
+inline wyrand::result_type
 wyrand::next()
 {
+    using wyprimes::_wyp;
+
     s += _wyp[0];
     return mumx(s, s ^ _wyp[1]);
 }

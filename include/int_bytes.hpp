@@ -94,6 +94,7 @@ using larger_of = std::conditional_t<sizeof(T) >= sizeof(T2), T, T2>;
 * \return \a n cast to the next larger integer type
 */
 template <std::integral T>
+requires (sizeof(next_larger<T>) > sizeof(T))
 constexpr auto
 widen(const T n)
 {
@@ -107,6 +108,7 @@ widen(const T n)
 * \sa https://en.wikipedia.org/wiki/Saturation_arithmetic
 */
 template <std::integral T>
+requires (sizeof(next_smaller<T>) < sizeof(T))
 constexpr auto
 narrow(const T n)
 {

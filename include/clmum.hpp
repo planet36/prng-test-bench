@@ -17,7 +17,7 @@
 #include <immintrin.h>
 
 #if defined(__PCLMUL__)
-static inline void
+inline void
 clmul(__m128i& a)
 {
     // https://clang.llvm.org/doxygen/____wmmintrin__pclmul_8h.html
@@ -32,7 +32,7 @@ clmul(__m128i& a)
     a = _mm_clmulepi64_si128(a, a, 0x10);
 }
 
-static inline uint64_t
+inline uint64_t
 clmumx(__m128i a)
 {
     clmul(a);
@@ -40,7 +40,7 @@ clmumx(__m128i a)
            static_cast<uint64_t>(_mm_extract_epi64(a, 0));
 }
 
-static inline uint64_t
+inline uint64_t
 clmuma(__m128i a)
 {
     clmul(a);
@@ -48,7 +48,7 @@ clmuma(__m128i a)
            static_cast<uint64_t>(_mm_extract_epi64(a, 0));
 }
 
-static inline uint64_t
+inline uint64_t
 clmums(__m128i a)
 {
     clmul(a);
@@ -56,7 +56,7 @@ clmums(__m128i a)
            static_cast<uint64_t>(_mm_extract_epi64(a, 0));
 }
 
-static void
+inline void
 clmul(uint64_t& hi, uint64_t& lo)
 {
     __m128i result =
@@ -69,21 +69,21 @@ clmul(uint64_t& hi, uint64_t& lo)
     lo = static_cast<uint64_t>(_mm_extract_epi64(result, 0));
 }
 
-static inline uint64_t
+inline uint64_t
 clmumx(uint64_t a, uint64_t b)
 {
     clmul(a, b);
     return a ^ b;
 }
 
-static inline uint64_t
+inline uint64_t
 clmuma(uint64_t a, uint64_t b)
 {
     clmul(a, b);
     return a + b;
 }
 
-static inline uint64_t
+inline uint64_t
 clmums(uint64_t a, uint64_t b)
 {
     clmul(a, b);

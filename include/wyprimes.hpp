@@ -13,7 +13,7 @@
 #include <array>
 #include <cstdint>
 
-namespace
+namespace wyprimes
 {
 
 inline constexpr std::array<uint64_t, 4> _wyp{
