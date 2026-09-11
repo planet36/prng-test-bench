@@ -24,7 +24,7 @@ int_join(const T hi, const T lo)
     if consteval
     {
         using T2 = next_larger<T>;
-        return (static_cast<T2>(hi) << std::numeric_limits<T>::digits) | lo;
+        return static_cast<T2>((static_cast<T2>(hi) << std::numeric_limits<T>::digits) | lo);
     }
     else
     {
