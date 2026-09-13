@@ -46,8 +46,8 @@ aes_compress_ctr2_128::next()
 
     const arr_m128i<2> inc{
         // most significant elem first
-        _mm_set_epi64x(SHA_512_H0_1 | 1U, SHA_512_H0_0 | 1U), // NOLINT(cppcoreguidelines-narrowing-conversions),
-        _mm_set_epi64x(SHA_512_H0_3 | 1U, SHA_512_H0_2 | 1U), // NOLINT(cppcoreguidelines-narrowing-conversions),
+        _mm_set_epi64x(SHA_512_H0_1 | 1U, SHA_512_H0_0 | 1U), // NOLINT(cppcoreguidelines-narrowing-conversions)
+        _mm_set_epi64x(SHA_512_H0_3 | 1U, SHA_512_H0_2 | 1U), // NOLINT(cppcoreguidelines-narrowing-conversions)
     };
 
     s[0] = _mm_add_epi64(s[0], inc[0]);
