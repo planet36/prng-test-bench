@@ -5,7 +5,7 @@
 /**
 * \file
 * \author Steven Ward
-* \sa https://www.romu-random.org/code.c
+* \sa https://github.com/Cyan4973/xxHash
 */
 
 #pragma once
