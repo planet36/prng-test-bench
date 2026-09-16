@@ -287,9 +287,9 @@ if (prng_name == #NAME) { \
     fill_seed_seq<seed_pattern_32> seeder_pattern; \
     fill_seed_seq<0> seeder_zero; \
     if (use_default_ctor) prng_dump(NAME{}); \
-    else if (use_pattern_seed) prng_dump(NAME{seeder_pattern}); \
+    else if (use_pattern_seed) prng_dump(NAME(seeder_pattern)); \
     else if (use_random_seed) prng_dump(random_device_seeded<NAME>()); \
-    else if (use_zero_seed) prng_dump(NAME{seeder_zero}); \
+    else if (use_zero_seed) prng_dump(NAME(seeder_zero)); \
     else  std::unreachable(); \
     return 0; \
 }

@@ -70,7 +70,7 @@ template <typename PRNG = std::mt19937_64>
 random_device_seeded()
 {
     thread_local random_device_seed_seq rd_ss;
-    return PRNG{rd_ss};
+    return PRNG(rd_ss);
 }
 
 /// A seed sequence that uses a constant value
