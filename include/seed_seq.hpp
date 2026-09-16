@@ -41,11 +41,11 @@ struct random_device_seed_seq
     template <std::random_access_iterator Iter>
     void generate(Iter first, Iter last)
     {
-        std::generate(first, last, std::ref(random_device));
+        std::generate(first, last, std::ref(rd));
     }
 
 private:
-    std::random_device random_device;
+    std::random_device rd;
 };
 
 /// Return an instance of \a PRNG that has been seeded with \c random_device_seed_seq
