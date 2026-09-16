@@ -16,14 +16,13 @@
 
 #pragma once
 
-#include "fill_rand.hpp"
-
 #include <array>
 #include <concepts>
 #include <cstdint>
 #include <cstring>
 #include <limits>
 #include <memory>
+#include <stdlib.h> // arc4random_buf
 #include <string.h> // explicit_bzero
 
 /// Abstract Uniform Random Bit Generator class
@@ -58,7 +57,7 @@ protected:
 public:
     // ctors
 
-    AbstractURBG() { fill_rand(s); }
+    AbstractURBG() { arc4random_buf(std::addressof(s), sizeof(s)); }
 
     explicit AbstractURBG(const state_type& new_s) : s(new_s) {}
 
