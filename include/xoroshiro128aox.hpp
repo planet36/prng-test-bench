@@ -23,6 +23,13 @@ DEF_URBG_SUBCLASS(xoroshiro128aox, SINGLE_ARG(std::array<uint64_t, 2>), uint64_t
 void
 xoroshiro128aox::init()
 {
+    if (s == state_type{})
+    {
+        for (int i = 0; i < std::ssize(s); ++i)
+        {
+            s[i] = i + 1;
+        }
+    }
 }
 
 xoroshiro128aox::result_type
