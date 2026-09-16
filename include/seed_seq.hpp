@@ -66,7 +66,7 @@ auto rng = random_device_seeded();
 * \sa http://www.gockelhut.com/cpp-pirate/random-seed.html
 */
 template <typename PRNG = std::mt19937_64>
-PRNG
+[[nodiscard]] PRNG
 random_device_seeded()
 {
     thread_local random_device_seed_seq rd_ss;

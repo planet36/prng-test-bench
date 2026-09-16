@@ -81,9 +81,9 @@ public:
         explicit_bzero(std::addressof(s), sizeof(state_type));
     }
 
-    virtual result_type next() = 0; // XXX: must override this
+    [[nodiscard]] virtual result_type next() = 0; // XXX: must override this
 
-    result_type operator()() { return next(); }
+    [[nodiscard]] result_type operator()() { return next(); }
 };
 
 // https://stackoverflow.com/a/13842612
