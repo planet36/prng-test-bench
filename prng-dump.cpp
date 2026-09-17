@@ -45,7 +45,7 @@ inline constexpr unsigned long long bytes_per_gibibyte = 1024ULL * 1024ULL * 102
 
 inline constexpr uint32_t seed_pattern_32{0xAAAAAAAA};
 
-inline constexpr std::string_view default_prng_name{"default_random_engine"};
+inline constexpr std::string_view default_prng_name{"std::default_random_engine"};
 
 bool verbose = false;
 unsigned long long limit_bytes = 0;
