@@ -93,7 +93,7 @@ public:
 // included in more than one translation unit without violating the
 // one-definition rule.
 #define DEF_URBG_SUBCLASS(CLASS_NAME, STATE_TYPE, RESULT_TYPE)                              \
-    struct CLASS_NAME final : public AbstractURBG<STATE_TYPE, RESULT_TYPE>                  \
+    struct CLASS_NAME : public AbstractURBG<STATE_TYPE, RESULT_TYPE>                        \
     {                                                                                       \
     protected:                                                                              \
         inline void init(); /* must implement this */                                       \
