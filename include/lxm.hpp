@@ -15,6 +15,7 @@
 #include "abstract_urbg_class.hpp"
 #include "golden_ratio.h"
 
+#include <array>
 #include <bit>
 #include <cstdint>
 #include <random>
