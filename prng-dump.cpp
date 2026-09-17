@@ -185,10 +185,6 @@ print_usage()
 }
 
 /// Process the command line options
-/**
-\param argc the arg count
-\param argv the arg vector
-*/
 void
 process_options(int argc, char* argv[])
 {
