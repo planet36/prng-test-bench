@@ -17,7 +17,6 @@ https://www.pcg-random.org/posts/how-to-test-with-practrand.html
 #include "seeds.hpp"
 
 #include <cassert>
-#include <climits>
 #include <cstdint>
 #include <err.h>
 #include <random>
