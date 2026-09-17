@@ -29,7 +29,6 @@ https://www.pcg-random.org/posts/how-to-test-with-practrand.html
 #include <string_view>
 #include <type_traits>
 #include <unistd.h>
-#include <utility>
 
 #include <fmt/format.h>
 
@@ -48,10 +47,16 @@ inline constexpr std::string_view default_prng_name{"std::default_random_engine"
 
 bool verbose = false;
 unsigned long long limit_bytes = 0;
-bool use_default_ctor = false;
-bool use_pattern_seed = false;
-bool use_random_seed = false;
-bool use_zero_seed = false;
+
+enum class seed_type
+{
+    default_ctor,
+    pattern,
+    random,
+    zero,
+};
+
+seed_type seed = seed_type::default_ctor;
 
 void
 print_all_prng_info()
@@ -239,31 +244,19 @@ process_options(int argc, char* argv[])
         case 's':
             if ((optarg == "d"sv) || (optarg == "def"sv) || (optarg == "default"sv))
             {
-                use_default_ctor = true;
-                use_pattern_seed = false;
-                use_random_seed = false;
-                use_zero_seed = false;
+                seed = seed_type::default_ctor;
             }
             else if ((optarg == "p"sv) || (optarg == "pat"sv) || (optarg == "pattern"sv))
             {
-                use_default_ctor = false;
-                use_pattern_seed = true;
-                use_random_seed = false;
-                use_zero_seed = false;
+                seed = seed_type::pattern;
             }
             else if ((optarg == "r"sv) || (optarg == "rand"sv) || (optarg == "random"sv))
             {
-                use_default_ctor = false;
-                use_pattern_seed = false;
-                use_random_seed = true;
-                use_zero_seed = false;
+                seed = seed_type::random;
             }
             else if ((optarg == "z"sv) || (optarg == "zero"sv))
             {
-                use_default_ctor = false;
-                use_pattern_seed = false;
-                use_random_seed = false;
-                use_zero_seed = true;
+                seed = seed_type::zero;
             }
             else
             {
@@ -281,15 +274,6 @@ int
 main([[maybe_unused]] int argc, [[maybe_unused]] char* argv[])
 {
     process_options(argc, argv);
-
-    if ((use_default_ctor == false) &&
-        (use_pattern_seed == false) &&
-        (use_random_seed == false) &&
-        (use_zero_seed == false))
-    {
-        // If none were set, choose this as the default seed type.
-        use_default_ctor = true;
-    }
 
     std::string prng_name{default_prng_name};
 
@@ -317,21 +301,23 @@ main([[maybe_unused]] int argc, [[maybe_unused]] char* argv[])
 if (prng_name == #NAME) { \
     fill_seed_seq<seed_pattern_32> seeder_pattern; \
     fill_seed_seq<0> seeder_zero; \
-    if (use_default_ctor) prng_dump(NAME{}); \
-    else if (use_pattern_seed) prng_dump(NAME(seeder_pattern)); \
-    else if (use_random_seed) prng_dump(random_device_seeded<NAME>()); \
-    else if (use_zero_seed) prng_dump(NAME(seeder_zero)); \
-    else  std::unreachable(); \
+    switch (seed) { \
+    case seed_type::default_ctor: prng_dump(NAME{}); break; \
+    case seed_type::pattern: prng_dump(NAME(seeder_pattern)); break; \
+    case seed_type::random: prng_dump(random_device_seeded<NAME>()); break; \
+    case seed_type::zero: prng_dump(NAME(seeder_zero)); break; \
+    } \
     return 0; \
 }
 
 #define CONDITIONAL_DUMP_MINE(NAME) \
 if (prng_name == #NAME) { \
-    if (use_default_ctor) prng_dump(NAME{}); \
-    else if (use_pattern_seed) prng_dump(NAME{get_seed_bytes_pattern<NAME>()}); \
-    else if (use_random_seed) prng_dump(NAME{}); \
-    else if (use_zero_seed) prng_dump(NAME{get_seed_bytes_zero<NAME>()}); \
-    else  std::unreachable(); \
+    switch (seed) { \
+    case seed_type::default_ctor: prng_dump(NAME{}); break; \
+    case seed_type::pattern: prng_dump(NAME{get_seed_bytes_pattern<NAME>()}); break; \
+    case seed_type::random: prng_dump(NAME{}); break; \
+    case seed_type::zero: prng_dump(NAME{get_seed_bytes_zero<NAME>()}); break; \
+    } \
     return 0; \
 }
 
