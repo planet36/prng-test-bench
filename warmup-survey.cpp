@@ -10,8 +10,8 @@ with counts derived from three measurements of the zero-seed sequence.
 
 */
 
-// The PRNG classes are final, and deriving from them is the only way to rewind their state to
-// what init had before the warm-up loop.  Keep this define out of every other program.
+// The PRNG classes are final, and deriving from them is the only way to watch the calls that
+// init makes to next and to rewind their state.  Keep this define out of every other program.
 #pragma GCC diagnostic ignored "-Wkeyword-macro"
 #define final
 
@@ -23,12 +23,13 @@ with counts derived from three measurements of the zero-seed sequence.
 #include <climits>
 #include <cmath>
 #include <concepts>
-#include <cstdio>
 #include <cstdlib>
 #include <format>
+#include <optional>
 #include <print>
 #include <string>
 #include <string_view>
+#include <utility>
 #include <vector>
 
 constexpr int max_calls = 48;
@@ -56,8 +57,42 @@ struct rewound : G
     using state_type = typename G::state_type;
     using result_type = typename G::result_type;
 
-    /// Construct from a zero seed, so init runs its warm-up
+    /// Construct from a zero seed
     rewound() : G(state_type{}) {}
+
+    /// Count the calls, and save the state at the first call, while init runs
+    result_type
+    next() override
+    {
+        if (watching_init)
+        {
+            if (!state_at_first_call)
+                state_at_first_call = this->s;
+            ++init_calls;
+        }
+        return G::next();
+    }
+
+    /// Run init again from a zero seed, and return its warm-up count and pre-warm-up state
+    /**
+    * While the constructor of \c G runs, the object is still a \c G, so the calls that init
+    * makes to next there do not reach the override.  Calling init again after construction
+    * does reach it.
+    */
+    [[nodiscard]] std::pair<int, state_type>
+    watch_init()
+    {
+        set_state(state_type{});
+        init_calls = 0;
+        state_at_first_call.reset();
+
+        watching_init = true;
+        this->init();
+        watching_init = false;
+
+        // With no warm-up, the state that init left is the pre-warm-up state.
+        return {init_calls, state_at_first_call.value_or(this->s)};
+    }
 
     /// Replace the state, and reset any other member that the warm-up advanced
     void
@@ -74,15 +109,10 @@ struct rewound : G
         return this->s;
     }
 
-    /// Return whether the state, and any other member that the warm-up advanced, are equal
-    [[nodiscard]] bool
-    same_as(const rewound& other) const
-    {
-        bool same = this->s == other.s;
-        if constexpr (requires { this->p; })
-            same = same && (this->p == other.p);
-        return same;
-    }
+private:
+    bool watching_init = false;
+    int init_calls = 0;
+    std::optional<state_type> state_at_first_call;
 };
 
 template <typename T>
@@ -102,53 +132,14 @@ state_popcount(const T& s)
     return n;
 }
 
-/// The state that init has before its warm-up loop when the seed is all zero
-template <typename G>
-[[nodiscard]] typename G::state_type
-pre_warmup_state(bool zero_fix_is_iota)
-{
-    typename G::state_type s{};
-    if (zero_fix_is_iota)
-        for (size_t i = 0; i < std::size(s); ++i)
-            s[i] = static_cast<typename G::state_type::value_type>(i + 1);
-    return s;
-}
-
-/// The number of outputs that init discards when the seed is all zero
-/**
-* A PRNG constructed from a zero seed has already run its warm-up.  A copy started from the
-* pre-warm-up state is advanced until its state matches, and the number of calls that takes is
-* the warm-up count.
-*/
-template <typename G>
-[[nodiscard]] int
-warmup_count(const typename G::state_type& start)
-{
-    constexpr int max_warmup = 1000;
-
-    const rewound<G> warmed;
-    rewound<G> g;
-    g.set_state(start);
-    for (int calls = 0; calls <= max_warmup; ++calls)
-    {
-        if (g.same_as(warmed))
-            return calls;
-        (void)g();
-    }
-
-    std::println(stderr, "The state after the warm-up was not reached within {} calls.",
-                 max_warmup);
-    std::exit(EXIT_FAILURE);
-}
-
 template <typename G>
 [[nodiscard]] survey_result
-survey(std::string_view name, bool zero_fix_is_iota, bool from_upstream = false)
+survey(std::string_view name, bool from_upstream = false)
 {
-    const auto start = pre_warmup_state<G>(zero_fix_is_iota);
+    const auto [warmup, start] = rewound<G>{}.watch_init();
     const int rbits = sizeof(typename G::result_type) * CHAR_BIT;
 
-    survey_result r{std::string(name), warmup_count<G>(start), from_upstream, {}, {}, {}};
+    survey_result r{std::string(name), warmup, from_upstream, {}, {}, {}};
 
     rewound<G> g;
     g.set_state(start);
@@ -226,19 +217,19 @@ int
 main()
 {
     const std::vector<survey_result> results{
-        survey<xoroshiro128plusplus>("xoroshiro128plusplus", true),
-        survey<xoroshiro128starstar>("xoroshiro128starstar", true),
-        survey<xoroshiro1024plusplus>("xoroshiro1024plusplus", true),
-        survey<xoroshiro1024starstar>("xoroshiro1024starstar", true),
-        survey<xoshiro128plusplus>("xoshiro128plusplus", true),
-        survey<xoshiro128starstar>("xoshiro128starstar", true),
-        survey<xoshiro256plusplus>("xoshiro256plusplus", true),
-        survey<xoshiro256starstar>("xoshiro256starstar", true),
-        survey<xoshiro512plusplus>("xoshiro512plusplus", true),
-        survey<xoshiro512starstar>("xoshiro512starstar", true),
-        survey<sfc32>("sfc32", false),
-        survey<sfc64>("sfc64", false),
-        survey<biski64>("biski64", false, true),
+        survey<xoroshiro128plusplus>("xoroshiro128plusplus"),
+        survey<xoroshiro128starstar>("xoroshiro128starstar"),
+        survey<xoroshiro1024plusplus>("xoroshiro1024plusplus"),
+        survey<xoroshiro1024starstar>("xoroshiro1024starstar"),
+        survey<xoshiro128plusplus>("xoshiro128plusplus"),
+        survey<xoshiro128starstar>("xoshiro128starstar"),
+        survey<xoshiro256plusplus>("xoshiro256plusplus"),
+        survey<xoshiro256starstar>("xoshiro256starstar"),
+        survey<xoshiro512plusplus>("xoshiro512plusplus"),
+        survey<xoshiro512starstar>("xoshiro512starstar"),
+        survey<sfc32>("sfc32"),
+        survey<sfc64>("sfc64"),
+        survey<biski64>("biski64", true),
     };
 
     struct named_fit
