@@ -29,7 +29,8 @@ DEF_URBG_SUBCLASS(sfc32, SINGLE_ARG(std::array<uint32_t, 4>), uint32_t)
 void
 sfc32::init()
 {
-    for (int i = 0; i < 6; ++i)
+    constexpr int num_warmup_discards = 6;
+    for (int i = 0; i < num_warmup_discards; ++i)
     {
         (void)next();
     }
@@ -55,7 +56,8 @@ DEF_URBG_SUBCLASS(sfc64, SINGLE_ARG(std::array<uint64_t, 4>), uint64_t)
 void
 sfc64::init()
 {
-    for (int i = 0; i < 9; ++i)
+    constexpr int num_warmup_discards = 9;
+    for (int i = 0; i < num_warmup_discards; ++i)
     {
         (void)next();
     }
