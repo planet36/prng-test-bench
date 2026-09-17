@@ -114,31 +114,16 @@ prng_dump(URBG&& gen)
 
     result_type buf[buf_num_elems] = {0};
 
-    if (limit_bytes == 0)
+    const size_t num_writes = limit_bytes / buf_size_bytes;
+
+    for (size_t j = 0; (limit_bytes == 0) || (j < num_writes); ++j)
     {
-        while (true)
+        for (size_t i = 0; i < buf_num_elems; ++i)
         {
-            for (size_t i = 0; i < buf_num_elems; ++i)
-            {
-                buf[i] = gen();
-            }
-
-            write_all(STDOUT_FILENO, buf, sizeof(buf));
+            buf[i] = gen();
         }
-    }
-    else // limit_bytes > 0
-    {
-        const size_t num_writes = limit_bytes / buf_size_bytes;
 
-        for (size_t j = 0; j < num_writes; ++j)
-        {
-            for (size_t i = 0; i < buf_num_elems; ++i)
-            {
-                buf[i] = gen();
-            }
-
-            write_all(STDOUT_FILENO, buf, sizeof(buf));
-        }
+        write_all(STDOUT_FILENO, buf, sizeof(buf));
     }
 }
 
