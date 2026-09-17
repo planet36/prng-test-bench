@@ -237,28 +237,28 @@ process_options(int argc, char* argv[])
             break;
 
         case 's':
-            if ((optarg == "d"s) || (optarg == "def"s) || (optarg == "default"s))
+            if ((optarg == "d"sv) || (optarg == "def"sv) || (optarg == "default"sv))
             {
                 use_default_ctor = true;
                 use_pattern_seed = false;
                 use_random_seed = false;
                 use_zero_seed = false;
             }
-            else if ((optarg == "p"s) || (optarg == "pat"s) || (optarg == "pattern"s))
+            else if ((optarg == "p"sv) || (optarg == "pat"sv) || (optarg == "pattern"sv))
             {
                 use_default_ctor = false;
                 use_pattern_seed = true;
                 use_random_seed = false;
                 use_zero_seed = false;
             }
-            else if ((optarg == "r"s) || (optarg == "rand"s) || (optarg == "random"s))
+            else if ((optarg == "r"sv) || (optarg == "rand"sv) || (optarg == "random"sv))
             {
                 use_default_ctor = false;
                 use_pattern_seed = false;
                 use_random_seed = true;
                 use_zero_seed = false;
             }
-            else if ((optarg == "z"s) || (optarg == "zero"s))
+            else if ((optarg == "z"sv) || (optarg == "zero"sv))
             {
                 use_default_ctor = false;
                 use_pattern_seed = false;
