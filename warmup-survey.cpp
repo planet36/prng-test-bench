@@ -67,7 +67,9 @@ struct rewound : G
         if (watching_init)
         {
             if (!state_at_first_call)
+            {
                 state_at_first_call = this->s;
+            }
             ++init_calls;
         }
         return G::next();
@@ -100,7 +102,9 @@ struct rewound : G
     {
         this->s = new_s;
         if constexpr (requires { this->p; })
+        {
             this->p = 0;
+        }
     }
 
     [[nodiscard]] const state_type&
@@ -128,7 +132,9 @@ state_popcount(const T& s)
 {
     int n = 0;
     for (const auto w : s)
+    {
         n += std::popcount(w);
+    }
     return n;
 }
 
@@ -164,11 +170,15 @@ survey(std::string_view name, bool from_upstream = false)
         rewound<G> h;
         h.set_state(flipped);
         for (int k = 0; k < max_calls; ++k)
+        {
             changed[k] +=
                 std::popcount(outputs[k] ^ static_cast<uint64_t>(h())) / double(rbits);
+        }
     }
     for (int k = 0; k < max_calls; ++k)
+    {
         r.avalanche[k] = changed[k] / sbits;
+    }
 
     return r;
 }
@@ -178,9 +188,13 @@ survey(std::string_view name, bool from_upstream = false)
 settled(const series& values, double threshold, int window = default_window)
 {
     for (int k = 0; k + window <= max_calls; ++k)
+    {
         if (std::all_of(values.begin() + k, values.begin() + k + window,
                         [=](double v) { return v >= threshold; }))
+        {
             return k;
+        }
+    }
     return max_calls;
 }
 
@@ -205,10 +219,14 @@ best_fit(const std::vector<survey_result>& results, series survey_result::*membe
             const int count = settled(r.*member, threshold);
             f.counts.push_back(count);
             if (!r.from_upstream)
+            {
                 f.total_error += std::abs(count - r.warmup);
+            }
         }
         if (f.total_error < best.total_error)
+        {
             best = f;
+        }
     }
     return best;
 }
@@ -247,8 +265,10 @@ main()
                  default_window);
     std::println("Error excludes biski64, whose count comes from upstream.\n");
     for (const auto& [label, f] : fits)
+    {
         std::println("{:<16} best threshold {:.2f}  total error {}", label, f.threshold,
                      f.total_error);
+    }
 
     // A fixed rule for comparison: discard outputs until the first one with at least 40% of its
     // bits set.
@@ -261,7 +281,9 @@ main()
     {
         const int simple = settled(results[i].output_popcount, simple_threshold, 1);
         if (!results[i].from_upstream)
+        {
             simple_error += std::abs(simple - results[i].warmup);
+        }
         std::println("{:<22} {:>6}{}  {:>10}  {:>10}  {:>10}  {:>13}", results[i].name,
                      results[i].warmup, results[i].from_upstream ? "*" : " ",
                      fits[0].f.counts[i], fits[1].f.counts[i], fits[2].f.counts[i], simple);
@@ -278,8 +300,12 @@ main()
         {
             int error = 0;
             for (const auto& r : results)
+            {
                 if (!r.from_upstream)
+                {
                     error += std::abs(settled(r.output_popcount, t / 100.0, w) - r.warmup);
+                }
+            }
             line += std::format(" {:>5}", error);
         }
         std::println("{:>9.2f}{}", t / 100.0, line);
@@ -290,7 +316,9 @@ main()
     {
         std::string line;
         for (int k = 0; k < 12; ++k)
+        {
             line += std::format(" {:.2f}", r.avalanche[k]);
+        }
         std::println("{:<22}{}", r.name, line);
     }
 }
