@@ -77,7 +77,7 @@ pcg32::next()
     // 32 - 5 == 27
     // 64 - 5 == 59
     const result_type output = (old_s ^ (old_s >> 18)) >> 27;
-    const int rot = old_s >> 59;
+    const auto rot = static_cast<int>(old_s >> 59);
     return std::rotr(output, rot);
 }
 
@@ -152,7 +152,7 @@ pcg64::next()
     // 128 / 2 == 64
     // 128 - 6 == 122
     const result_type output = old_s ^ (old_s >> 64);
-    const int rot = old_s >> 122;
+    const auto rot = static_cast<int>(old_s >> 122);
     return std::rotr(output, rot);
 }
 
