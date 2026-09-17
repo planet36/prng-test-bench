@@ -61,9 +61,7 @@ building blocks.  Several are synced from the author's other repos.
 3. Add `CONDITIONAL_DUMP_MINE(name)` to `main` in `prng-dump.cpp`.
 
 Keep the alphabetical order and column alignment.  Guard ISA-dependent PRNGs with the same
-`#if defined(__AES__)` / `__PCLMUL__` / `__SHA__` in both files.  The "pattern" seed type calls
-`get_seed_bytes_pattern<NAME>()` in `include/seeds.hpp`, which only handles state sizes of
-4, 8, 12, 16, 24, 32, 48, 64, and 128 bytes.  A new state size needs another array there.
+`#if defined(__AES__)` / `__PCLMUL__` / `__SHA__` in both files.
 
 **Seed types.**  For `std` engines, seeding goes through the seed sequences in
 `seed_seq.hpp` (`fill_seed_seq`, `random_device_seeded`).  For the repo's own PRNGs, `pattern`
