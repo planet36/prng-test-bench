@@ -48,6 +48,7 @@ inline constexpr std::string_view default_prng_name{"std::default_random_engine"
 bool verbose = false;
 unsigned long long limit_bytes = 0;
 
+/// How the PRNG is seeded
 enum class seed_type
 {
     default_ctor,
@@ -58,6 +59,7 @@ enum class seed_type
 
 seed_type seed = seed_type::default_ctor;
 
+/// Print a tab-separated line of information about each PRNG
 void
 print_all_prng_info()
 {
@@ -101,6 +103,10 @@ write_all(const int fd, const void* buf, size_t count)
     }
 }
 
+/// Write the output of \a gen to stdout in blocks of 32 KiB
+/**
+* Stop after \c limit_bytes bytes, or never if \c limit_bytes is 0.
+*/
 template <typename URBG>
 requires std::uniform_random_bit_generator<std::remove_cvref_t<URBG>>
 void
