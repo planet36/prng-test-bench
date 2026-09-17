@@ -34,7 +34,7 @@ clmulrand::result_type
 clmulrand::next()
 {
     // most significant elem first
-    const __m128i inc = _mm_set_epi64x(XXH_PRIME64_2, XXH_PRIME64_1);
+    const __m128i inc = _mm_set_epi64x(XXH_PRIME64_2, XXH_PRIME64_1); // NOLINT(cppcoreguidelines-narrowing-conversions)
     s = _mm_add_epi64(s, inc);
     return clmums(s);
 }

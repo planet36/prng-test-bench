@@ -25,6 +25,7 @@
 * \sa https://www.felixcloutier.com/x86/sha256rnds2
 * > Note that only the two lower dwords of XMM0 are used by the instruction.
 */
+// NOLINTBEGIN(cppcoreguidelines-narrowing-conversions)
 static const arr_m128i<32> sha256_round_constants{
     _mm_setr_epi32(0x428a2f98, 0x71374491, 0, 0), _mm_setr_epi32(0xb5c0fbcf, 0xe9b5dba5, 0, 0),
     _mm_setr_epi32(0x3956c25b, 0x59f111f1, 0, 0), _mm_setr_epi32(0x923f82a4, 0xab1c5ed5, 0, 0),
@@ -43,6 +44,7 @@ static const arr_m128i<32> sha256_round_constants{
     _mm_setr_epi32(0x748f82ee, 0x78a5636f, 0, 0), _mm_setr_epi32(0x84c87814, 0x8cc70208, 0, 0),
     _mm_setr_epi32(0x90befffa, 0xa4506ceb, 0, 0), _mm_setr_epi32(0xbef9a3f7, 0xc67178f2, 0, 0),
 };
+// NOLINTEND(cppcoreguidelines-narrowing-conversions)
 
 /// 2*4 rounds of SHA-256
 /**
@@ -74,7 +76,7 @@ sha256_ctr_128::result_type
 sha256_ctr_128::next()
 {
     // most significant elem first
-    const __m128i inc = _mm_set_epi64x(XXH_PRIME64_2, XXH_PRIME64_1);
+    const __m128i inc = _mm_set_epi64x(XXH_PRIME64_2, XXH_PRIME64_1); // NOLINT(cppcoreguidelines-narrowing-conversions)
 
     __m128i dst = s;
     s = _mm_add_epi64(s, inc);

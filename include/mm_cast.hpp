@@ -25,7 +25,7 @@ uint64_from_m128i(__m128i a)
 static inline auto
 m128i_from_uint64(uint64_t lo, uint64_t hi)
 {
-    return _mm_set_epi64x(hi, lo);
+    return _mm_set_epi64x(hi, lo); // NOLINT(cppcoreguidelines-narrowing-conversions)
 }
 
 #endif

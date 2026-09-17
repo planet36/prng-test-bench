@@ -47,7 +47,7 @@ sha1_ctr_128::result_type
 sha1_ctr_128::next()
 {
     // most significant elem first
-    const __m128i inc = _mm_set_epi64x(XXH_PRIME64_2, XXH_PRIME64_1);
+    const __m128i inc = _mm_set_epi64x(XXH_PRIME64_2, XXH_PRIME64_1); // NOLINT(cppcoreguidelines-narrowing-conversions)
 
     __m128i dst = s;
     s = _mm_add_epi64(s, inc);
