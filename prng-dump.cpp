@@ -69,6 +69,34 @@ print_all_prng_info()
     }
 }
 
+/// Write all \a count bytes of \a buf to \a fd
+/**
+* Retry after a partial write or \c EINTR.  Exit on any other error.
+*/
+void
+write_all(const int fd, const void* buf, size_t count)
+{
+    auto* p = static_cast<const char*>(buf);
+
+    while (count > 0)
+    {
+        const ssize_t num_bytes_written = ::write(fd, p, count);
+
+        if (num_bytes_written < 0)
+        {
+            if (errno == EINTR)
+            {
+                continue;
+            }
+
+            err(EXIT_FAILURE, "write");
+        }
+
+        p += num_bytes_written;
+        count -= static_cast<size_t>(num_bytes_written);
+    }
+}
+
 template <std::uniform_random_bit_generator URBG>
 void
 prng_dump(URBG&& gen)
@@ -95,7 +123,7 @@ prng_dump(URBG&& gen)
                 buf[i] = gen();
             }
 
-            (void)::write(STDOUT_FILENO, &buf[0], sizeof(buf));
+            write_all(STDOUT_FILENO, buf, sizeof(buf));
         }
     }
     else // limit_bytes > 0
@@ -109,7 +137,7 @@ prng_dump(URBG&& gen)
                 buf[i] = gen();
             }
 
-            (void)::write(STDOUT_FILENO, &buf[0], sizeof(buf));
+            write_all(STDOUT_FILENO, buf, sizeof(buf));
         }
     }
 }
