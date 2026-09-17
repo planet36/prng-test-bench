@@ -157,6 +157,7 @@ print_usage()
 
     fmt::println("-s  SEED_TYPE");
     fmt::println("    Specify the type of seed to be used.");
+    fmt::println(R"(    If not given, "default" is used.)");
     fmt::println("    SEED_TYPE must be one of the following values:");
     fmt::println(R"(      "d", "def", "default",  (The PRNG is default constructed.))");
     fmt::println(R"(      "p", "pat", "pattern",  (The PRNG is seeded with bytes of value 0x{:0{}X}.))", seed_pattern_32, sizeof(seed_pattern_32) * 2);
