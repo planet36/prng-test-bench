@@ -46,7 +46,8 @@ xoshiro128plusplus::init()
         }
     }
 
-    for (int i = 0; i < 4; ++i)
+    constexpr int num_warmup_discards = 4;
+    for (int i = 0; i < num_warmup_discards; ++i)
     {
         (void)next();
     }
@@ -100,7 +101,8 @@ xoshiro128starstar::init()
         }
     }
 
-    for (int i = 0; i < 4; ++i)
+    constexpr int num_warmup_discards = 4;
+    for (int i = 0; i < num_warmup_discards; ++i)
     {
         (void)next();
     }
@@ -152,7 +154,8 @@ xoshiro256plusplus::init()
         }
     }
 
-    for (int i = 0; i < 5; ++i)
+    constexpr int num_warmup_discards = 5;
+    for (int i = 0; i < num_warmup_discards; ++i)
     {
         (void)next();
     }
@@ -204,7 +207,8 @@ xoshiro256starstar::init()
         }
     }
 
-    for (int i = 0; i < 6; ++i)
+    constexpr int num_warmup_discards = 6;
+    for (int i = 0; i < num_warmup_discards; ++i)
     {
         (void)next();
     }
@@ -256,7 +260,8 @@ xoshiro512plusplus::init()
         }
     }
 
-    for (int i = 0; i < 8; ++i)
+    constexpr int num_warmup_discards = 8;
+    for (int i = 0; i < num_warmup_discards; ++i)
     {
         (void)next();
     }
@@ -313,7 +318,8 @@ xoshiro512starstar::init()
         }
     }
 
-    for (int i = 0; i < 8; ++i)
+    constexpr int num_warmup_discards = 8;
+    for (int i = 0; i < num_warmup_discards; ++i)
     {
         (void)next();
     }
