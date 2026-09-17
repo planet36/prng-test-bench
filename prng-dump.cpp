@@ -287,8 +287,8 @@ main([[maybe_unused]] int argc, [[maybe_unused]] char* argv[])
 
     if (verbose)
     {
-        fmt::println("# limit_bytes={}", limit_bytes);
-        fmt::println("# prng_name={}", prng_name);
+        fmt::println(stderr, "# limit_bytes={}", limit_bytes);
+        fmt::println(stderr, "# prng_name={}", prng_name);
     }
 
     if (!prng_name_to_info.contains(prng_name))
