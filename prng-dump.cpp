@@ -293,9 +293,13 @@ main([[maybe_unused]] int argc, [[maybe_unused]] char* argv[])
 
     std::string prng_name{default_prng_name};
 
-    for (int i = optind; i < argc; ++i)
+    if (argc - optind == 1)
     {
-        prng_name = argv[i];
+        prng_name = argv[optind];
+    }
+    else if (argc - optind > 1)
+    {
+        errx(EXIT_FAILURE, "Too many arguments");
     }
 
     if (verbose)
