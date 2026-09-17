@@ -80,7 +80,6 @@ plt.ylim(bottom=0)
 ax.yaxis.set_minor_locator(AutoMinorLocator())
 plt.grid(visible=True, which='both', axis='y')
 
-plt.tight_layout()
 # https://stackoverflow.com/a/4066599
 plt.subplots_adjust(left=0.08, right=0.92, top=0.92, bottom=0.08)
 
