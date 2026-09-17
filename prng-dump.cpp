@@ -269,6 +269,15 @@ main([[maybe_unused]] int argc, [[maybe_unused]] char* argv[])
 {
     process_options(argc, argv);
 
+    if ((use_default_ctor == false) &&
+        (use_pattern_seed == false) &&
+        (use_random_seed == false) &&
+        (use_zero_seed == false))
+    {
+        // If none were set, choose this as the default seed type.
+        use_default_ctor = true;
+    }
+
     std::string prng_name{default_prng_name};
 
     for (int i = optind; i < argc; ++i)
