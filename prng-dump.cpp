@@ -177,6 +177,7 @@ print_usage()
 
     fmt::println("-l  MAX");
     fmt::println("    Limit the output to no more than MAX gibibytes.");
+    fmt::println("    If MAX is 0, the output is unlimited.");
     fmt::println("");
 
     fmt::println("-s  SEED_TYPE");
