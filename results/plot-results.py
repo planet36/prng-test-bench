@@ -7,6 +7,7 @@ __version__ = '2025-04-02'
 
 import json
 import matplotlib.pyplot as plt
+from matplotlib.ticker import AutoMinorLocator
 import sys
 
 # This is a prng-results.*.json file.
@@ -76,7 +77,7 @@ for i, label in enumerate(prng_result['prng_name'] for prng_result in prng_resul
 plt.xticks(sorted(x_ticks))
 
 plt.ylim(bottom=0)
-plt.yticks(minor=True)
+ax.yaxis.set_minor_locator(AutoMinorLocator())
 plt.grid(visible=True, which='both', axis='y')
 
 plt.tight_layout()
