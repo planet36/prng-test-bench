@@ -57,16 +57,18 @@ x_ticks = set()
 
 x = [prng_result['test_ended_at_exp2_bytes'] for prng_result in prng_results_failure]
 y = [prng_result['prng_throughput_mebibytes'] for prng_result in prng_results_failure]
-plt.scatter(x, y, marker='s', c='red')
-x_ticks |= set(range(min(x), max(x) + 1))
+if x:
+    plt.scatter(x, y, marker='s', c='red')
+    x_ticks |= set(range(min(x), max(x) + 1))
 
 for i, label in enumerate(prng_result['prng_name'] for prng_result in prng_results_failure):
     ax.annotate(label, (x[i], y[i]), xycoords='data', xytext=(30, 10), textcoords='offset points', arrowprops=dict(arrowstyle="-"), ha='left')
 
 x = [prng_result['test_ended_at_exp2_bytes'] for prng_result in prng_results_nonfailure]
 y = [prng_result['prng_throughput_mebibytes'] for prng_result in prng_results_nonfailure]
-plt.scatter(x, y, marker='>', c='green')
-x_ticks |= set(range(min(x), max(x) + 1))
+if x:
+    plt.scatter(x, y, marker='>', c='green')
+    x_ticks |= set(range(min(x), max(x) + 1))
 
 for i, label in enumerate(prng_result['prng_name'] for prng_result in prng_results_nonfailure):
     ax.annotate(label, (x[i], y[i]), xycoords='data', xytext=(-30, 10), textcoords='offset points', arrowprops=dict(arrowstyle="-"), ha='right')
