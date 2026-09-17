@@ -369,6 +369,11 @@ do
         PRNG="${FILE#$PRACTRAND_OUTFILE_STEM.prng-}"
         PRNG="${PRNG%.txt}"
         BYTES="$(grep '^length= ' "$FILE" | tail -n 1 | grep -o -P '(?<=\(2\^)[0-9]+(?= bytes\))')"
+        if [[ -z "$BYTES" ]]
+        then
+            printf 'Warning: no test length found in %q\n' "$FILE" 1>&2
+            continue
+        fi
         FAILURE=false
         printf "%s\t%s\t%s\n" "$PRNG" "$BYTES" "$FAILURE"
     done < "$OUTFILE_STEM.files.good.txt" >> "$TMP_FILE"
@@ -378,6 +383,11 @@ do
         PRNG="${FILE#$PRACTRAND_OUTFILE_STEM.prng-}"
         PRNG="${PRNG%.txt}"
         BYTES="$(grep '^length= ' "$FILE" | tail -n 1 | grep -o -P '(?<=\(2\^)[0-9]+(?= bytes\))')"
+        if [[ -z "$BYTES" ]]
+        then
+            printf 'Warning: no test length found in %q\n' "$FILE" 1>&2
+            continue
+        fi
         FAILURE=true
         printf "%s\t%s\t%s\n" "$PRNG" "$BYTES" "$FAILURE"
     done < "$OUTFILE_STEM.files.failed.txt" >> "$TMP_FILE"
