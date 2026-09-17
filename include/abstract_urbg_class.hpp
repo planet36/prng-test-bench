@@ -89,16 +89,19 @@ public:
 #define SINGLE_ARG(...) __VA_ARGS__
 // Use SINGLE_ARG when a macro arg has a comma.
 
+// init and next are declared inline, so their definitions in a header can be
+// included in more than one translation unit without violating the
+// one-definition rule.
 #define DEF_URBG_SUBCLASS(CLASS_NAME, STATE_TYPE, RESULT_TYPE)                              \
     struct CLASS_NAME final : public AbstractURBG<STATE_TYPE, RESULT_TYPE>                  \
     {                                                                                       \
     protected:                                                                              \
-        void init(); /* must implement this */                                              \
+        inline void init(); /* must implement this */                                       \
                                                                                             \
     public:                                                                                 \
         CLASS_NAME() { init(); }                                                            \
         explicit CLASS_NAME(const state_type& new_s) : AbstractURBG(new_s) { init(); }      \
         explicit CLASS_NAME(const seed_bytes_type& bytes) : AbstractURBG(bytes) { init(); } \
-        result_type next() override; /* must implement this */                              \
+        inline result_type next() override; /* must implement this */                       \
     };                                                                                      \
     static_assert(std::uniform_random_bit_generator<CLASS_NAME>);
