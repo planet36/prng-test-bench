@@ -187,13 +187,13 @@ int
 main()
 {
     const std::vector<survey_result> results{
-        survey<xoroshiro128plusplus>("xoroshiro128plusplus", 2, true),
+        survey<xoroshiro128plusplus>("xoroshiro128plusplus", 3, true),
         survey<xoroshiro128starstar>("xoroshiro128starstar", 4, true),
         survey<xoroshiro1024plusplus>("xoroshiro1024plusplus", 8, true),
         survey<xoroshiro1024starstar>("xoroshiro1024starstar", 22, true),
         survey<xoshiro128plusplus>("xoshiro128plusplus", 4, true),
         survey<xoshiro128starstar>("xoshiro128starstar", 4, true),
-        survey<xoshiro256plusplus>("xoshiro256plusplus", 4, true),
+        survey<xoshiro256plusplus>("xoshiro256plusplus", 5, true),
         survey<xoshiro256starstar>("xoshiro256starstar", 6, true),
         survey<xoshiro512plusplus>("xoshiro512plusplus", 8, true),
         survey<xoshiro512starstar>("xoshiro512starstar", 8, true),
