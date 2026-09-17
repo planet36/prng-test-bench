@@ -10,10 +10,12 @@ import matplotlib.pyplot as plt
 from matplotlib.ticker import AutoMinorLocator
 import sys
 
-# This is a prng-results.*.json file.
+if len(sys.argv) != 2:
+    sys.exit(f'Usage: {sys.argv[0]} prng-results.*.json')
+
 prng_results_file_name = sys.argv[1]
 
-with open(prng_results_file_name) as f:
+with open(prng_results_file_name, encoding='utf-8') as f:
     prng_results = json.load(f)
 
 prng_results_failure = []
