@@ -176,9 +176,9 @@ process_options(int argc, char* argv[])
 {
     using namespace std::literals;
 
-    const char* short_options = "+Vhvil:s:";
+    static constexpr std::string_view short_options = "+Vhvil:s:";
     int c = 0;
-    while ((c = getopt(argc, argv, short_options)) != -1)
+    while ((c = getopt(argc, argv, short_options.data())) != -1)
     {
         switch (c)
         {
