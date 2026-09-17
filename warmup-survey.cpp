@@ -3,7 +3,7 @@
 
 /*
 
-g++ -std=c++26 -O2 -march=native -I include warmup-survey.cpp -o warmup-survey -lfmt && ./warmup-survey
+g++ -std=c++26 -O2 -march=native -I include warmup-survey.cpp -o warmup-survey && ./warmup-survey
 
 Survey the PRNGs that discard outputs in init ("warm-up") and compare the counts found by eye
 with counts derived from three measurements of the zero-seed sequence.
@@ -24,11 +24,11 @@ with counts derived from three measurements of the zero-seed sequence.
 #include <cmath>
 #include <concepts>
 #include <cstdlib>
+#include <format>
+#include <print>
 #include <string>
 #include <string_view>
 #include <vector>
-
-#include <fmt/format.h>
 
 constexpr int max_calls = 48;
 
@@ -213,11 +213,11 @@ main()
         named_fit{"avalanche", best_fit(results, &survey_result::avalanche)},
     };
 
-    fmt::println("Settled = first call from which {} consecutive values reach the threshold.",
+    std::println("Settled = first call from which {} consecutive values reach the threshold.",
                  default_window);
-    fmt::println("Error excludes biski64, whose count comes from upstream.\n");
+    std::println("Error excludes biski64, whose count comes from upstream.\n");
     for (const auto& [label, f] : fits)
-        fmt::println("{:<16} best threshold {:.2f}  total error {}", label, f.threshold,
+        std::println("{:<16} best threshold {:.2f}  total error {}", label, f.threshold,
                      f.total_error);
 
     // A fixed rule for comparison: discard outputs until the first one with at least 40% of its
@@ -225,22 +225,22 @@ main()
     constexpr double simple_threshold = 0.40;
     int simple_error = 0;
 
-    fmt::println("\n{:<22} {:>7}  {:>10}  {:>10}  {:>10}  {:>13}", "PRNG", "warm-up",
+    std::println("\n{:<22} {:>7}  {:>10}  {:>10}  {:>10}  {:>13}", "PRNG", "warm-up",
                  "output pop", "state pop", "avalanche", "first >= 40%");
     for (size_t i = 0; i < results.size(); ++i)
     {
         const int simple = settled(results[i].output_popcount, simple_threshold, 1);
         if (!results[i].from_upstream)
             simple_error += std::abs(simple - results[i].warmup);
-        fmt::println("{:<22} {:>6}{}  {:>10}  {:>10}  {:>10}  {:>13}", results[i].name,
+        std::println("{:<22} {:>6}{}  {:>10}  {:>10}  {:>10}  {:>13}", results[i].name,
                      results[i].warmup, results[i].from_upstream ? "*" : " ",
                      fits[0].f.counts[i], fits[1].f.counts[i], fits[2].f.counts[i], simple);
     }
-    fmt::println("total error of the first-output-with-40%-set rule: {}", simple_error);
-    fmt::println("* from upstream");
+    std::println("total error of the first-output-with-40%-set rule: {}", simple_error);
+    std::println("* from upstream");
 
-    fmt::println("\nTotal error of output popcount by threshold (rows) and window (columns):");
-    fmt::println("{:>9} {:>5} {:>5} {:>5} {:>5}", "threshold", 1, 2, 4, 8);
+    std::println("\nTotal error of output popcount by threshold (rows) and window (columns):");
+    std::println("{:>9} {:>5} {:>5} {:>5} {:>5}", "threshold", 1, 2, 4, 8);
     for (int t = 30; t <= 50; t += 2)
     {
         std::string line;
@@ -250,17 +250,17 @@ main()
             for (const auto& r : results)
                 if (!r.from_upstream)
                     error += std::abs(settled(r.output_popcount, t / 100.0, w) - r.warmup);
-            line += fmt::format(" {:>5}", error);
+            line += std::format(" {:>5}", error);
         }
-        fmt::println("{:>9.2f}{}", t / 100.0, line);
+        std::println("{:>9.2f}{}", t / 100.0, line);
     }
 
-    fmt::println("\nAvalanche at calls 0-11 (fraction of output bits changed by one state bit):");
+    std::println("\nAvalanche at calls 0-11 (fraction of output bits changed by one state bit):");
     for (const auto& r : results)
     {
         std::string line;
         for (int k = 0; k < 12; ++k)
-            line += fmt::format(" {:.2f}", r.avalanche[k]);
-        fmt::println("{:<22}{}", r.name, line);
+            line += std::format(" {:.2f}", r.avalanche[k]);
+        std::println("{:<22}{}", r.name, line);
     }
 }
