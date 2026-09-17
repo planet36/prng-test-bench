@@ -1,7 +1,7 @@
 // SPDX-FileCopyrightText: Steven Ward
 // SPDX-License-Identifier: MPL-2.0
 
-/// PRNGs inspired by XXH avalange functions
+/// PRNGs inspired by XXH avalanche functions
 /**
 * \file
 * \author Steven Ward
