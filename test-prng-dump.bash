@@ -373,7 +373,7 @@ do
 
     while IFS= read -r FILE
     do
-        PRNG="${FILE#$PRACTRAND_OUTFILE_STEM.prng-}"
+        PRNG="${FILE#"$PRACTRAND_OUTFILE_STEM".prng-}"
         PRNG="${PRNG%.txt}"
         BYTES="$(grep '^length= ' "$FILE" | tail -n 1 | grep -o -P '(?<=\(2\^)[0-9]+(?= bytes\))')"
         if [[ -z "$BYTES" ]]
@@ -387,7 +387,7 @@ do
 
     while IFS= read -r FILE
     do
-        PRNG="${FILE#$PRACTRAND_OUTFILE_STEM.prng-}"
+        PRNG="${FILE#"$PRACTRAND_OUTFILE_STEM".prng-}"
         PRNG="${PRNG%.txt}"
         BYTES="$(grep '^length= ' "$FILE" | tail -n 1 | grep -o -P '(?<=\(2\^)[0-9]+(?= bytes\))')"
         if [[ -z "$BYTES" ]]
