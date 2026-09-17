@@ -68,7 +68,10 @@ building blocks.  Several are synced from the author's other repos.
 3. Add `CONDITIONAL_DUMP_MINE(name)` to `main` in `prng-dump.cpp`.
 
 Keep the alphabetical order and column alignment.  Guard ISA-dependent PRNGs with the same
-`#if defined(__AES__)` / `__PCLMUL__` / `__SHA__` in both files.
+`#if defined(__AES__)` / `__PCLMUL__` / `__SHA__` in both files, and wrap the PRNG's own header
+in that guard too (with a `#warning` in the `#else`, as `aes_ctr_128.hpp` does).
+`prng.hpp` includes every header, so an unguarded header breaks the build on a CPU target
+that lacks the instruction set.
 
 **Seed types.**  For `std` engines, seeding goes through the seed sequences in
 `seed_seq.hpp` (`fill_seed_seq`, `random_device_seeded`).  For the repo's own PRNGs, `pattern`
