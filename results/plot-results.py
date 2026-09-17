@@ -18,22 +18,6 @@ prng_results_file_name = sys.argv[1]
 with open(prng_results_file_name, encoding='utf-8') as f:
     prng_results = json.load(f)
 
-prng_results_failure = []
-prng_results_nonfailure = []
-
-for prng_result in prng_results:
-    # massage the data
-    tmp = {
-            'prng_name': prng_result['prng_name'],
-            'test_ended_at_exp2_bytes': prng_result['test_ended_at_exp2_bytes'],
-            'prng_throughput_gibibytes_per_second': prng_result['prng_throughput_gibibytes_per_second']
-            }
-
-    if prng_result['test_ended_with_failure']:
-        prng_results_failure.append(tmp)
-    else:
-        prng_results_nonfailure.append(tmp)
-
 # plot
 
 fig, ax = plt.subplots()
@@ -58,31 +42,32 @@ x_ticks = set()
 # https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.annotate.html
 # https://matplotlib.org/stable/gallery/text_labels_and_annotations/annotation_demo.html
 
-x = [prng_result['test_ended_at_exp2_bytes'] for prng_result in prng_results_failure]
-y = [prng_result['prng_throughput_gibibytes_per_second'] for prng_result in prng_results_failure]
-if x:
-    plt.scatter(x, y, marker='s', c='red')
-    x_ticks |= set(range(min(x), max(x) + 1))
+groups = (
+    (True, {'marker': 's', 'c': 'red'}, (30, 10), 'left'),
+    (False, {'marker': '>', 'c': 'green'}, (-30, 10), 'right'),
+)
 
-for i, label in enumerate(prng_result['prng_name'] for prng_result in prng_results_failure):
-    ax.annotate(label, (x[i], y[i]), xycoords='data', xytext=(30, 10), textcoords='offset points', arrowprops=dict(arrowstyle="-"), ha='left')
+for failed, style, offset, ha in groups:
+    rows = [r for r in prng_results if r['test_ended_with_failure'] == failed]
+    if not rows:
+        continue
 
-x = [prng_result['test_ended_at_exp2_bytes'] for prng_result in prng_results_nonfailure]
-y = [prng_result['prng_throughput_gibibytes_per_second'] for prng_result in prng_results_nonfailure]
-if x:
-    plt.scatter(x, y, marker='>', c='green')
-    x_ticks |= set(range(min(x), max(x) + 1))
+    x = [r['test_ended_at_exp2_bytes'] for r in rows]
+    y = [r['prng_throughput_gibibytes_per_second'] for r in rows]
+    ax.scatter(x, y, **style)
+    x_ticks.update(range(min(x), max(x) + 1))
 
-for i, label in enumerate(prng_result['prng_name'] for prng_result in prng_results_nonfailure):
-    ax.annotate(label, (x[i], y[i]), xycoords='data', xytext=(-30, 10), textcoords='offset points', arrowprops=dict(arrowstyle="-"), ha='right')
+    for r, xi, yi in zip(rows, x, y, strict=True):
+        ax.annotate(r['prng_name'], (xi, yi), xycoords='data', xytext=offset,
+                    textcoords='offset points', arrowprops={'arrowstyle': '-'}, ha=ha)
 
-plt.xticks(sorted(x_ticks))
+ax.set_xticks(sorted(x_ticks))
 
-plt.ylim(bottom=0)
+ax.set_ylim(bottom=0)
 ax.yaxis.set_minor_locator(AutoMinorLocator())
-plt.grid(visible=True, which='both', axis='y')
+ax.grid(visible=True, which='both', axis='y')
 
 # https://stackoverflow.com/a/4066599
-plt.subplots_adjust(left=0.08, right=0.92, top=0.92, bottom=0.08)
+fig.subplots_adjust(left=0.08, right=0.92, top=0.92, bottom=0.08)
 
 plt.show()
