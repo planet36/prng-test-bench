@@ -48,6 +48,13 @@ static_assert((pcg_const128[1] & 1) != 0, "must be odd");
 }
 
 /// PCG-XSH-RR
+/**
+* This is \c oneseq_xsh_rr_64_32 in pcg-cpp, which has a fixed increment.  The \c pcg32 in
+* pcg-cpp is \c setseq_xsh_rr_64_32, which has a settable increment.
+*
+* \sa https://github.com/imneme/pcg-cpp/blob/master/include/pcg_random.hpp#L1649
+* \sa https://github.com/imneme/pcg-cpp/blob/master/include/pcg_random.hpp#L1866
+*/
 DEF_URBG_SUBCLASS(pcg32, uint64_t, uint32_t)
 
 /// prepare the initial state
@@ -108,6 +115,17 @@ pcg32_fast::next()
 
 #if defined(__SIZEOF_INT128__)
 /// PCG-XSL-RR
+/**
+* This is \c oneseq_xsl_rr_128_64 in pcg-cpp, which has a fixed increment.  The \c pcg64 in
+* pcg-cpp is \c setseq_xsl_rr_128_64, which has a settable increment.
+*
+* This generator outputs the state from before it advances, but the 128-bit pcg-cpp engines
+* output the state from after.  Started from the same state, the first output of
+* \c oneseq_xsl_rr_128_64 is the second output of this generator.
+*
+* \sa https://github.com/imneme/pcg-cpp/blob/master/include/pcg_random.hpp#L1768
+* \sa https://github.com/imneme/pcg-cpp/blob/master/include/pcg_random.hpp#L1871
+*/
 DEF_URBG_SUBCLASS(pcg64, __uint128_t, uint64_t)
 
 /// prepare the initial state
@@ -140,12 +158,17 @@ pcg64::next()
 
 /// PCG-DXSM
 /**
+* This is \c cm_oneseq_dxsm_128_64 in pcg-cpp, which has a fixed increment and the cheap
+* multiplier.  pcg-cpp does not define a \c pcg64_dxsm type.
+*
 * Adapted from
 * https://github.com/numpy/numpy/issues/13635#issuecomment-506088698
 * https://github.com/imneme/pcg-cpp/blob/master/include/pcg_random.hpp#L1031
 * https://dotat.at/@/2023-06-21-pcg64-dxsm.html
 * https://dotat.at/cgi/git/pcg-dxsm.git/blob/HEAD:/pcg64_dxsm.h
 * https://github.com/imneme/pcg-cpp/commit/871d0494ee9c9a7b7c43f753e3d8ca47c26f8005
+*
+* \sa https://github.com/imneme/pcg-cpp/blob/master/include/pcg_random.hpp#L1741
 */
 DEF_URBG_SUBCLASS(pcg64dxsm, __uint128_t, uint64_t)
 
