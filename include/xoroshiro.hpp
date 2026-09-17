@@ -169,7 +169,7 @@ xoroshiro128starstar::next()
  * 64-bit seed, we suggest to seed a splitmix64 generator and use its output to
  * fill s.
  */
-struct xoroshiro1024plusplus final : public AbstractURBG<std::array<uint64_t, 16>, uint64_t>
+struct xoroshiro1024plusplus : public AbstractURBG<std::array<uint64_t, 16>, uint64_t>
 {
 protected:
     unsigned int p{};
@@ -235,7 +235,7 @@ xoroshiro1024plusplus::next()
  * 64-bit seed, we suggest to seed a splitmix64 generator and use its output to
  * fill s.
  */
-struct xoroshiro1024starstar final : public AbstractURBG<std::array<uint64_t, 16>, uint64_t>
+struct xoroshiro1024starstar : public AbstractURBG<std::array<uint64_t, 16>, uint64_t>
 {
 protected:
     unsigned int p{};
