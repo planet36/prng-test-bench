@@ -3,7 +3,7 @@
 
 /*
 
-g++ -std=c++26 -O3 -march=native -I include prng-dump.cpp -o prng-dump -lfmt
+g++ -std=c++26 -O3 -march=native -I include prng-dump.cpp -o prng-dump
 
 clear ; ./prng-dump -i | column --table --table-right 2,4,5
 
@@ -23,14 +23,13 @@ https://www.pcg-random.org/posts/how-to-test-with-practrand.html
 #include <err.h>
 #include <errno.h>
 #include <limits>
+#include <print>
 #include <random>
 #include <stdexcept>
 #include <string>
 #include <string_view>
 #include <type_traits>
 #include <unistd.h>
-
-#include <fmt/format.h>
 
 inline constexpr std::string_view program_author = "Steven Ward";
 inline constexpr std::string_view program_version = "2026-09-17";
@@ -66,7 +65,7 @@ print_all_prng_info()
     for (const auto& [prng_name, info] : prng_name_to_info)
     {
         // XXX: Do not change the order of the fields.
-        fmt::println("{}\t{}\t{}\t{}\t{}",
+        std::println("{}\t{}\t{}\t{}\t{}",
                 prng_name,
                 info.result_size_bits,
                 info.result_min,
@@ -142,53 +141,53 @@ prng_dump(URBG&& gen)
 void
 print_version()
 {
-    fmt::println("{} {}", program_invocation_short_name, program_version);
-    fmt::println("License: {}", program_license);
-    fmt::println("Written by {}", program_author);
+    std::println("{} {}", program_invocation_short_name, program_version);
+    std::println("License: {}", program_license);
+    std::println("Written by {}", program_author);
 }
 
 /// Print the help message
 void
 print_usage()
 {
-    fmt::println("Usage: {} [OPTION]... [PRNG]", program_invocation_short_name);
-    fmt::println("Dump random output to stdout.");
-    fmt::println("The default PRNG is {}.", default_prng_name);
-    fmt::println("");
+    std::println("Usage: {} [OPTION]... [PRNG]", program_invocation_short_name);
+    std::println("Dump random output to stdout.");
+    std::println("The default PRNG is {}.", default_prng_name);
+    std::println("");
 
-    fmt::println("OPTIONS");
-    fmt::println("");
+    std::println("OPTIONS");
+    std::println("");
 
-    fmt::println("-V");
-    fmt::println("    Print the version information, then exit.");
-    fmt::println("");
+    std::println("-V");
+    std::println("    Print the version information, then exit.");
+    std::println("");
 
-    fmt::println("-h");
-    fmt::println("    Print this message, then exit.");
-    fmt::println("");
+    std::println("-h");
+    std::println("    Print this message, then exit.");
+    std::println("");
 
-    fmt::println("-v");
-    fmt::println("    Print diagnostics.");
-    fmt::println("");
+    std::println("-v");
+    std::println("    Print diagnostics.");
+    std::println("");
 
-    fmt::println("-i");
-    fmt::println("    Print information about the available PRNGs, then exit.");
-    fmt::println("");
+    std::println("-i");
+    std::println("    Print information about the available PRNGs, then exit.");
+    std::println("");
 
-    fmt::println("-l  MAX");
-    fmt::println("    Limit the output to no more than MAX gibibytes.");
-    fmt::println("    If MAX is 0, the output is unlimited.");
-    fmt::println("");
+    std::println("-l  MAX");
+    std::println("    Limit the output to no more than MAX gibibytes.");
+    std::println("    If MAX is 0, the output is unlimited.");
+    std::println("");
 
-    fmt::println("-s  SEED_TYPE");
-    fmt::println("    Specify the type of seed to be used.");
-    fmt::println(R"(    If not given, "default" is used.)");
-    fmt::println("    SEED_TYPE must be one of the following values:");
-    fmt::println(R"(      "d", "def", "default",  (The PRNG is default constructed.  A std engine gets its fixed default seed, and any other PRNG is seeded with random values.))");
-    fmt::println(R"(      "p", "pat", "pattern",  (The PRNG is seeded with bytes of value 0x{:02X}.))", static_cast<uint8_t>(seed_pattern_32));
-    fmt::println(R"(      "r", "rand", "random",  (The PRNG is seeded with random values.  For a PRNG not in std, this is the same as "default".))");
-    fmt::println(R"(      "z", "zero",            (The PRNG is seeded with bytes of value 0x00.))");
-    fmt::println("");
+    std::println("-s  SEED_TYPE");
+    std::println("    Specify the type of seed to be used.");
+    std::println(R"(    If not given, "default" is used.)");
+    std::println("    SEED_TYPE must be one of the following values:");
+    std::println(R"(      "d", "def", "default",  (The PRNG is default constructed.  A std engine gets its fixed default seed, and any other PRNG is seeded with random values.))");
+    std::println(R"(      "p", "pat", "pattern",  (The PRNG is seeded with bytes of value 0x{:02X}.))", static_cast<uint8_t>(seed_pattern_32));
+    std::println(R"(      "r", "rand", "random",  (The PRNG is seeded with random values.  For a PRNG not in std, this is the same as "default".))");
+    std::println(R"(      "z", "zero",            (The PRNG is seeded with bytes of value 0x00.))");
+    std::println("");
 }
 
 /// Process the command line options
@@ -291,8 +290,8 @@ main([[maybe_unused]] int argc, [[maybe_unused]] char* argv[])
 
     if (verbose)
     {
-        fmt::println(stderr, "# limit_bytes={}", limit_bytes);
-        fmt::println(stderr, "# prng_name={}", prng_name);
+        std::println(stderr, "# limit_bytes={}", limit_bytes);
+        std::println(stderr, "# prng_name={}", prng_name);
     }
 
     if (!prng_name_to_info.contains(prng_name))

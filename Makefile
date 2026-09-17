@@ -50,7 +50,7 @@ CXXFLAGS += -march=native
 
 #LDFLAGS =
 
-LDLIBS = -lfmt
+#LDLIBS =
 
 OUTPUT_DIR = results
 

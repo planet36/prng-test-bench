@@ -47,9 +47,6 @@ To plot them, run `python3 results/plot-results.py FILE`, where `FILE` is a `res
 The following compiler is required to build:
 - [g++](https://gcc.gnu.org/) with C++26 support (clang++ is not supported)
 
-The following libraries are required to build:
-- [fmt](https://github.com/fmtlib/fmt)
-
 The following programs are required to run:
 - [datamash](https://www.gnu.org/software/datamash/)
 - [hyperfine](https://github.com/sharkdp/hyperfine)

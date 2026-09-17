@@ -13,7 +13,7 @@ There are no unit tests.  The "tests" are PractRand runs whose outputs are commi
 
 The top-level `Makefile` checks for every program in `REQUIRED_BINS` (hyperfine, `RNG_test`,
 parallel, datamash, jq, ...) at parse time, so any `make` invocation fails if one is missing.
-Only g++ is supported (clang++ is not).  The `fmt` library is required to link.
+Only g++ is supported (clang++ is not).
 
 - `make` builds `prng-dump` (plus `prng-dump.opts`, the recorded compiler flags).
 - `make lint` runs clang-tidy using `.clang-tidy`.
