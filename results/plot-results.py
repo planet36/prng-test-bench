@@ -6,9 +6,10 @@ __license__ = 'OSL-3.0'
 __version__ = '2025-04-02'
 
 import json
+import sys
+
 import matplotlib.pyplot as plt
 from matplotlib.ticker import AutoMinorLocator
-import sys
 
 if len(sys.argv) != 2:
     sys.exit(f'Usage: {sys.argv[0]} prng-results.*.json')
