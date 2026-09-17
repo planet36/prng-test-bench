@@ -5,187 +5,85 @@
 
 g++ -std=c++26 -O2 -march=native -I include warmup-survey.cpp -o warmup-survey && ./warmup-survey
 
-Survey the PRNGs that discard outputs in init ("warm-up") and compare the counts found by eye
-with counts derived from three measurements of the zero-seed sequence.
+Survey the PRNGs that discard outputs in init ("warm-up").  Each PRNG starts from the state that
+init has before its warm-up, and the survey reports how many outputs it takes before the
+outputs look filled.
 
 */
 
 #include "prng.hpp"
 
-#include <algorithm>
 #include <array>
 #include <bit>
 #include <climits>
-#include <cmath>
-#include <concepts>
-#include <cstdlib>
+#include <cstdint>
 #include <format>
-#include <optional>
 #include <print>
 #include <string>
 #include <string_view>
-#include <utility>
-#include <vector>
 
 constexpr int max_calls = 48;
 
-// The number of consecutive calls that must meet a threshold before a measurement counts as
-// settled, for the main table.
-constexpr int default_window = 4;
+// The number of calls shown in the per-call rows
+constexpr int shown_calls = 16;
 
-/// One measurement per call: the value for the output produced after k discarded calls
-using series = std::array<double, max_calls>;
+// An output looks filled when at least this fraction of its bits is set, or, compared with the
+// output before it, at least this fraction of its bits changed.
+constexpr double threshold = 0.40;
 
-struct survey_result
-{
-    std::string name;
-    int warmup; // the count in init
-    bool from_upstream;
-    series output_popcount;
-    series state_popcount;
-    series avalanche;
-};
-
+/// A PRNG whose state can be reset to all zeros, without a warm-up
 template <typename G>
-struct rewound : G
+struct zero_start : G
 {
     using state_type = typename G::state_type;
-    using result_type = typename G::result_type;
 
-    /// Construct from a zero seed
-    rewound() : G(state_type{}) {}
+    zero_start() : G(state_type{}) {}
 
-    /// Count the calls, and save the state at the first call, while init runs
-    result_type
-    next() override
-    {
-        if (watching_init)
-        {
-            if (!state_at_first_call)
-            {
-                state_at_first_call = this->s;
-            }
-            ++init_calls;
-        }
-        return G::next();
-    }
-
-    /// Run init again from a zero seed, and return its warm-up count and pre-warm-up state
-    /**
-    * While the constructor of \c G runs, the object is still a \c G, so the calls that init
-    * makes to next there do not reach the override.  Calling init again after construction
-    * does reach it.
-    */
-    [[nodiscard]] std::pair<int, state_type>
-    watch_init()
-    {
-        set_state(state_type{});
-        init_calls = 0;
-        state_at_first_call.reset();
-
-        watching_init = true;
-        this->init();
-        watching_init = false;
-
-        // With no warm-up, the state that init left is the pre-warm-up state.
-        return {init_calls, state_at_first_call.value_or(this->s)};
-    }
-
-    /// Replace the state, and reset any other member that the warm-up advanced
+    /// Set the state to what init has before its warm-up when it keeps an all-zero seed
     void
-    set_state(const state_type& new_s)
+    reset_state()
     {
-        this->s = new_s;
+        this->s = state_type{};
         if constexpr (requires { this->p; })
         {
             this->p = 0;
         }
     }
-
-    [[nodiscard]] const state_type&
-    state() const
-    {
-        return this->s;
-    }
-
-private:
-    bool watching_init = false;
-    int init_calls = 0;
-    std::optional<state_type> state_at_first_call;
 };
 
-template <typename T>
-[[nodiscard]] int
-state_bits(const T& s)
-{
-    return static_cast<int>(std::size(s) * sizeof(s[0]) * CHAR_BIT);
-}
-
-template <typename T>
-[[nodiscard]] int
-state_popcount(const T& s)
-{
-    int n = 0;
-    for (const auto w : s)
-    {
-        n += std::popcount(w);
-    }
-    return n;
-}
-
+/// A PRNG whose state can be reset to 1, 2, 3, ..., without a warm-up
 template <typename G>
-[[nodiscard]] survey_result
-survey(std::string_view name, bool from_upstream = false)
+struct iota_start : G
 {
-    const auto [warmup, start] = rewound<G>{}.watch_init();
-    const int rbits = sizeof(typename G::result_type) * CHAR_BIT;
+    using state_type = typename G::state_type;
 
-    survey_result r{std::string(name), warmup, from_upstream, {}, {}, {}};
+    iota_start() : G(state_type{}) {}
 
-    rewound<G> g;
-    g.set_state(start);
-    std::array<uint64_t, max_calls> outputs{};
-    for (int k = 0; k < max_calls; ++k)
+    /// Set the state to what init has before its warm-up when it replaces an all-zero seed
+    void
+    reset_state()
     {
-        r.state_popcount[k] = state_popcount(g.state()) / double(state_bits(g.state()));
-        outputs[k] = static_cast<uint64_t>(g());
-        r.output_popcount[k] = std::popcount(outputs[k]) / double(rbits);
-    }
-
-    // Flip each bit of the starting state in turn, and average the fraction of output bits that
-    // change at each call.
-    const int sbits = state_bits(start);
-    const int word_bits = sizeof(start[0]) * CHAR_BIT;
-    series changed{};
-    for (int bit = 0; bit < sbits; ++bit)
-    {
-        auto flipped = start;
-        flipped[bit / word_bits] ^= static_cast<typename G::state_type::value_type>(
-            typename G::state_type::value_type{1} << (bit % word_bits));
-        rewound<G> h;
-        h.set_state(flipped);
-        for (int k = 0; k < max_calls; ++k)
+        for (size_t i = 0; i < std::size(this->s); ++i)
         {
-            changed[k] +=
-                std::popcount(outputs[k] ^ static_cast<uint64_t>(h())) / double(rbits);
+            this->s[i] = static_cast<typename state_type::value_type>(i + 1);
+        }
+        if constexpr (requires { this->p; })
+        {
+            this->p = 0;
         }
     }
-    for (int k = 0; k < max_calls; ++k)
-    {
-        r.avalanche[k] = changed[k] / sbits;
-    }
+};
 
-    return r;
-}
+/// One value per call
+using series = std::array<double, max_calls>;
 
-/// The first call index from which window consecutive values are all at least threshold
+/// The index of the first call whose value reaches the threshold, starting at \a first
 [[nodiscard]] int
-settled(const series& values, double threshold, int window = default_window)
+first_reaching(const series& values, int first)
 {
-    for (int k = 0; k + window <= max_calls; ++k)
+    for (int k = first; k < max_calls; ++k)
     {
-        if (std::all_of(values.begin() + k, values.begin() + k + window,
-                        [=](double v) { return v >= threshold; }))
+        if (values[k] >= threshold)
         {
             return k;
         }
@@ -193,127 +91,70 @@ settled(const series& values, double threshold, int window = default_window)
     return max_calls;
 }
 
-struct fit
+[[nodiscard]] std::string
+format_row(const series& values, int first)
 {
-    double threshold;
-    int total_error;
-    std::vector<int> counts;
-};
-
-/// Find the threshold that best reproduces the empirical warm-up counts
-[[nodiscard]] fit
-best_fit(const std::vector<survey_result>& results, series survey_result::*member)
-{
-    fit best{0.0, 1 << 30, {}};
-    for (int t = 20; t <= 50; ++t)
+    std::string row;
+    for (int k = 0; k < shown_calls; ++k)
     {
-        const double threshold = t / 100.0;
-        fit f{threshold, 0, {}};
-        for (const auto& r : results)
-        {
-            const int count = settled(r.*member, threshold);
-            f.counts.push_back(count);
-            if (!r.from_upstream)
-            {
-                f.total_error += std::abs(count - r.warmup);
-            }
-        }
-        if (f.total_error < best.total_error)
-        {
-            best = f;
-        }
+        row += (k < first) ? std::string("   --") : std::format(" {:4.2f}", values[k]);
     }
-    return best;
+    return row;
+}
+
+template <typename Start>
+void
+survey(std::string_view name, std::string_view start_name)
+{
+    Start g;
+    g.reset_state();
+
+    const int bits = sizeof(typename Start::result_type) * CHAR_BIT;
+
+    // popcount[k] is the fraction of bits set in output k.  changed[k] is the fraction of bits
+    // that differ between output k and output k - 1, so it starts at call 1.
+    series popcount{};
+    series changed{};
+    uint64_t previous = 0;
+    for (int k = 0; k < max_calls; ++k)
+    {
+        const auto output = static_cast<uint64_t>(g.next());
+        popcount[k] = std::popcount(output) / double(bits);
+        if (k > 0)
+        {
+            changed[k] = std::popcount(output ^ previous) / double(bits);
+        }
+        previous = output;
+    }
+
+    std::println("{:<22} {:<5} {:>9} {:>8}", name, start_name, first_reaching(popcount, 0),
+                 first_reaching(changed, 1));
+    std::println("    set    {}", format_row(popcount, 0));
+    std::println("    change {}", format_row(changed, 1));
 }
 
 int
 main()
 {
-    const std::vector<survey_result> results{
-        survey<xoroshiro128plusplus>("xoroshiro128plusplus"),
-        survey<xoroshiro128starstar>("xoroshiro128starstar"),
-        survey<xoroshiro1024plusplus>("xoroshiro1024plusplus"),
-        survey<xoroshiro1024starstar>("xoroshiro1024starstar"),
-        survey<xoshiro128plusplus>("xoshiro128plusplus"),
-        survey<xoshiro128starstar>("xoshiro128starstar"),
-        survey<xoshiro256plusplus>("xoshiro256plusplus"),
-        survey<xoshiro256starstar>("xoshiro256starstar"),
-        survey<xoshiro512plusplus>("xoshiro512plusplus"),
-        survey<xoshiro512starstar>("xoshiro512starstar"),
-        survey<sfc32>("sfc32"),
-        survey<sfc64>("sfc64"),
-        survey<biski64>("biski64", true),
-    };
+    std::println("Outputs to discard: the index of the first output with at least {:.0f}% of its",
+                 threshold * 100);
+    std::println("bits set (popcount), or with at least {:.0f}% of its bits changed from the output",
+                 threshold * 100);
+    std::println("before it (change).  The rows show both fractions for calls 0-{}.\n",
+                 shown_calls - 1);
+    std::println("{:<22} {:<5} {:>9} {:>8}", "PRNG", "start", "popcount", "change");
 
-    struct named_fit
-    {
-        std::string_view label;
-        fit f;
-    };
-    const std::array fits{
-        named_fit{"output popcount", best_fit(results, &survey_result::output_popcount)},
-        named_fit{"state popcount", best_fit(results, &survey_result::state_popcount)},
-        named_fit{"avalanche", best_fit(results, &survey_result::avalanche)},
-    };
-
-    std::println("Settled = first call from which {} consecutive values reach the threshold.",
-                 default_window);
-    std::println("Error excludes biski64, whose count comes from upstream.\n");
-    for (const auto& [label, f] : fits)
-    {
-        std::println("{:<16} best threshold {:.2f}  total error {}", label, f.threshold,
-                     f.total_error);
-    }
-
-    // A fixed rule for comparison: discard outputs until the first one with at least 40% of its
-    // bits set.
-    constexpr double simple_threshold = 0.40;
-    int simple_error = 0;
-
-    std::println("\n{:<22} {:>7}  {:>10}  {:>10}  {:>10}  {:>13}", "PRNG", "warm-up",
-                 "output pop", "state pop", "avalanche", "first >= 40%");
-    for (size_t i = 0; i < results.size(); ++i)
-    {
-        const int simple = settled(results[i].output_popcount, simple_threshold, 1);
-        if (!results[i].from_upstream)
-        {
-            simple_error += std::abs(simple - results[i].warmup);
-        }
-        std::println("{:<22} {:>6}{}  {:>10}  {:>10}  {:>10}  {:>13}", results[i].name,
-                     results[i].warmup, results[i].from_upstream ? "*" : " ",
-                     fits[0].f.counts[i], fits[1].f.counts[i], fits[2].f.counts[i], simple);
-    }
-    std::println("total error of the first-output-with-40%-set rule: {}", simple_error);
-    std::println("* from upstream");
-
-    std::println("\nTotal error of output popcount by threshold (rows) and window (columns):");
-    std::println("{:>9} {:>5} {:>5} {:>5} {:>5}", "threshold", 1, 2, 4, 8);
-    for (int t = 30; t <= 50; t += 2)
-    {
-        std::string line;
-        for (const int w : {1, 2, 4, 8})
-        {
-            int error = 0;
-            for (const auto& r : results)
-            {
-                if (!r.from_upstream)
-                {
-                    error += std::abs(settled(r.output_popcount, t / 100.0, w) - r.warmup);
-                }
-            }
-            line += std::format(" {:>5}", error);
-        }
-        std::println("{:>9.2f}{}", t / 100.0, line);
-    }
-
-    std::println("\nAvalanche at calls 0-11 (fraction of output bits changed by one state bit):");
-    for (const auto& r : results)
-    {
-        std::string line;
-        for (int k = 0; k < 12; ++k)
-        {
-            line += std::format(" {:.2f}", r.avalanche[k]);
-        }
-        std::println("{:<22}{}", r.name, line);
-    }
+    survey<iota_start<xoroshiro128plusplus>>("xoroshiro128plusplus", "iota");
+    survey<iota_start<xoroshiro128starstar>>("xoroshiro128starstar", "iota");
+    survey<iota_start<xoroshiro1024plusplus>>("xoroshiro1024plusplus", "iota");
+    survey<iota_start<xoroshiro1024starstar>>("xoroshiro1024starstar", "iota");
+    survey<iota_start<xoshiro128plusplus>>("xoshiro128plusplus", "iota");
+    survey<iota_start<xoshiro128starstar>>("xoshiro128starstar", "iota");
+    survey<iota_start<xoshiro256plusplus>>("xoshiro256plusplus", "iota");
+    survey<iota_start<xoshiro256starstar>>("xoshiro256starstar", "iota");
+    survey<iota_start<xoshiro512plusplus>>("xoshiro512plusplus", "iota");
+    survey<iota_start<xoshiro512starstar>>("xoshiro512starstar", "iota");
+    survey<zero_start<sfc32>>("sfc32", "zero");
+    survey<zero_start<sfc64>>("sfc64", "zero");
+    survey<zero_start<biski64>>("biski64", "zero");
 }
