@@ -153,7 +153,7 @@ print_usage()
 {
     fmt::println("Usage: {} [OPTION]... [PRNG]", program_invocation_short_name);
     fmt::println("Dump random output to stdout.");
-    fmt::println("The default PRNG is {}", default_prng_name);
+    fmt::println("The default PRNG is {}.", default_prng_name);
     fmt::println("");
 
     fmt::println("OPTIONS");
