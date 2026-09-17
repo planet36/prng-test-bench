@@ -30,7 +30,8 @@ DEF_URBG_SUBCLASS(biski64, SINGLE_ARG(std::array<uint64_t, 3>), uint64_t)
 void
 biski64::init()
 {
-    for (int i = 0; i < 16; ++i)
+    constexpr int num_warmup_discards = 16;
+    for (int i = 0; i < num_warmup_discards; ++i)
     {
         next(); // Assumes this function advances the state
     }
