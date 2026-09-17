@@ -2,6 +2,7 @@
 # SPDX-License-Identifier: OSL-3.0
 
 split(" ") |
+if length != 4 then error("expected 4 fields: \(join(" "))") end |
 {
 prng_name: .[0],
 test_ended_at_exp2_bytes: .[1] | tonumber,
