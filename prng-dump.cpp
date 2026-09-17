@@ -3,7 +3,7 @@
 
 /*
 
-gpp -I include $OPTIMIZE_OPTIONS prng-dump.cpp -o prng-dump && d ./prng-dump
+g++ -std=c++26 -O3 -march=native -I include prng-dump.cpp -o prng-dump -lfmt
 
 clear ; ./prng-dump -i | column --table --table-right 2,4,5
 
