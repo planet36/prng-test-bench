@@ -16,7 +16,6 @@ https://www.pcg-random.org/posts/how-to-test-with-practrand.html
 #include "seed_seq.hpp"
 #include "seeds.hpp"
 
-#include <cassert>
 #include <cstddef>
 #include <cstdint>
 #include <cstdio>
@@ -83,6 +82,7 @@ prng_dump(URBG&& gen)
     constexpr size_t buf_size_bytes = 32768;
     constexpr size_t buf_num_elems = buf_size_bytes / sizeof(result_type);
     static_assert(buf_size_bytes % sizeof(result_type) == 0);
+    static_assert(bytes_per_gibibyte % buf_size_bytes == 0);
 
     result_type buf[buf_num_elems] = {0};
 
@@ -101,7 +101,6 @@ prng_dump(URBG&& gen)
     else // limit_bytes > 0
     {
         const size_t num_writes = limit_bytes / buf_size_bytes;
-        assert(limit_bytes % buf_size_bytes == 0);
 
         for (size_t j = 0; j < num_writes; ++j)
         {
