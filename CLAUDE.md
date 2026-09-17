@@ -28,11 +28,14 @@ Only g++ is supported (clang++ is not).  The `fmt` library is required to link.
   lints the headers.
 - `warmup-survey.cpp` is not built by `make`.  Build and run it with
   `g++ -std=c++26 -O2 -march=native -I include warmup-survey.cpp -o warmup-survey && ./warmup-survey`.
-  It checks the warm-up counts (outputs discarded in `init()`), which were picked by eye as
-  the zero-seed outputs that still look empty.  Those counts roughly match discarding outputs
-  until the first one with at least 40% of its bits set.  The warm-ups, and the replacement
-  of an all-zero state with 1, 2, 3, ..., exist because those PRNGs otherwise failed PractRand
-  immediately with the zero seed.
+  For each PRNG with a warm-up (outputs discarded in `init()`), it starts from the state
+  that `init()` has before the warm-up and reports how many outputs look empty.  The
+  warm-ups, and the replacement of an all-zero state with 1, 2, 3, ..., exist because those
+  PRNGs otherwise failed PractRand immediately with the zero seed.  The counts
+  (`num_warmup_discards`) were first picked by eye, and they roughly match discarding outputs
+  until the first one with at least 40% of its bits set.  The survey does not read them, so
+  when a warm-up or a zero-seed fix-up in `init()` changes, rerun it and update the count by
+  hand.  Its list in `main()` must say whether each PRNG starts from zeros or from 1, 2, 3, ....
 
 Working with one PRNG:
 
