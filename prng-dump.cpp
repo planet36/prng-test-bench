@@ -185,7 +185,7 @@ print_usage()
     fmt::println(R"(    If not given, "default" is used.)");
     fmt::println("    SEED_TYPE must be one of the following values:");
     fmt::println(R"(      "d", "def", "default",  (The PRNG is default constructed.))");
-    fmt::println(R"(      "p", "pat", "pattern",  (The PRNG is seeded with bytes of value 0x{:0{}X}.))", seed_pattern_32, sizeof(seed_pattern_32) * 2);
+    fmt::println(R"(      "p", "pat", "pattern",  (The PRNG is seeded with bytes of value 0x{:02X}.))", static_cast<uint8_t>(seed_pattern_32));
     fmt::println(R"(      "r", "rand", "random",  (The PRNG is seeded with bytes of random values.))");
     fmt::println(R"(      "z", "zero",            (The PRNG is seeded with bytes of value 0x00.))");
     fmt::println("");
