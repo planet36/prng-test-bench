@@ -12,10 +12,22 @@
 #pragma once
 
 #include "abstract_urbg_class.hpp"
-#include "xxhprimes.hpp"
 
 #include <bit>
 #include <cstdint>
+
+/// Key for the squares32 and squares64 PRNGs
+/**
+* This is the first key in keys.h from the squares RNG software download (squaresrngv8), where
+* keys.c generated it.  Its upper 8 hex digits are all different, its lower 8 hex digits are all
+* different, its ninth digit differs from its eighth, and none of its digits is 0.
+*
+* The key must be odd, so that multiplying it by the counter reaches all 2^64 values.
+*
+* \sa http://squaresrng.wixsite.com/rand
+* \sa https://arxiv.org/abs/2004.06278
+*/
+inline constexpr uint64_t squares_key = 0xc8e4fd154ce32f6d; // not prime (popcount = 35)
 
 DEF_URBG_SUBCLASS(squares32, uint64_t, uint32_t)
 
@@ -27,7 +39,7 @@ squares32::init()
 squares32::result_type
 squares32::next()
 {
-    constexpr uint64_t key = XXH_PRIME64_1;
+    constexpr uint64_t key = squares_key;
     static_assert(key & 1, "must be odd");
 
     ++s; // (SDW)
@@ -62,7 +74,7 @@ squares64::init()
 squares64::result_type
 squares64::next()
 {
-    constexpr uint64_t key = XXH_PRIME64_1;
+    constexpr uint64_t key = squares_key;
     static_assert(key & 1, "must be odd");
 
     ++s; // (SDW)
