@@ -40,7 +40,7 @@ inline constexpr std::string_view program_license = "MPL-2.0";
 inline constexpr unsigned long long bytes_per_gigabyte = 1000ULL * 1000ULL * 1000ULL;
 inline constexpr unsigned long long bytes_per_gibibyte = 1024ULL * 1024ULL * 1024ULL;
 
-inline constexpr uint32_t seed_pattern_32{0xAAAAAAAA};
+inline constexpr uint32_t seed_pattern_32{UINT32_C(0x01010101) * seed_pattern_byte};
 
 inline constexpr std::string_view default_prng_name{"std::default_random_engine"};
 
@@ -184,7 +184,7 @@ print_usage()
     std::println(R"(    If not given, "default" is used.)");
     std::println("    SEED_TYPE must be one of the following values:");
     std::println(R"(      "d", "def", "default",  (The PRNG is default constructed.  A std engine gets its fixed default seed, and any other PRNG is seeded with random values.))");
-    std::println(R"(      "p", "pat", "pattern",  (The PRNG is seeded with bytes of value 0x{:02X}.))", static_cast<uint8_t>(seed_pattern_32));
+    std::println(R"(      "p", "pat", "pattern",  (The PRNG is seeded with bytes of value 0x{:02X}.))", seed_pattern_byte);
     std::println(R"(      "r", "rand", "random",  (The PRNG is seeded with random values.  For a PRNG not in std, this is the same as "default".))");
     std::println(R"(      "z", "zero",            (The PRNG is seeded with bytes of value 0x00.))");
     std::println("");
