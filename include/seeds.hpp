@@ -11,6 +11,7 @@
 
 #include <random>
 
+/// Return seed bytes for \a URBG that are all 0x00
 template <std::uniform_random_bit_generator URBG>
 constexpr auto
 get_seed_bytes_zero()
@@ -18,6 +19,7 @@ get_seed_bytes_zero()
     return typename URBG::seed_bytes_type{};
 }
 
+/// Return seed bytes for \a URBG that are all 0xAA
 template <std::uniform_random_bit_generator URBG>
 constexpr auto
 get_seed_bytes_pattern()
