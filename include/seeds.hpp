@@ -1,7 +1,7 @@
 // SPDX-FileCopyrightText: Steven Ward
 // SPDX-License-Identifier: MPL-2.0
 
-/// seeds and seed sequences used by the test suite
+/// Seed bytes used by the test suite
 /**
 * \file
 * \author Steven Ward
