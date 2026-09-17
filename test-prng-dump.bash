@@ -107,6 +107,13 @@ TF="$DEFAULT_TF"
 
 TE="$DEFAULT_TE"
 
+if ! is_val_in_array "${TE}" "${VALID_TES[@]}"
+then
+    printf 'Error: Invalid value for TE: %q\n' "$TE" 1>&2
+    printf 'Try "%q -h" for more information.\n' "$SCRIPT_NAME" 1>&2
+    exit 1
+fi
+
 TLMIN="$DEFAULT_TLMIN"
 
 TLMAX="$DEFAULT_TLMAX"
