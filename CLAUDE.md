@@ -30,7 +30,9 @@ Only g++ is supported (clang++ is not).  The `fmt` library is required to link.
   `g++ -std=c++26 -O2 -march=native -I include warmup-survey.cpp -o warmup-survey && ./warmup-survey`.
   It checks the warm-up counts (outputs discarded in `init()`), which were picked by eye as
   the zero-seed outputs that still look empty.  Those counts roughly match discarding outputs
-  until the first one with at least 40% of its bits set.
+  until the first one with at least 40% of its bits set.  The warm-ups, and the replacement
+  of an all-zero state with 1, 2, 3, ..., exist because those PRNGs otherwise failed PractRand
+  immediately with the zero seed.
 
 Working with one PRNG:
 
