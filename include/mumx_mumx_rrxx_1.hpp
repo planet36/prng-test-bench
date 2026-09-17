@@ -38,7 +38,7 @@ mumx_mumx_rrxx_1::next()
     // mumx(x,a) is not bijective, it only has ~64% coverage. Using data parallel execution, in the
     // meantime we calculate the rrx (rotate & rotate & xor & xor):
     //
-    // x ^ std::rotr(x, 25) ^ std::rotr(x ^ b, 47)
+    // x ^ std::rotr(x, 25) ^ std::rotr(x ^ a, 47)
     //
     // So we get two differently mixed results, both are the input to another final mumx operation
     // to mix them to together.
