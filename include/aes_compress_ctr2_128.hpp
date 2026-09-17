@@ -14,8 +14,8 @@
 #include "abstract_urbg_class.hpp"
 #include "mm_cast.hpp"
 #include "sha2_iv.h"
-#include "simd-array.hpp"
 #include "simd_compress.hpp"
+#include "simd_types.hpp"
 
 #include <immintrin.h>
 
@@ -25,7 +25,7 @@
 
 // s[0] is the first state/counter
 // s[1] is the second state/counter
-DEF_URBG_SUBCLASS(aes_compress_ctr2_128, arr_m128i<2>, __uint128_t)
+DEF_URBG_SUBCLASS(aes_compress_ctr2_128, simd_arr_t<2>, __uint128_t)
 
 /// prepare the initial state
 void
@@ -46,7 +46,7 @@ aes_compress_ctr2_128::next()
     * \sa https://en.wikipedia.org/wiki/Weyl_sequence#In_computing
     */
 
-    const arr_m128i<2> inc{
+    const simd_arr_t<2> inc{
         // most significant elem first
         _mm_set_epi64x(SHA_512_H0_1 | 1U, SHA_512_H0_0 | 1U), // NOLINT(cppcoreguidelines-narrowing-conversions)
         _mm_set_epi64x(SHA_512_H0_3 | 1U, SHA_512_H0_2 | 1U), // NOLINT(cppcoreguidelines-narrowing-conversions)

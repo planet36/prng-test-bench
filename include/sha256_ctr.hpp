@@ -13,7 +13,7 @@
 
 #include "abstract_urbg_class.hpp"
 #include "mm_cast.hpp"
-#include "simd-array.hpp"
+#include "simd_types.hpp"
 #include "xxhprimes.hpp"
 
 #include <immintrin.h>
@@ -26,7 +26,7 @@
 * > Note that only the two lower dwords of XMM0 are used by the instruction.
 */
 // NOLINTBEGIN(cppcoreguidelines-narrowing-conversions)
-static const arr_m128i<32> sha256_round_constants{
+static const simd_arr_t<32> sha256_round_constants{
     _mm_setr_epi32(0x428a2f98, 0x71374491, 0, 0), _mm_setr_epi32(0xb5c0fbcf, 0xe9b5dba5, 0, 0),
     _mm_setr_epi32(0x3956c25b, 0x59f111f1, 0, 0), _mm_setr_epi32(0x923f82a4, 0xab1c5ed5, 0, 0),
     _mm_setr_epi32(0xd807aa98, 0x12835b01, 0, 0), _mm_setr_epi32(0x243185be, 0x550c7dc3, 0, 0),

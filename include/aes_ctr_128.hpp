@@ -14,7 +14,7 @@
 #include "abstract_urbg_class.hpp"
 #include "mm_cast.hpp"
 #include "sha2_iv.h"
-#include "simd-array.hpp"
+#include "simd_types.hpp"
 
 #include <immintrin.h>
 
@@ -24,7 +24,7 @@
 
 // s[0] is the state/counter
 // s[1] is the key
-DEF_URBG_SUBCLASS(aes_ctr_128, arr_m128i<2>, __uint128_t)
+DEF_URBG_SUBCLASS(aes_ctr_128, simd_arr_t<2>, __uint128_t)
 
 /// prepare the initial state
 void
