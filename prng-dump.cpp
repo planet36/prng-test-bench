@@ -132,7 +132,7 @@ prng_dump(URBG&& gen)
     }
 }
 
-/// Print the version information.
+/// Print the version information
 void
 print_version()
 {
@@ -141,7 +141,7 @@ print_version()
     fmt::println("Written by {}", program_author);
 }
 
-/// Print the help message.
+/// Print the help message
 void
 print_usage()
 {
@@ -184,7 +184,7 @@ print_usage()
     fmt::println("");
 }
 
-/// Process the command line options.
+/// Process the command line options
 /**
 \param argc the arg count
 \param argv the arg vector
