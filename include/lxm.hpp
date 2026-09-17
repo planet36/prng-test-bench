@@ -71,7 +71,7 @@ lxm::init()
     // must be odd
     s[0] |= 1;
 
-    // both s[2] and s[3] cannot be 0
+    // s[2] and s[3] must not both be 0
     if ((s[2] == 0) && (s[3] == 0))
     {
         const uint64_t v = s[1] + GOLDEN_RATIO_64;
