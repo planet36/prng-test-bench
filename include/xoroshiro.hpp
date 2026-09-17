@@ -159,7 +159,20 @@ xoroshiro128starstar::next()
  * 64-bit seed, we suggest to seed a splitmix64 generator and use its output to
  * fill s.
  */
-DEF_URBG_SUBCLASS(xoroshiro1024plusplus, SINGLE_ARG(std::array<uint64_t, 16>), uint64_t)
+struct xoroshiro1024plusplus final : public AbstractURBG<std::array<uint64_t, 16>, uint64_t>
+{
+protected:
+    unsigned int p{};
+
+    inline void init();
+
+public:
+    xoroshiro1024plusplus() { init(); }
+    explicit xoroshiro1024plusplus(const state_type& new_s) : AbstractURBG(new_s) { init(); }
+    explicit xoroshiro1024plusplus(const seed_bytes_type& bytes) : AbstractURBG(bytes) { init(); }
+    inline result_type next() override;
+};
+static_assert(std::uniform_random_bit_generator<xoroshiro1024plusplus>);
 
 /// prepare the initial state
 void
@@ -182,7 +195,6 @@ xoroshiro1024plusplus::init()
 xoroshiro1024plusplus::result_type
 xoroshiro1024plusplus::next()
 {
-    static unsigned int p{};
     const auto q = p;
     p = (p + 1) % s.size();
     const auto s0 = s[p];
@@ -208,7 +220,20 @@ xoroshiro1024plusplus::next()
  * 64-bit seed, we suggest to seed a splitmix64 generator and use its output to
  * fill s.
  */
-DEF_URBG_SUBCLASS(xoroshiro1024starstar, SINGLE_ARG(std::array<uint64_t, 16>), uint64_t)
+struct xoroshiro1024starstar final : public AbstractURBG<std::array<uint64_t, 16>, uint64_t>
+{
+protected:
+    unsigned int p{};
+
+    inline void init();
+
+public:
+    xoroshiro1024starstar() { init(); }
+    explicit xoroshiro1024starstar(const state_type& new_s) : AbstractURBG(new_s) { init(); }
+    explicit xoroshiro1024starstar(const seed_bytes_type& bytes) : AbstractURBG(bytes) { init(); }
+    inline result_type next() override;
+};
+static_assert(std::uniform_random_bit_generator<xoroshiro1024starstar>);
 
 /// prepare the initial state
 void
@@ -231,7 +256,6 @@ xoroshiro1024starstar::init()
 xoroshiro1024starstar::result_type
 xoroshiro1024starstar::next()
 {
-    static unsigned int p{};
     const auto q = p;
     p = (p + 1) % s.size();
     const auto s0 = s[p];
