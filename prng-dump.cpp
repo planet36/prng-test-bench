@@ -17,9 +17,15 @@ https://www.pcg-random.org/posts/how-to-test-with-practrand.html
 #include "seeds.hpp"
 
 #include <cassert>
+#include <cstddef>
 #include <cstdint>
+#include <cstdio>
+#include <cstdlib>
 #include <err.h>
+#include <errno.h>
+#include <limits>
 #include <random>
+#include <stdexcept>
 #include <string>
 #include <string_view>
 #include <unistd.h>
