@@ -8,7 +8,7 @@
 
 __author__ = 'Steven Ward'
 __license__ = 'OSL-3.0'
-__version__ = '2026-09-16'
+__version__ = '2026-09-17'
 
 import argparse
 import json
