@@ -35,6 +35,6 @@ mcg128::next()
     static_assert(M & 1, "must be odd");
 
     s *= M;
-    s += M;
+    s += M; // (SDW)
     return s >> 64;
 }
