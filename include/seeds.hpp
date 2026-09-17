@@ -17,8 +17,8 @@ template <std::uniform_random_bit_generator URBG>
 constexpr auto
 get_seed_bytes_zero()
 {
-    constexpr auto num_seed_bytes = sizeof(typename URBG::seed_bytes_type);
-    return std::array<uint8_t, num_seed_bytes>{};
+    typename URBG::seed_bytes_type bytes{};
+    return bytes;
 }
 
 template <std::uniform_random_bit_generator URBG>
