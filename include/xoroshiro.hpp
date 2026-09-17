@@ -86,7 +86,8 @@ xoroshiro128plusplus::init()
         }
     }
 
-    for (int i = 0; i < 3; ++i)
+    constexpr int num_warmup_discards = 3;
+    for (int i = 0; i < num_warmup_discards; ++i)
     {
         (void)next();
     }
@@ -135,7 +136,8 @@ xoroshiro128starstar::init()
         }
     }
 
-    for (int i = 0; i < 4; ++i)
+    constexpr int num_warmup_discards = 4;
+    for (int i = 0; i < num_warmup_discards; ++i)
     {
         (void)next();
     }
@@ -198,7 +200,8 @@ xoroshiro1024plusplus::init()
         }
     }
 
-    for (int i = 0; i < 8; ++i)
+    constexpr int num_warmup_discards = 8;
+    for (int i = 0; i < num_warmup_discards; ++i)
     {
         (void)next();
     }
@@ -263,7 +266,8 @@ xoroshiro1024starstar::init()
         }
     }
 
-    for (int i = 0; i < 22; ++i)
+    constexpr int num_warmup_discards = 22;
+    for (int i = 0; i < num_warmup_discards; ++i)
     {
         (void)next();
     }
