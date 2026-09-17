@@ -184,9 +184,9 @@ print_usage()
     fmt::println("    Specify the type of seed to be used.");
     fmt::println(R"(    If not given, "default" is used.)");
     fmt::println("    SEED_TYPE must be one of the following values:");
-    fmt::println(R"(      "d", "def", "default",  (The PRNG is default constructed.))");
+    fmt::println(R"(      "d", "def", "default",  (The PRNG is default constructed.  A std engine gets its fixed default seed, and any other PRNG is seeded with random values.))");
     fmt::println(R"(      "p", "pat", "pattern",  (The PRNG is seeded with bytes of value 0x{:02X}.))", static_cast<uint8_t>(seed_pattern_32));
-    fmt::println(R"(      "r", "rand", "random",  (The PRNG is seeded with bytes of random values.))");
+    fmt::println(R"(      "r", "rand", "random",  (The PRNG is seeded with random values.  For a PRNG not in std, this is the same as "default".))");
     fmt::println(R"(      "z", "zero",            (The PRNG is seeded with bytes of value 0x00.))");
     fmt::println("");
 }
