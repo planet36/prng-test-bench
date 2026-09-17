@@ -9,6 +9,8 @@
 
 #pragma once
 
+#if defined(__AES__)
+
 #include "abstract_urbg_class.hpp"
 #include "mm_cast.hpp"
 #include "sha2_iv.h"
@@ -55,3 +57,9 @@ aes_compress_ctr2_128::next()
 
     return uint128_from_m128i(simd_compress_aes_enc_r4(s[0], s[1]));
 }
+
+#else
+
+#warning "__AES__ not defined"
+
+#endif

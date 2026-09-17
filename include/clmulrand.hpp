@@ -12,6 +12,8 @@
 
 #pragma once
 
+#if defined(__PCLMUL__)
+
 #include "abstract_urbg_class.hpp"
 #include "clmum.hpp"
 #include "xxhprimes.hpp"
@@ -36,3 +38,9 @@ clmulrand::next()
     s = _mm_add_epi64(s, inc);
     return clmums(s);
 }
+
+#else
+
+#warning "__PCLMUL__ not defined"
+
+#endif
