@@ -10,11 +10,6 @@ with counts derived from three measurements of the zero-seed sequence.
 
 */
 
-// The PRNG classes are final, and deriving from them is the only way to watch the calls that
-// init makes to next and to rewind their state.  Keep this define out of every other program.
-#pragma GCC diagnostic ignored "-Wkeyword-macro"
-#define final
-
 #include "prng.hpp"
 
 #include <algorithm>
