@@ -31,6 +31,10 @@
 DEF_URBG_SUBCLASS(xoshiro128plusplus, SINGLE_ARG(std::array<uint32_t, 4>), uint32_t)
 
 /// prepare the initial state
+/**
+* The warm-up discards the zero-seed outputs that still have mostly zero bits (found
+* empirically).
+*/
 void
 xoshiro128plusplus::init()
 {
@@ -81,6 +85,10 @@ xoshiro128plusplus::next()
 DEF_URBG_SUBCLASS(xoshiro128starstar, SINGLE_ARG(std::array<uint32_t, 4>), uint32_t)
 
 /// prepare the initial state
+/**
+* The warm-up discards the zero-seed outputs that still have mostly zero bits (found
+* empirically).
+*/
 void
 xoshiro128starstar::init()
 {
@@ -129,6 +137,10 @@ xoshiro128starstar::next()
 DEF_URBG_SUBCLASS(xoshiro256plusplus, SINGLE_ARG(std::array<uint64_t, 4>), uint64_t)
 
 /// prepare the initial state
+/**
+* The warm-up discards the zero-seed outputs that still have mostly zero bits (found
+* empirically).
+*/
 void
 xoshiro256plusplus::init()
 {
@@ -140,7 +152,7 @@ xoshiro256plusplus::init()
         }
     }
 
-    for (int i = 0; i < 4; ++i)
+    for (int i = 0; i < 5; ++i)
     {
         (void)next();
     }
@@ -177,6 +189,10 @@ xoshiro256plusplus::next()
 DEF_URBG_SUBCLASS(xoshiro256starstar, SINGLE_ARG(std::array<uint64_t, 4>), uint64_t)
 
 /// prepare the initial state
+/**
+* The warm-up discards the zero-seed outputs that still have mostly zero bits (found
+* empirically).
+*/
 void
 xoshiro256starstar::init()
 {
@@ -225,6 +241,10 @@ xoshiro256starstar::next()
 DEF_URBG_SUBCLASS(xoshiro512plusplus, SINGLE_ARG(std::array<uint64_t, 8>), uint64_t)
 
 /// prepare the initial state
+/**
+* The warm-up discards the zero-seed outputs that still have mostly zero bits (found
+* empirically).
+*/
 void
 xoshiro512plusplus::init()
 {
@@ -278,6 +298,10 @@ xoshiro512plusplus::next()
 DEF_URBG_SUBCLASS(xoshiro512starstar, SINGLE_ARG(std::array<uint64_t, 8>), uint64_t)
 
 /// prepare the initial state
+/**
+* The warm-up discards the zero-seed outputs that still have mostly zero bits (found
+* empirically).
+*/
 void
 xoshiro512starstar::init()
 {
