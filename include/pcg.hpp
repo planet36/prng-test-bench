@@ -75,6 +75,13 @@ pcg32::next()
 }
 
 /// PCG-XSH-RS
+/**
+* This is \c oneseq_xsh_rs_64_32 in pcg-cpp, which adds an increment.  The \c pcg32_fast in
+* pcg-cpp is \c mcg_xsh_rs_64_32, which does not.
+*
+* \sa https://github.com/imneme/pcg-cpp/blob/master/include/pcg_random.hpp#L1619
+* \sa https://github.com/imneme/pcg-cpp/blob/master/include/pcg_random.hpp#L1869
+*/
 DEF_URBG_SUBCLASS(pcg32_fast, uint64_t, uint32_t)
 
 /// prepare the initial state
