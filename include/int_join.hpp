@@ -14,6 +14,7 @@
 #include <array>
 #include <bit>
 #include <concepts>
+#include <utility>
 
 template <std::unsigned_integral T>
 constexpr auto
@@ -26,5 +27,5 @@ int_join(const T hi, const T lo)
     else if constexpr (std::endian::native == std::endian::big)
         return std::bit_cast<T2>(std::array<T, 2>{hi, lo});
     else // mixed endian
-        __builtin_unreachable();
+        std::unreachable();
 }
