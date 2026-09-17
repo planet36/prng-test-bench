@@ -3,6 +3,9 @@
 
 """Plot PractRand endurance against throughput from a prng-results JSON file."""
 
+# The module name comes from the file name, which has a hyphen.
+# pylint: disable=invalid-name
+
 __author__ = 'Steven Ward'
 __license__ = 'OSL-3.0'
 __version__ = '2026-09-16'
