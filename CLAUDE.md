@@ -26,6 +26,11 @@ Only g++ is supported (clang++ is not).  The `fmt` library is required to link.
 - `make -C include` compiles each header standalone (as `-Werror`) to check that it is
   self-contained; `make -C include wyrand.o` checks one header, and `make -C include lint`
   lints the headers.
+- `warmup-survey.cpp` is not built by `make`.  Build and run it with
+  `g++ -std=c++26 -O2 -march=native -I include warmup-survey.cpp -o warmup-survey && ./warmup-survey`.
+  It checks the warm-up counts (outputs discarded in `init()`), which were picked by eye as
+  the zero-seed outputs that still look empty.  Those counts roughly match discarding outputs
+  until the first one with at least 40% of its bits set.
 
 Working with one PRNG:
 
