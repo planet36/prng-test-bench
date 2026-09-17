@@ -342,7 +342,6 @@ if (prng_name == #NAME) { \
     CONDITIONAL_DUMP_MINE(lxm                   )
     CONDITIONAL_DUMP_MINE(mcg128                )
     CONDITIONAL_DUMP_MINE(moremur               )
-    CONDITIONAL_DUMP_MINE(MRG32k3a              )
     CONDITIONAL_DUMP_MINE(msws32                )
     CONDITIONAL_DUMP_MINE(msws64                )
     CONDITIONAL_DUMP_MINE(mumx_ctr2             )
@@ -379,6 +378,7 @@ if (prng_name == #NAME) { \
     CONDITIONAL_DUMP_MINE(splitxix33            )
     CONDITIONAL_DUMP_MINE(squares32             )
     CONDITIONAL_DUMP_MINE(squares64             )
+    CONDITIONAL_DUMP_MINE(staffordMix13         )
     CONDITIONAL_DUMP_MINE(stc_crand32           )
     CONDITIONAL_DUMP_MINE(stc_crand64           )
     CONDITIONAL_DUMP_MINE(ttwanghash64          )
@@ -409,7 +409,6 @@ if (prng_name == #NAME) { \
 
 Output:
 
-MRG32k3a                     64  0                     18446744073709551615     8
 aes_compress_ctr2_128       128  0  340282366920938463463374607431768211455    32
 aes_ctr_128                 128  0  340282366920938463463374607431768211455    32
 biski64                      64  0                     18446744073709551615    24
@@ -463,6 +462,7 @@ splitmix64                   64  0                     18446744073709551615     
 splitxix33                   64  0                     18446744073709551615     8
 squares32                    32  0                               4294967295     8
 squares64                    64  0                     18446744073709551615     8
+staffordMix13                64  0                     18446744073709551615     8
 stc_crand32                  32  0                               4294967295    16
 stc_crand64                  64  0                     18446744073709551615    32
 std::default_random_engine   64  1                               2147483646     8

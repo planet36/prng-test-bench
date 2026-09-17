@@ -1,11 +1,15 @@
 // SPDX-FileCopyrightText: Steven Ward
 // SPDX-License-Identifier: MPL-2.0
 
-/// MRG32k3a PRNG
+/// staffordMix13 PRNG
 /**
 * \file
 * \author Steven Ward
+*
+* The mixing function comes from the code that seeds MRG32k3a.
+*
 * \sa https://github.com/vigna/MRG32k3a/blob/master/MRG32k3a.c
+* \sa http://zimbry.blogspot.com/2011/09/better-bit-mixing-improving-on.html
 */
 
 #pragma once
@@ -15,15 +19,15 @@
 
 #include <cstdint>
 
-DEF_URBG_SUBCLASS(MRG32k3a, uint64_t, uint64_t)
+DEF_URBG_SUBCLASS(staffordMix13, uint64_t, uint64_t)
 
 /// prepare the initial state
 void
-MRG32k3a::init()
+staffordMix13::init()
 {}
 
-MRG32k3a::result_type
-MRG32k3a::next()
+staffordMix13::result_type
+staffordMix13::next()
 {
     constexpr uint64_t inc = XXH_PRIME64_1; // inc=1 yields failures
     static_assert(inc & 1, "must be odd");

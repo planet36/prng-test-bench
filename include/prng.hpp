@@ -9,7 +9,6 @@
 
 #pragma once
 
-#include "MRG32k3a.hpp"
 #include "aes_compress_ctr2_128.hpp"
 #include "aes_ctr_128.hpp"
 #include "biski64.hpp"
@@ -46,6 +45,7 @@
 #include "splitmix.hpp"
 #include "splitxix33.hpp"
 #include "squares.hpp"
+#include "staffordMix13.hpp"
 #include "stc_crand.hpp"
 #include "ttwanghash64.hpp"
 #include "wyrand.hpp"
@@ -144,7 +144,6 @@ const std::map<std::string, prng_info_t> prng_name_to_info{
     CREATE_PRNG_INFO_MAP_ENTRY(lxm                   ),
     CREATE_PRNG_INFO_MAP_ENTRY(mcg128                ),
     CREATE_PRNG_INFO_MAP_ENTRY(moremur               ),
-    CREATE_PRNG_INFO_MAP_ENTRY(MRG32k3a              ),
     CREATE_PRNG_INFO_MAP_ENTRY(msws32                ),
     CREATE_PRNG_INFO_MAP_ENTRY(msws64                ),
     CREATE_PRNG_INFO_MAP_ENTRY(mumx_ctr2             ),
@@ -181,6 +180,7 @@ const std::map<std::string, prng_info_t> prng_name_to_info{
     CREATE_PRNG_INFO_MAP_ENTRY(splitxix33            ),
     CREATE_PRNG_INFO_MAP_ENTRY(squares32             ),
     CREATE_PRNG_INFO_MAP_ENTRY(squares64             ),
+    CREATE_PRNG_INFO_MAP_ENTRY(staffordMix13         ),
     CREATE_PRNG_INFO_MAP_ENTRY(stc_crand32           ),
     CREATE_PRNG_INFO_MAP_ENTRY(stc_crand64           ),
     CREATE_PRNG_INFO_MAP_ENTRY(ttwanghash64          ),
