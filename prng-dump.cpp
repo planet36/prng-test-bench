@@ -33,8 +33,6 @@ https://www.pcg-random.org/posts/how-to-test-with-practrand.html
 
 #include <fmt/format.h>
 
-#define nl (void)putchar('\n')
-
 inline constexpr std::string_view program_author = "Steven Ward";
 inline constexpr std::string_view program_version = "2026-09-16";
 inline constexpr std::string_view program_license = "MPL-2.0";
@@ -145,30 +143,30 @@ print_usage()
     fmt::println("Usage: {} [OPTION]... PRNG", program_invocation_short_name);
     fmt::println("Dump random output to stdout.");
     fmt::println("The default PRNG is {}", default_prng_name);
-    nl;
+    fmt::println("");
 
     fmt::println("OPTIONS");
-    nl;
+    fmt::println("");
 
     fmt::println("-V");
     fmt::println("    Print the version information, then exit.");
-    nl;
+    fmt::println("");
 
     fmt::println("-h");
     fmt::println("    Print this message, then exit.");
-    nl;
+    fmt::println("");
 
     fmt::println("-v");
     fmt::println("    Print diagnostics.");
-    nl;
+    fmt::println("");
 
     fmt::println("-i");
     fmt::println("    Print information about the available PRNGs, then exit.");
-    nl;
+    fmt::println("");
 
     fmt::println("-l  MAX");
     fmt::println("    Limit the output to no more than MAX gibibytes.");
-    nl;
+    fmt::println("");
 
     fmt::println("-s  SEED_TYPE");
     fmt::println("    Specify the type of seed to be used.");
@@ -178,7 +176,7 @@ print_usage()
     fmt::println(R"(      "p", "pat", "pattern",  (The PRNG is seeded with bytes of value 0x{:0{}X}.))", seed_pattern_32, sizeof(seed_pattern_32) * 2);
     fmt::println(R"(      "r", "rand", "random",  (The PRNG is seeded with bytes of random values.))");
     fmt::println(R"(      "z", "zero",            (The PRNG is seeded with bytes of value 0x00.))");
-    nl;
+    fmt::println("");
 }
 
 /// Process the command line options.
