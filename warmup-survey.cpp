@@ -23,6 +23,7 @@ with counts derived from three measurements of the zero-seed sequence.
 #include <climits>
 #include <cmath>
 #include <concepts>
+#include <cstdio>
 #include <cstdlib>
 #include <format>
 #include <print>
@@ -55,6 +56,7 @@ struct rewound : G
     using state_type = typename G::state_type;
     using result_type = typename G::result_type;
 
+    /// Construct from a zero seed, so init runs its warm-up
     rewound() : G(state_type{}) {}
 
     /// Replace the state, and reset any other member that the warm-up advanced
@@ -70,6 +72,16 @@ struct rewound : G
     state() const
     {
         return this->s;
+    }
+
+    /// Return whether the state, and any other member that the warm-up advanced, are equal
+    [[nodiscard]] bool
+    same_as(const rewound& other) const
+    {
+        bool same = this->s == other.s;
+        if constexpr (requires { this->p; })
+            same = same && (this->p == other.p);
+        return same;
     }
 };
 
@@ -102,14 +114,41 @@ pre_warmup_state(bool zero_fix_is_iota)
     return s;
 }
 
+/// The number of outputs that init discards when the seed is all zero
+/**
+* A PRNG constructed from a zero seed has already run its warm-up.  A copy started from the
+* pre-warm-up state is advanced until its state matches, and the number of calls that takes is
+* the warm-up count.
+*/
+template <typename G>
+[[nodiscard]] int
+warmup_count(const typename G::state_type& start)
+{
+    constexpr int max_warmup = 1000;
+
+    const rewound<G> warmed;
+    rewound<G> g;
+    g.set_state(start);
+    for (int calls = 0; calls <= max_warmup; ++calls)
+    {
+        if (g.same_as(warmed))
+            return calls;
+        (void)g();
+    }
+
+    std::println(stderr, "The state after the warm-up was not reached within {} calls.",
+                 max_warmup);
+    std::exit(EXIT_FAILURE);
+}
+
 template <typename G>
 [[nodiscard]] survey_result
-survey(std::string_view name, int warmup, bool zero_fix_is_iota, bool from_upstream = false)
+survey(std::string_view name, bool zero_fix_is_iota, bool from_upstream = false)
 {
-    survey_result r{std::string(name), warmup, from_upstream, {}, {}, {}};
-
     const auto start = pre_warmup_state<G>(zero_fix_is_iota);
     const int rbits = sizeof(typename G::result_type) * CHAR_BIT;
+
+    survey_result r{std::string(name), warmup_count<G>(start), from_upstream, {}, {}, {}};
 
     rewound<G> g;
     g.set_state(start);
@@ -187,19 +226,19 @@ int
 main()
 {
     const std::vector<survey_result> results{
-        survey<xoroshiro128plusplus>("xoroshiro128plusplus", 3, true),
-        survey<xoroshiro128starstar>("xoroshiro128starstar", 4, true),
-        survey<xoroshiro1024plusplus>("xoroshiro1024plusplus", 8, true),
-        survey<xoroshiro1024starstar>("xoroshiro1024starstar", 22, true),
-        survey<xoshiro128plusplus>("xoshiro128plusplus", 4, true),
-        survey<xoshiro128starstar>("xoshiro128starstar", 4, true),
-        survey<xoshiro256plusplus>("xoshiro256plusplus", 5, true),
-        survey<xoshiro256starstar>("xoshiro256starstar", 6, true),
-        survey<xoshiro512plusplus>("xoshiro512plusplus", 8, true),
-        survey<xoshiro512starstar>("xoshiro512starstar", 8, true),
-        survey<sfc32>("sfc32", 6, false),
-        survey<sfc64>("sfc64", 9, false),
-        survey<biski64>("biski64", 16, false, true),
+        survey<xoroshiro128plusplus>("xoroshiro128plusplus", true),
+        survey<xoroshiro128starstar>("xoroshiro128starstar", true),
+        survey<xoroshiro1024plusplus>("xoroshiro1024plusplus", true),
+        survey<xoroshiro1024starstar>("xoroshiro1024starstar", true),
+        survey<xoshiro128plusplus>("xoshiro128plusplus", true),
+        survey<xoshiro128starstar>("xoshiro128starstar", true),
+        survey<xoshiro256plusplus>("xoshiro256plusplus", true),
+        survey<xoshiro256starstar>("xoshiro256starstar", true),
+        survey<xoshiro512plusplus>("xoshiro512plusplus", true),
+        survey<xoshiro512starstar>("xoshiro512starstar", true),
+        survey<sfc32>("sfc32", false),
+        survey<sfc64>("sfc64", false),
+        survey<biski64>("biski64", false, true),
     };
 
     struct named_fit
