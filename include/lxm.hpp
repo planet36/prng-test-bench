@@ -19,7 +19,7 @@
 #include <cstdint>
 #include <random>
 
-namespace
+namespace lxm_mix
 {
 
 // MurmurHash3
@@ -75,8 +75,8 @@ lxm::init()
     if ((s[2] == 0) && (s[3] == 0))
     {
         const uint64_t v = s[1] + GOLDEN_RATIO_64;
-        s[2] = mix_stafford13(v);
-        s[3] = mix_stafford13(v + GOLDEN_RATIO_64);
+        s[2] = lxm_mix::mix_stafford13(v);
+        s[3] = lxm_mix::mix_stafford13(v + GOLDEN_RATIO_64);
     }
 }
 
@@ -87,7 +87,7 @@ lxm::next()
     static_assert((M & 1) != 0, "must be odd");
 
     // Mixing function (lea64)
-    const uint64_t z = mix_lea(s[1] + s[2]);
+    const uint64_t z = lxm_mix::mix_lea(s[1] + s[2]);
 
     // Update the LCG subgenerator
     s[1] = M * s[1] + s[0];
