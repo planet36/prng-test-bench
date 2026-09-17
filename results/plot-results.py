@@ -3,7 +3,7 @@
 
 __author__ = 'Steven Ward'
 __license__ = 'OSL-3.0'
-__version__ = '2025-04-02'
+__version__ = '2026-09-16'
 
 import json
 import sys
