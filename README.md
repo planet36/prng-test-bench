@@ -24,7 +24,7 @@ The following libraries are required to build:
 
 The following programs are required to run:
 - [hyperfine](https://github.com/sharkdp/hyperfine)
-- [jq](https://github.com/jqlang/jq)
+- [jq](https://github.com/jqlang/jq) 1.8.0 or later
 - [parallel](https://www.gnu.org/software/parallel/)
 - [PractRand](https://github.com/planet36/PractRand)
 - See [Makefile](Makefile) for detailed list
