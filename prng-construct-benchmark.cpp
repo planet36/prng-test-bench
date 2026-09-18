@@ -20,7 +20,7 @@ BM_prng_construct_std(benchmark::State& BM_state)
 {
     // Perform setup here
 
-    URBG gen{};
+    URBG gen{}; // NOLINT(bugprone-random-generator-seed,cert-msc32-c,cert-msc51-cpp)
 
     for (auto _ : BM_state) // NOLINT(clang-analyzer-deadcode.DeadStores)
     {

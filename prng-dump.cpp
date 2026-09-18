@@ -322,18 +322,18 @@ if (prng_name == #NAME) { \
 }
 
     // <random>
-    CONDITIONAL_DUMP_STD(std::default_random_engine)
-    CONDITIONAL_DUMP_STD(std::knuth_b              )
-    CONDITIONAL_DUMP_STD(std::minstd_rand          )
-    CONDITIONAL_DUMP_STD(std::minstd_rand0         )
-    CONDITIONAL_DUMP_STD(std::mt19937              )
-    CONDITIONAL_DUMP_STD(std::mt19937_64           )
-    CONDITIONAL_DUMP_STD(std::philox4x32           )
-    CONDITIONAL_DUMP_STD(std::philox4x64           )
-    CONDITIONAL_DUMP_STD(std::ranlux24             )
-    CONDITIONAL_DUMP_STD(std::ranlux24_base        )
-    CONDITIONAL_DUMP_STD(std::ranlux48             )
-    CONDITIONAL_DUMP_STD(std::ranlux48_base        )
+    CONDITIONAL_DUMP_STD(std::default_random_engine) // NOLINT(bugprone-random-generator-seed,cert-msc32-c,cert-msc51-cpp)
+    CONDITIONAL_DUMP_STD(std::knuth_b              ) // NOLINT(bugprone-random-generator-seed,cert-msc32-c,cert-msc51-cpp)
+    CONDITIONAL_DUMP_STD(std::minstd_rand          ) // NOLINT(bugprone-random-generator-seed,cert-msc32-c,cert-msc51-cpp)
+    CONDITIONAL_DUMP_STD(std::minstd_rand0         ) // NOLINT(bugprone-random-generator-seed,cert-msc32-c,cert-msc51-cpp)
+    CONDITIONAL_DUMP_STD(std::mt19937              ) // NOLINT(bugprone-random-generator-seed,cert-msc32-c,cert-msc51-cpp)
+    CONDITIONAL_DUMP_STD(std::mt19937_64           ) // NOLINT(bugprone-random-generator-seed,cert-msc32-c,cert-msc51-cpp)
+    CONDITIONAL_DUMP_STD(std::philox4x32           ) // NOLINT(bugprone-random-generator-seed,cert-msc32-c,cert-msc51-cpp)
+    CONDITIONAL_DUMP_STD(std::philox4x64           ) // NOLINT(bugprone-random-generator-seed,cert-msc32-c,cert-msc51-cpp)
+    CONDITIONAL_DUMP_STD(std::ranlux24             ) // NOLINT(bugprone-random-generator-seed,cert-msc32-c,cert-msc51-cpp)
+    CONDITIONAL_DUMP_STD(std::ranlux24_base        ) // NOLINT(bugprone-random-generator-seed,cert-msc32-c,cert-msc51-cpp)
+    CONDITIONAL_DUMP_STD(std::ranlux48             ) // NOLINT(bugprone-random-generator-seed,cert-msc32-c,cert-msc51-cpp)
+    CONDITIONAL_DUMP_STD(std::ranlux48_base        ) // NOLINT(bugprone-random-generator-seed,cert-msc32-c,cert-msc51-cpp)
 
     // mine
 #if defined(__AES__)
