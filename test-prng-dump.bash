@@ -60,7 +60,7 @@ Test prng-dump with RNG_test.  If PRNGs are not given, they are all tested.
 
 Run "./prng-dump -i" to list all PRNGs.
 
-The prng-bench target must be run before this script for benchmark analysis to be done.
+The "benchmark" target must be run before this script for benchmark analysis to be done.
 
 OPTIONS
 
@@ -331,21 +331,21 @@ fi
 
 # Conclusion: no need to run random seed tests for simple failures
 
-if [[ ! -f prng-bench.txt ]]
+if [[ ! -f prng-next-benchmark.txt ]]
 then
-    printf 'Warning: prng-bench output file not found\n' 1>&2
+    printf 'Warning: prng-next-benchmark.txt output file not found\n' 1>&2
     printf 'Try "%q -h" for more information.\n' "$SCRIPT_NAME" 1>&2
     exit 0
 fi
 
 echo
 echo "# Performance all:"
-sort -r -k 2 -g prng-bench.txt | column --table || exit
+sort -r -k 2 -g prng-next-benchmark.txt | column --table || exit
 echo
 
 {
 printf 'q1\tmean\tmedian\tq3\tiqr\n'
-datamash --whitespace --format '%.2f' q1 2 mean 2 median 2 q3 2 iqr 2 < prng-bench.txt || exit
+datamash --whitespace --format '%.2f' q1 2 mean 2 median 2 q3 2 iqr 2 < prng-next-benchmark.txt || exit
 } | column --table
 echo
 
@@ -356,13 +356,13 @@ do
     OUTFILE_STEM="prng-results.tlmax-$TLMAX.seed-$SEED_TYPE"
 
     echo "# Performance good (seed $SEED_TYPE):"
-    grep --no-filename -w -E "$(paste -s -d '|' < "$OUTFILE_STEM.names.good.txt")" prng-bench.txt |
+    grep --no-filename -w -E "$(paste -s -d '|' < "$OUTFILE_STEM.names.good.txt")" prng-next-benchmark.txt |
         sort -r -k 2 -g | column --table || exit
     echo
 
     {
     printf 'q1\tmean\tmedian\tq3\tiqr\n'
-    grep --no-filename -w -E "$(paste -s -d '|' < "$OUTFILE_STEM.names.good.txt")" prng-bench.txt |
+    grep --no-filename -w -E "$(paste -s -d '|' < "$OUTFILE_STEM.names.good.txt")" prng-next-benchmark.txt |
         datamash --whitespace --format '%.2f' q1 2 mean 2 median 2 q3 2 iqr 2 || exit
     } | column --table
     echo
@@ -399,7 +399,7 @@ do
         printf "%s\t%s\t%s\n" "$PRNG" "$BYTES" "$FAILURE"
     done < "$OUTFILE_STEM.files.failed.txt" >> "$TMP_FILE"
 
-    join -j 1 <(LC_ALL=C sort -k1 "$TMP_FILE") <(LC_ALL=C sort -k1 prng-bench.txt) |
+    join -j 1 <(LC_ALL=C sort -k1 "$TMP_FILE") <(LC_ALL=C sort -k1 prng-next-benchmark.txt) |
         jq -R -f filter.jq | jq -s > "$OUTFILE_STEM.json"
 
     rm -f -- "$TMP_FILE"

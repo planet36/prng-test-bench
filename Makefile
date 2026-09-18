@@ -96,13 +96,13 @@ prng-bench: prng-dump | $(OUTPUT_DIR)
 	sort -r -k 2 -g -- $(OUTPUT_DIR)/$@.txt | column --table
 
 # Takes about 10 mins
-short-test: prng-dump prng-bench | $(OUTPUT_DIR)
+short-test: prng-dump benchmark | $(OUTPUT_DIR)
 	bash test-prng-dump.bash -j $(J_SHORT) -f $(TF_SHORT) -m $(TLMAX_SHORT) \
 		-s default -s pattern -s random -s zero \
 		&> $(OUTPUT_DIR)/prng-results.tlmax-$(TLMAX_SHORT).summary.txt
 
 # Takes about 23.8 hrs (random)
-long-test: prng-dump prng-bench | $(OUTPUT_DIR)
+long-test: prng-dump benchmark | $(OUTPUT_DIR)
 	bash test-prng-dump.bash -j $(J_LONG) -f $(TF_LONG) -m $(TLMAX_LONG) \
 		-s random \
 		&> $(OUTPUT_DIR)/prng-results.tlmax-$(TLMAX_LONG).summary.txt
@@ -111,7 +111,7 @@ long-test: prng-dump prng-bench | $(OUTPUT_DIR)
 # except they pass the dry-run option to the shell script.
 # Their purpose is to update the prng-results files with newer benchmark data
 # without running the lengthy tests.
-# The "prng-bench" target should have already been run, but it's not an explicit
+# The "benchmark" target should have already been run, but it's not an explicit
 # pre-requisite.
 
 update-short-test: prng-dump | $(OUTPUT_DIR)
