@@ -5,7 +5,6 @@ export LC_ALL = C
 
 # https://how.wtf/check-if-a-program-exists-from-a-makefile.html
 REQUIRED_BINS := \
-awk \
 bash \
 cat \
 column \
@@ -13,7 +12,6 @@ datamash \
 diff \
 g++ \
 grep \
-hyperfine \
 join \
 jq \
 mkdir \
@@ -80,21 +78,6 @@ $(BINS): prng-% : prng-%.cpp
 benchmark: $(BINS) | $(OUTPUT_DIR)
 	bash run-benchmarks.bash
 
-prng-bench: prng-dump | $(OUTPUT_DIR)
-	@# Write 1 GiB of random data
-	hyperfine \
-		--shell=none \
-		--export-csv $(OUTPUT_DIR)/$@.csv \
-		--parameter-list NAME \
-		$(shell ./$< -i | cut -f 1 | paste -s -d,) \
-		'./$< -l 1 {NAME}'
-
-	@# Convert from s/GiB to GiB/s
-	awk -F, 'NR>1{print $$9, 1.0/$$4}' $(OUTPUT_DIR)/$@.csv > $(OUTPUT_DIR)/$@.txt
-
-	# (column 2 is GiB/s)
-	sort -r -k 2 -g -- $(OUTPUT_DIR)/$@.txt | column --table
-
 # Takes about 10 mins
 short-test: prng-dump benchmark | $(OUTPUT_DIR)
 	bash test-prng-dump.bash -j $(J_SHORT) -f $(TF_SHORT) -m $(TLMAX_SHORT) \
@@ -134,7 +117,7 @@ lint:
 	-clang-tidy --quiet $(SRCS) -- $(CPPFLAGS) $(CXXFLAGS)
 
 # https://www.gnu.org/software/make/manual/make.html#Phony-Targets
-.PHONY: all benchmark prng-bench short-test long-test update-short-test update-long-test clean lint
+.PHONY: all benchmark short-test long-test update-short-test update-long-test clean lint
 
 # https://www.gnu.org/software/make/manual/html_node/Special-Targets.html#index-removing-targets-on-failure
 .DELETE_ON_ERROR:
