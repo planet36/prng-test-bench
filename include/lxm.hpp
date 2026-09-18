@@ -12,8 +12,8 @@
 
 #pragma once
 
-#include "abstract_urbg_class.hpp"
 #include "golden_ratio.h"
+#include "urbg_base_class.hpp"
 
 #include <array>
 #include <bit>

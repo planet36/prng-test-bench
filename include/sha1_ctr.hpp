@@ -11,8 +11,8 @@
 
 #if defined(__SHA__)
 
-#include "abstract_urbg_class.hpp"
 #include "mm_cast.hpp"
+#include "urbg_base_class.hpp"
 #include "xxhprimes.hpp"
 
 #include <immintrin.h>

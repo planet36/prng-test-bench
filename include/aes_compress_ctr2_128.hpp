@@ -11,11 +11,11 @@
 
 #if defined(__AES__)
 
-#include "abstract_urbg_class.hpp"
 #include "mm_cast.hpp"
 #include "sha2_iv.h"
 #include "simd_compress.hpp"
 #include "simd_types.hpp"
+#include "urbg_base_class.hpp"
 
 #include <immintrin.h>
 

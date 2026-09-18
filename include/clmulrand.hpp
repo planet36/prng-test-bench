@@ -14,8 +14,8 @@
 
 #if defined(__PCLMUL__)
 
-#include "abstract_urbg_class.hpp"
 #include "clmum.hpp"
+#include "urbg_base_class.hpp"
 #include "xxhprimes.hpp"
 
 #include <cstdint>

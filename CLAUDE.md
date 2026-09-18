@@ -50,7 +50,7 @@ Working with one PRNG:
 ## Architecture
 
 **PRNG headers (`include/*.hpp`).**  Every non-`std` PRNG derives from
-`URBG_base<state_type, result_type>` in `abstract_urbg_class.hpp`, declared with the
+`URBG_base<state_type, result_type>` in `urbg_base_class.hpp`, declared with the
 `DEF_URBG_SUBCLASS(NAME, STATE, RESULT)` macro.  Wrap a state type containing a comma in
 `SINGLE_ARG(...)`.  The header then defines `NAME::init()`, which fixes up the state (for
 example, forcing an element odd or nonzero), and `NAME::next()`.  The protected member `s`
