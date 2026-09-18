@@ -298,6 +298,7 @@ int main([[maybe_unused]] int argc, [[maybe_unused]] char* argv[])
         errx(EXIT_FAILURE, "Unknown PRNG: \"%s\"", prng_name.c_str());
     }
 
+    // NOLINTBEGIN(bugprone-macro-parentheses)
 #define CONDITIONAL_DUMP_STD(NAME) \
 if (prng_name == #NAME) { \
     fill_seed_seq<seed_pattern_32> seeder_pattern; \
@@ -321,6 +322,7 @@ if (prng_name == #NAME) { \
     } \
     return 0; \
 }
+    // NOLINTEND(bugprone-macro-parentheses)
 
     // <random>
     CONDITIONAL_DUMP_STD(std::default_random_engine) // NOLINT(bugprone-random-generator-seed,cert-msc32-c,cert-msc51-cpp)
