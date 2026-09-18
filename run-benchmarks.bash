@@ -39,7 +39,7 @@ do
     echo "## Sorted and filtered results"
     echo
 
-    jq --from-file filter-benchmark-results.jq --raw-output "${OUTPUT_DIR}/${PROGRAM}.json" | sort > "${OUTPUT_DIR}/${PROGRAM}.txt" || exit
+    jq --from-file "${OUTPUT_DIR}/filter-benchmark-results.jq" --raw-output "${OUTPUT_DIR}/${PROGRAM}.json" | sort > "${OUTPUT_DIR}/${PROGRAM}.txt" || exit
 
     sort -r -k 2 -g -- "${OUTPUT_DIR}/${PROGRAM}.txt" | column --table || exit
 
