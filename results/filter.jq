@@ -1,5 +1,5 @@
 # SPDX-FileCopyrightText: Steven Ward
-# SPDX-License-Identifier: OSL-3.0
+# SPDX-License-Identifier: MPL-2.0
 
 split(" ") |
 if length < 4 then error("expected at least 4 fields: \(join(" "))") end |
