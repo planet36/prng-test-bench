@@ -61,6 +61,10 @@ holds the state.  The macro gives three constructors:
 - One constructor takes a `state_type`.
 - One takes `seed_bytes_type` (a byte array the size of the state).
 
+Do not make `next()` or the destructor `virtual`.  Nothing holds a `URBG_base` pointer or
+reference, and a virtual `next()` costs most PRNGs several times their speed.  The class
+doc block in `urbg_base_class.hpp` carries the argument.
+
 The remaining headers (`int_*`, `mum*`, `simd_*`, `*primes*`, `sha2_iv.h`, ...) are shared
 building blocks.  Several are synced from the author's other repos.
 
