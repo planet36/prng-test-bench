@@ -12,6 +12,7 @@ https://www.pcg-random.org/posts/how-to-test-with-practrand.html
 
 */
 
+#include "parse_int.hpp"
 #include "prng.hpp"
 #include "seed_seq.hpp"
 #include "seeds.hpp"
@@ -22,17 +23,16 @@ https://www.pcg-random.org/posts/how-to-test-with-practrand.html
 #include <cstdlib>
 #include <err.h>
 #include <errno.h>
-#include <limits>
+#include <exception>
 #include <print>
 #include <random>
-#include <stdexcept>
 #include <string>
 #include <string_view>
 #include <type_traits>
 #include <unistd.h>
 
 inline constexpr std::string_view program_author = "Steven Ward";
-inline constexpr std::string_view program_version = "2026-09-17";
+inline constexpr std::string_view program_version = "2026-09-18";
 inline constexpr std::string_view program_license = "MPL-2.0";
 
 // Globals
@@ -43,6 +43,8 @@ inline constexpr unsigned long long bytes_per_gibibyte = 1024ULL * 1024ULL * 102
 inline constexpr uint32_t seed_pattern_32{UINT32_C(0x01010101) * seed_pattern_byte};
 
 inline constexpr std::string_view default_prng_name{"std::default_random_engine"};
+
+inline constexpr unsigned long long max_limit_gibibytes = 1024ULL * 1024ULL; // 1 pebibyte (PiB)
 
 bool verbose = false;
 unsigned long long limit_bytes = 0;
@@ -177,6 +179,7 @@ print_usage()
     std::println("-l  MAX");
     std::println("    Limit the output to no more than MAX gibibytes.");
     std::println("    If MAX is 0, the output is unlimited.");
+    std::println("    (maximum: {})", max_limit_gibibytes);
     std::println("");
 
     std::println("-s  SEED_TYPE");
@@ -193,6 +196,7 @@ print_usage()
 /// Process the command line options
 void
 process_options(int argc, char* argv[])
+try
 {
     using namespace std::literals;
 
@@ -222,25 +226,14 @@ process_options(int argc, char* argv[])
             break;
 
         case 'l':
-            try
             {
-                limit_bytes = std::stoull(optarg);
-            }
-            catch (const std::invalid_argument& ex)
-            {
-                errx(EXIT_FAILURE, "invalid argument: %s: \"%s\"", ex.what(), optarg);
-            }
-            catch (const std::out_of_range& ex)
-            {
-                errx(EXIT_FAILURE, "out of range: %s: \"%s\"", ex.what(), optarg);
-            }
+                // the value of "-l" is gibibytes (GiB)
+                const unsigned long long limit_gibibytes = parse_option_int(optarg, 0,
+                        max_limit_gibibytes, "-l");
 
-            //if (__builtin_umulll_overflow(limit_bytes, bytes_per_gibibyte, &limit_bytes))
-            if (limit_bytes > std::numeric_limits<decltype(limit_bytes)>::max() / bytes_per_gibibyte)
-            {
-                errx(EXIT_FAILURE, "Arithmetic overflow: %s * %llu", optarg, bytes_per_gibibyte);
+                // convert GiB to B
+                limit_bytes = limit_gibibytes * bytes_per_gibibyte;
             }
-            limit_bytes *= bytes_per_gibibyte;
             break;
 
         case 's':
@@ -270,6 +263,11 @@ process_options(int argc, char* argv[])
             std::exit(EXIT_FAILURE);
         }
     }
+}
+catch (const std::exception& ex)
+{
+    (void)std::fflush(stdout);
+    errx(EXIT_FAILURE, "%s", ex.what());
 }
 
 int
