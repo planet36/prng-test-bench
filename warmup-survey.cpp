@@ -37,7 +37,7 @@ constexpr double threshold = 0.40;
 template <typename G>
 struct zero_start : G
 {
-    using state_type = typename G::state_type;
+    using state_type = G::state_type;
 
     zero_start() : G(state_type{}) {}
 
@@ -57,7 +57,7 @@ struct zero_start : G
 template <typename G>
 struct iota_start : G
 {
-    using state_type = typename G::state_type;
+    using state_type = G::state_type;
 
     iota_start() : G(state_type{}) {}
 
@@ -67,7 +67,7 @@ struct iota_start : G
     {
         for (size_t i = 0; i < std::size(this->s); ++i)
         {
-            this->s[i] = static_cast<typename state_type::value_type>(i + 1);
+            this->s[i] = static_cast<state_type::value_type>(i + 1);
         }
         if constexpr (requires { this->p; })
         {
