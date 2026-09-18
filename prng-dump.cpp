@@ -113,7 +113,7 @@ requires std::uniform_random_bit_generator<std::remove_cvref_t<URBG>>
 void
 prng_dump(URBG&& gen)
 {
-    using result_type = typename std::remove_cvref_t<URBG>::result_type;
+    using result_type = std::remove_cvref_t<URBG>::result_type;
 
     // /proc/sys/fs/pipe-max-size = 1048576
     // fcntl(STDOUT_FILENO, F_GETPIPE_SZ) = 65536
