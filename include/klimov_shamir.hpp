@@ -10,7 +10,7 @@
 #pragma once
 
 #include "urbg_base_class.hpp"
-#include "xxhprimes.hpp"
+#include "wyprimes.hpp"
 
 #include <cstdint>
 
@@ -27,7 +27,7 @@ klimov_shamir_32::init()
 klimov_shamir_32::result_type
 klimov_shamir_32::next()
 {
-    constexpr uint64_t inc = XXH_PRIME64_1;
+    constexpr uint64_t inc = wyprimes::_wyp[0];
     static_assert(inc & 1, "must be odd");
 
     constexpr unsigned int C = 5;

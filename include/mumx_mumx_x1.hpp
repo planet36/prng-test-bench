@@ -12,7 +12,7 @@
 
 #include "mum.hpp"
 #include "urbg_base_class.hpp"
-#include "xxhprimes.hpp"
+#include "wyprimes.hpp"
 
 #include <cstdint>
 
@@ -26,7 +26,7 @@ mumx_mumx_x1::init()
 mumx_mumx_x1::result_type
 mumx_mumx_x1::next()
 {
-    constexpr uint64_t inc = XXH_PRIME64_1; // inc=1 yields failures
+    constexpr uint64_t inc = wyprimes::_wyp[0]; // inc=1 yields failures
     static_assert((inc & 1) != 0, "must be odd");
 
     constexpr uint64_t a = 0x2ca7aea0ebd71d49; // not prime (popcount = 34)

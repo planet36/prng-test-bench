@@ -15,7 +15,7 @@
 #pragma once
 
 #include "urbg_base_class.hpp"
-#include "xxhprimes.hpp"
+#include "wyprimes.hpp"
 
 #include <cstdint>
 
@@ -29,7 +29,7 @@ staffordMix13::init()
 staffordMix13::result_type
 staffordMix13::next()
 {
-    constexpr uint64_t inc = XXH_PRIME64_1; // inc=1 yields failures
+    constexpr uint64_t inc = wyprimes::_wyp[0]; // inc=1 yields failures
     static_assert(inc & 1, "must be odd");
     constexpr uint64_t M1 = 0xbf58476d1ce4e5b9; // not prime (popcount = 36)
     constexpr uint64_t M2 = 0x94d049bb133111eb; // not prime (popcount = 29)

@@ -11,7 +11,7 @@
 #pragma once
 
 #include "urbg_base_class.hpp"
-#include "xxhprimes.hpp"
+#include "wyprimes.hpp"
 
 #include <array>
 #include <bit>
@@ -30,8 +30,8 @@ shioi::next()
     constexpr uint64_t M1 = 0xd2b74407b1ce6e93; // not prime (popcount = 33)
     static_assert(M1 & 1, "must be odd");
 
-    s[0] += XXH_PRIME64_1; // (SDW)
-    s[1] += XXH_PRIME64_2; // (SDW)
+    s[0] += wyprimes::_wyp[0]; // (SDW)
+    s[1] += wyprimes::_wyp[1]; // (SDW)
     const auto old_s = s;
     const result_type result = std::rotl(old_s[0] * M1, 29) + old_s[1];
 

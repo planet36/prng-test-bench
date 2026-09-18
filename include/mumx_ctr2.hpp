@@ -11,7 +11,7 @@
 
 #include "mum.hpp"
 #include "urbg_base_class.hpp"
-#include "xxhprimes.hpp"
+#include "wyprimes.hpp"
 
 #include <array>
 #include <cstdint>
@@ -26,7 +26,7 @@ mumx_ctr2::init()
 mumx_ctr2::result_type
 mumx_ctr2::next()
 {
-    constexpr std::array<uint64_t, 2> inc{XXH_PRIME64_1, XXH_PRIME64_2};
+    constexpr std::array<uint64_t, 2> inc{wyprimes::_wyp[0], wyprimes::_wyp[1]};
 
     s[0] += inc[0];
     s[1] += inc[1];

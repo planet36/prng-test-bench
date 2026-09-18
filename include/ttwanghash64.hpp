@@ -11,7 +11,7 @@
 #pragma once
 
 #include "urbg_base_class.hpp"
-#include "xxhprimes.hpp"
+#include "wyprimes.hpp"
 
 #include <cstdint>
 
@@ -26,7 +26,7 @@ ttwanghash64::init()
 ttwanghash64::result_type
 ttwanghash64::next()
 {
-    constexpr uint64_t inc = XXH_PRIME64_1; // inc=1 yields failures
+    constexpr uint64_t inc = wyprimes::_wyp[0]; // inc=1 yields failures
     static_assert(inc & 1, "must be odd");
 
     auto x = s;
