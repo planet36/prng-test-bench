@@ -29,7 +29,8 @@ Only g++ is supported (clang++ is not).
 - `warmup-survey.cpp` is not built by `make`.  Build and run it with
   `g++ -std=c++26 -O2 -march=native -I include warmup-survey.cpp -o warmup-survey && ./warmup-survey`.
   For each PRNG with a warm-up (outputs discarded in `init()`), it starts from the state
-  that `init()` has before the warm-up and reports how many outputs look empty.  The
+  that `init()` has before the warm-up and reports how many outputs to discard before they
+  look filled, followed by the per-call percentages behind each count.  The
   warm-ups, and the replacement of an all-zero state with 1, 2, 3, ..., exist because those
   PRNGs otherwise failed PractRand immediately with the zero seed.  The counts
   (`num_warmup_discards`) were first picked by eye, and they roughly match discarding outputs
