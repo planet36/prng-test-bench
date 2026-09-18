@@ -12,10 +12,10 @@
 #if defined(__AES__)
 
 #include "mm_cast.hpp"
-#include "sha2_iv.h"
 #include "simd_compress.hpp"
 #include "simd_types.hpp"
 #include "urbg_base_class.hpp"
+#include "wyprimes.hpp"
 
 #include <immintrin.h>
 
@@ -48,8 +48,8 @@ aes_compress_ctr2_128::next()
 
     const simd_arr_t<2> inc{
         // most significant elem first
-        _mm_set_epi64x(SHA_512_H0_1 | 1U, SHA_512_H0_0 | 1U), // NOLINT(cppcoreguidelines-narrowing-conversions)
-        _mm_set_epi64x(SHA_512_H0_3 | 1U, SHA_512_H0_2 | 1U), // NOLINT(cppcoreguidelines-narrowing-conversions)
+        _mm_set_epi64x(wyprimes::_wyp[1], wyprimes::_wyp[0]), // NOLINT(cppcoreguidelines-narrowing-conversions)
+        _mm_set_epi64x(wyprimes::_wyp[3], wyprimes::_wyp[2]), // NOLINT(cppcoreguidelines-narrowing-conversions)
     };
 
     s[0] = _mm_add_epi64(s[0], inc[0]);
