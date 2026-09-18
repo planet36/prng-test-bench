@@ -105,6 +105,7 @@ create_prng_info()
 
 #define CREATE_PRNG_INFO_MAP_ENTRY(NAME) {#NAME, create_prng_info<NAME>()}
 
+// NOLINTNEXTLINE(bugprone-throwing-static-initialization,cert-err58-cpp)
 const std::map<std::string, prng_info_t> prng_name_to_info{
     // <random>
     CREATE_PRNG_INFO_MAP_ENTRY(std::default_random_engine),
