@@ -70,8 +70,10 @@ all: $(BINS)
 %: %.cpp
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $(LDFLAGS) $< -o $@ $(LDLIBS)
 	@# Extract compile options
-	readelf -p .GCC.command.line $@ | grep -F 'GNU GIMPLE' | \
-		sed -E -e 's/^\s*\[\s*[0-9]+\]\s*//' | tr -d '\n' > $@.opts
+	@if [ "$@" = "prng-dump" ]; then \
+		readelf -p .GCC.command.line "$@" | grep -F 'GNU GIMPLE' | \
+			sed -E -e 's/^\s*\[\s*[0-9]+\]\s*//' | tr -d '\n' > "$@".opts ; \
+	fi
 
 benchmark: $(BINS) | $(OUTPUT_DIR)
 	bash run-benchmarks.bash

@@ -1,5 +1,4 @@
 prng-*-benchmark
-prng-*-benchmark.opts
 prng-dump
 prng-dump.opts
 warmup-survey
