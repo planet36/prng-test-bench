@@ -48,7 +48,7 @@ CXXFLAGS += -march=native
 
 #LDFLAGS =
 
-LDLIBS = -lbenchmark
+#LDLIBS =
 
 OUTPUT_DIR = results
 
@@ -74,6 +74,8 @@ all: $(BINS)
 		readelf -p .GCC.command.line "$@" | grep -F 'GNU GIMPLE' | \
 			sed -E -e 's/^\s*\[\s*[0-9]+\]\s*//' | tr -d '\n' > "$@".opts ; \
 	fi
+
+prng-%-benchmark: LDLIBS += -lbenchmark
 
 benchmark: $(BINS) | $(OUTPUT_DIR)
 	bash run-benchmarks.bash
