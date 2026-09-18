@@ -79,7 +79,7 @@ sha256_ctr_128::next()
     const __m128i inc = _mm_set_epi64x(wyprimes::_wyp[1], wyprimes::_wyp[0]); // NOLINT(cppcoreguidelines-narrowing-conversions)
 
     __m128i dst = s;
-    s = _mm_add_epi64(s, inc);
+    s = _mm_add_epi64(s, inc); // NOLINT(portability-simd-intrinsics)
     dst = sha256_rnds2x4(dst, s);
 
     return uint128_from_m128i(dst);

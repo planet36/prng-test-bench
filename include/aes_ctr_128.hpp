@@ -66,7 +66,7 @@ aes_ctr_128::next()
     const __m128i inc = _mm_set_epi64x(wyprimes::_wyp[1], wyprimes::_wyp[0]); // NOLINT(cppcoreguidelines-narrowing-conversions)
 
     __m128i dst = s[0];
-    s[0] = _mm_add_epi64(s[0], inc);
+    s[0] = _mm_add_epi64(s[0], inc); // NOLINT(portability-simd-intrinsics)
 
     for (int r = 0; r < Nr; ++r)
     {
