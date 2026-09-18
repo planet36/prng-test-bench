@@ -24,14 +24,18 @@ outputs look filled.
 #include <string_view>
 #include <vector>
 
+/// The number of calls surveyed for each PRNG
 constexpr int max_calls = 48;
 
-// The number of calls shown in the per-call rows
+/// The number of calls shown in the per-call rows
 constexpr int shown_calls = 20;
 static_assert(shown_calls <= max_calls);
 
-// An output looks filled when at least this fraction of its bits is set, or, compared with the
-// output before it, at least this fraction of its bits changed.
+/// The fraction of bits at which an output looks filled
+/**
+* An output looks filled when at least this fraction of its bits is set, or, compared with the
+* output before it, at least this fraction of its bits changed.
+*/
 constexpr double threshold = 0.40;
 
 /// A PRNG whose state can be reset to all zeros, without a warm-up
@@ -107,10 +111,14 @@ struct survey_result
     /// starts at call 1
     series change{};
 
+    /// The index of the first call whose popcount reaches the threshold
     int popcount_discards = 0;
+
+    /// The index of the first call whose change reaches the threshold
     int change_discards = 0;
 };
 
+/// Run \a Start from its reset state and measure its first \c max_calls outputs
 template <typename Start>
 [[nodiscard]] survey_result
 survey(std::string_view name, std::string_view start_name)
@@ -137,7 +145,7 @@ survey(std::string_view name, std::string_view start_name)
     return r;
 }
 
-/// One row of percentages for calls from 0, with a star after the call at \a marked
+/// One row of percentages, with "-" before call \a first and a star after call \a marked
 [[nodiscard]] std::string
 format_row(std::string_view label, const series& values, int first, int marked)
 {
@@ -168,6 +176,7 @@ format_count(int count)
     return std::format("{}", count);
 }
 
+/// Print the key and the table of discard counts
 void
 print_summary(const std::vector<survey_result>& results)
 {
@@ -187,6 +196,7 @@ print_summary(const std::vector<survey_result>& results)
     }
 }
 
+/// Print the per-call percentages behind each count, between two copies of the call header
 void
 print_details(const std::vector<survey_result>& results)
 {
