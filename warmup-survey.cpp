@@ -107,15 +107,15 @@ struct survey_result
     /// popcount[k] is the fraction of bits set in output k
     series popcount{};
 
-    /// change[k] is the fraction of bits that differ between output k and output k - 1, so it
+    /// delta[k] is the fraction of bits that differ between output k and output k - 1, so it
     /// starts at call 1
-    series change{};
+    series delta{};
 
     /// The index of the first call whose popcount reaches the threshold
     int popcount_discards = 0;
 
-    /// The index of the first call whose change reaches the threshold
-    int change_discards = 0;
+    /// The index of the first call whose delta reaches the threshold
+    int delta_discards = 0;
 };
 
 /// Run \a Start from its reset state and measure its first \c max_calls outputs
@@ -136,12 +136,12 @@ survey(std::string_view name, std::string_view start_name)
         r.popcount[k] = std::popcount(output) / static_cast<double>(bits);
         if (k > 0)
         {
-            r.change[k] = std::popcount(output ^ previous) / static_cast<double>(bits);
+            r.delta[k] = std::popcount(output ^ previous) / static_cast<double>(bits);
         }
         previous = output;
     }
     r.popcount_discards = first_reaching(r.popcount, 0);
-    r.change_discards = first_reaching(r.change, 1);
+    r.delta_discards = first_reaching(r.delta, 1);
     return r;
 }
 
@@ -190,16 +190,16 @@ print_summary(const std::vector<survey_result>& results)
     std::println("Outputs to discard after each start state.  The count is the index of the");
     std::println("first output that looks filled:");
     std::println("  popcount  at least {:.0f}% of its bits are set", threshold * 100);
-    std::println("  change    at least {:.0f}% of its bits differ from the output before it",
+    std::println("  delta     at least {:.0f}% of its bits differ from the output before it",
                  threshold * 100);
     std::println("The start state is all zeros (zero) or 1, 2, 3, ... (iota).\n");
 
-    std::println("{:<22}  {:<5}  {:>8}  {:>6}", "PRNG", "start", "popcount", "change");
-    std::println("{:-<22}  {:-<5}  {:->8}  {:->6}", "", "", "", "");
+    std::println("{:<22}  {:<5}  {:>8}  {:>5}", "PRNG", "start", "popcount", "delta");
+    std::println("{:-<22}  {:-<5}  {:->8}  {:->5}", "", "", "", "");
     for (const auto& r : results)
     {
-        std::println("{:<22}  {:<5}  {:>8}  {:>6}", r.name, r.start_name,
-                     format_count(r.popcount_discards), format_count(r.change_discards));
+        std::println("{:<22}  {:<5}  {:>8}  {:>5}", r.name, r.start_name,
+                     format_count(r.popcount_discards), format_count(r.delta_discards));
     }
 }
 
@@ -208,7 +208,7 @@ void
 print_details(const std::vector<survey_result>& results)
 {
     std::println("\nPercent of bits set (popcount) and changed from the previous output");
-    std::println("(change) for calls 0-{}.  A star marks the output that gives each count.",
+    std::println("(delta) for calls 0-{}.  A star marks the output that gives each count.",
                  shown_calls - 1);
     std::println("A row that ends in \">\" has its count past call {}.\n", shown_calls - 1);
 
@@ -224,7 +224,7 @@ print_details(const std::vector<survey_result>& results)
     {
         std::println("\n{} ({})", r.name, r.start_name);
         std::println("{}", format_row("popcount", r.popcount, 0, r.popcount_discards));
-        std::println("{}", format_row("change", r.change, 1, r.change_discards));
+        std::println("{}", format_row("delta", r.delta, 1, r.delta_discards));
     }
 
     std::println("\n{}", header);
