@@ -32,8 +32,8 @@
 *
 * Some random number engines have criteria for their initial state.
 * For example, the state must not be 0, or a particular element must be odd.
-* In the derived class, be sure to override the constructors to prepare the
-* initial state accordingly.
+* In the derived class, implement \c init to prepare the initial state
+* accordingly.  Every constructor that \c DEF_URBG_SUBCLASS defines calls it.
 *
 * No member of this class is virtual, so a call to \c next is dispatched statically and
 * can be inlined.  A virtual \c next would also leave every instantiation of a template
