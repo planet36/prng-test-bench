@@ -24,6 +24,16 @@
 #include <memory>
 #include <stdlib.h> // arc4random_buf
 #include <string.h> // explicit_bzero
+#include <type_traits>
+
+/// The requirements that a \c URBG_base state type must meet
+/**
+* \c arc4random_buf fills the state, \c std::memcpy copies seed bytes into it, and
+* \c explicit_bzero erases it, and none of those is defined for a type that is not
+* trivially copyable.  The state member is also value initialized where it is declared.
+*/
+template <typename T>
+concept urbg_state = std::is_trivially_copyable_v<T> && std::default_initializable<T>;
 
 /// Uniform Random Bit Generator base class
 /**
@@ -41,7 +51,7 @@
 * merges those instantiations and speculates on a single call target, which costs every
 * other generator in the merged group an indirect call per output.
 */
-template <typename S, std::unsigned_integral R>
+template <urbg_state S, std::unsigned_integral R>
 struct URBG_base
 {
 public:
