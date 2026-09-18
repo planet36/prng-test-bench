@@ -157,6 +157,17 @@ format_row(std::string_view label, const series& values, int first, int marked)
     return row;
 }
 
+/// A discard count, or ">N" when no call up to N reached the threshold
+[[nodiscard]] std::string
+format_count(int count)
+{
+    if (count >= max_calls)
+    {
+        return std::format(">{}", max_calls - 1);
+    }
+    return std::format("{}", count);
+}
+
 void
 print_summary(const std::vector<survey_result>& results)
 {
@@ -171,8 +182,8 @@ print_summary(const std::vector<survey_result>& results)
     std::println("{:-<22}  {:-<5}  {:->8}  {:->6}", "", "", "", "");
     for (const auto& r : results)
     {
-        std::println("{:<22}  {:<5}  {:>8}  {:>6}", r.name, r.start_name, r.popcount_discards,
-                     r.change_discards);
+        std::println("{:<22}  {:<5}  {:>8}  {:>6}", r.name, r.start_name,
+                     format_count(r.popcount_discards), format_count(r.change_discards));
     }
 }
 
