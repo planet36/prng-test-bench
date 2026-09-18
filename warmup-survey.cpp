@@ -124,10 +124,10 @@ survey(std::string_view name, std::string_view start_name)
     for (int k = 0; k < max_calls; ++k)
     {
         const auto output = static_cast<uint64_t>(g.next());
-        r.popcount[k] = std::popcount(output) / double(bits);
+        r.popcount[k] = std::popcount(output) / static_cast<double>(bits);
         if (k > 0)
         {
-            r.change[k] = std::popcount(output ^ previous) / double(bits);
+            r.change[k] = std::popcount(output ^ previous) / static_cast<double>(bits);
         }
         previous = output;
     }
