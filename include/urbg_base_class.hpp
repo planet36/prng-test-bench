@@ -18,6 +18,7 @@
 
 #include <array>
 #include <concepts>
+#include <cstddef>
 #include <cstdint>
 #include <cstring>
 #include <limits>
@@ -61,7 +62,7 @@ public:
     // https://eel.is/c++draft/rand.req.eng#3.1
     static_assert(sizeof(state_type) % sizeof(result_type) == 0);
 
-    using seed_bytes_type = std::array<uint8_t, sizeof(state_type)>;
+    using seed_bytes_type = std::array<std::byte, sizeof(state_type)>;
 
     static constexpr result_type min() { return std::numeric_limits<result_type>::min(); }
 

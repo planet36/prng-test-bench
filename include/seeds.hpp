@@ -9,6 +9,7 @@
 
 #pragma once
 
+#include <cstddef>
 #include <cstdint>
 #include <random>
 
@@ -29,6 +30,6 @@ constexpr auto
 get_seed_bytes_pattern()
 {
     typename URBG::seed_bytes_type bytes{};
-    bytes.fill(seed_pattern_byte);
+    bytes.fill(std::byte{seed_pattern_byte});
     return bytes;
 }
