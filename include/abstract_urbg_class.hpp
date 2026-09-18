@@ -78,7 +78,13 @@ public:
     AbstractURBG(AbstractURBG&&) = default;
     AbstractURBG& operator=(AbstractURBG&&) = default;
 
+protected:
     /// dtor
+    /**
+    * This is protected and not virtual because the class is a base for its constructors
+    * and its state, not for run-time polymorphism.  Deleting a PRNG through a pointer to
+    * this class would be undefined, and a protected dtor makes that a compile error.
+    */
     ~AbstractURBG()
     {
         // zeroize the state
