@@ -7,7 +7,7 @@
 # pylint: disable=invalid-name
 
 __author__ = 'Steven Ward'
-__license__ = 'OSL-3.0'
+__license__ = 'MPL-2.0'
 __version__ = '2026-09-17'
 
 import argparse
