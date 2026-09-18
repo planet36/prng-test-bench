@@ -201,9 +201,9 @@ try
 {
     using namespace std::literals;
 
-    static constexpr std::string_view short_options = "+Vhvil:s:";
+    const char* short_options = "+Vhvil:s:";
     int c = 0;
-    while ((c = getopt(argc, argv, short_options.data())) != -1)
+    while ((c = getopt(argc, argv, short_options)) != -1)
     {
         switch (c)
         {
