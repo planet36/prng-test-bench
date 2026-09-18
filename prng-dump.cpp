@@ -17,12 +17,12 @@ https://www.pcg-random.org/posts/how-to-test-with-practrand.html
 #include "seed_seq.hpp"
 #include "seeds.hpp"
 
+#include <cerrno>
 #include <cstddef>
 #include <cstdint>
 #include <cstdio>
 #include <cstdlib>
 #include <err.h>
-#include <errno.h>
 #include <exception>
 #include <print>
 #include <random>
