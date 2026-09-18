@@ -34,6 +34,12 @@
 * For example, the state must not be 0, or a particular element must be odd.
 * In the derived class, be sure to override the constructors to prepare the
 * initial state accordingly.
+*
+* No member of this class is virtual, so a call to \c next is dispatched statically and
+* can be inlined.  A virtual \c next would also leave every instantiation of a template
+* that drives a generator identical before inlining.  GCC's identical code folding then
+* merges those instantiations and speculates on a single call target, which costs every
+* other generator in the merged group an indirect call per output.
 */
 template <typename S, std::unsigned_integral R>
 struct AbstractURBG
@@ -73,16 +79,12 @@ public:
     AbstractURBG& operator=(AbstractURBG&&) = default;
 
     /// dtor
-    virtual ~AbstractURBG()
+    ~AbstractURBG()
     {
         // zeroize the state
         // https://sourceware.org/glibc/manual/latest/html_node/Erasing-Sensitive-Data.html
         explicit_bzero(std::addressof(s), sizeof(state_type));
     }
-
-    [[nodiscard]] virtual result_type next() = 0; // XXX: must override this
-
-    [[nodiscard]] result_type operator()() { return next(); }
 };
 
 // https://stackoverflow.com/a/13842612
@@ -102,6 +104,7 @@ public:
         CLASS_NAME() { init(); }                                                            \
         explicit CLASS_NAME(const state_type& new_s) : AbstractURBG(new_s) { init(); }      \
         explicit CLASS_NAME(const seed_bytes_type& bytes) : AbstractURBG(bytes) { init(); } \
-        inline result_type next() override; /* must implement this */                       \
+        inline result_type next(); /* must implement this */                                \
+        [[nodiscard]] result_type operator()() { return next(); }                           \
     };                                                                                      \
     static_assert(std::uniform_random_bit_generator<CLASS_NAME>);
