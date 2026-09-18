@@ -4,21 +4,30 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this is
 
-A C++26 test bench for PRNGs.  A single program, `prng-dump`, writes raw output of a named
-PRNG to stdout.  Speed is measured with hyperfine and randomness with PractRand's `RNG_test`.
+A C++26 test bench for PRNGs.  The program `prng-dump` writes raw output of a named PRNG to
+stdout, and PractRand's `RNG_test` measures its randomness.  Speed is measured with Google
+Benchmark by `prng-next-benchmark` (generating values) and `prng-construct-benchmark`
+(constructing a randomly seeded PRNG).
 There are no unit tests.  The "tests" are PractRand runs whose outputs are committed under
 `results/`.
 
 ## Commands
 
-The top-level `Makefile` checks for every program in `REQUIRED_BINS` (hyperfine, `RNG_test`,
-parallel, datamash, jq, ...) at parse time, so any `make` invocation fails if one is missing.
-Only g++ is supported (clang++ is not).
+The top-level `Makefile` checks for every program in `REQUIRED_BINS` (`RNG_test`, parallel,
+datamash, jq, ...) at parse time, so any `make` invocation fails if one is missing.
+Only g++ is supported (clang++ is not).  The benchmark programs link with `-lbenchmark`
+(Google Benchmark), which must be installed.
 
-- `make` builds `prng-dump` (plus `prng-dump.opts`, the recorded compiler flags).
-- `make lint` runs clang-tidy using `.clang-tidy`.
-- `make prng-bench` benchmarks every PRNG (~9 min) and writes `results/prng-bench.{csv,txt}`.
-- `make short-test` runs PractRand to 256MB for all four seed types (~11 min).
+- `make` builds every top-level `*.cpp`: `prng-dump` (plus `prng-dump.opts`, the recorded
+  compiler flags), `prng-next-benchmark`, `prng-construct-benchmark`, and `warmup-survey`.
+- `make lint` runs clang-tidy using `.clang-tidy` on every top-level `*.cpp`.
+- `make benchmark` runs `run-benchmarks.bash`, which runs every `*-benchmark` program and
+  writes `results/PROGRAM.json` (raw) and `results/PROGRAM.txt` (`name value unit`, from
+  `results/filter-benchmark-results.jq`).  Speeds are in GiB/s and are per thread.  The
+  script sets `NUM_THREADS` to one less than `nproc`, and `BENCHMARK_REPS` (default 5)
+  sets the repetitions whose median is reported.
+- `make short-test` runs `make benchmark`, then PractRand to 256MB for all four seed types
+  (~11 min for PractRand).
 - `make long-test` runs PractRand to 512GB with random seeds (~40 hours).  Do not start this
   casually.
 - `make update-short-test` / `update-long-test` do a parallel `--dry-run` that regenerates
@@ -26,9 +35,7 @@ Only g++ is supported (clang++ is not).
 - `make -C include` compiles each header standalone (as `-Werror`) to check that it is
   self-contained; `make -C include wyrand.o` checks one header, and `make -C include lint`
   lints the headers.
-- `warmup-survey.cpp` is not built by `make`.  Build and run it with
-  `g++ -std=c++26 -O2 -march=native -I include warmup-survey.cpp -o warmup-survey && ./warmup-survey`.
-  For each PRNG with a warm-up (outputs discarded in `init()`), it starts from the state
+- `make warmup-survey && ./warmup-survey` runs the warm-up survey.  For each PRNG with a warm-up (outputs discarded in `init()`), it starts from the state
   that `init()` has before the warm-up and reports how many outputs to discard before they
   look filled, followed by the per-call percentages behind each count.  The
   warm-ups, and the replacement of an all-zero state with 1, 2, 3, ..., exist because those
@@ -69,14 +76,17 @@ doc block in `urbg_base_class.hpp` carries the argument.
 The remaining headers (`int_*`, `mum*`, `simd_*`, `*primes*`, ...) are shared
 building blocks.  Several are synced from the author's other repos.
 
-**Registration has three places that must stay in sync.**  To add a PRNG:
+**Registration has five places that must stay in sync.**  To add a PRNG:
 
 1. Include its header in `include/prng.hpp`.
 2. Add `CREATE_PRNG_INFO_MAP_ENTRY(name)` to `prng_name_to_info` in `include/prng.hpp`.
 3. Add `CONDITIONAL_DUMP_MINE(name)` to `main` in `prng-dump.cpp`.
+4. Add `REGISTER_BENCHMARK_PRNG_NEXT_MY(name)` to `main` in `prng-next-benchmark.cpp`.
+5. Add `REGISTER_BENCHMARK_PRNG_CONSTRUCT_MY(name)` to `main` in
+   `prng-construct-benchmark.cpp`.
 
 Keep the alphabetical order and column alignment.  Guard ISA-dependent PRNGs with the same
-`#if defined(__AES__)` / `__PCLMUL__` / `__SHA__` in both files, and wrap the PRNG's own header
+`#if defined(__AES__)` / `__PCLMUL__` / `__SHA__` in all of these files, and wrap the PRNG's own header
 in that guard too (with a `#warning` in the `#else`, as `aes_ctr_128.hpp` does).
 `prng.hpp` includes every header, so an unguarded header breaks the build on a CPU target
 that lacks the instruction set.
@@ -90,7 +100,7 @@ and `zero` pass byte arrays, while `default` and `random` both use the default c
 `prng-dump | RNG_test > results/RNG_test.tlmax-X.seed-Y.prng-NAME.txt` command per PRNG and
 runs them with GNU parallel.  A run fails if its output contains `FAIL`.  Good and failed
 names are written to `prng-results.*.{files,names}.{good,failed}.txt`.  They are joined with
-`prng-bench.txt` and converted by `results/filter.jq` into `prng-results.*.json`, which
+`prng-next-benchmark.txt` and converted by `results/filter.jq` into `prng-results.*.json`, which
 `results/plot-results.py` plots.
 
 ## Conventions
