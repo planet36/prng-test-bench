@@ -102,12 +102,12 @@ struct survey_result
     /// popcount[k] is the fraction of bits set in output k
     series popcount{};
 
-    /// changed[k] is the fraction of bits that differ between output k and output k - 1, so it
+    /// change[k] is the fraction of bits that differ between output k and output k - 1, so it
     /// starts at call 1
-    series changed{};
+    series change{};
 
     int popcount_discards = 0;
-    int changed_discards = 0;
+    int change_discards = 0;
 };
 
 template <typename Start>
@@ -127,12 +127,12 @@ survey(std::string_view name, std::string_view start_name)
         r.popcount[k] = std::popcount(output) / double(bits);
         if (k > 0)
         {
-            r.changed[k] = std::popcount(output ^ previous) / double(bits);
+            r.change[k] = std::popcount(output ^ previous) / double(bits);
         }
         previous = output;
     }
     r.popcount_discards = first_reaching(r.popcount, 0);
-    r.changed_discards = first_reaching(r.changed, 1);
+    r.change_discards = first_reaching(r.change, 1);
     return r;
 }
 
@@ -171,15 +171,15 @@ print_summary(const std::vector<survey_result>& results)
     for (const auto& r : results)
     {
         std::println("{:<22}  {:<5}  {:>8}  {:>6}", r.name, r.start_name, r.popcount_discards,
-                     r.changed_discards);
+                     r.change_discards);
     }
 }
 
 void
 print_details(const std::vector<survey_result>& results)
 {
-    std::println("\nPercent of bits set (set) and changed from the previous output (change)");
-    std::println("for calls 0-{}.  A star marks the output that gives each count.\n",
+    std::println("\nPercent of bits set (popcount) and changed from the previous output");
+    std::println("(change) for calls 0-{}.  A star marks the output that gives each count.\n",
                  shown_calls - 1);
 
     std::string header = std::format("{:<10}", "call");
@@ -193,8 +193,8 @@ print_details(const std::vector<survey_result>& results)
     for (const auto& r : results)
     {
         std::println("\n{} ({})", r.name, r.start_name);
-        std::println("{}", format_row("set", r.popcount, 0, r.popcount_discards));
-        std::println("{}", format_row("change", r.changed, 1, r.changed_discards));
+        std::println("{}", format_row("popcount", r.popcount, 0, r.popcount_discards));
+        std::println("{}", format_row("change", r.change, 1, r.change_discards));
     }
 
     std::println("\n{}", header);
