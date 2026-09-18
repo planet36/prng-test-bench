@@ -81,7 +81,7 @@ using series = std::array<double, max_calls>;
 
 /// The index of the first call whose value reaches the threshold, starting at \a first
 [[nodiscard]] constexpr int
-first_reaching(const series& values, int first)
+first_reaching(const series& values, int first) noexcept
 {
     for (int k = first; k < max_calls; ++k)
     {
