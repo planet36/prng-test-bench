@@ -105,12 +105,14 @@ protected:
 };
 
 // https://stackoverflow.com/a/13842612
+// NOLINTNEXTLINE(cppcoreguidelines-macro-usage)
 #define SINGLE_ARG(...) __VA_ARGS__
 // Use SINGLE_ARG when a macro arg has a comma.
 
 // init and next are declared inline, so their definitions in a header can be
 // included in more than one translation unit without violating the
 // one-definition rule.
+// NOLINTNEXTLINE(cppcoreguidelines-macro-usage)
 #define DEF_URBG_SUBCLASS(CLASS_NAME, STATE_TYPE, RESULT_TYPE)                              \
     struct CLASS_NAME : public URBG_base<STATE_TYPE, RESULT_TYPE>                           \
     {                                                                                       \
