@@ -22,6 +22,10 @@
 #error "__SIZEOF_INT128__ not defined"
 #endif
 
+#if !defined(__SSE4_1__)
+#error "Architecture not supported"
+#endif
+
 // s[0] is the state/counter
 // s[1] is the key
 DEF_URBG_SUBCLASS(aes_ctr_128, simd_arr_t<2>, __uint128_t)
@@ -30,6 +34,16 @@ DEF_URBG_SUBCLASS(aes_ctr_128, simd_arr_t<2>, __uint128_t)
 void
 aes_ctr_128::init()
 {
+    // The 64-bit halves of the key must differ.
+    // next() uses the same key in every round.  With a key of (K, K), if the counter
+    // (A, B) gives the output (X, Y), then the counter (B, A) gives the output (Y, X).
+    if (_mm_extract_epi64(s[1], 0) == _mm_extract_epi64(s[1], 1))
+    {
+        // most significant elem first
+        const auto mask_key = _mm_set_epi64x(wyprimes::_wyp[3], wyprimes::_wyp[2]); // NOLINT(cppcoreguidelines-narrowing-conversions)
+
+        s[1] = _mm_xor_si128(s[1], mask_key);
+    }
 }
 
 /// advance the state of the PRNG, and generate a pseudo-random value
