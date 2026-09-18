@@ -46,7 +46,6 @@ aes_ctr_128::init()
     }
 }
 
-/// advance the state of the PRNG, and generate a pseudo-random value
 aes_ctr_128::result_type
 aes_ctr_128::next()
 {

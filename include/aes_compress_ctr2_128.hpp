@@ -33,7 +33,6 @@ aes_compress_ctr2_128::init()
 {
 }
 
-/// advance the state of the PRNG, and generate a pseudo-random value
 aes_compress_ctr2_128::result_type
 aes_compress_ctr2_128::next()
 {
