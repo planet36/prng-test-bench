@@ -52,7 +52,7 @@ LDFLAGS = -lbenchmark
 
 OUTPUT_DIR = results
 
-SRCS = $(wildcard prng-*.cpp)
+SRCS = $(wildcard *.cpp)
 DEPS = $(SRCS:.cpp=.d)
 BINS = $(basename $(SRCS))
 
@@ -67,10 +67,8 @@ TLMAX_LONG = 512GB
 all: $(BINS)
 
 # The built-in recipe for the implicit rule uses $^ instead of $<
-# https://www.gnu.org/software/make/manual/html_node/Static-Usage.html
-# Static Pattern Rule
-$(BINS): prng-% : prng-%.cpp
-	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $(LDFLAGS) -o $@ $< $(LDLIBS)
+%: %.cpp
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $(LDFLAGS) $< -o $@ $(LDLIBS)
 	@# Extract compile options
 	readelf -p .GCC.command.line $@ | grep -F 'GNU GIMPLE' | \
 		sed -E -e 's/^\s*\[\s*[0-9]+\]\s*//' | tr -d '\n' > $@.opts
