@@ -20,6 +20,7 @@ OUTPUT_DIR=results
 mkdir --verbose --parents -- "$OUTPUT_DIR" || exit
 
 shopt -s nullglob
+set -o pipefail
 
 for PROGRAM in *-benchmark
 do
