@@ -28,6 +28,7 @@ constexpr int max_calls = 48;
 
 // The number of calls shown in the per-call rows
 constexpr int shown_calls = 20;
+static_assert(shown_calls <= max_calls);
 
 // An output looks filled when at least this fraction of its bits is set, or, compared with the
 // output before it, at least this fraction of its bits changed.
