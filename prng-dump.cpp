@@ -50,7 +50,7 @@ bool verbose = false;
 unsigned long long limit_bytes = 0;
 
 /// How the PRNG is seeded
-enum class seed_type
+enum class seed_type : std::uint8_t
 {
     default_ctor,
     pattern,
