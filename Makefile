@@ -46,9 +46,9 @@ CXXFLAGS += -march=native
 #CXXFLAGS += -march=x86-64-v3 -maes -mpclmul -mvaes
 #CXXFLAGS += -march=raptorlake
 
-LDFLAGS = -lbenchmark
+#LDFLAGS =
 
-#LDLIBS =
+LDLIBS = -lbenchmark
 
 OUTPUT_DIR = results
 
