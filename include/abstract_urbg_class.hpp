@@ -1,7 +1,7 @@
 // SPDX-FileCopyrightText: Steven Ward
 // SPDX-License-Identifier: MPL-2.0
 
-/// Abstract Uniform Random Bit Generator class
+/// Uniform Random Bit Generator base class
 /**
 * \file
 * \author Steven Ward
@@ -25,7 +25,7 @@
 #include <stdlib.h> // arc4random_buf
 #include <string.h> // explicit_bzero
 
-/// Abstract Uniform Random Bit Generator class
+/// Uniform Random Bit Generator base class
 /**
 * \tparam S the state type
 * \tparam R the result type
@@ -42,7 +42,7 @@
 * other generator in the merged group an indirect call per output.
 */
 template <typename S, std::unsigned_integral R>
-struct AbstractURBG
+struct URBG_base
 {
 public:
     using state_type = S;
@@ -63,20 +63,20 @@ protected:
 public:
     // ctors
 
-    AbstractURBG() { arc4random_buf(std::addressof(s), sizeof(s)); }
+    URBG_base() { arc4random_buf(std::addressof(s), sizeof(s)); }
 
-    explicit AbstractURBG(const state_type& new_s) : s(new_s) {}
+    explicit URBG_base(const state_type& new_s) : s(new_s) {}
 
-    explicit AbstractURBG(const seed_bytes_type& bytes)
+    explicit URBG_base(const seed_bytes_type& bytes)
     {
         (void)std::memcpy(std::addressof(s), std::data(bytes), sizeof(state_type));
     }
 
-    AbstractURBG(const AbstractURBG&) = default;
-    AbstractURBG& operator=(const AbstractURBG&) = default;
+    URBG_base(const URBG_base&) = default;
+    URBG_base& operator=(const URBG_base&) = default;
 
-    AbstractURBG(AbstractURBG&&) = default;
-    AbstractURBG& operator=(AbstractURBG&&) = default;
+    URBG_base(URBG_base&&) = default;
+    URBG_base& operator=(URBG_base&&) = default;
 
 protected:
     /// dtor
@@ -85,7 +85,7 @@ protected:
     * and its state, not for run-time polymorphism.  Deleting a PRNG through a pointer to
     * this class would be undefined, and a protected dtor makes that a compile error.
     */
-    ~AbstractURBG()
+    ~URBG_base()
     {
         // zeroize the state
         // https://sourceware.org/glibc/manual/latest/html_node/Erasing-Sensitive-Data.html
@@ -101,15 +101,15 @@ protected:
 // included in more than one translation unit without violating the
 // one-definition rule.
 #define DEF_URBG_SUBCLASS(CLASS_NAME, STATE_TYPE, RESULT_TYPE)                              \
-    struct CLASS_NAME : public AbstractURBG<STATE_TYPE, RESULT_TYPE>                        \
+    struct CLASS_NAME : public URBG_base<STATE_TYPE, RESULT_TYPE>                           \
     {                                                                                       \
     protected:                                                                              \
         inline void init(); /* must implement this */                                       \
                                                                                             \
     public:                                                                                 \
         CLASS_NAME() { init(); }                                                            \
-        explicit CLASS_NAME(const state_type& new_s) : AbstractURBG(new_s) { init(); }      \
-        explicit CLASS_NAME(const seed_bytes_type& bytes) : AbstractURBG(bytes) { init(); } \
+        explicit CLASS_NAME(const state_type& new_s) : URBG_base(new_s) { init(); }         \
+        explicit CLASS_NAME(const seed_bytes_type& bytes) : URBG_base(bytes) { init(); }    \
         inline result_type next(); /* must implement this */                                \
         [[nodiscard]] result_type operator()() { return next(); }                           \
     };                                                                                      \

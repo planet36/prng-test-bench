@@ -169,7 +169,7 @@ xoroshiro128starstar::next()
  * 64-bit seed, we suggest to seed a splitmix64 generator and use its output to
  * fill s.
  */
-struct xoroshiro1024plusplus : public AbstractURBG<std::array<uint64_t, 16>, uint64_t>
+struct xoroshiro1024plusplus : public URBG_base<std::array<uint64_t, 16>, uint64_t>
 {
 protected:
     unsigned int p{};
@@ -178,8 +178,8 @@ protected:
 
 public:
     xoroshiro1024plusplus() { init(); }
-    explicit xoroshiro1024plusplus(const state_type& new_s) : AbstractURBG(new_s) { init(); }
-    explicit xoroshiro1024plusplus(const seed_bytes_type& bytes) : AbstractURBG(bytes) { init(); }
+    explicit xoroshiro1024plusplus(const state_type& new_s) : URBG_base(new_s) { init(); }
+    explicit xoroshiro1024plusplus(const seed_bytes_type& bytes) : URBG_base(bytes) { init(); }
     inline result_type next();
     [[nodiscard]] result_type operator()() { return next(); }
 };
@@ -236,7 +236,7 @@ xoroshiro1024plusplus::next()
  * 64-bit seed, we suggest to seed a splitmix64 generator and use its output to
  * fill s.
  */
-struct xoroshiro1024starstar : public AbstractURBG<std::array<uint64_t, 16>, uint64_t>
+struct xoroshiro1024starstar : public URBG_base<std::array<uint64_t, 16>, uint64_t>
 {
 protected:
     unsigned int p{};
@@ -245,8 +245,8 @@ protected:
 
 public:
     xoroshiro1024starstar() { init(); }
-    explicit xoroshiro1024starstar(const state_type& new_s) : AbstractURBG(new_s) { init(); }
-    explicit xoroshiro1024starstar(const seed_bytes_type& bytes) : AbstractURBG(bytes) { init(); }
+    explicit xoroshiro1024starstar(const state_type& new_s) : URBG_base(new_s) { init(); }
+    explicit xoroshiro1024starstar(const seed_bytes_type& bytes) : URBG_base(bytes) { init(); }
     inline result_type next();
     [[nodiscard]] result_type operator()() { return next(); }
 };
