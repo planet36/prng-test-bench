@@ -19,7 +19,7 @@
 
 DEF_URBG_SUBCLASS(mumx_mumx_rrxx_1, uint64_t, uint64_t)
 
-/// prepare the initial state
+/// Prepare the initial state
 void
 mumx_mumx_rrxx_1::init()
 {}

@@ -21,7 +21,7 @@
 
 DEF_URBG_SUBCLASS(lcg32, __uint128_t, uint32_t)
 
-/// prepare the initial state
+/// Prepare the initial state
 void
 lcg32::init()
 {}
@@ -40,7 +40,7 @@ lcg32::next()
 
 DEF_URBG_SUBCLASS(lcg64, __uint128_t, uint64_t)
 
-/// prepare the initial state
+/// Prepare the initial state
 void
 lcg64::init()
 {}

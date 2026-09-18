@@ -21,7 +21,7 @@
 // PractRand-pre0.95/src/RNGs/xsm.cpp
 DEF_URBG_SUBCLASS(xsm32, SINGLE_ARG(std::array<uint32_t, 2>), uint32_t)
 
-/// prepare the initial state
+/// Prepare the initial state
 void
 xsm32::init()
 {}
@@ -64,7 +64,7 @@ xsm32::next()
 // PractRand-pre0.95/src/RNGs/xsm.cpp
 DEF_URBG_SUBCLASS(xsm64, SINGLE_ARG(std::array<uint64_t, 2>), uint64_t)
 
-/// prepare the initial state
+/// Prepare the initial state
 void
 xsm64::init()
 {}

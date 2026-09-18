@@ -17,7 +17,7 @@
 // https://gist.github.com/degski/6e2069d6035ae04d5d6f64981c995ec2#file-invertible_hash_functions-hpp-L29
 DEF_URBG_SUBCLASS(degski32, uint32_t, uint32_t)
 
-/// prepare the initial state
+/// Prepare the initial state
 void
 degski32::init()
 {}
@@ -47,7 +47,7 @@ degski32::next()
 // https://gist.github.com/degski/6e2069d6035ae04d5d6f64981c995ec2#file-invertible_hash_functions-hpp-L43
 DEF_URBG_SUBCLASS(degski64, uint64_t, uint64_t)
 
-/// prepare the initial state
+/// Prepare the initial state
 void
 degski64::init()
 {}

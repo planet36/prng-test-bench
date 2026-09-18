@@ -57,7 +57,7 @@ static_assert((pcg_const128[1] & 1) != 0, "must be odd");
 */
 DEF_URBG_SUBCLASS(pcg32, uint64_t, uint32_t)
 
-/// prepare the initial state
+/// Prepare the initial state
 void
 pcg32::init()
 {}
@@ -91,7 +91,7 @@ pcg32::next()
 */
 DEF_URBG_SUBCLASS(pcg32_fast, uint64_t, uint32_t)
 
-/// prepare the initial state
+/// Prepare the initial state
 void
 pcg32_fast::init()
 {}
@@ -128,7 +128,7 @@ pcg32_fast::next()
 */
 DEF_URBG_SUBCLASS(pcg64, __uint128_t, uint64_t)
 
-/// prepare the initial state
+/// Prepare the initial state
 void
 pcg64::init()
 {}
@@ -172,7 +172,7 @@ pcg64::next()
 */
 DEF_URBG_SUBCLASS(pcg64dxsm, __uint128_t, uint64_t)
 
-/// prepare the initial state
+/// Prepare the initial state
 void
 pcg64dxsm::init()
 {}

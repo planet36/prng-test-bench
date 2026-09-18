@@ -21,7 +21,7 @@
 
 DEF_URBG_SUBCLASS(staffordMix13, uint64_t, uint64_t)
 
-/// prepare the initial state
+/// Prepare the initial state
 void
 staffordMix13::init()
 {}

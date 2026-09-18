@@ -21,7 +21,7 @@ https://sourceforge.net/projects/gjrand/files/
 */
 DEF_URBG_SUBCLASS(gjrand, SINGLE_ARG(std::array<uint64_t, 4>), uint64_t)
 
-/// prepare the initial state
+/// Prepare the initial state
 void
 gjrand::init()
 {}

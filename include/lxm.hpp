@@ -64,7 +64,7 @@ mix_lea(uint64_t h)
 
 DEF_URBG_SUBCLASS(lxm, SINGLE_ARG(std::array<uint64_t, 4>), uint64_t)
 
-/// prepare the initial state
+/// Prepare the initial state
 void
 lxm::init()
 {

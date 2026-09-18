@@ -21,7 +21,7 @@
 // PractRand-pre0.95/src/RNGs/sfc.cpp
 DEF_URBG_SUBCLASS(sfc32, SINGLE_ARG(std::array<uint32_t, 4>), uint32_t)
 
-/// prepare the initial state
+/// Prepare the initial state
 /**
 * The warm-up discards the zero-seed outputs that still have mostly zero bits (found
 * empirically).
@@ -48,7 +48,7 @@ sfc32::next()
 
 DEF_URBG_SUBCLASS(sfc64, SINGLE_ARG(std::array<uint64_t, 4>), uint64_t)
 
-/// prepare the initial state
+/// Prepare the initial state
 /**
 * The warm-up discards the zero-seed outputs that still have mostly zero bits (found
 * empirically).

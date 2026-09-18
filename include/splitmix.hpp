@@ -18,7 +18,7 @@
 
 DEF_URBG_SUBCLASS(splitmix32, uint64_t, uint32_t)
 
-/// prepare the initial state
+/// Prepare the initial state
 void
 splitmix32::init()
 {}
@@ -53,7 +53,7 @@ splitmix32::next()
 
 DEF_URBG_SUBCLASS(splitmix64, uint64_t, uint64_t)
 
-/// prepare the initial state
+/// Prepare the initial state
 void
 splitmix64::init()
 {}

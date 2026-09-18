@@ -17,7 +17,7 @@
 
 DEF_URBG_SUBCLASS(ttwanghash64, uint64_t, uint64_t)
 
-/// prepare the initial state
+/// Prepare the initial state
 void
 ttwanghash64::init()
 {}

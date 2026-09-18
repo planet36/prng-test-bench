@@ -21,7 +21,7 @@ https://mostlymangling.blogspot.com/2019/01/better-stronger-mixer-and-test-proce
 */
 DEF_URBG_SUBCLASS(ettinger_mixer, uint64_t, uint64_t)
 
-/// prepare the initial state
+/// Prepare the initial state
 void
 ettinger_mixer::init()
 {}

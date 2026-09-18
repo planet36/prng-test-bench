@@ -19,7 +19,7 @@
 
 DEF_URBG_SUBCLASS(klimov_shamir_32, uint64_t, uint32_t)
 
-/// prepare the initial state
+/// Prepare the initial state
 void
 klimov_shamir_32::init()
 {}

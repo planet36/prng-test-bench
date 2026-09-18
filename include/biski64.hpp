@@ -22,7 +22,7 @@ DEF_URBG_SUBCLASS(biski64, SINGLE_ARG(std::array<uint64_t, 3>), uint64_t)
 // s[1] is the mix
 // s[2] is the loop_mix
 
-/// prepare the initial state
+/// Prepare the initial state
 /**
 * Adapted from biski64_warmup
 * \sa https://github.com/danielcota/biski64/blob/main/c/biski64.c#L49

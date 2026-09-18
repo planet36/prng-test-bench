@@ -21,7 +21,7 @@
 
 DEF_URBG_SUBCLASS(mcg128, __uint128_t, uint64_t)
 
-/// prepare the initial state
+/// Prepare the initial state
 void
 mcg128::init()
 {}

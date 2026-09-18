@@ -27,7 +27,7 @@
 // s[1] is the second state/counter
 DEF_URBG_SUBCLASS(aes_compress_ctr2_128, simd_arr_t<2>, __uint128_t)
 
-/// prepare the initial state
+/// Prepare the initial state
 void
 aes_compress_ctr2_128::init()
 {

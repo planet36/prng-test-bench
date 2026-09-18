@@ -18,7 +18,7 @@
 
 DEF_URBG_SUBCLASS(xxh32_avalanche, uint32_t, uint32_t)
 
-/// prepare the initial state
+/// Prepare the initial state
 void
 xxh32_avalanche::init()
 {}
@@ -40,7 +40,7 @@ xxh32_avalanche::next()
 
 DEF_URBG_SUBCLASS(xxh64_avalanche, uint64_t, uint64_t)
 
-/// prepare the initial state
+/// Prepare the initial state
 void
 xxh64_avalanche::init()
 {}
@@ -62,7 +62,7 @@ xxh64_avalanche::next()
 
 DEF_URBG_SUBCLASS(xxh3_avalanche, uint64_t, uint64_t)
 
-/// prepare the initial state
+/// Prepare the initial state
 void
 xxh3_avalanche::init()
 {}
@@ -82,7 +82,7 @@ xxh3_avalanche::next()
 
 DEF_URBG_SUBCLASS(xxh3_rrmxmx, uint64_t, uint64_t)
 
-/// prepare the initial state
+/// Prepare the initial state
 void
 xxh3_rrmxmx::init()
 {}

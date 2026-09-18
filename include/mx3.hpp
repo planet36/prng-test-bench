@@ -16,7 +16,7 @@
 
 DEF_URBG_SUBCLASS(mx3, uint64_t, uint64_t)
 
-/// prepare the initial state
+/// Prepare the initial state
 void
 mx3::init()
 {}

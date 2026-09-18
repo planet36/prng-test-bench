@@ -21,7 +21,7 @@
 
 DEF_URBG_SUBCLASS(wyrand, uint64_t, uint64_t)
 
-/// prepare the initial state
+/// Prepare the initial state
 inline void
 wyrand::init()
 {}

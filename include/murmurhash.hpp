@@ -18,7 +18,7 @@
 // https://github.com/aappleby/smhasher/blob/master/src/MurmurHash3.cpp#L68
 DEF_URBG_SUBCLASS(murmurhash3_32, uint32_t, uint32_t)
 
-/// prepare the initial state
+/// Prepare the initial state
 void
 murmurhash3_32::init()
 {}
@@ -49,7 +49,7 @@ murmurhash3_32::next()
 // https://github.com/aappleby/smhasher/blob/master/src/MurmurHash3.cpp#L81
 DEF_URBG_SUBCLASS(murmurhash3, uint64_t, uint64_t)
 
-/// prepare the initial state
+/// Prepare the initial state
 void
 murmurhash3::init()
 {}

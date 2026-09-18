@@ -18,7 +18,7 @@
 
 DEF_URBG_SUBCLASS(msws32, SINGLE_ARG(std::array<uint64_t, 2>), uint32_t)
 
-/// prepare the initial state
+/// Prepare the initial state
 void
 msws32::init()
 {}
@@ -38,7 +38,7 @@ msws32::next()
 
 DEF_URBG_SUBCLASS(msws64, SINGLE_ARG(std::array<uint64_t, 4>), uint64_t)
 
-/// prepare the initial state
+/// Prepare the initial state
 void
 msws64::init()
 {}

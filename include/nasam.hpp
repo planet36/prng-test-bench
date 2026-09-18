@@ -18,7 +18,7 @@
 
 DEF_URBG_SUBCLASS(nasam, uint64_t, uint64_t)
 
-/// prepare the initial state
+/// Prepare the initial state
 void
 nasam::init()
 {}

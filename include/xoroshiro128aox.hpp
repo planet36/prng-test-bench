@@ -19,7 +19,7 @@
 
 DEF_URBG_SUBCLASS(xoroshiro128aox, SINGLE_ARG(std::array<uint64_t, 2>), uint64_t)
 
-/// prepare the initial state
+/// Prepare the initial state
 void
 xoroshiro128aox::init()
 {

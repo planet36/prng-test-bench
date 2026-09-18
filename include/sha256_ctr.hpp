@@ -66,7 +66,7 @@ sha256_rnds2x4(__m128i a, __m128i b)
 DEF_URBG_SUBCLASS(sha256_ctr_128, __m128i, __uint128_t)
 #pragma GCC diagnostic pop
 
-/// prepare the initial state
+/// Prepare the initial state
 void
 sha256_ctr_128::init()
 {

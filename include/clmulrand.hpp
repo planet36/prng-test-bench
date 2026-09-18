@@ -25,7 +25,7 @@
 DEF_URBG_SUBCLASS(clmulrand, __m128i, uint64_t)
 #pragma GCC diagnostic pop
 
-/// prepare the initial state
+/// Prepare the initial state
 void
 clmulrand::init()
 {}

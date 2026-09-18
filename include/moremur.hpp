@@ -17,7 +17,7 @@
 
 DEF_URBG_SUBCLASS(moremur, uint64_t, uint64_t)
 
-/// prepare the initial state
+/// Prepare the initial state
 void
 moremur::init()
 {}

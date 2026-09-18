@@ -19,7 +19,7 @@
 // 2-rotate version
 DEF_URBG_SUBCLASS(jsf32_2, SINGLE_ARG(std::array<uint32_t, 4>), uint32_t)
 
-/// prepare the initial state
+/// Prepare the initial state
 void
 jsf32_2::init()
 {}
@@ -42,7 +42,7 @@ jsf32_2::next()
 // 3-rotate version
 DEF_URBG_SUBCLASS(jsf32_3, SINGLE_ARG(std::array<uint32_t, 4>), uint32_t)
 
-/// prepare the initial state
+/// Prepare the initial state
 void
 jsf32_3::init()
 {}
@@ -65,7 +65,7 @@ jsf32_3::next()
 
 DEF_URBG_SUBCLASS(jsf64, SINGLE_ARG(std::array<uint64_t, 4>), uint64_t)
 
-/// prepare the initial state
+/// Prepare the initial state
 void
 jsf64::init()
 {}

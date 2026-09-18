@@ -18,7 +18,7 @@
 
 DEF_URBG_SUBCLASS(romu_quad, SINGLE_ARG(std::array<uint64_t, 4>), uint64_t)
 
-/// prepare the initial state
+/// Prepare the initial state
 void
 romu_quad::init()
 {}
@@ -42,7 +42,7 @@ romu_quad::next()
 
 DEF_URBG_SUBCLASS(romu_trio, SINGLE_ARG(std::array<uint64_t, 3>), uint64_t)
 
-/// prepare the initial state
+/// Prepare the initial state
 void
 romu_trio::init()
 {}
@@ -65,7 +65,7 @@ romu_trio::next()
 
 DEF_URBG_SUBCLASS(romu_duo, SINGLE_ARG(std::array<uint64_t, 2>), uint64_t)
 
-/// prepare the initial state
+/// Prepare the initial state
 void
 romu_duo::init()
 {}
@@ -87,7 +87,7 @@ romu_duo::next()
 
 DEF_URBG_SUBCLASS(romu_duo_jr, SINGLE_ARG(std::array<uint64_t, 2>), uint64_t)
 
-/// prepare the initial state
+/// Prepare the initial state
 void
 romu_duo_jr::init()
 {}
@@ -108,7 +108,7 @@ romu_duo_jr::next()
 
 DEF_URBG_SUBCLASS(romu_quad32, SINGLE_ARG(std::array<uint32_t, 4>), uint32_t)
 
-/// prepare the initial state
+/// Prepare the initial state
 void
 romu_quad32::init()
 {}
@@ -132,7 +132,7 @@ romu_quad32::next()
 
 DEF_URBG_SUBCLASS(romu_trio32, SINGLE_ARG(std::array<uint32_t, 3>), uint32_t)
 
-/// prepare the initial state
+/// Prepare the initial state
 void
 romu_trio32::init()
 {}

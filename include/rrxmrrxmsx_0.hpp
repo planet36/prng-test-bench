@@ -20,7 +20,7 @@
 // PractRand 0.94 -tf 2 without anomalies found past 2 TB.
 DEF_URBG_SUBCLASS(rrxmrrxmsx_0, uint64_t, uint64_t)
 
-/// prepare the initial state
+/// Prepare the initial state
 void
 rrxmrrxmsx_0::init()
 {}

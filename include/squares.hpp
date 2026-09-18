@@ -31,7 +31,7 @@ inline constexpr uint64_t squares_key = 0xc8e4fd154ce32f6d; // not prime (popcou
 
 DEF_URBG_SUBCLASS(squares32, uint64_t, uint32_t)
 
-/// prepare the initial state
+/// Prepare the initial state
 void
 squares32::init()
 {}
@@ -66,7 +66,7 @@ squares32::next()
 
 DEF_URBG_SUBCLASS(squares64, uint64_t, uint64_t)
 
-/// prepare the initial state
+/// Prepare the initial state
 void
 squares64::init()
 {}

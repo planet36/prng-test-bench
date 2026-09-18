@@ -21,7 +21,7 @@
 
 DEF_URBG_SUBCLASS(stc_crand32, SINGLE_ARG(std::array<uint32_t, 4>), uint32_t)
 
-/// prepare the initial state
+/// Prepare the initial state
 void
 stc_crand32::init()
 {}
@@ -41,7 +41,7 @@ stc_crand32::next()
 
 DEF_URBG_SUBCLASS(stc_crand64, SINGLE_ARG(std::array<uint64_t, 4>), uint64_t)
 
-/// prepare the initial state
+/// Prepare the initial state
 void
 stc_crand64::init()
 {}

@@ -22,7 +22,7 @@
 
 DEF_URBG_SUBCLASS(lehmer64, __uint128_t, uint64_t)
 
-/// prepare the initial state
+/// Prepare the initial state
 void
 lehmer64::init()
 {}

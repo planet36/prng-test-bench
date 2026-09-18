@@ -30,7 +30,7 @@
  */
 DEF_URBG_SUBCLASS(xoroshiro64starstar, SINGLE_ARG(std::array<uint32_t, 2>), uint32_t)
 
-/// prepare the initial state
+/// Prepare the initial state
 void
 xoroshiro64starstar::init()
 {
@@ -70,7 +70,7 @@ xoroshiro64starstar::next()
  */
 DEF_URBG_SUBCLASS(xoroshiro128plusplus, SINGLE_ARG(std::array<uint64_t, 2>), uint64_t)
 
-/// prepare the initial state
+/// Prepare the initial state
 /**
 * The warm-up discards the zero-seed outputs that still have mostly zero bits (found
 * empirically).
@@ -120,7 +120,7 @@ xoroshiro128plusplus::next()
  */
 DEF_URBG_SUBCLASS(xoroshiro128starstar, SINGLE_ARG(std::array<uint64_t, 2>), uint64_t)
 
-/// prepare the initial state
+/// Prepare the initial state
 /**
 * The warm-up discards the zero-seed outputs that still have mostly zero bits (found
 * empirically).
@@ -185,7 +185,7 @@ public:
 };
 static_assert(std::uniform_random_bit_generator<xoroshiro1024plusplus>);
 
-/// prepare the initial state
+/// Prepare the initial state
 /**
 * The warm-up discards the zero-seed outputs that still have mostly zero bits (found
 * empirically).
@@ -252,7 +252,7 @@ public:
 };
 static_assert(std::uniform_random_bit_generator<xoroshiro1024starstar>);
 
-/// prepare the initial state
+/// Prepare the initial state
 /**
 * The warm-up discards the zero-seed outputs that still have mostly zero bits (found
 * empirically).
