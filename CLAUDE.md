@@ -81,15 +81,19 @@ building blocks.  Several are synced from the author's other repos.
 1. Include its header in `include/prng.hpp`.
 2. Add `CREATE_PRNG_INFO_MAP_ENTRY(name)` to `prng_name_to_info` in `include/prng.hpp`.
 3. Add `CONDITIONAL_DUMP_MINE(name)` to `main` in `prng-dump.cpp`.
-4. Add `REGISTER_BENCHMARK_PRNG_NEXT_MY(name)` to `main` in `prng-next-benchmark.cpp`.
-5. Add `REGISTER_BENCHMARK_PRNG_CONSTRUCT_MY(name)` to `main` in
-   `prng-construct-benchmark.cpp`.
+4. Add `REGISTER_BENCHMARK_PRNG_NEXT(name)` to `main` in `prng-next-benchmark.cpp`.
+5. Add `REGISTER_BENCHMARK_PRNG_CONSTRUCT(name)` to `main` in `prng-construct-benchmark.cpp`.
 
 Keep the alphabetical order and column alignment.  Guard ISA-dependent PRNGs with the same
 `#if defined(__AES__)` / `__PCLMUL__` / `__SHA__` in all of these files, and wrap the PRNG's own header
 in that guard too (with a `#warning` in the `#else`, as `aes_ctr_128.hpp` does).
 `prng.hpp` includes every header, so an unguarded header breaks the build on a CPU target
 that lacks the instruction set.
+
+**Benchmarks.**  `prng-benchmark.hpp` holds what the two benchmark programs share.  Its
+`make_random_seeded<URBG>()` seeds a `std` engine with `random_device_seeded` and one of the
+repo's PRNGs (detected by its `seed_bytes_type`) with its default constructor, so one
+benchmark function serves both.  `get_num_threads()` reads `NUM_THREADS`.
 
 **Seed types.**  For `std` engines, seeding goes through the seed sequences in
 `seed_seq.hpp` (`fill_seed_seq`, `random_device_seeded`).  For the repo's own PRNGs, `pattern`
