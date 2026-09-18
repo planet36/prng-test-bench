@@ -33,7 +33,7 @@ BM_prng_construct_std(benchmark::State& BM_state)
     benchmark::DoNotOptimize(gen);
 }
 
-/// Benchmark construction of the my PRNGs
+/// Benchmark construction of my PRNGs
 template <typename URBG>
 requires std::uniform_random_bit_generator<std::remove_cvref_t<URBG>>
 void
