@@ -83,7 +83,7 @@ print_all_prng_info()
 void
 write_all(const int fd, const void* buf, size_t count)
 {
-    auto* p = static_cast<const char*>(buf);
+    const auto* p = static_cast<const char*>(buf);
 
     while (count > 0)
     {
