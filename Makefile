@@ -77,6 +77,9 @@ $(BINS): prng-% : prng-%.cpp
 	readelf -p .GCC.command.line $@ | grep -F 'GNU GIMPLE' | \
 		sed -E -e 's/^\s*\[\s*[0-9]+\]\s*//' | tr -d '\n' > $@.opts
 
+benchmark: $(BINS) | $(OUTPUT_DIR)
+	bash run-benchmarks.bash
+
 prng-bench: prng-dump | $(OUTPUT_DIR)
 	@# Write 1 GiB of random data
 	hyperfine \
@@ -131,7 +134,7 @@ lint:
 	-clang-tidy --quiet $(SRCS) -- $(CPPFLAGS) $(CXXFLAGS)
 
 # https://www.gnu.org/software/make/manual/make.html#Phony-Targets
-.PHONY: all prng-bench short-test long-test update-short-test update-long-test clean lint
+.PHONY: all benchmark prng-bench short-test long-test update-short-test update-long-test clean lint
 
 # https://www.gnu.org/software/make/manual/html_node/Special-Targets.html#index-removing-targets-on-failure
 .DELETE_ON_ERROR:
