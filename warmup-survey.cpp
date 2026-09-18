@@ -146,6 +146,9 @@ survey(std::string_view name, std::string_view start_name)
 }
 
 /// One row of percentages, with "-" before call \a first and a star after call \a marked
+/**
+* When \a marked is past the last shown call, the row ends with " >" instead.
+*/
 [[nodiscard]] std::string
 format_row(std::string_view label, const series& values, int first, int marked)
 {
@@ -162,6 +165,10 @@ format_row(std::string_view label, const series& values, int first, int marked)
         }
     }
     row.erase(row.find_last_not_of(' ') + 1);
+    if (marked >= shown_calls)
+    {
+        row += " >";
+    }
     return row;
 }
 
@@ -201,8 +208,9 @@ void
 print_details(const std::vector<survey_result>& results)
 {
     std::println("\nPercent of bits set (popcount) and changed from the previous output");
-    std::println("(change) for calls 0-{}.  A star marks the output that gives each count.\n",
+    std::println("(change) for calls 0-{}.  A star marks the output that gives each count.",
                  shown_calls - 1);
+    std::println("A row that ends in \">\" has its count past call {}.\n", shown_calls - 1);
 
     std::string header = std::format("{:<10}", "call");
     for (int k = 0; k < shown_calls; ++k)
