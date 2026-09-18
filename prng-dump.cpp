@@ -270,8 +270,8 @@ catch (const std::exception& ex)
     errx(EXIT_FAILURE, "%s", ex.what());
 }
 
-int
-main([[maybe_unused]] int argc, [[maybe_unused]] char* argv[])
+// NOLINTNEXTLINE(bugprone-exception-escape)
+int main([[maybe_unused]] int argc, [[maybe_unused]] char* argv[])
 {
     process_options(argc, argv);
 

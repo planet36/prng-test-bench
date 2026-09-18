@@ -230,8 +230,8 @@ print_details(const std::vector<survey_result>& results)
     std::println("\n{}", header);
 }
 
-int
-main()
+// NOLINTNEXTLINE(bugprone-exception-escape)
+int main()
 {
     const std::vector<survey_result> results{
         survey<iota_start<xoroshiro128plusplus>>("xoroshiro128plusplus", "iota"),
