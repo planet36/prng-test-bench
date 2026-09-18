@@ -21,11 +21,12 @@ outputs look filled.
 #include <print>
 #include <string>
 #include <string_view>
+#include <vector>
 
 constexpr int max_calls = 48;
 
 // The number of calls shown in the per-call rows
-constexpr int shown_calls = 16;
+constexpr int shown_calls = 20;
 
 // An output looks filled when at least this fraction of its bits is set, or, compared with the
 // output before it, at least this fraction of its bits changed.
@@ -91,19 +92,25 @@ first_reaching(const series& values, int first)
     return max_calls;
 }
 
-[[nodiscard]] std::string
-format_row(const series& values, int first)
+/// What the survey measured for one PRNG
+struct survey_result
 {
-    std::string row;
-    for (int k = 0; k < shown_calls; ++k)
-    {
-        row += (k < first) ? std::string("   --") : std::format(" {:4.2f}", values[k]);
-    }
-    return row;
-}
+    std::string_view name;
+    std::string_view start_name;
+
+    /// popcount[k] is the fraction of bits set in output k
+    series popcount{};
+
+    /// changed[k] is the fraction of bits that differ between output k and output k - 1, so it
+    /// starts at call 1
+    series changed{};
+
+    int popcount_discards = 0;
+    int changed_discards = 0;
+};
 
 template <typename Start>
-void
+[[nodiscard]] survey_result
 survey(std::string_view name, std::string_view start_name)
 {
     Start g;
@@ -111,50 +118,106 @@ survey(std::string_view name, std::string_view start_name)
 
     const int bits = sizeof(typename Start::result_type) * CHAR_BIT;
 
-    // popcount[k] is the fraction of bits set in output k.  changed[k] is the fraction of bits
-    // that differ between output k and output k - 1, so it starts at call 1.
-    series popcount{};
-    series changed{};
+    survey_result r{.name = name, .start_name = start_name};
     uint64_t previous = 0;
     for (int k = 0; k < max_calls; ++k)
     {
         const auto output = static_cast<uint64_t>(g.next());
-        popcount[k] = std::popcount(output) / double(bits);
+        r.popcount[k] = std::popcount(output) / double(bits);
         if (k > 0)
         {
-            changed[k] = std::popcount(output ^ previous) / double(bits);
+            r.changed[k] = std::popcount(output ^ previous) / double(bits);
         }
         previous = output;
     }
+    r.popcount_discards = first_reaching(r.popcount, 0);
+    r.changed_discards = first_reaching(r.changed, 1);
+    return r;
+}
 
-    std::println("{:<22} {:<5} {:>9} {:>8}", name, start_name, first_reaching(popcount, 0),
-                 first_reaching(changed, 1));
-    std::println("    set    {}", format_row(popcount, 0));
-    std::println("    change {}", format_row(changed, 1));
+/// One row of percentages for calls from 0, with a star after the call at \a marked
+[[nodiscard]] std::string
+format_row(std::string_view label, const series& values, int first, int marked)
+{
+    std::string row = std::format("  {:<8}", label);
+    for (int k = 0; k < shown_calls; ++k)
+    {
+        if (k < first)
+        {
+            row += "  - ";
+        }
+        else
+        {
+            row += std::format("{:3.0f}{}", values[k] * 100, (k == marked) ? '*' : ' ');
+        }
+    }
+    row.erase(row.find_last_not_of(' ') + 1);
+    return row;
+}
+
+void
+print_summary(const std::vector<survey_result>& results)
+{
+    std::println("Outputs to discard after each start state.  The count is the index of the");
+    std::println("first output that looks filled:");
+    std::println("  popcount  at least {:.0f}% of its bits are set", threshold * 100);
+    std::println("  change    at least {:.0f}% of its bits differ from the output before it",
+                 threshold * 100);
+    std::println("The start state is all zeros (zero) or 1, 2, 3, ... (iota).\n");
+
+    std::println("{:<22}  {:<5}  {:>8}  {:>6}", "PRNG", "start", "popcount", "change");
+    std::println("{:-<22}  {:-<5}  {:->8}  {:->6}", "", "", "", "");
+    for (const auto& r : results)
+    {
+        std::println("{:<22}  {:<5}  {:>8}  {:>6}", r.name, r.start_name, r.popcount_discards,
+                     r.changed_discards);
+    }
+}
+
+void
+print_details(const std::vector<survey_result>& results)
+{
+    std::println("\nPercent of bits set (set) and changed from the previous output (change)");
+    std::println("for calls 0-{}.  A star marks the output that gives each count.\n",
+                 shown_calls - 1);
+
+    std::string header = std::format("{:<10}", "call");
+    for (int k = 0; k < shown_calls; ++k)
+    {
+        header += std::format("{:3} ", k);
+    }
+    header.pop_back();
+    std::println("{}", header);
+
+    for (const auto& r : results)
+    {
+        std::println("\n{} ({})", r.name, r.start_name);
+        std::println("{}", format_row("set", r.popcount, 0, r.popcount_discards));
+        std::println("{}", format_row("change", r.changed, 1, r.changed_discards));
+    }
+
+    std::println("\n{}", header);
 }
 
 int
 main()
 {
-    std::println("Outputs to discard: the index of the first output with at least {:.0f}% of its",
-                 threshold * 100);
-    std::println("bits set (popcount), or with at least {:.0f}% of its bits changed from the output",
-                 threshold * 100);
-    std::println("before it (change).  The rows show both fractions for calls 0-{}.\n",
-                 shown_calls - 1);
-    std::println("{:<22} {:<5} {:>9} {:>8}", "PRNG", "start", "popcount", "change");
+    const std::vector<survey_result> results{
+        survey<iota_start<xoroshiro128plusplus>>("xoroshiro128plusplus", "iota"),
+        survey<iota_start<xoroshiro128starstar>>("xoroshiro128starstar", "iota"),
+        survey<iota_start<xoroshiro1024plusplus>>("xoroshiro1024plusplus", "iota"),
+        survey<iota_start<xoroshiro1024starstar>>("xoroshiro1024starstar", "iota"),
+        survey<iota_start<xoshiro128plusplus>>("xoshiro128plusplus", "iota"),
+        survey<iota_start<xoshiro128starstar>>("xoshiro128starstar", "iota"),
+        survey<iota_start<xoshiro256plusplus>>("xoshiro256plusplus", "iota"),
+        survey<iota_start<xoshiro256starstar>>("xoshiro256starstar", "iota"),
+        survey<iota_start<xoshiro512plusplus>>("xoshiro512plusplus", "iota"),
+        survey<iota_start<xoshiro512starstar>>("xoshiro512starstar", "iota"),
+        survey<zero_start<sfc32>>("sfc32", "zero"),
+        survey<zero_start<sfc64>>("sfc64", "zero"),
+        survey<zero_start<biski64>>("biski64", "zero"),
+    };
 
-    survey<iota_start<xoroshiro128plusplus>>("xoroshiro128plusplus", "iota");
-    survey<iota_start<xoroshiro128starstar>>("xoroshiro128starstar", "iota");
-    survey<iota_start<xoroshiro1024plusplus>>("xoroshiro1024plusplus", "iota");
-    survey<iota_start<xoroshiro1024starstar>>("xoroshiro1024starstar", "iota");
-    survey<iota_start<xoshiro128plusplus>>("xoshiro128plusplus", "iota");
-    survey<iota_start<xoshiro128starstar>>("xoshiro128starstar", "iota");
-    survey<iota_start<xoshiro256plusplus>>("xoshiro256plusplus", "iota");
-    survey<iota_start<xoshiro256starstar>>("xoshiro256starstar", "iota");
-    survey<iota_start<xoshiro512plusplus>>("xoshiro512plusplus", "iota");
-    survey<iota_start<xoshiro512starstar>>("xoshiro512starstar", "iota");
-    survey<zero_start<sfc32>>("sfc32", "zero");
-    survey<zero_start<sfc64>>("sfc64", "zero");
-    survey<zero_start<biski64>>("biski64", "zero");
+    print_summary(results);
+    print_details(results);
 }
