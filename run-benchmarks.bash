@@ -28,7 +28,7 @@ do
     echo "# $PROGRAM"
     echo
 
-    "${PIN_CMD[@]}" ./"$PROGRAM" \
+    ./"$PROGRAM" \
         --benchmark_enable_random_interleaving=true \
         --benchmark_repetitions="$BENCHMARK_REPS" \
         --benchmark_report_aggregates_only=true \
