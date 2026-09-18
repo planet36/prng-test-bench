@@ -42,6 +42,14 @@ To regenerate the summary files from existing test outputs: `make update-short-t
 Results are saved in the `results` folder.
 To plot them, run `python3 results/plot-results.py FILE`, where `FILE` is a `results/prng-results.*.json` file.
 
+To survey the warm-ups, build and run `warmup-survey.cpp` (`make` does not build it):
+```sh
+g++ -std=c++26 -O2 -march=native -I include warmup-survey.cpp -o warmup-survey && ./warmup-survey
+```
+* Some PRNGs discard their first outputs in `init()` (a warm-up), because without it they fail PractRand right away with the zero seed
+* For each of them, the survey starts from the state before the warm-up and reports how many outputs to discard before they look filled
+* The counts in `init()` (`num_warmup_discards`) are not read by the survey, so update them by hand after rerunning it
+
 ## Requirements
 
 The following compiler is required to build:
