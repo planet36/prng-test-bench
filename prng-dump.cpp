@@ -194,8 +194,8 @@ print_usage()
 }
 
 /// Process the command line options
-void
-process_options(int argc, char* argv[])
+// NOLINTNEXTLINE(cppcoreguidelines-avoid-c-arrays)
+void process_options(int argc, char* argv[])
 try
 {
     using namespace std::literals;
