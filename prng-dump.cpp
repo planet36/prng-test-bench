@@ -29,7 +29,6 @@ https://www.pcg-random.org/posts/how-to-test-with-practrand.html
 #include <random>
 #include <string>
 #include <string_view>
-#include <type_traits>
 #include <unistd.h>
 
 inline constexpr std::string_view program_author = "Steven Ward";
@@ -110,11 +109,11 @@ write_all(const int fd, const void* buf, size_t count)
 * Stop after \c limit_bytes bytes, or never if \c limit_bytes is 0.
 */
 template <typename URBG>
-requires std::uniform_random_bit_generator<std::remove_cvref_t<URBG>>
+requires std::uniform_random_bit_generator<URBG>
 void
-prng_dump(URBG&& gen)
+prng_dump(URBG gen)
 {
-    using result_type = std::remove_cvref_t<URBG>::result_type;
+    using result_type = URBG::result_type;
 
     // /proc/sys/fs/pipe-max-size = 1048576
     // fcntl(STDOUT_FILENO, F_GETPIPE_SZ) = 65536
