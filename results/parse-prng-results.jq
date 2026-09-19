@@ -2,7 +2,8 @@
 # SPDX-License-Identifier: MPL-2.0
 
 split(" ") |
-if length < 4 then error("expected at least 4 fields: \(join(" "))") end |
+if length != 5 then error("expected 5 fields: \(join(" "))") end |
+if .[4] != "GiB/s" then error("expected unit GiB/s: \(join(" "))") end |
 {
   prng_name: .[0],
   test_ended_at_exp2_bytes: .[1] | tonumber,
