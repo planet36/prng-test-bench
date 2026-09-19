@@ -340,7 +340,8 @@ fi
 
 echo
 echo "# Performance all:"
-sort -r -k 2 -g prng-next-benchmark.txt | column --table || exit
+sort -r -k 2 -g prng-next-benchmark.txt |
+    awk '{printf "%s %.2f %s\n", $1, $2, $3}' | column --table || exit
 echo
 
 {
@@ -357,7 +358,7 @@ do
 
     echo "# Performance good (seed $SEED_TYPE):"
     grep --no-filename -w -E "$(paste -s -d '|' < "$OUTFILE_STEM.names.good.txt")" prng-next-benchmark.txt |
-        sort -r -k 2 -g | column --table || exit
+        sort -r -k 2 -g | awk '{printf "%s %.2f %s\n", $1, $2, $3}' | column --table || exit
     echo
 
     {
