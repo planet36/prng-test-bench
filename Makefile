@@ -80,7 +80,7 @@ prng-%-benchmark: LDLIBS += -lbenchmark
 benchmark: $(BINS) | $(OUTPUT_DIR)
 	bash run-benchmarks.bash
 
-# Takes about 10 mins
+# Takes about 5 mins
 short-test: prng-dump benchmark | $(OUTPUT_DIR)
 	bash test-prng-dump.bash -j $(J_SHORT) -f $(TF_SHORT) -m $(TLMAX_SHORT) \
 		-s default -s pattern -s random -s zero \
