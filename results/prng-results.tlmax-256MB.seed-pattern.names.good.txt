@@ -49,6 +49,7 @@ splitmix64
 splitxix33
 squares32
 squares64
+staffordMix13
 stc_crand32
 stc_crand64
 std::philox4x64
