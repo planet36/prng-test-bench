@@ -23,6 +23,7 @@
 #include <cstring>
 #include <limits>
 #include <memory>
+#include <random>
 #include <stdlib.h> // arc4random_buf
 #include <string.h> // explicit_bzero
 #include <type_traits>
@@ -127,3 +128,12 @@ protected:
         [[nodiscard]] result_type operator()() { return next(); }                           \
     };                                                                                      \
     static_assert(std::uniform_random_bit_generator<CLASS_NAME>);
+
+/// A PRNG declared with \c DEF_URBG_SUBCLASS
+/**
+* Only these have \c seed_bytes_type.  The \c std engines do not.
+*/
+template <typename T>
+concept my_urbg = std::uniform_random_bit_generator<T> && requires {
+    typename T::seed_bytes_type;
+};

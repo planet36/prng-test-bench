@@ -11,6 +11,7 @@
 
 #include "parse_int.hpp"
 #include "seed_seq.hpp"
+#include "urbg_base_class.hpp"
 
 #include <algorithm>
 #include <cstdio>
@@ -19,15 +20,6 @@
 #include <exception>
 #include <random>
 #include <thread>
-
-/// A PRNG declared with \c DEF_URBG_SUBCLASS
-/**
-* Only these have \c seed_bytes_type.  The \c std engines do not.
-*/
-template <typename T>
-concept my_urbg = std::uniform_random_bit_generator<T> && requires {
-    typename T::seed_bytes_type;
-};
 
 /// Construct a randomly seeded \c std engine
 template <typename URBG>
