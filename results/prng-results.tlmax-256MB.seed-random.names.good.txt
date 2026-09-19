@@ -1,4 +1,3 @@
-MRG32k3a
 aes_compress_ctr2_128
 aes_ctr_128
 biski64

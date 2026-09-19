@@ -5,7 +5,7 @@ test set = core, folding = standard (64 bit)
 rng=RNG_stdin64, seed=unknown
 length= 256 mebibytes (2^28 bytes), time= 0.6 seconds
   Test Name                         Raw       Processed     Evaluation
-  Gap-16:A                          R= +34.0  p =  8.6e-27    FAIL !!        
-  Gap-16:B                          R= +21.0  p =  4.3e-17    FAIL !         
+  Gap-16:A                          R= +32.8  p =  6.9e-26    FAIL !!        
+  Gap-16:B                          R= +19.1  p =  1.4e-15    FAIL !         
   ...and 211 test result(s) without anomalies
 

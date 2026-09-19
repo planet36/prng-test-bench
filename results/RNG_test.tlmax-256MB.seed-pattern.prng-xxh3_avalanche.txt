@@ -3,7 +3,7 @@ RNG = RNG_stdin64, seed = unknown
 test set = core, folding = standard (64 bit)
 
 rng=RNG_stdin64, seed=unknown
-length= 256 mebibytes (2^28 bytes), time= 0.6 seconds
+length= 256 mebibytes (2^28 bytes), time= 0.7 seconds
   Test Name                         Raw       Processed     Evaluation
   Gap-16:A                          R= +32.2  p =  2.3e-25    FAIL !!        
   Gap-16:B                          R= +20.3  p =  1.5e-16    FAIL !         
