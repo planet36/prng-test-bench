@@ -28,7 +28,7 @@ Only g++ is supported (clang++ is not).  The benchmark programs link with `-lben
   sets the repetitions whose median is reported.
 - `make short-test` runs `make benchmark`, then PractRand to 256MB for all four seed types
   (~5 min for PractRand).
-- `make long-test` runs PractRand to 512GB with random seeds (~40 hours).  Do not start this
+- `make long-test` runs PractRand to 512GB with random seeds (~23.8 hours).  Do not start this
   casually.
 - `make update-short-test` / `update-long-test` do a parallel `--dry-run` that regenerates
   the summary/JSON files from existing `RNG_test` outputs and newer benchmark data.

@@ -33,7 +33,7 @@ To run the short test: `make short-test`
 To run the long test: `make long-test`
 * Tests to 512GB with random seeds
 * `benchmark` is a prerequisite
-* Takes about 40 hours to finish
+* Takes about 23.8 hours to finish
 
 To test only some PRNGs: `bash test-prng-dump.bash -m 256MB -s zero NAME...`
 * Overwrites the matching files in the `results` folder
