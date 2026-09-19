@@ -28,7 +28,7 @@ To run the benchmarks only: `make benchmark`
 To run the short test: `make short-test`
 * Tests to 256MB with each seed type (`default`, `pattern`, `random`, and `zero`)
 * `benchmark` is a prerequisite
-* Takes about 11 minutes to finish
+* Takes about 5 minutes to finish
 
 To run the long test: `make long-test`
 * Tests to 512GB with random seeds
