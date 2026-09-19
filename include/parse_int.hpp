@@ -30,7 +30,6 @@
 * \param max the maximum allowed value (inclusive)
 * \param base the numeric base (2 to 36), or \c 0 to detect a \c "0x"/"0X"
 *        (hexadecimal) or \c "0" (octal) prefix like \c strtol
-*        (a sign is not allowed before a detected prefix)
 * \retval std::errc::invalid_argument \a s is not entirely an integer
 * \retval std::errc::result_out_of_range the value is not representable in
 *         \c T or is not in <code>[min, max]</code>
@@ -39,6 +38,10 @@
 *      \c std::from_chars accepts
 * \note Unlike \c std::stoi, this rejects leading whitespace, a leading
 *       \c '+', and trailing non-digit characters.
+* \note With \a base \c 0, a \c '-' and a prefix interact unlike in
+*       \c strtol.  A \c '-' before \c "0x" is rejected, and one before
+*       \c "0" hides the prefix, so \c "-010" parses as decimal -10.  A
+*       \c '-' after \c "0x" is accepted, so \c "0x-5" parses as -5.
 */
 template <std::integral T = int>
 [[nodiscard]] constexpr std::expected<T, std::errc>
