@@ -400,7 +400,7 @@ do
     done < "$OUTFILE_STEM.files.failed.txt" >> "$TMP_FILE"
 
     join -j 1 <(LC_ALL=C sort -k1 "$TMP_FILE") <(LC_ALL=C sort -k1 prng-next-benchmark.txt) |
-        jq -R -f filter.jq | jq -s > "$OUTFILE_STEM.json"
+        jq -R -f parse-prng-results.jq | jq -s > "$OUTFILE_STEM.json"
 
     rm -f -- "$TMP_FILE"
 done

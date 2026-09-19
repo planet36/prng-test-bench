@@ -106,8 +106,8 @@ and `zero` pass byte arrays, while `default` and `random` both use the default c
 `prng-dump | RNG_test > results/RNG_test.tlmax-X.seed-Y.prng-NAME.txt` command per PRNG and
 runs them with GNU parallel.  A run fails if its output contains `FAIL`.  Good and failed
 names are written to `prng-results.*.{files,names}.{good,failed}.txt`.  They are joined with
-`prng-next-benchmark.txt` and converted by `results/filter.jq` into `prng-results.*.json`, which
-`results/plot-results.py` plots.
+`prng-next-benchmark.txt` and converted by `results/parse-prng-results.jq` into
+`prng-results.*.json`, which `results/plot-results.py` plots.
 
 ## Conventions
 
