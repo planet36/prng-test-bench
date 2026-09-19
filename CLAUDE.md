@@ -80,7 +80,7 @@ building blocks.  Several are synced from the author's other repos.
 
 1. Include its header in `include/prng.hpp`.
 2. Add `CREATE_PRNG_INFO_MAP_ENTRY(name)` to `prng_name_to_info` in `include/prng.hpp`.
-3. Add `CONDITIONAL_DUMP_MINE(name)` to `main` in `prng-dump.cpp`.
+3. Add `CONDITIONAL_DUMP(name)` to `main` in `prng-dump.cpp`.
 4. Add `REGISTER_BENCHMARK_PRNG_NEXT(name)` to `main` in `prng-next-benchmark.cpp`.
 5. Add `REGISTER_BENCHMARK_PRNG_CONSTRUCT(name)` to `main` in `prng-construct-benchmark.cpp`.
 
@@ -92,10 +92,12 @@ that lacks the instruction set.
 
 **Benchmarks.**  `prng-benchmark.hpp` holds what the two benchmark programs share.  Its
 `make_random_seeded<URBG>()` seeds a `std` engine with `random_device_seeded` and one of the
-repo's PRNGs (detected by its `seed_bytes_type`) with its default constructor, so one
+repo's PRNGs (detected by `my_urbg`) with its default constructor, so one
 benchmark function serves both.  `get_num_threads()` reads `NUM_THREADS`.
 
-**Seed types.**  For `std` engines, seeding goes through the seed sequences in
+**Seed types.**  The two `make_seeded` overloads in `prng-dump.cpp` turn a seed type into a
+seeded PRNG.  They tell the repo's own PRNGs from `std` engines with the `my_urbg` concept in
+`urbg_base_class.hpp`.  For `std` engines, seeding goes through the seed sequences in
 `seed_seq.hpp` (`fill_seed_seq`, `random_device_seeded`).  For the repo's own PRNGs, `pattern`
 and `zero` pass byte arrays, while `default` and `random` both use the default constructor.
 `test-prng-dump.bash` therefore diffs the default and random pass/fail lists as a sanity check.

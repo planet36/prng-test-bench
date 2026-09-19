@@ -30,6 +30,7 @@ https://www.pcg-random.org/posts/how-to-test-with-practrand.html
 #include <string>
 #include <string_view>
 #include <unistd.h>
+#include <utility>
 
 inline constexpr std::string_view program_author = "Steven Ward";
 inline constexpr std::string_view program_version = "2026-09-18";
@@ -193,6 +194,50 @@ print_usage()
     std::println("");
 }
 
+/// Construct a \c std engine seeded as \a seed says
+template <std::uniform_random_bit_generator URBG>
+requires (!my_urbg<URBG>)
+URBG
+make_seeded(const seed_type seed)
+{
+    switch (seed)
+    {
+    case seed_type::default_ctor:
+        return URBG{}; // NOLINT(bugprone-random-generator-seed,cert-msc32-c,cert-msc51-cpp)
+    case seed_type::pattern:
+    {
+        fill_seed_seq<seed_pattern_32> seeder;
+        return URBG(seeder);
+    }
+    case seed_type::random:
+        return random_device_seeded<URBG>();
+    case seed_type::zero:
+    {
+        fill_seed_seq<0> seeder;
+        return URBG(seeder);
+    }
+    }
+    std::unreachable();
+}
+
+/// Construct a PRNG of mine seeded as \a seed says
+template <my_urbg URBG>
+URBG
+make_seeded(const seed_type seed)
+{
+    switch (seed)
+    {
+    case seed_type::default_ctor:
+    case seed_type::random:
+        return URBG{};
+    case seed_type::pattern:
+        return URBG{get_seed_bytes_pattern<URBG>()};
+    case seed_type::zero:
+        return URBG{get_seed_bytes_zero<URBG>()};
+    }
+    std::unreachable();
+}
+
 /// Process the command line options
 // NOLINTNEXTLINE(cppcoreguidelines-avoid-c-arrays)
 void process_options(int argc, char* argv[])
@@ -297,129 +342,109 @@ int main([[maybe_unused]] int argc, [[maybe_unused]] char* argv[])
         errx(EXIT_FAILURE, "Unknown PRNG: \"%s\"", prng_name.c_str());
     }
 
-    // NOLINTBEGIN(bugprone-macro-parentheses)
-#define CONDITIONAL_DUMP_STD(NAME) \
+#define CONDITIONAL_DUMP(NAME) \
 if (prng_name == #NAME) { \
-    fill_seed_seq<seed_pattern_32> seeder_pattern; \
-    fill_seed_seq<0> seeder_zero; \
-    switch (seed) { \
-    case seed_type::default_ctor: prng_dump(NAME{}); break; \
-    case seed_type::pattern: prng_dump(NAME(seeder_pattern)); break; \
-    case seed_type::random: prng_dump(random_device_seeded<NAME>()); break; \
-    case seed_type::zero: prng_dump(NAME(seeder_zero)); break; \
-    } \
+    prng_dump(make_seeded<NAME>(seed)); \
     return 0; \
 }
-
-#define CONDITIONAL_DUMP_MINE(NAME) \
-if (prng_name == #NAME) { \
-    switch (seed) { \
-    case seed_type::default_ctor: prng_dump(NAME{}); break; \
-    case seed_type::pattern: prng_dump(NAME{get_seed_bytes_pattern<NAME>()}); break; \
-    case seed_type::random: prng_dump(NAME{}); break; \
-    case seed_type::zero: prng_dump(NAME{get_seed_bytes_zero<NAME>()}); break; \
-    } \
-    return 0; \
-}
-    // NOLINTEND(bugprone-macro-parentheses)
 
     // <random>
-    CONDITIONAL_DUMP_STD(std::default_random_engine) // NOLINT(bugprone-random-generator-seed,cert-msc32-c,cert-msc51-cpp)
-    CONDITIONAL_DUMP_STD(std::knuth_b              ) // NOLINT(bugprone-random-generator-seed,cert-msc32-c,cert-msc51-cpp)
-    CONDITIONAL_DUMP_STD(std::minstd_rand          ) // NOLINT(bugprone-random-generator-seed,cert-msc32-c,cert-msc51-cpp)
-    CONDITIONAL_DUMP_STD(std::minstd_rand0         ) // NOLINT(bugprone-random-generator-seed,cert-msc32-c,cert-msc51-cpp)
-    CONDITIONAL_DUMP_STD(std::mt19937              ) // NOLINT(bugprone-random-generator-seed,cert-msc32-c,cert-msc51-cpp)
-    CONDITIONAL_DUMP_STD(std::mt19937_64           ) // NOLINT(bugprone-random-generator-seed,cert-msc32-c,cert-msc51-cpp)
-    CONDITIONAL_DUMP_STD(std::philox4x32           ) // NOLINT(bugprone-random-generator-seed,cert-msc32-c,cert-msc51-cpp)
-    CONDITIONAL_DUMP_STD(std::philox4x64           ) // NOLINT(bugprone-random-generator-seed,cert-msc32-c,cert-msc51-cpp)
-    CONDITIONAL_DUMP_STD(std::ranlux24             ) // NOLINT(bugprone-random-generator-seed,cert-msc32-c,cert-msc51-cpp)
-    CONDITIONAL_DUMP_STD(std::ranlux24_base        ) // NOLINT(bugprone-random-generator-seed,cert-msc32-c,cert-msc51-cpp)
-    CONDITIONAL_DUMP_STD(std::ranlux48             ) // NOLINT(bugprone-random-generator-seed,cert-msc32-c,cert-msc51-cpp)
-    CONDITIONAL_DUMP_STD(std::ranlux48_base        ) // NOLINT(bugprone-random-generator-seed,cert-msc32-c,cert-msc51-cpp)
+    CONDITIONAL_DUMP(std::default_random_engine)
+    CONDITIONAL_DUMP(std::knuth_b              )
+    CONDITIONAL_DUMP(std::minstd_rand          )
+    CONDITIONAL_DUMP(std::minstd_rand0         )
+    CONDITIONAL_DUMP(std::mt19937              )
+    CONDITIONAL_DUMP(std::mt19937_64           )
+    CONDITIONAL_DUMP(std::philox4x32           )
+    CONDITIONAL_DUMP(std::philox4x64           )
+    CONDITIONAL_DUMP(std::ranlux24             )
+    CONDITIONAL_DUMP(std::ranlux24_base        )
+    CONDITIONAL_DUMP(std::ranlux48             )
+    CONDITIONAL_DUMP(std::ranlux48_base        )
 
     // mine
 #if defined(__AES__)
-    CONDITIONAL_DUMP_MINE(aes_compress_ctr2_128 )
-    CONDITIONAL_DUMP_MINE(aes_ctr_128           )
+    CONDITIONAL_DUMP(aes_compress_ctr2_128 )
+    CONDITIONAL_DUMP(aes_ctr_128           )
 #endif
-    CONDITIONAL_DUMP_MINE(biski64               )
+    CONDITIONAL_DUMP(biski64               )
 #if defined(__PCLMUL__)
-    CONDITIONAL_DUMP_MINE(clmulrand             )
+    CONDITIONAL_DUMP(clmulrand             )
 #endif
-    CONDITIONAL_DUMP_MINE(degski32              )
-    CONDITIONAL_DUMP_MINE(degski64              )
-    CONDITIONAL_DUMP_MINE(ettinger_mixer        )
-    CONDITIONAL_DUMP_MINE(gjrand                )
-    CONDITIONAL_DUMP_MINE(jsf32_2               )
-    CONDITIONAL_DUMP_MINE(jsf32_3               )
-    CONDITIONAL_DUMP_MINE(jsf64                 )
-    CONDITIONAL_DUMP_MINE(klimov_shamir_32      )
-    CONDITIONAL_DUMP_MINE(lcg32                 )
-    CONDITIONAL_DUMP_MINE(lcg64                 )
-    CONDITIONAL_DUMP_MINE(lea64                 )
-    CONDITIONAL_DUMP_MINE(lehmer64              )
-    CONDITIONAL_DUMP_MINE(lxm                   )
-    CONDITIONAL_DUMP_MINE(mcg128                )
-    CONDITIONAL_DUMP_MINE(moremur               )
-    CONDITIONAL_DUMP_MINE(msws32                )
-    CONDITIONAL_DUMP_MINE(msws64                )
-    CONDITIONAL_DUMP_MINE(mumx_ctr2             )
-    CONDITIONAL_DUMP_MINE(mumx_mumx_rrxx_1      )
-    CONDITIONAL_DUMP_MINE(mumx_mumx_x1          )
-    CONDITIONAL_DUMP_MINE(mumx_mumx_x2          )
-    CONDITIONAL_DUMP_MINE(murmurhash3           )
-    CONDITIONAL_DUMP_MINE(murmurhash3_32        )
-    CONDITIONAL_DUMP_MINE(mx3                   )
-    CONDITIONAL_DUMP_MINE(nasam                 )
-    CONDITIONAL_DUMP_MINE(pcg32                 )
-    CONDITIONAL_DUMP_MINE(pcg32_fast            )
-    CONDITIONAL_DUMP_MINE(pcg64                 )
-    CONDITIONAL_DUMP_MINE(pcg64dxsm             )
-    CONDITIONAL_DUMP_MINE(romu_duo              )
-    CONDITIONAL_DUMP_MINE(romu_duo_jr           )
-    CONDITIONAL_DUMP_MINE(romu_quad             )
-    CONDITIONAL_DUMP_MINE(romu_quad32           )
-    CONDITIONAL_DUMP_MINE(romu_trio             )
-    CONDITIONAL_DUMP_MINE(romu_trio32           )
-    CONDITIONAL_DUMP_MINE(rrma2xsm2xs           )
-    CONDITIONAL_DUMP_MINE(rrmxmx                )
-    CONDITIONAL_DUMP_MINE(rrxmrrxmsx_0          )
-    CONDITIONAL_DUMP_MINE(seiran                )
-    CONDITIONAL_DUMP_MINE(sfc32                 )
-    CONDITIONAL_DUMP_MINE(sfc64                 )
+    CONDITIONAL_DUMP(degski32              )
+    CONDITIONAL_DUMP(degski64              )
+    CONDITIONAL_DUMP(ettinger_mixer        )
+    CONDITIONAL_DUMP(gjrand                )
+    CONDITIONAL_DUMP(jsf32_2               )
+    CONDITIONAL_DUMP(jsf32_3               )
+    CONDITIONAL_DUMP(jsf64                 )
+    CONDITIONAL_DUMP(klimov_shamir_32      )
+    CONDITIONAL_DUMP(lcg32                 )
+    CONDITIONAL_DUMP(lcg64                 )
+    CONDITIONAL_DUMP(lea64                 )
+    CONDITIONAL_DUMP(lehmer64              )
+    CONDITIONAL_DUMP(lxm                   )
+    CONDITIONAL_DUMP(mcg128                )
+    CONDITIONAL_DUMP(moremur               )
+    CONDITIONAL_DUMP(msws32                )
+    CONDITIONAL_DUMP(msws64                )
+    CONDITIONAL_DUMP(mumx_ctr2             )
+    CONDITIONAL_DUMP(mumx_mumx_rrxx_1      )
+    CONDITIONAL_DUMP(mumx_mumx_x1          )
+    CONDITIONAL_DUMP(mumx_mumx_x2          )
+    CONDITIONAL_DUMP(murmurhash3           )
+    CONDITIONAL_DUMP(murmurhash3_32        )
+    CONDITIONAL_DUMP(mx3                   )
+    CONDITIONAL_DUMP(nasam                 )
+    CONDITIONAL_DUMP(pcg32                 )
+    CONDITIONAL_DUMP(pcg32_fast            )
+    CONDITIONAL_DUMP(pcg64                 )
+    CONDITIONAL_DUMP(pcg64dxsm             )
+    CONDITIONAL_DUMP(romu_duo              )
+    CONDITIONAL_DUMP(romu_duo_jr           )
+    CONDITIONAL_DUMP(romu_quad             )
+    CONDITIONAL_DUMP(romu_quad32           )
+    CONDITIONAL_DUMP(romu_trio             )
+    CONDITIONAL_DUMP(romu_trio32           )
+    CONDITIONAL_DUMP(rrma2xsm2xs           )
+    CONDITIONAL_DUMP(rrmxmx                )
+    CONDITIONAL_DUMP(rrxmrrxmsx_0          )
+    CONDITIONAL_DUMP(seiran                )
+    CONDITIONAL_DUMP(sfc32                 )
+    CONDITIONAL_DUMP(sfc64                 )
 #if defined(__SHA__)
-    CONDITIONAL_DUMP_MINE(sha1_ctr_128          )
-    CONDITIONAL_DUMP_MINE(sha256_ctr_128        )
+    CONDITIONAL_DUMP(sha1_ctr_128          )
+    CONDITIONAL_DUMP(sha256_ctr_128        )
 #endif
-    CONDITIONAL_DUMP_MINE(shioi                 )
-    CONDITIONAL_DUMP_MINE(splitmix32            )
-    CONDITIONAL_DUMP_MINE(splitmix64            )
-    CONDITIONAL_DUMP_MINE(splitxix33            )
-    CONDITIONAL_DUMP_MINE(squares32             )
-    CONDITIONAL_DUMP_MINE(squares64             )
-    CONDITIONAL_DUMP_MINE(staffordMix13         )
-    CONDITIONAL_DUMP_MINE(stc_crand32           )
-    CONDITIONAL_DUMP_MINE(stc_crand64           )
-    CONDITIONAL_DUMP_MINE(ttwanghash64          )
-    CONDITIONAL_DUMP_MINE(wyrand                )
-    CONDITIONAL_DUMP_MINE(xoroshiro64starstar   )
-    CONDITIONAL_DUMP_MINE(xoroshiro128plusplus  )
-    CONDITIONAL_DUMP_MINE(xoroshiro128starstar  )
-    CONDITIONAL_DUMP_MINE(xoroshiro1024plusplus )
-    CONDITIONAL_DUMP_MINE(xoroshiro1024starstar )
-    CONDITIONAL_DUMP_MINE(xoroshiro128aox       )
-    CONDITIONAL_DUMP_MINE(xoshiro128plusplus    )
-    CONDITIONAL_DUMP_MINE(xoshiro128starstar    )
-    CONDITIONAL_DUMP_MINE(xoshiro256plusplus    )
-    CONDITIONAL_DUMP_MINE(xoshiro256starstar    )
-    CONDITIONAL_DUMP_MINE(xoshiro512plusplus    )
-    CONDITIONAL_DUMP_MINE(xoshiro512starstar    )
-    CONDITIONAL_DUMP_MINE(xsm32                 )
-    CONDITIONAL_DUMP_MINE(xsm64                 )
-    CONDITIONAL_DUMP_MINE(xxh32_avalanche       )
-    CONDITIONAL_DUMP_MINE(xxh64_avalanche       )
-    CONDITIONAL_DUMP_MINE(xxh3_avalanche        )
-    CONDITIONAL_DUMP_MINE(xxh3_rrmxmx           )
+    CONDITIONAL_DUMP(shioi                 )
+    CONDITIONAL_DUMP(splitmix32            )
+    CONDITIONAL_DUMP(splitmix64            )
+    CONDITIONAL_DUMP(splitxix33            )
+    CONDITIONAL_DUMP(squares32             )
+    CONDITIONAL_DUMP(squares64             )
+    CONDITIONAL_DUMP(staffordMix13         )
+    CONDITIONAL_DUMP(stc_crand32           )
+    CONDITIONAL_DUMP(stc_crand64           )
+    CONDITIONAL_DUMP(ttwanghash64          )
+    CONDITIONAL_DUMP(wyrand                )
+    CONDITIONAL_DUMP(xoroshiro64starstar   )
+    CONDITIONAL_DUMP(xoroshiro128plusplus  )
+    CONDITIONAL_DUMP(xoroshiro128starstar  )
+    CONDITIONAL_DUMP(xoroshiro1024plusplus )
+    CONDITIONAL_DUMP(xoroshiro1024starstar )
+    CONDITIONAL_DUMP(xoroshiro128aox       )
+    CONDITIONAL_DUMP(xoshiro128plusplus    )
+    CONDITIONAL_DUMP(xoshiro128starstar    )
+    CONDITIONAL_DUMP(xoshiro256plusplus    )
+    CONDITIONAL_DUMP(xoshiro256starstar    )
+    CONDITIONAL_DUMP(xoshiro512plusplus    )
+    CONDITIONAL_DUMP(xoshiro512starstar    )
+    CONDITIONAL_DUMP(xsm32                 )
+    CONDITIONAL_DUMP(xsm64                 )
+    CONDITIONAL_DUMP(xxh32_avalanche       )
+    CONDITIONAL_DUMP(xxh64_avalanche       )
+    CONDITIONAL_DUMP(xxh3_avalanche        )
+    CONDITIONAL_DUMP(xxh3_rrmxmx           )
 
     return 0;
 }
