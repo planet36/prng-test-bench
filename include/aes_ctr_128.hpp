@@ -39,7 +39,7 @@ void
 aes_ctr_128::init()
 {
     // The 64-bit lanes of the key must differ.
-    // With a key of (K, K), if the counter
+    // next() uses the same key in every round.  With a key of (K, K), if the counter
     // (A, B) gives the output (X, Y), then the counter (B, A) gives the output (Y, X).
 
     // most significant elem first
