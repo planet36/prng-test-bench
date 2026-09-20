@@ -12,6 +12,7 @@
 #if defined(__AES__)
 
 #include "mm_cast.hpp"
+#include "sha2_iv.h"
 #include "simd_types.hpp"
 #include "urbg_base_class.hpp"
 #include "wyprimes.hpp"
@@ -40,7 +41,7 @@ aes_ctr_128::init()
     if (_mm_extract_epi64(s[1], 0) == _mm_extract_epi64(s[1], 1))
     {
         // most significant elem first
-        const auto mask_key = _mm_set_epi64x(wyprimes::_wyp[3], wyprimes::_wyp[2]); // NOLINT(cppcoreguidelines-narrowing-conversions)
+        const auto mask_key = _mm_set_epi64x(SHA_512_H0_1, SHA_512_H0_0); // NOLINT(cppcoreguidelines-narrowing-conversions)
 
         s[1] = _mm_xor_si128(s[1], mask_key);
     }
