@@ -38,7 +38,6 @@ DEF_URBG_SUBCLASS(aes_ctr_128, simd_arr_t<2>, __uint128_t)
 void
 aes_ctr_128::init()
 {
-#if defined(__x86_64__) && defined(__SSE4_1__)
     // The 64-bit lanes of the key must differ.
     // With a key of (K, K), if the counter
     // (A, B) gives the output (X, Y), then the counter (B, A) gives the output (Y, X).
@@ -51,7 +50,6 @@ aes_ctr_128::init()
     const auto equal_mask = _mm_cmpeq_epi64(s[1], swapped);
 
     s[1] = _mm_xor_si128(s[1], _mm_and_si128(equal_mask, key_mask));
-#endif
 }
 
 aes_ctr_128::result_type
