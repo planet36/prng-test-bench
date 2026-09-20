@@ -32,19 +32,26 @@
 DEF_URBG_SUBCLASS(aes_ctr_128, simd_arr_t<2>, __uint128_t)
 
 /// Prepare the initial state
+/**
+* The key is adjusted, if necessary, so that its 64-bit lanes differ.
+*/
 void
 aes_ctr_128::init()
 {
-    // The 64-bit halves of the key must differ.
-    // next() uses the same key in every round.  With a key of (K, K), if the counter
+#if defined(__x86_64__) && defined(__SSE4_1__)
+    // The 64-bit lanes of the key must differ.
+    // With a key of (K, K), if the counter
     // (A, B) gives the output (X, Y), then the counter (B, A) gives the output (Y, X).
-    if (_mm_extract_epi64(s[1], 0) == _mm_extract_epi64(s[1], 1))
-    {
-        // most significant elem first
-        const auto key_mask = _mm_set_epi64x(SHA_512_H0_1, SHA_512_H0_0); // NOLINT(cppcoreguidelines-narrowing-conversions)
 
-        s[1] = _mm_xor_si128(s[1], key_mask);
-    }
+    // most significant elem first
+    const auto key_mask = _mm_set_epi64x(SHA_512_H0_1, SHA_512_H0_0); // NOLINT(cppcoreguidelines-narrowing-conversions)
+
+    const auto swapped = _mm_shuffle_epi32(s[1], _MM_SHUFFLE(1, 0, 3, 2));
+    // all ones if the lanes are equal, all zeros otherwise
+    const auto equal_mask = _mm_cmpeq_epi64(s[1], swapped);
+
+    s[1] = _mm_xor_si128(s[1], _mm_and_si128(equal_mask, key_mask));
+#endif
 }
 
 aes_ctr_128::result_type
