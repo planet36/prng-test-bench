@@ -33,7 +33,7 @@ biski64::init()
     constexpr int num_warmup_discards = 16;
     for (int i = 0; i < num_warmup_discards; ++i)
     {
-        next(); // Assumes this function advances the state
+        (void)next(); // Assumes this function advances the state
     }
 }
 
