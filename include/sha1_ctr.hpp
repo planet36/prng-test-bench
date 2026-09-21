@@ -22,7 +22,7 @@
 * \sa https://www.felixcloutier.com/x86/sha1rnds4
 * \sa https://github.com/noloader/SHA-Intrinsics/blob/master/sha1-x86.c
 */
-static __m128i
+[[nodiscard]] static __m128i
 sha1_rnds4x4(__m128i a, __m128i b)
 {
     a = _mm_sha1rnds4_epu32(a, b, 0);

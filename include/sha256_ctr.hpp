@@ -52,7 +52,7 @@ static const simd_arr_t<32> sha256_round_constants{
 * \sa https://www.felixcloutier.com/x86/sha256rnds2
 * \sa https://github.com/noloader/SHA-Intrinsics/blob/master/sha256-x86.c
 */
-static __m128i
+[[nodiscard]] static __m128i
 sha256_rnds2x4(__m128i a, __m128i b)
 {
     a = _mm_sha256rnds2_epu32(a, b, sha256_round_constants[0]);

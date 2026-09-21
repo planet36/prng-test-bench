@@ -64,7 +64,7 @@
 #include <string>
 
 template <std::uniform_random_bit_generator URBG>
-constexpr size_t
+[[nodiscard]] constexpr size_t
 get_state_size_bytes()
 {
     constexpr bool has_state_type = requires(const URBG& prng)
@@ -92,7 +92,7 @@ struct prng_info_t
 };
 
 template <std::uniform_random_bit_generator URBG>
-prng_info_t
+[[nodiscard]] prng_info_t
 create_prng_info()
 {
     return prng_info_t{

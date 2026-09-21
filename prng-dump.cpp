@@ -197,7 +197,7 @@ print_usage()
 /// Construct a \c std engine seeded as \a seed says
 template <std::uniform_random_bit_generator URBG>
 requires (!my_urbg<URBG>)
-URBG
+[[nodiscard]] URBG
 make_seeded(const seed_type seed)
 {
     switch (seed)
@@ -222,7 +222,7 @@ make_seeded(const seed_type seed)
 
 /// Construct a PRNG of mine seeded as \a seed says
 template <my_urbg URBG>
-URBG
+[[nodiscard]] URBG
 make_seeded(const seed_type seed)
 {
     switch (seed)

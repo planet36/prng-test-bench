@@ -24,7 +24,7 @@
 /// Construct a randomly seeded \c std engine
 template <typename URBG>
 requires std::uniform_random_bit_generator<URBG> && (!my_urbg<URBG>)
-URBG
+[[nodiscard]] URBG
 make_random_seeded()
 {
     return random_device_seeded<URBG>();
@@ -35,7 +35,7 @@ make_random_seeded()
 * The default constructor fills the state from \c arc4random_buf.
 */
 template <my_urbg URBG>
-URBG
+[[nodiscard]] URBG
 make_random_seeded()
 {
     return URBG{};
@@ -49,7 +49,7 @@ make_random_seeded()
 * The program exits if \c NUM_THREADS is not an integer in the interval from 0 to the number
 * of hardware threads.
 */
-inline int
+[[nodiscard]] inline int
 get_num_threads()
 {
     constexpr int min_threads = 1;

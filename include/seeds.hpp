@@ -18,7 +18,7 @@ inline constexpr uint8_t seed_pattern_byte{0xAA};
 
 /// Return seed bytes for \a URBG that are all 0x00
 template <std::uniform_random_bit_generator URBG>
-constexpr auto
+[[nodiscard]] constexpr auto
 get_seed_bytes_zero()
 {
     return typename URBG::seed_bytes_type{};
@@ -26,7 +26,7 @@ get_seed_bytes_zero()
 
 /// Return seed bytes for \a URBG that are all \c seed_pattern_byte
 template <std::uniform_random_bit_generator URBG>
-constexpr auto
+[[nodiscard]] constexpr auto
 get_seed_bytes_pattern()
 {
     typename URBG::seed_bytes_type bytes{};
