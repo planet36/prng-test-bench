@@ -95,7 +95,7 @@ using larger_of = std::conditional_t<sizeof(T) >= sizeof(T2), T, T2>;
 */
 template <std::integral T>
 requires (sizeof(next_larger<T>) > sizeof(T))
-constexpr auto
+[[nodiscard]] constexpr auto
 widen(const T n)
 {
     using T2 = next_larger<T>;
@@ -109,7 +109,7 @@ widen(const T n)
 */
 template <std::integral T>
 requires (sizeof(next_smaller<T>) < sizeof(T))
-constexpr auto
+[[nodiscard]] constexpr auto
 narrow(const T n)
 {
     using T2 = next_smaller<T>;

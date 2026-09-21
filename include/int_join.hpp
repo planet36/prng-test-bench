@@ -17,7 +17,7 @@
 #include <utility>
 
 template <std::unsigned_integral T>
-constexpr auto
+[[nodiscard]] constexpr auto
 int_join(const T hi, const T lo)
 {
     using T2 = next_larger<T>;
