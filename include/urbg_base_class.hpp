@@ -124,7 +124,7 @@ protected:
         CLASS_NAME() { init(); }                                                            \
         explicit CLASS_NAME(const state_type& new_s) : URBG_base(new_s) { init(); }         \
         explicit CLASS_NAME(const seed_bytes_type& bytes) : URBG_base(bytes) { init(); }    \
-        inline result_type next(); /* must implement this */                                \
+        [[nodiscard]] inline result_type next(); /* must implement this */                  \
         [[nodiscard]] result_type operator()() { return next(); }                           \
     };                                                                                      \
     static_assert(std::uniform_random_bit_generator<CLASS_NAME>);
