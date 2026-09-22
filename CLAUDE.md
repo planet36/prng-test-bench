@@ -93,7 +93,8 @@ that lacks the instruction set.
 **Benchmarks.**  `prng-benchmark.hpp` holds what the two benchmark programs share.  Its
 `make_random_seeded<URBG>()` seeds a `std` engine with `random_device_seeded` and one of the
 repo's PRNGs (detected by `my_urbg`) with its default constructor, so one
-benchmark function serves both.  `get_num_threads()` reads `NUM_THREADS`.
+benchmark function serves both.  `get_num_threads()` in
+`get_num_threads.hpp` reads `NUM_THREADS`.
 
 **Seed types.**  The two `make_seeded` overloads in `prng-dump.cpp` turn a seed type into a
 seeded PRNG.  They tell the repo's own PRNGs from `std` engines with the `my_urbg` concept in

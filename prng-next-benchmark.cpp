@@ -1,6 +1,7 @@
 // SPDX-FileCopyrightText: Steven Ward
 // SPDX-License-Identifier: MPL-2.0
 
+#include "get_num_threads.hpp"
 #include "prng-benchmark.hpp"
 #include "prng.hpp"
 
