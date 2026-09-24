@@ -65,5 +65,5 @@ The following programs are required to run:
 - See [Makefile](Makefile) for detailed list
 
 The following are required to plot the results:
-- [Python](https://www.python.org/) 3
+- [Python 3](https://www.python.org/)
 - [Matplotlib](https://matplotlib.org/)
