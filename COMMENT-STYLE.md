@@ -193,9 +193,9 @@ correct only under this setting.
 
 **11. Use `\copydoc` when the whole block transfers.**  It copies the `\param`
 and `\exception` lines along with the text, so it only works when the parameter
-names match.  An overload that names them differently draws a "too many @param
-commands" warning, and a block with its own `\exception` lines ends up carrying
-each one twice.
+names match.  An overload that names them differently draws an "is not found in
+the argument list" warning, and a block with its own `\exception` lines ends up
+carrying each one twice.
 
 **12. Use `\copybrief` plus one specific paragraph when they do not.**  Two
 overloads that spell the same parameter differently are the usual case.  One
