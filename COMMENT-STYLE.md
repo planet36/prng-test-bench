@@ -64,10 +64,10 @@ carries across is that a file settles on one ending, not which ending it is.
 **6. Keep a paragraph to about five lines.**  Past that, split it into two
 paragraphs or cut it down.  A wall of text is not thorough, it is unread.
 
-**7. Put two spaces after a sentence-ending period** in code comments and doc
-blocks.  A markdown file follows whatever that file already does.  This file
-uses two spaces, and another file may use one.  Match the file you are editing
-rather than converting it.
+**7. Put two spaces after a sentence-ending period.**  That holds in code
+comments, doc blocks, commit messages, and documentation files alike, markdown
+included.  An abbreviation such as "e.g." takes one space, since no sentence
+ends there.
 
 Do not bulk-convert a file you are not otherwise editing.  Any line you do
 modify comes back with two spaces.
