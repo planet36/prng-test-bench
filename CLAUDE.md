@@ -35,7 +35,8 @@ Only g++ is supported (clang++ is not).  The benchmark programs link with `-lben
 - `make -C include` compiles each header standalone (as `-Werror`) to check that it is
   self-contained; `make -C include wyrand.o` checks one header, and `make -C include lint`
   lints the headers.
-- `make warmup-survey && ./warmup-survey` runs the warm-up survey.  For each PRNG with a warm-up (outputs discarded in `init()`), it starts from the state
+- `make warmup-survey && ./warmup-survey` runs the warm-up survey.  For each PRNG with a
+  warm-up (outputs discarded in `init()`), it starts from the state
   that `init()` has before the warm-up and reports how many outputs to discard before they
   look filled, followed by the per-call percentages behind each count.  The
   warm-ups, and the replacement of an all-zero state with 1, 2, 3, ..., exist because those
@@ -85,8 +86,8 @@ building blocks.  Several are synced from the author's other repos.
 5. Add `REGISTER_BENCHMARK_PRNG_CONSTRUCT(name)` to `main` in `prng-construct-benchmark.cpp`.
 
 Keep the alphabetical order and column alignment.  Guard ISA-dependent PRNGs with the same
-`#if defined(__AES__)` / `__PCLMUL__` / `__SHA__` in all of these files, and wrap the PRNG's own header
-in that guard too (with a `#warning` in the `#else`, as `aes_ctr_128.hpp` does).
+`#if defined(__AES__)` / `__PCLMUL__` / `__SHA__` in all of these files, and wrap the PRNG's
+own header in that guard too (with a `#warning` in the `#else`, as `aes_ctr_128.hpp` does).
 `prng.hpp` includes every header, so an unguarded header breaks the build on a CPU target
 that lacks the instruction set.
 
