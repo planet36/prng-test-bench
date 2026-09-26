@@ -41,8 +41,8 @@ Only g++ is supported (clang++ is not).  The benchmark programs link with `-lben
   look filled, followed by the per-call percentages behind each count.  The
   warm-ups, and the replacement of an all-zero state with 1, 2, 3, ..., exist because those
   PRNGs otherwise failed PractRand immediately with the zero seed.  The counts
-  (`num_warmup_discards`) were first picked by eye, and they roughly match discarding outputs
-  until the first one with at least 40% of its bits set.  The survey does not read them, so
+  (`num_warmup_discards`) are set by hand, and they roughly match discarding outputs until
+  the first one with at least 40% of its bits set.  The survey does not read them, so
   when a warm-up or a zero-seed fix-up in `init()` changes, rerun it and update the count by
   hand.  Its list in `main()` must say whether each PRNG starts from zeros or from 1, 2, 3, ....
 
