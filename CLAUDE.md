@@ -1,7 +1,5 @@
 # CLAUDE.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
-
 ## What this is
 
 A C++26 test bench for PRNGs.  The program `prng-dump` writes raw output of a named PRNG to
