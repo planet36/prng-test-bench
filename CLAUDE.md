@@ -112,8 +112,8 @@ names are written to `prng-results.*.{files,names}.{good,failed}.txt`.  They are
 
 ## Conventions
 
-- `COMMENT-STYLE.md` governs code comments, Doxygen blocks, and commit messages.  Follow it
-  when writing any of those (for example: two spaces after periods, 96-column limit, Doxygen
-  briefs on `///` lines with no terminating period, `\a` for parameters).
+- `COMMENT-STYLE.md` governs code comments, Doxygen blocks, commit messages, and documentation
+  files.  Follow it when writing any of those (for example: two spaces after periods, 96-column
+  limit, Doxygen briefs on `///` lines with no terminating period, `\a` for parameters).
 - Files carry `SPDX-FileCopyrightText` / `SPDX-License-Identifier` headers (MPL-2.0 for C++).
 - Commit subjects are short imperative sentences without a trailing period.
