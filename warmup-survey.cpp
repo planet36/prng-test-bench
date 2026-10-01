@@ -47,8 +47,7 @@ struct zero_start : G
     zero_start() : G(state_type{}) {}
 
     /// Set the state to what init has before its warm-up when it keeps an all-zero seed
-    void
-    reset_state()
+    void reset_state()
     {
         this->s = state_type{};
         if constexpr (requires { this->p; })
@@ -67,8 +66,7 @@ struct iota_start : G
     iota_start() : G(state_type{}) {}
 
     /// Set the state to what init has before its warm-up when it replaces an all-zero seed
-    void
-    reset_state()
+    void reset_state()
     {
         for (size_t i = 0; i < std::size(this->s); ++i)
         {

@@ -57,9 +57,14 @@ int main([[maybe_unused]] int argc, [[maybe_unused]] char* argv[])
 
     // {{{ speed
 
-#define REGISTER_BENCHMARK_PRNG_NEXT(NAME) \
-{ auto* benchmark = benchmark::RegisterBenchmark(#NAME, BM_prng_next<NAME>); \
-if (num_threads > 1) benchmark->Threads(num_threads); }
+#define REGISTER_BENCHMARK_PRNG_NEXT(NAME)                                         \
+    {                                                                              \
+        auto* benchmark = benchmark::RegisterBenchmark(#NAME, BM_prng_next<NAME>); \
+        if (num_threads > 1)                                                       \
+        {                                                                          \
+            benchmark->Threads(num_threads);                                       \
+        }                                                                          \
+    }
 
     // <random>
     REGISTER_BENCHMARK_PRNG_NEXT(std::default_random_engine)

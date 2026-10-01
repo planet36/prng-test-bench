@@ -273,8 +273,8 @@ try
         case 'l':
             {
                 // the value of "-l" is gibibytes (GiB)
-                const unsigned long long limit_gibibytes = parse_option_int(optarg, 0,
-                        max_limit_gibibytes, "-l");
+                const unsigned long long limit_gibibytes =
+                    parse_option_int(optarg, 0, max_limit_gibibytes, "-l");
 
                 // convert GiB to B
                 limit_bytes = limit_gibibytes * bytes_per_gibibyte;
@@ -342,11 +342,12 @@ int main([[maybe_unused]] int argc, [[maybe_unused]] char* argv[])
         errx(EXIT_FAILURE, "Unknown PRNG: \"%s\"", prng_name.c_str());
     }
 
-#define CONDITIONAL_DUMP(NAME) \
-if (prng_name == #NAME) { \
-    prng_dump(make_seeded<NAME>(seed)); \
-    return 0; \
-}
+#define CONDITIONAL_DUMP(NAME)              \
+    if (prng_name == #NAME)                 \
+    {                                       \
+        prng_dump(make_seeded<NAME>(seed)); \
+        return 0;                           \
+    }
 
     // <random>
     CONDITIONAL_DUMP(std::default_random_engine)

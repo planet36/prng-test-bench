@@ -72,7 +72,8 @@ parse_int(std::string_view s,
 #endif
 
     T value{};
-    const auto [ptr, ec] = std::from_chars(std::data(s), std::data(s) + std::size(s), value, base);
+    const auto [ptr, ec] =
+        std::from_chars(std::data(s), std::data(s) + std::size(s), value, base);
 
     if (ec != std::errc{})
         return std::unexpected{ec};

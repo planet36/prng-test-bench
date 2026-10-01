@@ -67,10 +67,8 @@ template <std::uniform_random_bit_generator URBG>
 [[nodiscard]] constexpr size_t
 get_state_size_bytes()
 {
-    constexpr bool has_state_type = requires(const URBG& prng)
-    {
-        typename URBG::state_type;
-    };
+    constexpr bool has_state_type =
+        requires (const URBG& prng) { typename URBG::state_type; };
 
     if constexpr (has_state_type)
         return sizeof(typename URBG::state_type);

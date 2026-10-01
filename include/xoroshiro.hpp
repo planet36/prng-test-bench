@@ -178,11 +178,19 @@ protected:
 
 public:
     xoroshiro1024plusplus() { init(); }
+
     explicit xoroshiro1024plusplus(const state_type& new_s) : URBG_base(new_s) { init(); }
-    explicit xoroshiro1024plusplus(const seed_bytes_type& bytes) : URBG_base(bytes) { init(); }
+
+    explicit xoroshiro1024plusplus(const seed_bytes_type& bytes) : URBG_base(bytes)
+    {
+        init();
+    }
+
     [[nodiscard]] inline result_type next();
+
     [[nodiscard]] result_type operator()() { return next(); }
 };
+
 static_assert(std::uniform_random_bit_generator<xoroshiro1024plusplus>);
 
 /// Prepare the initial state
@@ -245,11 +253,19 @@ protected:
 
 public:
     xoroshiro1024starstar() { init(); }
+
     explicit xoroshiro1024starstar(const state_type& new_s) : URBG_base(new_s) { init(); }
-    explicit xoroshiro1024starstar(const seed_bytes_type& bytes) : URBG_base(bytes) { init(); }
+
+    explicit xoroshiro1024starstar(const seed_bytes_type& bytes) : URBG_base(bytes)
+    {
+        init();
+    }
+
     [[nodiscard]] inline result_type next();
+
     [[nodiscard]] result_type operator()() { return next(); }
 };
+
 static_assert(std::uniform_random_bit_generator<xoroshiro1024starstar>);
 
 /// Prepare the initial state

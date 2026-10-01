@@ -114,19 +114,19 @@ protected:
 // included in more than one translation unit without violating the
 // one-definition rule.
 // NOLINTNEXTLINE(cppcoreguidelines-macro-usage)
-#define DEF_URBG_SUBCLASS(CLASS_NAME, STATE_TYPE, RESULT_TYPE)                              \
-    struct CLASS_NAME : public URBG_base<STATE_TYPE, RESULT_TYPE>                           \
-    {                                                                                       \
-    protected:                                                                              \
-        inline void init(); /* must implement this */                                       \
-                                                                                            \
-    public:                                                                                 \
-        CLASS_NAME() { init(); }                                                            \
-        explicit CLASS_NAME(const state_type& new_s) : URBG_base(new_s) { init(); }         \
-        explicit CLASS_NAME(const seed_bytes_type& bytes) : URBG_base(bytes) { init(); }    \
-        [[nodiscard]] inline result_type next(); /* must implement this */                  \
-        [[nodiscard]] result_type operator()() { return next(); }                           \
-    };                                                                                      \
+#define DEF_URBG_SUBCLASS(CLASS_NAME, STATE_TYPE, RESULT_TYPE)                           \
+    struct CLASS_NAME : public URBG_base<STATE_TYPE, RESULT_TYPE>                        \
+    {                                                                                    \
+    protected:                                                                           \
+        inline void init(); /* must implement this */                                    \
+                                                                                         \
+    public:                                                                              \
+        CLASS_NAME() { init(); }                                                         \
+        explicit CLASS_NAME(const state_type& new_s) : URBG_base(new_s) { init(); }      \
+        explicit CLASS_NAME(const seed_bytes_type& bytes) : URBG_base(bytes) { init(); } \
+        [[nodiscard]] inline result_type next(); /* must implement this */               \
+        [[nodiscard]] result_type operator()() { return next(); }                        \
+    };                                                                                   \
     static_assert(std::uniform_random_bit_generator<CLASS_NAME>);
 
 /// A PRNG declared with \c DEF_URBG_SUBCLASS
@@ -134,6 +134,5 @@ protected:
 * Only these have \c seed_bytes_type.  The \c std engines do not.
 */
 template <typename T>
-concept my_urbg = std::uniform_random_bit_generator<T> && requires {
-    typename T::seed_bytes_type;
-};
+concept my_urbg =
+    std::uniform_random_bit_generator<T> && requires { typename T::seed_bytes_type; };
