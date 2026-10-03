@@ -36,7 +36,7 @@ https://www.pcg-random.org/posts/how-to-test-with-practrand.html
 #include <utility>
 
 inline constexpr std::string_view program_author = "Steven Ward";
-inline constexpr std::string_view program_version = "2026-09-18";
+inline constexpr std::string_view program_version = "2026-10-02";
 inline constexpr std::string_view program_license = "MPL-2.0";
 
 // Globals
