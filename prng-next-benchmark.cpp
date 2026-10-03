@@ -4,8 +4,10 @@
 #include "get_num_threads.hpp"
 #include "prng-benchmark.hpp"
 #include "prng.hpp"
+#include "uniform_bits.hpp"
 
 #include <benchmark/benchmark.h> // https://github.com/google/benchmark
+#include <climits>
 #include <random>
 #include <type_traits>
 
@@ -33,9 +35,14 @@ BM_prng_next(benchmark::State& BM_state)
     // This is to prevent the compiler from eliding the work above.
     benchmark::DoNotOptimize(result);
 
+    // Count only the uniformly random bits returned by each call.
+    // For example, std::mt19937 returns a 64-bit std::uint_fast32_t,
+    // but only the low 32 bits are random.
+    constexpr double bytes_per_call = urbg_uniform_bits<URBG> / double{CHAR_BIT};
+
     // Counters are summed across threads.  kAvgThreads makes this the per-thread rate.
     BM_state.counters["bytes_per_second"] =
-        benchmark::Counter(static_cast<double>(BM_state.iterations()) * sizeof(result_type),
+        benchmark::Counter(static_cast<double>(BM_state.iterations()) * bytes_per_call,
                            benchmark::Counter::kAvgThreadsRate, benchmark::Counter::kIs1024);
 }
 
