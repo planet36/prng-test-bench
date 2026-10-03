@@ -12,13 +12,14 @@ outputs look filled.
 */
 
 #include "prng.hpp"
+#include "uniform_bits.hpp"
 
 #include <array>
 #include <bit>
-#include <climits>
 #include <cstddef>
 #include <cstdint>
 #include <format>
+#include <limits>
 #include <print>
 #include <string>
 #include <string_view>
@@ -124,7 +125,11 @@ survey(std::string_view name, std::string_view start_name)
     Start g;
     g.reset_state();
 
-    const int bits = sizeof(typename Start::result_type) * CHAR_BIT;
+    // The popcounts below need every bit of an output to be random, and an output to fit in
+    // uint64_t.
+    constexpr int bits = urbg_uniform_bits<Start>;
+    static_assert(bits == std::numeric_limits<typename Start::result_type>::digits);
+    static_assert(bits <= std::numeric_limits<uint64_t>::digits);
 
     survey_result r{.name = name, .start_name = start_name};
     uint64_t previous = 0;
