@@ -9,15 +9,14 @@
 #include <benchmark/benchmark.h> // https://github.com/google/benchmark
 #include <climits>
 #include <random>
-#include <type_traits>
 
 /// Benchmark the generation of next values from a PRNG
 template <typename URBG>
-requires std::uniform_random_bit_generator<std::remove_cvref_t<URBG>>
+requires std::uniform_random_bit_generator<URBG>
 void
 BM_prng_next(benchmark::State& BM_state)
 {
-    using result_type = std::remove_cvref_t<URBG>::result_type;
+    using result_type = URBG::result_type;
 
     // Perform setup here
 

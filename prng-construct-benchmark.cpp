@@ -7,11 +7,10 @@
 
 #include <benchmark/benchmark.h> // https://github.com/google/benchmark
 #include <random>
-#include <type_traits>
 
 /// Benchmark construction of a randomly seeded PRNG
 template <typename URBG>
-requires std::uniform_random_bit_generator<std::remove_cvref_t<URBG>>
+requires std::uniform_random_bit_generator<URBG>
 void
 BM_prng_construct(benchmark::State& BM_state)
 {
