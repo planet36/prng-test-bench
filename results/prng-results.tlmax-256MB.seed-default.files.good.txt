@@ -51,8 +51,13 @@ RNG_test.tlmax-256MB.seed-default.prng-squares64.txt
 RNG_test.tlmax-256MB.seed-default.prng-staffordMix13.txt
 RNG_test.tlmax-256MB.seed-default.prng-stc_crand32.txt
 RNG_test.tlmax-256MB.seed-default.prng-stc_crand64.txt
+RNG_test.tlmax-256MB.seed-default.prng-std::knuth_b.txt
+RNG_test.tlmax-256MB.seed-default.prng-std::mt19937.txt
 RNG_test.tlmax-256MB.seed-default.prng-std::mt19937_64.txt
+RNG_test.tlmax-256MB.seed-default.prng-std::philox4x32.txt
 RNG_test.tlmax-256MB.seed-default.prng-std::philox4x64.txt
+RNG_test.tlmax-256MB.seed-default.prng-std::ranlux24.txt
+RNG_test.tlmax-256MB.seed-default.prng-std::ranlux48.txt
 RNG_test.tlmax-256MB.seed-default.prng-ttwanghash64.txt
 RNG_test.tlmax-256MB.seed-default.prng-wyrand.txt
 RNG_test.tlmax-256MB.seed-default.prng-xoroshiro1024plusplus.txt

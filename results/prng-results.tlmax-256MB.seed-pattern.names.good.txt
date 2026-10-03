@@ -51,7 +51,11 @@ squares64
 staffordMix13
 stc_crand32
 stc_crand64
+std::knuth_b
+std::philox4x32
 std::philox4x64
+std::ranlux24
+std::ranlux48
 ttwanghash64
 wyrand
 xoroshiro1024plusplus
