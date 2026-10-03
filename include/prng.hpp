@@ -55,7 +55,8 @@
 #include "xsm.hpp"
 #include "xxh.hpp"
 
-#include <climits>
+#include "uniform_bits.hpp"
+
 #include <concepts>
 #include <cstddef>
 #include <cstdint>
@@ -79,7 +80,7 @@ get_state_size_bytes()
 struct prng_info_t
 {
     const size_t state_size_bytes;
-    const size_t result_size_bits; // This has to be bits because of how RNG_test works.
+    const size_t result_size_bits; // the number of uniformly random bits each call returns
 #if defined(__SIZEOF_INT128__)
     const __uint128_t result_min;
     const __uint128_t result_max;
@@ -95,7 +96,7 @@ create_prng_info()
 {
     return prng_info_t{
         .state_size_bytes = get_state_size_bytes<URBG>(),
-        .result_size_bits = sizeof(typename URBG::result_type) * CHAR_BIT,
+        .result_size_bits = urbg_uniform_bits<URBG>,
         .result_min = URBG::min(),
         .result_max = URBG::max(),
     };

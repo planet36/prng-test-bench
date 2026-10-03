@@ -12,12 +12,15 @@ https://www.pcg-random.org/posts/how-to-test-with-practrand.html
 
 */
 
+#include "int_bytes.hpp"
 #include "parse_int.hpp"
 #include "prng.hpp"
 #include "seed_seq.hpp"
 #include "seeds.hpp"
+#include "uniform_bits.hpp"
 
 #include <array>
+#include <bit>
 #include <cerrno>
 #include <cstddef>
 #include <cstdint>
@@ -107,6 +110,10 @@ write_all(const int fd, const void* buf, size_t count)
 
 /// Write the output of \a gen to stdout in blocks of 32 KiB
 /**
+* Each value is written as a word of the largest power of 2 bits that is at most the number
+* of uniformly random bits in the value.  test-prng-dump.bash picks the stdinN of RNG_test
+* the same way, so the two must agree.
+*
 * Stop after \c limit_bytes bytes, or never if \c limit_bytes is 0.
 */
 template <typename URBG>
@@ -116,16 +123,20 @@ prng_dump(URBG gen)
 {
     using result_type = URBG::result_type;
 
+    constexpr auto word_bits =
+        std::bit_floor(static_cast<unsigned int>(urbg_uniform_bits<URBG>));
+    using word_type = uint_bits<word_bits>;
+
     // /proc/sys/fs/pipe-max-size = 1048576
     // fcntl(STDOUT_FILENO, F_GETPIPE_SZ) = 65536
     // BUFSIZ = 8192
     // PractRand uses a buffer of size 32768 bytes for reading from stdin.
     constexpr size_t buf_size_bytes = 32768;
-    constexpr size_t buf_num_elems = buf_size_bytes / sizeof(result_type);
-    static_assert(buf_size_bytes % sizeof(result_type) == 0);
+    constexpr size_t buf_num_elems = buf_size_bytes / sizeof(word_type);
+    static_assert(buf_size_bytes % sizeof(word_type) == 0);
     static_assert(bytes_per_gibibyte % buf_size_bytes == 0);
 
-    std::array<result_type, buf_num_elems> buf{};
+    std::array<word_type, buf_num_elems> buf{};
 
     const size_t num_writes = limit_bytes / buf_size_bytes;
 
@@ -133,7 +144,18 @@ prng_dump(URBG gen)
     {
         for (size_t i = 0; i < buf_num_elems; ++i)
         {
-            buf[i] = gen();
+            const result_type x = gen() - URBG::min();
+
+            if constexpr (sizeof(word_type) < sizeof(result_type))
+            {
+                // XOR the high (otherwise unused) bits into the low bits so
+                // they aren't wasted.
+                buf[i] = static_cast<word_type>(x ^ (x >> word_bits));
+            }
+            else
+            {
+                buf[i] = x;
+            }
         }
 
         write_all(STDOUT_FILENO, std::data(buf), sizeof(buf));

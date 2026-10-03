@@ -52,7 +52,10 @@ Working with one PRNG:
 - `bash test-prng-dump.bash -m 256MB -s zero NAME...` tests only the named PRNGs.  It
   overwrites the matching files in `results/`.
 - A manual run looks like `./prng-dump -s zero wyrand | RNG_test stdin64 -tlmax 256MB -multithreaded`.
-  `RNG_test` accepts at most `stdin64`.
+  `result_bits` is the number of uniformly random bits each call returns.  `prng-dump` writes
+  each value in a word of the largest power of 2 bits that is at most `result_bits`, and
+  `stdinN` has to match that word.  For example, `std::ranlux24` returns 24 bits, so it needs
+  `stdin16`.  `RNG_test` accepts at most `stdin64`, so a 128-bit PRNG also uses `stdin64`.
 
 ## Architecture
 
