@@ -255,7 +255,7 @@ do
 
         # RNG_test --help:
         # To use an external RNG, use stdin as an RNG name and pipe in the random
-        # numbers.  stdin8, stdin16, stdin32, and stdin64 also work, each interpretting
+        # numbers.  stdin8, stdin16, stdin32, and stdin64 also work, each interpreting
         # the input in slightly different ways.  Use stdin if you're uncertain how many
         # bits the RNG produces at a time, or if it's not one of those options.
 
