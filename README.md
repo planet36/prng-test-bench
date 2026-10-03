@@ -16,6 +16,8 @@ For example, to test one PRNG by hand:
 ./prng-dump -s zero wyrand | RNG_test stdin64 -tlmax 256MB -multithreaded
 ```
 
+The second column of `./prng-dump -i` is the number of uniformly random bits each call returns.  `prng-dump` writes each value in a word of the largest power of 2 bits that is at most that number, and the `stdinN` given to `RNG_test` has to match that word.  For example, `std::ranlux24` returns 24 bits, so it needs `stdin16`.  `RNG_test` accepts at most `stdin64`, so a 128-bit PRNG also uses `stdin64`.
+
 ## Usage
 
 To run the benchmarks only: `make benchmark`
