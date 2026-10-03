@@ -252,12 +252,35 @@ do
     OUTFILE_STEM="prng-results.tlmax-$TLMAX.seed-$SEED_TYPE"
 
     while read -r PRNG_NAME PRNG_RESULT_SIZE_BITS _; do
-        if ((PRNG_RESULT_SIZE_BITS > 64)) # RNG_test takes at most stdin64
+
+        # RNG_test --help:
+        # To use an external RNG, use stdin as an RNG name and pipe in the random
+        # numbers.  stdin8, stdin16, stdin32, and stdin64 also work, each interpretting
+        # the input in slightly different ways.  Use stdin if you're uncertain how many
+        # bits the RNG produces at a time, or if it's not one of those options.
+
+        # stdinN must match the size of the words prng-dump writes, which is the largest
+        # power of 2 bits that is at most PRNG_RESULT_SIZE_BITS.  Nothing reports a
+        # mismatch.  A 128-bit word is read as two 64-bit words.
+
+        STDIN='stdin'
+
+        if ((PRNG_RESULT_SIZE_BITS >= 64)) # RNG_test takes at most stdin64
         then
-            PRNG_RESULT_SIZE_BITS=64
+            STDIN='stdin64'
+        elif ((PRNG_RESULT_SIZE_BITS >= 32))
+        then
+            STDIN='stdin32'
+        elif ((PRNG_RESULT_SIZE_BITS >= 16))
+        then
+            STDIN='stdin16'
+        elif ((PRNG_RESULT_SIZE_BITS >= 8))
+        then
+            STDIN='stdin8'
         fi
+
         printf "./prng-dump -s %s %s | RNG_test %s -tf %d -te %d -tlmin %s -tlmax %s %s > %q\n" \
-            "$SEED_TYPE" "$PRNG_NAME" "stdin$PRNG_RESULT_SIZE_BITS" "$TF" "$TE" \
+            "$SEED_TYPE" "$PRNG_NAME" "$STDIN" "$TF" "$TE" \
             "$TLMIN" "$TLMAX" "$MULTITHREADED" "$OUTPUT_DIR/$PRACTRAND_OUTFILE_STEM.prng-$PRNG_NAME.txt"
     done < "$PRNG_DUMP_INFO_FILE" > "$PRNG_DUMP_CMDS_FILE"
 
