@@ -27,14 +27,16 @@ klimov_shamir_32::init()
 klimov_shamir_32::result_type
 klimov_shamir_32::next()
 {
+#if 0
     constexpr uint64_t inc = wyprimes::_wyp[0];
     static_assert(inc & 1, "must be odd");
+#endif
 
     constexpr unsigned int C = 5;
     static_assert(C & 0b001, "least significant bit must be 1");
     static_assert(C & 0b100, "third least significant bit must be 1");
 
-#if 0
+#if 1
     // XXX: a zero seed needs 5 iterations to avalanche the bits
     s += (s * s) | C;
     result_type result = s >> 32;
