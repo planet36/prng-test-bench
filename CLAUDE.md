@@ -36,11 +36,12 @@ Only g++ is supported (clang++ is not).  The benchmark programs link with `-lben
 - `make warmup-survey && ./warmup-survey` runs the warm-up survey.  For each PRNG with a
   warm-up (outputs discarded in `init()`), it starts from the state
   that `init()` has before the warm-up and reports how many outputs to discard before they
-  look filled, followed by the per-call percentages behind each count.  The
-  warm-ups, and the replacement of an all-zero state with 1, 2, 3, ..., exist because those
-  PRNGs otherwise failed PractRand immediately with the zero seed.  The counts
-  (`num_warmup_discards`) are set by hand, and they roughly match discarding outputs until
-  the first one with at least 40% of its bits set.  The survey does not read them, so
+  look filled, followed by the per-call percentages behind each count.  The replacement of an
+  all-zero state with 1, 2, 3, ... exists because those PRNGs never leave the all-zero state.
+  The warm-ups exist because, with the zero seed, the first outputs have mostly zero bits.
+  For several PRNGs, the zero seed failed PractRand immediately without the warm-up.  The
+  counts (`num_warmup_discards`) are set by hand, and they roughly match discarding outputs
+  until the first one with at least 40% of its bits set.  The survey does not read them, so
   when a warm-up or a zero-seed fix-up in `init()` changes, rerun it and update the count by
   hand.  Its list in `main()` must say whether each PRNG starts from zeros or from 1, 2, 3, ....
 

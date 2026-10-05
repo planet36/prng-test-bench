@@ -49,8 +49,9 @@ Results are saved in the `results` folder.
 To plot them, run `python3 results/plot-results.py FILE`, where `FILE` is a `results/prng-results.*.json` file.
 
 To survey the warm-ups, run `./warmup-survey`.
-* Some PRNGs discard their first outputs in `init()` (a warm-up), because without it they fail PractRand right away with the zero seed
-* For each of them, the survey starts from the state before the warm-up and reports how many outputs to discard before they look filled
+* Some PRNGs discard their first outputs in `init()` (a warm-up), because with the zero seed those outputs have mostly zero bits
+* For several PRNGs, the zero seed failed PractRand right away without the warm-up
+* For each PRNG with a warm-up, the survey starts from the state before the warm-up and reports how many outputs to discard before they look filled
 * The counts in `init()` (`num_warmup_discards`) are not read by the survey, so update them by hand after rerunning it
 
 ## Requirements
