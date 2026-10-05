@@ -250,6 +250,7 @@ int main()
         survey<zero_start<sfc32>>("sfc32", "zero"),
         survey<zero_start<sfc64>>("sfc64", "zero"),
         survey<zero_start<biski64>>("biski64", "zero"),
+        survey<zero_start<klimov_shamir_32>>("klimov_shamir_32", "zero"),
     };
 
     print_summary(results);

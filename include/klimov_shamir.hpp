@@ -22,7 +22,13 @@ DEF_URBG_SUBCLASS(klimov_shamir_32, uint64_t, uint32_t)
 /// Prepare the initial state
 void
 klimov_shamir_32::init()
-{}
+{
+    constexpr int num_warmup_discards = 5;
+    for (int i = 0; i < num_warmup_discards; ++i)
+    {
+        (void)next(); // Assumes this function advances the state
+    }
+}
 
 klimov_shamir_32::result_type
 klimov_shamir_32::next()
@@ -37,7 +43,6 @@ klimov_shamir_32::next()
     static_assert(C & 0b100, "third least significant bit must be 1");
 
 #if 1
-    // XXX: a zero seed needs 5 iterations to avalanche the bits
     s += (s * s) | C;
     result_type result = s >> 32;
 #else
