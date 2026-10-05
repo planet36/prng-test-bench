@@ -33,8 +33,8 @@ clmulrand::init()
 clmulrand::result_type
 clmulrand::next()
 {
-    // most significant elem first
-    const __m128i inc = _mm_set_epi64x(wyprimes::_wyp[1], wyprimes::_wyp[0]); // NOLINT(cppcoreguidelines-narrowing-conversions)
+    const __m128i inc = wyprimes::vec128_01();
+
     s = _mm_add_epi64(s, inc); // NOLINT(portability-simd-intrinsics)
     return clmums(s);
 }

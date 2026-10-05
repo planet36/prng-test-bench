@@ -46,9 +46,8 @@ aes_compress_ctr2_128::next()
     */
 
     const simd_arr_t<2> inc{
-        // most significant elem first
-        _mm_set_epi64x(wyprimes::_wyp[1], wyprimes::_wyp[0]), // NOLINT(cppcoreguidelines-narrowing-conversions)
-        _mm_set_epi64x(wyprimes::_wyp[3], wyprimes::_wyp[2]), // NOLINT(cppcoreguidelines-narrowing-conversions)
+        wyprimes::vec128_01(),
+        wyprimes::vec128_23(),
     };
 
     s[0] = _mm_add_epi64(s[0], inc[0]); // NOLINT(portability-simd-intrinsics)

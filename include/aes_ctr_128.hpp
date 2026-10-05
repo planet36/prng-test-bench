@@ -68,8 +68,7 @@ aes_ctr_128::next()
     * \sa https://en.wikipedia.org/wiki/Weyl_sequence#In_computing
     */
 
-    // most significant elem first
-    const __m128i inc = _mm_set_epi64x(wyprimes::_wyp[1], wyprimes::_wyp[0]); // NOLINT(cppcoreguidelines-narrowing-conversions)
+    const __m128i inc = wyprimes::vec128_01();
 
     __m128i dst = s[0];
     s[0] = _mm_add_epi64(s[0], inc); // NOLINT(portability-simd-intrinsics)
