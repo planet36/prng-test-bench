@@ -37,6 +37,9 @@ biski64::init()
     }
 }
 
+/**
+* \sa https://github.com/danielcota/biski64/blob/main/c/biski64.c#L140
+*/
 biski64::result_type
 biski64::next()
 {
