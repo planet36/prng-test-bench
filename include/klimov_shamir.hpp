@@ -10,7 +10,6 @@
 #pragma once
 
 #include "urbg_base_class.hpp"
-#include "wyprimes.hpp"
 
 #include <cstdint>
 
@@ -33,22 +32,12 @@ klimov_shamir_32::init()
 klimov_shamir_32::result_type
 klimov_shamir_32::next()
 {
-#if 0
-    constexpr uint64_t inc = wyprimes::_wyp[0];
-    static_assert(inc & 1, "must be odd");
-#endif
-
     constexpr unsigned int C = 5;
     static_assert(C & 0b001, "least significant bit must be 1");
     static_assert(C & 0b100, "third least significant bit must be 1");
 
-#if 1
     s += (s * s) | C;
     result_type result = s >> 32;
-#else
-    s += inc; // (SDW)
-    result_type result = (s + ((s * s) | C)) >> 32; // (SDW)
-#endif
 
     return result;
 }
