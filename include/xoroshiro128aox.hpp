@@ -20,6 +20,10 @@
 DEF_URBG_SUBCLASS(xoroshiro128aox, SINGLE_ARG(std::array<uint64_t, 2>), uint64_t)
 
 /// Prepare the initial state
+/**
+* The warm-up discards the zero-seed outputs that still have mostly zero bits (found
+* empirically).
+*/
 void
 xoroshiro128aox::init()
 {
@@ -29,6 +33,12 @@ xoroshiro128aox::init()
         {
             s[i] = i + 1;
         }
+    }
+
+    constexpr int num_warmup_discards = 3;
+    for (int i = 0; i < num_warmup_discards; ++i)
+    {
+        (void)next();
     }
 }
 

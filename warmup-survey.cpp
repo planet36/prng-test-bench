@@ -237,6 +237,7 @@ print_details(const std::vector<survey_result>& results)
 int main()
 {
     const std::vector<survey_result> results{
+        survey<iota_start<xoroshiro128aox>>("xoroshiro128aox", "iota"),
         survey<iota_start<xoroshiro128plusplus>>("xoroshiro128plusplus", "iota"),
         survey<iota_start<xoroshiro128starstar>>("xoroshiro128starstar", "iota"),
         survey<iota_start<xoroshiro1024plusplus>>("xoroshiro1024plusplus", "iota"),
