@@ -13,9 +13,6 @@
 
 #include <cstdint>
 
-// https://link.springer.com/content/pdf/10.1007/3-540-36400-5_34.pdf
-// https://old.reddit.com/r/cpp/comments/8vhrzh/better_c_pseudo_random_number_generator/e1nlcv9/
-
 DEF_URBG_SUBCLASS(klimov_shamir_32, uint64_t, uint32_t)
 
 /// Prepare the initial state
@@ -29,6 +26,10 @@ klimov_shamir_32::init()
     }
 }
 
+/**
+* \sa https://link.springer.com/content/pdf/10.1007/3-540-36400-5_34.pdf
+* \sa https://old.reddit.com/r/cpp/comments/8vhrzh/better_c_pseudo_random_number_generator/e1nlcv9/
+*/
 klimov_shamir_32::result_type
 klimov_shamir_32::next()
 {
