@@ -89,7 +89,9 @@ int main([[maybe_unused]] int argc, [[maybe_unused]] char* argv[])
     // mine
 #if defined(__AES__)
     REGISTER_BENCHMARK_PRNG_NEXT(aes_compress_ctr2_128 )
-    REGISTER_BENCHMARK_PRNG_NEXT(aes_ctr_128           )
+    REGISTER_BENCHMARK_PRNG_NEXT(aes_r1_ctr_128        )
+    REGISTER_BENCHMARK_PRNG_NEXT(aes_r2_ctr_128        )
+    REGISTER_BENCHMARK_PRNG_NEXT(aes_r3_ctr_128        )
 #endif
     REGISTER_BENCHMARK_PRNG_NEXT(biski64               )
 #if defined(__PCLMUL__)

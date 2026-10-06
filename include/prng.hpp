@@ -10,7 +10,7 @@
 #pragma once
 
 #include "aes_compress_ctr2_128.hpp"
-#include "aes_ctr_128.hpp"
+#include "aes_ctr.hpp"
 #include "biski64.hpp"
 #include "clmulrand.hpp"
 #include "degski.hpp"
@@ -123,7 +123,9 @@ const std::map<std::string, prng_info_t> prng_name_to_info{
     // mine
 #if defined(__AES__)
     CREATE_PRNG_INFO_MAP_ENTRY(aes_compress_ctr2_128 ),
-    CREATE_PRNG_INFO_MAP_ENTRY(aes_ctr_128           ),
+    CREATE_PRNG_INFO_MAP_ENTRY(aes_r1_ctr_128        ),
+    CREATE_PRNG_INFO_MAP_ENTRY(aes_r2_ctr_128        ),
+    CREATE_PRNG_INFO_MAP_ENTRY(aes_r3_ctr_128        ),
 #endif
     CREATE_PRNG_INFO_MAP_ENTRY(biski64               ),
 #if defined(__PCLMUL__)

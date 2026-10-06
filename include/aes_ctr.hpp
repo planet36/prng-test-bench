@@ -1,10 +1,13 @@
 // SPDX-FileCopyrightText: Steven Ward
 // SPDX-License-Identifier: MPL-2.0
 
-/// A PRNG that uses AES instructions
+/// PRNGs that use AES instructions
 /**
 * \file
 * \author Steven Ward
+*
+* Each PRNG encrypts a counter with a fixed key.  The number in its name is the number of
+* rounds of AES.  In the state, s[0] is the counter and s[1] is the key.
 */
 
 #pragma once
@@ -27,19 +30,15 @@
 #error "Architecture not supported"
 #endif
 
-// s[0] is the state/counter
-// s[1] is the key
-DEF_URBG_SUBCLASS(aes_ctr_128, simd_arr_t<2>, __uint128_t)
-
-/// Prepare the initial state
+/// Prepare the initial state of an AES counter PRNG
 /**
-* The key is adjusted, if necessary, so that its 64-bit lanes differ.
+* The key s[1] is adjusted, if necessary, so that its 64-bit lanes differ.
 */
-void
-aes_ctr_128::init()
+inline void
+aes_ctr_init(simd_arr_t<2>& s)
 {
     // The 64-bit lanes of the key must differ.
-    // next() uses the same key in every round.  With a key of (K, K), if the counter
+    // aes_ctr_next() uses the same key in every round.  With a key of (K, K), if the counter
     // (A, B) gives the output (X, Y), then the counter (B, A) gives the output (Y, X).
 
     // most significant elem first
@@ -52,14 +51,16 @@ aes_ctr_128::init()
     s[1] = _mm_xor_si128(s[1], _mm_and_si128(equal_mask, key_mask));
 }
 
-aes_ctr_128::result_type
-aes_ctr_128::next()
+/// Encrypt the counter s[0] with the key s[1] in \a Nr rounds of AES, and advance it
+/**
+* It takes 2 rounds for every input bit to affect every output bit.  After 1 round, an input
+* byte reaches only the 4 bytes of one column.
+*/
+template <int Nr>
+requires (Nr >= 1)
+[[nodiscard]] inline __uint128_t
+aes_ctr_next(simd_arr_t<2>& s)
 {
-    // Do at least 2 rounds of AES.  It takes 2 rounds for every input bit to affect every
-    // output bit.  After 1 round, an input byte reaches only the 4 bytes of one column.
-    constexpr int Nr = 2;
-    static_assert(Nr >= 2);
-
     /*
     * The counter increment \c inc used below forms a Weyl sequence.
     * Criteria for its 64-bit lane values:
@@ -80,6 +81,51 @@ aes_ctr_128::next()
     }
 
     return uint128_from_m128i(dst);
+}
+
+DEF_URBG_SUBCLASS(aes_r1_ctr_128, simd_arr_t<2>, __uint128_t)
+
+/// Prepare the initial state
+void
+aes_r1_ctr_128::init()
+{
+    aes_ctr_init(s);
+}
+
+aes_r1_ctr_128::result_type
+aes_r1_ctr_128::next()
+{
+    return aes_ctr_next<1>(s);
+}
+
+DEF_URBG_SUBCLASS(aes_r2_ctr_128, simd_arr_t<2>, __uint128_t)
+
+/// Prepare the initial state
+void
+aes_r2_ctr_128::init()
+{
+    aes_ctr_init(s);
+}
+
+aes_r2_ctr_128::result_type
+aes_r2_ctr_128::next()
+{
+    return aes_ctr_next<2>(s);
+}
+
+DEF_URBG_SUBCLASS(aes_r3_ctr_128, simd_arr_t<2>, __uint128_t)
+
+/// Prepare the initial state
+void
+aes_r3_ctr_128::init()
+{
+    aes_ctr_init(s);
+}
+
+aes_r3_ctr_128::result_type
+aes_r3_ctr_128::next()
+{
+    return aes_ctr_next<3>(s);
 }
 
 #else

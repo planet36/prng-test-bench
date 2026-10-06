@@ -388,7 +388,9 @@ int main([[maybe_unused]] int argc, [[maybe_unused]] char* argv[])
     // mine
 #if defined(__AES__)
     CONDITIONAL_DUMP(aes_compress_ctr2_128 )
-    CONDITIONAL_DUMP(aes_ctr_128           )
+    CONDITIONAL_DUMP(aes_r1_ctr_128        )
+    CONDITIONAL_DUMP(aes_r2_ctr_128        )
+    CONDITIONAL_DUMP(aes_r3_ctr_128        )
 #endif
     CONDITIONAL_DUMP(biski64               )
 #if defined(__PCLMUL__)
@@ -477,7 +479,9 @@ int main([[maybe_unused]] int argc, [[maybe_unused]] char* argv[])
 Output:
 
 aes_compress_ctr2_128       128  0  340282366920938463463374607431768211455    32
-aes_ctr_128                 128  0  340282366920938463463374607431768211455    32
+aes_r1_ctr_128              128  0  340282366920938463463374607431768211455    32
+aes_r2_ctr_128              128  0  340282366920938463463374607431768211455    32
+aes_r3_ctr_128              128  0  340282366920938463463374607431768211455    32
 biski64                      64  0                     18446744073709551615    24
 clmulrand                    64  0                     18446744073709551615    16
 degski32                     32  0                               4294967295     4
