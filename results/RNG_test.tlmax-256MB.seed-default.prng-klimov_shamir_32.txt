@@ -5,10 +5,10 @@ test set = core, folding = standard (32 bit)
 rng=RNG_stdin32, seed=unknown
 length= 256 mebibytes (2^28 bytes), time= 0.8 seconds
   Test Name                         Raw       Processed     Evaluation
-  TMFn(2+1):wl                      R=+245.6  p~=   9e-141    FAIL !!!!!     
-  TMFn(2+2):wl                      R=+363.6  p~=   7e-212    FAIL !!!!!!    
-  TMFn(2+3):wl                      R=+188.3  p~=   2e-106    FAIL !!!!!     
-  [Low8/32]TMFn(2+0):wl             R=+364.7  p~=   1e-212    FAIL !!!!!!    
-  [Low8/32]TMFn(2+1):wl             R=+182.4  p~=   1e-102    FAIL !!!!!     
+  TMFn(2+1):wl                      R=+237.3  p~=   9e-136    FAIL !!!!!     
+  TMFn(2+2):wl                      R=+367.7  p~=   2e-214    FAIL !!!!!!    
+  TMFn(2+3):wl                      R=+176.6  p~=   3e-99     FAIL !!!!!     
+  [Low8/32]TMFn(2+0):wl             R=+361.9  p~=   8e-211    FAIL !!!!!!    
+  [Low8/32]TMFn(2+1):wl             R=+170.1  p~=   2e-95     FAIL !!!!!     
   ...and 163 test result(s) without anomalies
 

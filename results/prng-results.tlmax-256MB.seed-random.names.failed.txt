@@ -1,7 +1,8 @@
+aes_r1_ctr_128
 degski32
 klimov_shamir_32
-mumx_ctr2
 std::default_random_engine
+std::knuth_b
 std::minstd_rand
 std::minstd_rand0
 std::ranlux24_base

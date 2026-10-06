@@ -1,5 +1,7 @@
-aes_compress_ctr2_128
-aes_ctr_128
+aes_compress_r2_ctr2_128
+aes_compress_r3_ctr2_128
+aes_r2_ctr_128
+aes_r3_ctr_128
 biski64
 clmulrand
 degski64
@@ -17,6 +19,7 @@ mcg128
 moremur
 msws32
 msws64
+mumx_ctr2
 mumx_mumx_rrxx_1
 mumx_mumx_x1
 mumx_mumx_x2
@@ -51,7 +54,6 @@ squares64
 staffordMix13
 stc_crand32
 stc_crand64
-std::knuth_b
 std::mt19937
 std::mt19937_64
 std::philox4x32
