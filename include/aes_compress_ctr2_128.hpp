@@ -53,7 +53,7 @@ aes_compress_ctr2_128::next()
     s[0] = _mm_add_epi64(s[0], inc[0]); // NOLINT(portability-simd-intrinsics)
     s[1] = _mm_add_epi64(s[1], inc[1]); // NOLINT(portability-simd-intrinsics)
 
-    return uint128_from_m128i(simd_compress_aes_enc_r4(s[0], s[1]));
+    return uint128_from_m128i(simd_compress_aes_enc_r2(s[0], s[1]));
 }
 
 #else
