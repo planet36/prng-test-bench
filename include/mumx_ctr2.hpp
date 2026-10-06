@@ -26,9 +26,12 @@ mumx_ctr2::init()
 mumx_ctr2::result_type
 mumx_ctr2::next()
 {
-    constexpr std::array<uint64_t, 2> inc{wyprimes::_wyp[0], wyprimes::_wyp[1]};
+    using wyprimes::_wyp;
+
+    constexpr std::array<uint64_t, 2> inc{_wyp[0], _wyp[1]};
 
     s[0] += inc[0];
     s[1] += inc[1];
-    return mumx(s[0], s[1]);
+    // Without the XOR, the product of the two counters is a quadratic in the step count.
+    return mumx(s[0], s[1] ^ _wyp[2]);
 }
