@@ -33,5 +33,6 @@ mumx_ctr2::next()
     s[0] += inc[0];
     s[1] += inc[1];
     // Without the XOR, the product of the two counters is a quadratic in the step count.
+    // clmulrand is the same design with a carry-less multiply, which doesn't need the XOR.
     return mumx(s[0], s[1] ^ _wyp[2]);
 }
