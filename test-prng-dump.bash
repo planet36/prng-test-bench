@@ -290,13 +290,22 @@ do
 
     cd "$OUTPUT_DIR" || exit
 
-    # Determine good and failed PRNGs in files.
+    # Determine good and failed PRNGs in files.  RNG_test begins each report with a "length="
+    # line, so a file without one is empty or was cut off before the first report.  Such a file
+    # is neither good nor failed.
 
-    grep -l -L -F FAIL "$PRACTRAND_OUTFILE_STEM".prng-*.txt > \
+    grep -l '^length= ' "$PRACTRAND_OUTFILE_STEM".prng-*.txt |
+        xargs -r -d '\n' grep -L -F FAIL > \
         "$OUTFILE_STEM.files.good.txt"
 
     grep -l -F FAIL "$PRACTRAND_OUTFILE_STEM".prng-*.txt > \
         "$OUTFILE_STEM.files.failed.txt"
+
+    grep -L '^length= ' "$PRACTRAND_OUTFILE_STEM".prng-*.txt |
+        while IFS= read -r FILE
+        do
+            printf 'Warning: no test length found in %q\n' "$FILE" 1>&2
+        done
 
     # Extract their names.
 
