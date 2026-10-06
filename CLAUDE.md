@@ -89,7 +89,7 @@ building blocks.  Several are synced from the author's other repos.
 
 Keep the alphabetical order and column alignment.  Guard ISA-dependent PRNGs with the same
 `#if defined(__AES__)` / `__PCLMUL__` / `__SHA__` in all of these files, and wrap the PRNG's
-own header in that guard too (with a `#warning` in the `#else`, as `aes_ctr_128.hpp` does).
+own header in that guard too (with a `#warning` in the `#else`, as `aes_ctr.hpp` does).
 `prng.hpp` includes every header, so an unguarded header breaks the build on a CPU target
 that lacks the instruction set.
 
