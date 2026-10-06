@@ -3,6 +3,6 @@ RNG = RNG_stdin16, seed = unknown
 test set = core, folding = standard (16 bit)
 
 rng=RNG_stdin16, seed=unknown
-length= 256 mebibytes (2^28 bytes), time= 7.7 seconds
+length= 256 mebibytes (2^28 bytes), time= 7.5 seconds
   no anomalies in 172 test result(s)
 
