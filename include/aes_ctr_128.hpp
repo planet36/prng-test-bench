@@ -55,9 +55,10 @@ aes_ctr_128::init()
 aes_ctr_128::result_type
 aes_ctr_128::next()
 {
-    // must do at least 3 rounds of AES
-    constexpr int Nr = 3;
-    static_assert(Nr >= 3);
+    // Do at least 2 rounds of AES.  It takes 2 rounds for every input bit to affect every
+    // output bit.  After 1 round, an input byte reaches only the 4 bytes of one column.
+    constexpr int Nr = 2;
+    static_assert(Nr >= 2);
 
     /*
     * The counter increment \c inc used below forms a Weyl sequence.
