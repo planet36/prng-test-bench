@@ -87,7 +87,7 @@ short-test: prng-dump benchmark | $(OUTPUT_DIR)
 		&> $(OUTPUT_DIR)/prng-results.tlmax-$(TLMAX_SHORT).summary.txt
 
 # Takes about 27.7 hrs (random)
-long-test: prng-dump benchmark | $(OUTPUT_DIR)
+long-test: short-test | $(OUTPUT_DIR)
 	bash test-prng-dump.bash -j $(J_LONG) -f $(TF_LONG) -m $(TLMAX_LONG) \
 		-s random \
 		&> $(OUTPUT_DIR)/prng-results.tlmax-$(TLMAX_LONG).summary.txt
