@@ -3,54 +3,54 @@ RNG = RNG_stdin64, seed = unknown
 test set = core, folding = extra
 
 rng=RNG_stdin64, seed=unknown
-length= 256 mebibytes (2^28 bytes), time= 0.8 seconds
+length= 256 mebibytes (2^28 bytes), time= 0.5 seconds
   no anomalies in 521 test result(s)
 
 rng=RNG_stdin64, seed=unknown
-length= 512 mebibytes (2^29 bytes), time= 4.1 seconds
-  no anomalies in 563 test result(s)
+length= 512 mebibytes (2^29 bytes), time= 1.6 seconds
+  Test Name                         Raw       Processed     Evaluation
+  [Low4/32]BCFN(2+0,13-3,T)         R=  +9.2  p =  3.9e-4   unusual          
+  ...and 562 test result(s) without anomalies
 
 rng=RNG_stdin64, seed=unknown
-length= 1 gibibyte (2^30 bytes), time= 8.1 seconds
+length= 1 gibibyte (2^30 bytes), time= 2.9 seconds
   Test Name                         Raw       Processed     Evaluation
-  [Low8/64]BCFN(2+3,13-3,T)         R=  -8.4  p =1-7.7e-5   unusual          
+  [Low1/64]FPF-14+6/16:cross        R=  +5.0  p =  1.9e-4   unusual          
   ...and 608 test result(s) without anomalies
 
 rng=RNG_stdin64, seed=unknown
-length= 2 gibibytes (2^31 bytes), time= 13.0 seconds
+length= 2 gibibytes (2^31 bytes), time= 4.9 seconds
   no anomalies in 653 test result(s)
 
 rng=RNG_stdin64, seed=unknown
-length= 4 gibibytes (2^32 bytes), time= 20.1 seconds
-  Test Name                         Raw       Processed     Evaluation
-  [Low4/64]Gap-16:A                 R=  -4.4  p =1-4.0e-4   unusual          
-  ...and 691 test result(s) without anomalies
+length= 4 gibibytes (2^32 bytes), time= 8.7 seconds
+  no anomalies in 692 test result(s)
 
 rng=RNG_stdin64, seed=unknown
-length= 8 gibibytes (2^33 bytes), time= 32.2 seconds
+length= 8 gibibytes (2^33 bytes), time= 17.5 seconds
   no anomalies in 732 test result(s)
 
 rng=RNG_stdin64, seed=unknown
-length= 16 gibibytes (2^34 bytes), time= 54.0 seconds
+length= 16 gibibytes (2^34 bytes), time= 33.2 seconds
   no anomalies in 770 test result(s)
 
 rng=RNG_stdin64, seed=unknown
-length= 32 gibibytes (2^35 bytes), time= 94.5 seconds
+length= 32 gibibytes (2^35 bytes), time= 62.9 seconds
   no anomalies in 805 test result(s)
 
 rng=RNG_stdin64, seed=unknown
-length= 64 gibibytes (2^36 bytes), time= 178 seconds
+length= 64 gibibytes (2^36 bytes), time= 126 seconds
   no anomalies in 843 test result(s)
 
 rng=RNG_stdin64, seed=unknown
-length= 128 gibibytes (2^37 bytes), time= 338 seconds
+length= 128 gibibytes (2^37 bytes), time= 250 seconds
   no anomalies in 880 test result(s)
 
 rng=RNG_stdin64, seed=unknown
-length= 256 gibibytes (2^38 bytes), time= 642 seconds
+length= 256 gibibytes (2^38 bytes), time= 483 seconds
   no anomalies in 915 test result(s)
 
 rng=RNG_stdin64, seed=unknown
-length= 512 gibibytes (2^39 bytes), time= 1285 seconds
+length= 512 gibibytes (2^39 bytes), time= 990 seconds
   no anomalies in 952 test result(s)
 

@@ -1,4 +1,4 @@
-MRG32k3a
+aes_r1_ctr_128
 biski64
 degski32
 degski64
@@ -16,9 +16,7 @@ std::minstd_rand
 std::minstd_rand0
 std::mt19937
 std::mt19937_64
-std::ranlux24
 std::ranlux24_base
-std::ranlux48
 std::ranlux48_base
 ttwanghash64
 xxh32_avalanche
