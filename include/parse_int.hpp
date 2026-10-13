@@ -22,6 +22,12 @@
 #include <string_view>
 #include <system_error>
 
+/// an integer type that \c std::from_chars can parse with a base
+template <typename T>
+concept from_chars_integral =
+    std::integral<T> &&
+    requires (const char* p, T& v) { std::from_chars(p, p, v, 10); };
+
 /// Parse all of \a s as an integer of type \c T in <code>[min, max]</code>
 /**
 * \tparam T the integer type of the result
@@ -34,6 +40,7 @@
 * \retval std::errc::result_out_of_range the value is not representable in
 *         \c T or is not in <code>[min, max]</code>
 * \return the parsed value, or one of the above error values
+* \pre \a min is at most \a max
 * \pre \a base is \c 0, or in the interval <code>[2, 36]</code> that
 *      \c std::from_chars accepts
 * \note Unlike \c std::stoi, this rejects leading whitespace, a leading
@@ -43,12 +50,12 @@
 *       \c "0" hides the prefix, so \c "-010" parses as decimal -10.  A
 *       \c '-' after \c "0x" is accepted, so \c "0x-5" parses as -5.
 */
-template <std::integral T = int>
+template <from_chars_integral T = int>
 [[nodiscard]] constexpr std::expected<T, std::errc>
 parse_int(std::string_view s,
-          const T min = std::numeric_limits<T>::lowest(),
+          const T min = std::numeric_limits<T>::min(),
           const T max = std::numeric_limits<T>::max(),
-          int base = 10)
+          int base = 10) noexcept
 {
     if (base == 0)
     {
@@ -68,17 +75,18 @@ parse_int(std::string_view s,
     }
 
 #if defined(DEBUG)
+    assert(min <= max);
     assert((base >= 2) && (base <= 36));
 #endif
 
     T value{};
     const auto [ptr, ec] =
-        std::from_chars(std::data(s), std::data(s) + std::size(s), value, base);
+        std::from_chars(s.data(), s.data() + s.size(), value, base);
 
     if (ec != std::errc{})
         return std::unexpected{ec};
 
-    if (ptr != std::data(s) + std::size(s))
+    if (ptr != s.data() + s.size())
         return std::unexpected{std::errc::invalid_argument};
 
     if (value < min || value > max)
@@ -94,6 +102,7 @@ parse_int(std::string_view s,
 * \param max the maximum allowed value (inclusive)
 * \param option_name the option name, named by the exception message
 * \return the parsed value
+* \pre \a min is at most \a max
 * \exception std::invalid_argument \a optarg is null, or is not entirely an
 *            integer
 * \exception std::out_of_range the value is not in <code>[min, max]</code>
@@ -102,18 +111,18 @@ parse_int(std::string_view s,
 parse_option_int(const char* optarg, const int min, const int max, const char* option_name)
 {
     if (optarg == nullptr)
-        throw std::invalid_argument{std::format("null argument: {}", option_name)};
+        throw std::invalid_argument(std::format("null argument: {}", option_name));
 
     const auto value = parse_int<int>(optarg, min, max);
 
     if (!value.has_value())
     {
         if (value.error() == std::errc::result_out_of_range)
-            throw std::out_of_range{
-                std::format("out of range: {}: \"{}\"", option_name, optarg)};
+            throw std::out_of_range(
+                std::format("out of range: {}: \"{}\"", option_name, optarg));
 
-        throw std::invalid_argument{
-            std::format("invalid argument: {}: \"{}\"", option_name, optarg)};
+        throw std::invalid_argument(
+            std::format("invalid argument: {}: \"{}\"", option_name, optarg));
     }
 
     return *value;
@@ -124,10 +133,10 @@ parse_option_int(const char* optarg, const int min, const int max, const char* o
 * \param optarg the option argument to parse
 * \param option_name the option name, named by the exception message
 * \return the parsed value
-* \note The parsed value is bounded only by the range of \c int.
 * \exception std::invalid_argument \a optarg is null, or is not entirely an
 *            integer
 * \exception std::out_of_range the value is not representable in \c int
+* \note The parsed value is bounded only by the range of \c int.
 */
 [[nodiscard]] inline int
 parse_option_int(const char* optarg, const char* option_name)
@@ -141,9 +150,12 @@ parse_option_int(const char* optarg, const char* option_name)
 * \param name the name of the environment variable
 * \param min the minimum allowed value (inclusive)
 * \param max the maximum allowed value (inclusive)
-* \param default_value the value returned if the variable is not set
+* \param default_value the value returned if the variable is not set, which is
+*        not checked against <code>[min, max]</code>
 * \return the parsed value, or \a default_value if the variable is not set
-* \exception std::invalid_argument the value is not entirely an integer
+* \pre \a min is at most \a max
+* \exception std::invalid_argument the value is empty, or is not entirely an
+*            integer
 * \exception std::out_of_range the value is not in <code>[min, max]</code>
 */
 [[nodiscard]] inline int
