@@ -55,7 +55,7 @@ struct random_device_seed_seq
 * The following are code examples of how to use it.
 * \code{.cpp}
 // Specify PRNG
-auto rng = random_device_seeded<std::mt19937_64>();
+auto rng = random_device_seeded<std::philox4x64>();
 \endcode
 * \code{.cpp}
 // Use default PRNG
@@ -65,7 +65,7 @@ auto rng = random_device_seeded();
 * Adapted from the following source.
 * \sa http://www.gockelhut.com/cpp-pirate/random-seed.html
 */
-template <typename PRNG = std::mt19937_64>
+template <typename PRNG = std::philox4x64>
 [[nodiscard]] PRNG
 random_device_seeded()
 {
