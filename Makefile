@@ -43,7 +43,7 @@ CXXFLAGS += -Wno-unused-function
 CXXFLAGS += -frecord-gcc-switches
 
 CXXFLAGS += -march=native
-#CXXFLAGS += -march=x86-64-v3 -maes -mpclmul -mvaes
+#CXXFLAGS += -march=x86-64-v3 -maes -mpclmul -msha -mvaes
 #CXXFLAGS += -march=raptorlake
 
 #LDFLAGS =
