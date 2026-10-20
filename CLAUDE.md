@@ -110,7 +110,8 @@ Keep the existing order (mostly alphabetical) and column alignment.  Guard ISA-d
 PRNGs with the same `#if defined(__AES__)` / `__PCLMUL__` / `__SHA__` in all of these files,
 and wrap the PRNG's own header in that guard too (with a `#warning` in the `#else`, as
 `aes_ctr.hpp` does).  `prng.hpp` includes every header, so an unguarded header breaks the
-build on a CPU target that lacks the instruction set.
+build on a CPU target that lacks the instruction set.  The Makefile builds with `-march=native`,
+so which guarded PRNGs exist depends on the CPU of the machine that builds them.
 
 **Benchmarks.**  `prng-benchmark.hpp` holds what the two benchmark programs share.  Its
 `make_random_seeded<URBG>()` seeds a `std` engine with `random_device_seeded` and one of the
