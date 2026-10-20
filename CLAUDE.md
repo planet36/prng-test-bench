@@ -21,15 +21,18 @@ Only g++ is supported (clang++ is not).  The benchmark programs link with `-lben
 - `make lint` runs clang-tidy using `.clang-tidy` on every top-level `*.cpp`.
 - `make benchmark` runs `run-benchmarks.bash`, which runs every `*-benchmark` program and
   writes `results/PROGRAM.json` (raw) and `results/PROGRAM.txt` (`name value unit`, from
-  `results/filter-benchmark-results.jq`).  Speeds are in GiB/s and are per thread.  The
-  script sets `NUM_THREADS` to one less than `nproc`, and `BENCHMARK_REPS` (default 5)
-  sets the repetitions whose median is reported.
+  `results/filter-benchmark-results.jq`).  `prng-next-benchmark` reports GiB/s per thread,
+  and `prng-construct-benchmark` reports ns per construction.  The script sets `NUM_THREADS`
+  to one less than `nproc`, and `BENCHMARK_REPS` (default 5) sets the repetitions whose
+  median is reported.
 - `make short-test` runs `make benchmark`, then PractRand to 256MB for all four seed types
-  (~4 min for PractRand).
+  (about 4 minutes in all).
 - `make long-test` runs `make short-test`, then PractRand to 512GB with random seeds
   (~27.7 hours).  Start it only when the user asks for it.
 - `make update-short-test` / `update-long-test` do a parallel `--dry-run` that regenerates
-  the summary/JSON files from existing `RNG_test` outputs and newer benchmark data.
+  the `files`, `names`, and JSON results from existing `RNG_test` outputs and newer
+  benchmark data.  The summary goes to `*.summary.dry-run.txt`, so `*.summary.txt` keeps the
+  real run's timings.
 - `make -C include` compiles each header standalone (as `-Werror`) to check that it is
   self-contained; `make -C include wyrand.o` checks one header, and `make -C include lint`
   lints the headers.
@@ -76,8 +79,8 @@ Do not make `next()` or the destructor `virtual`.  Nothing holds a `URBG_base` p
 reference, and a virtual `next()` costs most PRNGs several times their speed.  The class
 doc block in `urbg_base_class.hpp` carries the argument.
 
-The remaining headers (`int_*`, `mum*`, `simd_*`, `*primes*`, `sha2_iv.h`, ...) are shared
-building blocks.  Several are synced from the author's other repos.
+The remaining headers (`int_*`, `mum.hpp`, `clmum.hpp`, `simd_*`, `*primes*`, `sha2_iv.h`, ...)
+are shared building blocks.  Several are synced from the author's other repos.
 
 **Registration has five places that must stay in sync.**  To add a PRNG:
 
@@ -87,11 +90,11 @@ building blocks.  Several are synced from the author's other repos.
 4. Add `REGISTER_BENCHMARK_PRNG_NEXT(name)` to `main` in `prng-next-benchmark.cpp`.
 5. Add `REGISTER_BENCHMARK_PRNG_CONSTRUCT(name)` to `main` in `prng-construct-benchmark.cpp`.
 
-Keep the alphabetical order and column alignment.  Guard ISA-dependent PRNGs with the same
-`#if defined(__AES__)` / `__PCLMUL__` / `__SHA__` in all of these files, and wrap the PRNG's
-own header in that guard too (with a `#warning` in the `#else`, as `aes_ctr.hpp` does).
-`prng.hpp` includes every header, so an unguarded header breaks the build on a CPU target
-that lacks the instruction set.
+Keep the existing order (mostly alphabetical) and column alignment.  Guard ISA-dependent
+PRNGs with the same `#if defined(__AES__)` / `__PCLMUL__` / `__SHA__` in all of these files,
+and wrap the PRNG's own header in that guard too (with a `#warning` in the `#else`, as
+`aes_ctr.hpp` does).  `prng.hpp` includes every header, so an unguarded header breaks the
+build on a CPU target that lacks the instruction set.
 
 **Benchmarks.**  `prng-benchmark.hpp` holds what the two benchmark programs share.  Its
 `make_random_seeded<URBG>()` seeds a `std` engine with `random_device_seeded` and one of the
@@ -108,9 +111,11 @@ and `zero` pass byte arrays, while `default` and `random` both use the default c
 
 **Results pipeline.**  `test-prng-dump.bash` generates one
 `prng-dump | RNG_test > results/RNG_test.tlmax-X.seed-Y.prng-NAME.txt` command per PRNG and
-runs them with GNU parallel.  A run fails if its output contains `FAIL`.  Good and failed
-names are written to `prng-results.*.{files,names}.{good,failed}.txt`.  They are joined with
-`prng-next-benchmark.txt` and converted by `results/parse-prng-results.jq` into
+runs them with GNU parallel.  A run fails if its output contains `FAIL`.  The good and failed
+file names go to `prng-results.*.files.{good,failed}.txt`, and the PRNG names go to
+`prng-results.*.names.{good,failed}.txt`.  A file with no `length=` line (an empty or cut-off
+run) is in neither list, and the script warns about it.  Each PRNG's test length and result
+are joined with `prng-next-benchmark.txt` and converted by `results/parse-prng-results.jq` into
 `prng-results.*.json`, which `results/plot-results.py` plots.
 
 ## Conventions
@@ -118,5 +123,6 @@ names are written to `prng-results.*.{files,names}.{good,failed}.txt`.  They are
 - `COMMENT-STYLE.md` governs code comments, Doxygen blocks, commit messages, and documentation
   files.  Follow it when writing any of those (for example: two spaces after periods, 96-column
   limit, Doxygen briefs on `///` lines with no terminating period, `\a` for parameters).
-- Files carry `SPDX-FileCopyrightText` / `SPDX-License-Identifier` headers (MPL-2.0 for C++).
+- Code files carry `SPDX-FileCopyrightText` / `SPDX-License-Identifier` headers.  A new file
+  takes MPL-2.0, and a header adapted from upstream keeps upstream's license.
 - Commit subjects are short imperative sentences without a trailing period.

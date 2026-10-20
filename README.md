@@ -34,16 +34,17 @@ To run the short test: `make short-test`
 
 To run the long test: `make long-test`
 * Tests to 512GB with random seeds
-* `short-test` is a prerequisite, so the 256MB results are also overwritten
+* `short-test` is a prerequisite, so the benchmark and 256MB results are also overwritten
 * Takes about 27.7 hours to finish
 
 To test only some PRNGs: `bash test-prng-dump.bash -m 256MB -s zero NAME...`
 * Overwrites the matching files in the `results` folder
 * Run `bash test-prng-dump.bash -h` for the options
 
-To regenerate the summary files from existing test outputs: `make update-short-test` or `make update-long-test`
+To regenerate the result lists and JSON files from existing test outputs: `make update-short-test` or `make update-long-test`
 * No tests are run
 * Newer benchmark data is included
+* The summary goes to a `.summary.dry-run.txt` file, so the summary of the real run is kept
 
 Results are saved in the `results` folder.
 To plot them, run `python3 results/plot-results.py FILE`, where `FILE` is a `results/prng-results.*.json` file.
@@ -66,6 +67,8 @@ The following programs are required to run:
 - [parallel](https://www.gnu.org/software/parallel/)
 - `RNG_test` from [PractRand](https://github.com/planet36/PractRand)
 - See [Makefile](Makefile) for detailed list
+
+The Makefile checks for these programs before it does anything, so even `make` fails if one is missing.
 
 The following are required to plot the results:
 - [Python 3](https://www.python.org/)
