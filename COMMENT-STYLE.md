@@ -67,7 +67,9 @@ in "Added a README", and not a description, as in "Adds a README".  It is the
 commit's brief, so it ends without a period, as a Doxygen brief does.
 
 The body below it is detail and punctuates normally.  It may tell what the
-code did before in the past tense, and what it does now in the present.
+code did before in the past tense, and what it does now in the present.  An
+editor that recognizes a commit message wraps its body at 72 columns, so a body
+reads best at that width.
 
 ## Paragraphs
 
@@ -75,7 +77,7 @@ code did before in the past tense, and what it does now in the present.
 unread.  Settle the sentences under rule 1 first, because splitting a paragraph
 of run-on sentences only spreads them out.
 
-Look closer at a paragraph past about 100 words or five sentences, counting
+Look closer at a paragraph past about 100 words or 5 sentences, counting
 rendered words rather than source lines, since wrapping varies from file to
 file.  Neither number is an automatic split.  Split where the topic, the step,
 or the audience changes, and open each new paragraph with the sentence that
@@ -178,15 +180,14 @@ The Doxygen behavior described below was checked against version 1.18.0.
 detail.  Do not use `\brief` inside the block.  A declaration whose brief says
 everything needs no block at all.
 
-**10c. Refer to a parameter with `\a`, not `\p`.**  Both mark a word as a
-parameter in running text.  `\a` renders it italic and `\p` renders it
-monospace.  The italic sets a parameter apart, where monospace blends it into
-the identifiers the prose already writes that way.
+**10c. Use `\a` for a parameter and `\c` for a code token, never `\p`.**  `\a`
+and `\p` both mark a word as a parameter in running text.  `\a` renders it
+italic and `\p` renders it monospace.  The italic sets a parameter apart, where
+monospace blends it into the identifiers the prose already writes that way.
 
 Neither one checks that the word names a real parameter, so a typo in either is
-silent.  Only `\param` checks.  `\p` and the `\c` of rule 10f are one
-directive under two names, so this rule bans naming a parameter with it, not
-the monospace itself.
+silent.  Only `\param` checks.  `\p` is another name for the `\c` of rule 10f,
+so for code it would only add a second spelling to search for.
 
 **10d. Line the block's stars up with its `/**`.**  A continuation line inside
 a `/** ... */` block starts its `*` in the same column as the opening `/**`,
@@ -263,8 +264,12 @@ example" or "that is", which would take a comma in the same place.
 
 **17. Write numbers in one format.**  A number of four digits stands plain, and
 one of five or more digits takes a comma before each group of three, as in 6200
-and 14,400.  A percentage takes no space before its sign.  A number that is
-code, such as a command-line argument or a literal, stays as the code spells it.
+and 14,400.  A quantity the reader might check or tune reads best as numerals,
+as in 2 iterations, 96 columns, and 100 words, and a small everyday count reads
+best as a word, as in two spaces.  A unit symbol takes a space after the number,
+as in 10 nm, but a degree or percent sign takes none, as in 90° and 5%.  A
+number that is code, such as a command-line argument or a literal, stays as the
+code spells it.
 
 **18. Write a heading in sentence case.**  Capitalize its first word and
 lowercase the rest, as in "Benchmark results".  A name, an acronym, or a word
