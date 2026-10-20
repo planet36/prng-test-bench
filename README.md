@@ -7,7 +7,7 @@ C++ PRNG test bench that uses [Google Benchmark](https://github.com/google/bench
 Run `make` to build `prng-dump`, the benchmark programs (`prng-next-benchmark` and `prng-construct-benchmark`), and `warmup-survey`.
 
 `prng-dump` writes the raw output of a PRNG to stdout:
-* `./prng-dump -i` lists the available PRNGs
+* `./prng-dump -i` lists the available PRNGs, with columns for the name, result bits, minimum, maximum, and state bytes
 * `./prng-dump -s {default|pattern|random|zero} [-l GiB] NAME` dumps the output of one PRNG
 * `./prng-dump -h` prints the full usage
 
@@ -24,18 +24,21 @@ To run the benchmarks only: `make benchmark`
 * Runs `run-benchmarks.bash`, which runs each `*-benchmark` program
 * `prng-next-benchmark` measures how fast each PRNG generates values (GiB/s per thread)
 * `prng-construct-benchmark` measures how long it takes to construct a randomly seeded PRNG
-* Results are saved as `results/PROGRAM.json` and `results/PROGRAM.txt`
+* Each benchmark runs on one fewer thread than `nproc` reports, and the script ignores any `NUM_THREADS` you set
+* Results are saved as `results/PROGRAM.json` and `results/PROGRAM.txt`, where `PROGRAM` is the name of the benchmark program
 * Set `BENCHMARK_REPS` to change the number of repetitions (default 5); the median is reported
 
 To run the short test: `make short-test`
 * Tests to 256MB with each seed type (`default`, `pattern`, `random`, and `zero`)
 * `benchmark` is a prerequisite
 * Takes about 4 minutes to finish
+* The PractRand output goes to `results/prng-results.tlmax-256MB.summary.txt`, so that part prints nothing while it runs
 
 To run the long test: `make long-test`
 * Tests to 512GB with random seeds
 * `short-test` is a prerequisite, so the benchmark and 256MB results are also overwritten
 * Takes about 27.7 hours to finish
+* The PractRand output goes to `results/prng-results.tlmax-512GB.summary.txt`
 
 To test only some PRNGs: `bash test-prng-dump.bash -m 256MB -s zero NAME...`
 * Overwrites the matching files in the `results` folder
@@ -47,13 +50,17 @@ To regenerate the result lists and JSON files from existing test outputs: `make 
 * The summary goes to a `.summary.dry-run.txt` file, so the summary of the real run is kept
 
 Results are saved in the `results` folder.
-To plot them, run `python3 results/plot-results.py FILE`, where `FILE` is a `results/prng-results.*.json` file.
+To plot them, run `python3 results/plot-results.py FILE`, where `FILE` is a `results/prng-results.*.json` file.  Add `-o OUT.png` to save the plot to a file instead of showing it.
 
 To survey the warm-ups, run `./warmup-survey`.
 * Some PRNGs discard their first outputs in `init()` (a warm-up), because with the zero seed those outputs have mostly zero bits
 * For several PRNGs, the zero seed failed PractRand right away without the warm-up
 * For each PRNG with a warm-up, the survey starts from the state before the warm-up and reports how many outputs to discard before they look filled
 * The counts in `init()` (`num_warmup_discards`) are not read by the survey, so update them by hand after rerunning it
+
+## Adding a PRNG
+
+To add a PRNG, follow the registration steps under Architecture in [CLAUDE.md](CLAUDE.md).
 
 ## Requirements
 
@@ -71,5 +78,5 @@ The following programs are required to run:
 The Makefile checks for these programs before it does anything, so even `make` fails if one is missing.
 
 The following are required to plot the results:
-- [Python 3](https://www.python.org/)
+- [Python](https://www.python.org/) 3.9 or later
 - [Matplotlib](https://matplotlib.org/)

@@ -18,7 +18,8 @@ Only g++ is supported (clang++ is not).  The benchmark programs link with `-lben
 
 - `make` builds every top-level `*.cpp`: `prng-dump` (plus `prng-dump.opts`, the recorded
   compiler flags), `prng-next-benchmark`, `prng-construct-benchmark`, and `warmup-survey`.
-- `make lint` runs clang-tidy using `.clang-tidy` on every top-level `*.cpp`.
+- `make lint` runs clang-tidy using `.clang-tidy` on every top-level `*.cpp`.  Make ignores
+  clang-tidy's exit status.
 - `make benchmark` runs `run-benchmarks.bash`, which runs every `*-benchmark` program and
   writes `results/PROGRAM.json` (raw) and `results/PROGRAM.txt` (`name value unit`, from
   `results/filter-benchmark-results.jq`).  `prng-next-benchmark` reports GiB/s per thread,
@@ -26,16 +27,19 @@ Only g++ is supported (clang++ is not).  The benchmark programs link with `-lben
   to one less than `nproc`, and `BENCHMARK_REPS` (default 5) sets the repetitions whose
   median is reported.
 - `make short-test` runs `make benchmark`, then PractRand to 256MB for all four seed types
-  (about 4 minutes in all).
+  (about 4 minutes in all).  The PractRand output goes to
+  `results/prng-results.tlmax-256MB.summary.txt`, so that part prints nothing while it runs.
 - `make long-test` runs `make short-test`, then PractRand to 512GB with random seeds
-  (~27.7 hours).  Start it only when the user asks for it.
+  (~27.7 hours).  Its PractRand output goes to the `tlmax-512GB` summary file.  Start it
+  only when the user asks for it.
 - `make update-short-test` / `update-long-test` do a parallel `--dry-run` that regenerates
   the `files`, `names`, and JSON results from existing `RNG_test` outputs and newer
   benchmark data.  The summary goes to `*.summary.dry-run.txt`, so `*.summary.txt` keeps the
   real run's timings.
-- `make -C include` compiles each header standalone (as `-Werror`) to check that it is
-  self-contained; `make -C include wyrand.o` checks one header, and `make -C include lint`
-  lints the headers.
+- `make -C include` compiles each `*.hpp` standalone with `-Werror` to check that it is
+  self-contained.  Make ignores a failed compile and still exits 0, so read the output.  A
+  `#warning` from an ISA guard does not fail a compile.  The `*.h` files are not checked.
+  `make -C include wyrand.o` checks one header, and `make -C include lint` lints the headers.
 - `make warmup-survey && ./warmup-survey` runs the warm-up survey.  For each PRNG with a
   warm-up (outputs discarded in `init()`), it starts from the state
   that `init()` has before the warm-up and reports how many outputs to discard before they
@@ -44,7 +48,8 @@ Only g++ is supported (clang++ is not).  The benchmark programs link with `-lben
   The warm-ups exist because, with the zero seed, the first outputs have mostly zero bits.
   For several PRNGs, the zero seed failed PractRand immediately without the warm-up.  The
   counts (`num_warmup_discards`) are set by hand, and they roughly match discarding outputs
-  until the first one with at least 40% of its bits set.  The survey does not read them, so
+  until the first one with at least 40% of its bits set.  `biski64` is the exception, since
+  it keeps the 16 from upstream's `biski64_warmup`.  The survey does not read them, so
   when a warm-up or a zero-seed fix-up in `init()` changes, rerun it and update the count by
   hand.  Its list in `main()` must say whether each PRNG starts from zeros or from 1, 2, 3, ....
 
@@ -90,6 +95,8 @@ are shared building blocks.  Several are synced from the author's other repos.
 4. Add `REGISTER_BENCHMARK_PRNG_NEXT(name)` to `main` in `prng-next-benchmark.cpp`.
 5. Add `REGISTER_BENCHMARK_PRNG_CONSTRUCT(name)` to `main` in `prng-construct-benchmark.cpp`.
 
+If `init()` has a warm-up, also add the PRNG to the list in `main()` of `warmup-survey.cpp`.
+
 Keep the existing order (mostly alphabetical) and column alignment.  Guard ISA-dependent
 PRNGs with the same `#if defined(__AES__)` / `__PCLMUL__` / `__SHA__` in all of these files,
 and wrap the PRNG's own header in that guard too (with a `#warning` in the `#else`, as
@@ -98,9 +105,9 @@ build on a CPU target that lacks the instruction set.
 
 **Benchmarks.**  `prng-benchmark.hpp` holds what the two benchmark programs share.  Its
 `make_random_seeded<URBG>()` seeds a `std` engine with `random_device_seeded` and one of the
-repo's PRNGs (detected by `my_urbg`) with its default constructor, so one
-benchmark function serves both.  `get_num_threads()` in
-`get_num_threads.hpp` reads `NUM_THREADS`.
+repo's PRNGs (detected by `my_urbg`) with its default constructor, so one benchmark function
+serves both.  `get_num_threads()` in `get_num_threads.hpp` reads `NUM_THREADS`, where 0 means
+every hardware thread.  A benchmark program run without `NUM_THREADS` set uses one thread.
 
 **Seed types.**  The two `make_seeded` overloads in `prng-dump.cpp` turn a seed type into a
 seeded PRNG.  They tell the repo's own PRNGs from `std` engines with the `my_urbg` concept in
