@@ -30,7 +30,7 @@ Only g++ is supported (clang++ is not).  The benchmark programs link with `-lben
   (about 4 minutes in all).  The PractRand output goes to
   `results/prng-results.tlmax-256MB.summary.txt`, so that part prints nothing while it runs.
 - `make long-test` runs `make short-test`, then PractRand to 512GB with random seeds
-  (~27.7 hours).  Its PractRand output goes to the `tlmax-512GB` summary file.  Start it
+  (about 27.7 hours).  Its PractRand output goes to the `tlmax-512GB` summary file.  Start it
   only when the user asks for it.
 - `make update-short-test` / `update-long-test` do a parallel `--dry-run` that regenerates
   the `files`, `names`, and JSON results from existing `RNG_test` outputs and newer
@@ -40,31 +40,26 @@ Only g++ is supported (clang++ is not).  The benchmark programs link with `-lben
   self-contained.  Make ignores a failed compile and still exits 0, so read the output.  A
   `#warning` from an ISA guard does not fail a compile.  The `*.h` files are not checked.
   `make -C include wyrand.o` checks one header, and `make -C include lint` lints the headers.
-- `make warmup-survey && ./warmup-survey` runs the warm-up survey.  For each PRNG with a
-  warm-up (outputs discarded in `init()`), it starts from the state
-  that `init()` has before the warm-up and reports how many outputs to discard before they
-  look filled, followed by the per-call percentages behind each count.  The replacement of an
-  all-zero state with 1, 2, 3, ... exists because those PRNGs never leave the all-zero state.
-  The warm-ups exist because, with the zero seed, the first outputs have mostly zero bits.
-  For several PRNGs, the zero seed failed PractRand immediately without the warm-up.  The
-  counts (`num_warmup_discards`) are set by hand, and they roughly match discarding outputs
-  until the first one with at least 40% of its bits set.  `biski64` is the exception, since
-  it keeps the 16 from upstream's `biski64_warmup`.  The survey does not read them, so
-  when a warm-up or a zero-seed fix-up in `init()` changes, rerun it and update the count by
-  hand.  Its list in `main()` must say whether each PRNG starts from zeros or from 1, 2, 3, ....
+- `make warmup-survey && ./warmup-survey` runs the warm-up survey (see **Warm-ups** below).
 
-Working with one PRNG:
+These commands work with one PRNG.
 
 - `./prng-dump -i` lists PRNGs as tab-separated `name  result_bits  min  max  state_bytes`.
   Scripts parse these columns by position, so do not reorder them.
 - `./prng-dump -s {default|pattern|random|zero} [-l GiB] NAME` dumps output.
 - `bash test-prng-dump.bash -m 256MB -s zero NAME...` tests only the named PRNGs.  It
   overwrites the matching files in `results/`.
-- A manual run looks like `./prng-dump -s zero wyrand | RNG_test stdin64 -tlmax 256MB -multithreaded`.
-  `result_bits` is the number of uniformly random bits each call returns.  `prng-dump` writes
-  each value in a word of the largest power of 2 bits that is at most `result_bits`, and
-  `stdinN` has to match that word.  For example, `std::ranlux24` returns 24 bits, so it needs
-  `stdin16`.  `RNG_test` accepts at most `stdin64`, so a 128-bit PRNG also uses `stdin64`.
+
+A manual run looks like this.
+
+```sh
+./prng-dump -s zero wyrand | RNG_test stdin64 -tlmax 256MB -multithreaded
+```
+
+`result_bits` is the number of uniformly random bits each call returns.  `prng-dump` writes
+each value in a word of the largest power of 2 bits that is at most `result_bits`, and
+`stdinN` has to match that word.  For example, `std::ranlux24` returns 24 bits, so it needs
+`stdin16`.  `RNG_test` accepts at most `stdin64`, so a 128-bit PRNG also uses `stdin64`.
 
 ## Architecture
 
@@ -87,7 +82,21 @@ doc block in `urbg_base_class.hpp` carries the argument.
 The remaining headers (`int_*`, `mum.hpp`, `clmum.hpp`, `simd_*`, `*primes*`, `sha2_iv.h`, ...)
 are shared building blocks.  Several are synced from the author's other repos.
 
-**Registration has five places that must stay in sync.**  To add a PRNG:
+**Warm-ups.**  Some `init()` functions discard their first outputs, because with the zero
+seed those outputs have mostly zero bits.  For several PRNGs, the zero seed failed PractRand
+immediately without the warm-up.  The xoshiro and xoroshiro families never leave an all-zero
+state, so their `init()` first replaces it with 1, 2, 3, and so on.
+
+`warmup-survey` starts each such PRNG from the state `init()` has before the warm-up and
+reports how many outputs to discard before they look filled, followed by the per-call
+percentages behind each count.  Its list in `main()` must start each PRNG from zeros
+(`zero_start`) or from 1, 2, 3, and so on (`iota_start`), matching its `init()`.  The counts
+(`num_warmup_discards`) are set by hand and roughly match the survey's popcount column.
+`biski64` is the exception, since it keeps the 16 from upstream's `biski64_warmup`.  The
+survey does not read the counts, so when a warm-up or a zero-seed fix-up changes, rerun it
+and update the count by hand.
+
+**Registration has five places that must stay in sync.**  Adding a PRNG takes these steps.
 
 1. Include its header in `include/prng.hpp`.
 2. Add `CREATE_PRNG_INFO_MAP_ENTRY(name)` to `prng_name_to_info` in `include/prng.hpp`.
@@ -128,8 +137,8 @@ are joined with `prng-next-benchmark.txt` and converted by `results/parse-prng-r
 ## Conventions
 
 - `COMMENT-STYLE.md` governs code comments, Doxygen blocks, commit messages, and documentation
-  files.  Follow it when writing any of those (for example: two spaces after periods, 96-column
-  limit, Doxygen briefs on `///` lines with no terminating period, `\a` for parameters).
+  files.  Follow it when writing any of those.  Its most common rules are two spaces after
+  periods, a 96-column limit, Doxygen briefs on `///` lines with no terminating period, and
+  `\a` for parameters.
 - Code files carry `SPDX-FileCopyrightText` / `SPDX-License-Identifier` headers.  A new file
   takes MPL-2.0, and a header adapted from upstream keeps upstream's license.
-- Commit subjects are short imperative sentences without a trailing period.
