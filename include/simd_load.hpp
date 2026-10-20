@@ -22,7 +22,7 @@
 /**
 * \pre the size of \a src is at least 16
 */
-[[nodiscard]] static inline uint8x16_t
+[[nodiscard]] inline uint8x16_t
 simd_load16(const std::span<const std::byte> src) noexcept
 {
 #if defined(DEBUG)
@@ -38,7 +38,7 @@ simd_load16(const std::span<const std::byte> src) noexcept
 /**
 * \pre \a src points to at least 16 bytes of data
 */
-[[nodiscard]] static inline uint8x16_t
+[[nodiscard]] inline uint8x16_t
 simd_load16(const void* src) noexcept
 {
     return simd_load16(std::span(static_cast<const std::byte*>(src), sizeof(uint8x16_t)));
