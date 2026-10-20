@@ -142,3 +142,9 @@ are joined with `prng-next-benchmark.txt` and converted by `results/parse-prng-r
   `\a` for parameters.
 - Code files carry `SPDX-FileCopyrightText` / `SPDX-License-Identifier` headers.  A new file
   takes MPL-2.0, and a header adapted from upstream keeps upstream's license.
+- Brace the body of every `for`, `if`, `while`, and `else`, even a single statement, with each
+  brace on its own line.  This holds inside multi-line macros too.  `.clang-tidy` disables the
+  braces checks, so lint does not catch a missing brace.
+- `prng-dump.cpp` (`program_version`) and `results/plot-results.py` (`__version__`) carry a
+  date version.  After editing one, set it to today (YYYY-MM-DD) in a separate commit with the
+  subject "Update program version".
