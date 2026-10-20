@@ -72,9 +72,13 @@ get_state_size_bytes()
         requires (const URBG& prng) { typename URBG::state_type; };
 
     if constexpr (has_state_type)
+    {
         return sizeof(typename URBG::state_type);
+    }
     else
+    {
         return sizeof(URBG);
+    }
 }
 
 struct prng_info_t
