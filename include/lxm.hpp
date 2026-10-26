@@ -36,7 +36,7 @@ mix_murmur(uint64_t h)
 }
 
 // David Stafford's mixing function
-// http://zimbry.blogspot.com/2011/09/better-bit-mixing-improving-on.html
+// https://zimbry.blogspot.com/2011/09/better-bit-mixing-improving-on.html
 [[nodiscard]] constexpr uint64_t
 mix_stafford13(uint64_t h)
 {

@@ -24,7 +24,7 @@
 *
 * The key must be odd, so that multiplying it by the counter reaches all 2^64 values.
 *
-* \sa http://squaresrng.wixsite.com/rand
+* \sa https://squaresrng.wixsite.com/rand
 * \sa https://arxiv.org/abs/2004.06278
 */
 inline constexpr uint64_t squares_key = 0xc8e4fd154ce32f6d; // not prime (popcount = 35)

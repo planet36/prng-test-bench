@@ -43,7 +43,7 @@ mumx_mumx_rrxx_1::next()
     // So we get two differently mixed results, both are the input to another final mumx operation
     // to mix them to together.
     //
-    // See http://mostlymangling.blogspot.com/2020/01/nasam-not-another-strange-acronym-mixer.html
+    // See https://mostlymangling.blogspot.com/2020/01/nasam-not-another-strange-acronym-mixer.html
 
     auto x = s;
     s += inc; // (SDW)

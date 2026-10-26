@@ -9,7 +9,7 @@
 * The mixing function comes from the code that seeds MRG32k3a.
 *
 * \sa https://github.com/vigna/MRG32k3a/blob/master/MRG32k3a.c
-* \sa http://zimbry.blogspot.com/2011/09/better-bit-mixing-improving-on.html
+* \sa https://zimbry.blogspot.com/2011/09/better-bit-mixing-improving-on.html
 */
 
 #pragma once
