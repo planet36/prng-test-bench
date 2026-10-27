@@ -12,6 +12,7 @@
 #if defined(__SHA__)
 
 #include "mm_cast.hpp"
+#include "sha2.h"
 #include "simd_types.hpp"
 #include "urbg_base_class.hpp"
 #include "wyprimes.hpp"
@@ -27,22 +28,22 @@
 */
 // NOLINTBEGIN(cppcoreguidelines-narrowing-conversions)
 static const simd_arr_t<32> sha256_round_constants{
-    _mm_setr_epi32(0x428a2f98, 0x71374491, 0, 0), _mm_setr_epi32(0xb5c0fbcf, 0xe9b5dba5, 0, 0),
-    _mm_setr_epi32(0x3956c25b, 0x59f111f1, 0, 0), _mm_setr_epi32(0x923f82a4, 0xab1c5ed5, 0, 0),
-    _mm_setr_epi32(0xd807aa98, 0x12835b01, 0, 0), _mm_setr_epi32(0x243185be, 0x550c7dc3, 0, 0),
-    _mm_setr_epi32(0x72be5d74, 0x80deb1fe, 0, 0), _mm_setr_epi32(0x9bdc06a7, 0xc19bf174, 0, 0),
-    _mm_setr_epi32(0xe49b69c1, 0xefbe4786, 0, 0), _mm_setr_epi32(0x0fc19dc6, 0x240ca1cc, 0, 0),
-    _mm_setr_epi32(0x2de92c6f, 0x4a7484aa, 0, 0), _mm_setr_epi32(0x5cb0a9dc, 0x76f988da, 0, 0),
-    _mm_setr_epi32(0x983e5152, 0xa831c66d, 0, 0), _mm_setr_epi32(0xb00327c8, 0xbf597fc7, 0, 0),
-    _mm_setr_epi32(0xc6e00bf3, 0xd5a79147, 0, 0), _mm_setr_epi32(0x06ca6351, 0x14292967, 0, 0),
-    _mm_setr_epi32(0x27b70a85, 0x2e1b2138, 0, 0), _mm_setr_epi32(0x4d2c6dfc, 0x53380d13, 0, 0),
-    _mm_setr_epi32(0x650a7354, 0x766a0abb, 0, 0), _mm_setr_epi32(0x81c2c92e, 0x92722c85, 0, 0),
-    _mm_setr_epi32(0xa2bfe8a1, 0xa81a664b, 0, 0), _mm_setr_epi32(0xc24b8b70, 0xc76c51a3, 0, 0),
-    _mm_setr_epi32(0xd192e819, 0xd6990624, 0, 0), _mm_setr_epi32(0xf40e3585, 0x106aa070, 0, 0),
-    _mm_setr_epi32(0x19a4c116, 0x1e376c08, 0, 0), _mm_setr_epi32(0x2748774c, 0x34b0bcb5, 0, 0),
-    _mm_setr_epi32(0x391c0cb3, 0x4ed8aa4a, 0, 0), _mm_setr_epi32(0x5b9cca4f, 0x682e6ff3, 0, 0),
-    _mm_setr_epi32(0x748f82ee, 0x78a5636f, 0, 0), _mm_setr_epi32(0x84c87814, 0x8cc70208, 0, 0),
-    _mm_setr_epi32(0x90befffa, 0xa4506ceb, 0, 0), _mm_setr_epi32(0xbef9a3f7, 0xc67178f2, 0, 0),
+    _mm_setr_epi32(SHA_256_C[ 0], SHA_256_C[ 1], 0, 0), _mm_setr_epi32(SHA_256_C[ 2], SHA_256_C[ 3], 0, 0),
+    _mm_setr_epi32(SHA_256_C[ 4], SHA_256_C[ 5], 0, 0), _mm_setr_epi32(SHA_256_C[ 6], SHA_256_C[ 7], 0, 0),
+    _mm_setr_epi32(SHA_256_C[ 8], SHA_256_C[ 9], 0, 0), _mm_setr_epi32(SHA_256_C[10], SHA_256_C[11], 0, 0),
+    _mm_setr_epi32(SHA_256_C[12], SHA_256_C[13], 0, 0), _mm_setr_epi32(SHA_256_C[14], SHA_256_C[15], 0, 0),
+    _mm_setr_epi32(SHA_256_C[16], SHA_256_C[17], 0, 0), _mm_setr_epi32(SHA_256_C[18], SHA_256_C[19], 0, 0),
+    _mm_setr_epi32(SHA_256_C[20], SHA_256_C[21], 0, 0), _mm_setr_epi32(SHA_256_C[22], SHA_256_C[23], 0, 0),
+    _mm_setr_epi32(SHA_256_C[24], SHA_256_C[25], 0, 0), _mm_setr_epi32(SHA_256_C[26], SHA_256_C[27], 0, 0),
+    _mm_setr_epi32(SHA_256_C[28], SHA_256_C[29], 0, 0), _mm_setr_epi32(SHA_256_C[30], SHA_256_C[31], 0, 0),
+    _mm_setr_epi32(SHA_256_C[32], SHA_256_C[33], 0, 0), _mm_setr_epi32(SHA_256_C[34], SHA_256_C[35], 0, 0),
+    _mm_setr_epi32(SHA_256_C[36], SHA_256_C[37], 0, 0), _mm_setr_epi32(SHA_256_C[38], SHA_256_C[39], 0, 0),
+    _mm_setr_epi32(SHA_256_C[40], SHA_256_C[41], 0, 0), _mm_setr_epi32(SHA_256_C[42], SHA_256_C[43], 0, 0),
+    _mm_setr_epi32(SHA_256_C[44], SHA_256_C[45], 0, 0), _mm_setr_epi32(SHA_256_C[46], SHA_256_C[47], 0, 0),
+    _mm_setr_epi32(SHA_256_C[48], SHA_256_C[49], 0, 0), _mm_setr_epi32(SHA_256_C[50], SHA_256_C[51], 0, 0),
+    _mm_setr_epi32(SHA_256_C[52], SHA_256_C[53], 0, 0), _mm_setr_epi32(SHA_256_C[54], SHA_256_C[55], 0, 0),
+    _mm_setr_epi32(SHA_256_C[56], SHA_256_C[57], 0, 0), _mm_setr_epi32(SHA_256_C[58], SHA_256_C[59], 0, 0),
+    _mm_setr_epi32(SHA_256_C[60], SHA_256_C[61], 0, 0), _mm_setr_epi32(SHA_256_C[62], SHA_256_C[63], 0, 0),
 };
 // NOLINTEND(cppcoreguidelines-narrowing-conversions)
 
