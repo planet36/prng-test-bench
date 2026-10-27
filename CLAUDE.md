@@ -79,7 +79,7 @@ Do not make `next()` or the destructor `virtual`.  Nothing holds a `URBG_base` p
 reference, and a virtual `next()` costs most PRNGs several times their speed.  The class
 doc block in `urbg_base_class.hpp` carries the argument.
 
-The remaining headers (`int_*`, `mum.hpp`, `clmum.hpp`, `simd_*`, `*primes*`, `sha2_iv.h`, ...)
+The remaining headers (`int_*`, `mum.hpp`, `clmum.hpp`, `simd_*`, `*primes*`, `sha2.h`, ...)
 are shared building blocks.  Several are synced from the author's other repos.
 
 **Warm-ups.**  Some `init()` functions discard their first outputs, because with the zero
