@@ -15,7 +15,7 @@
 #if defined(__AES__)
 
 #include "mm_cast.hpp"
-#include "sha2_iv.h"
+#include "sha2.h"
 #include "simd_types.hpp"
 #include "urbg_base_class.hpp"
 #include "wyprimes.hpp"
@@ -42,7 +42,7 @@ aes_ctr_init(simd_arr_t<2>& s)
     // (A, B) gives the output (X, Y), then the counter (B, A) gives the output (Y, X).
 
     // most significant elem first
-    const auto key_mask = _mm_set_epi64x(SHA_512_H0_1, SHA_512_H0_0); // NOLINT(cppcoreguidelines-narrowing-conversions)
+    const auto key_mask = _mm_set_epi64x(SHA_512_H0[1], SHA_512_H0[0]); // NOLINT(cppcoreguidelines-narrowing-conversions)
 
     const auto swapped = _mm_shuffle_epi32(s[1], _MM_SHUFFLE(1, 0, 3, 2));
     // all ones if the lanes are equal, all zeros otherwise
