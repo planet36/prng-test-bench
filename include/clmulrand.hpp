@@ -35,7 +35,7 @@ clmulrand::next()
 {
     const __m128i inc = wyprimes::vec128_01();
 
-    s = _mm_add_epi64(s, inc); // NOLINT(portability-simd-intrinsics)
+    s = _mm_add_epi64(s, inc);
     // mumx_ctr2 is the same design with an integer multiply, which needs an XOR to keep the
     // product from being a quadratic in the step count.  The carry-less multiply here doesn't.
     return clmums(s);

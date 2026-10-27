@@ -45,8 +45,8 @@ aes_compress_ctr2_advance(simd_arr_t<2>& s)
         wyprimes::vec128_23(),
     };
 
-    s[0] = _mm_add_epi64(s[0], inc[0]); // NOLINT(portability-simd-intrinsics)
-    s[1] = _mm_add_epi64(s[1], inc[1]); // NOLINT(portability-simd-intrinsics)
+    s[0] = _mm_add_epi64(s[0], inc[0]);
+    s[1] = _mm_add_epi64(s[1], inc[1]);
 }
 
 DEF_URBG_SUBCLASS(aes_compress_r2_ctr2_128, simd_arr_t<2>, __uint128_t)

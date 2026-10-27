@@ -73,7 +73,7 @@ aes_ctr_next(simd_arr_t<2>& s)
     const __m128i inc = wyprimes::vec128_01();
 
     __m128i dst = s[0];
-    s[0] = _mm_add_epi64(s[0], inc); // NOLINT(portability-simd-intrinsics)
+    s[0] = _mm_add_epi64(s[0], inc);
 
     for (int r = 0; r < Nr; ++r)
     {

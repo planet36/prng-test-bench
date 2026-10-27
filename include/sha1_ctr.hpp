@@ -49,7 +49,7 @@ sha1_ctr_128::next()
     const __m128i inc = wyprimes::vec128_01();
 
     __m128i dst = s;
-    s = _mm_add_epi64(s, inc); // NOLINT(portability-simd-intrinsics)
+    s = _mm_add_epi64(s, inc);
     dst = sha1_rnds4x4(dst, s);
 
     return uint128_from_m128i(dst);
