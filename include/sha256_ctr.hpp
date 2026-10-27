@@ -20,9 +20,6 @@
 #include <immintrin.h>
 
 /**
-* Adapted from
-* https://git.savannah.gnu.org/cgit/gnulib.git/tree/lib/sha256.c#n267
-*
 * \sa https://www.felixcloutier.com/x86/sha256rnds2
 * > Note that only the two lower dwords of XMM0 are used by the instruction.
 */
