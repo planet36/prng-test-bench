@@ -137,10 +137,8 @@ are joined with `prng-next-benchmark.txt` and converted by `results/parse-prng-r
 
 ## Conventions
 
-- `COMMENT-STYLE.md` governs code comments, Doxygen blocks, commit messages, and documentation
-  files.  Follow it when writing any of those.  Its most common rules are two spaces after
-  periods, a 96-column limit, Doxygen briefs on `///` lines with no terminating period, and
-  `\a` for parameters.
+@COMMENT-STYLE.md
+
 - Code files carry `SPDX-FileCopyrightText` / `SPDX-License-Identifier` headers.  A new file
   takes MPL-2.0, and a header adapted from upstream keeps upstream's license.
 - Brace the body of every `for`, `if`, `while`, and `else`, even a single statement, with each
