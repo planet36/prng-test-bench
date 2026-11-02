@@ -29,7 +29,7 @@ tr
 $(foreach bin,$(REQUIRED_BINS),\
     $(if $(shell command -v $(bin) 2> /dev/null),,$(error Please install `$(bin)`)))
 
-# clang++ not supported
+# clang++ is not supported.
 CXX = g++
 
 CPPFLAGS = -MMD -MP
@@ -80,13 +80,13 @@ prng-%-benchmark: LDLIBS += -lbenchmark
 benchmark: $(BINS) | $(OUTPUT_DIR)
 	bash run-benchmarks.bash
 
-# Takes about 4 mins
+# This takes about 4 minutes.
 short-test: prng-dump benchmark | $(OUTPUT_DIR)
 	bash test-prng-dump.bash -j $(J_SHORT) -f $(TF_SHORT) -m $(TLMAX_SHORT) \
 		-s default -s pattern -s random -s zero \
 		&> $(OUTPUT_DIR)/prng-results.tlmax-$(TLMAX_SHORT).summary.txt
 
-# Takes about 27.7 hrs (random)
+# This takes about 27.7 hours (random).
 long-test: short-test | $(OUTPUT_DIR)
 	bash test-prng-dump.bash -j $(J_LONG) -f $(TF_LONG) -m $(TLMAX_LONG) \
 		-s random \

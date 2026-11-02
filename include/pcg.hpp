@@ -18,7 +18,7 @@
 #include <cstdint>
 
 /*
-* Multiplier and increment values taken from here:
+* The multiplier and increment values are taken from here:
 * https://github.com/imneme/pcg-cpp/blob/master/include/pcg_random.hpp#L158
 * https://github.com/imneme/pcg-cpp/blob/master/include/pcg_random.hpp#L161
 */
@@ -161,7 +161,7 @@ pcg64::next()
 * This is \c cm_oneseq_dxsm_128_64 in pcg-cpp, which has a fixed increment and the cheap
 * multiplier.  pcg-cpp does not define a \c pcg64_dxsm type.
 *
-* Adapted from
+* This is adapted from these sources:
 * https://github.com/numpy/numpy/issues/13635#issuecomment-506088698
 * https://github.com/imneme/pcg-cpp/blob/master/include/pcg_random.hpp#L1031
 * https://dotat.at/@/2023-06-21-pcg64-dxsm.html

@@ -20,7 +20,7 @@
 #include <limits>
 #include <random>
 
-/// the largest value of <code>g() - G::min()</code> for a URBG \c G
+/// the largest value of <code>g() - G::min()</code> for a URBG \a G
 template <std::uniform_random_bit_generator G>
 inline constexpr G::result_type urbg_range =
     static_cast<G::result_type>(G::max() - G::min());
@@ -44,7 +44,7 @@ uniform_bits(const T range) noexcept
     return (std::popcount(range) == width) ? width : width - 1;
 }
 
-/// the number of uniformly random bits in one output of the URBG \c G
+/// the number of uniformly random bits in one output of the URBG \a G
 template <std::uniform_random_bit_generator G>
 inline constexpr int urbg_uniform_bits = uniform_bits(urbg_range<G>);
 

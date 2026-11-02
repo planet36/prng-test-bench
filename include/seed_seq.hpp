@@ -1,7 +1,8 @@
 // SPDX-FileCopyrightText: Steven Ward
 // SPDX-License-Identifier: MPL-2.0
 
-/// Seed sequences (mimicking \c std::seed_seq) that use \c std::random_device, constant values, or increasing values
+/// Seed sequences (mimicking \c std::seed_seq) that use \c std::random_device, constant values,
+/// or increasing values
 /**
 * \file
 * \author Steven Ward
@@ -27,12 +28,15 @@
 
 /// A seed sequence that uses \c std::random_device
 /**
-* Adapted from the following sources.
+* This is adapted from the following sources.
 * \sa https://old.reddit.com/r/cpp/comments/31857s/random_number_generation_it_might_be_harder_than/cq08lli/
 * \sa https://probablydance.com/2016/12/29/random_seed_seq-a-small-utility-to-properly-seed-random-number-generators-in-c/
 * \sa https://codingnest.com/generating-random-numbers-using-c-standard-library-the-solutions/
-* For \c std::mersenne_twister_engine, \c std::generate calls \c std::random_device::operator() \em 624 times!
-* For \c std::subtract_with_carry_engine, \c std::generate calls \c std::random_device::operator() \em 24 times!
+*
+* For \c std::mersenne_twister_engine, \c std::generate calls
+* \c std::random_device::operator() \em 624 times!
+* For \c std::subtract_with_carry_engine, \c std::generate calls
+* \c std::random_device::operator() \em 24 times!
 */
 struct random_device_seed_seq
 {
@@ -62,7 +66,7 @@ auto rng = random_device_seeded<std::philox4x64>();
 auto rng = random_device_seeded();
 \endcode
 *
-* Adapted from the following source.
+* This is adapted from the following source.
 * \sa http://www.gockelhut.com/cpp-pirate/random-seed.html
 */
 template <typename PRNG = std::philox4x64>

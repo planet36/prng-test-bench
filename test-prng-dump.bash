@@ -2,7 +2,7 @@
 # SPDX-FileCopyrightText: Steven Ward
 # SPDX-License-Identifier: MPL-2.0
 
-# XXX: If "Broken pipe" error happens, it's likely due to out-of-memory.
+# XXX: If a "Broken pipe" error happens, it's likely due to running out of memory.
 
 renice --priority 19 --pid $$ > /dev/null
 
@@ -247,7 +247,7 @@ do
     echo "# Run each test with: seed=$SEED_TYPE, tf=$TF, tlmin=$TLMIN, tlmax=$TLMAX"
     echo
 
-    # Does not include the PRNG name
+    # These stems do not include the PRNG name.
     PRACTRAND_OUTFILE_STEM="RNG_test.tlmax-$TLMAX.seed-$SEED_TYPE"
     OUTFILE_STEM="prng-results.tlmax-$TLMAX.seed-$SEED_TYPE"
 
@@ -361,7 +361,7 @@ then
         "prng-results.tlmax-$TLMAX.seed-random.names.good.txt" #|| exit
 fi
 
-# Conclusion: no need to run random seed tests for simple failures
+# Conclusion: there is no need to run random seed tests for simple failures.
 
 if [[ ! -f prng-next-benchmark.txt ]]
 then
@@ -384,7 +384,7 @@ echo
 
 for SEED_TYPE in "${SEED_TYPES[@]}"
 do
-    # Does not include the PRNG name
+    # These stems do not include the PRNG name.
     PRACTRAND_OUTFILE_STEM="RNG_test.tlmax-$TLMAX.seed-$SEED_TYPE"
     OUTFILE_STEM="prng-results.tlmax-$TLMAX.seed-$SEED_TYPE"
 

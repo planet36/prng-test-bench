@@ -63,7 +63,7 @@ aes_ctr_next(simd_arr_t<2>& s)
 {
     /*
     * The counter increment \c inc used below forms a Weyl sequence.
-    * Criteria for its 64-bit lane values:
+    * These are the criteria for its 64-bit lane values:
     *   1) Must be odd
     *   2) Must be unique across lanes
     *

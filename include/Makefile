@@ -3,7 +3,7 @@
 
 export LC_ALL = C
 
-# clang++ not supported
+# clang++ is not supported.
 CXX = g++
 
 CPPFLAGS = -MMD -MP

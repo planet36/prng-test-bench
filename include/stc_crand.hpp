@@ -5,9 +5,11 @@
 /**
 * \file
 * \author Steven Ward
-* Based on SFC
-* https://github.com/stclib/STC/blob/main/include/stc/random.h
-* https://github.com/stclib/STC/blob/main/docs/random_api.md
+*
+* This is based on SFC.
+*
+* \sa https://github.com/stclib/STC/blob/main/include/stc/random.h
+* \sa https://github.com/stclib/STC/blob/main/docs/random_api.md
 */
 
 #pragma once

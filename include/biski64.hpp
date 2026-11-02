@@ -24,7 +24,7 @@ DEF_URBG_SUBCLASS(biski64, SINGLE_ARG(std::array<uint64_t, 3>), uint64_t)
 
 /// Prepare the initial state
 /**
-* Adapted from biski64_warmup
+* This is adapted from biski64_warmup.
 * \sa https://github.com/danielcota/biski64/blob/main/c/biski64.c#L49
 */
 void

@@ -113,7 +113,7 @@ nasam_not::init()
 {}
 
 /**
-\sa https://sophieswett.blogspot.com/2026/07/mixers-xsmtest-program-and-shift.html
+* \sa https://sophieswett.blogspot.com/2026/07/mixers-xsmtest-program-and-shift.html
 */
 nasam_not::result_type
 nasam_not::next()
