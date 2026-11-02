@@ -10,7 +10,7 @@ Run `make` to build `prng-dump`, the benchmark programs (`prng-next-benchmark` a
 
 ### Running one PRNG
 
-`prng-dump` writes the raw output of a PRNG to stdout:
+`prng-dump` writes the raw output of a PRNG to stdout.  These are the ways to run it:
 - `./prng-dump -i` lists the available PRNGs, with columns for the name, result bits, minimum, maximum, and state bytes.
 - `./prng-dump -s {default|pattern|random|zero} [-l GiB] NAME` dumps the output of one PRNG.
 - `./prng-dump -h` prints the full usage.

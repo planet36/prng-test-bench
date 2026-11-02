@@ -90,10 +90,11 @@ state, so their `init()` first replaces it with 1, 2, 3, and so on.
 `warmup-survey` starts each such PRNG from the state `init()` has before the warm-up and
 reports how many outputs to discard before they look filled, followed by the per-call
 percentages behind each count.  Its list in `main()` must start each PRNG from zeros
-(`zero_start`) or from 1, 2, 3, and so on (`iota_start`), matching its `init()`.  The counts
-(`num_warmup_discards`) are set by hand and roughly match the survey's popcount column.
-`biski64` is the exception, since it keeps the 16 from upstream's `biski64_warmup`.  The
-survey does not read the counts, so when a warm-up or a zero-seed fix-up changes, rerun it
+(`zero_start`) or from 1, 2, 3, and so on (`iota_start`), matching its `init()`.
+
+The counts (`num_warmup_discards`) are set by hand and roughly match the survey's popcount
+column.  `biski64` is the exception, since it keeps the 16 from upstream's `biski64_warmup`.
+The survey does not read the counts, so when a warm-up or a zero-seed fix-up changes, rerun it
 and update the count by hand.
 
 **Registration has five places that must stay in sync.**  Adding a PRNG takes these steps.
