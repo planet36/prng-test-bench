@@ -93,7 +93,8 @@ long-test: short-test | $(OUTPUT_DIR)
 		&> $(OUTPUT_DIR)/prng-results.tlmax-$(TLMAX_LONG).summary.txt
 
 # These "update" targets are identical to their respective non-update targets,
-# except they pass the dry-run option to the shell script.
+# except they pass the dry-run option to the shell script and write their summary
+# to a separate "dry-run" file, which keeps the real run's summary.
 # Their purpose is to update the prng-results files with newer benchmark data
 # without running the lengthy tests.
 # The "benchmark" target should have already been run, but it's not an explicit
